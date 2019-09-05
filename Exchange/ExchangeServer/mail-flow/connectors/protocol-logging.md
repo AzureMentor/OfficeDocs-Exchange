@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how protocol logging records SMTP activity in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 40da446b-bcc3-4a97-ace7-a54f6ddebd79
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Protocol logging
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -102,17 +103,14 @@ The protocol log stores each SMTP protocol event on a single line in the log. Th
 
 |**Field name**|**Description**|
 |:-----|:-----|
-|**date-time** <br/> |UTC date-time of the protocol event. The UTC date-time is represented in the ISO 8601 date-time format: *yyyy-mm-dd*T*hh:mm:ss.fff*Z, where _yyyy_ = year, _mm_ = month, _dd_ = day, T indicates the beginning of the time component, _hh_ = hour, _mm_ = minute, _ss_ = second, _fff_ = fractions of a second, and Z signifies Zulu, which is another way to denote UTC.  <br/> |
-|**connector-id** <br/> |Distinguished name (DN) of the connector that's associated with the SMTP event.  <br/> |
-|**session-id** <br/> |GUID value that's unique for each SMTP session, but is the same for every event that's associated with that SMTP session.  <br/> |
-|**sequence-number** <br/> |Counter that starts at 0 and is incremented for each event in the same SMTP session.  <br/> |
-|**local-endpoint** <br/> |Local endpoint of an SMTP session. This consists of an IP address and TCP port number formatted as _\<IP address\>_: _\<port\>_.  <br/> |
-|**remote-endpoint** <br/> |Remote endpoint of an SMTP session. This consists of an IP address and TCP port number formatted as _\<IP address\>_: _\<port\>_.  <br/> |
-|**event** <br/> |Single character that represents the protocol event. Valid values are:  <br/> `+`: Connect  <br/> `-`: Disconnect  <br/> `>`: Send  <br/> `<`: Receive  <br/> `*`: Information  <br/> |
-|**data** <br/> |Text information associated with the SMTP event.  <br/> |
-|**context** <br/> |Additional contextual information that may be associated with the SMTP event.  <br/> |
+|**date-time**|UTC date-time of the protocol event. The UTC date-time is represented in the ISO 8601 date-time format: *yyyy-mm-dd*T*hh:mm:ss.fff*Z, where _yyyy_ = year, _mm_ = month, _dd_ = day, T indicates the beginning of the time component, _hh_ = hour, _mm_ = minute, _ss_ = second, _fff_ = fractions of a second, and Z signifies Zulu, which is another way to denote UTC.|
+|**connector-id**|Distinguished name (DN) of the connector that's associated with the SMTP event.|
+|**session-id**|GUID value that's unique for each SMTP session, but is the same for every event that's associated with that SMTP session.|
+|**sequence-number**|Counter that starts at 0 and is incremented for each event in the same SMTP session.|
+|**local-endpoint**|Local endpoint of an SMTP session. This consists of an IP address and TCP port number formatted as _\<IP address\>_: _\<port\>_.|
+|**remote-endpoint**|Remote endpoint of an SMTP session. This consists of an IP address and TCP port number formatted as _\<IP address\>_: _\<port\>_.|
+|**event**|Single character that represents the protocol event. Valid values are:  <br/> `+`: Connect  <br/> `-`: Disconnect  <br/> `>`: Send  <br/> `<`: Receive  <br/> `*`: Information|
+|**data**|Text information associated with the SMTP event.|
+|**context**|Additional contextual information that may be associated with the SMTP event.|
 
 One SMTP conversation that represents sending or receiving a single email message generates multiple SMTP events. Each event is recorded on a separate line in the protocol log. An Exchange server has many SMTP conversations going on at any given time. This creates protocol log entries from different SMTP conversations that are mixed together. You can use the **session-id** and **sequence-number** fields to sort the protocol log entries by each individual SMTP conversation.
-
-
-

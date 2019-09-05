@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Edge Transport server cloned configuration: Exchange 2013 Help'
 TOCTitle: Edge Transport server cloned configuration
 ms:assetid: 683a6b8a-59bf-43ed-96c8-504945c2f665
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Aa998622(v=EXCHG.150)
 ms:contentKeyID: 61200288
 ms.date: 07/14/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Edge Transport server cloned configuration
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Edge Transport servers store their configuration information in Active Directory Lightweight Directory Services (AD LDS). You can install more than one Edge Transport server in the perimeter network and use a DNS round robin to help balance network traffic among the Edge Transport servers. Round robin is a simple mechanism used by DNS servers to share and distribute loads for network resources.
 
@@ -22,14 +23,6 @@ To ensure all Edge Transport servers use the same configuration information, use
 *Cloned configuration* is used to deploy new Edge Transport servers based on a configured source server. Source server configuration information is duplicated and then exported to an XML file. The XML file is then imported to the target server.
 
 This topic provides an overview of the cloned configuration process. For detailed steps about configuring your Edge Transport servers using cloned configuration, see [Configure Edge Transport server using cloned configuration](configure-edge-transport-server-using-cloned-configuration-exchange-2013-help.md).
-
-**Contents**
-
-Cloned configuration and EdgeSync
-
-Cloned configuration process
-
-Transport configuration information
 
 ## Cloned configuration and EdgeSync
 
@@ -41,16 +34,16 @@ Cloned configuration doesn't duplicate a server's Edge Subscription settings. Th
 
 The cloned configuration process consists of three steps:
 
-1.  Export the configuration from the source server.
-    
+1. Export the configuration from the source server.
+
     Run the ExportEdgeConfig.ps1 script (located in %ExchangeInstallPath%Scripts) to export the source server's configuration information to an intermediate XML file.
 
-2.  Validate the configuration on the target server.
-    
+2. Validate the configuration on the target server.
+
     Run the ImportEdgeConfig.ps1 script (located in %ExchangeInstallPath%Scripts). This script checks the existing information in the intermediate XML file to see whether the exported settings are valid for the target server and then creates an answer file. The answer file specifies the server-specific information used when you import the configuration onto the target server. The answer file contains entries for each source server setting that isn't valid for the target server. You can modify these settings so that they're valid for the target server. If all settings are valid, the answer file contains no entries.
 
-3.  Import the configuration on the target server.
-    
+3. Import the configuration on the target server.
+
     The ImportEdgeConfig.ps1 script uses the intermediate XML file and the answer file to clone an existing configuration or to restore the server to a specific configuration.
 
 ## Step 1: Export the configuration from the source server
@@ -59,43 +52,41 @@ After you install and configure the Edge Transport server role, run the ExportEd
 
 The following information is exported from the source server and stored in the intermediate XML file:
 
-  - Transport service-related information and log file path information:
-    
-      - *ReceiveProtocolLogPath*
-    
-      - *SendProtocolLogPath*
-    
-      - *MessageTrackingLogPath*
-    
-      - *PickupDirectoryPath*
-    
-      - *RoutingTableLogPath*
+- Transport service-related information and log file path information:
 
-  - Transport agent-related information, including status and priority settings of each transport agent.
+  - *ReceiveProtocolLogPath*
 
-  - All Send connector-related information. If any Send connectors are configured to use credentials, the password is written to the intermediate XML file as an encrypted string. You can use the *-key* parameter with the ImportEdgeConfig.ps1 and ExportEdgeConfig.ps1 scripts to specify the 32-byte string to use for password encryption and decryption. If you don't use the *-key* parameter, a default encryption key is used.
+  - *SendProtocolLogPath*
 
-  - Receive connector-related information. To modify local network binding and port properties, you must modify the configuration information in the answer file that's created in the validate configuration step.
+  - *MessageTrackingLogPath*
 
-  - Accepted domain configuration.
+  - *PickupDirectoryPath*
 
-  - Remote domain configuration.
+  - *RoutingTableLogPath*
 
-  - Anti-spam features configuration settings:
-    
-      - IP Allow list information. Only IP Allow list entries that were manually configured by the administrator are exported.
-    
-      - IP Block list information.
-    
-      - Content filter configuration.
-    
-      - Recipient filter configuration.
-    
-      - Address rewrite entries.
-    
-      - Attachment filter entries.
+- Transport agent-related information, including status and priority settings of each transport agent.
 
-Return to top
+- All Send connector-related information. If any Send connectors are configured to use credentials, the password is written to the intermediate XML file as an encrypted string. You can use the *-key* parameter with the ImportEdgeConfig.ps1 and ExportEdgeConfig.ps1 scripts to specify the 32-byte string to use for password encryption and decryption. If you don't use the *-key* parameter, a default encryption key is used.
+
+- Receive connector-related information. To modify local network binding and port properties, you must modify the configuration information in the answer file that's created in the validate configuration step.
+
+- Accepted domain configuration.
+
+- Remote domain configuration.
+
+- Anti-spam features configuration settings:
+
+  - IP Allow list information. Only IP Allow list entries that were manually configured by the administrator are exported.
+
+  - IP Block list information.
+
+  - Content filter configuration.
+
+  - Recipient filter configuration.
+
+  - Address rewrite entries.
+
+  - Attachment filter entries.
 
 ## Step 2: Validate the configuration on the target server
 
@@ -103,73 +94,66 @@ The target server is an Exchange 2013 server that has a clean installation of th
 
 The ImportEdgeConfig.ps1 script (located at %ExchangeInsallPath%Scripts) performs the following tasks:
 
-  - Verifies that the data paths and log paths can be created on the target server. If the paths can't be created, a blank path is inserted into the answer file.
+- Verifies that the data paths and log paths can be created on the target server. If the paths can't be created, a blank path is inserted into the answer file.
 
-  - For each Send connector in the XML file, the script adds a blank entry for the source IP address in the answer file.
+- For each Send connector in the XML file, the script adds a blank entry for the source IP address in the answer file.
 
-  - For each Receive connector in the XML file, the script adds a blank entry for the local network bindings in the answer file.
+- For each Receive connector in the XML file, the script adds a blank entry for the local network bindings in the answer file.
 
 You will need to manually modify the answer file to provide the following information about server-specific settings:
 
-  - Fill in the data paths and log paths. If these paths are left blank in the answer file, the paths configured in the intermediate XML file will be used in the next step when you import the configuration onto the target server.
+- Fill in the data paths and log paths. If these paths are left blank in the answer file, the paths configured in the intermediate XML file will be used in the next step when you import the configuration onto the target server.
 
-  - For each Send connector entry, fill in the source IP address. If this field is left blank, an error will occur in the import configuration step.
+- For each Send connector entry, fill in the source IP address. If this field is left blank, an error will occur in the import configuration step.
 
-  - For each Receive connector entry, fill in the local network bindings. If the local network bindings are left blank, an error will occur when you try to import the configuration onto the target server.
-
-Return to top
+- For each Receive connector entry, fill in the local network bindings. If the local network bindings are left blank, an error will occur when you try to import the configuration onto the target server.
 
 ## Step 3: Import the configuration onto the target server
 
 You can perform this step on any target server to clone the configuration of an existing Edge Transport server or to restore the server to a specific configuration. Run the ImportEdgeConfig.ps1 script (located at %ExchangeInsallPath%Scripts) to validate and import the new configuration. After you run this script, the target server's configuration will match the settings in the intermediate XML file and the answer file.
 
-
 > [!IMPORTANT]
 > We recommend that you back up the existing server configuration before running the import configuration process, so that if the cloning operation fails, you can restore the server to its previous stable state.
-
-
 
 This step uses the server-specific information provided in the answer file. If a setting isn't specified in the answer file, the data in the intermediate XML file will be used. Before the script modifies the configuration, the script validates the data in the intermediate XML file and the answer file.
 
 Import configuration modifies the following target server configuration settings:
 
-  - The transport agent configuration is modified.
+- The transport agent configuration is modified.
 
-  - The existing connectors on the target server are removed, and the connectors present in the intermediate XML file are added.
+- The existing connectors on the target server are removed, and the connectors present in the intermediate XML file are added.
 
-  - The existing accepted domains are removed, and the accepted domain entries in the intermediate XML file are added.
+- The existing accepted domains are removed, and the accepted domain entries in the intermediate XML file are added.
 
-  - The existing remote domains are removed, and the remote domain entries in the intermediate XML file are added.
+- The existing remote domains are removed, and the remote domain entries in the intermediate XML file are added.
 
-  - The existing IP Allow list entries are removed, and the IP Allow list entries in the intermediate remote domains file are added.
+- The existing IP Allow list entries are removed, and the IP Allow list entries in the intermediate remote domains file are added.
 
-  - The existing IP Block list entries are removed, and the IP Block list entries in the intermediate remote domains file are added.
+- The existing IP Block list entries are removed, and the IP Block list entries in the intermediate remote domains file are added.
 
-  - The following anti-spam configuration is cloned to the target server:
-    
-      - Content filter configuration
-    
-      - Recipient filter configuration
-    
-      - Address rewrite entries
-    
-      - Attachment filter entries
+- The following anti-spam configuration is cloned to the target server:
 
-Return to top
+  - Content filter configuration
+
+  - Recipient filter configuration
+
+  - Address rewrite entries
+
+  - Attachment filter entries
 
 ## Transport configuration information
 
 The settings of the transport configuration object define server-wide email transport settings for an Edge Transport server. When you import the intermediate XML file to the target server, all transport configuration object settings except the following are imported:
 
-  - General names and creation dates from the exported XML file
+- General names and creation dates from the exported XML file
 
-  - Send connector information
+- Send connector information
 
-  - Receive connector information
+- Receive connector information
 
-  - Attachment filter entries
+- Attachment filter entries
 
-  - The **MaxDumpsterSizePerStorageGroup** attribute entry
+- The **MaxDumpsterSizePerStorageGroup** attribute entry
 
 After the import process is complete, you may also configure the settings by using the **Set-TransportConfig** cmdlet. For more information, see [Set-TransportConfig](https://technet.microsoft.com/en-us/library/bb124151\(v=exchg.150\)).
 
@@ -259,12 +243,5 @@ The attributes in the following table are associated with the transport configur
 </tbody>
 </table>
 
-
-
 > [!NOTE]
 > If the Edge Transport server is later subscribed to the Exchange organization, the value of the <STRONG>InternalSMTPServers</STRONG> attribute will be overwritten during the EdgeSync process. For more information, see <A href="edge-subscriptions-exchange-2013-help.md">Edge Subscriptions</A>.
-
-
-
-Return to top
-

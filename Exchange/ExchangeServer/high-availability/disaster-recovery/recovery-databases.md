@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: f3c6fd0b-2e25-442e-a0fc-46f663130c3e
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Recovery databases
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -82,6 +83,3 @@ An RDB is designed for mailbox database recovery under the following conditions 
 RDBs are generally not designed for scenarios in which you have to restore entire servers, when you have to restore multiple databases, or when you're in an emergency situation that requires changing or rebuilding your Active Directory topology.
 
 For detailed steps about how to create an RDB, see [Create a recovery database](create-recovery-dbs.md). For detailed steps about how to use an RDB, see [Restore data using a recovery database](restore-data-using-recovery-dbs.md).
-
-
-

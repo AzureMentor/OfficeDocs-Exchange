@@ -6,11 +6,12 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 3f01edde-1cdc-4891-ad9d-7d01582664e9
 ms.date: 
+ms.reviewer: 
 title: Modify the space used by Inbox rules in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -52,7 +53,7 @@ There are three basic methods you can use to modify the rules quota for a mailbo
     This example decreases the rules quota to 200 KB for the user douglas@contoso.com.
 
     ```
-    Set-Mailbox -Identity douglas@contoso.com -RulesQuota " 200 KB"
+    Set-Mailbox -Identity douglas@contoso.com -RulesQuota "200 KB"
     ```
 
 - **Filter mailboxes by attributes**: This method requires that the mailboxes all share a unique filterable attribute. For example:
@@ -130,4 +131,3 @@ To verify that you've modified the Inbox rules quota on a mailbox, use any of th
 - Inbox rules are run from top to bottom in the order in which they appear in the **Rules** window. To change the order of rules, click the rule you want to move, and then click the up or down arrow to move the rule to the position you want in the list.
 
 - When you create a forwarding rule, you can add more than one address to forward to. The number of addresses you can forward to may be limited, depending on the settings for your account. If you add more addresses than are allowed, your forwarding rule won't work. If you create a forwarding rule with more than one address, test it to be sure it works.
-

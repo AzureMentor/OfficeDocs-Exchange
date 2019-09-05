@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: Placing a mailbox on retention hold suspends the processing of a retention policy or managed folder mailbox policy for that mailbox. Retention hold is designed for situations such as a user being on vacation or away temporarily.
 ms.topic: article
-author: markjjo
-ms.author: markjjo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 2baac4a7-3402-4142-bfb3-1649a950e677
 ms.date: 7/11/2018
+ms.reviewer: 
 title: Place a mailbox on retention hold
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -77,6 +78,3 @@ This command retrieves all mailboxes in the Exchange organization, filters the m
 ```
 Get-Mailbox -ResultSize unlimited | Where-Object {$_.RetentionHoldEnabled -eq $true} | Format-Table Name,RetentionPolicy,RetentionHoldEnabled -Auto
 ```
-
-
-

@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Protect voice mail: Exchange 2013 Help'
 TOCTitle: Protect voice mail
 ms:assetid: a88d41d5-2e70-4193-bcd3-dec50dff412b
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd351041(v=EXCHG.150)
 ms:contentKeyID: 49315484
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-# Protect voice mail
+# Protect voice mail in Exchange Server
 
- 
-
-_**Applies to:** Exchange Online, Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013, Exchange Server 2016_
 
 Some legacy Private Branch eXchange (PBX) and IP PBX telephony systems allow the caller to mark a voice mail message as private, blocking the intended recipient of the message from forwarding it to others. In integrated voice mail systems, a voice message can be accessed in multiple ways, which makes it more of a challenge to prevent voice messages marked private from being exposed to unintended listeners.
 
@@ -21,45 +22,27 @@ Unified Messaging (UM) can be configured to use Active Directory Rights Manageme
 
 When a voice message is protected, the recipient is not only blocked from forwarding the message, but UM also ensures that only the intended recipient or recipients of the message can access its content. Protected voice messages can be accessed by using Microsoft Outlook 2010 or later, Outlook Web App, or Outlook Voice Access.
 
-**Contents**
-
-Overview of Protected Voice Mail
-
-Overview of Active Directory Rights Management Services
-
-Client support and end-user features
-
-Protected voice mail structure
-
-Composing a Protected Voice Mail message
-
-UM mailbox policies
-
-Text message notifications and Protected Voice Mail
-
 ## Overview of Protected Voice Mail
 
 The Protected Voice Mail feature is available with Exchange 2010 and later versions of Unified Messaging (UM). It can be configured on a UM mailbox policy, and all Protected Voice Mail settings can be configured by using the Exchange Management Console or the Shell in Exchange 2010 or by using the Exchange admin center (EAC) or cmdlets in the Shell in Exchange 2013.
 
 Protected Voice Mail is implemented by applying Information Rights Management (IRM) to voice messages. When voice messages are protected by UM:
 
-  - Users can reply to protected voice messages.
+- Users can reply to protected voice messages.
 
-  - Recipients of a voice message can't forward it.
+- Recipients of a voice message can't forward it.
 
-  - Users can't save a copy of the voice message.
+- Users can't save a copy of the voice message.
 
-  - Users can't save or copy the attached audio of the voice message.
+- Users can't save or copy the attached audio of the voice message.
 
-  - A voice message can be opened only by the intended recipient or recipients.
+- A voice message can be opened only by the intended recipient or recipients.
 
 Both call-answering voice messages and interpersonal voice messages (voice messages that are sent to a user using Outlook Voice Access) can be protected by UM. However, protection won't be applied to the following types of messages:
 
-  - Fax messages.
+- Fax messages.
 
-  - Non-voice messages. For example, email messages or meeting requests, even when they're created using Outlook Voice Access (voice replies).
-
-Return to top
+- Non-voice messages. For example, email messages or meeting requests, even when they're created using Outlook Voice Access (voice replies).
 
 ## Overview of Active Directory Rights Management Services
 
@@ -67,15 +50,15 @@ AD RMS, a component of Windows Server 2008 and later versions, is available to h
 
 An AD RMS system has both a server and a client component, including the following:
 
-  - A server that has Windows Server 2008 R2 or a later version installed that’s running the Active Directory Rights Management Services server role, which handles certificates and licensing.
+- A server that has Windows Server 2008 R2 or a later version installed that's running the Active Directory Rights Management Services server role, which handles certificates and licensing.
 
-  - A database server.
+- A database server.
 
-  - The AD RMS client. The latest version of the AD RMS client is included as part of the Windows 7 and Windows 8 operating systems.
+- The AD RMS client. The latest version of the AD RMS client is included as part of the Windows 7 and Windows 8 operating systems.
 
 The server component is made up of several web services that run on a Microsoft server such as Windows Server 2008 or a later version. The client component can be run on either a client or server operating system and includes functions that enable an application to encrypt and decrypt content, retrieve templates and revocation lists, and acquire licenses and certificates from a server.
 
-By using AD RMS and the AD RMS client, you can augment an organization's security strategy by protecting information through persistent usage policies that remain with the information, regardless of where it's moved. You can use AD RMS to help prevent sensitive information—such as financial reports, product specifications, customer data, and confidential email and voice mail messages—from intentionally or accidentally getting into the wrong hands. For detailed information, see [AD RMS Overview](https://go.microsoft.com/fwlink/p/?linkid=199436).
+By using AD RMS and the AD RMS client, you can augment an organization's security strategy by protecting information through persistent usage policies that remain with the information, regardless of where it's moved. You can use AD RMS to help prevent sensitive information (such as financial reports, product specifications, customer data, and confidential email and voice mail messages) from intentionally or accidentally getting into the wrong hands. For detailed information, see [AD RMS Overview](https://go.microsoft.com/fwlink/p/?linkid=199436).
 
 In Exchange UM you can use Information Rights Management (IRM) features to apply persistent protection to messages and attachments.
 
@@ -84,7 +67,6 @@ Using the IRM features and Protected Voice Mail, your organization and your user
 ## IRM requirements
 
 Before you can implement IRM in Exchange, you must first deploy and configure your AD RMS infrastructure. For detailed information, see [Active Directory Rights Management Services](https://go.microsoft.com/fwlink/p/?linkid=199439). To implement IRM to support Protected Voice Mail in your Exchange organization, your deployment must meet the following requirements.
-
 
 <table>
 <colgroup>
@@ -110,33 +92,29 @@ Before you can implement IRM in Exchange, you must first deploy and configure yo
 </tbody>
 </table>
 
-
 ## Configuring and testing IRM
 
 You must use the Shell to configure IRM features. To configure individual IRM features, use the [Set-IRMConfiguration](https://technet.microsoft.com/en-us/library/dd979792\(v=exchg.150\)) cmdlet. For more information about how to configure IRM features, see [Information Rights Management procedures](information-rights-management-procedures-exchange-2013-help.md).
 
 After you've set up an Exchange server, you can use the [Test-IRMConfiguration](https://technet.microsoft.com/en-us/library/dd979798\(v=exchg.150\)) cmdlet to perform end-to-end tests of your IRM deployment. This cmdlet verifies the IRM configuration for an organization and should be run before enabling Protected Voice Mail. The **Test-IRMConfiguration** cmdlet performs the following tests:
 
-  - Inspects the IRM configuration for your Exchange organization.
+- Inspects the IRM configuration for your Exchange organization.
 
-  - Checks the AD RMS server for version and hotfix information.
+- Checks the AD RMS server for version and hotfix information.
 
-  - Verifies whether an Exchange server can be activated for RMS by retrieving a Rights Account Certificate and Client Licensor Certificate (CLC).
+- Verifies whether an Exchange server can be activated for RMS by retrieving a Rights Account Certificate and Client Licensor Certificate (CLC).
 
-  - Acquires AD RMS rights policy templates from the AD RMS server.
+- Acquires AD RMS rights policy templates from the AD RMS server.
 
-  - Verifies that the specified sender can send IRM-protected messages.
+- Verifies that the specified sender can send IRM-protected messages.
 
-  - Retrieves a super user use license for the specified recipient.
+- Retrieves a super user use license for the specified recipient.
 
-  - Acquires a pre-license for the specified recipient.
-
-Return to top
+- Acquires a pre-license for the specified recipient.
 
 ## Client support and end-user features
 
 The email client software that's used to listen to a Protected Voice Mail message must support IRM and know how to read a UM-protected voice message. Email clients that are supported include Microsoft Outlook 2010 or later versions, Outlook Web App, and Outlook Voice Access. The following table contains a list of email clients and whether they're supported.
-
 
 <table>
 <colgroup>
@@ -172,7 +150,7 @@ The email client software that's used to listen to a Protected Voice Mail messag
 <tr class="even">
 <td><p>Windows Mobile or Windows Phone</p></td>
 <td><ul>
-<li><p>Windows Mobile doesn’t support Protected Voice Mail. However, Windows Phone 7 and Windows Phone 8 support Protected Voice Mail.</p></li>
+<li><p>Windows Mobile doesn't support Protected Voice Mail. However, Windows Phone 7 and Windows Phone 8 support Protected Voice Mail.</p></li>
 </ul></td>
 </tr>
 <tr class="odd">
@@ -190,54 +168,43 @@ The email client software that's used to listen to a Protected Voice Mail messag
 </tbody>
 </table>
 
-
-Return to top
-
 ## Protected voice message structure
 
 There are actually two messages involved for each Protected Voice Mail message. The first message is the outer message, which isn't encrypted. It contains an attachment named message.rpmsg. The attachment contains the IRM-protected voice message and internal rights management control data. The rights management control data includes a content key and rights information that specifies who can access the voice message and how those users can access it.
 
 Protected voice messages are shown in the user's Inbox in the **Voice Mail** search folder. The user can listen to the voice messages by using the embedded audio player just as they would listen to a regular voice message, except that the Forward button will be disabled and a note will be shown at the top of the message stating that it's protected and that it can't be forwarded.
 
-For email clients that don't support Protected Voice Mail, the body of the outer message will be displayed. Administrators can include text when the client’s software doesn’t support Protected Voice Mail by using UM mailbox policies. You can customize the default text that's included in the email message by configuring a UM mailbox policy. For example, you could configure the UM mailbox policy with customized text such as, *"You can't open this voice mail message because it's protected. To view or listen to this voice message, sign in to your mailbox at https://mail.contoso.com or call +1 (425) 555-1234 to call in to Outlook Voice Access."*
-
-Return to top
+For email clients that don't support Protected Voice Mail, the body of the outer message will be displayed. Administrators can include text when the client's software doesn't support Protected Voice Mail by using UM mailbox policies. You can customize the default text that's included in the email message by configuring a UM mailbox policy. For example, you could configure the UM mailbox policy with customized text such as, *"You can't open this voice mail message because it's protected. To view or listen to this voice message, sign in to your mailbox at https://mail.contoso.com or call +1 (425) 555-1234 to call in to Outlook Voice Access."*
 
 ## Composing a Protected Voice Mail message
 
 There are two situations in which protected voice messages can be created:
 
-  - **Call answering**   Call answering occurs when a caller calls a UM-enabled user, but the user isn't available to answer the call or forwards it directly to voice mail. In call-answering scenarios, the voice mail system will play a series of voice prompts after the caller records a voice message.
-    
-    The caller can then choose from additional message options, including the option to mark the voice message as private by pressing the pound (\#) key. If the caller presses the \# key, they can follow the instructions provided by UM to mark the message as private, remove the private marking from the private voice message, or mark the voice message with High importance. The following diagram shows the menu options that are available to callers when they leave a private voice message for a user.
-    
+- **Call answering**: Call answering occurs when a caller calls a UM-enabled user, but the user isn't available to answer the call or forwards it directly to voice mail. In call-answering scenarios, the voice mail system will play a series of voice prompts after the caller records a voice message.
 
-    > [!NOTE]
-    > For call-answering calls, UM uses the Protected Voice Mail settings on the UM mailbox policy of the intended recipient of the message, because the caller isn't authenticated.
+  The caller can then choose from additional message options, including the option to mark the voice message as private by pressing the pound (\#) key. If the caller presses the \# key, they can follow the instructions provided by UM to mark the message as private, remove the private marking from the private voice message, or mark the voice message with High importance. The following diagram shows the menu options that are available to callers when they leave a private voice message for a user.
 
-    
-    **Create a Protected Voice Mail message using Call Answering**
-    
-    ![Create protected voice mail using call answering](images/Dd351041.4e9f50bf-5066-4d0a-b3eb-0515a2fc4560(EXCHG.150).jpg "Create protected voice mail using call answering")  
+  > [!NOTE]
+  > For call-answering calls, UM uses the Protected Voice Mail settings on the UM mailbox policy of the intended recipient of the message, because the caller isn't authenticated.
 
-  - **Outlook Voice Access**   Outlook Voice Access lets UM-enabled users access their mailbox using analog, digital, or cellular telephones by dialing their Outlook Voice Access number. There are two Unified Messaging user interfaces available to UM-enabled users: the telephone user interface (TUI) and the voice user interface (VUI).
-    
-    Outlook Voice Access users can search for contacts in the directory and send them voice messages. If Protected Voice Mail has been enabled for the UM-enabled recipients, callers can mark the messages as private after they're recorded. Alternatively, administrators can configure a UM mailbox policy to ensure that all voice messages sent by authenticated users are protected by UM.
-    
+  **Create a Protected Voice Mail message using Call Answering**
 
-    > [!NOTE]
-    > If a caller is authenticated, the Protected Voice Mail settings on the UM mailbox policy that’s linked to the caller are applied, regardless of the UM mailbox policy settings for the intended recipient of the voice message.
+  ![Create protected voice mail using call answering](images/Dd351041.4e9f50bf-5066-4d0a-b3eb-0515a2fc4560(EXCHG.150).jpg "Create protected voice mail using call answering")
 
-    
-    **Create a Protected Voice Mail message using the voice user interface**
-    
-    ![Create protected voice mail using voice interface](images/Dd351041.6b425ee4-5171-4a63-961f-bdbc6c79e1be(EXCHG.150).jpg "Create protected voice mail using voice interface")  
-    
-    **Create a Protected Voice Mail message using the telephone user interface**
-    
-    ![Create protected voice mail using touchtone input](images/Dd351041.dd58fd38-c4c3-437c-adc1-497deb3c8a9f(EXCHG.150).jpg "Create protected voice mail using touchtone input")  
+- **Outlook Voice Access**: Outlook Voice Access lets UM-enabled users access their mailbox using analog, digital, or cellular telephones by dialing their Outlook Voice Access number. There are two Unified Messaging user interfaces available to UM-enabled users: the telephone user interface (TUI) and the voice user interface (VUI).
 
-Return to top
+  Outlook Voice Access users can search for contacts in the directory and send them voice messages. If Protected Voice Mail has been enabled for the UM-enabled recipients, callers can mark the messages as private after they're recorded. Alternatively, administrators can configure a UM mailbox policy to ensure that all voice messages sent by authenticated users are protected by UM.
+
+  > [!NOTE]
+  > If a caller is authenticated, the Protected Voice Mail settings on the UM mailbox policy that's linked to the caller are applied, regardless of the UM mailbox policy settings for the intended recipient of the voice message.
+
+  **Create a Protected Voice Mail message using the voice user interface**
+
+  ![Create protected voice mail using voice interface](images/Dd351041.6b425ee4-5171-4a63-961f-bdbc6c79e1be(EXCHG.150).jpg "Create protected voice mail using voice interface")
+
+  **Create a Protected Voice Mail message using the telephone user interface**
+
+  ![Create protected voice mail using touchtone input](images/Dd351041.dd58fd38-c4c3-437c-adc1-497deb3c8a9f(EXCHG.150).jpg "Create protected voice mail using touchtone input")
 
 ## UM mailbox policies
 
@@ -246,7 +213,6 @@ You can create a Unified Messaging mailbox policy to apply a common set of UM po
 You can use the EAC or the **Set-UMMailboxPolicy** cmdlet in the Shell to configure Protected Voice Mail options. The following table lists the settings that can be configured for Protected Voice Mail.
 
 **Protected Voice Mail settings**
-
 
 <table>
 <colgroup>
@@ -290,16 +256,10 @@ You can use the EAC or the **Set-UMMailboxPolicy** cmdlet in the Shell to config
 </tbody>
 </table>
 
-
 For more information about how to manage Protected Voice Mail settings, see [Protected Voice Mail procedures](https://docs.microsoft.com/en-us/exchange/voice-mail-unified-messaging/set-up-client-voice-mail-features/protected-voice-mail-procedures) or [Set-UMMailboxPolicy](https://technet.microsoft.com/en-us/library/bb124903\(v=exchg.150\)).
-
-Return to top
 
 ## Text message notifications and Protected Voice Mail
 
 Users who configure their UM account to send text message notifications (also called SMS notifications) to their mobile phone when voice messages are received will also receive audio transcription (Voice Mail Preview) text as part of the body of the text message. However, for protected voice messages, this represents a security issue because the content of the voice messages should always be protected.
 
 When UM creates a text message notification for a voice message that's protected, it checks whether the voice message is marked as Private. If so, it won't add the transcribed audio text to the text message that it sends to the mobile phone. The following text will be included in the text message instead: "Use Outlook Voice Access to access this protected voice mail message."
-
-Return to top
-

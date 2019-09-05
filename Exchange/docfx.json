@@ -89,7 +89,8 @@
           "**/*.jpg",
           "**/*.gif",
           "**/*.pdf",
-          "**/*.svg"
+          "**/*.svg",
+          "**/*.docx"
         ],
         "exclude": [
           "**/obj/**",
@@ -102,7 +103,8 @@
           "**/*.jpg",
           "**/*.gif",
           "**/*.pdf",
-          "**/*.svg"
+          "**/*.svg",
+          "**/*.docx"
         ],
         "group": "exchangeserver",
         "exclude": [

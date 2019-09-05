@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Admins can learn how to assign address book policies (ABPs) to users in Exchange Online
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: bdfe6575-24c0-47d0-9cfb-ece910db248b
 ms.date: 
+ms.reviewer: 
 title: Assign an address book policy to users in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -56,9 +57,10 @@ To assign ABPs to mailboxes, you select the ABP in Exchange admin center (EAC), 
 3. On the mailbox properties page that opens, click **Mailbox features**.
 
 4. Click the drop-down arrow in **Address book policy**, and select the ADP that you want to apply.
-    ![Address book policy settings for a mailbox in the EAC at Recipients \> select mailbox \> Edit \> Mailbox features](../../media/2b219961-4664-40b3-873c-5892f1fcf2b6.png)
 
-    When you're finished, click **Save**.
+   ![Address book policy settings for a mailbox in the EAC at Recipients \> select mailbox \> Edit \> Mailbox features](../../media/2b219961-4664-40b3-873c-5892f1fcf2b6.png)
+
+   When you're finished, click **Save**.
 
 ## Use the EAC to assign an ABP to multiple mailboxes
 
@@ -80,14 +82,15 @@ To assign ABPs to mailboxes, you select the ABP in Exchange admin center (EAC), 
 
 3. In the list of mailboxes, select multiple mailboxes of the same type (for example, **User**) from the list. For example:
 
-  - Select a mailbox, hold down the Shift key, and select another mailbox that's farther down in the list.
+   - Select a mailbox, hold down the Shift key, and select another mailbox that's farther down in the list.
 
-  - Hold down the CTRL key as you select each mailbox.
+   - Hold down the CTRL key as you select each mailbox.
 
     After you select multiple mailboxes of the same type, the title of the details pane changes to **Bulk Edit**.
 
 4. In the details pane, scroll down and click **More options**, scroll down to **Address Book Policy**, and then click **Update**.
-    ![Bulk select mailboxes in the EAC to assign an address book policy](../../media/6319f0ec-686d-48e2-9061-2337e30116d5.png)
+
+   ![Bulk select mailboxes in the EAC to assign an address book policy](../../media/6319f0ec-686d-48e2-9061-2337e30116d5.png)
 
 5. In the **Bulk assign address book policy** window that opens, select the ABP by clicking the drop-down arrow in **Select Address Book Policy**, and then click **Save**.
 
@@ -97,65 +100,61 @@ There are three basic methods you can use to apply an ABP to mailboxes:
 
 - **Individual mailboxes**: Use the following syntax:
 
-    ```
-    Set-Mailbox -Identity <MailboxIdentity> -AddressBookPolicy <ABPIdentity>
-    ```
+  ```
+  Set-Mailbox -Identity <MailboxIdentity> -AddressBookPolicy <ABPIdentity>
+  ```
 
-    This example assigns the ABP named All Fabrikam to the mailbox joe@fabrikam.com.
+  This example assigns the ABP named All Fabrikam to the mailbox joe@fabrikam.com.
 
-    ```
-    Set-Mailbox -Identity joe@fabrikam.com -AddressBookPolicy "All Fabrikam"
-    ```
+  ```
+  Set-Mailbox -Identity joe@fabrikam.com -AddressBookPolicy "All Fabrikam"
+  ```
 
 - **Filter mailboxes by attributes**: This method uses the unique filterable attribute that defines the virtual organization (for example, the **CustomAttribute1** through **CustomAttribute15** attribute value).
 
-    The syntax uses the following two commands (one to identify the mailboxes, and the other to apply the ABP to the mailboxes):
+  The syntax uses the following two commands (one to identify the mailboxes, and the other to apply the ABP to the mailboxes):
 
-    ```
-    $<VariableName> = Get-Mailbox -ResultSize unlimited -Filter <Filter>
-    ```
+  ```
+  $<VariableName> = Get-Mailbox -ResultSize unlimited -Filter <Filter>
+  ```
 
-    ```
-    $<VariableName> | foreach {Set-Mailbox -Identity $_.MicrosoftOnlineServicesID -AddressBookPolicy <ABPIdentity>}
-    ```
+  ```
+  $<VariableName> | foreach {Set-Mailbox -Identity $_.MicrosoftOnlineServicesID -AddressBookPolicy <ABPIdentity>}
+  ```
 
-    This example assigns the ABP named All Fabrikam to all mailbox users whose **CustomAttribute15** value is `FAB`.
+  This example assigns the ABP named All Fabrikam to all mailbox users whose **CustomAttribute15** value is `FAB`.
 
-    ```
-    $Fabrikam = Get-Mailbox -Filter {(CustomAttribute15 -eq 'FAB')}
-    ```
+  ```
+  $Fabrikam = Get-Mailbox -Filter {(CustomAttribute15 -eq 'FAB')}
+  ```
 
-    ```
-    $Fabrikam | foreach {Set-Mailbox -Identity $_.MicrosoftOnlineServicesID -AddressBookPolicy "All Fabrikam"}
-    ```
+  ```
+  $Fabrikam | foreach {Set-Mailbox -Identity $_.MicrosoftOnlineServicesID -AddressBookPolicy "All Fabrikam"}
+  ```
 
 - **Use a list of specific mailboxes**: This method requires a text file to identify the mailboxes. Values that don't contain spaces (for example, the user account) work best. The text file must contain one user account on each line like this:
 
-    `akol@contoso.com`
+  > akol@contoso.com <br/> tjohnston@contoso.com <br/> kakers@contoso.com
 
-    `tjohnston@contoso.com`
+  The syntax uses the following two commands (one to identify the user accounts, and the other to apply the policy to those users):
 
-    `kakers@contoso.com`
+  ```
+  $<VariableName> = Get-Content "<text file>"
+  ```
 
-    The syntax uses the following two commands (one to identify the user accounts, and the other to apply the policy to those users):
+  ```
+  $<VariableName> | foreach {Set-Mailbox -Identity $_.MicrosoftOnlineServicesID -AddressBookPolicy <ABPIdentity>}
+  ```
 
-    ```
-    $<VariableName> = Get-Content "<text file>"
-    ```
+  This example assigns the ABP policy named All Fabrikam to the mailboxes specified in the file C:\My Documents\Fabrikam.txt.
 
-    ```
-    $<VariableName> | foreach {Set-Mailbox -Identity $_.MicrosoftOnlineServicesID -AddressBookPolicy <ABPIdentity>}
-    ```
+  ```
+  $Fab = Get-Content "C:\My Documents\Fabrikam.txt"
+  ```
 
-   This example assigns the ABP policy named All Fabrikam to the mailboxes specified in the file C:\My Documents\Fabrikam.txt.
-
-    ```
-    $Fab = Get-Content "C:\My Documents\Fabrikam.txt"
-    ```
-
-    ```
-    $Fab | foreach {Set-Mailbox -Identity $_.MicrosoftOnlineServicesID -AddressBookPolicy "All Fabrikam"}
-    ```
+  ```
+  $Fab | foreach {Set-Mailbox -Identity $_.MicrosoftOnlineServicesID -AddressBookPolicy "All Fabrikam"}
+  ```
 
 For detailed syntax and parameter information, see [Set-Mailbox](https://technet.microsoft.com/library/a0d413b9-d949-4df6-ba96-ac0906dedae2.aspx) and [Get-Mailbox](https://technet.microsoft.com/library/8a5a6eb9-4a75-47f9-ae3b-a3ba251cf9a8.aspx).
 
@@ -167,17 +166,16 @@ To verify that you've successfully applied an ABP to a mailbox, use any of the f
 
 - In Exchange Online PowerShell, replace \<MailboxIdentity\> with the name, alias, email address, or account name of the mailbox, and run the following command to verify the value of the **AddressBookPolicy** property:
 
-    ```
-    Get-Mailbox -Identity "<MailboxIdentity>" | Format-List AddressBookPolicy
-    ```
+  ```
+  Get-Mailbox -Identity "<MailboxIdentity>" | Format-List AddressBookPolicy
+  ```
 
 - In Exchange Online PowerShell, run the following command to verify the value of the **AddressBookPolicy** property:
 
-    ```
-    Get-Mailbox -ResultSize unlimited | Format-Table Name,AddressBookPolicy -Auto
-    ```
+  ```
+  Get-Mailbox -ResultSize unlimited | Format-Table Name,AddressBookPolicy -Auto
+  ```
 
 ## More information
 
 To remove the ABP assignment from a mailbox, you select the value **[No Policy]** in the EAC, or use the value `$null` for the _AddressBookPolicy_ parameter in Exchange Online PowerShell.
-

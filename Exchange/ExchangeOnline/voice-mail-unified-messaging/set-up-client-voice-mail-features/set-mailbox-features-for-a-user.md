@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: Telephone user interface (TUI) settings are used when a user accesses the Unified Messaging (UM) system by using Outlook Voice Access. When you modify a UM-enabled user's TUI configuration settings, you modify properties and their values on the UM-enabled user's mailbox.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: a56bfd75-7bc5-49b9-b098-06855a720dcd
 ms.date: 11/17/2014
-title: Set mailbox features for an Outlook Voice Access user
+ms.reviewer: 
+title: Set mailbox features for an Outlook Voice Access user in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Set mailbox features for an Outlook Voice Access user
+# Set mailbox features for an Outlook Voice Access user in Exchange Online
 
 Telephone user interface (TUI) settings are used when a user accesses the Unified Messaging (UM) system by using Outlook Voice Access. When you modify a UM-enabled user's TUI configuration settings, you modify properties and their values on the UM-enabled user's mailbox.
 
@@ -45,7 +46,7 @@ For additional management tasks related to UM users, see [Set mailbox features f
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use Exchange Online PowerShell to modify a single UM-enabled user's TUI settings
 
@@ -57,6 +58,3 @@ Set-UMMailbox -Identity tony@contoso.com TUIAccessToCal True -TUIAccessToEmail T
 
 > [!NOTE]
 > TUI settings for users are also available on UM mailbox policies. Modifying TUI settings on a UM mailbox policy affects all users who are associated with the UM mailbox policy. For more information about how to modify TUI settings on a UM mailbox policy, see [Set mailbox features for Outlook Voice Access users](set-mailbox-features-for-users.md).
-
-
-

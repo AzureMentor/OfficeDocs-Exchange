@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to move or recreate the message queue database in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: f170cb0c-04a9-4fa7-b594-206e3a787e14
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Change the location of the queue database
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -22,8 +23,8 @@ The location of the queue database and the queue database transaction logs is co
 
 |**Key**|**Description**|
 |:-----|:-----|
-| _QueueDatabasePath_ <br/> |Specifies the location of the queue database files. The files are:  <br/> • Mail.que  <br/> • Trn.chk  <br/> The default location is `%ExchangeInstallPath%TransportRoles\data\Queue`.  <br/> |
-| _QueueDatabaseLoggingPath_ <br/> |Specifies the location of the queue database transaction log files. The files are:  <br/> • Trn.log  <br/> • Trntmp.log  <br/> • Trn _nnn_.log  <br/> • Trnres00001.jrs  <br/> • Trnres00002.jrs  <br/> • Temp.edb  <br/> Note that Temp.edb is used to verify the queue database schema when the Exchange Transport service starts. Although Temp.edb isn't a transaction log file, it's kept in the same location as the transaction log files.  <br/> The default location is `%ExchangeInstallPath%TransportRoles\data\Queue`.  <br/> |
+| _QueueDatabasePath_|Specifies the location of the queue database files. The files are: <br/> • Mail.que <br/> • Trn.chk <br/> The default location is `%ExchangeInstallPath%TransportRoles\data\Queue`.|
+| _QueueDatabaseLoggingPath_|Specifies the location of the queue database transaction log files. The files are: <br/> • Trn.log <br/> • Trntmp.log <br/> • Trn _nnn_.log <br/> • Trnres00001.jrs <br/> • Trnres00002.jrs <br/> • Temp.edb <br/> Note that Temp.edb is used to verify the queue database schema when the Exchange Transport service starts. Although Temp.edb isn't a transaction log file, it's kept in the same location as the transaction log files. <br/> The default location is `%ExchangeInstallPath%TransportRoles\data\Queue`.|
 
 ## What do you need to know before you begin?
 
@@ -52,37 +53,36 @@ The location of the queue database and the queue database transaction logs is co
 - Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the Command Prompt to create a new queue database and transaction logs in a new location
-<a name="New"> </a>
 
 1. Create the folder where you want to keep the queue database and transaction logs. Make sure that the correct permissions are applied to the folder.
 
 2. In a Command prompt window, open the EdgeTransport.exe.config file in Notepad by running the following command:
 
-  ```
-  Notepad %ExchangeInstallPath%Bin\EdgeTransport.exe.config
-  ```
+   ```
+   Notepad %ExchangeInstallPath%Bin\EdgeTransport.exe.config
+   ```
 
 3. Find and modify the following keys in the `<appSettings>` section.
 
-  ```
-  <add key="QueueDatabasePath" value="<LocalPath>" />
-  <add key="QueueDatabaseLoggingPath" value="<LocalPath>" />
-  ```
+   ```
+   <add key="QueueDatabasePath" value="<LocalPath>" />
+   <add key="QueueDatabaseLoggingPath" value="<LocalPath>" />
+   ```
 
-    For example, to create a new queue database and transaction logs in D:\Queue\QueueDB, use the following values:
+   For example, to create a new queue database and transaction logs in D:\Queue\QueueDB, use the following values:
 
-  ```
-  <add key="QueueDatabasePath" value="D:\Queue\QueueDB" />
-  <add key="QueueDatabaseLoggingPath" value="D:\Queue\QueueDB" />
-  ```
+   ```
+   <add key="QueueDatabasePath" value="D:\Queue\QueueDB" />
+   <add key="QueueDatabaseLoggingPath" value="D:\Queue\QueueDB" />
+   ```
 
-    When you're finished, save and close the EdgeTransport.exe.config file.
+   When you're finished, save and close the EdgeTransport.exe.config file.
 
 4. Restart the Exchange Transport service by running the following command:
 
-  ```
-  net stop MSExchangeTransport && net start MSExchangeTransport
-  ```
+   ```
+   net stop MSExchangeTransport && net start MSExchangeTransport
+   ```
 
 ### How do you know this worked?
 
@@ -110,31 +110,31 @@ Although you'll need to move the existing queue database to preserve any undeliv
 
 2. In a Command prompt window, open the EdgeTransport.exe.config file in Notepad by running the following command:
 
-  ```
-  Notepad %ExchangeInstallPath%Bin\EdgeTransport.exe.config
-  ```
+   ```
+   Notepad %ExchangeInstallPath%Bin\EdgeTransport.exe.config
+   ```
 
 3. Find and modify the following keys in the `<appSettings>` section:
 
-  ```
-  <add key="QueueDatabasePath" value="<LocalPath>" />
-  <add key="QueueDatabaseLoggingPath" value="<LocalPath>" />
-  ```
+   ```
+   <add key="QueueDatabasePath" value="<LocalPath>" />
+   <add key="QueueDatabaseLoggingPath" value="<LocalPath>" />
+   ```
 
-    For example, to change the location of the queue database and transaction logs to D:\Queue\QueueDB, use the following values:
+   For example, to change the location of the queue database and transaction logs to D:\Queue\QueueDB, use the following values:
 
-  ```
-  <add key="QueueDatabasePath" value="D:\Queue\QueueDB" />
-  <add key="QueueDatabaseLoggingPath" value="D:\Queue\QueueDB" />
-  ```
+   ```
+   <add key="QueueDatabasePath" value="D:\Queue\QueueDB" />
+   <add key="QueueDatabaseLoggingPath" value="D:\Queue\QueueDB" />
+   ```
 
-    When you're finished, save and close the EdgeTransport.exe.config file.
+   When you're finished, save and close the EdgeTransport.exe.config file.
 
 4. Stop the Exchange Transport service by running the following command:
 
-  ```
-  net stop MSExchangeTransport
-  ```
+   ```
+   net stop MSExchangeTransport
+   ```
 
 5. Move the existing database files Mail.que and Trn.chk from the old location to the new location.
 
@@ -142,9 +142,9 @@ Although you'll need to move the existing queue database to preserve any undeliv
 
 7. Start the Exchange Transport service by running the following command:
 
-  ```
-  net start MSExchangeTransport
-  ```
+   ```
+   net start MSExchangeTransport
+   ```
 
 ### How do you know this worked?
 
@@ -155,6 +155,3 @@ Although you'll need to move the existing queue database to preserve any undeliv
 2. Verify the transaction log files Trn.log, Trntmp.log, Trnres00001.jrs, Trnres00002.jrs, and Temp.edb files exist in the new location.
 
 3. Verify there are no queue database or transaction log files in the old location.
-
-
-

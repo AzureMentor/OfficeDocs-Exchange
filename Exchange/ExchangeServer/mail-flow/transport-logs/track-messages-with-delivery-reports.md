@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: Learn how administrators use Delivery Reports to search for the delivery status of email messages in an Exchange Server 2016 or Exchange Server 2019 organization.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: a14e4e62-08ca-4a7b-92e1-d39fe3e0a9e5
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Track messages with delivery reports
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -32,26 +33,24 @@ Delivery Reports is a message tracking tool in the Exchange admin center (EAC) t
 - Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to track messages
-<a name="trackmessages"> </a>
 
 1. In the EAC, navigate to **Mail Flow** \> **Delivery Reports**.
 
 2. Enter the following information:
 
-  - **Mailbox to search**: Click **Browse** to select the mailbox from the address book and then click **OK**. Selecting the mailbox to search is required.
+   - **Mailbox to search**: Click **Browse** to select the mailbox from the address book and then click **OK**. Selecting the mailbox to search is required.
 
-  - Select one of the following:
+   - Select one of the following:
 
-  - **Search for messages sent to**: Use this option to search for messages that were sent to specific users from the mailbox you selected in **Mailbox to search**. Click **Select users** and then pick users from the address book by selecting a user from the list and clicking **Add**. You can select more than one user here. When you're finished selecting users, click **OK** to return to the **Delivery Reports** page. If you select this option, you can also leave the field blank to find messages sent to anyone.
+   - **Search for messages sent to**: Use this option to search for messages that were sent to specific users from the mailbox you selected in **Mailbox to search**. Click **Select users** and then pick users from the address book by selecting a user from the list and clicking **Add**. You can select more than one user here. When you're finished selecting users, click **OK** to return to the **Delivery Reports** page. If you select this option, you can also leave the field blank to find messages sent to anyone.
 
-  - **Search for messages received from**: Use this option to search for messages that were sent by specific user to the mailbox you selected in **Mailbox to search**. Again, select the user from the address book and click **OK** to return to the **Delivery Reports** page. If you select this option, you have to specify a sender.
+   - **Search for messages received from**: Use this option to search for messages that were sent by specific user to the mailbox you selected in **Mailbox to search**. Again, select the user from the address book and click **OK** to return to the **Delivery Reports** page. If you select this option, you have to specify a sender.
 
-  - **Search for these words in the subject line**: Enter subject line information here, or leave it blank.
+   - **Search for these words in the subject line**: Enter subject line information here, or leave it blank.
 
 3. When you're finished, click **Search**. If you want to start over, click **Clear**.
 
 ## Use the EAC to review a delivery report
-<a name="viewreport"> </a>
 
 To view delivery information, select a message in the **Search results** pane and click **Details** ![Edit icon](../../media/ITPro_EAC_EditIcon.png).
 
@@ -102,9 +101,5 @@ Depending on the delivery status of the message, you may see a variety of status
 When you're done reviewing the report, click **Close**. Delivery reports aren't saved, but you can re-run a report at any time. Remember there is a two-week search window.
 
 ## How do you know this worked?
-<a name="viewreport"> </a>
 
 If your search was successful, messages that fit the search criteria are listed in the **Search results** pane. To view the delivery information for a specific message, select it and then click **Details** ![Edit icon](../../media/ITPro_EAC_EditIcon.png). If no messages are displayed in the **Search results** pane, change the search criteria and then re-run the search.
-
-
-

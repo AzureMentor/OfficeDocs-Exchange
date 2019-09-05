@@ -1,16 +1,18 @@
 ---
 localization_priority: Normal
 ms.topic: article
-author: maggsl
-ms.author: v-maleo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: d3856e24-9358-4957-a6d9-b7ec0d0e5fae
 ms.date: 
+ms.reviewer: 
+manager: serdars
 description: Admins can learn how to use a screen reader to create a shared mailbox in the Exchange admin center (EAC) in Exchange Online.
 title: Use a screen reader to add a new shared mailbox in the Exchange admin center in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.custom: A11y_UseSR
 ms.service: exchange-online
 
@@ -73,4 +75,3 @@ To add a new shared mailbox, [Use a screen reader to open the Exchange admin cen
 14. Tab to the **Save** button, and press Enter. An alert says "Please wait." After the shared mailbox is created, you hear another alert that says the mailbox will be available in approximately 15 minutes.
 
 15. With the focus on the **OK** button, press Enter. The new shared mailbox display name and email address are listed in the **shared** list view, and it has the focus. Details about the new shared mailbox are listed in the details pane on the right. To review these details, press Ctrl+F6 or the Tab key until the details pane has the focus.
-

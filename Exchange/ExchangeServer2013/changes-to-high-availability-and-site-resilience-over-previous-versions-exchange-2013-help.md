@@ -1,39 +1,40 @@
-﻿---
+---
 title: 'Changes to high availability and site resilience over previous versions'
 TOCTitle: Changes to high availability and site resilience over previous versions
 ms:assetid: de53c00b-091c-4a31-aacc-1bd40c756ce2
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dn789066(v=EXCHG.150)
 ms:contentKeyID: 62523708
 ms.date: 07/14/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Changes to high availability and site resilience over previous versions
 
- 
-
 _**Applies to:** Exchange Server 2013 SP1_
-
 
 Exchange 2013 uses DAGs and mailbox database copies, along with other features such as single item recovery, retention policies, and lagged database copies, to provide high availability, site resilience, and Exchange native data protection. The high availability platform, Exchange Information Store and Extensible Storage Engine (ESE) have all been enhanced to provide greater availability and easier management, and to reduce costs. These enhancements include:
 
-  - **Reduction in IOPS over Exchange 2010**   This enables you to leverage larger disks in terms of capacity and IOPS as efficiently as possible.
+  - **Reduction in IOPS over Exchange 2010**: This enables you to leverage larger disks in terms of capacity and IOPS as efficiently as possible.
 
-  - **Managed availability**   With managed availability, internal monitoring and recovery-oriented features are tightly integrated to help prevent failures, proactively restore services, and initiate server failovers automatically or alert administrators to take action. The focus is on monitoring and managing the end-user experience rather than just server and component uptime to help keep the service continuously available.
+  - **Managed availability**: With managed availability, internal monitoring and recovery-oriented features are tightly integrated to help prevent failures, proactively restore services, and initiate server failovers automatically or alert administrators to take action. The focus is on monitoring and managing the end-user experience rather than just server and component uptime to help keep the service continuously available.
 
-  - **Managed Store**   The Managed Store is the name of the newly rewritten Information Store processes in Exchange 2013. The new Managed Store is written in C\# and tightly integrated with the Microsoft Exchange Replication service (MSExchangeRepl.exe) to provide higher availability through improved resiliency.
+  - **Managed Store**: The Managed Store is the name of the newly rewritten Information Store processes in Exchange 2013. The new Managed Store is written in C\# and tightly integrated with the Microsoft Exchange Replication service (MSExchangeRepl.exe) to provide higher availability through improved resiliency.
 
-  - **Support for multiple databases per disk**   Exchange 2013 includes enhancements that enable you to support multiple databases (mixtures of active and passive copies) on the same disk, thereby leveraging larger disks in terms of capacity and IOPS as efficiently as possible.
+  - **Support for multiple databases per disk**: Exchange 2013 includes enhancements that enable you to support multiple databases (mixtures of active and passive copies) on the same disk, thereby leveraging larger disks in terms of capacity and IOPS as efficiently as possible.
 
-  - **AutoReseed**   Automatic reseeding capability enables you to quickly restore database redundancy after disk failure. If a disk fails, the database copy stored on that disk is copied from the active database copy to a spare disk on the same server. If multiple database copies were stored on the failed disk, they can all be automatically reseeded on a spare disk. This enables faster reseeds, as the active databases are likely to be on multiple servers and the data is copied in parallel.
+  - **AutoReseed**: Automatic reseeding capability enables you to quickly restore database redundancy after disk failure. If a disk fails, the database copy stored on that disk is copied from the active database copy to a spare disk on the same server. If multiple database copies were stored on the failed disk, they can all be automatically reseeded on a spare disk. This enables faster reseeds, as the active databases are likely to be on multiple servers and the data is copied in parallel.
 
-  - **Automatic recovery from storage failures**   This feature continues the innovation introduced in Exchange 2010 to allow the system to recover from failures that affect resiliency or redundancy. In addition to the Exchange 2010 bugcheck behaviors, Exchange 2013 includes additional recovery behaviors for long I/O times, excessive memory consumption by MSExchangeRepl.exe, and severe cases where the system is in such a bad state that threads can't be scheduled.
+  - **Automatic recovery from storage failures**: This feature continues the innovation introduced in Exchange 2010 to allow the system to recover from failures that affect resiliency or redundancy. In addition to the Exchange 2010 bugcheck behaviors, Exchange 2013 includes additional recovery behaviors for long I/O times, excessive memory consumption by MSExchangeRepl.exe, and severe cases where the system is in such a bad state that threads can't be scheduled.
 
-  - **Lagged copy enhancements**   Lagged copies can now care for themselves to a certain extent using automatic log play down. Lagged copies will automatically play down log files in a variety of situations, such as page patching and low disk space scenarios. If the system detects that page patching is required for a lagged copy, the logs will be automatically replayed into the lagged copy to perform page patching. Lagged copies will also invoke this auto replay feature when a low disk space threshold has been reached, and when the lagged copy has been detected as the only available copy for a specific period of time. In addition, lagged copies can leverage Safety Net, making recovery or activation much easier.
+  - **Lagged copy enhancements**: Lagged copies can now care for themselves to a certain extent using automatic log play down. Lagged copies will automatically play down log files in a variety of situations, such as page patching and low disk space scenarios. If the system detects that page patching is required for a lagged copy, the logs will be automatically replayed into the lagged copy to perform page patching. Lagged copies will also invoke this auto replay feature when a low disk space threshold has been reached, and when the lagged copy has been detected as the only available copy for a specific period of time. In addition, lagged copies can leverage Safety Net, making recovery or activation much easier.
 
-  - **Single copy alert enhancements**   The single copy alert introduced in Exchange 2010 is no longer a separate scheduled script. It's now integrated into the managed availability components within the system and is a native function within Exchange.
+  - **Single copy alert enhancements**: The single copy alert introduced in Exchange 2010 is no longer a separate scheduled script. It's now integrated into the managed availability components within the system and is a native function within Exchange.
 
-  - **DAG network auto-configuration**   DAG networks can be automatically configured by the system based on configuration settings. In addition to manual configuration options, DAGs can also distinguish between MAPI and replication networks and configure DAG networks automatically.
+  - **DAG network auto-configuration**: DAG networks can be automatically configured by the system based on configuration settings. In addition to manual configuration options, DAGs can also distinguish between MAPI and replication networks and configure DAG networks automatically.
 
 ## Reduction in IOPS over Exchange 2010
 
@@ -53,9 +54,9 @@ Managed Availability is the integration of built-in, active monitoring and the E
 
 Managed availability is implemented in the form of two services:
 
-  - **Exchange Health Manager Service (MSExchangeHMHost.exe)**   This is a controller process that's used to manage worker processes. It's used to build, execute, and start and stop the worker process as needed. It's also used to recover the worker process in case that process crashes, to prevent the worker process from being a single point of failure.
+  - **Exchange Health Manager Service (MSExchangeHMHost.exe)**: This is a controller process that's used to manage worker processes. It's used to build, execute, and start and stop the worker process as needed. It's also used to recover the worker process in case that process crashes, to prevent the worker process from being a single point of failure.
 
-  - **Exchange Health Manager Worker process (MSExchangeHMWorker.exe)**   This is the worker process that's responsible for performing the runtime tasks.
+  - **Exchange Health Manager Worker process (MSExchangeHMWorker.exe)**: This is the worker process that's responsible for performing the runtime tasks.
 
 Managed availability uses persistent storage to perform its functions:
 
@@ -71,7 +72,7 @@ For more information about managed availability, see [Managed Availability](mana
 
 All previous versions of Exchange Server, from Exchange Server 4.0 to Exchange Server 2010, have supported running a single instance of the Information Store process (Store.exe) on the Mailbox server role. This single Store instance hosts all databases on the server: active, passive, lagged, and recovery. In the previous Exchange architectures, there is little, if any, isolation between the different databases hosted on a Mailbox server. An issue with a single mailbox database has the potential to negatively affect all other databases, and crashes resulting from a mailbox corruption can affect service for all users whose databases are hosted on that server.
 
-Another challenge with a single Store instance in previous versions of Exchange is that the Extensible Storage Engine (ESE) scales well to 8-12 processor cores, but beyond that, cross-processor communication and cache synchronization issues lead to negative scale. Given today’s much larger servers, with 16+ core systems available, this would mean impose the administrative challenge of managing the affinity of 8-12 cores for ESE and using the other cores for non-Store processes (for example, Assistants, Search Foundation, Managed Availability, etc.). Moreover, the previous architecture restricted scale-up for the Store process.
+Another challenge with a single Store instance in previous versions of Exchange is that the Extensible Storage Engine (ESE) scales well to 8-12 processor cores, but beyond that, cross-processor communication and cache synchronization issues lead to negative scale. Given today's much larger servers, with 16+ core systems available, this would mean impose the administrative challenge of managing the affinity of 8-12 cores for ESE and using the other cores for non-Store processes (for example, Assistants, Search Foundation, Managed Availability, etc.). Moreover, the previous architecture restricted scale-up for the Store process.
 
 The Store.exe process has evolved considerably throughout the years as Exchange Server itself evolved, but as a single process, ultimately its scalability is limited, and it represents a single point of failure. Because of these limits, Store.exe is gone in Exchange 2013 and replaced by the Managed Store.
 
@@ -135,7 +136,6 @@ Automatic recovery from storage failures continues the innovation introduced in 
 
 Even in JBOD environments, storage array controllers can have issues, such as crashing or hanging. Exchange 2010 included hung I/O detection and recovery features that provided enhanced resilience. These features are listed in the following table.
 
-
 <table>
 <colgroup>
 <col style="width: 25%" />
@@ -173,9 +173,7 @@ Even in JBOD environments, storage array controllers can have issues, such as cr
 </tbody>
 </table>
 
-
 Exchange 2013 enhances server and storage resilience by including new behaviors for other serious conditions. These conditions and behaviors are described in the following table.
-
 
 <table>
 <colgroup>
@@ -230,7 +228,6 @@ Exchange 2013 enhances server and storage resilience by including new behaviors 
 </tbody>
 </table>
 
-
 ## Lagged copy enhancements
 
 Lagged copy enhancements include integration with Safety Net and automatic play down of log files in certain scenarios. Safety Net is a feature of transport that replaces the Exchange 2010 feature known as transport dumpster. Safety Net is similar to transport dumpster, in that it's a delivery queue that's associated with the Transport service on a Mailbox server. This queue stores copies of messages that were successfully delivered to the active mailbox database on the Mailbox server. Each active mailbox database on the Mailbox server has its own queue that stores copies of the delivered messages. You can specify how long Safety Net stores copies of the successfully delivered messages before they expire and are automatically deleted.
@@ -281,7 +278,7 @@ Single copy conditions include, but aren't limited to:
 
   - Failure of the system to accurately know the current log generation of the active copy.
 
-Because it's a top priority for administrators to know when they're down to a single healthy copy of a database, the CheckDatabaseRedundancy.ps1 script has been replaced with integrated, native functionality that's part of managed availability’s DataProtection Health Set.
+Because it's a top priority for administrators to know when they're down to a single healthy copy of a database, the CheckDatabaseRedundancy.ps1 script has been replaced with integrated, native functionality that's part of managed availability's DataProtection Health Set.
 
 The native functionality still alerts administrators through event log notifications, and to distinguish Exchange 2013 alerts from Exchange 2010, Exchange 2013 uses the following Event IDs:
 
@@ -297,7 +294,7 @@ A DAG network is a collection of one or more subnets used for either replication
 
 In Exchange 2013, collapsing DAG networks is no longer necessary. Exchange 2013 still uses the same detection mechanisms to distinguish between the MAPI and replication networks, but it now automatically collapses DAG networks as appropriate.
 
-In addition, by default, DAG networks are now automatically managed by the system. To view DAG network properties using the Exchange Administration Center (EAC), you must configure the DAG for manual network control by modifying the properties of the DAG using EAC, or by using the **Set-DatabaseAvailabilityGroup** cmdlet to set the *ManualDagNetworkConfiguration* parameter to `True`.
+In addition, by default, DAG networks are now automatically managed by the system. To view DAG network properties using the Exchange admin center (EAC), you must configure the DAG for manual network control by modifying the properties of the DAG using EAC, or by using the **Set-DatabaseAvailabilityGroup** cmdlet to set the *ManualDagNetworkConfiguration* parameter to `True`.
 
 ## Changes to best copy selection
 
@@ -315,15 +312,15 @@ In Exchange 2013, Active Manager performs the same BCS checks and phases to dete
 
 BCSS includes several new health checks that are part of the built in managed availability monitoring components in Exchange 2013. There are four new additional checks performed by Active Manager (listed in the order in which they're performed):
 
-1.  **All Healthy**   Checks for a server hosting a copy of the affected database that has all monitoring components in a healthy state.
+1. **All Healthy**: Checks for a server hosting a copy of the affected database that has all monitoring components in a healthy state.
 
-2.  **Up to Normal Healthy**   Checks for a server hosting a copy of the affected database that has all monitoring components with Normal priority in a healthy state.
+2. **Up to Normal Healthy**: Checks for a server hosting a copy of the affected database that has all monitoring components with Normal priority in a healthy state.
 
-3.  **All Better than Source**   Checks for a server hosting a copy of the affected database that has monitoring components in a state that's better than the current server hosting the affected copy.
+3. **All Better than Source**: Checks for a server hosting a copy of the affected database that has monitoring components in a state that's better than the current server hosting the affected copy.
 
-4.  **Same as Source**   Checks for a server hosting a copy of the affected database that has monitoring components in a state that's the same as the current server hosting the affected copy.
+4. **Same as Source**: Checks for a server hosting a copy of the affected database that has monitoring components in a state that's the same as the current server hosting the affected copy.
 
-If BCSS is invoked as a result of a failover that's triggered by a managed availability monitoring component (for example, via a Failover responder), an additional mandatory constraint is enforced where the target server's component health must be better than the server on which the failover occurred. For example, if a failure of Microsoft Office Outlook Web App triggers a managed availability failover via a Failover responder, BCSS must select a server hosting a copy of the affected database on which Outlook Web App is healthy.
+If BCSS is invoked as a result of a failover that's triggered by a managed availability monitoring component (for example, via a Failover responder), an additional mandatory constraint is enforced where the target server's component health must be better than the server on which the failover occurred. For example, if a failure of Outlook Web App triggers a managed availability failover via a Failover responder, BCSS must select a server hosting a copy of the affected database on which Outlook Web App is healthy.
 
 ## DAG Management Service
 
@@ -331,7 +328,7 @@ Cumulative Update 2 (CU2) for the Release to Manufacturing (RTM) version of Exch
 
 ## DAGs without a cluster administrative access point
 
-All DAGs running Windows Server 2008 R2 or Windows Server 2012 require at least one IP address on every subnet included in the MAPI network. The IP address(es) assigned to the DAG are used by the DAG’s cluster with the cluster’s administrative access point (also known as the cluster network name) to enable name resolution and connectivity to the cluster (or more precisely, connectivity to the cluster member that currently owns the cluster core resource group) using the cluster name. Windows Server 2012 R2 enables you to create a failover cluster without an administrative access point. Windows failover clusters without administrative access points have the following characteristics:
+All DAGs running Windows Server 2008 R2 or Windows Server 2012 require at least one IP address on every subnet included in the MAPI network. The IP address(es) assigned to the DAG are used by the DAG's cluster with the cluster's administrative access point (also known as the cluster network name) to enable name resolution and connectivity to the cluster (or more precisely, connectivity to the cluster member that currently owns the cluster core resource group) using the cluster name. Windows Server 2012 R2 enables you to create a failover cluster without an administrative access point. Windows failover clusters without administrative access points have the following characteristics:
 
   - There is no IP address assigned to the cluster, and therefore no IP Address Resource in the cluster core resource group.
 
@@ -343,5 +340,4 @@ All DAGs running Windows Server 2008 R2 or Windows Server 2012 require at least 
 
   - The Windows failover cluster cannot be managed using the Failover Cluster Management tool. It must be managed using Windows PowerShell, and the PowerShell cmdlets must be run against individual cluster members.
 
-When running on Windows Server 2012 R2 or later, Service Pack 1 (SP1) for Exchange 2013 and later enable you to create a DAG without a cluster administrative access point. You can create a DAG without an administrative access point using the Exchange Admin Center or by using the Shell. For more information, see [Creating DAGs](managing-database-availability-groups-exchange-2013-help.md) and [Create a database availability group](create-a-database-availability-group-exchange-2013-help.md).
-
+When running on Windows Server 2012 R2 or later, Service Pack 1 (SP1) for Exchange 2013 and later enable you to create a DAG without a cluster administrative access point. You can create a DAG without an administrative access point using the Exchange admin center or by using the Shell. For more information, see [Creating DAGs](managing-database-availability-groups-exchange-2013-help.md) and [Create a database availability group](create-a-database-availability-group-exchange-2013-help.md).

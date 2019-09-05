@@ -2,15 +2,16 @@
 localization_priority: Priority
 description: 'Summary: Learn how to install, uninstall, upgrade, and recover Exchange 2016 or Exchange 2019 from the command line.'
 ms.topic: get-started-article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 386465e9-41da-4e26-9816-b3b69be1f8bf
 ms.date:
+ms.reviewer: 
 title: Use unattended mode in Exchange Setup
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -52,7 +53,7 @@ The optional (supporting) command line switches that are available in unattended
 |_/CustomerFeedbackEnabled:\<TrueOrFalse\>_|True or False|False|`/Mode:Install` and _/PrepareAD_ commands|Specifies whether to allow or prevent Exchange from providing usage feedback to Microsoft to help improve future Exchange features. You can enable or disable error reporting on the server after setup is complete by using the _ErrorReportingEnabled_ parameter on the **Set-ExchangeServer** cmdlet.|
 |_/DbFilePath:"\<Path\>\\\<FileName\>.edb"_|A folder path and an .edb filename (for example, "D:\Exchange Database Files\DB01\db01.edb").|**%ExchangeInstallPath%Mailbox\\<DatabaseName\>\\<DatabaseName\>.edb** where: <br/>• \<DatabaseName> is **Mailbox Database \<10DigitNumber\>** that matches the default name of the database **or** the value you specified with the _/MdbName_ switch (without the .edb file name extension). <br/>• %ExchangeInstallPath% is **%ProgramFiles%\Microsoft\Exchange Server\V15\\** or the location you specified with the _/TargetDir_ switch.|`/Mode:Install /Roles:Mailbox` commands|Specifies the location of the first mailbox database that's created on the new Mailbox server. You can specify the name of the database file with the _/MdbName_ switch and the location of the database transaction log files with the _/LogFolderPath_ switch.|
 |_/DisableAMFiltering_|n/a|n/a|`/Mode:Install /Roles:Mailbox` commands|Disables the built-in Exchange antimalware filtering on Mailbox servers. For more information about antimalware filtering, see [Antimalware protection in Exchange Server](../../antispam-and-antimalware/antimalware-protection/antimalware-protection.md).|
-|_/DomainController:\<ServerNameOrFQDN\>_ <br/> (_/dc:\<ServerNameOrFQDN\>_)|The server name (for example, DC01) or FQDN (for example, dc01.contoso.com) of the domain controller.|A randomly-selected domain controller in the same Active Directory site as the target server where you're running Setup.|All _/Mode_ commands (except when you're installing an Edge Transport server) or _/PrepareAD_, _/PrepareSchema_, _/PrepareDomain_ and _/PrepareAllDomains_ commands|Specifies the domain controller that Exchange Setup uses to read from and write to Active Directory. The domain controller must meet the minimum requirements for [Exchange](../system-requirements.md#network-and-directory-servers). <br/> If you use this switch in _/PrepareSchema_ or _/PrepareAD_ commands that extend the Active Directory schema for Exchange, you must specify the schema master; otherwise, you'll get an error.|
+|_/DomainController:\<ServerNameOrFQDN\>_ <br/> (_/dc:\<ServerNameOrFQDN\>_)|The server name (for example, DC01) or FQDN (for example, dc01.contoso.com) of the domain controller.|A randomly-selected domain controller in the same Active Directory site as the target server where you're running Setup.|All _/Mode_ commands (except when you're installing an Edge Transport server) or _/PrepareAD_, _/PrepareSchema_, _/PrepareDomain_ and _/PrepareAllDomains_ commands|Specifies the domain controller that Exchange Setup uses to read from and write to Active Directory. The domain controller must meet the minimum requirements for [Exchange 2016](https://docs.microsoft.com/Exchange/plan-and-deploy/system-requirements?view=exchserver-2016#network-and-directory-server-requirements-for-exchange-2016) or [Exchange 2019](https://docs.microsoft.com/Exchange/plan-and-deploy/system-requirements?view=exchserver-2019#network-and-directory-server-requirements-for-exchange-2019). <br/> If you use this switch in _/PrepareSchema_ or _/PrepareAD_ commands that extend the Active Directory schema for Exchange, you must specify the schema master; otherwise, you'll get an error.|
 |_/DoNotStartTransport_|n/a|n/a|`/Mode:Install /Roles:Mailbox`, `/Mode:Install /Roles:EdgeTransport`, and `/Mode:RecoverServer` commands.|Tells Setup to not start the Microsoft Exchange Transport service (mail flow) on Mailbox servers or Edge Transport servers after Setup is complete. You can use this switch to configure additional settings before the server accepts email messages (for example, configure antispam agents or move the queue database back onto a recovered Exchange server.)|
 |_/EnableErrorReporting_|n/a|Disabled|`/Mode:Install`, `/Mode:Upgrade`, and `/Mode:RecoverServer` commands|Specifies whether to allow Exchange to automatically check online for solutions to errors that it encounters. You can enable or disable error reporting on the server after setup is complete by using the _ErrorReportingEnabled_ parameter on the **Set-ExchangeServer** cmdlet.|
 |_/InstallWindowsComponents_|n/a|n/a|`/Mode:Install` commands|Installs the required Windows roles and features for the specified Exchange server role. If a reboot is required, Setup will resume where the installation ended.|
@@ -101,7 +102,7 @@ The optional (supporting) command line switches that are available in unattended
 
   - You need to configure the primary DNS suffix on the computer. For example, if the fully qualified domain name of your computer is edge.contoso.com, the DNS suffix for the computer is contoso.com. For more information, see [Primary DNS Suffix is missing [ms.exch.setupreadiness.FqdnMissing]](../../plan-and-deploy/deployment-ref/ms-exch-setupreadiness-fqdnmissing.md).
 
-  - In coexistence scenarios, Exchange 2010 Hub Transport servers need an update before you can subscribe a Exchange 2016 Edge Transport server to an Active Directory site that contains Exchange 2010 Hub Transport servers. If you don't install this update, the EdgeSync Subscription won't work correctly for Exchange 2010 Hub Transport server that participate in EdgeSync synchronization. For more information, see [Supported coexistence scenarios](../system-requirements.md#supported-coexistence-scenarios).
+  - In coexistence scenarios, Exchange 2010 Hub Transport servers need an update before you can subscribe a Exchange 2016 Edge Transport server to an Active Directory site that contains Exchange 2010 Hub Transport servers. If you don't install this update, the EdgeSync Subscription won't work correctly for Exchange 2010 Hub Transport server that participate in EdgeSync synchronization. For more information, see [Supported coexistence scenarios for Exchange 2016](../system-requirements.md?view=exchserver-2016#supported-coexistence-scenarios-for-exchange-2016).
 
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
@@ -235,4 +236,3 @@ For more information, see [Delegate the installation of Exchange servers](delega
 - Complete your deployment by performing the tasks provided in [Exchange post-installation tasks](../../plan-and-deploy/post-installation-tasks/post-installation-tasks.md).
 
 - Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612).
-

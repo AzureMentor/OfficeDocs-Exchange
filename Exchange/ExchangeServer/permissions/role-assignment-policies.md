@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to manage and customize role assignment policies in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: article
-author: dstrome
-ms.author: dstrome
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: f93d502e-5df4-4ba0-b68d-01a17ccffb4d
 ms.date: 7/5/2018
+ms.reviewer: 
 title: Manage role assignment policies
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -195,7 +196,7 @@ This procedure makes use of pipelining and the **Where** cmdlet. For more inform
 This example returns the default assignment policy.
 
 ```
-Get-RoleAssignmentPolicy | Where { $_.IsDefault -eq $True }
+Get-RoleAssignmentPolicy | Where {$_.IsDefault -eq $True}
 ```
 
 For detailed syntax and parameter information, see [Get-Mailbox](http://technet.microsoft.com/library/8a5a6eb9-4a75-47f9-ae3b-a3ba251cf9a8.aspx) or [Get-RoleAssignmentPolicy](http://technet.microsoft.com/library/da0ecaa3-ce67-4ea2-aca3-56e056555900.aspx).
@@ -213,13 +214,13 @@ This procedure makes use of pipelining and the **Where** cmdlet. For more inform
 Use the following syntax.
 
 ```
-Get-Mailbox | Where { $_.RoleAssignmentPolicy -Eq "<role assignment policy>" }
+Get-Mailbox | Where {$_.RoleAssignmentPolicy -Eq "<role assignment policy>"}
 ```
 
 This example finds all the mailboxes assigned the policy Vancouver End Users.
 
 ```
-Get-Mailbox | Where { $_.RoleAssignmentPolicy -Eq "Vancouver End Users" }
+Get-Mailbox | Where {$_.RoleAssignmentPolicy -Eq "Vancouver End Users"}
 ```
 
 For detailed syntax and parameter information, see [Get-Mailbox](http://technet.microsoft.com/library/8a5a6eb9-4a75-47f9-ae3b-a3ba251cf9a8.aspx) or [Get-RoleAssignmentPolicy](http://technet.microsoft.com/library/da0ecaa3-ce67-4ea2-aca3-56e056555900.aspx).

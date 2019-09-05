@@ -5,6 +5,7 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: e6e4b0d0-4c3d-4826-a818-8aeab06b9b76
 ms.date: 8/15/2018
+ms.reviewer: 
 description: When you undertake an Internet Message Access Protocol (IMAP) migration from an on-premises Exchange Server to Office 365, you have a few choices for optimizing the migration performance.
 title: Tips for optimizing IMAP migrations
 ms.collection: 
@@ -15,7 +16,7 @@ search.appverid:
 - MOE150
 - MED150
 - BCS160
-ms.audience: Admin
+audience: Admin
 ms.custom: Adm_O365
 ms.service: exchange-online
 manager: serdars
@@ -86,6 +87,3 @@ Here are some tips for optimizing an IMAP migration:
   - Tell users which folders won't be migrated, if applicable.
 
   - Folders with a forward slash ( / ) in the folder name aren't migrated. If users want to migrate folders that contain forward slashes in their names, they have to rename the folders or replace the forward slashes with a different character, such as an underscore character ( _ ) or a dash ( - ).
-
-
-

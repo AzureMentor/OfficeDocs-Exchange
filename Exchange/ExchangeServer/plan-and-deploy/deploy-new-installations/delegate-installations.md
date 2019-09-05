@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: "Summary: Learn how to configure Exchange 2016 or Exchange 2019 server objects in Active Directory so users who aren't Exchange administrators can install Exchange."
 ms.topic: get-started-article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: f2fc8680-0c7c-4a29-b8f5-d77404fec280
 ms.date:
+ms.reviewer: 
 title: Delegate the installation of Exchange servers
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -111,4 +112,3 @@ The high-level Active Directory changes that are made when you provision an Exch
 - The server is added as a provisioned server in the Exchange admin center (EAC).
 
 Only members of the Organization Management role group in Exchange have the permissions required to make these changes to Active Directory.
-

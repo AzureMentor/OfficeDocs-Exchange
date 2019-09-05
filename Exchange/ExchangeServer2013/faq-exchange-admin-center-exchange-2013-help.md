@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'FAQ: Exchange admin center: Exchange 2013 Help'
 TOCTitle: 'FAQ: Exchange admin center'
 ms:assetid: 3de0042f-74a6-458f-947c-3cd6eeacd6ab
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ552409(v=EXCHG.150)
 ms:contentKeyID: 48679374
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # FAQ: Exchange admin center
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 This topic provides you with a list of frequently asked questions for the new Exchange admin center (EAC) in Microsoft Exchange Server 2013. Have other questions about EAC not answered here? Send us an email at [Ex2013HelpFeedback@microsoft.com](mailto:ex2013helpfeedback@microsoft.com).
 
@@ -21,7 +22,7 @@ This topic provides you with a list of frequently asked questions for the new Ex
 
 The EAC serves all deployment options for Exchange 2013, including customers who want to deploy on-premises, in the cloud with Exchange Online, or a hybrid deployment.
 
-## Did you remove the Exchange Management Console (EMC) because you’re building the interface primarily for small and mid-sized customers?
+## Did you remove the Exchange Management Console (EMC) because you're building the interface primarily for small and mid-sized customers?
 
 The EAC was developed to provide a single, intuitive management experience for all our customers and was designed to help make the execution of the most common administration tasks simpler.
 
@@ -45,13 +46,13 @@ No. We fully support the EAC experience.
 
 ## Can you use the Exchange 2010 EMC to manage Exchange 2013 objects?
 
-No. You can’t use the Exchange 2010 EMC to manage Exchange 2013 objects and servers. While customers upgrade to Exchange 2013, we encourage them to use the EAC to:
+No. You can't use the Exchange 2010 EMC to manage Exchange 2013 objects and servers. While customers upgrade to Exchange 2013, we encourage them to use the EAC to:
 
-1.  Manage Exchange 2013 mailboxes, servers, and corresponding services.
+1. Manage Exchange 2013 mailboxes, servers, and corresponding services.
 
-2.  View and update Exchange 2010 mailboxes and properties.
+2. View and update Exchange 2010 mailboxes and properties.
 
-3.  View and update Exchange 2007 mailboxes and properties.
+3. View and update Exchange 2007 mailboxes and properties.
 
 We encourage customers to use Exchange 2010 EMC to create and manage Exchange 2010 mailboxes.
 
@@ -59,13 +60,13 @@ We encourage customers to use Exchange 2007 EMC to create and manage Exchange 20
 
 Customers can continue to perform management tasks using the Exchange Management Shell and script tasks.
 
-## Why isn’t the search box always visible?
+## Why isn't the search box always visible?
 
 As part of our design principles for Exchange 2013, we wanted to help make sure that nothing is in your way until you need it. This simplicity is represented in all our end user experiences (including the EAC). The search box slides out after you click the icon. This provides more room for the user to type their query in the text box, and also provides type-downs that display once real-time query matching occurs. This improvement allows us to hide unnecessary complexity without diminishing the management experience. We will continue to enhance all of our experiences based on feedback.
 
 ## Will EAC work on tablets?
 
-Administration through tablets and mobile devices isn’t supported at this time.
+Administration through tablets and mobile devices isn't supported at this time.
 
 ## Why does Exchange 2010 ECP open when I try to access the Exchange 2013 EAC?
 
@@ -75,12 +76,11 @@ If your mailbox exists on an Exchange 2010 Mailbox server, the Exchange 2010 ECP
 
 To limit Internet versus intranet access, Exchange provides partitioning at the level of the virtual directory in IIS. Administrators can explicitly allow or deny IT management scenarios from being performed by external internet clients (for example, from clients not joined to a domain within the corporate firewall). For more information, see [Turn off access to the Exchange admin center](turn-off-access-to-the-exchange-admin-center-exchange-2013-help.md).
 
-## What’s changed for the Exchange 2013 Toolbox?
+## What's changed for the Exchange 2013 Toolbox?
 
 In Exchange 2007 and Exchange 2010, the EMC contained the Toolbox, which provided access to various tools for managing your Exchange organization. The Exchange 2013 Toolbox is considerably pared down from the previous versions. The Details Templates Editor, Remote Connectivity Analyzer, and the Queue Viewer are still available in the Exchange 2013 Toolbox. The remaining tools were either repurposed or moved into the EAC.
 
 The following table lists the changes to the Exchange 2013 Toolbox:
-
 
 <table>
 <colgroup>
@@ -124,4 +124,3 @@ The following table lists the changes to the Exchange 2013 Toolbox:
 </tr>
 </tbody>
 </table>
-

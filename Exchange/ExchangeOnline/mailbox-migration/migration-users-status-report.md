@@ -5,6 +5,7 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: acbc7b28-6a20-4390-a6b0-107e4cddb999
 ms.date: 8/16/2018
+ms.reviewer: 
 description: You can use the Migration dashboard in the Exchange administration center (EAC) to display the migration status information for all users in a migration batch. You can also display detailed migration information for each user in a migration batch. This information, also called migration user statistics, can help you troubleshoot issues that might prevent the migration of a user's mailbox or mailbox items. You can display this migration status information for migration batches that are currently running, that have been stopped, or that are complete.
 title: Migration users status report
 ms.collection: 
@@ -15,7 +16,7 @@ search.appverid:
 - MOE150
 - GMA150
 - BCS160
-ms.audience: Admin
+audience: Admin
 ms.custom: Adm_O365
 ms.service: exchange-online
 manager: serdars
@@ -89,4 +90,3 @@ To help you understand the migration status states described in the previous sec
 |**Provisioning**: The migration process creates the new Office 365 mailbox.|Yes (includes distribution groups and mail contacts)|Yes (includes mail contacts)|No|
 |**Initial synchronization**: After Office 365 mailboxes are provisioned, the migration process migrates mailbox items to the newly provisioned cloud-based mailboxes.|Yes (includes calendar times and contacts)|Yes (includes calendar times and contacts)|Yes|
 |**Incremental synchronization**: The migration process synchronizes the on-premises and the corresponding Office 365 mailbox every 24 hours.|Yes|No|Yes|
-

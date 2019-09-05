@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Admins can learn about the different types of address lists that are available in Exchange Online.
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 8ee2672a-3a45-4897-8cc0-fa23c374dbf9
 ms.date: 
+ms.reviewer: 
 title: Address lists in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -79,7 +80,7 @@ For example, consider a company that has two large divisions in one Exchange Onl
 
 - Contoso, Ltd, which underwrites insurance policies.
 
-For most day-to-day activities, employees at Fourth Coffee don't communicate with employees at Contoso, Ltd. Therefore, to make it easier for employees to find recipients who exist only in their division, you can create two new custom address lists—one for Fourth Coffee and one for Contoso, Ltd. However, if an employee is unsure about where recipient exists, they can search in the GAL, which contains all recipients from both divisions.
+For most day-to-day activities, employees at Fourth Coffee don't communicate with employees at Contoso, Ltd. Therefore, to make it easier for employees to find recipients who exist only in their division, you can create two new custom address lists: one for Fourth Coffee and one for Contoso, Ltd. However, if an employee is unsure about where recipient exists, they can search in the GAL, which contains all recipients from both divisions.
 
 In Exchange Online, you can only use PowerShell to create custom address lists.
 
@@ -94,4 +95,3 @@ Although address lists are useful tools for users, poorly planned address lists 
 - Use a naming convention and location hierarchy for your address lists so users can immediately tell what the list is for (which recipients are included in the list). If you have difficulty naming your address lists, create fewer lists and remind users that they can find anyone in your organization by using the GAL.
 
 For detailed instructions about creating address lists in Exchange Server, see [Address list procedures in Exchange Online](address-list-procedures.md).
-

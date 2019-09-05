@@ -1,43 +1,39 @@
-﻿---
+---
 title: 'Managed Store Limits: Exchange 2013 Help'
 TOCTitle: Managed Store Limits
 ms:assetid: bea9ec15-bfb5-4716-b14e-010e389c9f9e
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Mt741981(v=EXCHG.150)
 ms:contentKeyID: 73225999
 ms.date: 09/16/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-# Managed Store Limits
+# Managed Store Limits in Exchange 2013
 
- 
-
-
-**Summary:** About Managed Store connection limits and how to configure them.
+**Summary:** Administrators can learn about Managed Store connection limits in Exchange Server 2013 and how to configure them.
 
 In Microsoft Exchange Server 2013, connection and usage limits have been placed on the Exchange Managed Store to prevent a single application or a single user from using all the available connections to the Managed Store. If a single user or application is allowed to use all of the connections, other users or applications cannot be able to access the Managed Store, which could result in downtime.
 
-
 > [!NOTE]
-> For any connections made by accounts that have administrative privileges, the maximum session limits have been increased to 64,000.
-
-
+> For any connections made by accounts that have administrative privileges, the maximum session limits have been increased to 64,000. <br/><br/> Exchange Online limits (including Managed Store limits) are described in the [Exchange Online Limits](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits).
 
 ## Terminology
 
 Knowledge of the following terms will help you understand the types of connections referenced in this topic.
 
-  - Sessions  
-    Sessions represent the connections used by services and client applications, such as Microsoft Outlook, to connect to the Managed Store. Services and clients can have multiple sessions at a particular time. The terms *connections* and *sessions* can be used interchangeably.
+- **Sessions**
 
-<!-- end list -->
+  Sessions represent the connections used by services and client applications, such as Microsoft Outlook, to connect to the Managed Store. Services and clients can have multiple sessions at a particular time. The terms *connections* and *sessions* can be used interchangeably.
 
-  - Threads  
-    Threads represent concurrently executing requests to the Managed Store. For example, if a user opens a folder in Outlook, Outlook executes a request to the Managed Store on behalf of the user. That execution of the request is a single thread.
-    
-    In Exchange Server 2013, there are no longer thread limits based on client type. Instead, for all clients, the maximum number of threads **per mailbox database** is 50. The exception is the Availability service, which has a maximum limit of 16 per user.
+- **Threads**
 
-Return to top
+  Threads represent concurrently executing requests to the Managed Store. For example, if a user opens a folder in Outlook, Outlook executes a request to the Managed Store on behalf of the user. That execution of the request is a single thread.
+
+  In Exchange Server 2013, there are no longer thread limits based on client type. Instead, for all clients, the maximum number of threads **per mailbox database** is 50. The exception is the Availability service, which has a maximum limit of 16 per user.
 
 ## Session Limits
 
@@ -47,12 +43,11 @@ Previous versions of Exchange set limits on the number of connections to the Man
 
 The types of connection limits in Exchange 2013 are as follows:
 
-  - **Max sessions per process**   Specifies the maximum number of sessions that an Exchange service can have open at one time on a mailbox database.
+- **Max sessions per process**: Specifies the maximum number of sessions that an Exchange service can have open at one time on a mailbox database.
 
-  - **Max user sessions per process**   Specifies the maximum number of sessions for a particular protocol for a single user.
+- **Max user sessions per process**: Specifies the maximum number of sessions for a particular protocol for a single user.
 
 The following section, "Configure Session Limits," describes how to modify these limits.
-
 
 <table>
 <colgroup>
@@ -163,53 +158,43 @@ The following section, "Configure Session Limits," describes how to modify these
 </tbody>
 </table>
 
-
 ## Configure Session Limits
 
 You can modify the default session limits.
 
-
 > [!NOTE]
 > If you want to modify the session limits, you need to modify them on all Mailbox servers within any database availability groups (DAGs). If you don't make the same changes on all servers, the results will be inconsistent. To increase the session limit on Client Access server, the <CODE>RCAMaxConcurrency</CODE> value must be increased on the throttling policy. For more information, see <A href="https://technet.microsoft.com/en-us/library/dd298094(v=exchg.150)">Set-ThrottlingPolicy</A>.
-
-
-
 
 > [!WARNING]
 > Incorrectly editing the registry can cause serious problems that may require you to reinstall your operating system. Problems resulting from editing the registry incorrectly may not be able to be resolved. Before editing the registry, back up any valuable data.
 
+1. Start Registry Editor (regedit).
 
+2. Navigate to the following registry subkey:
 
-1.  Start Registry Editor (regedit).
-
-2.  Navigate to the following registry subkey:
-    
     **\\\\HKEY\_LOCAL\_MACHINE \\SYSTEM\\CurrentControlSet\\Services\\MSExchangeIS\\ParametersSystem**.
 
-3.  Right-click **ParametersSystem**, point to **New**, and then click **DWORD (32-bit) Value.**
-    
+3. Right-click **ParametersSystem**, point to **New**, and then click **DWORD (32-bit) Value.**
+
     The new value is created in the result pane.
 
-4.  Rename the key to one of the following values, and then press Enter:
-    
-      - **Maximum Allowed Sessions Per User**   This limit specifies the maximum allowable sessions per user.
-    
-      - **Maximum Allowed Service Sessions Per User**   This limit specifies the maximum allowed service sessions per user.
-    
-      - **Maximum Allowed Exchange Sessions Per Service**   This limit specifies the maximum allowed Exchange sessions per service. The default value is 10,000.
+4. Rename the key to one of the following values, and then press Enter:
 
-5.  Right-click the newly created key, and then click **Modify**.
+      - **Maximum Allowed Sessions Per User**: This limit specifies the maximum allowable sessions per user.
 
-6.  In the **Value** **data** box, type the number of objects to which you want to limit this entry, and then click **OK**. Use the preceding table to view the default settings.
+      - **Maximum Allowed Service Sessions Per User**: This limit specifies the maximum allowed service sessions per user.
 
-Return to top
+      - **Maximum Allowed Exchange Sessions Per Service**: This limit specifies the maximum allowed Exchange sessions per service. The default value is 10,000.
+
+5. Right-click the newly created key, and then click **Modify**.
+
+6. In the **Value** **data** box, type the number of objects to which you want to limit this entry, and then click **OK**. Use the preceding table to view the default settings.
 
 ## Open Item Limits
 
 Open item limits are limits placed on the number of items that can be opened by a single mailbox in a single session. However, a user can have multiple sessions opened simultaneously. For example, if a user has two sessions opened, the user could open 1,000 folders.
 
 If you want to modify these limits, see "Configure Open Item Limits" immediately following the table.
-
 
 <table>
 <colgroup>
@@ -293,53 +278,43 @@ If you want to modify these limits, see "Configure Open Item Limits" immediately
 </tbody>
 </table>
 
-
 ## Configure Open Item Limits
 
 You can limit the maximum number of resources that a MAPI client can use simultaneously.
 
-
 > [!NOTE]
 > If you want to modify the open item limits, you need to modify them on all Mailbox servers within any DAGs and client access arrays. If you don't make the same changes on all servers, the results will be inconsistent.
-
-
-
 
 > [!WARNING]
 > Incorrectly editing the registry can cause serious problems that may require you to reinstall your operating system. Problems resulting from editing the registry incorrectly may not be able to be resolved. Before editing the registry, back up any valuable data.
 
+1. Start Registry Editor (regedit).
 
+2. Navigate to the following registry subkey:
 
-1.  Start Registry Editor (regedit).
-
-2.  Navigate to the following registry subkey:
-    
     **\\\\HKEY\_LOCAL\_MACHINE \\SYSTEM\\CurrentControlSet\\Services\\MSExchangeIS\\ParametersSystem**
 
-3.  Right-click **ParametersSystem**, point to **New**, and then click **Key**.
-    
+3. Right-click **ParametersSystem**, point to **New**, and then click **Key**.
+
     A new key is created in the console tree.
 
-4.  Rename the key **MaxObjsPerMapiSession**, and then press Enter.
+4. Rename the key **MaxObjsPerMapiSession**, and then press Enter.
 
-5.  Right-click **MaxObjsPerMapiSession**, point to **New**, and then click **DWORD (32-bit) Value**.
-    
+5. Right-click **MaxObjsPerMapiSession**, point to **New**, and then click **DWORD (32-bit) Value**.
+
     The new value is created in the result pane.
 
-6.  Rename the key to *\<Object\_type\>*, where *\<Object\_type\>* is the name of the registry object type that you're modifying. For example, to modify the number of messages that can be opened, use *objtMessage*. Press Enter.
+6. Rename the key to *\<Object\_type\>*, where *\<Object\_type\>* is the name of the registry object type that you're modifying. For example, to modify the number of messages that can be opened, use *objtMessage*. Press Enter.
 
-7.  Right-click the newly created key, and then click **Modify**.
+7. Right-click the newly created key, and then click **Modify**.
 
-8.  In the **Value data** box, type the number of objects that you want to limit this entry to, and then click **OK**. For example, type **350** to increase the value for the object.
+8. In the **Value data** box, type the number of objects that you want to limit this entry to, and then click **OK**. For example, type **350** to increase the value for the object.
 
-9.  Restart the Microsoft Exchange Information Store service.
-
-Return to top
+9. Restart the Microsoft Exchange Information Store service.
 
 ## Item Size Limits
 
 Item size limits are the limits placed on items within a user's mailbox. They are configurable by using the *MaxSendSize* and *MaxReceiveSize* parameters on the [Set-Mailbox](https://technet.microsoft.com/en-us/library/bb123981\(v=exchg.150\)) cmdlet.
-
 
 <table>
 <colgroup>
@@ -367,7 +342,3 @@ Item size limits are the limits placed on items within a user's mailbox. They ar
 </tr>
 </tbody>
 </table>
-
-
-Return to top
-

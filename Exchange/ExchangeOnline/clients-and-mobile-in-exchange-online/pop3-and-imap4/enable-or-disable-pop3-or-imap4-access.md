@@ -6,13 +6,14 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 4e351027-1a96-42c6-b4b2-8218d2070f25
 ms.date: 6/23/2017
+ms.reviewer: 
 title: Enable or Disable POP3 or IMAP4 access for a user
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 
@@ -41,13 +42,13 @@ By default, POP3 and IMAP4 are enabled for all users in Exchange Online. You can
 
 4. In the result pane, under **Email Connectivity**, do one of the following:
 
-  - To enable POP3 for the user, under **POP3: Disabled**, click **Enable**.
+   - To enable POP3 for the user, under **POP3: Disabled**, click **Enable**.
 
-  - To enable IMAP4 for the user, under **IMAP4: Disabled**, click **Enable**.
+   - To enable IMAP4 for the user, under **IMAP4: Disabled**, click **Enable**.
 
-  - To disable POP3 for the user, under **POP3: Enabled**, click **Disable**.
+   - To disable POP3 for the user, under **POP3: Enabled**, click **Disable**.
 
-  - To disable IMAP4 for the user, under **IMAP4: Enabled**, click **Disable**.
+   - To disable IMAP4 for the user, under **IMAP4: Enabled**, click **Disable**.
 
 5. Click **Save**.
 
@@ -87,15 +88,12 @@ Set-CASMailbox -Identity "Christa Knapp" -IMAPEnabled $false
 
 4. In the result pane, look under **Email Connectivity**.
 
-  - If POP3 is disabled for the user, you will see **POP3: Disabled**.
+   - If POP3 is disabled for the user, you will see **POP3: Disabled**.
 
-  - If IMAP4 is disabled for the user, you will see **IMAP4: Disabled**.
+   - If IMAP4 is disabled for the user, you will see **IMAP4: Disabled**.
 
-  - If POP3 is enabled for the user, you will see **POP3: Enabled**.
+   - If POP3 is enabled for the user, you will see **POP3: Enabled**.
 
-  - If IMAP4 is enabled for the user, you will see **IMAP4: Enabled**.
+   - If IMAP4 is enabled for the user, you will see **IMAP4: Enabled**.
 
 5. Click **Save**.
-
-
-

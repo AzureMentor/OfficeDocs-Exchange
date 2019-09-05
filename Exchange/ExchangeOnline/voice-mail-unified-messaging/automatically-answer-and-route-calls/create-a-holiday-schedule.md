@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can define the dates and times your organization will be closed for holidays and other occasions. Between the start dates and the end dates you specify, callers who reach the Unified Messaging (UM) auto attendant will hear a holiday greeting you specify when you configure the holiday schedule. After the caller hears the holiday greeting you've specified, the non-business hours greeting and menu prompts will be played for the caller.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 0c5c51e4-5b51-451b-ab93-2cebf644dc96
 ms.date: 11/17/2014
-title: Create a holiday schedule
+ms.reviewer: 
+title: Create a holiday schedule in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Create a holiday schedule
+# Create a holiday schedule in Exchange Online
 
 You can define the dates and times your organization will be closed for holidays and other occasions. Between the start dates and the end dates you specify, callers who reach the Unified Messaging (UM) auto attendant will hear a holiday greeting you specify when you configure the holiday schedule. After the caller hears the holiday greeting you've specified, the non-business hours greeting and menu prompts will be played for the caller.
 
@@ -35,7 +36,7 @@ For additional management tasks related to UM auto attendants, see [UM auto atte
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to specify a holiday schedule for a UM auto attendant
 
@@ -47,13 +48,13 @@ For additional management tasks related to UM auto attendants, see [UM auto atte
 
 4. On the **New Holiday** page, configure the following:
 
-  - **Name**: Enter a name for your holiday schedule.
+   - **Name**: Enter a name for your holiday schedule.
 
-  - **Holiday greeting**: Browse to the .wav file you want to use as your greeting. This is a required field.
+   - **Holiday greeting**: Browse to the .wav file you want to use as your greeting. This is a required field.
 
-  - **Start date**: Use this list to select the date you want the holiday to start. The holiday schedule will start at midnight on the date specified in this list.
+   - **Start date**: Use this list to select the date you want the holiday to start. The holiday schedule will start at midnight on the date specified in this list.
 
-  - **End date**: Use this list to select the date you want the holiday to end. The holiday schedule will end at 11:59 P.M. on the date specified in this list.
+   - **End date**: Use this list to select the date you want the holiday to end. The holiday schedule will end at 11:59 P.M. on the date specified in this list.
 
 5. After you've configured your holiday schedule, click **OK**, and then click **Save**.
 
@@ -64,6 +65,3 @@ This example configures a UM auto attendant named `MyUMAutoAttendant` that has b
 ```
 Set-UMAutoAttendant -Identity MyUMAutoAttendant -BusinessHoursSchedule 0.10:45-0.13:15,1.09:00-1.17:00,6.09:00-6.16:30 -HolidaySchedule "New Year,newyrgrt.wav,1/2/2013","Building Closed for Construction,construction.wav,4/24/2013,4/28/2013"
 ```
-
-
-

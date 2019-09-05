@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Admins can learn how to create, view the membership of, update, modify, remove, and hide recipients from address lists in Exchange Online.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: cac74760-7bd1-482c-8d43-b0165e988ec0
 ms.date: 
+ms.reviewer: 
 title: Manage address lists in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -250,29 +251,29 @@ You can't use the EAC to hide Office 365 groups from address lists.
 
 1. In the EAC, go to one of the following locations based on the recipient type:
 
-  - **Recipients** \> **Mailboxes**: User mailboxes.
+   - **Recipients** \> **Mailboxes**: User mailboxes.
 
-  - **Recipients** \> **Groups**: Distribution groups, mail-enabled security groups, and dynamic distribution groups.
+   - **Recipients** \> **Groups**: Distribution groups, mail-enabled security groups, and dynamic distribution groups.
 
-  - **Recipients** \> **Resources**: Room and equipment mailboxes.
+   - **Recipients** \> **Resources**: Room and equipment mailboxes.
 
-  - **Recipients** \> **Contacts**: Mail users and mail contacts.
+   - **Recipients** \> **Contacts**: Mail users and mail contacts.
 
-  - **Recipients** \> **Shared**: Shared mailboxes.
+   - **Recipients** \> **Shared**: Shared mailboxes.
 
-  - **Public folders** \> **Public folders**: Mail-enabled public folders.
+   - **Public folders** \> **Public folders**: Mail-enabled public folders.
 
 2. Select the recipient that you want to hide from address lists, and then click **Edit** (![Edit icon](../../media/ITPro_EAC_EditIcon.png)).
 
 3. The recipient properties window opens. What you do next depends on the recipient type:
 
-  - **Mailboxes**, **Contacts**, and **Shared**: On the **General** tab, select **Hide from address list**.
+   - **Mailboxes**, **Contacts**, and **Shared**: On the **General** tab, select **Hide from address list**.
 
-  - **Groups**: On the **General** tab, select **Hide this group from address lists**.
+   - **Groups**: On the **General** tab, select **Hide this group from address lists**.
 
-  - **Resources**: On the **General** tab, click **More options**, and then select **Hide from address lists**.
+   - **Resources**: On the **General** tab, click **More options**, and then select **Hide from address lists**.
 
-  - **Public folders**: On the **General mail properties** tab, select **Hide from Exchange address list**.
+   - **Public folders**: On the **General mail properties** tab, select **Hide from Exchange address list**.
 
    When you're finished, click **Save**.
 
@@ -327,4 +328,3 @@ You can verify that you've successfully hidden a recipient from address lists by
    ```
 
 - Open the GAL in Outlook or Outlook on the web (formerly known as Outlook Web App), and verify the recipient isn't visible.
-

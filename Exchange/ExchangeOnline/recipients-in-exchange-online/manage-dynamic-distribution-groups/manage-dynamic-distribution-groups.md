@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: Dynamic distribution groups are mail-enabled Active Directory group objects that are created to expedite the mass sending of email messages and other information within a Microsoft Exchange organization.
 ms.topic: article
-author: kwekua
+author: msdmaguire
 f1_keywords:
 - Microsoft.Exchange.Management.SnapIn.Esm.Recipients.CreateDynamicGroupWizardForm.CreateDynamicGroupInformationWizardPage
-ms.author: kwekua
+ms.author: dmaguire
 ms.assetid: 8ef85d0a-41df-4b5c-b8e7-ca8d09c048ca
 ms.date: 6/24/2018
+ms.reviewer: 
 title: Manage dynamic distribution groups
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -28,7 +29,6 @@ Unlike regular distribution groups that contain a defined set of members, the me
 > A dynamic distribution group includes any recipient in Active Directory with attribute values that match its filter. If a recipient's properties are modified to match the filter, the recipient could inadvertently become a group member and start receiving messages that are sent to the group. Well-defined, consistent account provisioning processes will reduce the chances of this issue occurring.
 
 ## What do you need to know before you begin?
-<a name="Top"> </a>
 
 - Estimated time to complete: 2 to 5 minutes.
 
@@ -42,54 +42,53 @@ Unlike regular distribution groups that contain a defined set of members, the me
 ## Create a dynamic distribution group
 
 ### Use the EAC to create a dynamic distribution group
-<a name="createddg"> </a>
 
 1. In the EAC, navigate to **Recipients** \> **Groups** \> **New** \> **Dynamic distribution group**.
 
 2. On the **New dynamic distribution group** page, complete the following boxes:
 
-  - **\* Display name**: Use this box to type the display name. This name appears in the shared address book, on the To: line when email is sent to this group, and in the Groups list in the EAC. The display name is required and should be user-friendly so people recognize what it is. It also must be unique in the forest.
+   - **\* Display name**: Use this box to type the display name. This name appears in the shared address book, on the To: line when email is sent to this group, and in the Groups list in the EAC. The display name is required and should be user-friendly so people recognize what it is. It also must be unique in the forest.
 
     > [!NOTE]
     > Group naming policy isn't applied to dynamic distribution groups.
 
-  - **\* Alias**: Use this box to type the name of the alias for the group. The alias cannot exceed 64 characters and must be unique in the forest. When a user types the alias in the To: line of an email message, it resolves to the group's display name.
+   - **\* Alias**: Use this box to type the name of the alias for the group. The alias cannot exceed 64 characters and must be unique in the forest. When a user types the alias in the To: line of an email message, it resolves to the group's display name.
 
-  - **Description**: Use this box to describe the group so people know what the purpose of the group is. This description appears in the shared address book.
+   - **Description**: Use this box to describe the group so people know what the purpose of the group is. This description appears in the shared address book.
 
-  - **Organizational unit**: You can select an organizational unit (OU) other than the default (which is the recipient scope). If the recipient scope is set to the forest, the default value is set to the Users container in the Active Directory domain that contains the computer on which the EAC is running. If the recipient scope is set to a specific domain, the Users container in that domain is selected by default. If the recipient scope is set to a specific OU, that OU is selected by default.
+   - **Organizational unit**: You can select an organizational unit (OU) other than the default (which is the recipient scope). If the recipient scope is set to the forest, the default value is set to the Users container in the Active Directory domain that contains the computer on which the EAC is running. If the recipient scope is set to a specific domain, the Users container in that domain is selected by default. If the recipient scope is set to a specific OU, that OU is selected by default.
 
     To select a different OU, click **Browse**. The dialog box displays all OUs in the forest that are within the specified scope. Select the OU you want, and then click **OK**.
 
-  - **Owner**: An owner for a dynamic distribution group is optional. You can add owners by clicking **Browse** and then selecting users from the list.
+   - **Owner**: An owner for a dynamic distribution group is optional. You can add owners by clicking **Browse** and then selecting users from the list.
 
 3. Use the **Members** section to specify the types of recipients for the group and set up rules that will determine membership. Select one of the following boxes:
 
-  - **All recipient types**: Choose this option to send messages that meet the criteria defined for this group to all recipient types.
+   - **All recipient types**: Choose this option to send messages that meet the criteria defined for this group to all recipient types.
 
-  - **Only the following recipient types**: Messages that meet the criteria defined for this group will be sent to one or more of the following recipient types:
+   - **Only the following recipient types**: Messages that meet the criteria defined for this group will be sent to one or more of the following recipient types:
 
-  - **Users with Exchange mailboxes**: Select this check box if you want to include users that have Exchange mailboxes. Users that have Exchange mailboxes are those that have a user domain account and a mailbox in the Exchange organization.
+   - **Users with Exchange mailboxes**: Select this check box if you want to include users that have Exchange mailboxes. Users that have Exchange mailboxes are those that have a user domain account and a mailbox in the Exchange organization.
 
-  - **Users with external email addresses**: Select this check box if you want to include users that have external email addresses. Users that have external email accounts have user domain accounts in Active Directory, but use email accounts that are external to the organization. This enables them to be included in the global address list (GAL) and added to distribution lists.
+   - **Users with external email addresses**: Select this check box if you want to include users that have external email addresses. Users that have external email accounts have user domain accounts in Active Directory, but use email accounts that are external to the organization. This enables them to be included in the global address list (GAL) and added to distribution lists.
 
-  - **Resource mailboxes**: Select this check box if you want to include Exchange resource mailboxes. Resource mailboxes allow you to administer company resources through a mailbox, such as a conference room or a company vehicle.
+   - **Resource mailboxes**: Select this check box if you want to include Exchange resource mailboxes. Resource mailboxes allow you to administer company resources through a mailbox, such as a conference room or a company vehicle.
 
-  - **Contacts with external email addresses**: Select this check box if you want to include contacts that have external email addresses. Contacts that have external email addresses don't have user domain accounts in Active Directory, but the external email address is available in the GAL.
+   - **Contacts with external email addresses**: Select this check box if you want to include contacts that have external email addresses. Contacts that have external email addresses don't have user domain accounts in Active Directory, but the external email address is available in the GAL.
 
-  - **Mail-enabled groups**: Select this check box if you want to include security groups or distribution groups that have been mail-enabled. Mail-enabled groups are similar to distribution groups. Email messages that are sent to a mail-enabled group account will be delivered to several recipients.
+   - **Mail-enabled groups**: Select this check box if you want to include security groups or distribution groups that have been mail-enabled. Mail-enabled groups are similar to distribution groups. Email messages that are sent to a mail-enabled group account will be delivered to several recipients.
 
 4. Click **Add a rule** to define the criteria for membership in this group.
 
 5. Select one of the following recipient attributes from the drop-down list and provide a value. If the value for the selected attribute matches that value you define, the recipient receives a message sent to this group.
 
-  |**Attribute**|**Send message to a recipient if...**|
-  |:-----|:-----|
-  |**Recipient container**|The recipient object resides in the specified domain or OU.|
-  |**State or province**|The specified value matches the recipient's State or province property.|
-  |**Company**|The specified value matches the recipient's Company property.|
-  |**Department**|The specified value matches the recipient's Department property.|
-  |**Custom attributeN** (where N is a number from 1 to 15)|The specified value matches the recipient's CustomAttributeN property.|
+   |**Attribute**|**Send message to a recipient if...**|
+   |:-----|:-----|
+   |**Recipient container**|The recipient object resides in the specified domain or OU.|
+   |**State or province**|The specified value matches the recipient's State or province property.|
+   |**Company**|The specified value matches the recipient's Company property.|
+   |**Department**|The specified value matches the recipient's Department property.|
+   |**Custom attributeN** (where N is a number from 1 to 15)|The specified value matches the recipient's CustomAttributeN property.|
 
     **Important**: The values that you enter for the selected attribute must exactly match those that appear in the recipient's properties. For example, if you enter **Washington** for **State or province**, but the value for the recipient's property is **WA**, the condition will not be met. Also, text-based values that you specify aren't case-sensitive. For example, if you specify **Contoso** for the **Company** attribute, messages will be sent to a recipient if this value is **contoso**.
 
@@ -97,8 +96,8 @@ Unlike regular distribution groups that contain a defined set of members, the me
 
 7. To add another rule to define the criteria for membership, click **Add a rule** under the previous rule that you created.
 
-    > [!IMPORTANT]
-    > If you add multiple rules to define membership, a recipient must meet the criteria of each rule to receive a message sent to the group. In other words, each rule is connected with the Boolean operator **AND**.
+   > [!IMPORTANT]
+   > If you add multiple rules to define membership, a recipient must meet the criteria of each rule to receive a message sent to the group. In other words, each rule is connected with the Boolean operator **AND**.
 
 8. When you've finished, click **Save** to create the dynamic distribution group.
 
@@ -106,7 +105,6 @@ Unlike regular distribution groups that contain a defined set of members, the me
 > If you want to specify rules for attributes other than the ones available in the EAC, you must use Exchange Online PowerShell to create a dynamic distribution group. Keep in mind that the filter and condition settings for dynamic distribution groups that have custom recipient filters can be managed only by using Exchange Online PowerShell. For an example of how to create a dynamic distribution group with a custom query, see the next section on using Exchange Online PowerShell to create a dynamic distribution group.
 
 ### Use Exchange Online PowerShell to create a dynamic distribution group
-<a name="UseShell"> </a>
 
 This example creates the dynamic distribution group "Mailbox Users DDG" that contains only mailbox users.
 
@@ -129,7 +127,6 @@ New-DynamicDistributionGroup -Name "Full Time Employees" -RecipientFilter {(Reci
 For detailed syntax and parameter information, see [New-DynamicDistributionGroup](https://technet.microsoft.com/library/e9920bd1-06c1-4f75-992f-dd7fc98a5c2b.aspx).
 
 ### How do you know this worked?
-<a name="UseShell"> </a>
 
 To verify that you've successfully created a dynamic distribution group, do one of the following:
 
@@ -152,7 +149,6 @@ To verify that you've successfully created a dynamic distribution group, do one 
 3. On the group's properties page, click one of the following sections to view or change properties.
 
 #### General
-<a name="general"> </a>
 
 Use this section to view or change basic information about the group.
 
@@ -167,19 +163,16 @@ Use this section to view or change basic information about the group.
 - **Organizational unit**: This read-only box displays the organizational unit (OU) that contains the dynamic distribution group. You have to use Active Directory Users and Computers to move the group to a different OU.
 
 #### Ownership
-<a name="Ownership"> </a>
 
 Use this section to assign a group owner. A dynamic distribution group can have only one owner. The group owner appears on the **Managed by** tab of the object in Active Directory Users and Computers.
 
 You can add owners by clicking **Browse** and selecting the owner from the list. To remove the owner, click **Clear** and then click **Save**.![Remove icon](../../media/ITPro_EAC_RemoveIcon.gif).
 
 #### Membership
-<a name="membership"> </a>
 
 Use this section to change the criteria used to determine membership of the group. You can delete or change existing membership rules and add new rules. For procedures that tell you how to do this, see [Use the EAC to create a dynamic distribution group](#use-the-eac-to-create-a-dynamic-distribution-group) in the procedures for configuring membership when you use the EAC to create a new dynamic distribution group.
 
 #### Delivery management
-<a name="deliverymanagement"> </a>
 
 Use this section to manage who can send email to this group.
 
@@ -187,15 +180,14 @@ Use this section to manage who can send email to this group.
 
 - **Senders inside and outside of my organization**: Select this option to allow anyone to send messages to the group.
 
-    You can further limit who can send messages to the group by allowing only specific senders to send messages to this group. Click **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif) and then select one or more recipients. If you add senders to this list, they are the only ones who can send mail to the group. Mail sent by anyone not in the list will be rejected.
+  You can further limit who can send messages to the group by allowing only specific senders to send messages to this group. Click **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif) and then select one or more recipients. If you add senders to this list, they are the only ones who can send mail to the group. Mail sent by anyone not in the list will be rejected.
 
-    To remove a person or a group from the list, select them in the list and then click **Remove** ![Remove icon](../../media/ITPro_EAC_RemoveIcon.gif).
+  To remove a person or a group from the list, select them in the list and then click **Remove** ![Remove icon](../../media/ITPro_EAC_RemoveIcon.gif).
 
-    > [!IMPORTANT]
-    > If you've configured the group to allow only senders inside your organization to send messages to the group, email sent from a mail contact is rejected, even if they're added to this list.
+  > [!IMPORTANT]
+  > If you've configured the group to allow only senders inside your organization to send messages to the group, email sent from a mail contact is rejected, even if they're added to this list.
 
 #### Message approval
-<a name="messageapproval"> </a>
 
 Use this section to set options for moderating the group. Moderators approve or reject messages sent to the group before they reach the group members.
 
@@ -214,7 +206,6 @@ Use this section to set options for moderating the group. Moderators approve or 
   - **Don't notify anyone when a message isn't approved**: When you select this option, notifications aren't sent to message senders whose messages aren't approved by the group moderators.
 
 #### Email options
-<a name="emailoptions"> </a>
 
 Use this section to view or change the email addresses associated with the group. This includes the group's primary SMTP addresses and any associated proxy addresses. The primary SMTP address (also known as the reply address) is displayed in bold text in the address list, with the uppercase **SMTP** value in the **Type** column.
 
@@ -240,7 +231,6 @@ Use this section to view or change the email addresses associated with the group
 - **Automatically update email addresses based on the email address policy applied to this recipient**: Select this check box to have the recipient's email addresses automatically updated based on changes made to email address policies in your organization. This box is selected by default.
 
 #### MailTip
-<a name="mailtip"> </a>
 
 Use this section to add a MailTip to alert users of potential issues before they send a message to this group. A MailTip is text that's displayed in the InfoBar when this group is added to the To, Cc, or Bcc lines of a new email message. For example, you could add a MailTip to large groups to warn potential senders that their message will be sent to lots of people.
 
@@ -248,7 +238,6 @@ Use this section to add a MailTip to alert users of potential issues before they
 > MailTips can include HTML tags, but scripts aren't allowed. The length of a custom MailTip can't exceed 175 displayed characters. HTML tags aren't counted in the limit.
 
 #### Group delegation
-<a name="groupdelegation"> </a>
 
 Use this section to assign permissions to a user (called a delegate) to allow them to send messages as the group or send messages on behalf of the group. You can assign the following permissions:
 
@@ -305,6 +294,3 @@ To verify that you've successfully changed properties for a dynamic distribution
   ```
   Get-Mailbox -OrganizationalUnit "Marketing" | Format-List Name,IssueWarningQuota,ProhibitSendQuota,ProhibitSendReceiveQuota,UseDatabaseQuotaDefaults
   ```
-
-
-

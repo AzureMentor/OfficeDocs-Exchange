@@ -3,15 +3,16 @@ localization_priority: Normal
 monikerRange: exchserver-2016 || exchserver-2019
 description: Setup can't continue because the organization contains one or more Exchange servers that are too old.
 ms.topic: reference
-author: chrisda
+author: msdmaguire
 f1_keywords:
 - ms.exch.setupreadiness.Exchange2000or2003PresentInOrg
-ms.author: chrisda
+ms.author: dmaguire
 ms.assetid: a115b182-cbd2-4d31-aa0e-375240939301
 ms.date: 8/3/2018
+ms.reviewer: 
 title: Can't install Exchange 2016 in a forest that contains Exchange 2000 or Exchange 2003 servers. [Exchange2000or2003PresentInOrg]
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -53,4 +54,3 @@ When upgrading to Exchange 2010 or later, you can use the Exchange Deployment As
 - [Exchange 2013 Deployment Assistant](https://go.microsoft.com/fwlink/p/?LinkId=277105)
 
 Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612).
-

@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: In Exchange Online, actions performed by Microsoft and delegated administrators are logged in the administrator audit log. You can use the EAC or Exchange Online PowerShell to search for and view audit log entries to determine if external administrators performed any actions on or changed the configuration of your Exchange Online organization. You can also use Exchange Online PowerShell to export these audit log entries.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 31892014-c921-45fd-9775-7a1ef40e3517
 ms.date: 6/23/2018
+ms.reviewer: 
 title: View and export the external admin audit log
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -18,7 +19,7 @@ manager: serdars
 
 # View and export the external admin audit log
 
-In Exchange Online, actions performed by Microsoft and delegated administrators are logged in the administrator audit log. You can use the EAC or Exchange Online PowerShell to search for and view audit log entries to determine if external administrators performed any actions on or changed the configuration of your Exchange Online organization. You can also use Exchange Online PowerShell to export these audit log entries.
+In Exchange Online, actions performed by Microsoft and delegated administrators are logged in the administrator audit log. You can use the Exchange admin center (EAC) or Exchange Online PowerShell to search for and view audit log entries to determine if external administrators performed any actions on or changed the configuration of your Exchange Online organization. You can also use Exchange Online PowerShell to export these audit log entries.
 
 ## What do you need to know before you begin?
 
@@ -26,7 +27,7 @@ In Exchange Online, actions performed by Microsoft and delegated administrators 
 
 - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "View-only administrator audit logging" entry in the [Exchange and Shell Infrastructure Permissions](https://technet.microsoft.com/library/3646a4e8-36b2-41fb-89a4-79b0963fcb11.aspx) topic.
 
-- When you export the admin audit log, Microsoft Exchange attaches the audit log, which is an XML file, to an email message that is sent to the specified recipients. However, Outlook Web App blocks XML attachments by default. If you want to use Outlook Web App to access these audit logs, you have to configure Outlook Web App to allow XML attachments. Run the following command to allow XML attachments in Outlook Web App.
+- When you export the admin audit log, Microsoft Exchange attaches the audit log, which is an XML file, to an email message that is sent to the specified recipients. However, Outlook on the web (formerly known as Outlook Web App) blocks XML attachments by default. If you want to use Outlook on the web to access these audit logs, you have to configure Outlook on the web to allow XML attachments. Run the following command to allow XML attachments in Outlook on the web.
 
   ```
   Set-OwaMailboxPolicy -Identity OwaMailboxPolicy-Default -AllowedFileTypes '.rpmsg','.xlsx','.xlsm','.xlsb','.tiff','.pptx','.pptm','.ppsx','.ppsm','.docx','.docm','.zip','.xls','.wmv','.wma','.wav','.vsd','.txt','.tif','.rtf','.pub','.ppt','.png','.pdf','.one','.mp3','.jpg','.gif','.doc','.bmp','.avi','.xml'
@@ -43,17 +44,17 @@ Estimated time to complete: 3 minutes
 
 1. Go to **Compliance management** \> **Auditing** and click **View the external admin audit log report**. All configuration changes made by Microsoft datacenter administrators and delegated administrators during the specified time period are displayed, and can be sorted, using the following information:
 
-  - **Date**: The date and time that the configuration change was made. The date and time are stored in Coordinated Universal Time (UTC) format.
+   - **Date**: The date and time that the configuration change was made. The date and time are stored in Coordinated Universal Time (UTC) format.
 
-  - **Cmdlet**: The name of the cmdlet that was used to make the configuration change.
+   - **Cmdlet**: The name of the cmdlet that was used to make the configuration change.
 
-    If you select an individual search result, the following information is displayed in the details pane:
+     If you select an individual search result, the following information is displayed in the details pane:
 
-  - The date and time that the cmdlet was run.
+   - The date and time that the cmdlet was run.
 
-  - The user who ran the cmdlet. For all entries in the external admin audit log report, the user is identified as **Administrator**, which indicates a Microsoft datacenter administrator or an external administrator.
+   - The user who ran the cmdlet. For all entries in the external admin audit log report, the user is identified as **Administrator**, which indicates a Microsoft datacenter administrator or an external administrator.
 
-  - The cmdlet parameters that were used, and any value specified with the parameter, in the format **Parameter:Value**.
+   - The cmdlet parameters that were used, and any value specified with the parameter, in the format **Parameter:Value**.
 
 2. If you want to print a specific audit log entry, select it in the search results pane and then click **Print** in the details pane.
 
@@ -109,6 +110,3 @@ Get-AuditLogSearch | Format-List
 - The administrator audit log doesn't record any action that is based on an Exchange Online PowerShell cmdlet that begins with the verbs **Get**, **Search**, or **Test**.
 
 - Audit log entries are kept for 90 days. When an entry is older than 90 days, it's deleted.
-
-
-

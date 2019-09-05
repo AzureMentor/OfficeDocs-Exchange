@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to create or import email address rewriting in bulk in Exchange Server.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: bd0942c6-9c66-4b4c-b9bc-2f5f783def76
 ms.date: 7/3/2018
+ms.reviewer: 
 title: Import address rewrite entries on Edge Transport servers
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -30,11 +31,11 @@ The first row, or *header row*, of the CSV file lists the names of the parameter
 
 |**Parameter**|**Required or optional**|**Description**|
 |:-----|:-----|:-----|
-| _Name_ <br/> |Required  <br/> |A unique, descriptive name for the address rewrites entry.  <br/> |
-| _InternalAddress_ <br/> |Required  <br/> |The address you want to change. You can use the following values:  <br/> • A single email address (chris@contoso.com)  <br/> • A single domain or subdomain (contoso.com or sales.contoso.com)  <br/> • A domain and all subdomains (\*.contoso.com)  <br/> |
-| _ExternalAddress_ <br/> |Required  <br/> |The final email address you want. You can use the following values:  <br/> • A single email address if you specified a single email address for _InternalAddress_ <br/> • A single domain or subdomain for all other values of _InternalAddress_ <br/> |
-| _ExceptionList_ <br/> |Optional  <br/> |Available only when you're rewriting email addresses in a domain and all subdomains (\*.contoso.com). Specifies one or more subdomains you want to exclude from address rewriting. Enclose the value in double quotation marks, and separate multiple values by commas. For example, `"marketing.contoso.com"` or `"marketing.contoso.com,legal.contoso.com"`.  <br/> |
-| _OutboundOnly_ <br/> |Optional  <br/> | `False` means that addresses are written on inbound and outbound mail. `True` means that addresses are rewritten on outbound mail only, and you need to manually configure the rewritten email address as a proxy address on the affected recipients.  <br/> The default value is `False`, but you need to set it to `True` if _InternalAddress_ contains the wildcard character (\*.contoso.com).  <br/> The _OutboundOnly_ parameter value in the CSV file is `True` or `False`, not `$True` or `$False`.  <br/> |
+| _Name_|Required|A unique, descriptive name for the address rewrites entry.|
+| _InternalAddress_|Required|The address you want to change. You can use the following values:  <br/> • A single email address (chris@contoso.com)  <br/> • A single domain or subdomain (contoso.com or sales.contoso.com)  <br/> • A domain and all subdomains (\*.contoso.com)|
+| _ExternalAddress_|Required|The final email address you want. You can use the following values:  <br/> • A single email address if you specified a single email address for _InternalAddress_ <br/> • A single domain or subdomain for all other values of _InternalAddress_|
+| _ExceptionList_|Optional|Available only when you're rewriting email addresses in a domain and all subdomains (\*.contoso.com). Specifies one or more subdomains you want to exclude from address rewriting. Enclose the value in double quotation marks, and separate multiple values by commas. For example, `"marketing.contoso.com"` or `"marketing.contoso.com,legal.contoso.com"`.|
+| _OutboundOnly_|Optional| `False` means that addresses are written on inbound and outbound mail. `True` means that addresses are rewritten on outbound mail only, and you need to manually configure the rewritten email address as a proxy address on the affected recipients.  <br/> The default value is `False`, but you need to set it to `True` if _InternalAddress_ contains the wildcard character (\*.contoso.com).  <br/> The _OutboundOnly_ parameter value in the CSV file is `True` or `False`, not `$True` or `$False`.|
 
 Each row under the header row represents an individual address rewrite entry. The values in each row need to be in the same order as the parameter names in the header row. Each value is separated by a comma.
 
@@ -99,6 +100,3 @@ To verify that you have successfully imported address rewrite entries from a CSV
   ```
   Get-AddressRewriteEntry "<AddressRewriteIdentity>" | Format-List
   ```
-
-
-

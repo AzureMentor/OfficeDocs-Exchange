@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: 'Summary: Learn about Receive connectors in Exchange Server 2016 or Exchange Server 2019, and how they control mail flow into your Exchange organization.'
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 17751a60-39fe-433f-84d2-bfc14ff4ba51
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Receive connectors
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -72,9 +73,9 @@ The default Receive connectors that are created in the Front End Transport servi
 
 |**Name**|**Description**|**Protocol logging**|**TCP Port**|**Local IP address bindings**|**Remote IP address ranges**|**Authentication mechanisms**|**Permission groups**|
 |:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
-|Client Frontend _\<ServerName\>_ <br/> |Accepts connections from authenticated SMTP clients.  <br/> |None  <br/> |587  <br/> |All available IPv4 and IPv6 addresses (`0.0.0.0` and `[::]:`)  <br/> | `{::-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff, 0.0.0.0-255.255.255.255}` (all IPv4 and IPv6 addresses)  <br/> | `TLS` <br/> `BasicAuth` <br/> ` BasicAuthRequireTLS ` <br/> `Integrated` <br/> | `ExchangeUsers` <br/> |
-|Default Frontend _\<ServerName\>_ <br/> |Accepts anonymous connections from external SMTP servers. This is the common messaging entry point into your Exchange organization.  <br/> |Verbose  <br/> |25  <br/> |All available IPv4 and IPv6 addresses (`0.0.0.0` and `[::]:`)  <br/> | `{::-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff, 0.0.0.0-255.255.255.255}` (all IPv4 and IPv6 addresses)  <br/> | `TLS` <br/> `BasicAuth` <br/> ` BasicAuthRequireTLS ` <br/> ` ExchangeServer ` <br/> `Integrated` <br/> | `AnonymousUsers` <br/> `ExchangeLegacyServers` <br/> `ExchangeServers` <br/> |
-|Outbound Proxy Frontend _\<ServerName\>_ <br/> |Accepts authenticated connections from the Transport service on Mailbox servers. The connections are encrypted with the Exchange server's self-signed certificate.  <br/> This connector is used only if the Send connector is configured to use outbound proxy. For more information, see [Configure Send connectors to proxy outbound mail](proxy-outbound-mail.md).  <br/> |None  <br/> |717  <br/> |All available IPv4 and IPv6 addresses (`0.0.0.0` and `[::]:`)  <br/> | `{::-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff, 0.0.0.0-255.255.255.255}` (all IPv4 and IPv6 addresses)  <br/> | `TLS` <br/> `BasicAuth` <br/> ` BasicAuthRequireTLS ` <br/> ` ExchangeServer ` <br/> `Integrated` <br/> | `ExchangeServers` <br/> |
+|Client Frontend _\<ServerName\>_|Accepts connections from authenticated SMTP clients.|None|587|All available IPv4 and IPv6 addresses (`0.0.0.0` and `[::]:`)| `{::-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff, 0.0.0.0-255.255.255.255}` (all IPv4 and IPv6 addresses)| `TLS` <br/> `BasicAuth` <br/> ` BasicAuthRequireTLS ` <br/> `Integrated`| `ExchangeUsers`|
+|Default Frontend _\<ServerName\>_|Accepts anonymous connections from external SMTP servers. This is the common messaging entry point into your Exchange organization.|Verbose|25|All available IPv4 and IPv6 addresses (`0.0.0.0` and `[::]:`)| `{::-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff, 0.0.0.0-255.255.255.255}` (all IPv4 and IPv6 addresses)| `TLS` <br/> `BasicAuth` <br/> ` BasicAuthRequireTLS ` <br/> ` ExchangeServer ` <br/> `Integrated`| `AnonymousUsers` <br/> `ExchangeLegacyServers` <br/> `ExchangeServers`|
+|Outbound Proxy Frontend _\<ServerName\>_|Accepts authenticated connections from the Transport service on Mailbox servers. The connections are encrypted with the Exchange server's self-signed certificate.  <br/> This connector is used only if the Send connector is configured to use outbound proxy. For more information, see [Configure Send connectors to proxy outbound mail](proxy-outbound-mail.md).|None|717|All available IPv4 and IPv6 addresses (`0.0.0.0` and `[::]:`)| `{::-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff, 0.0.0.0-255.255.255.255}` (all IPv4 and IPv6 addresses)| `TLS` <br/> `BasicAuth` <br/> ` BasicAuthRequireTLS ` <br/> ` ExchangeServer ` <br/> `Integrated`| `ExchangeServers`|
 
 ### Default Receive connectors in the Transport service on Mailbox servers
 
@@ -84,8 +85,8 @@ The default Receive connectors that are created in the Transport service on Mail
 
 |**Name**|**Description**|**Protocol logging**|**TCP Port**|**Local IP address bindings**|**Remote IP address ranges**|**Authentication mechanisms**|**Permission groups**|
 |:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
-|Client Proxy _\<ServerName\>_ <br/> |Accepts authenticated client connections that are proxied from the Front End Transport service.  <br/> |None  <br/> |465  <br/> |All available IPv4 and IPv6 addresses (`0.0.0.0` and `[::]:`)  <br/> | `{::-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff, 0.0.0.0-255.255.255.255}` (all IPv4 and IPv6 addresses)  <br/> | `TLS` <br/> `BasicAuth` <br/> ` BasicAuthRequireTLS ` <br/> ` ExchangeServer ` <br/> `Integrated` <br/> | `ExchangeServers` <br/> `ExchangeUsers` <br/> |
-|Default _\<ServerName\>_ <br/> |Accepts authenticated connections from:  <br/> • The Front End Transport service on the local or remote Mailbox servers  <br/> • The Transport service on remote Mailbox servers  <br/> • The Mailbox Transport service on the local or remote Mailbox servers  <br/> • Edge Transport servers  <br/> The connections are encrypted with the Exchange server's self-signed certificate.  <br/> |None  <br/> |2525  <br/> |All available IPv4 and IPv6 addresses (`0.0.0.0` and `[::]:`)  <br/> | `{::-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff, 0.0.0.0-255.255.255.255}` (all IPv4 and IPv6 addresses)  <br/> | `TLS` <br/> `BasicAuth` <br/> `ExchangeServer` <br/> `Integrated` <br/> | `ExchangeLegacyServers` <br/> `ExchangeServers` <br/> `ExchangeUsers` <br/> |
+|Client Proxy _\<ServerName\>_|Accepts authenticated client connections that are proxied from the Front End Transport service.|None|465|All available IPv4 and IPv6 addresses (`0.0.0.0` and `[::]:`)| `{::-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff, 0.0.0.0-255.255.255.255}` (all IPv4 and IPv6 addresses)| `TLS` <br/> `BasicAuth` <br/> ` BasicAuthRequireTLS ` <br/> ` ExchangeServer ` <br/> `Integrated`| `ExchangeServers` <br/> `ExchangeUsers`|
+|Default _\<ServerName\>_|Accepts authenticated connections from:  <br/> • The Front End Transport service on the local or remote Mailbox servers  <br/> • The Transport service on remote Mailbox servers  <br/> • The Mailbox Transport service on the local or remote Mailbox servers  <br/> • Edge Transport servers  <br/> The connections are encrypted with the Exchange server's self-signed certificate.|None|2525|All available IPv4 and IPv6 addresses (`0.0.0.0` and `[::]:`)| `{::-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff, 0.0.0.0-255.255.255.255}` (all IPv4 and IPv6 addresses)| `TLS` <br/> `BasicAuth` <br/> `ExchangeServer` <br/> `Integrated`| `ExchangeLegacyServers` <br/> `ExchangeServers` <br/> `ExchangeUsers`|
 
 ### Default Receive connectors in the Transport service on Edge Transport servers
 
@@ -95,7 +96,7 @@ The default Receive connector that's created in the Transport service on Edge Tr
 
 |**Name**|**Description**|**Protocol logging**|**TCP Port**|**Local IP address bindings**|**Remote IP address ranges**|**Authentication mechanisms**|**Permission groups**|
 |:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
-|Default internal receive connector _\<ServerName\>_ <br/> |Accepts anonymous connections from external SMTP servers.  <br/> |None  <br/> |25  <br/> |All available IPv4 addresses (`0.0.0.0`)  <br/> | `{0.0.0.0-255.255.255.255}` (all IPv4 addresses)  <br/> | `TLS` <br/> `ExchangeServer` <br/> | `AnonymousUsers` <br/> `ExchangeServers` <br/> `Partners` <br/> |
+|Default internal receive connector _\<ServerName\>_|Accepts anonymous connections from external SMTP servers.|None|25|All available IPv4 addresses (`0.0.0.0`)| `{0.0.0.0-255.255.255.255}` (all IPv4 addresses)| `TLS` <br/> `ExchangeServer`| `AnonymousUsers` <br/> `ExchangeServers` <br/> `Partners`|
 
 ### Implicit Receive connectors in the Mailbox Transport Delivery service on Mailbox servers
 <a name="ImplicitReceiveConnectors"> </a>
@@ -106,7 +107,7 @@ The implicit Receive connector that exists in the Mailbox Transport Delivery ser
 
 |**Name**|**Description**|**Protocol logging**|**TCP Port**|**Local IP address bindings**|**Remote IP address ranges**|**Authentication mechanisms**|**Permission groups**|
 |:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
-|Mailbox delivery Receive connector  <br/> |Accepts authenticated connections from the Transport service on the local or remote Mailbox servers.  <br/> |None  <br/> |475  <br/> |All available IPv4 and IPv6 addresses (`0.0.0.0` and `[::]:`)  <br/> | `{::-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff, 0.0.0.0-255.255.255.255}` (all IPv4 and IPv6 addresses)  <br/> | ` ExchangeServer ` <br/> | `ExchangeServers` <br/> |
+|Mailbox delivery Receive connector|Accepts authenticated connections from the Transport service on the local or remote Mailbox servers.|None|475|All available IPv4 and IPv6 addresses (`0.0.0.0` and `[::]:`)| `{::-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff, 0.0.0.0-255.255.255.255}` (all IPv4 and IPv6 addresses)| ` ExchangeServer `| `ExchangeServers`|
 
 ## Receive connector local address bindings
 <a name="Bindings"> </a>
@@ -166,11 +167,11 @@ The available usage types are described in the following table.
 
 |**Usage type**|**Permission groups assigned**|**Authentication mechanisms available**|**Comments**|
 |:-----|:-----|:-----|:-----|
-|Client  <br/> |**Exchange users** (`ExchangeUsers`)  <br/> |**Transport Layer Security** (`TLS`)  <br/> **Basic authentication** (`BasicAuth`)  <br/> **Offer basic authentication only after starting TLS** (`BasicAuthRequireTLS`)  <br/> **Integrated Windows authentication** (`Integrated`)  <br/> |Used by POP3 and IMAP4 clients that need to submit email messages by using authenticated SMTP.  <br/> When you create a Receive connector of this usage type in the EAC or in the Exchange Management Shell, you can't select the local IP address bindings or TCP port. By default, this usage type is bound to all local IPv4 and IPv6 addresses on TCP port 587. You can change these bindings after you create the connector.  <br/> This usage type isn't available on Edge Transport servers.  <br/> |
-|Custom  <br/> |None selected (`None`)  <br/> |**Transport Layer Security** (`TLS`)  <br/> |Used in cross-forest scenarios, for receiving mail from third-party messaging servers, and for external relay.  <br/> After you create a Receive connector of this usage type, you need to add permissions groups in the EAC or in the Exchange Management Shell.  <br/> |
-|Internal  <br/> |**Legacy Exchange servers** (`ExchangeLegacyServers`)  <br/> **Exchange servers** (`ExchangeServers`)  <br/> |**Transport Layer Security** (`TLS`)  <br/> **Exchange Server authentication** (`ExchangeServers`)  <br/> |Used in cross-forest scenarios, for receiving mail from previous versions of Exchange, for receiving mail from third-party messaging servers, or on Edge Transport servers to receive outbound mail from the internal Exchange organization.  <br/>  When you create a Receive connector of this usage type in the EAC or in the Exchange Management Shell, you can't select the local IP address bindings or TCP port. By default, the connector is bound to all local IPv4 and IPv6 addresses on TCP port 25. You can change these bindings after you create the connector.  <br/> The `ExchangeLegacyServers` permission group isn't available on Edge Transport servers.  <br/> |
-|Internet  <br/> |**Anonymous users** (`AnonymousUsers`)  <br/> |**Transport Layer Security** (`TLS`)  <br/> |Used to receive mail from the Internet.  <br/>  When you create a Receive connector of this usage type in the EAC or in the Exchange Management Shell, you can't select the remote IP addresses. By default, the connector accepts remote connections from all IPv4 addresses (0.0.0.0-255.255.255.255). You can change these bindings after you create the connector.  <br/> |
-|Partner  <br/> |**Partners** (`Partners`)  <br/> |**Transport Layer Security** (`TLS`)  <br/> |Used to configure secure communication with an external partner (mutual TLS authentication, also known as domain secure).  <br/> |
+|Client|**Exchange users** (`ExchangeUsers`)|**Transport Layer Security** (`TLS`)  <br/> **Basic authentication** (`BasicAuth`)  <br/> **Offer basic authentication only after starting TLS** (`BasicAuthRequireTLS`)  <br/> **Integrated Windows authentication** (`Integrated`)|Used by POP3 and IMAP4 clients that need to submit email messages by using authenticated SMTP.  <br/> When you create a Receive connector of this usage type in the EAC or in the Exchange Management Shell, you can't select the local IP address bindings or TCP port. By default, this usage type is bound to all local IPv4 and IPv6 addresses on TCP port 587. You can change these bindings after you create the connector.  <br/> This usage type isn't available on Edge Transport servers.|
+|Custom|None selected (`None`)|**Transport Layer Security** (`TLS`)|Used in cross-forest scenarios, for receiving mail from third-party messaging servers, and for external relay.  <br/> After you create a Receive connector of this usage type, you need to add permissions groups in the EAC or in the Exchange Management Shell.|
+|Internal|**Legacy Exchange servers** (`ExchangeLegacyServers`)  <br/> **Exchange servers** (`ExchangeServers`)|**Transport Layer Security** (`TLS`)  <br/> **Exchange Server authentication** (`ExchangeServers`)|Used in cross-forest scenarios, for receiving mail from previous versions of Exchange, for receiving mail from third-party messaging servers, or on Edge Transport servers to receive outbound mail from the internal Exchange organization.  <br/>  When you create a Receive connector of this usage type in the EAC or in the Exchange Management Shell, you can't select the local IP address bindings or TCP port. By default, the connector is bound to all local IPv4 and IPv6 addresses on TCP port 25. You can change these bindings after you create the connector.  <br/> The `ExchangeLegacyServers` permission group isn't available on Edge Transport servers.|
+|Internet|**Anonymous users** (`AnonymousUsers`)|**Transport Layer Security** (`TLS`)|Used to receive mail from the Internet.  <br/>  When you create a Receive connector of this usage type in the EAC or in the Exchange Management Shell, you can't select the remote IP addresses. By default, the connector accepts remote connections from all IPv4 addresses (0.0.0.0-255.255.255.255). You can change these bindings after you create the connector.|
+|Partner|**Partners** (`Partners`)|**Transport Layer Security** (`TLS`)|Used to configure secure communication with an external partner (mutual TLS authentication, also known as domain secure).|
 
 ## Receive connector authentication mechanisms
 <a name="AuthMechanisms"> </a>
@@ -181,13 +182,13 @@ The available authentication mechanisms are described in the following table.
 
 |**Authentication mechanism**|**Description**|
 |:-----|:-----|
-|None selected (`None`)  <br/> |No authentication.  <br/> |
-|**Transport Layer Security (TLS)** (`TLS`)  <br/> |Advertise **STARTTLS** in the EHLO response. TLS encrypted connections require a server certificate that includes the name that the Receive connector advertises in the EHLO response. For more information, see [Modify the SMTP banner on Receive connectors](modify-smtp-banners.md). Other Exchange servers in your organization trust the server's self-signed certificate, but clients and external servers typically use a trusted third-party certificate.  <br/> |
-|**Basic authentication** (`BasicAuth`)  <br/> |Basic authentication (clear text).  <br/> |
-|**Offer basic authentication only after starting TLS** (`BasicAuthRequireTLS`)  <br/> |Basic authentication that's encrypted with TLS.  <br/> |
-|**Integrated Windows authentication** (`Integrated`)  <br/> |NTLM and Kerberos authentication.  <br/> |
-|**Exchange Server authentication** (`ExchangeServer`)  <br/> |Generic Security Services application programming interface (GSSAPI) and Mutual GSSAPI authentication.  <br/> |
-|**Externally secured** (`ExternalAuthoritative`)  <br/> |The connection is presumed to be secured by using a security mechanism that's external to Exchange. The connection may be an Internet Protocol security (IPsec) association or a virtual private network (VPN). Alternatively, the servers may reside in a trusted, physically controlled network.  <br/> This authentication mechanism requires the `ExchangeServers` permission group. This combination of authentication mechanism and security group permits the resolution of anonymous sender email addresses for messages that are received through the connector.  <br/> |
+|None selected (`None`)|No authentication.|
+|**Transport Layer Security (TLS)** (`TLS`)|Advertise **STARTTLS** in the EHLO response. TLS encrypted connections require a server certificate that includes the name that the Receive connector advertises in the EHLO response. For more information, see [Modify the SMTP banner on Receive connectors](modify-smtp-banners.md). Other Exchange servers in your organization trust the server's self-signed certificate, but clients and external servers typically use a trusted third-party certificate.|
+|**Basic authentication** (`BasicAuth`)|Basic authentication (clear text).|
+|**Offer basic authentication only after starting TLS** (`BasicAuthRequireTLS`)|Basic authentication that's encrypted with TLS.|
+|**Integrated Windows authentication** (`Integrated`)|NTLM and Kerberos authentication.|
+|**Exchange Server authentication** (`ExchangeServer`)|Generic Security Services application programming interface (GSSAPI) and Mutual GSSAPI authentication.|
+|**Externally secured** (`ExternalAuthoritative`)|The connection is presumed to be secured by using a security mechanism that's external to Exchange. The connection may be an Internet Protocol security (IPsec) association or a virtual private network (VPN). Alternatively, the servers may reside in a trusted, physically controlled network.  <br/> This authentication mechanism requires the `ExchangeServers` permission group. This combination of authentication mechanism and security group permits the resolution of anonymous sender email addresses for messages that are received through the connector.|
 
 ## Receive connector permission groups
 <a name="PermissionGroups"> </a>
@@ -200,12 +201,12 @@ The available permission groups are described in the following table.
 
 |**Permission group**|**Associated security principals**|**Permissions granted**|
 |:-----|:-----|:-----|
-|**Anonymous users** (`Anonymous`)  <br/> | `NT AUTHORITY\ANONYMOUS LOGON` <br/> | `ms-Exch-Accept-Headers-Routing` <br/> `ms-Exch-SMTP-Accept-Any-Sender` <br/> `ms-Exch-SMTP-Accept-Authoritative-Domain-Sender` <br/> `ms-Exch-SMTP-Submit` <br/> |
-|**Exchange users** (`ExchangeUsers`)  <br/> | `NT AUTHORITY\Authenticated Users` <br/> | `ms-Exch-Accept-Headers-Routing` <br/> `ms-Exch-Bypass-Anti-Spam` <br/> `ms-Exch-SMTP-Accept-Any-Recipient` <br/> `ms-Exch-SMTP-Submit` <br/> |
-|**Exchange servers** (`ExchangeServers`)  <br/> | `<Domain>\Exchange Servers` <br/> `MS Exchange\Edge Transport Servers` <br/> `MS Exchange\Hub Transport Servers` <br/> **Note:** These security principals also have other internal permissions assigned to them. For more information, see the end of the [Receive connector permissions](receive-connectors.md#Permissions) section.  <br/> | `ms-Exch-Accept-Headers-Forest` <br/> `ms-Exch-Accept-Headers-Organization` <br/> `ms-Exch-Accept-Headers-Routing` <br/> `ms-Exch-Bypass-Anti-Spam` <br/> `ms-Exch-Bypass-Message-Size-Limit` <br/> `ms-Exch-SMTP-Accept-Any-Recipient` <br/> `ms-Exch-SMTP-Accept-Any-Sender` <br/> `ms-Exch-SMTP-Accept-Authentication-Flag` <br/> `ms-Exch-SMTP-Accept-Authoritative-Domain-Sender` <br/> `ms-Exch-SMTP-Accept-Exch50` <br/> `ms-Exch-SMTP-Submit` <br/> |
-|**Exchange servers** (`ExchangeServers`)  <br/> | `MS Exchange\Externally Secured Servers` <br/> | `ms-Exch-Accept-Headers-Routing` <br/> `ms-Exch-Bypass-Anti-Spam` <br/> `ms-Exch-Bypass-Message-Size-Limit` <br/> `s-Exch-SMTP-Accept-Any-Recipient` <br/> `ms-Exch-SMTP-Accept-Any-Sender` <br/> `ms-Exch-SMTP-Accept-Authentication-Flag` <br/> `ms-Exch-SMTP-Accept-Authoritative-Domain-Sender` <br/> `ms-Exch-SMTP-Accept-Exch50` <br/> `ms-Exch-SMTP-Submit` <br/> |
-|**Legacy Exchange servers** (`ExchangeLegacyServers`)  <br/> | `<Domain>\ExchangeLegacyInterop` <br/> | `ms-Exch-Accept-Headers-Routing` <br/> `ms-Exch-Bypass-Anti-Spam` <br/> `ms-Exch-Bypass-Message-Size-Limit` <br/> `ms-Exch-SMTP-Accept-Any-Recipient` <br/> `ms-Exch-SMTP-Accept-Any-Sender` <br/> `ms-Exch-SMTP-Accept-Authentication-Flag` <br/> `ms-Exch-SMTP-Accept-Authoritative-Domain-Sender` <br/> `ms-Exch-SMTP-Accept-Exch50` <br/> `ms-Exch-SMTP-Submit` <br/> |
-|**Partners** (`Partner`)  <br/> | `MS Exchange\Partner Servers` <br/> | `ms-Exch-Accept-Headers-Routing` <br/> `ms-Exch-SMTP-Submit` <br/> |
+|**Anonymous users** (`Anonymous`)| `NT AUTHORITY\ANONYMOUS LOGON`| `ms-Exch-Accept-Headers-Routing` <br/> `ms-Exch-SMTP-Accept-Any-Sender` <br/> `ms-Exch-SMTP-Accept-Authoritative-Domain-Sender` <br/> `ms-Exch-SMTP-Submit`|
+|**Exchange users** (`ExchangeUsers`)| `NT AUTHORITY\Authenticated Users`| `ms-Exch-Accept-Headers-Routing` <br/> `ms-Exch-Bypass-Anti-Spam` <br/> `ms-Exch-SMTP-Accept-Any-Recipient` <br/> `ms-Exch-SMTP-Submit`|
+|**Exchange servers** (`ExchangeServers`)| `<Domain>\Exchange Servers` <br/> `MS Exchange\Edge Transport Servers` <br/> `MS Exchange\Hub Transport Servers` <br/> **Note:** These security principals also have other internal permissions assigned to them. For more information, see the end of the [Receive connector permissions](receive-connectors.md#Permissions) section.| `ms-Exch-Accept-Headers-Forest` <br/> `ms-Exch-Accept-Headers-Organization` <br/> `ms-Exch-Accept-Headers-Routing` <br/> `ms-Exch-Bypass-Anti-Spam` <br/> `ms-Exch-Bypass-Message-Size-Limit` <br/> `ms-Exch-SMTP-Accept-Any-Recipient` <br/> `ms-Exch-SMTP-Accept-Any-Sender` <br/> `ms-Exch-SMTP-Accept-Authentication-Flag` <br/> `ms-Exch-SMTP-Accept-Authoritative-Domain-Sender` <br/> `ms-Exch-SMTP-Accept-Exch50` <br/> `ms-Exch-SMTP-Submit`|
+|**Exchange servers** (`ExchangeServers`)| `MS Exchange\Externally Secured Servers`| `ms-Exch-Accept-Headers-Routing` <br/> `ms-Exch-Bypass-Anti-Spam` <br/> `ms-Exch-Bypass-Message-Size-Limit` <br/> `s-Exch-SMTP-Accept-Any-Recipient` <br/> `ms-Exch-SMTP-Accept-Any-Sender` <br/> `ms-Exch-SMTP-Accept-Authentication-Flag` <br/> `ms-Exch-SMTP-Accept-Authoritative-Domain-Sender` <br/> `ms-Exch-SMTP-Accept-Exch50` <br/> `ms-Exch-SMTP-Submit`|
+|**Legacy Exchange servers** (`ExchangeLegacyServers`)| `<Domain>\ExchangeLegacyInterop`| `ms-Exch-Accept-Headers-Routing` <br/> `ms-Exch-Bypass-Anti-Spam` <br/> `ms-Exch-Bypass-Message-Size-Limit` <br/> `ms-Exch-SMTP-Accept-Any-Recipient` <br/> `ms-Exch-SMTP-Accept-Any-Sender` <br/> `ms-Exch-SMTP-Accept-Authentication-Flag` <br/> `ms-Exch-SMTP-Accept-Authoritative-Domain-Sender` <br/> `ms-Exch-SMTP-Accept-Exch50` <br/> `ms-Exch-SMTP-Submit`|
+|**Partners** (`Partner`)| `MS Exchange\Partner Servers`| `ms-Exch-Accept-Headers-Routing` <br/> `ms-Exch-SMTP-Submit`|
 
 The permissions are explained in the [Receive connector permissions](receive-connectors.md#Permissions) section later in this topic.
 
@@ -220,17 +221,17 @@ The available Receive connector permissions are described in the following table
 
 |**Receive connector permission**|**Description**|
 |:-----|:-----|
-| `ms-Exch-Accept-Headers-Forest` <br/> |Controls the preservation of Exchange forest headers in messages. Forest header names start with **X-MS-Exchange-Forest-**. If this permission isn't granted, all forest headers are removed from messages.  <br/> |
-| `ms-Exch-Accept-Headers-Organization` <br/> |Controls the preservation of Exchange organization headers in messages. Organization header names start with **X-MS-Exchange-Organization-**. If this permission isn't granted, all organization headers are removed from messages.  <br/> |
-| `ms-Exch-Accept-Headers-Routing` <br/> |Controls the preservation of **Received** and **Resent-\*** headers in messages. If this permission isn't granted, all of these headers are removed from messages.  <br/> |
-| `ms-Exch-Bypass-Anti-Spam` <br/> |Allows SMTP clients or servers to bypass antispam filtering.  <br/> |
-| `ms-Exch-Bypass-Message-Size-Limit` <br/> |Allows SMTP clients or servers to submit messages that exceed the maximum message size that's configured for the Receive connector.  <br/> |
-| `ms-Exch-SMTP-Accept-Any-Recipient` <br/> |Allows SMTP clients or servers to relay messages through the Receive connector. If this permission isn't granted, only messages that are sent to recipients in accepted domains that are configured for the Exchange organization are accepted by the Receive connector.  <br/> |
-| `ms-Exch-SMTP-Accept-Any-Sender` <br/> |Allows SMTP clients or servers to bypass the sender address spoofing check that normally requires the sender's email address to be in an accepted domain that's configured for Exchange organization.  <br/> |
-| `ms-Exch-SMTP-Accept-Authentication-Flag` <br/> |Controls whether messages from SMTP clients or servers are treated as authenticated. If this permission isn't granted, messages from theses sources are identified as external (unauthenticated). This setting is important for distribution groups that are configured to accept mail only from internal recipients (for example, the _RequireSenderAuthenticationEnabled_ parameter value for the group is `$true`).  <br/> |
-| `ms-Exch-SMTP-Accept-Authoritative-Domain-Sender` <br/> |Allows access to the Receive connector by senders that have email addresses in authoritative domains that are configured for the Exchange organization.  <br/> |
-| `ms-Exch-SMTP-Accept-Exch50` <br/> |Allows SMTP clients or servers to submit **XEXCH50** commands on the Receive connector. The **X-EXCH50** binary large object (BLOB) was used by older versions of Exchange (Exchange 2003 and earlier) to store Exchange data in messages (for example, the spam confidence level or SCL).  <br/> |
-| `ms-Exch-SMTP-Submit` <br/> |This permission is required to submit messages to Receive connectors. If this permission isn't granted, the **MAIL FROM** and **AUTH** commands will fail.  <br/> |
+| `ms-Exch-Accept-Headers-Forest`|Controls the preservation of Exchange forest headers in messages. Forest header names start with **X-MS-Exchange-Forest-**. If this permission isn't granted, all forest headers are removed from messages.|
+| `ms-Exch-Accept-Headers-Organization`|Controls the preservation of Exchange organization headers in messages. Organization header names start with **X-MS-Exchange-Organization-**. If this permission isn't granted, all organization headers are removed from messages.|
+| `ms-Exch-Accept-Headers-Routing`|Controls the preservation of **Received** and **Resent-\*** headers in messages. If this permission isn't granted, all of these headers are removed from messages.|
+| `ms-Exch-Bypass-Anti-Spam`|Allows SMTP clients or servers to bypass antispam filtering.|
+| `ms-Exch-Bypass-Message-Size-Limit`|Allows SMTP clients or servers to submit messages that exceed the maximum message size that's configured for the Receive connector.|
+| `ms-Exch-SMTP-Accept-Any-Recipient`|Allows SMTP clients or servers to relay messages through the Receive connector. If this permission isn't granted, only messages that are sent to recipients in accepted domains that are configured for the Exchange organization are accepted by the Receive connector.|
+| `ms-Exch-SMTP-Accept-Any-Sender`|Allows SMTP clients or servers to bypass the sender address spoofing check that normally requires the sender's email address to be in an accepted domain that's configured for Exchange organization.|
+| `ms-Exch-SMTP-Accept-Authentication-Flag`|Controls whether messages from SMTP clients or servers are treated as authenticated. If this permission isn't granted, messages from theses sources are identified as external (unauthenticated). This setting is important for distribution groups that are configured to accept mail only from internal recipients (for example, the _RequireSenderAuthenticationEnabled_ parameter value for the group is `$true`).|
+| `ms-Exch-SMTP-Accept-Authoritative-Domain-Sender`|Allows access to the Receive connector by senders that have email addresses in authoritative domains that are configured for the Exchange organization.|
+| `ms-Exch-SMTP-Accept-Exch50`|Allows SMTP clients or servers to submit **XEXCH50** commands on the Receive connector. The **X-EXCH50** binary large object (BLOB) was used by older versions of Exchange (Exchange 2003 and earlier) to store Exchange data in messages (for example, the spam confidence level or SCL).|
+| `ms-Exch-SMTP-Submit`|This permission is required to submit messages to Receive connectors. If this permission isn't granted, the **MAIL FROM** and **AUTH** commands will fail.|
 
  **Notes**:
 
@@ -285,6 +286,3 @@ To remove permissions from a security principal on a Receive connector, use the 
 ```
 Remove-ADPermission -Identity <ReceiveConnector> -User <SecurityPrincipal> -ExtendedRights "<Permission1>","<Permission2>"...
 ```
-
-
-

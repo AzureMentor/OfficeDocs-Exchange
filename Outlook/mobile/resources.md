@@ -1,9 +1,9 @@
 ---
 title: "Plan, deliver, and adopt Outlook for iOS and Android in your organization"
-ms.author: danbrown
-author: DHB-MSFT
-manager: laurawi
-ms.audience: ITPro
+ms.author: dmaguire
+author: msdmaguire
+manager: serdars
+audience: ITPro
 ms.prod: outlook
 ms.topic: get-started-article
 localization_priority: Normal
@@ -14,7 +14,7 @@ description: "Provides resources for IT Pros to plan, deliver, and adopt Outlook
 
 # Plan, deliver, and adopt Outlook for iOS and Android in your organization
 
-![Mobile phone on a desk showing Outlook for iOS and Android](media/banner.png)
+![Close-up picture of a mobile phone showing Outlook for iOS and Android](media/banner.jpg)
 
 Outlook mobile brings the best of Office 365 – your email, calendar, documents, online meetings and more – in one place, right at your fingertips. It combines a fast, fluid experience with enterprise grade security so you accomplish the most important tasks in just a few seconds.
 
@@ -26,34 +26,41 @@ The following is content and guidance that IT administrators, trainers, champion
 
 Use the resources in the [Outlook mobile Customer Adoption Pack](https://aka.ms/OutlookmobileCAP) to make the most of Microsoft Outlook for iOS and Android for your organization. This adoption pack contains a wide range of customizable onboarding templates, flyers, and posters, that IT Pros, administrators, and trainers can use to roll out and drive the adoption of Outlook mobile to end users in their organization.
  
-Included in this pack:
+You can view resources for each phase of rollout below or download customer adoption resources from this [Customer Adoption Pack .zip file](https://aka.ms/OutlookmobileCAP). 
 
-- Customizable onboarding email templates with links to demo video and installation instructions
-- Posters and flyers to drive buzz and excitement
-- Tips and tricks email that shows you how Outlook mobile can help you stay on top of your day
+## Pre-launch
 
+In this first phase, we focus on internal awareness and communication or engagement events that create excitement and awareness for end users.
 
-## Outlook mobile webinar series
+- [Flyer template](media/outlook-mobile-editable-flyer.docx) - Customizable flyer handout for your employees.
+- [Poster template](https://github.com/MicrosoftDocs/OfficeDocs-Exchange/raw/public/Outlook/mobile/media/outlook-mobile-editable-poster.pptx) - Customizable poster used to help raise awareness of your Outlook mobile rollout.
+- [Countdown email template](media/outlook-mobile-countdown-email.zip) - Customizable email informing employees of upcoming Outlook mobile rollout within your organization.
 
-We're excited to announce ***10 time saving tips and tricks with Outlook mobile***, a new Outlook mobile demo webinar series for your employees.
+## Launch Day
 
-These 60-minute live monthly webinars will be delivered by Outlook mobile experts from Microsoft and are designed to get your employees up and running and learn cool tips and tricks that save them time.
+This is the broad scale deployment phase. Communication and guides are available to help end users get set up quickly and easily.
 
-In this webinar series, you'll learn the following:
-- Why Outlook mobile is the right choice for you
-- Best practices for getting started
-- Cool tips and tricks to help you accomplish the most important tasks in just a few seconds
+- [Rollout announcement email template](media/outlook-mobile-rollout-announcement-email.zip) – Customizable email informing employees of your Outlook mobile roll-out.
+- How to install Outlook for [iOS](https://support.office.com/article/b2de2161-cc1d-49ef-9ef9-81acd1c8e234) and [Android](https://support.office.com/article/886db551-8dfa-4fd5-b835-f8e532091872) - Article with instructions to help employees install Outlook mobile on their devices.
+- Quick reference cheat sheets for Outlook for [iOS](https://aka.ms/iOSCheatSheet) and [Android](https://aka.ms/AndroidCheatSheet) - PDF handout to get your employees familiar with Outlook mobile and get them started quickly.
+- [Optimize the Outlook mobile app](https://aka.ms/OMoptimize) - Article providing employees with tips on how to optimize Outlook for their needs.
 
-You can also ask questions and share your feedback directly with the Outlook team.
+## Post-launch
 
-**Register now** 
+During the post-launch phase, focus is placed on providing time saving tips to support employees as they start using Outlook mobile on a day-to-day basis.
 
-Starts March 14, 2019. Go to the [registration site](https://aka.ms/JoinOutlookmobile) for a detailed schedule.
+### Content and templates
 
-**Who should attend**
+- [Outlook mobile tips email template](media/outlook-mobile-tips-email.zip) – Customizable email to send to employees post-launch with tips to stay more productive on the go.
+- [Outlook for iOS and Android: time saving tips reference sheet](media/outlook-mobile-time-saving-tips.pdf) - PDF that provides time saving tips of Outlook mobile features and functionality.
 
-Open to all. These demo webinars will focus on end user value so invite your business decision makers, end users, trainers, change management personnel, champions, and more!
+### Training
 
-**What you will take away**
+- [End user training videos](https://aka.ms/Omvideos) - Short videos to play during the launch events to create excitement and awareness.
+- *On Demand Webinar: 10 time saving tips* ([watch now](https://aka.ms/JoinOutlookmobile)) - Invite your employees to watch webinar training, hosted by Microsoft, showcasing time saving tips on Outlook mobile. These 60-minute webinars are delivered by Outlook mobile experts from Microsoft and are designed to get your employees up and running and learn cool tips that save them time.
 
-Download the [Outlook for iOS and Android: tips that save you time reference sheet](media/outlook-mobile-time-saving-tips.pdf) (PDF) to keep the information you learned handy.
+  In this webinar series, you'll learn the following:
+  - Why Outlook mobile is the right choice for you
+  - Cool tips to help you accomplish the most important tasks in just a few seconds
+
+  These demo webinars focus on end user value so invite your business decision makers, end users, trainers, change management personnel, champions, and more!

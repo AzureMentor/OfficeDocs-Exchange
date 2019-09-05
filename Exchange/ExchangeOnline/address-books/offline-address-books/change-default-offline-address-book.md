@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: Admins can learn how to specify the default offline address book (OAB) in Exchange Online
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 61abf78e-2543-4431-acc8-839e3c7a4548
 ms.date: 
+ms.reviewer: 
 title: Change the default offline address book in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -54,4 +55,3 @@ To verify that you've successfully changed the default OAB, run the following co
 ```
 Get-OfflineAddressBook | Format-List Name,IsDefault
 ```
-

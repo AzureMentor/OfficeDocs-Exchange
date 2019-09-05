@@ -1,10 +1,11 @@
 ---
 title: "Fix email delivery issues for error code 5.7.134 in Exchange Online"
-ms.author: chrisda
-author: chrisda
+ms.author: dmaguire
+author: msdmaguire
 manager: serdars
 ms.date: 
-ms.audience: Admin
+ms.reviewer: 
+audience: Admin
 ms.topic: troubleshooting
 ms.service: o365-administration
 localization_priority: Normal
@@ -52,7 +53,7 @@ To open the Exchange admin center (EAC), see [Exchange admin center in Exchange 
 
 Instead of allowing all external senders to send messages to this mailbox, you can use the mailbox's allowed senders list to selectively allow messages from all internal senders and the specified external senders.
 
-**Notes**: 
+**Notes**:
 
 - To add an external sender to a mailbox's allowed senders list, you must first create a [mail contact](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-contacts) or a [mail user](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-users) to represent the external sender in your organization.
 
@@ -64,7 +65,7 @@ To configure the mailbox's allowed senders list, open the EAC do the following s
 
 1. In the EAC, go to **Recipients** \> **Mailboxes** > select the mailbox from the list, and then click **Edit** ![Edit icon](../../media/ebd260e4-3556-4fb0-b0bb-cc489773042c.gif).
 
-   ![Find mailboxes in Exchange Admin Center to fix DSN 5.7.134](../../media/4fa20a12-da40-477e-9351-ce2f45de0b7a.png)
+   ![Find mailboxes in Exchange admin center to fix DSN 5.7.134](../../media/4fa20a12-da40-477e-9351-ce2f45de0b7a.png)
 
 2. In the mailbox properties dialog box that opens, go to **Mailbox features** \> **Message Delivery Restrictions** \> and then click **View details**.
 

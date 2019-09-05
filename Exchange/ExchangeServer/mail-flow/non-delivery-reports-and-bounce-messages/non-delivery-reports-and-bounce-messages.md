@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Administrators can learn about how to read and interpret delivery status notifications (also known as DSNs, non-delivery reports, NDRs or bounce messages) in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 8e91de84-76fa-49b2-898c-c5eface76560
 ms.date: 7/6/2018
+ms.reviewer: 
 title: DSNs and NDRs in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -25,7 +26,6 @@ For procedures related to NDRs in Exchange Server, see [Procedures for DSNs and 
 If you need help with NDRs in Office 365 or Exchange Online, see [Email non-delivery reports in Office 365](https://go.microsoft.com/fwlink/p/?LinkId=524931).
 
 ## Information in NDRs
-<a name="Sections"> </a>
 
 This is an example of an NDR:
 
@@ -35,44 +35,43 @@ The information in an NDR is separated into two sections:
 
 1. **User information section**: This section appears first and attempts to explain (in non-technical terms) why delivery of the message failed, and possible steps to successfully deliver the message.
 
-  - The text that's displayed in this section is inserted by the Exchange server that generated the NDR.
+   - The text that's displayed in this section is inserted by the Exchange server that generated the NDR.
 
-  - When applicable, the fully qualified domain name (FQDN) of the server that rejected the message is included in the user information section (for example mbx01.contoso.com).
+   - When applicable, the fully qualified domain name (FQDN) of the server that rejected the message is included in the user information section (for example mbx01.contoso.com).
 
-  - If delivery failed for multiple recipients, the email address and reason for failure is listed for each recipient is listed..
+   - If delivery failed for multiple recipients, the email address and reason for failure is listed for each recipient is listed..
 
 2. **Diagnostic information for administrators section**: This section provides deeper technical information to help administrators troubleshoot the issues that caused the delivery failure.
 
     A key piece of information in this section is the enhanced status code (for example, 4.4.7).
 
-  - The enhanced status code is returned by the server that generated the NDR (the source server that couldn't deliver the message, or the destination server that rejected the message).
+    - The enhanced status code is returned by the server that generated the NDR (the source server that couldn't deliver the message, or the destination server that rejected the message).
 
-  - The enhanced status code determines the text that's displayed in the user information section (the code value isn't altered by Exchange).
+    - The enhanced status code determines the text that's displayed in the user information section (the code value isn't altered by Exchange).
 
     You can use the **New-SystemMessage** cmdlet in the Exchange Management Shell to modify the text that appears in user information section for a given enhanced status code (including different text in different languages). By creating custom explanations, you can provide specific content for your environment, such as contact information for your help desk, or links to your Intranet for self-service support. For more information, see [Procedures for DSNs and NDRs in Exchange Server](ndr-procedures.md).
 
-  - The [Common enhanced status codes](#common-enhanced-status-codes) section in this topic explains what the numbers mean, the codes that you're likely to encounter, and suggestions to fix the underlying problem that prevented the message from being delivered.
+   - The [Common enhanced status codes](#common-enhanced-status-codes) section in this topic explains what the numbers mean, the codes that you're likely to encounter, and suggestions to fix the underlying problem that prevented the message from being delivered.
 
-    The following information is also available in this section:
+   The following information is also available in this section:
 
-  - **Generating server**: The messaging server that created the NDR. If a remote server isn't listed below the sender's email address, the generating server is also the server that rejected the original email message. If message delivery fails between senders and recipients in the Exchange organization, the same server typically rejects the original message and generates the NDR.
+   - **Generating server**: The messaging server that created the NDR. If a remote server isn't listed below the sender's email address, the generating server is also the server that rejected the original email message. If message delivery fails between senders and recipients in the Exchange organization, the same server typically rejects the original message and generates the NDR.
 
-  - **The rejected recipients**: The recipient's email address in the original message that couldn't be delivered. If delivery fails for multiple recipients, the email address of each recipient is listed. This field also contains the following sub-fields for each email address:
+   - **The rejected recipients**: The recipient's email address in the original message that couldn't be delivered. If delivery fails for multiple recipients, the email address of each recipient is listed. This field also contains the following sub-fields for each email address:
 
-  - **Remote server**: The FQDN of the server that rejected the original message during SMTP transmission (delivery failed after the message body was sent, but before the server acknowledged receiving the message). This field isn't present when:
+   - **Remote server**: The FQDN of the server that rejected the original message during SMTP transmission (delivery failed after the message body was sent, but before the server acknowledged receiving the message). This field isn't present when:
 
-  - The server that rejected the message also generated the NDR. This is typical for delivery failures between senders and recipients in the same Exchange organization.
+   - The server that rejected the message also generated the NDR. This is typical for delivery failures between senders and recipients in the same Exchange organization.
 
-  - The remote server acknowledged receiving the original message, but the message was rejected for other reasons (for example, content restrictions).
+   - The remote server acknowledged receiving the original message, but the message was rejected for other reasons (for example, content restrictions).
 
-  - **Enhanced status code**
+   - **Enhanced status code**
 
-  - **SMTP response**: The US-ASCII text string that's returned by the messaging server that rejected the original message. This is typically a short explanation of the enhanced status code. This string is not rewritten by Exchange.
+   - **SMTP response**: The US-ASCII text string that's returned by the messaging server that rejected the original message. This is typically a short explanation of the enhanced status code. This string is not rewritten by Exchange.
 
-  - **Original message headers**: This area contains the message header of the rejected message. These header fields can provide useful diagnostic information (for example, server hops in the message routing path, or whether the **To** field matches the email address of the rejected recipient).
+   - **Original message headers**: This area contains the message header of the rejected message. These header fields can provide useful diagnostic information (for example, server hops in the message routing path, or whether the **To** field matches the email address of the rejected recipient).
 
 ## Common enhanced status codes
-<a name="Codes"> </a>
 
 Enhanced status codes are defined in RFC 3463, and use the syntax _\<class\>_. _\<subject\>_. _\<detail\>_:
 
@@ -99,7 +98,7 @@ The following tables contain the enhanced status codes that are returned in NDRs
 > [!NOTE]
 > For information about enhanced status codes in Office 365 and hybrid environments, see [Email non-delivery reports in Office 365](https://go.microsoft.com/fwlink/p/?LinkId=524931).
 
-**Temporary delivery failures**
+### Temporary delivery failures
 
 |**Enhanced status code**|**Description**|**Possible causes and solutions**|
 |:-----|:-----|:-----|
@@ -109,7 +108,7 @@ The following tables contain the enhanced status codes that are returned in NDRs
 |4.4.2|`Connection dropped`|Transient network issues or server problems that might eventually correct themselves. The sending server will retry delivery of the message, and will generate further status reports. <br/> The message size limit for the connection has been reached, or the message submission rate for the source IP address has exceeded the configured limit. For more information, see [Message rate limits and throttling](../../mail-flow/message-rate-limits.md). <br/> Antispam, SMTP proxy, or firewall configuration issues are blocking email from the Exchange server.|
 |4.4.7|`Message delayed` <br/> or <br/> `Queue expired; Message expired`|Send connector configuration issues. For example: <br/>• The Send connector is configured to use DNS routing when it should be using smart host routing, or vice-versa. Use nslookup to verify that the destination domain is reachable from the Exchange server. <br/>• The FQDN that the Send connector provides to HELO or EHLO requests doesn't match the host name in your MX record (for example, mail.contoso.com). Some messaging systems are configured to compare these value in an effort to reduce spam. The default value on a Send connector is blank, which means the FQDN of the Exchange server is used (for example, exchange01.contoso.com). <br/> The Mailbox Transport Delivery service isn't started on the destination server (which prevents the delivery of the message to the mailbox). <br/> The destination messaging system has issues with Transport Neutral Encryption Format (TNEF) messages (also known as rich text format or RTF in Outlook). For example, meeting requests or messages with images embedded in the message body. <br/> If the destination domain uses the Sender Policy Framework (SPF) to check message sources, there may be SPF issues with your domain (for example, your SPF record doesn't include all email sources for your domain).|
 
-**Permanent delivery failures**
+### Permanent delivery failures
 
 |**Enhanced status code**|**Description**|**Possible causes and solutions.**|
 |:-----|:-----|:-----|
@@ -136,6 +135,3 @@ The following tables contain the enhanced status codes that are returned in NDRs
 |5.7.1|`Unable to relay` <br/> or <br/> `Client was not authenticated`|You have an application server or device that's trying to relay messages through Exchange. For more information, see [Allow anonymous relay on Exchange servers](../../mail-flow/connectors/allow-anonymous-relay.md). <br/> The recipient is configured to only accept messages from authenticated (typically, internal) senders. For more information, see [Configure message delivery restrictions for a mailbox](../../recipients/user-mailboxes/message-delivery-restrictions.md).|
 |5.7.3|`Cannot achieve Exchange Server authentication` <br/> or <br/> `Not Authorized`|A firewall or other device is blocking the Extended SMTP command that's required for Exchange Server authentication (X-EXPS). <br/> Internal email traffic is flowing through connectors that aren't configured to use the Exchange Server authentication method . Verify the remote IP address ranges on any custom Receive connectors.|
 |5.7.900 <br/> to <br/> 5.7.999|`Delivery not authorized, message refused`|The message was rejected by a mail flow rule (also known as a transport rule). This enhanced status code range is available when the rule is configured to reject messages (otherwise, the default code that's used is 5.7.1). For more information, see [Mail flow rule actions in Exchange Server](../../policy-and-compliance/mail-flow-rules/actions.md).|
-
-
-

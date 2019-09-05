@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 3d69f76d-ff3c-46c1-b962-6a1baa425d8a
 ms.date: 4/19/2018
+ms.reviewer: 
 title: Mail-enable or mail-disable a public folder
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -102,6 +103,3 @@ Add-PublicFolderClientPermission "\Customer Feedback" -AccessRights CreateItems 
 ```
 
 For detailed syntax and parameter information, see [Add-PublicFolderClientPermission](http://technet.microsoft.com/library/d68ad7a9-daa0-4e6d-b819-5cca891c8fd9.aspx).
-
-
-

@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: Converting a mailbox to a different type of mailbox is very similar to the experience in earlier versions of Exchange. You must still use the Set-Mailbox cmdlet in Exchange Online PowerShell to do the conversion.
 ms.topic: article
-author: kwekua
-ms.author: kwekua
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: dfed045e-a740-4a90-aff9-c58d53592f79
 ms.date: 4/26/2017
+ms.reviewer: 
 title: Convert a mailbox
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -35,7 +36,7 @@ You can convert the following mailboxes from one type to another:
 Note that if your organization uses a hybrid Exchange environment, you need to manage your mailboxes by using the on-premises Exchange management tools. To convert a mailbox in a hybrid environment, you might need to move the mailbox back to on-premises Exchange, convert the mailbox type, and then move it back to Office 365.
 
 > [!IMPORTANT]
->  If you are converting a user mailbox to a shared mailbox, you should either remove any mobile devices from the mailbox before the conversion, or you should block mobile access to the mailbox after the conversion. This is because once the mailbox is converted to a shared mailbox, mobile functionality will not work properly. Additionally, if you are trying to prevent access to the converted mailbox, you might have to reset the password. For more information on blocking access, see [Remove a former employee from Office 365](https://go.microsoft.com/fwlink/p/?linkid=847873).
+> If you are converting a user mailbox to a shared mailbox, you should either remove any mobile devices from the mailbox before the conversion, or you should block mobile access to the mailbox after the conversion. This is because once the mailbox is converted to a shared mailbox, mobile functionality will not work properly. Additionally, if you are trying to prevent access to the converted mailbox, you might have to reset the password. For more information on blocking access, see [Remove a former employee from Office 365](https://go.microsoft.com/fwlink/p/?linkid=847873). <br/><br/> Delegated Access Permission (DAP) partners with Administer On Behalf Of (AOBO) permissions can't use the procedures in this topic to convert customer mailboxes. Only members of the Organization Management role group in Exchange Online (global admins) can convert mailboxes.
 
 ## Use Exchange Online PowerShell to convert a mailbox
 
@@ -75,6 +76,3 @@ For detailed syntax and parameter information, see [Get-Mailbox](https://technet
 
 > [!TIP]
 > Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
-
-
-

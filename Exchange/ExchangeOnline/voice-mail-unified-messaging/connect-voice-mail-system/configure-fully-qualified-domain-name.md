@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can configure a Unified Messaging (UM) IP gateway with either an IP address or a fully qualified domain name (FQDN). When you create a UM IP gateway, you must define the IP address or the FQDN configured on the VoIP gateway, IP PBX, or session border controller (SBC) that you're using. You can change the IP address or FQDN after the UM IP gateway is created.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: af093f87-59b7-44a8-a9a2-8f17f0cc7db8
 ms.date: 11/17/2014
-title: Configure a fully qualified domain name
+ms.reviewer: 
+title: Configure a fully qualified domain name in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Configure a fully qualified domain name
+# Configure a fully qualified domain name in Exchange Online
 
 You can configure a Unified Messaging (UM) IP gateway with either an IP address or a fully qualified domain name (FQDN). When you create a UM IP gateway, you must define the IP address or the FQDN configured on the VoIP gateway, IP PBX, or session border controller (SBC) that you're using. You can change the IP address or FQDN after the UM IP gateway is created.
 
@@ -37,7 +38,7 @@ For additional management tasks related to UM IP gateways, see [UM IP gateway pr
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to configure an FQDN
 
@@ -63,6 +64,3 @@ This example configures a UM IP gateway named `MySBC` with an FQDN of sbc.contos
 ```
 Set-UMIPGateway -Identity MySBC -Address sbc.contoso.com -Port 5061
 ```
-
-
-

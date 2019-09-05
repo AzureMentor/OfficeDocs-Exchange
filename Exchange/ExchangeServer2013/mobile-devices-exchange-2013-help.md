@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Mobile devices: Exchange 2013 Help'
 TOCTitle: Mobile devices
 ms:assetid: 93a949e7-b3ef-43ea-ae0c-6698826fc8d2
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb232129(v=EXCHG.150)
 ms:contentKeyID: 49360512
 ms.date: 08/16/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Mobile devices
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Mobile devices that are enabled for Microsoft Exchange ActiveSync let users access most of their Microsoft Exchange mailbox data any time, anywhere. There are many different mobile phones and devices enabled for Exchange ActiveSync. These include Windows Phones, Nokia mobile phones, Android phones and tablets, and the Apple iPhone, iPod, and iPad.
 
@@ -35,5 +36,4 @@ Exchange ActiveSync allows users to generate a recovery password. This recovery 
 
 ## POP3 and IMAP4
 
-If your mobile device doesn’t support Exchange ActiveSync, or you don’t need the rich feature set that Exchange ActiveSync provides, you can use POP3 or IMAP4 to access your email on your mobile device. For more information about POP3 and IMAP4 access to your mailbox, see [POP3 and IMAP4 in Exchange Server 2013](pop3-and-imap4-in-exchange-server-2013-exchange-2013-help.md).
-
+If your mobile device doesn't support Exchange ActiveSync, or you don't need the rich feature set that Exchange ActiveSync provides, you can use POP3 or IMAP4 to access your email on your mobile device. For more information about POP3 and IMAP4 access to your mailbox, see [POP3 and IMAP4 in Exchange Server 2013](pop3-and-imap4-in-exchange-server-2013-exchange-2013-help.md).

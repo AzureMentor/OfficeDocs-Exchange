@@ -1,16 +1,18 @@
 ---
 localization_priority: Normal
 ms.topic: article
-author: maggsl
-ms.author: v-maleo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 708c71d5-7d6a-40b8-966b-eed82bc0d186
 ms.date: 
+ms.reviewer: 
+manager: serdars
 description: Admins can learn how to use a screen reader to create mail flow rules (also known as transport rules) in the Exchange admin center (EAC) in Exchange Online.
 title: Use a screen reader to configure mail flow rules in the Exchange admin center in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.custom: A11y_UseSR
 ms.service: exchange-online
 
@@ -46,7 +48,7 @@ To complete the tasks covered in this topic, [Use a screen reader to open the Ex
 
 ## Create a mail flow rule
 
-1. In the EAC, to move the focus to the first link in the navigation pane— **Dashboard** —press Ctrl+F6 *twice*. You hear "Dashboard, Primary navigation link..
+1. In the EAC, to move the focus to the first link in the navigation pane (**Dashboard**) press Ctrl+F6 *twice*. You hear "Dashboard, Primary navigation link..
 
 2. To move the focus to the **mail flow** link in the navigation pane, press the Tab key until you hear "Mail flow, Primary navigation link." Press Enter.
 
@@ -123,4 +125,3 @@ To complete the tasks covered in this topic, [Use a screen reader to open the Ex
 
      > [!TIP]
      > To turn off a new rule, press the Tab key to tab through the elements of the **rules** content area of the page, use the Up Arrow and Down Arrow keys to select a rule, and then press Spacebar. To hear the settings for a selected rule, press the Tab key until the focus moves to the details pane for the selected rule, and you hear the details for the rule.
-

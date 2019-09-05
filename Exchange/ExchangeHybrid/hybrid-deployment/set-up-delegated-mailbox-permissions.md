@@ -1,28 +1,29 @@
 ---
 title: "Configure Exchange to support delegated mailbox permissions in a hybrid deployment"
-ms.author: dstrome
-author: dstrome
+ms.author: dmaguire
+author: msdmaguire
 manager: serdars
-ms.audience: ITPro
+audience: ITPro
 ms.topic: article
 ms.prod: exchange-server-it-pro
 localization_priority: Normal
-ms.collection: 
+ms.collection:
 - Hybrid
 - M365-email-calendar
 ms.assetid: a2a10cb3-4557-4ff5-8191-c653522f4512
-description: "Delegated mailbox permissions enable someone to manage some part of another user's mailbox. A common example of this is an administrative assistant who needs to manage an executive's mailbox and calendar. Hybrid deployments between an on-premises Exchange organization and Office 365 support the Full Access and Send on Behalf of delegated mailbox permissions. However, depending on the version of Exchange you have installed in your on-premises organization, you might need to perform additional configuration to use delegated mailbox permissions in a hybrid deployment. The following lists the versions of Exchange that support delegated mailbox permissions in a hybrid deployment and whether additional configuration is needed for that version."
+ms.reviewer: 
+description: "Delegated mailbox permissions enable someone to manage some part of another user's mailbox. A common example of this is an administrative assistant who needs to manage an executive's mailbox and calendar. Hybrid deployments between an on-premises Exchange organization and Office 365 support the Full Access and Send on Behalf delegated mailbox permissions. However, depending on the version of Exchange you have installed in your on-premises organization, you might need to perform additional configuration to use delegated mailbox permissions in a hybrid deployment. The following lists the versions of Exchange that support delegated mailbox permissions in a hybrid deployment and whether additional configuration is needed for that version."
 ---
 
 # Configure Exchange to support delegated mailbox permissions in a hybrid deployment
 
-Delegated mailbox permissions enable someone to manage some part of another user's mailbox. A common example of this is an administrative assistant who needs to manage an executive's mailbox and calendar. Hybrid deployments between an on-premises Exchange organization and Office 365 support the **Full Access** and **Send on Behalf of** delegated mailbox permissions. However, depending on the version of Exchange you have installed in your on-premises organization, you might need to perform additional configuration to use delegated mailbox permissions in a hybrid deployment. The following lists the versions of Exchange that support delegated mailbox permissions in a hybrid deployment and whether additional configuration is needed for that version. 
+Delegated mailbox permissions enable someone to manage some part of another user's mailbox. A common example of this is an administrative assistant who needs to manage an executive's mailbox and calendar. Hybrid deployments between an on-premises Exchange organization and Office 365 support the **Full Access** and **Send on Behalf** delegated mailbox permissions. However, depending on the version of Exchange you have installed in your on-premises organization, you might need to perform additional configuration to use delegated mailbox permissions in a hybrid deployment. The following lists the versions of Exchange that support delegated mailbox permissions in a hybrid deployment and whether additional configuration is needed for that version.
 
-- **Exchange 2016**: Additional configuration is required. 
+- **Exchange 2016**: Additional configuration is required.
 
-- **Exchange 2013**: A supported Exchange 2013 cumulative update (CU) and additional configuration are required. 
+- **Exchange 2013**: A supported Exchange 2013 cumulative update (CU) and additional configuration are required.
 
-- **Exchange 2010**: A supported Exchange 2010 update roll (RU) and additional configuration are required. 
+- **Exchange 2010**: A supported Exchange 2010 update roll (RU) and additional configuration are required.
 
 For more information about the specific requirements to support delegated mailbox permissions in a hybrid deployment, take a look at [Permissions in Exchange hybrid deployments](../permissions.md).
 
@@ -42,7 +43,7 @@ What you need to do to enable support for delegated mailbox permissions depends 
 
 ### Enable ACLable object synchronization
 
-To enable ACLable object synchronization at the organization level, do the following. 
+To enable ACLable object synchronization at the organization level, do the following.
 
 1. Install the latest version of Azure Active Directory Connect (AAD Connect) on all of your AAD Connect servers. This is needed to allow AAD Connect to synchronize the attributes needed to support hybrid permissions. You can download AAD Connect from [Microsoft Azure Active Directory Connect](http://go.microsoft.com/fwlink/p/?LinkID=510956).
 
@@ -54,13 +55,12 @@ To enable ACLable object synchronization at the organization level, do the follo
    Set-OrganizationConfig -ACLableSyncedObjectEnabled $True
    ```
 
-After you do this, any mailboxes that you move to Office 365 will be properly configured to support delegated mailbox permissions. If mailboxes were moved to Office 365 prior to you completing these steps, you'll need to manually enable ACLs on those mailboxes using the steps in [Enable ACLs on remote mailboxes](set-up-delegated-mailbox-permissions.md#EnableACLs).
+After you do this, any mailboxes that you move to Office 365 will be properly configured to support delegated mailbox permissions. If mailboxes were moved to Office 365 prior to you completing these steps, you'll need to manually enable ACLs on those mailboxes using the steps in [Enable ACLs on remote mailboxes](#enable-acls-on-remote-mailboxes).
 
 > [!IMPORTANT]
-> ACLs aren't enabled on remote mailboxes created in Office 365. If you create a remote mailbox in Office 365, you'll need to follow the steps in the Enable ACLs on remote mailboxes section to enable ACLs on that remote mailbox. To avoid this extra step, we recommend that you create the mailbox on an on-premises Exchange server and then move the mailbox to Office 365. 
+> ACLs aren't enabled on remote mailboxes created in Office 365. If you create a remote mailbox in Office 365, you'll need to follow the steps in the Enable ACLs on remote mailboxes section to enable ACLs on that remote mailbox. To avoid this extra step, we recommend that you create the mailbox on an on-premises Exchange server and then move the mailbox to Office 365.
 
 ### Enable ACLs on remote mailboxes
-<a name="EnableACLs"> </a>
 
 To enable ACLs on mailboxes moved to Office 365 before ACLable object synchronization was enabled at the organization level, do the following.
 

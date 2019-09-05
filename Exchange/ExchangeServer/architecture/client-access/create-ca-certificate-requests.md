@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: 'Summary: Learn how to create a certificate request in Exchange Server that you provide to a certification authority.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: efb00de7-070b-46bf-a2fc-00d07ae085c1
 ms.date: 6/7/2018
+ms.reviewer: 
 title: Create an Exchange Server certificate request for a certification authority
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -24,7 +25,7 @@ You can create certificate requests in the Exchange admin center (EAC) or in the
 
 ## What do you need to know before you begin?
 
-- Estimated time to complete: 5 minutes to complete the new certificate request. However, more time is required before the request results in a certificate. For more information, see [Next steps](create-ca-certificate-requests.md#NextSteps).
+- Estimated time to complete: 5 minutes to complete the new certificate request. However, more time is required before the request results in a certificate. For more information, see [Next steps](#next-steps).
 
 - You need to plan carefully to choose the type of certificate that you want, and the host names that are required in the certificate. For more information, see [Digital certificates and encryption in Exchange Server](certificates.md).
 
@@ -39,7 +40,7 @@ You can create certificate requests in the Exchange admin center (EAC) or in the
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to create a new certificate request
 
@@ -49,75 +50,75 @@ You can create certificate requests in the Exchange admin center (EAC) or in the
 
 3. The **New Exchange certificate** wizard opens. On the **This wizard will create a new certificate or a certificate request file** page, verify that **Create a request for a certificate from a certification authority** is selected, and then click **Next**.
 
-    **Note:** To create a new self-signed certificate, see [Create a new Exchange Server self-signed certificate](create-self-signed-certificates.md).
+   **Note:** To create a new self-signed certificate, see [Create a new Exchange Server self-signed certificate](create-self-signed-certificates.md).
 
 4. On the **Friendly name for this certificate** page, enter a descriptive name for the certificate, and then click **Next**.
 
 5. On the **Request a wildcard certificate** page, make one of the following choices:
 
-  - **If you want a wildcard certificate**: Select **Request a wildcard certificate**, and enter the wildcard character (\*) and the domain in the **Root domain** field. For example, \*.contoso.com or \*.eu.contoso.com. When you're finished, click **Next**.
+   - **If you want a wildcard certificate**: Select **Request a wildcard certificate**, and enter the wildcard character (\*) and the domain in the **Root domain** field. For example, \*.contoso.com or \*.eu.contoso.com. When you're finished, click **Next**.
 
-  - **If you want a subject alternative name (SAN) certificate**: Make no selections on this page, and click **Next**.
+   - **If you want a subject alternative name (SAN) certificate**: Make no selections on this page, and click **Next**.
 
-  - **If you want a certificate for a single host**: Make no selections on this page, and click **Next**.
+   - **If you want a certificate for a single host**: Make no selections on this page, and click **Next**.
 
 6. In the **Store certificate request on this server** page, click **Browse** and select the Exchange server where you want to store the certificate request (where you want to install the certificate), click **OK**, and then click **Next**.
 
-    **Note:** Steps 7 and 8 only apply to a request for a SAN certificate, or a certificate for a single host. If you selected **Request a wildcard certificate**, skip to Step 9.
+   **Note:** Steps 7 and 8 only apply to a request for a SAN certificate, or a certificate for a single host. If you selected **Request a wildcard certificate**, skip to Step 9.
 
 7. The **Specify the domains you want to be included in your certificate** page is basically a worksheet that helps you to determine the internal and external host names that are required in the certificate for the following Exchange services:
 
-  - Outlook on the web
+   - Outlook on the web
 
-  - Offline address book generation (OAB)
+   - Offline address book generation (OAB)
 
-  - Exchange Web Services
+   - Exchange Web Services
 
-  - Exchange ActiveSync
+   - Exchange ActiveSync
 
-  - Autodiscover
+   - Autodiscover
 
-  - POP
+   - POP
 
-  - IMAP
+   - IMAP
 
-  - Outlook Anywhere
+   - Outlook Anywhere
 
-    If you enter a value for each service based on the location (internal or external), the wizard determines the host names that are required in the certificate, and the information is displayed on the next page. To modify a value for a service, click **Edit** (![Edit icon](../../media/ITPro_EAC_EditIcon.png)) and enter the host name value that you want to use (or delete the value). When you're finished, click **Next**.
+     If you enter a value for each service based on the location (internal or external), the wizard determines the host names that are required in the certificate, and the information is displayed on the next page. To modify a value for a service, click **Edit** (![Edit icon](../../media/ITPro_EAC_EditIcon.png)) and enter the host name value that you want to use (or delete the value). When you're finished, click **Next**.
 
-    If you've already determined the host name values that you need in the certificate, you don't need to fill out the information on this page. Instead, click **Next** to manually enter the host names on the next page.
+     If you've already determined the host name values that you need in the certificate, you don't need to fill out the information on this page. Instead, click **Next** to manually enter the host names on the next page.
 
 8. The **Based on your selections, the following domains will be included in your certificate** page lists the host names that will be included in the certificate request. The host name that's used in the certificate's **Subject** field is bold, which can be hard to see if that host name is selected. You can verify the host name entries that are required in the certificate based on the selections that you made on the previous page. Or, you can ignore the values from the last page and add, edit, or remove host name values.
 
-  - If you want a SAN certificate, the **Subject** field still requires one common name (CN) value. To select the host name for the certificate's **Subject** field, select the value and click **Set as common name** (check mark). The value should now appear bold.
+   - If you want a SAN certificate, the **Subject** field still requires one common name (CN) value. To select the host name for the certificate's **Subject** field, select the value and click **Set as common name** (check mark). The value should now appear bold.
 
-  - If you want a certificate for a single host name, select the other values one at a time and click **Remove** (![Remove icon](../../media/ITPro_EAC_RemoveIcon.png)).
+   - If you want a certificate for a single host name, select the other values one at a time and click **Remove** (![Remove icon](../../media/ITPro_EAC_RemoveIcon.png)).
 
-    **Notes:**
+     **Notes:**
 
-    - You can't delete the bold host name value that will be used for the certificate's **Subject** field. First, you need to select or add a different host name, and then click **Set as common name** (check mark).
+     - You can't delete the bold host name value that will be used for the certificate's **Subject** field. First, you need to select or add a different host name, and then click **Set as common name** (check mark).
 
-    - The changes that you make on this page might be lost if you click the **Back** button.
+     - The changes that you make on this page might be lost if you click the **Back** button.
 
 9. On the **Specify information about your organization** page, enter the following values:
 
-  - **Organization name**
+   - **Organization name**
 
-  - **Department name**
+   - **Department name**
 
-  - **City/Locality**
+   - **City/Locality**
 
-  - **State/Province**
+   - **State/Province**
 
-  - **Country/Region name**
+   - **Country/Region name**
 
-    **Note:** These X.500 values are included in the certificate's **Subject** field. Although a value is required in every field before you can proceed, the CA might not care about certain fields (for example, **Department name**), while other fields are very important (for example, **Country/Region name** and **Organization name**). Check the **Subject** field requirements of your CA.
+     **Note:** These X.500 values are included in the certificate's **Subject** field. Although a value is required in every field before you can proceed, the CA might not care about certain fields (for example, **Department name**), while other fields are very important (for example, **Country/Region name** and **Organization name**). Check the **Subject** field requirements of your CA.
 
-    When you're finished, click **Next**.
+     When you're finished, click **Next**.
 
 10. On the **Save the certificate request to the following file** page, enter the UNC path and filename for the certificate request. For example, `\\FileServer01\Data\ExchCertRequest.req`. When you're finished, click **Finish**.
 
-The certificate request appears in the list of Exchange certificates with a status value of **Pending**. For next steps, see the [Next steps](create-ca-certificate-requests.md#NextSteps) section.
+The certificate request appears in the list of Exchange certificates with a status value of **Pending**. For next steps, see the [Next steps](#next-steps) section.
 
 ## Use the Exchange Management Shell to create a new certificate request
 
@@ -200,7 +201,6 @@ To verify that you have successfully created a new certificate request, perform 
   ```
 
 ## Next steps
-<a name="NextSteps"> </a>
 
 The content of a Base64 encoded certificate request file looks like this:
 
@@ -236,6 +236,3 @@ You need to send this information to the CA. How you send it depends on the CA, 
 If the CA requires a binary certificate request that's encoded by DER (you used the **New-ExchangeCertificate** cmdlet with the _BinaryEncoded_ switch), you typically send the whole certificate request file to the CA.
 
 After you receive the certificate from the CA, you need to complete the pending certificate request. For instructions, see [Complete a pending Exchange Server certificate request](complete-pending-certificate-requests.md).
-
-
-

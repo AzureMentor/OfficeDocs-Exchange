@@ -1,24 +1,25 @@
 ---
 localization_priority: Normal
-description: 'MailTips are informative messages displayed to users in the InfoBar in Outlook Web App and Microsoft Outlook 2010 or later when a user does any of the following while composing an e-mail message:'
+description: 'MailTips are informative messages displayed to users in the InfoBar in Outlook on the web and Microsoft Outlook 2010 or later when a user does any of the following while composing an e-mail message:'
 ms.topic: article
 author: msdmaguire
 ms.author: dmaguire
 ms.assetid: df8ee7ae-2486-4890-b057-cda87b4cb1ec
 ms.date: 11/17/2014
+ms.reviewer: 
 title: Configure custom MailTips for recipients
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 
 # Configure custom MailTips for recipients
 
-MailTips are informative messages displayed to users in the InfoBar in Outlook Web App and Microsoft Outlook 2010 or later when a user does any of the following while composing an e-mail message:
+MailTips are informative messages displayed to users in the InfoBar in Outlook on the web (formerly known as Outlook Web App) and Microsoft Outlook 2010 or later when a user does any of the following while composing an e-mail message:
 
 - Add a recipient
 
@@ -59,15 +60,15 @@ In addition to the built-in MailTips that are available, you can create custom M
 
 2. Select any of the following recipient tabs based on the recipient type:
 
-  - **Mailboxes**
+   - **Mailboxes**
 
-  - **Groups**
+   - **Groups**
 
-  - **Resources**
+   - **Resources**
 
-  - **Contacts**
+   - **Contacts**
 
-  - **Shared**
+   - **Shared**
 
 3. On the recipient tab, select the recipient you want to modify, and click **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.gif).
 
@@ -111,11 +112,8 @@ Set-Mailbox -MailTipTranslations @{Add="ES:Esta caja no se supervisa."}
 
 To verify that you have successfully configured a MailTip for a recipient, do the following:
 
-1. In Outlook Web App or Outlook 2010 or later, compose an email message addressed to the recipient, but don't send it.
+1. In Outlook on the web or Outlook 2010 or later, compose an email message addressed to the recipient, but don't send it.
 
 2. Verify the MailTip appears in the InfoBar.
 
-3. If you configured additional MailTip translations, compose the message in Outlook Web App where the language setting matches the language of the MailTip translation to verify the results.
-
-
-
+3. If you configured additional MailTip translations, compose the message in Outlook on the web where the language setting matches the language of the MailTip translation to verify the results.

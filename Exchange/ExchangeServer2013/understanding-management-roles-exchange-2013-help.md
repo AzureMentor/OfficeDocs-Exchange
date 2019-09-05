@@ -1,51 +1,31 @@
-﻿---
+---
 title: 'Understanding management roles: Exchange 2013 Help'
 TOCTitle: Understanding management roles
 ms:assetid: 887b0a64-84b1-4b8c-9547-e456ea6f5dbd
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd298116(v=EXCHG.150)
 ms:contentKeyID: 49289340
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Understanding management roles
 
- 
-
 _**Applies to:** Exchange Server 2013_
 
-
 Management roles are part of the Role Based Access Control (RBAC) permissions model used in Microsoft Exchange Server 2013. Roles act as a logical grouping of cmdlets that are combined to provide access to view or modify the configuration of Exchange 2013 components, such as mailboxes, transport rules, and recipients. Management roles can be further combined into larger groupings called management role groups and management role assignment policies, which enable management of feature areas and recipient configuration. Role groups and role assignment policies assign permissions to administrators and end users, respectively. For more information about management role groups and management role assignment policies, see [Understanding Role Based Access Control](understanding-role-based-access-control-exchange-2013-help.md).
-
 
 > [!NOTE]
 > This topic focuses on advanced RBAC functionality. If you want to manage basic Exchange 2013 permissions, such as using the Exchange admin center (EAC) to add and remove members to and from role groups, create and modify role groups, or create and modify role assignment policies, see <A href="permissions-exchange-2013-help.md">Permissions</A>.
 
-
-
-**Contents**
-
-Built-in management roles
-
-Unscoped top-level management roles
-
-Custom management roles
-
-Management role hierarchy
-
-Management role entries
-
-Unscoped top-level role entries
-
-Management role types
-
-For more information
-
 Management role scopes and management role assignments are important components for the operation of management roles. For more information about these components, see the following topics:
 
-  - [Understanding management role scopes](understanding-management-role-scopes-exchange-2013-help.md)
+- [Understanding management role scopes](understanding-management-role-scopes-exchange-2013-help.md)
 
-  - [Understanding management role assignments](understanding-management-role-assignments-exchange-2013-help.md)
+- [Understanding management role assignments](understanding-management-role-assignments-exchange-2013-help.md)
 
 Looking for management tasks related to management roles? See [Permissions](permissions-exchange-2013-help.md).
 
@@ -53,23 +33,20 @@ Looking for management tasks related to management roles? See [Permissions](perm
 
 Exchange 2013 provides many built-in management roles that you can use to administer your organization. Each role includes the cmdlets and parameters necessary for users to manage specific Exchange components. The following are examples of some built-in management roles:
 
-  - **Mail Recipients**   Enables administrators to manage mailboxes, contacts, and mail users.
+- **Mail Recipients**: Enables administrators to manage mailboxes, contacts, and mail users.
 
-  - **Transport Rules**   Enables administrators or specialist users assigned the role to manage the transport rules feature.
+- **Transport Rules**: Enables administrators or specialist users assigned the role to manage the transport rules feature.
 
-  - **Distribution Groups**   Enables administrators or specialist users assigned the role to manage distribution groups and distribution group members.
+- **Distribution Groups**: Enables administrators or specialist users assigned the role to manage distribution groups and distribution group members.
 
-  - **MyPersonalInformation**   Enables end users to modify their own home phone number and Web site address.
+- **MyPersonalInformation**: Enables end users to modify their own home phone number and Web site address.
 
 For a complete list of the management roles included with Exchange 2013, see [Built-in management roles](built-in-management-roles-exchange-2013-help.md).
 
 You can take the built-in roles provided with Exchange 2013 and combine them in any way to create a permissions model that works with your business. For example, if you want members of a role group to manage recipients and public folders, you assign both the Mail Recipients and Public Folders roles to the role group. Most often, you assign roles to role groups or role assignment policies. You can also assign management roles directly to users if you want to control permissions at a granular level. We recommend that you use role groups and role assignment policies rather than direct user role assignment to simplify your permissions model.
 
-
 > [!NOTE]
 > You can only assign end-user management roles to role assignment policies.
-
-
 
 Built-in management roles can't be changed. You can, however, create management roles based on the built-in management roles, and then assign those new roles to role groups or role assignment policies. You can then change the new management roles to suit your needs. Doing so is an advanced task that you should rarely, if ever, need to do.
 
@@ -79,15 +56,13 @@ You need to assign management roles for them to take effect. Most often, you ass
 
 For more information about assigning management roles, see the following topics:
 
-  - [Manage role groups](manage-role-groups-exchange-2013-help.md)
+- [Manage role groups](manage-role-groups-exchange-2013-help.md)
 
-  - [Manage role assignment policies](manage-role-assignment-policies-exchange-2013-help.md)
+- [Manage role assignment policies](manage-role-assignment-policies-exchange-2013-help.md)
 
-  - [Add a role to a user or USG](add-a-role-to-a-user-or-usg-exchange-2013-help.md)
+- [Add a role to a user or USG](add-a-role-to-a-user-or-usg-exchange-2013-help.md)
 
 For more information about management role assignments, see [Understanding management role assignments](understanding-management-role-assignments-exchange-2013-help.md).
-
-Return to top
 
 ## Unscoped top-level management roles
 
@@ -103,27 +78,23 @@ The role entries that you add to an unscoped role must also be designated as an 
 
 The Organization Management role group doesn't, by default, have permissions to create or manage unscoped role groups. This is to prevent unscoped role groups from mistakenly being created or modified. The Organization Management role group can delegate the Unscoped Role Management management role to itself and other role assignees. For more information about how to create an unscoped top-level management role, see [Create an unscoped role](create-an-unscoped-role-exchange-2013-help.md).
 
-Return to top
-
 ## Custom management roles
 
 You can create custom management roles based on built-in Exchange roles when the built-in management roles don't match the needs of your users. When you create a custom management role, the new child role inherits all of the management role entries of the parent role. You can then choose which management role entries you want to keep in the custom management role and remove all of the entries you don't want.
 
 Custom roles become children of the role used to create the new role. You can only use management role entries in the new child role that exist in the parent role. For more information, see the following sections later in this topic:
 
-  - Management Role Hierarchy
+- Management Role Hierarchy
 
-  - Management Role Entries
+- Management Role Entries
 
 Creating custom management roles requires multiple steps and is an advanced task that you should rarely, if ever, need to perform. Before you create a custom management role, make sure one of the existing built-in management roles doesn't provide the permissions you need. For more information about the built-in management roles, or if you want to create custom management roles, see the following topics:
 
-  - [Built-in management roles](built-in-management-roles-exchange-2013-help.md)
+- [Built-in management roles](built-in-management-roles-exchange-2013-help.md)
 
-  - [Advanced permissions](advanced-permissions-exchange-2013-help.md)
+- [Advanced permissions](advanced-permissions-exchange-2013-help.md)
 
 For more information about how to create a management role, see [Create a role](create-a-role-exchange-2013-help.md).
-
-Return to top
 
 ## Management role hierarchy
 
@@ -143,11 +114,9 @@ The Seattle Recipient Administrators custom role is a child of the Mail Recipien
 
 All of the custom roles follow the same pattern as the roles discussed previously. For more information about how access to cmdlets is controlled on management roles, see Management Role Entries next in this topic.
 
-Return to top
-
 ## Management role entries
 
-Every management role, whether it’s a custom Exchange role or an unscoped role, must have at least one management role entry. An entry consists of a single cmdlet and its parameters, a script, or a special permission that you want to make available. If a cmdlet or script doesn't appear as an entry on a management role, that cmdlet or script isn't accessible via that role. Likewise, if a parameter doesn't exist in an entry, the parameter on that cmdlet or script isn't accessible via that role.
+Every management role, whether it's a custom Exchange role or an unscoped role, must have at least one management role entry. An entry consists of a single cmdlet and its parameters, a script, or a special permission that you want to make available. If a cmdlet or script doesn't appear as an entry on a management role, that cmdlet or script isn't accessible via that role. Likewise, if a parameter doesn't exist in an entry, the parameter on that cmdlet or script isn't accessible via that role.
 
 Exchange 2013 enables you to manage role entries based on built-in Exchange management top-level roles and role entries based on unscoped top-level management roles. Roles based on built-in Exchange top-level roles can only contain role entries that are Exchange 2013 cmdlets. To add custom scripts or non-Exchange cmdlets so that your users can use them, you need to add them as unscoped role entries to an unscoped top-level role. For more information about unscoped role entries, see Unscoped Top-Level Role Entries later in this topic.
 
@@ -157,11 +126,9 @@ For more information about managing role entries, see [Management roles and role
 
 ## Parent and child management role relationship
 
-As mentioned previously, a management role entry, including the cmdlet and its parameters, must exist in the immediate parent role to add the entry to the child role. For example, if the parent role doesn’t have an entry for **New-Mailbox**, the child role can't be assigned that cmdlet. Additionally, if **Set-Mailbox** is on the parent role but the *Database* parameter has been removed from the entry, the *Database* parameter on the **Set-Mailbox** cmdlet can't be added to the entry on the child role.
+As mentioned previously, a management role entry, including the cmdlet and its parameters, must exist in the immediate parent role to add the entry to the child role. For example, if the parent role doesn't have an entry for **New-Mailbox**, the child role can't be assigned that cmdlet. Additionally, if **Set-Mailbox** is on the parent role but the *Database* parameter has been removed from the entry, the *Database* parameter on the **Set-Mailbox** cmdlet can't be added to the entry on the child role.
 
 Because you can't add management role entries to child roles if the entries don't appear in parent roles, and because the role is based on a specific role type, you must carefully choose the parent role to copy when you want to create a customized role.
-
-Return to top
 
 ## Management role entry names
 
@@ -170,7 +137,6 @@ Management role entry names are a combination of the management role that they'r
 The wildcard character (\*) can be used in the role entry name to return all of the role entries that match the input you provide. The wildcard character can be used on either side of the backslash character. The following table contains a few variations on how you can use the wildcard character in a role entry name.
 
 **Management role entry name with wildcard characters**
-
 
 <table>
 <colgroup>
@@ -207,7 +173,6 @@ The wildcard character (\*) can be used in the role entry name to return all of 
 </tbody>
 </table>
 
-
 ## Unscoped top-level role entries
 
 Unscoped top-level role entries are used with unscoped top-level management roles to create roles based on custom scripts or non-Exchange cmdlets. Each unscoped role entry is associated with a single custom script or a non-Exchange cmdlet. To indicate that you want to create an unscoped role entry on an unscoped role, you need to specify the *UnscopedTopLevel* parameter on the **Add-ManagementRoleEntry** cmdlet.
@@ -220,26 +185,23 @@ Non-Exchange cmdlets that you add to an unscoped role entry must be installed on
 
 For more information about how to add an unscoped management role entry, see [Add a role entry to a role](add-a-role-entry-to-a-role-exchange-2013-help.md).
 
-Return to top
-
 ## Management role types
 
 Management role types are the foundation of all management roles. Types define the implicit scopes defined on all management roles of a specified role type and also act as a logical grouping of related roles. All management roles derived from the parent built-in management role have the same role type. Refer to the Management role hierarchy figure earlier in this topic for an illustration of this relationship. Management role types also represent the maximum set of cmdlets and their parameters that can be added to a role associated with a role type.
 
 Management role types are split into the following categories:
 
-  - **Administrative or specialist**   Roles associated with an administrative or specialist role types have a broader scope of impact in the Exchange organization. Roles of this role type enable tasks such as server or recipient management, organization configuration, compliance administration, auditing, and more.
+- **Administrative or specialist**: Roles associated with an administrative or specialist role types have a broader scope of impact in the Exchange organization. Roles of this role type enable tasks such as server or recipient management, organization configuration, compliance administration, auditing, and more.
 
-  - **User-focused**   Roles associated with a user-focused role type have a scope of impact closely tied with an individual user. Roles of this role type enable tasks such as user profile configuration and self management, management of user-owned distribution groups, and more.
-    
+- **User-focused**: Roles associated with a user-focused role type have a scope of impact closely tied with an individual user. Roles of this role type enable tasks such as user profile configuration and self management, management of user-owned distribution groups, and more.
+
     The names of roles associated with user-focused role types and user-focused role type names begin with My.
 
-  - **Specialty**   Roles associated with specialty role types enable tasks that aren't administrative or user-focused role types. Roles of this role type enable tasks such as application impersonation and the use of non-Exchange cmdlets or scripts.
+- **Specialty**: Roles associated with specialty role types enable tasks that aren't administrative or user-focused role types. Roles of this role type enable tasks such as application impersonation and the use of non-Exchange cmdlets or scripts.
 
 The following table lists all of the administrative management role types in Exchange 2013 and whether the configuration that's permitted by the role type is applied across the whole Exchange organization or only to an individual server. For more information about each of the management roles associated with these role types, including a description of each role, who may benefit from being assigned the role, and other information, see [Built-in management roles](built-in-management-roles-exchange-2013-help.md).
 
 **Administrative role types**
-
 
 <table>
 <colgroup>
@@ -264,7 +226,6 @@ The following table lists all of the administrative management role types in Exc
 
 > [!NOTE]
 > Permissions set directly on Active Directory objects may not be enforced through RBAC.
-
 
 </td>
 <td><p>Organization</p></td>
@@ -368,7 +329,7 @@ The following table lists all of the administrative management role types in Exc
 <tr class="even">
 <td><p><code>ExchangeVirtualDirectories</code></p></td>
 <td><p><a href="exchange-virtual-directories-role-exchange-2013-help.md">Exchange Virtual Directories role</a></p></td>
-<td><p>This role type is associated with roles that enable administrators to manage Outlook Web App, Microsoft ActiveSync, offline address book (OAB), Autodiscover, Windows PowerShell, and Exchange Administration Center virtual directories on individual servers.</p></td>
+<td><p>This role type is associated with roles that enable administrators to manage Outlook Web App, Microsoft ActiveSync, offline address book (OAB), Autodiscover, Windows PowerShell, and Exchange admin center virtual directories on individual servers.</p></td>
 <td><p>Server</p></td>
 </tr>
 <tr class="odd">
@@ -500,7 +461,7 @@ The following table lists all of the administrative management role types in Exc
 <li><p>The URL for the managed folder home page.</p></li>
 <li><p>The Microsoft Exchange recipient SMTP address and alternate email addresses.</p></li>
 <li><p>The resource mailbox property schema configuration.</p></li>
-<li><p>The Help URLs for the Exchange Administration Center and Outlook Web App.</p></li>
+<li><p>The Help URLs for the Exchange admin center and Outlook Web App.</p></li>
 </ul>
 <p>This role type doesn't include the permissions included in the <code>OrganizationClientAccess</code> or <code>OrganizationTransportSettings</code> role types.</p></td>
 <td><p>Organization</p></td>
@@ -591,7 +552,6 @@ The following table lists all of the administrative management role types in Exc
 
 > [!WARNING]
 > Roles associated with this role type grant permissions to cmdlets and scripts that should only be used under the direction of Microsoft Customer Service and Support.
-
 
 </td>
 <td><p>Organization</p></td>
@@ -698,11 +658,9 @@ The following table lists all of the administrative management role types in Exc
 </tbody>
 </table>
 
-
 The following table lists all of the user-focused management role types and their associated built-in management roles in Exchange 2013.
 
 **User-focused role types**
-
 
 <table>
 <colgroup>
@@ -786,9 +744,6 @@ The following table lists all of the user-focused management role types and thei
 </tbody>
 </table>
 
-
-Return to top
-
 ## For more information
 
 [New-ManagementRole](https://technet.microsoft.com/en-us/library/dd298073\(v=exchg.150\))
@@ -804,4 +759,3 @@ Return to top
 [New-ManagementRoleAssignment](https://technet.microsoft.com/en-us/library/dd335193\(v=exchg.150\))
 
 [Set-ManagementRoleAssignment](https://technet.microsoft.com/en-us/library/dd335173\(v=exchg.150\))
-

@@ -1,16 +1,17 @@
 ---
 localization_priority: Critical
-description: 'Summary: How to set up mail flow and client access in  and Exchange 2019.'
+description: 'Summary: How to set up mail flow and client access in Exchange 2016 and Exchange 2019.'
 ms.topic: get-started-article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 4acc7f2a-93ce-468c-9ace-d5f7eecbd8d4
 ms.date: 7/30/2018
+ms.reviewer: 
 title: Configure mail flow and client access on Exchange servers
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -73,21 +74,21 @@ Before clients can connect to your new server from the internet, you need to con
 
 2. In the Exchange server properties window that opens, select the **Outlook Anywhere** tab, configure the following settings:
 
-    **Specify the external host name...**: Enter the externally accessible FQDN that your external clients will use to connect to their mailboxes (for example, mail.contoso.com).
+   **Specify the external host name...**: Enter the externally accessible FQDN that your external clients will use to connect to their mailboxes (for example, mail.contoso.com).
 
-    **Specify the internal host name...**: Enter the internally accessible FQDN (for example, mail.contoso.com).
+   **Specify the internal host name...**: Enter the internally accessible FQDN (for example, mail.contoso.com).
 
-    When you're finished, click **Save**.
+   When you're finished, click **Save**.
 
 3. Go to **Servers** \> **Virtual directories** and then select **Configure external access domain** ![Configure icon](../../media/ITPro_EAC_ConfigureIcon.png).
 
 4. In the **Configure external access domain** window opens, configure the following settings:
 
-    1. **Select the Mailbox servers to use with the external URL**: Click **Add** ![Add icon](../../media/ITPro_EAC_AddIcon.png)
+   1. **Select the Mailbox servers to use with the external URL**: Click **Add** ![Add icon](../../media/ITPro_EAC_AddIcon.png)
 
-    2. In the **Select a server** dialog that opens, select the Mailbox server you want to configure and then click **Add**. After you've added all of the Mailbox servers that you want to configure, click **OK**.
+   2. In the **Select a server** dialog that opens, select the Mailbox server you want to configure and then click **Add**. After you've added all of the Mailbox servers that you want to configure, click **OK**.
 
-    3. **Enter the domain name you will use with your external Mailbox servers**: Enter the external domain that you want to apply (for example, mail.contoso.com). When you're finished, click **Save**.
+   3. **Enter the domain name you will use with your external Mailbox servers**: Enter the external domain that you want to apply (for example, mail.contoso.com). When you're finished, click **Save**.
 
 Some organizations use a unique Outlook on the web FQDN to protect against future changes to the underlying server FQDN. Many organizations use owa.contoso.com for their Outlook on the web FQDN instead of mail.contoso.com. If you want to configure a unique Outlook on the web FQDN, do the following steps. This checklist assumes you have configured a unique Outlook on the web FQDN.
 
@@ -95,19 +96,19 @@ Some organizations use a unique Outlook on the web FQDN to protect against futur
 
 2. The **owa (Default web site)** window opens. On the **General** tab in the **External URL** field, enter the following information:
 
-    - https://
+   - https://
 
-    - The unique Outlook on the web FQDN you want to use (for example, owa.contoso.com), and then append /owa. For example, https://owa.contoso.com/owa.
+   - The unique Outlook on the web FQDN you want to use (for example, owa.contoso.com), and then append /owa. For example, https://owa.contoso.com/owa.
 
-    - /owa
+   - /owa
 
-    In this example, the final value would be https://owa.contoso.com/owa.
+   In this example, the final value would be https://owa.contoso.com/owa.
 
     When you're finished, click **Save**.
 
-4. Back at **Servers** \> **Virtual directories**, select **ecp (Default Web Site)** on the server that you want to configure, and click **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.png).
+3. Back at **Servers** \> **Virtual directories**, select **ecp (Default Web Site)** on the server that you want to configure, and click **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.png).
 
-5. In the **ecp (Default web site)** window that opens, enter the same URL from the previous step, but append the value /ecp instead of /owa (for example, https://owa.contoso.com/ecp). When you're finished, click **Save**.
+4. In the **ecp (Default web site)** window that opens, enter the same URL from the previous step, but append the value /ecp instead of /owa (for example, https://owa.contoso.com/ecp). When you're finished, click **Save**.
 
 After you've configured the external URL in the Client Access services virtual directories on the Mailbox server, you need to configure your public DNS records for Autodiscover, Outlook on the web, and mail flow. The public DNS records should point to the external IP address or FQDN of your internet-facing Mailbox server and use the externally accessible FQDNs that you've configured on your Mailbox server. The recommended DNS records that you should create to enable mail flow and external client connectivity are described in the following table:
 
@@ -128,15 +129,15 @@ To verify that you've successfully configured the external URLs in the Client Ac
 
 3. Select a virtual directory and then, in the virtual directory details pane, verify that the **External URL** field is populated with the correct FQDN and service as shown in the following table:
 
-    |**Virtual directory**|**External URL value**|
-    |:-----|:-----|
-    |**Autodiscover**|No external URL displayed|
-    |**ECP**|https://owa.contoso.com/ecp|
-    |**EWS**|https://mail.contoso.com/EWS/Exchange.asmx|
-    |**Microsoft-Server-ActiveSync**|https://mail.contoso.com/Microsoft-Server-ActiveSync|
-    |**OAB**|https://mail.contoso.com/OAB|
-    |**OWA**|https://owa.contoso.com/owa|
-    |**PowerShell**|http://mail.contoso.com/PowerShell|
+   |**Virtual directory**|**External URL value**|
+   |:-----|:-----|
+   |**Autodiscover**|No external URL displayed|
+   |**ECP**|https://owa.contoso.com/ecp|
+   |**EWS**|https://mail.contoso.com/EWS/Exchange.asmx|
+   |**Microsoft-Server-ActiveSync**|https://mail.contoso.com/Microsoft-Server-ActiveSync|
+   |**OAB**|https://mail.contoso.com/OAB|
+   |**OWA**|https://owa.contoso.com/owa|
+   |**PowerShell**|http://mail.contoso.com/PowerShell|
 
 To verify that you've successfully configured your public DNS records, do the following steps:
 
@@ -166,35 +167,35 @@ For more information about internal and external URLs on virtual directories, se
 
 2. Store the host name of your Mailbox server in a variable that will be used in the next step. For example, Mailbox01.
 
-  ```
-  $HostName = "Mailbox01"
-  ```
+   ```
+   $HostName = "Mailbox01"
+   ```
 
 3. Run each of the following commands in the Exchange Management Shell to configure each internal URL to match the virtual directory's external URL.
 
-  ```
-  Set-EcpVirtualDirectory "$HostName\ECP (Default Web Site)" -InternalUrl ((Get-EcpVirtualDirectory "$HostName\ECP (Default Web Site)").ExternalUrl)
-  ```
+   ```
+   Set-EcpVirtualDirectory "$HostName\ECP (Default Web Site)" -InternalUrl ((Get-EcpVirtualDirectory "$HostName\ECP (Default Web Site)").ExternalUrl)
+   ```
 
-  ```
-  Set-WebServicesVirtualDirectory "$HostName\EWS (Default Web Site)" -InternalUrl ((Get-WebServicesVirtualDirectory "$HostName\EWS (Default Web Site)").ExternalUrl)
-  ```
+   ```
+   Set-WebServicesVirtualDirectory "$HostName\EWS (Default Web Site)" -InternalUrl ((Get-WebServicesVirtualDirectory "$HostName\EWS (Default Web Site)").ExternalUrl)
+   ```
 
-  ```
-  Set-ActiveSyncVirtualDirectory "$HostName\Microsoft-Server-ActiveSync (Default Web Site)" -InternalUrl ((Get-ActiveSyncVirtualDirectory "$HostName\Microsoft-Server-ActiveSync (Default Web Site)").ExternalUrl)
-  ```
+   ```
+   Set-ActiveSyncVirtualDirectory "$HostName\Microsoft-Server-ActiveSync (Default Web Site)" -InternalUrl ((Get-ActiveSyncVirtualDirectory "$HostName\Microsoft-Server-ActiveSync (Default Web Site)").ExternalUrl)
+   ```
 
-  ```
-  Set-OabVirtualDirectory "$HostName\OAB (Default Web Site)" -InternalUrl ((Get-OabVirtualDirectory "$HostName\OAB (Default Web Site)").ExternalUrl)
-  ```
+   ```
+   Set-OabVirtualDirectory "$HostName\OAB (Default Web Site)" -InternalUrl ((Get-OabVirtualDirectory "$HostName\OAB (Default Web Site)").ExternalUrl)
+   ```
 
-  ```
-  Set-OwaVirtualDirectory "$HostName\OWA (Default Web Site)" -InternalUrl ((Get-OwaVirtualDirectory "$HostName\OWA (Default Web Site)").ExternalUrl)
-  ```
+   ```
+   Set-OwaVirtualDirectory "$HostName\OWA (Default Web Site)" -InternalUrl ((Get-OwaVirtualDirectory "$HostName\OWA (Default Web Site)").ExternalUrl)
+   ```
 
-  ```
-  Set-PowerShellVirtualDirectory "$HostName\PowerShell (Default Web Site)" -InternalUrl ((Get-PowerShellVirtualDirectory "$HostName\PowerShell (Default Web Site)").ExternalUrl)
-  ```
+   ```
+   Set-PowerShellVirtualDirectory "$HostName\PowerShell (Default Web Site)" -InternalUrl ((Get-PowerShellVirtualDirectory "$HostName\PowerShell (Default Web Site)").ExternalUrl)
+   ```
 
 After you've configured the internal URL on the Mailbox server virtual directories, you need to configure your private DNS records for Outlook on the web and other connectivity. Depending on your configuration, you'll need to configure your private DNS records to point to the internal or external IP address or FQDN of your Mailbox server. Examples of recommended DNS records that you should create are described in the following table:
 
@@ -215,15 +216,15 @@ To verify that you've successfully configured the internal URL on the Mailbox se
 
 4. Verify that the **Internal URL** field is populated with the correct FQDN and service as shown in the following table:
 
-    |**Virtual directory**|**Internal URL value**|
-    |:-----|:-----|
-    |**Autodiscover**|No internal URL displayed|
-    |**ECP**|https://owa.contoso.com/ecp|
-    |**EWS**|https://mail.contoso.com/EWS/Exchange.asmx|
-    |**Microsoft-Server-ActiveSync**|https://mail.contoso.com/Microsoft-Server-ActiveSync|
-    |**OAB**|https://mail.contoso.com/OAB|
-    |**OWA**|https://owa.contoso.com/owa|
-    |**PowerShell**|http://mail.contoso.com/PowerShell|
+   |**Virtual directory**|**Internal URL value**|
+   |:-----|:-----|
+   |**Autodiscover**|No internal URL displayed|
+   |**ECP**|https://owa.contoso.com/ecp|
+   |**EWS**|https://mail.contoso.com/EWS/Exchange.asmx|
+   |**Microsoft-Server-ActiveSync**|https://mail.contoso.com/Microsoft-Server-ActiveSync|
+   |**OAB**|https://mail.contoso.com/OAB|
+   |**OWA**|https://owa.contoso.com/owa|
+   |**PowerShell**|http://mail.contoso.com/PowerShell|
 
 To verify that you have successfully configured your private DNS records, do the following:
 
@@ -235,21 +236,20 @@ To verify that you have successfully configured your private DNS records, do the
 
 ### Configure different internal and external URLs
 
-
 1. Open the EAC, and go to **Servers** \> **Virtual directories**,
 
 2. On the internet-facing Mailbox server, select the virtual directory that you want to configure, and then click **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.png).
 
 3. The virtual directory properties window opens. In the **Internal URL** field, replace the existing host name value in the URL (likely, the FQDN of the Mailbox server) with the new value that you want to use (for example, internal.contoso.com).
 
-  For example, in the properties of the Exchange Web Services (EWS) virtual directory, change the existing value from https://**Mailbox01.corp.contoso.com**/ews/exchange.asmx to https://**internal.contoso.com**/ews/exchange.asmx.
+   For example, in the properties of the Exchange Web Services (EWS) virtual directory, change the existing value from https://**Mailbox01.corp.contoso.com**/ews/exchange.asmx to https://**internal.contoso.com**/ews/exchange.asmx.
 
-  When you're finished, click **Save**.
+   When you're finished, click **Save**.
 
-3. Repeat the previous steps for each virtual directory you want to change.
+4. Repeat the previous steps for each virtual directory you want to change.
 
-    > [!NOTE]
-    > The ECP and OWA virtual directory internal URLs must be the same. You can't set an internal URL on the Autodiscover virtual directory.
+   > [!NOTE]
+   > The ECP and OWA virtual directory internal URLs must be the same. You can't set an internal URL on the Autodiscover virtual directory.
 
 After you've configured the internal URL on the Mailbox server virtual directories, you need to configure your private DNS records for Outlook on the web, and other connectivity. Depending on your configuration, you'll need to configure your private DNS records to point to the internal or external IP address or FQDN of your Mailbox server. An example of the recommended DNS record that you should create is described in the following table:
 
@@ -269,15 +269,15 @@ To verify that you've successfully configured the internal URLs in the Client Ac
 
 4. Verify that the **Internal URL** field is populated with the correct FQDN. For example, you may have set the internal URLs to use internal.contoso.com.
 
-|**Virtual directory**|**Internal URL value**|
-|:-----|:-----|
-|**Autodiscover**|No internal URL displayed|
-|**ECP**|https://internal.contoso.com/ecp|
-|**EWS**|https://internal.contoso.com/EWS/Exchange.asmx|
-|**Microsoft-Server-ActiveSync**|https://internal.contoso.com/Microsoft-Server-ActiveSync|
-|**OAB**|https://internal.contoso.com/OAB|
-|**OWA**|https://internal.contoso.com/owa|
-|**PowerShell**|http://internal.contoso.com/PowerShell|
+   |**Virtual directory**|**Internal URL value**|
+   |:-----|:-----|
+   |**Autodiscover**|No internal URL displayed|
+   |**ECP**|https://internal.contoso.com/ecp|
+   |**EWS**|https://internal.contoso.com/EWS/Exchange.asmx|
+   |**Microsoft-Server-ActiveSync**|https://internal.contoso.com/Microsoft-Server-ActiveSync|
+   |**OAB**|https://internal.contoso.com/OAB|
+   |**OWA**|https://internal.contoso.com/owa|
+   |**PowerShell**|http://internal.contoso.com/PowerShell|
 
 To verify that you've successfully configured your private DNS records, do the following:
 
@@ -293,19 +293,19 @@ Some services, such as Outlook Anywhere and Exchange ActiveSync, require certifi
 
 1. [Create an Exchange Server certificate request for a certification authority](../../architecture/client-access/create-ca-certificate-requests.md).
 
-  - You should request a certificate from a third-party CA so your clients automatically trust the certificate. For more information, see [Best practices for Exchange certificates](../../architecture/client-access/certificates.md#best-practices-for-exchange-certificates).
+   - You should request a certificate from a third-party CA so your clients automatically trust the certificate. For more information, see [Best practices for Exchange certificates](../../architecture/client-access/certificates.md#best-practices-for-exchange-certificates).
 
-  - If you configured your internal and external URLs to be the same, **Outlook on the web (when accessed from the internet)** and **Outlook on the web (when accessed from the Intranet)** should both show owa.contoso.com. **OAB (when accessed from the internet)** and **OAB (when accessed from the Intranet)** should show mail.contoso.com.
+   - If you configured your internal and external URLs to be the same, **Outlook on the web (when accessed from the internet)** and **Outlook on the web (when accessed from the Intranet)** should both show owa.contoso.com. **OAB (when accessed from the internet)** and **OAB (when accessed from the Intranet)** should show mail.contoso.com.
 
-  - If you configured the internal URLs to be internal.contoso.com, **Outlook on the web (when accessed from the internet)** should show owa.contoso.com and **Outlook on the web (when accessed from the Intranet)** should show internal.contoso.com.
+   - If you configured the internal URLs to be internal.contoso.com, **Outlook on the web (when accessed from the internet)** should show owa.contoso.com and **Outlook on the web (when accessed from the Intranet)** should show internal.contoso.com.
 
 2. [Complete a pending Exchange Server certificate request](../../architecture/client-access/complete-pending-certificate-requests.md).
 
 3. [Assign certificates to Exchange Server services](../../architecture/client-access/assign-certificates-to-services.md)
 
-  - At minimum, you should select **SMTP** and **IIS**.
+   - At minimum, you should select **SMTP** and **IIS**.
 
-  - If you receive the warning **Overwrite the existing default SMTP certificate?**, click **Yes**.
+   - If you receive the warning **Overwrite the existing default SMTP certificate?**, click **Yes**.
 
 ### How do you know this step worked?
 
@@ -315,9 +315,9 @@ To verify that you've successfully added a new certificate, do the following ste
 
 2. Select the new certificate and then, in the certificate details pane, verify that the following are true:
 
-  - **Status** shows **Valid**
+   - **Status** shows **Valid**
 
-  - **Assigned to services** shows, at minimum, **IIS** and **SMTP**.
+   - **Assigned to services** shows, at minimum, **IIS** and **SMTP**.
 
 ## How do you know this task worked?
 
@@ -330,4 +330,3 @@ To verify that you've configured mail flow and external client access, do the fo
 3. In the external recipient's mailbox, reply to the message you just sent from the Exchange mailbox. Verify the Exchange mailbox receives the message.
 
 4. Go to https://owa.contoso.com/owa and verify that there are no certificate warnings.
-

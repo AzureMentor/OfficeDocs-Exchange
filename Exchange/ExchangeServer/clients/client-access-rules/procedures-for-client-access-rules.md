@@ -2,14 +2,15 @@
 localization_priority: Normal
 description: 'Summary: Learn how to view, create, modify, delete, and test Client Access Rules in Exchange 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 monikerRange: exchserver-2019
 title: Procedures for Client Access Rules in Exchange 2019
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-server-it-pro
 ms.date: 9/12/2018
+ms.reviewer: 
 manager: serdars
 
 ---
@@ -237,4 +238,3 @@ Test-ClientAccessRule -User julia@contoso.com -AuthenticationType BasicAuthentic
 ```
 
 For detailed syntax and parameter information, see [Test-ClientAccessRule](http://technet.microsoft.com/library/d17ee6d8-e5f4-4b5d-977c-85e8dadeaf48.aspx).
-

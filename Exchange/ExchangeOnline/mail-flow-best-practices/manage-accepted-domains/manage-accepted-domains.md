@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Admins can learn how to view and modify accepted domains in Exchange Online.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 0fc0ecc0-e133-48fa-9d72-cb4793a73960
 ms.date: 
+ms.reviewer: 
 title: Manage accepted domains in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -18,9 +19,9 @@ manager: serdars
 
 # Manage accepted domains in Exchange Online
 
-When you add your domain to Office 365, it's called an accepted domain. This means that users in this domain can send and receive mail. For more information on how to add your domain to Office 365 using the Office 365 admin center, see [Add a domain to Office 365](https://support.office.com/article/6383f56d-3d09-4dcb-9b41-b5f5a5efd611).
+When you add your domain to Office 365, it's called an accepted domain. This means that users in this domain can send and receive mail. For more information on how to add your domain to Office 365 using the Microsoft 365 admin center, see [Add a domain to Office 365](https://support.office.com/article/6383f56d-3d09-4dcb-9b41-b5f5a5efd611).
 
-After you add your domain using the Office 365 admin center, you can use the Exchange admin center (EAC) to view your accepted domains and configure the domain type.
+After you add your domain using the Microsoft 365 admin center, you can use the Exchange admin center (EAC) to view your accepted domains and configure the domain type.
 
 There are two types of accepted domains in Exchange Online:
 
@@ -87,7 +88,7 @@ Get-AcceptedDomain -Identity contoso.com | Format-List
 
 ## Configure the domain type
 
-After you add a domain to your Exchange Online organization in the Office 365 admin center, you can configure the domain type.
+After you add a domain to your Exchange Online organization in the Microsoft 365 admin center, you can configure the domain type.
 
 ### Use the EAC to change the domain type
 
@@ -97,9 +98,9 @@ After you add a domain to your Exchange Online organization in the Office 365 ad
 
 3. In the **Accepted Domain** window, in the **This accepted domain is** section, select the domain type. The possible values are **Authoritative** and **Internal relay**.
 
-  - If you select **Authoritative**, you must confirm that you want to enable Directory Based Edge Blocking.
+   - If you select **Authoritative**, you must confirm that you want to enable Directory Based Edge Blocking.
 
-  - If you select **Internal Relay**, you can enable match subdomains to enable mail flow to all subdomains. For more information, see [Enable mail flow for subdomains in Exchange Online](enable-mail-flow-for-subdomains.md).
+   - If you select **Internal Relay**, you can enable match subdomains to enable mail flow to all subdomains. For more information, see [Enable mail flow for subdomains in Exchange Online](enable-mail-flow-for-subdomains.md).
 
 4. When you're finished, click **Save**.
 
@@ -126,4 +127,3 @@ To verify that you've successfully configured the domain type, do either of the 
 - In the EAC at **Mail flow** \> **Accepted domains**, click **Refresh** ![Refresh Icon](../../media/ITPro_EAC_RefreshIcon.png). In the list of accepted domains, verify the domain type value of the accepted domain is configured correctly.
 
 - In Exchange Online PowerShell, run the command `Get-AcceptedDomain`. In the list of accepted domains, verify the domain type value of the accepted domain is configured correctly.
-

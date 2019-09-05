@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to copy the results of an In-Place eDiscovery search to a discovery mailbox in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: article
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: bff2ce89-9e6f-494a-bd6a-2f2011507845
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Copy eDiscovery search results to a discovery mailbox
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -40,16 +41,17 @@ After you create an In-Place eDiscovery search in Exchange Server, you can use t
 
 4. In **Copy Search Results**, select from the following options:
 
-  - **Include unsearchable items**: Select this check box to include mailbox items that couldn't be searched (for example, messages with attachments of file types that couldn't be indexed by Exchange Search). For more information, see [Unsearchable Items in Exchange eDiscovery](http://technet.microsoft.com/library/32550081-9af9-474b-ae7b-28f1e68cad41.aspx).
+   - **Include unsearchable items**: Select this check box to include mailbox items that couldn't be searched (for example, messages with attachments of file types that couldn't be indexed by Exchange Search). For more information, see [Unsearchable Items in Exchange eDiscovery](http://technet.microsoft.com/library/32550081-9af9-474b-ae7b-28f1e68cad41.aspx).
 
-  - **Enable de-duplication**: Select this check box to exclude duplicate messages. Only a single instance of a message will be copied to the discovery mailbox.
+   - **Enable de-duplication**: Select this check box to exclude duplicate messages. Only a single instance of a message will be copied to the discovery mailbox.
 
-  - **Enable full logging**: Select this check box to include a full log in search results.
+   - **Enable full logging**: Select this check box to include a full log in search results.
 
-  - **Send me mail when the copy is completed**: Select this check box to get an email notification when the search is completed.
+   - **Send me mail when the copy is completed**: Select this check box to get an email notification when the search is completed.
 
-  - **Copy results to this discovery mailbox**: Click **Browse** to select the discovery mailbox where you want the search results copied to.
-    ![Copy Search Results](../../media/TA_MRM_CopySearchResults.gif)
+   - **Copy results to this discovery mailbox**: Click **Browse** to select the discovery mailbox where you want the search results copied to.
+
+     ![Copy Search Results](../../media/TA_MRM_CopySearchResults.gif)
 
 5. Click **Copy** to start the process to copy the search results to the specified discovery mailbox.
 

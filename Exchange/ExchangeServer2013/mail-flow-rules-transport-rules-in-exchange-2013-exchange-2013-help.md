@@ -1,66 +1,64 @@
-﻿---
-title: 'Mail flow rules (transport rules) in Exchange 2013: Exchange 2013 Help'
-TOCTitle: Mail flow rules (transport rules)
+---
+title: 'Transport rules in Exchange 2013: Exchange 2013 Help'
+TOCTitle: Transport rules
 ms:assetid: c3d2031c-fb7b-4866-8ae1-32928d0138ef
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd351127(v=EXCHG.150)
 ms:contentKeyID: 49289403
 ms.date: 04/28/2017
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-# Mail flow rules (transport rules) in Exchange 2013
-
- 
+# Transport rules in Exchange 2013
 
 _**Applies to:** Exchange Server 2013_
 
+You can use transport rules to identify and take action on messages that flow through your Exchange 2013 organization. Transport rules are similar to the Inbox rules that are available in Outlook and Outlook Web App. The main difference is transport rules take action on messages while they're in transit, and not after the message is delivered to the mailbox. Transport rules contain a richer set of conditions, exceptions, and actions, which provides you with the flexibility to implement many types of messaging policies.
 
-You can use mail flow rules (also known as transport rules) to identify and take action on messages that flow through your Exchange 2013 organization. Mail flow rules are similar to the Inbox rules that are available in Outlook and Outlook Web App. The main difference is mail flow rules take action on messages while they're in transit, and not after the message is delivered to the mailbox. Mail flow rules contain a richer set of conditions, exceptions, and actions, which provides you with the flexibility to implement many types of messaging policies.
+This article explains the components of transport rules, and how they work.
 
-This article explains the components of mail flow rules, and how they work.
+You can use the Exchange admin center (EAC) or the Exchange Management Shell to manage transport rules. For instructions on how to manage transport rules, see [Manage transport rules in Exchange 2013](manage-transport-rules-exchange-2013-help.md).
 
-For information about mail flow rules in Exchange Online, see [Mail flow rules in Exchange Online](https://technet.microsoft.com/en-us/library/jj919238\(v=exchg.150\)). For information about mail flow rules in Exchange Online Protection, see [Mail flow rules in Exchange Online Protection](https://technet.microsoft.com/en-us/library/dn271424\(v=exchg.150\))
+For each rule, you have the option of enforcing it, testing it, or testing it and notifying the sender. To learn more about the testing options, see [Test a transport rule](https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/test-mail-flow-rules) and [Policy Tips](https://docs.microsoft.com/en-us/exchange/security-and-compliance/data-loss-prevention/policy-tips).
 
-You can use the Exchange admin center (EAC) or the Exchange Management Shell to manage mail flow rules. For instructions on how to manage transport rules, see [Manage mail flow rules](https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/manage-mail-flow-rules).
+To implement specific messaging policies by using transport rules, see these topics:
 
-For each rule, you have the option of enforcing it, testing it, or testing it and notifying the sender. To learn more about the testing options, see [Test a mail flow rule](https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/test-mail-flow-rules) and [Policy Tips](https://docs.microsoft.com/en-us/exchange/security-and-compliance/data-loss-prevention/policy-tips).
+- [Use transport rules to inspect message attachments in Exchange 2013](use-transport-rules-to-inspect-message-attachments-exchange-2013-help.md)
 
-To implement specific messaging policies by using mail flow rules, see these topics:
+- [Common attachment blocking scenarios for transport rules](https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/common-attachment-blocking-scenarios)
 
-  - [Use transport rules to inspect message attachments in Exchange 2013](use-transport-rules-to-inspect-message-attachments-exchange-2013-help.md)
+- [Organization-wide disclaimers, signatures, footers, or headers in Exchange 2013](organization-wide-disclaimers-signatures-footers-or-headers-exchange-online-help.md)
 
-  - [Common attachment blocking scenarios for mail flow rules](https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/common-attachment-blocking-scenarios)
+- [Use transport rules so messages can bypass Clutter](https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/use-rules-to-bypass-clutter)
 
-  - [Organization-wide disclaimers, signatures, footers, or headers in Exchange 2013](organization-wide-disclaimers-signatures-footers-or-headers-exchange-online-help.md)
+- [Use transport rules to route email based on a list of words, phrases, or patterns](https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/use-rules-to-route-email)
 
-  - [Use mail flow rules so messages can bypass Clutter](https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/use-rules-to-bypass-clutter)
+- [Common message approval scenarios](https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/common-message-approval-scenarios)
 
-  - [Use mail flow rules to route email based on a list of words, phrases, or patterns](https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/use-rules-to-route-email)
+## Transport rule components
 
-  - [Common message approval scenarios](https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/common-message-approval-scenarios)
+A transport rule is made of conditions, exceptions, actions, and properties:
 
-## Mail flow rule components
+- **Conditions**: Identify the messages that you want to apply the actions to. Some conditions examine message header fields (for example, the To, From, or Cc fields). Other conditions examine message properties (for example, the message subject, body, attachments, message size, or message classification). Most conditions require you to specify a comparison operator (for example, equals, doesn't equal, or contains) and a value to match. If there are no conditions or exceptions, the rule is applied to all messages.
 
-A mail flow rule is made of conditions, exceptions, actions, and properties:
+    For more information about transport rule conditions in Exchange 2013, see [Transport rule conditions and exceptions (predicates) in Exchange 2013](mail-flow-rule-conditions-and-exceptions-predicates-in-exchange-2013-exchange-2013-help.md).
 
-  - **Conditions** Identify the messages that you want to apply the actions to. Some conditions examine message header fields (for example, the To, From, or Cc fields). Other conditions examine message properties (for example, the message subject, body, attachments, message size, or message classification). Most conditions require you to specify a comparison operator (for example, equals, doesn't equal, or contains) and a value to match. If there are no conditions or exceptions, the rule is applied to all messages.
-    
-    For more information about mail flow rule conditions in Exchange 2013, see [Mail flow rule conditions and exceptions (predicates) in Exchange 2013](mail-flow-rule-conditions-and-exceptions-predicates-in-exchange-2013-exchange-2013-help.md).
+- **Exceptions**: Optionally identify the messages that the actions shouldn't apply to. The same message identifiers that are available in conditions are also available in exceptions. Exceptions override conditions and prevent the rule actions from being applied to a message, even if the message matches all of the configured conditions.
 
-  - **Exceptions** Optionally identify the messages that the actions shouldn't apply to. The same message identifiers that are available in conditions are also available in exceptions. Exceptions override conditions and prevent the rule actions from being applied to a message, even if the message matches all of the configured conditions.
+- **Actions**: Specify what to do to messages that match the conditions in the rule, and don't match any of the exceptions. There are many actions available, such as rejecting, deleting, or redirecting messages, adding additional recipients, adding prefixes in the message subject, or inserting disclaimers in the message body.
 
-  - **Actions** Specify what to do to messages that match the conditions in the rule, and don't match any of the exceptions. There are many actions available, such as rejecting, deleting, or redirecting messages, adding additional recipients, adding prefixes in the message subject, or inserting disclaimers in the message body.
-    
-    For more information about mail flow rule actions in Exchange 2013, see [Mail flow rule actions in Exchange 2013](mail-flow-rule-actions-in-exchange-2013-exchange-2013-help.md).
+    For more information about transport rule actions in Exchange 2013, see [Transport rule actions in Exchange 2013](mail-flow-rule-actions-in-exchange-2013-exchange-2013-help.md).
 
-  - **Properties** Specify other rules settings that aren't conditions, exceptions or actions. For example, when the rule should be applied, whether to enforce or test the rule, and the time period when the rule is active.
-    
-    For more information, see the Mail flow rule properties section in this topic.
+- **Properties**: Specify other rules settings that aren't conditions, exceptions or actions. For example, when the rule should be applied, whether to enforce or test the rule, and the time period when the rule is active.
+
+    For more information, see the Transport rule properties section in this topic.
 
 ## Multiple conditions, exceptions, and actions
 
 The following table shows how multiple conditions, condition values, exceptions, and actions are handled in a rule.
-
 
 <table>
 <colgroup>
@@ -101,13 +99,9 @@ The following table shows how multiple conditions, condition values, exceptions,
 </tbody>
 </table>
 
+## Transport rule properties
 
-Return to top
-
-## Mail flow rule properties
-
-The following table describes the rule properties that are available in mail flow rules.
-
+The following table describes the rule properties that are available in transport rules.
 
 <table>
 <colgroup>
@@ -128,15 +122,15 @@ The following table describes the rule properties that are available in mail flo
 <td><p><em>Priority</em></p></td>
 <td><p>Indicates the order that the rules are applied to messages. The default priority is based on when the rule is created (older rules have a higher priority than newer rules, and higher priority rules are processed before lower priority rules).</p>
 <p>You change the rule priority in the EAC by moving the rule up or down in the list of rules. In the PowerShell, you set the priority number (0 is the highest priority).</p>
-<p>For example, if you have one rule to reject messages that include a credit card number, and another one requiring approval, you’ll want the reject rule to happen first, and stop applying other rules.</p>
-<p>For more information, see <a href="https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/manage-mail-flow-rules">Set the priority of mail flow rules</a>.</p></td>
+<p>For example, if you have one rule to reject messages that include a credit card number, and another one requiring approval, you'll want the reject rule to happen first, and stop applying other rules.</p>
+<p>For more information, see [Set the priority of a transport rule](manage-transport-rules-exchange-2013-help.md#set-the-priority-of-a-transport-rule).</p></td>
 </tr>
 <tr class="even">
 <td><p><strong>Mode</strong></p></td>
 <td><p><em>Mode</em></p></td>
 <td><p>You can specify whether you want the rule to start processing messages immediately, or whether you want to test rules without affecting the delivery of the message (with or without Data Loss Prevention or DLP Policy Tips).</p>
 <p>Policy Tips present a brief note in Outlook or Outlook on the web that provides information about possible policy violations to the person that's creating the message. For more information, see <a href="https://docs.microsoft.com/en-us/exchange/security-and-compliance/data-loss-prevention/policy-tips">Policy Tips</a>.</p>
-<p>For more information about the modes, see <a href="https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/test-mail-flow-rules">Test a mail flow rule</a>.</p></td>
+<p>For more information about the modes, see <a href="https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/test-mail-flow-rules">Test a transport rule</a>.</p></td>
 </tr>
 <tr class="odd">
 <td><p><strong>Activate this rule on the following date</strong></p>
@@ -175,17 +169,13 @@ The following table describes the rule properties that are available in mail flo
 </tbody>
 </table>
 
-
-Return to top
-
-## How mail flow rules are applied to messages
+## How transport rules are applied to messages
 
 UNRESOLVED\_TOKENBLOCK\_VAL(GENL\_TransportRules\_HowApplied)
 
 ## Differences in processing based on message type
 
-There are several types of messages that pass through an organization. The following table shows which messages types can be processed by mail flow rules.
-
+There are several types of messages that pass through an organization. The following table shows which messages types can be processed by transport rules.
 
 <table>
 <colgroup>
@@ -238,7 +228,6 @@ There are several types of messages that pass through an organization. The follo
 </tbody>
 </table>
 
-
 ## Transport rules and group membership
 
 When you define a transport rule using a condition that expands membership of a distribution group, the resulting list of recipients is cached by the Transport service on the Mailbox server that applies the rule. This is known as the *Expanded Groups Cache* and is also used by the Journaling agent for evaluating group membership for journal rules. By default, the Expanded Groups Cache stores group membership for four hours. Recipients returned by the recipient filter of a dynamic distribution group are also stored. The Expanded Groups Cache makes repeated round-trips to Active Directory and the resulting network traffic from resolving group memberships unnecessary.
@@ -247,45 +236,41 @@ In Exchange 2013, this interval and other parameters related to the Expanded Gro
 
 ## Rule storage and replication
 
-Mail flow rules that you create and configure on Mailbox servers are stored in Active Directory, and they're read and applied by the Transport service on all Mailbox servers in the organization. When you create, modify, or remove a mail flow rule, the change is replicated between the domain controllers in your organization. This allows Exchange to provide a consistent set of mail flow rules across the organization.
+Transport rules that you create and configure on Mailbox servers are stored in Active Directory, and they're read and applied by the Transport service on all Mailbox servers in the organization. When you create, modify, or remove a transport rule, the change is replicated between the domain controllers in your organization. This allows Exchange to provide a consistent set of transport rules across the organization.
 
 **Notes**:
 
-  - Replication between domain controllers depends on factors that aren't controlled by Exchange (for example, the number of Active Directory sites, and the speed of network links). Therefore, you need to consider replication delays when you implement mail flow rules in your organization. For more information about Active Directory replication, see [Introduction to Active Directory Replication and Topology Management Using Windows PowerShell](https://go.microsoft.com/fwlink/p/?linkid=274904).
+- Replication between domain controllers depends on factors that aren't controlled by Exchange (for example, the number of Active Directory sites, and the speed of network links). Therefore, you need to consider replication delays when you implement transport rules in your organization. For more information about Active Directory replication, see [Introduction to Active Directory Replication and Topology Management Using Windows PowerShell](https://go.microsoft.com/fwlink/p/?linkid=274904).
 
-  - Each Mailbox server caches expanded distribution groups to avoid repeated Active Directory queries to determine a group's membership. By default, entries in the expanded groups cache expire every four hours. Therefore, changes to the group's membership aren't detected by mail flow rules until the expanded groups cache is updated. To force an immediate update of the cache on a Mailbox server, restart the Microsoft Exchange Transport service. You need to restart the service on each Mailbox server where you want to forcibly update the cache.
+- Each Mailbox server caches expanded distribution groups to avoid repeated Active Directory queries to determine a group's membership. By default, entries in the expanded groups cache expire every four hours. Therefore, changes to the group's membership aren't detected by transport rules until the expanded groups cache is updated. To force an immediate update of the cache on a Mailbox server, restart the Microsoft Exchange Transport service. You need to restart the service on each Mailbox server where you want to forcibly update the cache.
 
-Mail flow rules that you create and configure on Edge Transport servers are stored in the local instance of AD LDS on the server. No automated replication of mail flow rules occurs on Edge Transport servers. Rules on the Edge Transport server apply only to messages that flow through the local server. If you need to apply the same set of mail flow rules on multiple Edge Transport servers, you can clone the Edge Transport server configuration, or export and import the mail flow rules. For more information, see [Edge Transport server cloned configuration](edge-transport-server-cloned-configuration-exchange-2013-help.md) and [Import or export mail flow rule collections](https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/manage-mail-flow-rules).
+Transport rules that you create and configure on Edge Transport servers are stored in the local instance of AD LDS on the server. No automated replication of transport rules occurs on Edge Transport servers. Rules on the Edge Transport server apply only to messages that flow through the local server. If you need to apply the same set of transport rules on multiple Edge Transport servers, you can clone the Edge Transport server configuration, or export and import the transport rules. For more information, see [Edge Transport server cloned configuration](edge-transport-server-cloned-configuration-exchange-2013-help.md) and [Import or export a transport rule collection](manage-transport-rules-exchange-2013-help.md#import-or-export-a-transport-rule-collection).
 
-Whenever the Transport service on a Mailbox server or Edge Transport server detects a modified mail flow rule, an event is logged in the Application log in the Event Viewer (Event ID 4002 on Mailbox servers, and Event ID 16028 on Edge Transport servers).
+Whenever the Transport service on a Mailbox server or Edge Transport server detects a modified transport rule, an event is logged in the Application log in the Event Viewer (Event ID 4002 on Mailbox servers, and Event ID 16028 on Edge Transport servers).
 
 ## Rule replication and storage in mixed environments
 
 There are two mixed environment scenarios that are common in Exchange 2013:
 
-  - **Hybrid deployments where part of your organization resides in Office 365**
-    
-    In a hybrid environment, there's no replication of rules between your on-premises Exchange organization and Office 365. Therefore, when you create a rule in Exchange, you need to create a matching rule in Office 365. Rules you create in Office 365 are stored in the cloud, whereas the rules you create in your on-premises organization are stored locally in Active Directory. When you manage rules in a hybrid environment, you need to keep the two sets of rules synchronized by making the change in both places, or making the change in one environment and then exporting the rules and importing them in the other environment.
-    
+- **Hybrid deployments where part of your organization resides in Office 365**
 
-    > [!IMPORTANT]
-    > Even though there is a substantial overlap between the conditions and actions that are available in Office 365 and Exchange Server, there are differences. If you plan on creating the same rule in both locations, make sure that all conditions and actions you plan to use are available. To see the list of available conditions and actions that are available in Office 365, see the following topics:<BR><A href="https://technet.microsoft.com/en-us/library/jj919235(v=exchg.150)">Mail flow rule conditions and exceptions (predicates) in Exchange Online</A><BR><A href="https://technet.microsoft.com/en-us/library/jj919237(v=exchg.150)">Mail flow rule actions in Exchange Online</A>
+  In a hybrid environment, there's no replication of rules between your on-premises Exchange organization and Office 365. Therefore, when you create a rule in Exchange, you need to create a matching rule in Office 365. Rules you create in Office 365 are stored in the cloud, whereas the rules you create in your on-premises organization are stored locally in Active Directory. When you manage rules in a hybrid environment, you need to keep the two sets of rules synchronized by making the change in both places, or making the change in one environment and then exporting the rules and importing them in the other environment.
 
+  > [!IMPORTANT]
+  > Even though there is a substantial overlap between the conditions and actions that are available in Office 365 and Exchange Server, there are differences. If you plan on creating the same rule in both locations, make sure that all conditions and actions you plan to use are available. To see the list of available conditions and actions that are available in Office 365, see the following topics:<BR><A href="https://technet.microsoft.com/en-us/library/jj919235(v=exchg.150)">Transport rule conditions and exceptions (predicates) in Exchange Online</A><BR><A href="https://technet.microsoft.com/en-us/library/jj919237(v=exchg.150)">Transport rule actions in Exchange Online</A>
 
+- **Coexistence with Exchange 2010 or Exchange 2007**
 
-  - **Coexistence with Exchange 2010 or Exchange 2007**
-    
-    When you coexist with Exchange 2010 or Exchange 2007, all mail flow rules are stored in Active Directory and replicated across your organization, regardless of the Exchange Server version you used to create the rules. However, all mail flow rules are associated with the Exchange Server server version that was used to create them, and are stored in a version-specific container in Active Directory. When you first deploy Exchange 2013 in your organization, any existing rules are imported to Exchange 2013 as part of the setup process. However, any changes afterwards would need to be made with both versions. For example, if you change an existing rule in Exchange 2013 (Exchange Management Shell or the EAC), you need to make the same change in Exchange 2010 (Exchange Management Shell or the UNRESOLVED\_TOKEN\_VAL(exEMC)). Or, you can export the rules from Exchange 2013 and import them into Exchange 2010.
-    
-    Exchange 2010 can't process rules that have the **Version** or **RuleVersion** value 15.*n*.*n*.*n*. To be sure all your rules can be processed, only use rules that have the value 14.*n*.*n*.*n*.
+  When you coexist with Exchange 2010 or Exchange 2007, all transport rules are stored in Active Directory and replicated across your organization, regardless of the Exchange Server version you used to create the rules. However, all transport rules are associated with the Exchange Server server version that was used to create them, and are stored in a version-specific container in Active Directory. When you first deploy Exchange 2013 in your organization, any existing rules are imported to Exchange 2013 as part of the setup process. However, any changes afterwards would need to be made with both versions. For example, if you change an existing rule in Exchange 2013 (Exchange Management Shell or the EAC), you need to make the same change in Exchange 2010 (Exchange Management Shell or the UNRESOLVED\_TOKEN\_VAL(exEMC)). Or, you can export the rules from Exchange 2013 and import them into Exchange 2010.
+
+  Exchange 2010 can't process rules that have the **Version** or **RuleVersion** value 15.*n*.*n*.*n*. To be sure all your rules can be processed, only use rules that have the value 14.*n*.*n*.*n*.
 
 ## For more information
 
-[Manage mail flow rules](https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/manage-mail-flow-rules)
+[Manage transport rules in Exchange 2013](manage-transport-rules-exchange-2013-help.md)
 
-[Mail flow rule conditions and exceptions (predicates) in Exchange 2013](mail-flow-rule-conditions-and-exceptions-predicates-in-exchange-2013-exchange-2013-help.md)
+[Transport rule conditions and exceptions (predicates) in Exchange 2013](mail-flow-rule-conditions-and-exceptions-predicates-in-exchange-2013-exchange-2013-help.md)
 
-[Mail flow rule actions in Exchange 2013](mail-flow-rule-actions-in-exchange-2013-exchange-2013-help.md)
+[Transport rule actions in Exchange 2013](mail-flow-rule-actions-in-exchange-2013-exchange-2013-help.md)
 
 [Transport agents](transport-agents-exchange-2013-help.md)
-

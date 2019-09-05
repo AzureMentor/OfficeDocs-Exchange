@@ -1,21 +1,22 @@
-﻿---
+---
 title: 'Receive connectors: Exchange 2013 Help'
 TOCTitle: Receive connectors
 ms:assetid: 17751a60-39fe-433f-84d2-bfc14ff4ba51
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Aa996395(v=EXCHG.150)
 ms:contentKeyID: 49289180
 ms.date: 06/02/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Receive connectors
 
- 
-
 _**Applies to:** Exchange Server 2013_
 
-
-Receive connectors control the flow of inbound messages to your Exchange organization. They are configured on computers running Microsoft Exchange Server 2013 with the Transport service, or in the Front End service on a Client Access server. They can be created in the Exchange Administration Center (EAC), or in the Exchange Management Shell.
+Receive connectors control the flow of inbound messages to your Exchange organization. They are configured on computers running Microsoft Exchange Server 2013 with the Transport service, or in the Front End service on a Client Access server. They can be created in the Exchange admin center (EAC), or in the Exchange Management Shell.
 
 By default, the Receive connectors that are required for internal mail flow are automatically created when a Client Access server or Mailbox server is installed.
 
@@ -25,29 +26,9 @@ Each Receive connector listens for inbound connections that match the settings o
 
 Receive connectors are scoped to a single server and determine how that specific server listens for connections. When you create a Receive connector on a Mailbox server running the Transport service, the Receive connector is stored in Active Directory as a child object of the server on which it's created.
 
-If you need additional Receive connectors for specific scenarios, you can create them by using the Exchange Administration Center (EAC) or the Exchange Management Shell. Each Receive connector must use a unique combination of IP address bindings, port number assignments, and remote IP address ranges from which mail is accepted.
+If you need additional Receive connectors for specific scenarios, you can create them by using the EAC or the Exchange Management Shell. Each Receive connector must use a unique combination of IP address bindings, port number assignments, and remote IP address ranges from which mail is accepted.
 
 For more information about how to create a Receive Connector, see [Receive connector procedures](receive-connector-procedures-exchange-2013-help.md).
-
-**Contents**
-
-Default Receive connectors created during setup
-
-Default Receive connectors created on a Mailbox server running the Transport service
-
-Default Receive connectors created on a Front End Transport server
-
-Receive connector types
-
-Receive connector permission groups
-
-Receive connector type specifications
-
-Receive connector permissions
-
-Receive connector authentication settings
-
-New Receive connector features in Exchange 2013
 
 ## Default Receive connectors created during setup
 
@@ -57,9 +38,9 @@ Certain Receive connectors are created by default when you install the Mailbox s
 
 When you install a Mailbox server running the Transport service, two Receive connectors are created. No additional Receive connectors are needed for typical operation, and in most cases the default Receive connectors don't require a configuration change. These connectors are the following:
 
-  - **Default \<server name\>**   Accepts connections from Mailbox servers running the Transport service and from Edge servers.
+- **Default \<server name\>**: Accepts connections from Mailbox servers running the Transport service and from Edge servers.
 
-  - **Client Proxy \<server name\>**   Accepts connections from front-end servers. Typically, messages are sent to a front-end server over SMTP.
+- **Client Proxy \<server name\>**: Accepts connections from front-end servers. Typically, messages are sent to a front-end server over SMTP.
 
 Each connector is assigned a *TransportRole* value. You can use it to determine the role the connector is running in. This can be helpful in cases where you are running multiple roles on a single server. In the case of each Receive connector previously mentioned, their *TransportRole* value is **HubTransport**.
 
@@ -69,11 +50,11 @@ To view the default Receive connectors and their parameter values, you can use t
 
 During installation, three Receive connectors are created on the Front End transport, or Client Access server. The default Front End Receive connector is configured to accept SMTP communications from all IP address ranges. Additionally, there is a Receive connector that can act as an outbound proxy for messages sent to the front-end server from Mailbox servers. Finally, there is a secure Receive connector configured to accept messages encrypted with Transport Layer Security (TLS). These connectors are the following:
 
-  - **Default FrontEnd \<server name\>**   Accepts connections from SMTP senders over port 25. This is the common messaging entry point into your organization.
+- **Default FrontEnd \<server name\>**: Accepts connections from SMTP senders over port 25. This is the common messaging entry point into your organization.
 
-  - **Outbound Proxy Frontend \<server name\>**   Accepts messages from a Send Connector on a back-end server, with front-end proxy enabled.
+- **Outbound Proxy Frontend \<server name\>**: Accepts messages from a Send Connector on a back-end server, with front-end proxy enabled.
 
-  - **Client Frontend \<server name\>**   Accepts secure connections, with Transport Layer Security (TLS) applied.
+- **Client Frontend \<server name\>**: Accepts secure connections, with Transport Layer Security (TLS) applied.
 
 In a typical installation, no additional Receive connectors are required.
 
@@ -95,21 +76,21 @@ Permission groups include *Anonymous*, *ExchangeUsers*, *ExchangeServers*, *Exch
 
 The type determines the default permission groups that are assigned to the Receive connector and the default authentication mechanisms that are available for session authentication. The following list describes the available types:
 
-1.  **Client**   Typically used to connect to clients not using Microsoft Office Outlook. It can use TLS authentication.
+1. **Client**: Typically used to connect to clients not using Microsoft Outlook. It can use TLS authentication.
 
-2.  **Custom**   Typically used in a cross-forest scenario, or in a scenario where your organization receives messages from an SMTP message transfer agent.
+2. **Custom**: Typically used in a cross-forest scenario, or in a scenario where your organization receives messages from an SMTP message transfer agent.
 
-3.  **Internal**   Used for communication between servers running the Transport service, or between Mailbox servers running the Transport service and third-party transfer agents.
+3. **Internal**: Used for communication between servers running the Transport service, or between Mailbox servers running the Transport service and third-party transfer agents.
 
-4.  **Internet**   Used to receive SMTP mail from the Internet.
+4. **Internet**: Used to receive SMTP mail from the Internet.
 
-5.  **Partner**   Use this type when you want to configure secure communication with a partner.
+5. **Partner**: Use this type when you want to configure secure communication with a partner.
 
 Each type is appropriate for a specific connection scenario. Select the type that has the default settings most applicable to the configuration that you want. You can modify permissions by using the **Add-ADPermission** and **Remove-ADPermission** cmdlets. For more information, see the following topics:
 
-  - [Add-ADPermission](https://technet.microsoft.com/en-us/library/bb124403\(v=exchg.150\))
+- [Add-ADPermission](https://technet.microsoft.com/en-us/library/bb124403\(v=exchg.150\))
 
-  - [Remove-ADPermission](https://technet.microsoft.com/en-us/library/aa996048\(v=exchg.150\))
+- [Remove-ADPermission](https://technet.microsoft.com/en-us/library/aa996048\(v=exchg.150\))
 
 ## Receive connector permissions
 
@@ -125,9 +106,8 @@ In the EAC, you use the authentication settings for a Receive connector to speci
 
 The following features were added in Exchange 2013:
 
-  - With the *TlsCertificateName* parameter you can specify the local Certificate Authority (CA) issued certificate to use for secure mail. It helps minimize the risk of fraudulent certificates.
+- With the *TlsCertificateName* parameter you can specify the local Certificate Authority (CA) issued certificate to use for secure mail. It helps minimize the risk of fraudulent certificates.
 
-  - The *TransportRole* parameter designates the server role associated with this connector. It is typically used to specify the server role when you host multiple server roles on a single computer.
+- The *TransportRole* parameter designates the server role associated with this connector. It is typically used to specify the server role when you host multiple server roles on a single computer.
 
 See [New-ReceiveConnector](https://technet.microsoft.com/en-us/library/bb125139\(v=exchg.150\)) for more information about these parameters and other parameters for Receive connectors.
-

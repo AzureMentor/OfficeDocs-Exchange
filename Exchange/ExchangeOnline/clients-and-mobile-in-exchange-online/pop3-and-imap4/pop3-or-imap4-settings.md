@@ -6,13 +6,14 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: bf4ca453-e79c-4b87-a9a5-3ae1b21181e2
 ms.date: 4/29/2016
+ms.reviewer: 
 title: Set POP3 or IMAP4 settings for a user
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 
@@ -22,7 +23,7 @@ You use the **Set-CASMailbox** cmdlet to configure the PO3 and IMAP4 options for
 
 |**Parameter**|**Description**|**Values**|
 |:-----|:-----|:-----|
-|_PopForceICalForCalendarRetrievalOption_ <br/> _ImapForceICalForCalendarRetrievalOption_|Sets the preferred format for meeting requests. <br/> By default, meeting requests appear as Outlook Web App links. You can change them to iCal format.|`$true`: Meeting requests are all Outlook Web App links  <br/> `$false`: Meeting requests are all iCal format|
+|_PopForceICalForCalendarRetrievalOption_ <br/> _ImapForceICalForCalendarRetrievalOption_|Sets the preferred format for meeting requests. <br/> By default, meeting requests appear as Outlook on the web (formerly known as Outlook Web App) links. You can change them to iCal format.|`$true`: Meeting requests are all Outlook on the web links  <br/> `$false`: Meeting requests are all iCal format|
 |_PopSuppressReadReceipt_ <br/> _ImapSuppressReadReceipt_|Sets whether to send read receipts when a message is downloaded and again when it is opened or just when the message is opened  <br/> By default, if a read receipt is requested, two read receipts are sent: one when a user downloads a message and another when the user opens the message. You can change it so that only one read receipt is sent: when the user opens the message.|`$false`: POP3 or IMAP4 users are sent a read receipt each time a recipient downloads a message. Users are also sent a read receipt when the user opens the message. This is the default setting. <br/> `$true`: POP3 or IMAP4 users that use the **send read receipt for messages I send** option in their email client programs receive a read receipt only when the recipient opens the message.|
 |_PopMessagesRetrievalMimeFormat_ <br/> _ImapMessagesRetrievalMimeFormat_|Sets the preferred format for received messages. <br/> The default is to use the best format based on the message.|Use a numeral or a text value. <br/> `0` or `TextOnly`: Text only  <br/> `1` or `HtmlOnly`: HTML  <br/> `2` or `HtmlAndTextAlternative`: HTML and alternative text  <br/> `3` or `TextEnriched`: Enriched text  <br/> `4` or `TextEnrichedAndTextAlternative`: Enriched text and alternative text  <br/> `5` or `BestBodyFormat`: Best body format. This is the default value. <br/> `6` or `Tnef`: Transport-Neutral Encapsulation Format (TNEF). Also known as rich text format, Outlook rich text format, or MAPI rich text format.|
 |_PopEnableExactRFC822Size_ <br/> _ImapEnableExactRFC822Size_|Sets whether to calculate the exact size of messages. <br/> Changing this value is not recommended unless the default value causes problems for your email client. By default, the estimated message size, rather than the exact message size, is sent to the email client.|`$true`: Use actual message size. <br/> `$false`: Use estimated message size. This is the default.|
@@ -143,6 +144,3 @@ Get-CASMailbox USER01 | format-list *EnableExact*,*UseProtocolDefaults
 [Enable or Disable POP3 or IMAP4 access for a user](enable-or-disable-pop3-or-imap4-access.md)
 
 [Set-CASMailbox](https://technet.microsoft.com/library/ff7d4dc5-755e-4005-a0a3-631eed3f9b3b.aspx)
-
-
-

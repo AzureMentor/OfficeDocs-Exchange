@@ -1,16 +1,18 @@
 ---
 localization_priority: Normal
 ms.topic: article
-author: maggsl
-ms.author: v-maleo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 723ab221-3abe-40ee-8143-eee45e9d0519
 ms.date: 
+ms.reviewer: 
+manager: serdars
 description: Admins can learn how to use a screen reader to create a new mail contact in the Exchange admin center (EAC) in Exchange Online.
 title: Use a screen reader to add a new mail contact in the Exchange admin center in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.custom: A11y_UseSR
 ms.service: exchange-online
 
@@ -18,7 +20,7 @@ ms.service: exchange-online
 
 # Use a screen reader to add a new mail contact in the Exchange admin center in Exchange Online
 
-Using a screen reader with Exchange Online, you can use the Exchange admin center (EAC) to set up a *mail contact*  —a mail-enabled directory service object containing information about a person or entity that exists outside of your Exchange Online organization. Each mail contact has an external email address. For more information about mail contacts, refer to the [Recipients](https://go.microsoft.com/fwlink/p/?LinkId=798820) TechNet article.
+Using a screen reader with Exchange Online, you can use the Exchange admin center (EAC) to set up a *mail contact*: a mail-enabled directory service object containing information about a person or entity that exists outside of your Exchange Online organization. Each mail contact has an external email address. For more information about mail contacts, refer to the [Recipients](https://go.microsoft.com/fwlink/p/?LinkId=798820) TechNet article.
 
 ## Get started
 
@@ -73,4 +75,3 @@ To add a new mail contact, [use a screen reader to open the EAC](https://technet
    - **\*External email address**. Type the contact's email address that is outside of your organization. Email sent to the contact is forwarded to this email address.
 
 7. When you're finished, tab to the **Save** button. The **new mail contact** window closes, and the contact is added to the table in the **contacts** window.
-

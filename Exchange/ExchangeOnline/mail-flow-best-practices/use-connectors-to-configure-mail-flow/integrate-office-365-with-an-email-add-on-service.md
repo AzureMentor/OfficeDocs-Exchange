@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: Admins can learn how to integrate Office 365 with a third-party service that affects mail flow.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 7c5b7408-bfa2-4695-a6b7-21ddc8084d52
 ms.date: 
+ms.reviewer: 
 title: Scenario Integrate Office 365 with an email add-on service
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -78,7 +79,7 @@ The important settings for the connector are:
 
    ![In the new connector wizard, select From \> Office 365 and To \> Your organization's email server.](../../media/852fbdf3-6829-413a-9d08-63421efd10c6.png)
 
-When you're finished, click **Next**.
+   When you're finished, click **Next**.
 
 3. On the next page, configure these settings:
 
@@ -160,9 +161,9 @@ To verify that you've successfully created an outbound connector to route messag
 
 - In Exchange Online PowerShell, replace _\<Connector Name\>_ with the name of the connector, and run this command to verify the property values:
 
-   ```
-   Get-OutboundConnector -Identity "<Connector Name>" | Format-List Name,ConnectorType,IsTransportRuleScoped,UseMxRecord,SmartHosts,TlsSettings,TlsDomain,CloudServicesMailEnabled
-   ```
+  ```
+  Get-OutboundConnector -Identity "<Connector Name>" | Format-List Name,ConnectorType,IsTransportRuleScoped,UseMxRecord,SmartHosts,TlsSettings,TlsDomain,CloudServicesMailEnabled
+  ```
 
 ## Step 2: Create a mail flow rule to route unprocessed messages to the email add-on service
 
@@ -228,15 +229,15 @@ To verify that you've successfully created a mail flow rule to route unprocessed
 
 - In Exchange Online PowerShell, replace _\<Rule Name\>_ with the name of the rule, and run this command to verify the property values:
 
-   ```
-   Get-TransportRule -Identity "<Rule Name>" | Format-List Name,FromScope,RouteMessageOutboundConnector,ExceptIfHeaderContainsMessageHeader,ExceptIfHeaderContainsWords,StopRuleProcessing
-   ```
+  ```
+  Get-TransportRule -Identity "<Rule Name>" | Format-List Name,FromScope,RouteMessageOutboundConnector,ExceptIfHeaderContainsMessageHeader,ExceptIfHeaderContainsWords,StopRuleProcessing
+  ```
 
 ## Step 3: Add the custom certificate domain provided by the email add-on service as an accepted domain in Office 365
 
-1. Go to the Office 365 admin center at [https://portal.office.com/adminportal/home](https://portal.office.com/adminportal/home), and then click **Setup** \> **Domains**, and then click **Add domain**.
+1. Go to the Microsoft 365 admin center at [https://portal.office.com/adminportal/home](https://portal.office.com/adminportal/home), and then click **Setup** \> **Domains**, and then click **Add domain**.
 
-   ![In the Office 365 admin center, go to Setup \> Domains to add the certificate domain as an accepted domain.](../../media/5d4db406-5970-45f4-8955-2bc90d087b6f.png)
+   ![In the admin center, go to Setup \> Domains to add the certificate domain as an accepted domain.](../../media/5d4db406-5970-45f4-8955-2bc90d087b6f.png)
 
 2. In the **Add a domain** page that appears, enter the custom certificate domain that the email add-on service provided when you enrolled in the service (for example, S5HG3DCG14H8S1R2303RZHM4RX.smtp.contososignatureservice.com), and then click **Next**.
 
@@ -246,7 +247,7 @@ To verify that you've successfully created a mail flow rule to route unprocessed
 
    ![The TXT proof of domain ownership record for the custom certificate domain.](../../media/fd0ab875-925d-46ea-96fd-00924e6f298f.png)
 
-For more information, see [Add your domain to Office 365](https://go.microsoft.com/fwlink/p/?LinkID=278775)
+For more information, see [Add your domain to Office 365](https://docs.microsoft.com/en-us/office365/admin/setup/add-domain)
 
 ## Step 4: Create an inbound connector to receive messages from the email add-on service
 
@@ -304,7 +305,7 @@ To create the inbound connector from the email add-on service in Exchange Online
 New-InboundConnector -Name "<Descriptive Name>" -SenderDomains * -ConnectorType OnPremises -RequireTls $true -RestrictDomainsToCertificate $true -TlsSenderCertificateName <CertificateDomainName> [-CloudServicesMailEnabled $true]
 ```
 
-This example creates an outbound connector with these settings:
+This example creates an inbound connector with these settings:
 
 - **Name**: Contoso Signature Service to Office 365
 
@@ -326,7 +327,6 @@ To verify that you've successfully created an inbound connector to receive messa
 
 - In Exchange Online PowerShell, replace _\<Connector Name\>_ with the name of the connector, and run this command to verify the property values:
 
-   ```
-   Get-InboundConnector -Identity "<Connector Name>" | Format-List Name,SenderDomains,ConnectorType,RequireTls,RestrictDomainsToCertificate,TlsSenderCertificateName,CloudServicesMailEnabled
-   ```
-
+  ```
+  Get-InboundConnector -Identity "<Connector Name>" | Format-List Name,SenderDomains,ConnectorType,RequireTls,RestrictDomainsToCertificate,TlsSenderCertificateName,CloudServicesMailEnabled
+  ```

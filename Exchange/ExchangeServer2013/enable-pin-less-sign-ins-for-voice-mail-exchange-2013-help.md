@@ -1,27 +1,25 @@
-﻿---
+---
 title: 'Enable PIN-less sign-Ins for voice mail: Exchange 2013 Help'
 TOCTitle: Enable PIN-less sign-Ins for voice mail
 ms:assetid: 54133753-317c-42ef-9b0d-ca9f2d2d6bd7
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg602127(v=EXCHG.150)
 ms:contentKeyID: 49315417
 ms.date: 07/14/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-# Enable PIN-less sign-Ins for voice mail
+# Enable PIN-less sign-Ins for voice mail in Exchange Server
 
- 
-
-_**Applies to:** Exchange Server 2010 Service Pack 2 (SP2), Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013, Exchange Server 2016_
 
 You can set up Unified Messaging (UM) so that your users can sign in to their voice mail without using a PIN. By default, Outlook Voice Access users are prompted to enter a PIN to sign in to their mailbox and access their voice mail, email, calendar, personal contacts, the directory, and personal options.
 
-
 > [!WARNING]
 > Enabling PIN-less sign-ins for a single user or a group of users that are enabled for voice mail decreases the level of security for voice mail and poses a security risk to your organization.
-
-
 
 To enable PIN-less sign-ins, you must set the parameter *AllowPinlessVoiceMailAccess* to `$true` on the UM mailbox policy and set the parameter *PinlessAccessToVoiceMailEnabled* to `$true` on the UM mailbox. By default, both parameters are set to `$false`, which requires an Outlook Voice Access user to enter their PIN when they access their voice mail.
 
@@ -29,15 +27,15 @@ Setting both parameters to `$true` allows you to enable PIN-less sign-ins to voi
 
 To enable PIN-less sign-ins to voice mail for a user, the following conditions must be met:
 
-  - You’ve run the following cmdlet on the UM mailbox policy: `Set-UMMailboxPolicy -id MyUMMailboxPolicy -AllowPinlessVoiceMailAccess $true`
+- You've run the following cmdlet on the UM mailbox policy: `Set-UMMailboxPolicy -id MyUMMailboxPolicy -AllowPinlessVoiceMailAccess $true`
 
-  - You’ve run the following cmdlet on the mailbox of the UM-enabled user: `Set-UMMailbox -id tonys@contoso.com -PinlessAccessToVoiceMailEnabled $true`
+- You've run the following cmdlet on the mailbox of the UM-enabled user: `Set-UMMailbox -id tonys@contoso.com -PinlessAccessToVoiceMailEnabled $true`
 
-  - The UM-enabled user is associated with the same UM mailbox policy for which you enabled PIN-less sign-ins.
+- The UM-enabled user is associated with the same UM mailbox policy for which you enabled PIN-less sign-ins.
 
-  - The UM-enabled user dials in to Outlook Voice Access from a phone number that’s been assigned to them.
+- The UM-enabled user dials in to Outlook Voice Access from a phone number that's been assigned to them.
 
-  - You can only use the Shell to perform this procedure. To learn how to open the Shell in your on-premises Exchange organization, see [Open the Shell](https://technet.microsoft.com/en-us/library/dd638134\(v=exchg.150\)). To learn how to use Windows PowerShell to connect to Exchange Online, see [Connect to Exchange Online using remote PowerShell](https://technet.microsoft.com/en-us/library/jj984289\(v=exchg.150\)).
+- You can only use the Shell to perform this procedure. To learn how to open the Shell in your on-premises Exchange organization, see [Open the Shell](https://technet.microsoft.com/en-us/library/dd638134\(v=exchg.150\)). To learn how to use Windows PowerShell to connect to Exchange Online, see [Connect to Exchange Online using remote PowerShell](https://technet.microsoft.com/en-us/library/jj984289\(v=exchg.150\)).
 
 For additional tasks related to UM mailbox policies, see [UM mailbox policy procedures](https://docs.microsoft.com/en-us/exchange/voice-mail-unified-messaging/set-up-voice-mail/um-mailbox-policy-procedures).
 
@@ -45,19 +43,17 @@ For additional tasks related to UM mailboxes, see [Voice mail-enabled user proce
 
 ## What do you need to know before you begin?
 
-  - Estimated time to complete: 3 minutes.
+- Estimated time to complete: 3 minutes.
 
-  - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "UM mailbox policies" entry in the [Unified Messaging permissions](unified-messaging-permissions-exchange-2013-help.md) topic.
+- You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "UM mailbox policies" entry in the [Unified Messaging permissions](unified-messaging-permissions-exchange-2013-help.md) topic.
 
-  - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "UM mailboxes" entry in the [Unified Messaging permissions](unified-messaging-permissions-exchange-2013-help.md) topic.
+- You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "UM mailboxes" entry in the [Unified Messaging permissions](unified-messaging-permissions-exchange-2013-help.md) topic.
 
-  - Before you perform these procedures, confirm that a UM dial plan has been created. For detailed steps, see [Create a UM dial plan](https://docs.microsoft.com/en-us/exchange/voice-mail-unified-messaging/connect-voice-mail-system/create-um-dial-plan).
+- Before you perform these procedures, confirm that a UM dial plan has been created. For detailed steps, see [Create a UM dial plan](https://docs.microsoft.com/en-us/exchange/voice-mail-unified-messaging/connect-voice-mail-system/create-um-dial-plan).
 
-  - Before you perform these procedures, confirm that a UM mailbox policy has been created. For detailed steps, see [Create a UM mailbox policy](https://docs.microsoft.com/en-us/exchange/voice-mail-unified-messaging/set-up-voice-mail/create-um-mailbox-policy).
+- Before you perform these procedures, confirm that a UM mailbox policy has been created. For detailed steps, see [Create a UM mailbox policy](https://docs.microsoft.com/en-us/exchange/voice-mail-unified-messaging/set-up-voice-mail/create-um-mailbox-policy).
 
-  - Before you perform these procedures, confirm that the user or users have been enabled for UM and voice mail. For detailed steps, see [Enable a user for voice mail](https://docs.microsoft.com/en-us/exchange/voice-mail-unified-messaging/set-up-voice-mail/enable-a-user-for-voice-mail).
-
-## What do you want to do?
+- Before you perform these procedures, confirm that the user or users have been enabled for UM and voice mail. For detailed steps, see [Enable a user for voice mail](https://docs.microsoft.com/en-us/exchange/voice-mail-unified-messaging/set-up-voice-mail/enable-a-user-for-voice-mail).
 
 ## Use the Shell to enable PIN-less access to voice mail for UM-enabled users on a UM mailbox policy
 
@@ -74,4 +70,3 @@ This example enables PIN-less voice mail access for the user who dials in to Out
 ```powershell
 Set-UMMailbox -id tonys@contoso.com -PinlessAccessToVoiceMailEnabled $true
 ```
-

@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: Create a new Sharing Policy to change how people in your organization share calendars with individual business associates, friends, or family members. Sharing policies control how your users share their calendars with people outside your organization. By default, all users can invite anyone with an email address to view their calendar. After you create a new sharing policy, you have to apply that policy to mailboxes before it takes effect. To apply a specific sharing policy to users, see Apply a sharing policy to mailboxes in Exchange Online.
 ms.topic: article
-author: dstrome
-ms.author: dstrome
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: f412ce6c-74dc-4d77-93ab-362c37414015
 ms.date: 4/29/2016
+ms.reviewer: 
 title: Create a sharing policy in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -26,12 +27,11 @@ Create a new Sharing Policy to change how people in your organization share cale
 
 - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the [Permissions in Exchange Online](../../permissions-exo/permissions-exo.md) topic.
 
-- Only Outlook 2010 or later and Outlook Web App users can create sharing invitations.
+- Only Outlook 2010 or later and Outlook on the web (formerly known as Outlook Web App) users can create sharing invitations.
 
 ## Use the wizard to create a sharing policy
-<a name="BKMK_EAC"> </a>
 
-1. From the Office 365 admin center dashboard, go to **Admin** \> **Exchange**.
+1. From the Microsoft 365 admin center dashboard, go to **Admin** \> **Exchange**.
 
 2. Go to **organization** \> **sharing**.
 
@@ -43,19 +43,19 @@ Create a new Sharing Policy to change how people in your organization share cale
 
 6. In **sharing rule**, select one of the following options to specify the domains you want to share with:
 
-  - **Sharing with all domains**
+   - **Sharing with all domains**
 
-  - **Sharing with a specific domain**
+   - **Sharing with a specific domain**
 
 7. If you select **Sharing with a specific domain**, type the name of the domain you want to share with. If you need to enter more than one domain for this sharing policy, save the settings for the first domain, then edit the sharing rules to add more domains.
 
 8. To specify the information that can be shared, select the **Share your calendar folder** check box, and then select one of the following options:
 
-  - **Calendar free/busy information with time only**
+   - **Calendar free/busy information with time only**
 
-  - **Calendar free/busy information with time, subject, and location**
+   - **Calendar free/busy information with time, subject, and location**
 
-  - **All calendar appointment information, including time, subject, location and title**
+   - **All calendar appointment information, including time, subject, location and title**
 
 9. Click **save** to set the rules for the sharing policy.
 
@@ -64,7 +64,6 @@ Create a new Sharing Policy to change how people in your organization share cale
 11. Click **save** to create the sharing policy.
 
 ## Use Exchange Online PowerShell to create a sharing policy
-<a name="BKMK_Shell"> </a>
 
 - This example creates the sharing policy Contoso. This policy allows users in the contoso.com domain to see your user's detailed calendar availability (free/busy) information. By default, this policy is enabled.
 
@@ -90,6 +89,3 @@ Get-SharingPolicy <policy name> | format-list
 
 > [!TIP]
 > Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
-
-
-

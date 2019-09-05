@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Protocol logging for POP3 and IMAP4: Exchange 2013 Help'
 TOCTitle: Protocol logging for POP3 and IMAP4
 ms:assetid: 212ed3d5-0c98-4346-a860-1cfcac5d73c4
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd335141(v=EXCHG.150)
 ms:contentKeyID: 50395394
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Protocol logging for POP3 and IMAP4
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 You can use protocol logging to review the POP3 and IMAP4 connections in your Exchange environment. This can be useful if you're troubleshooting issues related to POP3 or IMAP4 performance.
 
@@ -47,7 +48,7 @@ The protocol log files are text files that contain data in the comma-separated v
 </tr>
 <tr class="even">
 <td><p>connector-id</p></td>
-<td><p>This field isn’t used for POP3 and IMAP4 protocol logging.</p></td>
+<td><p>This field isn't used for POP3 and IMAP4 protocol logging.</p></td>
 </tr>
 <tr class="odd">
 <td><p>session-id</p></td>
@@ -78,12 +79,11 @@ The protocol log files are text files that contain data in the comma-separated v
 </tr>
 <tr class="even">
 <td><p>data</p></td>
-<td><p>Text information that’s associated with the POP3 or IMAP4 event.</p></td>
+<td><p>Text information that's associated with the POP3 or IMAP4 event.</p></td>
 </tr>
 <tr class="odd">
 <td><p>context</p></td>
-<td><p>This field isn’t used for POP3 and IMAP4 protocol logging.</p></td>
+<td><p>This field isn't used for POP3 and IMAP4 protocol logging.</p></td>
 </tr>
 </tbody>
 </table>
-

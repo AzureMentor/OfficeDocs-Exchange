@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Admins can learn about role assignment policies, and how to view, create, modify, remove, and assign them in Exchange Online.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 
 ms.date: 
+ms.reviewer: 
 title: Role assignment policies in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -401,4 +402,3 @@ To verify that you've successfully modified the role assignment policy assignmen
    ```
    $X | where {$_.RoleAssignmentPolicy -eq '<RoleAssignmentPolicyName>'}
    ```
-

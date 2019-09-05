@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn about the network ports that are used by Exchange 2016 and Exchange 2019 for client access and mail flow.'
 ms.topic: reference
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: fec09455-e99e-42eb-8b32-1ddc08d9a19e
 ms.date:
+ms.reviewer: 
 title: Network ports for clients and mail flow in Exchange
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -102,4 +103,3 @@ The network ports that are required for an organization that uses both on-premis
 ## Network ports required for Unified Messaging in Exchange 2016
 
 The network ports that are required for Unified Messaging in Exchange 2013 and Exchange 2016 are covered in the topic [UM protocols, ports, and services](https://technet.microsoft.com/library/aa998265(v=exchg.150).aspx).
-

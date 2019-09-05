@@ -1,26 +1,26 @@
-﻿---
+---
 title: "Can't install Exchange 2007 roles after preparing Active Directory for Exchange 2010"
 TOCTitle: Cannot install Exchange 2007 roles after you prepare Active Directory for Exchange 2010_NoE12ServerWarning
 ms:assetid: 4e579f69-0de9-421c-ba31-4e63a25e6a45
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/ms.exch.setupreadiness.noe12serverwarning(v=EXCHG.150)
 ms:contentKeyID: 46628900
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Cannot install Exchange 2007 roles after you prepare Active Directory for Exchange 2010\_NoE12ServerWarning
 
- 
-
-_**Applies to:** Exchange Server_
-
+_**Applies to:** Exchange Server 2013_
 
 The content in this topic hasn't been updated for Microsoft Exchange Server 2013. While it hasn't been updated yet, it may still be applicable to Exchange 2013. If you still need help, check out the community resources below.
 
-Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkid=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkid=285351).
+Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612).
 
 When you run Microsoft Exchange Server 2010 **Setup /PrepareAD**, the Microsoft Exchange Server Analyzer Tool queries the existing Active Directory topology to determine whether any Microsoft Exchange Server 2007 server roles exist. If Exchange 2007 server roles are not detected, you receive the following warning message:
-
 
 <table>
 <colgroup>
@@ -33,12 +33,11 @@ When you run Microsoft Exchange Server 2010 **Setup /PrepareAD**, the Microsoft 
 </tbody>
 </table>
 
-
 Before deploying Exchange Server 2010, consider the following factors that may require you to deploy an Exchange 2007 server with all server roles installed prior to deploying Exchange 2007:
 
-  - **Third-party or in-house developed applications**   Applications developed for Exchange 2003 may not be compatible with Exchange 2010, and thus need to be upgraded or replaced. You can maintain these applications and the associated user population on Exchange 2003; move to Exchange 2007; or replace the software with a compatible version for Exchange 2010.
+  - **Third-party or in-house developed applications**: Applications developed for Exchange 2003 may not be compatible with Exchange 2010, and thus need to be upgraded or replaced. You can maintain these applications and the associated user population on Exchange 2003; move to Exchange 2007; or replace the software with a compatible version for Exchange 2010.
 
-  - **Coexistence or migration requirements**   If you plan on migrating mailboxes into your organization, you can either deploy Exchange 2007 and use the Microsoft Transporter Suite, or you can use a third-party coexistence or migration solution. To download the Microsoft Transporter Suite, go to [Microsoft Transporter Suite](http://go.microsoft.com/fwlink/?linkid=82688) at the Microsoft Download Center.
+  - **Coexistence or migration requirements**: If you plan on migrating mailboxes into your organization, you can either deploy Exchange 2007 and use the Microsoft Transporter Suite, or you can use a third-party coexistence or migration solution. To download the Microsoft Transporter Suite, go to [Microsoft Transporter Suite](http://go.microsoft.com/fwlink/?linkid=82688) at the Microsoft Download Center.
 
 In addition, when evaluating the options for your organization, make sure you have considered the following questions:
 
@@ -54,11 +53,10 @@ In addition, when evaluating the options for your organization, make sure you ha
 
 If you decide that you need to deploy an Exchange 2007 server prior to deploying Exchange 2010, the deployment of a single Exchange 2007 with all server roles is sufficient to enable the deployment of future Exchange 2007 servers in the organization. To deploy the Exchange 2007 server into your Exchange 2003 organization, follow these steps:
 
-1.  Run Exchange 2007 **Setup /PrepareSchema**.
+1. Run Exchange 2007 **Setup /PrepareSchema**.
 
-2.  Run Exchange 2007 **Setup /PrepareAD**.
+2. Run Exchange 2007 **Setup /PrepareAD**.
 
-3.  Run Exchange 2007 **Setup /PrepareDomain** on all domains that contain recipients, Exchange 2003 servers, or global catalogs that could be used by an Exchange server.
+3. Run Exchange 2007 **Setup /PrepareDomain** on all domains that contain recipients, Exchange 2003 servers, or global catalogs that could be used by an Exchange server.
 
-4.  Install an Exchange 2007 server with all four server roles (Hub Transport, Client Access, Mailbox, and Unified Messaging).
-
+4. Install an Exchange 2007 server with all four server roles (Hub Transport, Client Access, Mailbox, and Unified Messaging).

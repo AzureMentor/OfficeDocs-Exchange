@@ -1,22 +1,22 @@
-﻿---
+---
 title: 'Exchange 2013 post-Installation tasks: Exchange 2013 Help'
 TOCTitle: Exchange 2013 post-Installation tasks
 ms:assetid: bd99aaa4-b82c-427c-ab65-b9230ff63fb2
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb124397(v=EXCHG.150)
 ms:contentKeyID: 48385500
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Exchange 2013 post-Installation tasks
 
- 
-
 _**Applies to:** Exchange Server 2013_
 
-
-After you’ve completed the installation of Microsoft Exchange Server 2013, read the following topics to help you configure your new Exchange 2013 organization.
-
+After you've completed the installation of Microsoft Exchange Server 2013, read the following topics to help you configure your new Exchange 2013 organization.
 
 <table>
 <colgroup>
@@ -53,6 +53,4 @@ After you’ve completed the installation of Microsoft Exchange Server 2013, rea
 </tbody>
 </table>
 
-
 If you want to configure additional features, such as permissions, compliance, high availability, and more, see [Exchange Server 2013](exchange-server-2013-exchange-2013-help.md).
-

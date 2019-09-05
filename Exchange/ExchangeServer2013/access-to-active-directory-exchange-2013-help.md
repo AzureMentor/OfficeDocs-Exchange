@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Access to Active Directory: Exchange 2013 Help'
 TOCTitle: Access to Active Directory
 ms:assetid: 61080b45-8bce-4c23-b744-ed264d5f0b7d
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Aa998561(v=EXCHG.150)
 ms:contentKeyID: 49289272
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Access to Active Directory
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Microsoft Exchange Server 2013 stores all configuration and recipient information in the Active Directory directory service database. When a computer running Exchange 2013 requires information about recipients and information about the configuration of the Exchange organization, it must query Active Directory to access the information. Active Directory servers must be available for Exchange 2013 to function correctly.
 
@@ -23,21 +24,21 @@ This topic explains how Exchange 2013 stores and retrieves information in Active
 
 The Active Directory database stores information in three types of logical partitions that are described in the following sections:
 
-  - Schema partition
+- Schema partition
 
-  - Configuration partition
+- Configuration partition
 
-  - Domain partition
+- Domain partition
 
 ## Schema partition
 
 The schema partition stores the following two types of information:
 
-  - **Schema classes** define all the types of objects that can be created and stored in Active Directory.
+- **Schema classes** define all the types of objects that can be created and stored in Active Directory.
 
-  - **Schema attributes** define all the properties that can be used to describe the objects that are stored in Active Directory.
+- **Schema attributes** define all the properties that can be used to describe the objects that are stored in Active Directory.
 
-When you install the first Exchange 2013 server role in the forest or run the Active Directory preparation process, the Active Directory preparation process adds many classes and attributes to the Active Directory schema. The classes that are added to the schema are used to create Exchange-specific objects, such as agents and connectors. The attributes that are added to the schema are used to configure the Exchange-specific objects and the mail-enabled users and groups. These attributes include properties, such as Microsoft Office Outlook Web Access settings and Microsoft Exchange Unified Messaging (UM) settings. Every domain controller and global catalog server in the forest contains a complete replica of the schema partition.
+When you install the first Exchange 2013 server role in the forest or run the Active Directory preparation process, the Active Directory preparation process adds many classes and attributes to the Active Directory schema. The classes that are added to the schema are used to create Exchange-specific objects, such as agents and connectors. The attributes that are added to the schema are used to configure the Exchange-specific objects and the mail-enabled users and groups. These attributes include properties, such as Outlook Web App settings and Microsoft Exchange Unified Messaging (UM) settings. Every domain controller and global catalog server in the forest contains a complete replica of the schema partition.
 
 For more information about schema modifications in Exchange 2013, see [Exchange 2013 Active Directory schema changes](exchange-2013-active-directory-schema-changes-exchange-2013-help.md).
 
@@ -45,27 +46,27 @@ For more information about schema modifications in Exchange 2013, see [Exchange 
 
 The configuration partition stores information about the forest-wide configuration. This configuration information includes the configuration of Active Directory sites, Exchange global settings, transport settings, and mailbox policies. Each type of configuration information is stored in a container in the configuration partition. Exchange configuration information is stored in a subfolder under the configuration partition's Services container. The information that is stored in this container includes the following:
 
-  - Address lists
+- Address lists
 
-  - Address book mailbox policies
+- Address book mailbox policies
 
-  - Administrative groups
+- Administrative groups
 
-  - Client access settings
+- Client access settings
 
-  - Connections
+- Connections
 
-  - Mobile Mailbox Settings
+- Mobile Mailbox Settings
 
-  - Global settings
+- Global settings
 
-  - Monitoring Settings
+- Monitoring Settings
 
-  - System policies
+- System policies
 
-  - Retention policies container
+- Retention policies container
 
-  - Transport settings
+- Transport settings
 
 Every domain controller and global catalog server in the forest contains a complete replica of the configuration partition.
 
@@ -85,11 +86,8 @@ Exchange 2013 is an Active Directory site-aware application that prefers to comm
 
 By default, whenever an Exchange 2013 server starts, it binds to a randomly selected domain controller and global catalog server in its own site. You can view the selected directory servers by using the **Get-ExchangeServer** cmdlet in the Exchange Management Shell. You can also use the **Set-ExchangeServer** cmdlet to configure a static list of domain controllers to which an Exchange 2013 server should bind or a list of domain controllers that should be excluded.
 
-
 > [!IMPORTANT]
 > A Windows Server 2008 domain controller can be configured as a read-only directory server. This configuration is useful when you want to deploy a domain controller or global catalog server in a remote site for authentication and authorization purposes, but you don't want to allow administrators in that site to write changes to Active Directory. However, you can't deploy an Exchange 2013 server in any site that contains only read-only directory servers.
-
-
 
 ## Mailbox server role
 
@@ -105,17 +103,17 @@ Active Directory Recycle Bin helps minimize directory service downtime by enhanc
 
 The most important thing to understand about recovering deleted Exchange-related Active Directory objects is that Exchange objects don't exist in isolation. For example, when you mail-enable a user, several different policies and links are calculated for the user based on your current Exchange configuration. Two problems that may arise when you restore a deleted Exchange configuration or recipient object are:
 
-  - **Collisions**   Some Exchange attributes must be unique across a forest. For example, proxy (email) addresses must not be the same for two different users. Active Directory doesn't enforce proxy address uniqueness—Exchange administrative tools check for uniqueness. Exchange email address policies also automatically resolve possible conflicts in proxy address assignment based on deterministic rules. Therefore, it's possible to restore an Exchange user object and, as a result, create a collision with proxy addresses or other attributes that should be unique.
+- **Collisions**: Some Exchange attributes must be unique across a forest. For example, proxy (email) addresses must not be the same for two different users. Active Directory doesn't enforce proxy address uniqueness, Exchange administrative tools check for uniqueness. Exchange email address policies also automatically resolve possible conflicts in proxy address assignment based on deterministic rules. Therefore, it's possible to restore an Exchange user object and, as a result, create a collision with proxy addresses or other attributes that should be unique.
 
-  - **Misconfigurations**   Exchange has automated rules that assign various policies or settings. If you delete a recipient, and then change the rules or policies, restoring an Exchange user object may result in a user being assigned to the wrong policy (or even to a policy that no longer exists).
+- **Misconfigurations**: Exchange has automated rules that assign various policies or settings. If you delete a recipient, and then change the rules or policies, restoring an Exchange user object may result in a user being assigned to the wrong policy (or even to a policy that no longer exists).
 
 The following guidelines will help you minimize problems or issues when you recover deleted Exchange-related objects:
 
-  - If you deleted an Exchange configuration object using Exchange management tools, don't restore the object. Instead, create the object again using the Exchange management tools (Exchange admin center or Exchange Management Shell).
+- If you deleted an Exchange configuration object using Exchange management tools, don't restore the object. Instead, create the object again using the Exchange management tools (Exchange admin center or Exchange Management Shell).
 
-  - If you deleted an Exchange configuration object without using the Exchange management tools, recover the object as soon as possible. The more administrative and configuration changes that have been made in the system since the deletion, the more likely it is that restoring the objects will result in misconfiguration.
+- If you deleted an Exchange configuration object without using the Exchange management tools, recover the object as soon as possible. The more administrative and configuration changes that have been made in the system since the deletion, the more likely it is that restoring the objects will result in misconfiguration.
 
-  - If you recover deleted Exchange recipients (contacts, users, or distribution groups), monitor closely for collisions and errors relating to the recovered objects. If Exchange policies or other configuration relating to recipients may have been modified since the deletion, re-apply current policies to the restored recipients to ensure that they’re configured correctly.
+- If you recover deleted Exchange recipients (contacts, users, or distribution groups), monitor closely for collisions and errors relating to the recovered objects. If Exchange policies or other configuration relating to recipients may have been modified since the deletion, re-apply current policies to the restored recipients to ensure that they're configured correctly.
 
 ## For more information
 
@@ -124,4 +122,3 @@ The following guidelines will help you minimize problems or issues when you reco
 [Introduction to Active Directory Administrative Center Enhancements (Level 100)](https://go.microsoft.com/fwlink/p/?linkid=267641)
 
 [Advanced AD DS Management Using Active Directory Administrative Center (Level 200)](https://go.microsoft.com/fwlink/p/?linkid=267642)
-

@@ -1,39 +1,26 @@
-﻿---
+---
 title: 'Connection Filtering on Edge Transport Servers: Exchange 2013 Help'
 TOCTitle: Connection Filtering on Edge Transport Servers
 ms:assetid: b513755c-5d3e-44fa-a6cb-771d48b544ac
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb124320(v=EXCHG.150)
 ms:contentKeyID: 61200295
 ms.date: 07/14/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Connection Filtering on Edge Transport Servers
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Connection filtering is an anti-spam feature in Microsoft Exchange Server 2013 that allows or blocks email based on the message source. Connection filtering is performed by the Connection Filtering agent that's available only on Edge Transport servers. The Connection Filtering agent relies on the IP address of the connecting mail server to determine what action, if any, to take on an inbound message.
 
 By default, the Connection Filtering agent is the first anti-spam agent to evaluate an inbound message on an Edge Transport server. The source IP address of the SMTP connection is checked against the allowed and blocked IP addresses. If the source IP address is specifically allowed, the message is sent to the recipients in your organization without additional processing by other anti-spam agents. If the source IP address is specifically blocked, the SMTP connection is dropped. If the source IP address isn't specifically allowed or blocked, the message flows through the other anti-spam agents on the Edge Transport server.
 
 Connection filtering compares the IP address of the source mail server to the values in the IP Allow list, the IP Block list, IP Allow list providers, and IP Block list providers. You need to configure at least one of these four IP address data stores for connection filtering to function. If you don't specify any IP address data, you should disable the Connection Filtering agent. For more information, see [Manage Connection Filtering on Edge Transport Servers](manage-connection-filtering-on-edge-transport-servers-exchange-2013-help.md).
-
-**Contents**
-
-IP Block list
-
-IP Allow list
-
-IP Block List providers
-
-IP Allow List providers
-
-Test IP Block List providers and IP Allow List providers
-
-Configure connection filtering on Edge Transport servers that aren't directly connected to the Internet
 
 ## IP Block list
 
@@ -48,8 +35,6 @@ IP addresses can also be automatically added to the IP Block list by the Sender 
 The IP Allow list contains the IP addresses of email servers that you want to designate as trustworthy sources of email. Email from mail servers that you specify in the IP Allow list is exempt from processing by other Exchange anti-spam agents.
 
 You manually maintain the IP addresses in the IP Allow list. You can add individual IP addresses or IP address ranges. You can specify an expiration time that specifies how long the IP address entry will be allowed. When the expiration time is reached, the entry in the IP Allow list is disabled.
-
-Return to top
 
 ## IP Block List providers
 
@@ -67,11 +52,9 @@ IP Block List providers can return different codes to identify why an IP address
 
 There are issues to consider when using IP Block list providers:
 
-  - Outages or delays at the IP Block list provider service can cause delays in the processing of messages on the Edge Transport server. You should always select reliable IP Block list providers.
+- Outages or delays at the IP Block list provider service can cause delays in the processing of messages on the Edge Transport server. You should always select reliable IP Block list providers.
 
-  - Source servers that you know to be legitimate can be erroneously identified as spam sources. For example, the mail server can be unintentionally configured to act as an open relay. You should always select IP Block list providers that provide clear procedures for evaluation and removal from their services.
-
-Return to top
+- Source servers that you know to be legitimate can be erroneously identified as spam sources. For example, the mail server can be unintentionally configured to act as an open relay. You should always select IP Block list providers that provide clear procedures for evaluation and removal from their services.
 
 ## Bitmask and absolute value examples
 
@@ -108,7 +91,6 @@ For bitmask data types, the IP Block List provider service returns a status code
 </tbody>
 </table>
 
-
 For absolute value types, the IP Block List provider returns explicit responses that define why the IP address is defined in their block lists. The following table shows examples of absolute values and the explicit responses.
 
 ### Values and status codes for absolute value data types
@@ -140,20 +122,13 @@ For absolute value types, the IP Block List provider returns explicit responses 
 </tbody>
 </table>
 
-
-Return to top
-
 ## IP Allow List providers
 
 IP Allow List providers are also known as *safe lists* or *white lists*. IP Allow List providers are configured just like IP Block List providers, but the results are the opposite: they define mail server IP addresses that are definitely not associated with spam activity. If the IP address of the connecting mail server is defined at an IP Allow List provider, the message is exempt from processing by other Exchange anti-spam agents. For this reason, IP Block List providers are used much more frequently than IP Allow List providers. Choose your IP Allow List providers carefully.
 
-Return to top
-
 ## Test IP Block List providers and IP Allow List providers
 
 After you configure connection filtering to use an IP Block List provider or an IP Allow List provider, you can run tests to verify that the providers are working correctly. Most providers provide test IP addresses that you can use to test their services. When you test a provider, the Connection Filtering agent issues a DNS query that should result in a specific response from the provider. For more information about how to test IP addresses against an IP Block List provider service or an IP Allow List provider service, see [Manage Connection Filtering on Edge Transport Servers](manage-connection-filtering-on-edge-transport-servers-exchange-2013-help.md).
-
-Return to top
 
 ## Configure connection filtering on Edge Transport servers that aren't directly connected to the Internet
 
@@ -162,6 +137,3 @@ You can use connection filtering on Edge Transport servers that don't directly r
 Every mail server that accepts and relays an SMTP message along the delivery path adds its own **Received** header field in the message header. The **Received** header typically contains the domain name and IP address of the mail server that processed the message.
 
 If the Edge Transport server doesn't accept messages directly from the Internet, you need to use the *InternalSMTPServers* parameter on the **Set-TransportConfig** cmdlet on an Exchange 2013 Mailbox server to identify the IP address of the mail server that sit between the Edge Transport server and the Internet. The IP address data is replicated to Edge Transport servers by EdgeSync. When messages are received by the Edge Transport server, the Connection Filtering agent assumes an IP address in a **Received** header field that doesn't match a value specified by the *InternalSMTPServers* parameter is the source IP address that needs to be checked. Therefore, you need specify all internal SMTP servers in order for connection filtering to function correctly.
-
-Return to top
-

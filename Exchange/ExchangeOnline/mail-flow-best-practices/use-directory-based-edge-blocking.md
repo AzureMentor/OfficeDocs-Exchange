@@ -1,16 +1,17 @@
 ---
 localization_priority: Normal
-ms.author: chrisda
+ms.author: dmaguire
 manager: serdars
 ms.topic: article
-author: chrisda
+author: msdmaguire
 ms.service: exchange-online
 ms.assetid: ca7b7416-92ed-40ad-abdb-695be46ea2e4
+ms.reviewer: 
 ms.collection: 
 - exchange-online
 - M365-email-calendar
 description: Admins can learn how to configure Directory-Based Edge Blocking (DBDB) to reject messages sent to invalid recipients in Exchange Online and Exchange Online Protection during a migration.
-ms.audience: ITPro
+audience: ITPro
 title: Use Directory Based Edge Blocking to reject messages sent to invalid recipients
 
 ---
@@ -61,4 +62,3 @@ If a message is sent to a valid email address in Office 365, the message continu
 
 > [!NOTE]
 > In hybrid environments dynamic distribution groups do not sync to AAD and are therefore blocked by DBEB. As a work around, you can create a mail contact with the same external email address of the blocked dynamic distribution group.
-

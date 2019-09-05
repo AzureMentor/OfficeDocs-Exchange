@@ -3,15 +3,16 @@ localization_priority: Critical
 monikerRange: exchserver-2016 || exchserver-2019
 description: 'Summary: Learn how to prepare Active Directory for Exchange 2016 or Exchange 2019.'
 ms.topic: get-started-article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: f895e1ce-d766-4352-ac46-ec959c9954a9
 ms.date:
+ms.reviewer: 
 title: Prepare Active Directory and domains for Exchange Server, Active Directory Exchange Server, Exchange Server Active Directory, Exchange 2019 Active Directory
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -101,7 +102,7 @@ When you prepare Active Directory for Exchange, the following requirements apply
 
 - Your account needs to be a member of the Enterprise Admins security group. If you skipped Step 1 because you want the _/PrepareAD_ command to extend the schema, the account also needs to be a member of the Schema Admins security group.
 
-- The computer needs to be needs to be a member of the same Active Directory domain and site as the schema master, and must be able to contact all of the domains in the forest on TCP port 389.
+- The computer needs to be a member of the same Active Directory domain and site as the schema master, and must be able to contact all of the domains in the forest on TCP port 389.
 
 - Wait until Active Directory has finished replicating the schema changes from Step 1 to all domain controllers before you try to prepare Active Directory.
 
@@ -226,8 +227,9 @@ The tables in the following sections contain the Exchange objects in Active Dire
 
 |**Exchange 2019 version**|**rangeUpper**|**objectVersion (Default)**|**objectVersion (Configuration)**|
 |:-----|:-----|:-----|:-----|
+|Exchange 2019 CU2|17001|13237|16754|
 |Exchange 2019 CU1|17000|13236|16752|
-|Exchange 2019 RTM|17000|13236|16752|
+|Exchange 2019 RTM|17000|13236|16751|
 |Exchange 2019 Preview|15332|13236|16213|
 ::: moniker-end
 
@@ -236,6 +238,7 @@ The tables in the following sections contain the Exchange objects in Active Dire
 
 |**Exchange 2016 version**|**rangeUpper**|**objectVersion (Default)**|**objectVersion (Configuration)**|
 |:-----|:-----|:-----|:-----|
+|Exchange 2016 CU13|15332|13237|16217|
 |Exchange 2016 CU12|15332|13236|16215|
 |Exchange 2016 CU11|15332|13236|16214|
 |Exchange 2016 CU10|15332|13236|16213|
@@ -251,4 +254,3 @@ The tables in the following sections contain the Exchange objects in Active Dire
 |Exchange 2016 RTM|15317|13236|16210|
 |Exchange 2016 Preview|15317|13236|16041|
 ::: moniker-end
-

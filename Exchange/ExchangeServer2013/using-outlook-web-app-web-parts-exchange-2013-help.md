@@ -1,31 +1,29 @@
-﻿---
+---
 title: 'Using Outlook Web App Web parts: Exchange 2013 Help'
 TOCTitle: Using Outlook Web App Web parts
 ms:assetid: 7272e3ab-430c-4d6c-8621-9535236ce463
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Mt574711(v=EXCHG.150)
 ms:contentKeyID: 70319891
 ms.date: 07/14/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Using Outlook Web App Web parts
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 You can use Microsoft Office Outlook Web App Web Parts to specify the mailbox to open, the folder within that mailbox to open, and the content view to use.
 
 Outlook Web App Web Parts let you access Outlook Web App content directly from a URL. The URL can be entered into a Web browser or embedded in an application. Generally, Web Parts aren't created manually. Instead, they're created programmatically based on selections made in a user interface (UI), or they're embedded directly in an application, such as a SharePoint Server page. The code behind the UI then creates the URL. One use for Outlook Web App Web Parts is to display a user's Inbox or Calendar on a SharePoint page.
 
-
 > [!NOTE]
 > To use Outlook Web App Web Parts, both the user's mailbox and the mailbox being opened through a Web Part must be located in the same Active Directory forest.
 
-
-
-## Permissions for Using Outlook Web Access Web Parts
+## Permissions for Using Outlook Web App Web Parts
 
 To use Outlook Web App Web Parts, you must, at a minimum, be delegated "Reviewer" access to the content that you're opening. If you've embedded an Outlook Web App Web Part that requires authentication into an application, you must pass authentication information through together with the request for the Web Part. One way to do this is by configuring the Outlook Web App virtual directory to use Integrated Windows authentication. Integrated Windows authentication lets users who've already logged on by using their Active Directory account use Outlook Web App without having to enter their credentials again.
 
@@ -82,12 +80,8 @@ The following table lists the parameters of a Web Part and examples of how they'
 <td><p>exsvurl</p></td>
 <td><p>This parameter must be included when using LiveID authentication</p>
 <p>All parameters will be discarded during LiveID authentication if &quot;exsvurl=1&quot; is not present. This parameter is for Office 365 mailboxes only.</p>
-
-> [!NOTE]
-> Exchange Online no longer includes support for Web Parts.
-  
 </td>
-  
+
 <td><p>https://&lt;server name&gt;/owa/?cmd=contents&amp;exsvurl=1</p></td>
 </tr>
 <tr class="odd">
@@ -122,7 +116,6 @@ The following table lists the parameters of a Web Part and examples of how they'
 
 > [!NOTE]
 > The strings for the default views are automatically URL encoded.
-
 
 <p>The default sort for a view is the way the folder would be sorted if it was opened in the Outlook Web App client.</p>
 <p>The strings identifying the views aren't localized and are not case sensitive.</p></td>
@@ -166,7 +159,6 @@ The following table lists the parameters of a Web Part and examples of how they'
 </tbody>
 </table>
 
-
 ## Enter Outlook Web App Web Parts manually
 
 Outlook Web App Web Parts can be also be entered manually in a Web browser. For example, a user can use an Outlook Web App Web Part URL to open another user's calendar.
@@ -186,4 +178,3 @@ The following examples show how to directly access common Outlook Web App views:
   - [Customize the Outlook Web App sign-In, language selection, and error pages](customize-the-outlook-web-app-sign-in-language-selection-and-error-pages-exchange-2013-help.md)
 
   - [Create a theme for Outlook Web App](create-a-theme-for-outlook-web-app-exchange-2013-help.md)
-

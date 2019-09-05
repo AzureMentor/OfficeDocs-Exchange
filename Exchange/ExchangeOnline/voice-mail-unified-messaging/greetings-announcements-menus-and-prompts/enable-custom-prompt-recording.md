@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can use Exchange Online PowerShell to enable the recording of custom prompts and greetings for Unified Messaging (UM) dial plans and auto attendants using the telephone user interface (TUI). This can be useful when you want to change a custom greeting or announcement by using the EAC or Exchange Online PowerShell, or when there's an emergency such as an organization closure because of severe weather. When you're changing a custom greeting or announcement on a UM auto attendant, you must enable TUI prompt recording on the dial plan that the UM auto attendant is linked to.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: f2e5c636-2be9-4d48-b5e7-37913ded62d1
 ms.date: 6/24/2018
-title: Enable custom prompt recording using the telephone user interface
+ms.reviewer: 
+title: Enable custom prompt recording using the telephone user interface in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Enable custom prompt recording using the telephone user interface
+# Enable custom prompt recording using the telephone user interface in Exchange Online
 
 You can use Exchange Online PowerShell to enable the recording of custom prompts and greetings for Unified Messaging (UM) dial plans and auto attendants using the telephone user interface (TUI). This can be useful when you want to change a custom greeting or announcement by using the EAC or Exchange Online PowerShell, or when there's an emergency such as an organization closure because of severe weather. When you're changing a custom greeting or announcement on a UM auto attendant, you must enable TUI prompt recording on the dial plan that the UM auto attendant is linked to.
 
@@ -33,7 +34,7 @@ For additional management tasks related to UM auto attendants, see [UM auto atte
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use Exchange Online PowerShell to enable a custom prompt or greeting recording using the TUI
 
@@ -47,24 +48,24 @@ To record custom prompts and greetings by using the telephone user interface (TU
 
 4. Enable the domain user's mailbox for Unified Messaging.
 
-    > [!IMPORTANT]
-    > Allow only those administrators who are managing prompts and greetings access to the extension number and PIN for the user account. Use this user account only for managing prompts over the telephone.
+   > [!IMPORTANT]
+   > Allow only those administrators who are managing prompts and greetings access to the extension number and PIN for the user account. Use this user account only for managing prompts over the telephone.
 
 5. Create and save a .wav or .wma file to use for a custom greeting for the UM dial plan or auto attendant.
 
-    > [!NOTE]
-    > MP3 files can't be used for custom prompts.
+   > [!NOTE]
+   > MP3 files can't be used for custom prompts.
 
 6. Use the EAC or Exchange Online PowerShell to configure the dial plan to use the custom welcome greeting or configure the auto attendant to use the business or non-business hours greeting. For details about configuring a dial plan, see [Enable a customized greeting for Outlook Voice Access users](../../voice-mail-unified-messaging/set-up-client-voice-mail-features/enable-a-customized-greeting.md). For details about configuring an auto attendant, see [Enable a customized business hours greeting](../../voice-mail-unified-messaging/automatically-answer-and-route-calls/enable-a-customized-business-hours-greeting.md) or [Enable a customized non-business hours greeting](../../voice-mail-unified-messaging/automatically-answer-and-route-calls/enable-a-customized-non-business-hours-greeting.md).
 
 7. Run the following cmdlet:
 
-  ```
-  Set-UMDialPlan -identity MyUMDialPlan -TUIPromptEditingEnabled $true
-  ```
+   ```
+   Set-UMDialPlan -identity MyUMDialPlan -TUIPromptEditingEnabled $true
+   ```
 
 > [!NOTE]
->  Before you can enable the recording of a custom prompt or greeting, you must sign in to the mailbox that's set up for recording prompts. After you record the new prompt or greeting, you must sign out and then sign back in before you can hear the new prompt or greeting when you use the TUI.
+> Before you can enable the recording of a custom prompt or greeting, you must sign in to the mailbox that's set up for recording prompts. After you record the new prompt or greeting, you must sign out and then sign back in before you can hear the new prompt or greeting when you use the TUI.
 
 ## Perform TUI prompt recording on a UM auto attendant
 
@@ -93,6 +94,3 @@ To record custom prompts and greetings by using the telephone user interface (TU
 5. You'll be prompted for a PIN. Enter the user's PIN.
 
 6. Follow the system prompts to edit or update the welcome greeting for the dial plan or the informational announcement.
-
-
-

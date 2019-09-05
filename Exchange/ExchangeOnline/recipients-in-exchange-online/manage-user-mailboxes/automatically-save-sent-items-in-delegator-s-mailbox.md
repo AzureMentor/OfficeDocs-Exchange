@@ -2,9 +2,10 @@
 localization_priority: Normal
 description: Set up mailboxes so messages sent by a delegate are stored in both the delegate and delegator's Sent Items.
 ms.topic: article
-author: dstrome
-ms.author: dstrome
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: f15297f3-32c3-44b6-87b5-dd64dc2bcf7e
+ms.reviewer: 
 title: Automatically save sent items in delegator's mailbox
 ms.collection: 
 - exchange-online
@@ -12,7 +13,7 @@ ms.collection:
 search.appverid:
 - BCS160
 - MET150
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -34,18 +35,18 @@ Let's take a look at a quick example of how this would work in real life:
 
 - Rob's wonders if there's a better way to handle Sent Items so he asks his IT Help Desk. He learns Mary's mailbox can be set up to store messages he sends on her behalf in both his Sent Items and her Sent Items automatically. This is exactly what he wants so he asks the Help Desk to set it up.
 
-## Send As...Send on behalf of...what do they mean and which should I choose?
+## Send As...Send on behalf...what do they mean and which should I choose?
 
-When you set up someone as a delegate on a manager's mailbox, you can choose whether they "Send as" the manager, or "Send on behalf of" them. The difference is subtle, but can be important in some organizations:
+When you set up someone as a delegate on a manager's mailbox, you can choose whether they "Send as" the manager, or "Send on behalf" of them. The difference is subtle, but can be important in some organizations:
 
 - **Send As** When someone has "Send as" permissions on a mailbox, messages they send from that mailbox will show only the mailbox owner's name in the From: field of the message. In the example above, if Rob has "Send as" permissions on Mary's mailbox, messages he sends from her mailbox will show **From: Mary** to recipients.
 
-- **Send on behalf of** When someone has "Send on behalf of" permissions on a mailbox, messages they send from the owner's mailbox will show that the message was sent by someone on behalf of the mailbox owner. In the example above, if Rob has "Send on behalf of" permissions on Mary's mailbox, messages he sends from her mailbox will show **From: Rob on behalf of Mary** to recipients.
+- **Send on behalf** When someone has "Send on behalf" permissions on a mailbox, messages they send from the owner's mailbox will show that the message was sent by someone on behalf of the mailbox owner. In the example above, if Rob has "Send on behalf" permissions on Mary's mailbox, messages he sends from her mailbox will show **From: Rob on behalf of Mary** to recipients.
 
-The send permissions that someone has on another user's mailbox are important when thinking about how sent items should be handled. This is because you can decide, for each level of permissions, whether messages should be stored in just the assistant's Sent Items folder or in both the assistant and manager's Sent Items folders. Office 365 defaults to storing sent items for messages sent with "Send as" and "Send on behalf of" permissions in the assistant's Sent Items only. You can change that default behavior using the steps below.
+The send permissions that someone has on another user's mailbox are important when thinking about how sent items should be handled. This is because you can decide, for each level of permissions, whether messages should be stored in just the assistant's Sent Items folder or in both the assistant and manager's Sent Items folders. Office 365 defaults to storing sent items for messages sent with "Send as" and "Send on behalf" permissions in the assistant's Sent Items only. You can change that default behavior using the steps below.
 
 > [!TIP]
-> Managers might have multiple assistants with different levels of permissions. In the example above, while Rob may be able to send messages on behalf of Mary, she could have another assistant that can Send as Mary. If this was the case, Mary's IT department could do the steps for both "Send as" and "Send on behalf of" permissions.
+> Managers might have multiple assistants with different levels of permissions. In the example above, while Rob may be able to send messages on behalf of Mary, she could have another assistant that can Send as Mary. If this was the case, Mary's IT department could do the steps for both "Send as" and "Send on behalf" permissions.
 
 ## How do I set up a mailbox to save messages "Sent as" a manager when they're sent by an assistant?
 
@@ -55,39 +56,44 @@ When you do these steps, any messages **sent as** the manager whose mailbox you'
 
 2. Get the email address of the manager.
 
-3. Run the following command in the PowerShell window.
+3. Use the following syntax in Exchange Online PowerShell window:
 
-  ```
-  Set-Mailbox <manager's email address> -MessageCopyForSentAsEnabled $true
-  ```
+   ```
+   Set-Mailbox <manager's email address> -MessageCopyForSentAsEnabled $true
+   ```
 
-    For example, if Mary's email address is mary@contoso.com, her IT department would run the command  `Set-Mailbox mary@contoso.com -MessageCopyForSentAsEnabled $true`.
+For example, if Mary's email address is mary@contoso.com, her IT department would run the following command:
+
+```
+Set-Mailbox mary@contoso.com -MessageCopyForSentAsEnabled $true
+```
 
 That's it! The manager will now automatically get a copy of any messages sent by an assistant, in their Sent Items folder.
 
 > [!TIP]
-> You can turn this off by going through the steps above and replacing **$true** with **$false** in the **[Set-Mailbox]** command. For example, to turn it off for Mary, they'd run the command  `Set-Mailbox mary@contoso.com -MessageCopyForSentAsEnabled $false`.
+> You can turn this off by going through the steps above and replacing **$true** with **$false** in the **[Set-Mailbox]** command. For example, to turn it off for Mary, they'd run the command: `Set-Mailbox -Identity mary@contoso.com -MessageCopyForSentAsEnabled $false`.
 
-## How do I set up a mailbox to save messages "Sent on behalf of" a manager when they're sent by an assistant?
+## How do I set up a mailbox to save messages "Sent on behalf" of a manager when they're sent by an assistant?
 
-When you do these steps, any messages **sent on behalf of** the manager whose mailbox you're configuring, will be saved to the manager's Sent Items folder. To set this up, just follow the steps below. You'll need to use Windows PowerShell to complete the steps; if you haven't used it before, go to [Using PowerShell with Exchange Online](https://go.microsoft.com/fwlink/?linkid=282266) for instructions on how to get connected. There's a great video too!
+When you do these steps, any messages **sent on behalf** the manager whose mailbox you're configuring, will be saved to the manager's Sent Items folder. To set this up, just follow the steps below. You'll need to use Windows PowerShell to complete the steps; if you haven't used it before, go to [Using PowerShell with Exchange Online](https://go.microsoft.com/fwlink/?linkid=282266) for instructions on how to get connected. There's a great video too!
 
 1. Open Windows PowerShell and, using the instructions at [Using PowerShell with Exchange Online](https://go.microsoft.com/fwlink/?linkid=282266), connect to Exchange Online PowerShell.
 
 2. Get the email address of the manager.
 
-3. Run the following command in the PowerShell window.
+3. Use the following syntax in the Exchange Online PowerShell:
 
-  ```
-  Set-Mailbox <manager's email address> -MessageCopyForSendOnBehalfEnabled $true
-  ```
+   ```
+   Set-Mailbox <manager's email address> -MessageCopyForSendOnBehalfEnabled $true
+   ```
 
-    For example, if Mary's email address is mary@contoso.com, her IT department would run the command  `Set-Mailbox mary@contoso.com -MessageCopyForSendOnBehalfEnabled $true`.
+For example, if Mary's email address is mary@contoso.com, her IT department would run the following command
+
+```
+Set-Mailbox mary@contoso.com -MessageCopyForSendOnBehalfEnabled $true
+```
 
 That's it! The manager will now automatically get a copy of any messages sent by an assistant, in their Sent Items folder.
 
 > [!TIP]
 > You can turn this off by going through the steps above and replacing **$true** with **$false** in the **[Set-Mailbox]** command. For example, to turn it off for Mary, they'd run the command  `Set-Mailbox mary@contoso.com -MessageCopyForSendOnBehalfEnabled $false`.
-
-
-

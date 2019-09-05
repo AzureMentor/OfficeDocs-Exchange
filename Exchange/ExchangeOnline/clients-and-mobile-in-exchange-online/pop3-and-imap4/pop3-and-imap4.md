@@ -6,13 +6,14 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: fce4cf21-02b4-4b42-82c8-ddb3c7eed4dc
 ms.date: 6/24/2018
+ms.reviewer: 
 title: POP3 and IMAP4
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 
@@ -26,9 +27,12 @@ By default, POP3 and IMAP4 are enabled for all users in Exchange Online.
 
 - To customize the POP3 or IMAP4 settings for a user, see [Set POP3 or IMAP4 settings for a user](pop3-or-imap4-settings.md).
 
+> [!NOTE]
+> To protect your Exchange Online tenant from brute force or password spray attacks, your organization will need to **[Disable Basic authentication]**(https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online?redirectSourcePath=%252fen-us%252farticle%252fdisable-basic-authentication-in-exchange-online-bba2059a-7242-41d0-bb3f-baaf7ec1abd7) and use **[Modern authentication]**( https://docs.microsoft.com/Exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online?redirectSourcePath=%252fen-us%252farticle%252fEnable-or-disable-modern-authentication-in-Exchange-Online-58018196-f918-49cd-8238-56f57f38d662) only. Disabling Basic authentication will block legacy protocols, such as POP and IMAP.
+
 Users can use any email programs that support POP3 and IMAP4 to connect to Exchange Online. These programs include Outlook, Microsoft Outlook Express, Entourage, and many third-party programs, such as Mozilla Thunderbird and Eudora. The features supported by each email client programs vary. For information about features offered by specific POP3 and IMAP4 client programs, see the documentation that's included with each application.
 
-POP3 and IMAP4 provide access to the basic email features of Exchange Online and allow for offline email access, but don't offer rich email, calendaring, and contact management, or other features that are available when users connect with Outlook, Exchange ActiveSync, Outlook Web App, or Outlook Voice Access.
+POP3 and IMAP4 provide access to the basic email features of Exchange Online and allow for offline email access, but don't offer rich email, calendaring, and contact management, or other features that are available when users connect with Outlook, Exchange ActiveSync, Outlook on the web (formerly known as Outlook Web App), or Outlook Voice Access.
 
 > [!NOTE]
 > Each time a person accesses a POP-based or IMAP-based email program to open his or her Office 365 email, that user will experience a delay of several seconds. The delay results from using a proxy server, which introduces an additional hop for authentication. The proxy server first looks up the assigned pod server (client access server) and then authenticates against that.
@@ -51,7 +55,7 @@ POP3 and IMAP4 email programs don't use POP3 and IMAP4 to send messages to the e
 
 By default, when POP3 email programs download email messages to a client computer, the downloaded messages are removed from the server. When a copy of your user's email isn't kept on the email server, the user can't access the same email messages from multiple computers. However, some POP3 email programs can be configured to keep copies of the messages on the server so that the same email messages can be accessed from another computer. POP3 client programs can be used to download messages from the email server to only a single folder (usually, the Inbox) on the client computer. POP3 can't synchronize multiple folders on the email server with multiple folders on the client computer. POP3 also doesn't support public folder access.
 
-Email client programs that use IMAP4 are more flexible and generally offer more features than those that use POP3. By default, when IMAP4 email programs download email messages to a client computer, a copy of each downloaded message remains on the email server. Because a copy of the user's email message is kept on the email server, the user can access the same email message from multiple computers. With IMAP4 email, the user can access and create multiple email folders on the email server. Users can then access any of their messages on the server from computers in multiple locations. For example, most IMAP4 programs can be configured to keep a copy of a user's sent items on the server so that he or she can view the sent items from any other computer. IMAP4 supports additional features that are supported by most IMAP4 programs. For example, some IMAP4 programs include a feature that lets users view only the headers of their email messages on the server—who the messages are from and the subjects—and then download only the messages that they want to read.
+Email client programs that use IMAP4 are more flexible and generally offer more features than those that use POP3. By default, when IMAP4 email programs download email messages to a client computer, a copy of each downloaded message remains on the email server. Because a copy of the user's email message is kept on the email server, the user can access the same email message from multiple computers. With IMAP4 email, the user can access and create multiple email folders on the email server. Users can then access any of their messages on the server from computers in multiple locations. For example, most IMAP4 programs can be configured to keep a copy of a user's sent items on the server so that he or she can view the sent items from any other computer. IMAP4 supports additional features that are supported by most IMAP4 programs. For example, some IMAP4 programs include a feature that lets users view only the headers of their email messages on the server (who the messages are from and the subjects) and then download only the messages that they want to read.
 
 ## Send and receive options for POP3 and IMAP4 email programs
 <a name="SendReceive"> </a>
@@ -78,6 +82,3 @@ If the device or computer that's running the POP3 or IMAP4 email application is 
 
 > [!NOTE]
 > If the user is using an IMAP4-compliant email application that supports the IMAP4 IDLE command, the user might be able to send email to and receive email from the Exchange mailbox in nearly real time. For this connection method to work, both the email server application and the client application must support the IMAP4 IDLE command. In most cases, users don't have to configure any settings in their IMAP4 programs to use this connection method.
-
-
-

@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: Learn how to view, retry, resubmit, suspend, and resume queues in Exchange 2016 and Exchange 2019.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 37f11378-a884-4aff-ab55-689f40a46321
 ms.date: 7/11/2018
+ms.reviewer: 
 title: Procedures for queues
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -40,7 +41,7 @@ For procedures on messages in queues, see [Procedures for messages in queues](me
 
   - **Windows 10**: Click **Start** \> **All Apps** \> **Microsoft Exchange Server \<Version\> \>** **Exchange Toolbox**.
 
-  - **Windows Server 2012 R2 or Windows 8.1**: On the Start screen, open the Apps view by clicking the down arrow near the lower-left corner or swiping up from the middle of the screen. The **Exchange Toolbox** shortcut is in a group named **Microsoft Exchange Server  \<Version\>**.
+  - **Windows Server 2012 R2 or Windows 8.1**: On the Start screen, open the Apps view by clicking the down arrow near the lower-left corner or swiping up from the middle of the screen. The **Exchange Toolbox** shortcut is in a group named **Microsoft Exchange Server \<Version\>**.
 
   - **Windows Server 2012**: Use any of the following methods:
 
@@ -64,7 +65,6 @@ For procedures on messages in queues, see [Procedures for messages in queues](me
 > Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## View queues
-<a name="View"> </a>
 
 ### Use Queue Viewer to view queues
 
@@ -129,15 +129,14 @@ Get-QueueDigest -Dag DAG01 -Filter {Status -eq "Retry"}
 For more information, see [Get-QueueDigest](http://technet.microsoft.com/library/64a6d710-0297-453b-aa35-3ae0a65bd81e.aspx).
 
 ## Retry queues
-<a name="Retry"> </a>
 
 When you retry a delivery queue, you force an immediate connection attempt and override the next scheduled retry time. For more information about the schedule retry time for queues, see [Message retry, resubmit, and expiration intervals](message-intervals.md).
 
- **Notes**:
+**Notes**:
 
 - The queue must be in a status of Retry for this action to have any effect.
 
--  If the connection isn't successful, the retry interval timer is reset.
+- If the connection isn't successful, the retry interval timer is reset.
 
 ### Use Queue Viewer to retry a queue
 
@@ -147,15 +146,15 @@ When you retry a delivery queue, you force an immediate connection attempt and o
 
 3. Click **Create Filter**, and enter your filter expression as follows:
 
-1. Select **Status** from the queue property drop-down list.
+   1. Select **Status** from the queue property drop-down list.
 
-2. Select **Equals** from the comparison operator drop-down list.
+   2. Select **Equals** from the comparison operator drop-down list.
 
-3. Select **Retry** from the value drop-down list.
+   3. Select **Retry** from the value drop-down list.
 
-4. Click **Apply Filter**. All queues that currently have a **Retry** status are displayed.
+   4. Click **Apply Filter**. All queues that currently have a **Retry** status are displayed.
 
-5. Select one or more queues from the list. Right-click, and then select **Retry Queue**. If the connection attempt is successful, the queue status changes to **Active**. If no connection can be made, the queue remains in a status of **Retry** and the next retry time is updated.
+   5. Select one or more queues from the list. Right-click, and then select **Retry Queue**. If the connection attempt is successful, the queue status changes to **Active**. If no connection can be made, the queue remains in a status of **Retry** and the next retry time is updated.
 
 ### Use the Exchange Management Shell to retry a queue
 
@@ -190,11 +189,10 @@ To verify that you have successfully retried a queue, use either of the followin
   ```
 
 ## Resubmit queues
-<a name="Resubmit"> </a>
 
 Resubmitting a queue sends all messages in the queue back to the Submission queue for the categorizer to process. For more information about the categorizer, see [Mail flow and the transport pipeline](../../mail-flow/mail-flow.md).
 
- **Notes**:
+**Notes**:
 
 - You can't use Queue Viewer to resubmit queues. You can only use the Exchange Management Shell.
 
@@ -206,7 +204,7 @@ Resubmitting a queue sends all messages in the queue back to the Submission queu
 
     Any messages in the queue that have the status value of Suspended aren't resubmitted.
 
-- You can't resubmit the poison message queue, but you can resubmit individual messages in the queue. For more information, see the [Resubmit messages in the poison message queue](queue-procedures.md#PoisonResubmit) section later in this topic.
+- You can't resubmit the poison message queue, but you can resubmit individual messages in the queue. For more information, see the [Resubmit messages in the poison message queue](queue-procedures.md#resubmit-messages-in-the-poison-message-queue) section later in this topic.
 
 - Instead of resubmitting the queue, you can export the messages to .eml files and resubmit them by using the Replay directory on any Exchange server. For more information, see [Export messages from queues](export-messages.md)
 
@@ -245,11 +243,10 @@ To verify that you have successfully resubmitted a queue, use either of the foll
   ```
 
 ### Resubmit messages in the poison message queue
-<a name="PoisonResubmit"> </a>
 
 A special case for resubmitting messages is the poison message queue. You can't resubmit the poison message queue like other queues, but you can resubmit individual messages in the poison message queue.
 
- **Notes**:
+**Notes**:
 
 - Messages in the poison message queue might be genuinely harmful, or they might be valid messages that are the victims of an poorly written transport agent or a software bug. If you're unsure of the safety of the messages in the poison message queue, you should export the messages to files so you can examine them. For more information, see [Export messages from queues](export-messages.md).
 
@@ -273,26 +270,25 @@ To resubmit a message from the poison message queue, perform the following steps
 
 1. Find the identity of the message by running the following command on the local server.
 
-  ```
-  Get-Message -Queue Poison | Format-Table Identity
-  ```
+   ```
+   Get-Message -Queue Poison | Format-Table Identity
+   ```
 
 2. Use the identity of the message from the previous step in the following command.
 
-  ```
-  Resume-Message <PoisonMessageIdentity>
-  ```
+   ```
+   Resume-Message <PoisonMessageIdentity>
+   ```
 
-    This example resumes a message from the poison message queue that has the message Identity value of 222.
+   This example resumes a message from the poison message queue that has the message Identity value of 222.
 
-  ```
-  Resume-Message 222
-  ```
+   ```
+   Resume-Message 222
+   ```
 
 For more information, see [Resume-Message](http://technet.microsoft.com/library/c15f872c-af1b-48ca-b95d-cca1b0a78977.aspx).
 
 ### How do you know this worked?
-<a name="PoisonResubmit"> </a>
 
 To verify that you have successfully resubmitted a message from the poison message queue, use either of the following procedures to verify that the message is no longer in the queue:
 
@@ -307,11 +303,10 @@ To verify that you have successfully resubmitted a message from the poison messa
 If the message you resubmitted was the only message in the poison message queue, and the queue is no longer visible, that's also an indication of a successful message resubmission.
 
 ## Suspend queues
-<a name="Suspend"> </a>
 
-You can suspend a queue to stop mail flow, and then suspend one or more messages in the queue. For more information, see [Suspend messages in queues](message-procedures.md#Suspend).
+You can suspend a queue to stop mail flow, and then suspend one or more messages in the queue. For more information, see [Suspend messages in queues](message-procedures.md#suspend-messages-in-queues).
 
- **Notes**:
+**Notes**:
 
 - You can suspend the following queues:
 
@@ -427,6 +422,3 @@ To verify that you have successfully resumed a queue, use either of the followin
   ```
   Get-Queue -Identity <QueueIdentity>
   ```
-
-
-

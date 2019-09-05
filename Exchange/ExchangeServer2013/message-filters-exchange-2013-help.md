@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Message filters: Exchange 2013 Help'
 TOCTitle: Message filters
 ms:assetid: 8e6187c1-76f0-49da-bc24-2ab57cfb3c2c
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb123714(v=EXCHG.150)
 ms:contentKeyID: 49286849
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Message filters
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Filtering generates different views of the messages in queues. By specifying filter criteria, you can quickly locate messages and take action on them. When an email message is sent to multiple recipients, the message may be located in multiple queues. When you filter by message properties, you can locate messages across all queues. The following scenarios are examples of how you might use message filtering to manage mail flow:
 
@@ -152,4 +153,3 @@ You can use message properties to create a filter and locate messages that meet 
 </tr>
 </tbody>
 </table>
-

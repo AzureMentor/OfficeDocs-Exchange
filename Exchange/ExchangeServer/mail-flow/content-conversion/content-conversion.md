@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn about content conversion (message formatting and encoding options) in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: bc367eb3-0306-4da9-9a84-4341caef77af
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Content conversion
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -222,6 +223,3 @@ This header field instructs a MIME-enabled email client on how it should display
 - `Inline`: The attachment is displayed in the message body.
 
 - `Attachment`: The attached file appears as a regular attachment separate from the message body. Other parameters are also with this values (for example, `Filename`, `Creation-date`, and `Size`).
-
-
-

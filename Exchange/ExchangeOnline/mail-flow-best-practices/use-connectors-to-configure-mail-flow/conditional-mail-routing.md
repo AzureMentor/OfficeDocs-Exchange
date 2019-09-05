@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: Admins can learn how to use connectors and mail flow rules to route mail in Exchange Online
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 82d105e2-e955-4e03-99c3-3314a5d21a4c
 ms.date: 
+ms.reviewer: 
 title: Scenario Conditional mail routing in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -72,4 +73,3 @@ Now that we've created a connector, we need to create a mail flow rule that'll s
    You can choose additional properties for the rule, such as the test mode and when to activate the rule.
 
 5. To save the connector, click **Save**.
-

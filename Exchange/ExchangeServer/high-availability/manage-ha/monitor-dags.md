@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: f5bdfd6e-e93c-4d96-8bc2-548750d51930
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Monitor database availability groups
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -27,22 +28,22 @@ Use the [Get-MailboxDatabaseCopyStatus](http://technet.microsoft.com/library/6ad
 
 |**Database copy status**|**Description**|
 |:-----|:-----|
-|Failed  <br/> |The mailbox database copy is in a Failed state because it isn't suspended, and it isn't able to copy or replay log files. While in a Failed state and not suspended, the system will periodically check whether the problem that caused the copy status to change to Failed has been resolved. After the system has detected that the problem is resolved, and barring no other issues, the copy status will automatically change to Healthy.  <br/> |
-|Seeding  <br/> |The mailbox database copy is being seeded, the content index for the mailbox database copy is being seeded, or both are being seeded. Upon successful completion of seeding, the copy status should change to Initializing.  <br/> |
-|SeedingSource  <br/> |The mailbox database copy is being used as a source for a database copy seeding operation.  <br/> |
-|Suspended  <br/> |The mailbox database copy is in a Suspended state as a result of an administrator manually suspending the database copy by running the **Suspend-MailboxDatabaseCopy** cmdlet.  <br/> |
-|Healthy  <br/> |The mailbox database copy is successfully copying and replaying log files, or it has successfully copied and replayed all available log files.  <br/> |
-|ServiceDown  <br/> |The Microsoft Exchange Replication service isn't available or running on the server that hosts the mailbox database copy.  <br/> |
-|Initializing  <br/> |The mailbox database copy is in an Initializing state when a database copy has been created, when the Microsoft Exchange Replication service is starting or has just been started, and during transitions from Suspended, ServiceDown, Failed, Seeding, or SinglePageRestore to another state. While in this state, the system is verifying that the database and log stream are in a consistent state. In most cases, the copy status will remain in the Initializing state for about 15 seconds, but in all cases, it should generally not be in this state for longer than 30 seconds.  <br/> |
-|Resynchronizing  <br/> |The mailbox database copy and its log files are being compared with the active copy of the database to check for any divergence between the two copies. The copy status will remain in this state until any divergence is detected and resolved.  <br/> |
-|Mounted  <br/> |The active copy is online and accepting client connections. Only the active copy of the mailbox database copy can have a copy status of Mounted.  <br/> |
-|Dismounted  <br/> |The active copy is offline and not accepting client connections. Only the active copy of the mailbox database copy can have a copy status of Dismounted.  <br/> |
-|Mounting  <br/> |The active copy is coming online and not yet accepting client connections. Only the active copy of the mailbox database copy can have a copy status of Mounting.  <br/> |
-|Dismounting  <br/> |The active copy is going offline and terminating client connections. Only the active copy of the mailbox database copy can have a copy status of Dismounting.  <br/> |
-|DisconnectedAndHealthy  <br/> |The mailbox database copy is no longer connected to the active database copy, and it was in the Healthy state when the loss of connection occurred. This state represents the database copy with respect to connectivity to its source database copy. It may be reported during DAG network failures between the source copy and the target database copy.  <br/> |
-|DisconnectedAndResynchronizing  <br/> |The mailbox database copy is no longer connected to the active database copy, and it was in the Resynchronizing state when the loss of connection occurred. This state represents the database copy with respect to connectivity to its source database copy. It may be reported during DAG network failures between the source copy and the target database copy.  <br/> |
-|FailedAndSuspended  <br/> |The Failed and Suspended states have been set simultaneously by the system because a failure was detected, and because resolution of the failure explicitly requires administrator intervention. An example is if the system detects unrecoverable divergence between the active mailbox database and a database copy. Unlike the Failed state, the system won't periodically check whether the problem has been resolved, and automatically recover. Instead, an administrator must intervene to resolve the underlying cause of the failure before the database copy can be transitioned to a healthy state.  <br/> |
-|SinglePageRestore  <br/> |This state indicates that a single page restore operation is occurring on the mailbox database copy.  <br/> |
+|Failed|The mailbox database copy is in a Failed state because it isn't suspended, and it isn't able to copy or replay log files. While in a Failed state and not suspended, the system will periodically check whether the problem that caused the copy status to change to Failed has been resolved. After the system has detected that the problem is resolved, and barring no other issues, the copy status will automatically change to Healthy.|
+|Seeding|The mailbox database copy is being seeded, the content index for the mailbox database copy is being seeded, or both are being seeded. Upon successful completion of seeding, the copy status should change to Initializing.|
+|SeedingSource|The mailbox database copy is being used as a source for a database copy seeding operation.|
+|Suspended|The mailbox database copy is in a Suspended state as a result of an administrator manually suspending the database copy by running the **Suspend-MailboxDatabaseCopy** cmdlet.|
+|Healthy|The mailbox database copy is successfully copying and replaying log files, or it has successfully copied and replayed all available log files.|
+|ServiceDown|The Microsoft Exchange Replication service isn't available or running on the server that hosts the mailbox database copy.|
+|Initializing|The mailbox database copy is in an Initializing state when a database copy has been created, when the Microsoft Exchange Replication service is starting or has just been started, and during transitions from Suspended, ServiceDown, Failed, Seeding, or SinglePageRestore to another state. While in this state, the system is verifying that the database and log stream are in a consistent state. In most cases, the copy status will remain in the Initializing state for about 15 seconds, but in all cases, it should generally not be in this state for longer than 30 seconds.|
+|Resynchronizing|The mailbox database copy and its log files are being compared with the active copy of the database to check for any divergence between the two copies. The copy status will remain in this state until any divergence is detected and resolved.|
+|Mounted|The active copy is online and accepting client connections. Only the active copy of the mailbox database copy can have a copy status of Mounted.|
+|Dismounted|The active copy is offline and not accepting client connections. Only the active copy of the mailbox database copy can have a copy status of Dismounted.|
+|Mounting|The active copy is coming online and not yet accepting client connections. Only the active copy of the mailbox database copy can have a copy status of Mounting.|
+|Dismounting|The active copy is going offline and terminating client connections. Only the active copy of the mailbox database copy can have a copy status of Dismounting.|
+|DisconnectedAndHealthy|The mailbox database copy is no longer connected to the active database copy, and it was in the Healthy state when the loss of connection occurred. This state represents the database copy with respect to connectivity to its source database copy. It may be reported during DAG network failures between the source copy and the target database copy.|
+|DisconnectedAndResynchronizing|The mailbox database copy is no longer connected to the active database copy, and it was in the Resynchronizing state when the loss of connection occurred. This state represents the database copy with respect to connectivity to its source database copy. It may be reported during DAG network failures between the source copy and the target database copy.|
+|FailedAndSuspended|The Failed and Suspended states have been set simultaneously by the system because a failure was detected, and because resolution of the failure explicitly requires administrator intervention. An example is if the system detects unrecoverable divergence between the active mailbox database and a database copy. Unlike the Failed state, the system won't periodically check whether the problem has been resolved, and automatically recover. Instead, an administrator must intervene to resolve the underlying cause of the failure before the database copy can be transitioned to a healthy state.|
+|SinglePageRestore|This state indicates that a single page restore operation is occurring on the mailbox database copy.|
 
 The **Get-MailboxDatabaseCopyStatus** cmdlet also returns details about the in-use replication networks, including _IncomingLogCopyingNetwork_, which is returned for passive database copies, and _OutgoingConnections_, which is returned for active databases that have more than one copy, as well as any database copy being used as a source for a database seeding operation. Outgoing connection information is provided for database copies that are in file mode replication. Outgoing connection information is not provided for database copies that are in block mode replication.
 
@@ -81,24 +82,24 @@ The **Test-ReplicationHealth** cmdlet is designed for the proactive monitoring o
 
 |**Test name**|**Description**|
 |:-----|:-----|
-|ClusterService  <br/> |Verifies that the Cluster service is running and reachable on the specified DAG member, or if no DAG member is specified, on the local server.  <br/> |
-|ReplayService  <br/> |Verifies that the Microsoft Exchange Replication service is running and reachable on the specified DAG member, or if no DAG member is specified, on the local server.  <br/> |
-|ActiveManager  <br/> |Verifies that the instance of Active Manager running on the specified DAG member, or if no DAG member is specified, the local server, is in a valid role (primary, secondary, or stand-alone).  <br/> |
-|TasksRpcListener  <br/> |Verifies that the tasks remote procedure call (RPC) server is running and reachable on the specified DAG member, or if no DAG member is specified, on the local server.  <br/> |
-|TcpListener  <br/> |Verifies that the TCP log copy listener is running and reachable on the specified DAG member, or if no DAG member is specified, on the local server.  <br/> |
-|ServerLocatorService  <br/> |Verifies the Active Manager client/server processes on DAG members and on the Client Access Server that perform lookups in Active Directory and Active Manager to determine where a user's mailbox database is active.  <br/> |
-|DagMembersUp  <br/> |Verifies that all DAG members are available, running, and reachable.  <br/> |
-|ClusterNetwork  <br/> |Verifies that all cluster-managed networks on the specified DAG member, or if no DAG member is specified, the local server, are available.  <br/> |
-|QuorumGroup  <br/> |Verifies that the default cluster group (quorum group) is in a healthy and online state.  <br/> |
-|FileShareQuorum  <br/> |Verifies that the witness server and witness directory and share configured for the DAG are reachable.  <br/> |
-|DatabaseRedundancy  <br/> |Verifies that there is at least one healthy copy available of the databases on the specified DAG member, or if no DAG member is specified, on the local server.  <br/> |
-|DatabaseAvailability  <br/> |Verifies that the databases have sufficient availability on the specified DAG member, or if no DAG member is specified, on the local server.  <br/> |
-|DBCopySuspended  <br/> |Checks whether any mailbox database copies are in a state of Suspended on the specified DAG member, or if no DAG member is specified, on the local server.  <br/> |
-|DBCopyFailed  <br/> |Checks whether any mailbox database copies are in a state of Failed on the specified DAG member, or if no DAG member is specified, on the local server.  <br/> |
-|DBInitializing  <br/> |Checks whether any mailbox database copies are in a state of Initializing on the specified DAG member, or if no DAG member is specified, on the local server.  <br/> |
-|DBDisconnected  <br/> |Checks whether any mailbox database copies are in a state of Disconnected on the specified DAG member, or if no DAG member is specified, on the local server.  <br/> |
-|DBLogCopyKeepingUp  <br/> |Verifies that log copying and inspection by the passive copies of databases on the specified DAG member, or if no DAG member is specified, on the local server, are able to keep up with log generation activity on the active copy.  <br/> |
-|DBLogReplayKeepingUp  <br/> |Verifies that replay activity for the passive copies of databases on the specified DAG member, or if no DAG member is specified, on the local server, is able to keep up with log copying and inspection activity.  <br/> |
+|ClusterService|Verifies that the Cluster service is running and reachable on the specified DAG member, or if no DAG member is specified, on the local server.|
+|ReplayService|Verifies that the Microsoft Exchange Replication service is running and reachable on the specified DAG member, or if no DAG member is specified, on the local server.|
+|ActiveManager|Verifies that the instance of Active Manager running on the specified DAG member, or if no DAG member is specified, the local server, is in a valid role (primary, secondary, or stand-alone).|
+|TasksRpcListener|Verifies that the tasks remote procedure call (RPC) server is running and reachable on the specified DAG member, or if no DAG member is specified, on the local server.|
+|TcpListener|Verifies that the TCP log copy listener is running and reachable on the specified DAG member, or if no DAG member is specified, on the local server.|
+|ServerLocatorService|Verifies the Active Manager client/server processes on DAG members and on the Client Access Server that perform lookups in Active Directory and Active Manager to determine where a user's mailbox database is active.|
+|DagMembersUp|Verifies that all DAG members are available, running, and reachable.|
+|ClusterNetwork|Verifies that all cluster-managed networks on the specified DAG member, or if no DAG member is specified, the local server, are available.|
+|QuorumGroup|Verifies that the default cluster group (quorum group) is in a healthy and online state.|
+|FileShareQuorum|Verifies that the witness server and witness directory and share configured for the DAG are reachable.|
+|DatabaseRedundancy|Verifies that there is at least one healthy copy available of the databases on the specified DAG member, or if no DAG member is specified, on the local server.|
+|DatabaseAvailability|Verifies that the databases have sufficient availability on the specified DAG member, or if no DAG member is specified, on the local server.|
+|DBCopySuspended|Checks whether any mailbox database copies are in a state of Suspended on the specified DAG member, or if no DAG member is specified, on the local server.|
+|DBCopyFailed|Checks whether any mailbox database copies are in a state of Failed on the specified DAG member, or if no DAG member is specified, on the local server.|
+|DBInitializing|Checks whether any mailbox database copies are in a state of Initializing on the specified DAG member, or if no DAG member is specified, on the local server.|
+|DBDisconnected|Checks whether any mailbox database copies are in a state of Disconnected on the specified DAG member, or if no DAG member is specified, on the local server.|
+|DBLogCopyKeepingUp|Verifies that log copying and inspection by the passive copies of databases on the specified DAG member, or if no DAG member is specified, on the local server, are able to keep up with log generation activity on the active copy.|
+|DBLogReplayKeepingUp|Verifies that replay activity for the passive copies of databases on the specified DAG member, or if no DAG member is specified, on the local server, is able to keep up with log copying and inspection activity.|
 
 ### Test-ReplicationHealth example
 
@@ -171,20 +172,20 @@ The script supports parameters that allow you to customize the script's behavior
 
 |**Parameter**|**Description**|
 |:-----|:-----|
-| _DatabaseAvailabilityGroup_ <br/> |Specifies the name of the DAG from which you want to collect metrics. If this parameter is omitted, the DAG of which the local server is a member will be used. Wildcard characters can be used to collect information from and report on multiple DAGs.  <br/> |
-| _Database_ <br/> |Provides a list of databases for which the report needs to be generated. Wildcard characters are supported, for example, `-Database:"DB1","DB2"` or `-Database:"DB*"`.  <br/> |
-| _StartTime_ <br/> |Specifies the duration of the time period to report on. The script gathers only the events logged during this period. As a result, the script may capture partial operation records (for example, only the end of an operation at the start of the period or vice-versa). If neither _StartTime_ nor _EndTime_ is specified, the script defaults to the past 24 hours. If only one parameter is specified, the period will be 24 hours, either beginning or ending at the specified time.  <br/> |
-| _EndTime_ <br/> |Specifies the duration of the time period to report on. The script gathers only the events logged during this period. As a result, the script may capture partial operation records (for example, only the end of an operation at the start of the period or vice-versa). If neither _StartTime_ nor _EndTime_ is specified, the script defaults to the past 24 hours If only one parameter is specified, the period will be 24 hours, either beginning or ending at the specified time.  <br/> |
-| _ReportPath_ <br/> |Specifies the folder used to store the results of event processing. If this parameter is omitted, the Scripts folder will be used. When specified, the script takes a list of .csv files generated by the script and uses them as the source data to generate a summary HTML report. The report is the same one that's generated with the -GenerateHtmlReport option. The files can be generated across multiple DAGs at many different times, or even with overlapping times, and the script will merge all of their data together.  <br/> |
-| _GenerateHtmlReport_ <br/> |Specifies that the script gather all the information it has recorded, group the data by the operation type, and then generate an HTML file that includes statistics for each of these groups. The report includes the total number of operations in each group, the number of operations that failed, and statistics for the time taken within each group. The report also contains a breakdown of the types of errors that resulted in failed operations.  <br/> |
-| _ShowHtmlReport_ <br/> |Specifies that the HTML-generated report should be displayed in a Web browser after it's generated.  <br/> |
-| _SummariseCsvFiles_ <br/> |Specifies that the script read the data from existing .csv files that were previously generated by the script. This data is then used to generate a summary report similar to the report generated by the _GenerateHtmlReport_ parameter.  <br/> |
-| _ActionType_ <br/> |Specifies the type of operational actions the script should collect. The values for this parameter are `Move`, `Mount`, `ismount`, and `Remount`. The `Move` value refers to any time that the database changes its active server, whether by controlled moves or by failovers. The `Mount`, `Dismount`, and `Remount` values refer to times that the database changes its mounted status without moving to another computer.  <br/> |
-| _ActionTrigger_ <br/> |Specifies which administrative operations should be collected by the script. The values for this parameter are `Admin` or `Automatic`. Automatic actions are those performed automatically by the system (for example, a failover when a server goes offline). Admin actions are any actions that were performed by an administrator using either the Exchange Management Shell or the Exchange admin center.  <br/> |
-| _RawOutput_ <br/> |Specifies that the script writes the results that would have been written to .csv files directly to the output stream, as would happen with write-output. This information can then be piped to other commands.  <br/> |
-| _IncludedExtendedEvents_ <br/> |Specifies that the script collects the events that provide diagnostic details of times spent mounting databases. This can be a time-consuming stage if the Application event log on the servers is large.  <br/> |
-| _MergeCSVFiles_ <br/> |Specifies that the script takes all the .csv files containing data about each operation and merges them into a single .csv file.  <br/> |
-| _ReportFilter_ <br/> |Specifies that a filter should be applied to the operations using the fields as they appear in the .csv files. This parameter uses the same format as a `Where` operation, with each element set to `$_` and returning a Boolean value. For example: `{$_DatabaseName -notlike "Mailbox Database*"}` can be used to exclude the default databases from the report.  <br/> |
+| _DatabaseAvailabilityGroup_|Specifies the name of the DAG from which you want to collect metrics. If this parameter is omitted, the DAG of which the local server is a member will be used. Wildcard characters can be used to collect information from and report on multiple DAGs.|
+| _Database_|Provides a list of databases for which the report needs to be generated. Wildcard characters are supported, for example, `-Database:"DB1","DB2"` or `-Database:"DB*"`.|
+| _StartTime_|Specifies the duration of the time period to report on. The script gathers only the events logged during this period. As a result, the script may capture partial operation records (for example, only the end of an operation at the start of the period or vice-versa). If neither _StartTime_ nor _EndTime_ is specified, the script defaults to the past 24 hours. If only one parameter is specified, the period will be 24 hours, either beginning or ending at the specified time.|
+| _EndTime_|Specifies the duration of the time period to report on. The script gathers only the events logged during this period. As a result, the script may capture partial operation records (for example, only the end of an operation at the start of the period or vice-versa). If neither _StartTime_ nor _EndTime_ is specified, the script defaults to the past 24 hours If only one parameter is specified, the period will be 24 hours, either beginning or ending at the specified time.|
+| _ReportPath_|Specifies the folder used to store the results of event processing. If this parameter is omitted, the Scripts folder will be used. When specified, the script takes a list of .csv files generated by the script and uses them as the source data to generate a summary HTML report. The report is the same one that's generated with the -GenerateHtmlReport option. The files can be generated across multiple DAGs at many different times, or even with overlapping times, and the script will merge all of their data together.|
+| _GenerateHtmlReport_|Specifies that the script gather all the information it has recorded, group the data by the operation type, and then generate an HTML file that includes statistics for each of these groups. The report includes the total number of operations in each group, the number of operations that failed, and statistics for the time taken within each group. The report also contains a breakdown of the types of errors that resulted in failed operations.|
+| _ShowHtmlReport_|Specifies that the HTML-generated report should be displayed in a Web browser after it's generated.|
+| _SummariseCsvFiles_|Specifies that the script read the data from existing .csv files that were previously generated by the script. This data is then used to generate a summary report similar to the report generated by the _GenerateHtmlReport_ parameter.|
+| _ActionType_|Specifies the type of operational actions the script should collect. The values for this parameter are `Move`, `Mount`, `ismount`, and `Remount`. The `Move` value refers to any time that the database changes its active server, whether by controlled moves or by failovers. The `Mount`, `Dismount`, and `Remount` values refer to times that the database changes its mounted status without moving to another computer.|
+| _ActionTrigger_|Specifies which administrative operations should be collected by the script. The values for this parameter are `Admin` or `Automatic`. Automatic actions are those performed automatically by the system (for example, a failover when a server goes offline). Admin actions are any actions that were performed by an administrator using either the Exchange Management Shell or the Exchange admin center.|
+| _RawOutput_|Specifies that the script writes the results that would have been written to .csv files directly to the output stream, as would happen with write-output. This information can then be piped to other commands.|
+| _IncludedExtendedEvents_|Specifies that the script collects the events that provide diagnostic details of times spent mounting databases. This can be a time-consuming stage if the Application event log on the servers is large.|
+| _MergeCSVFiles_|Specifies that the script takes all the .csv files containing data about each operation and merges them into a single .csv file.|
+| _ReportFilter_|Specifies that a filter should be applied to the operations using the fields as they appear in the .csv files. This parameter uses the same format as a `Where` operation, with each element set to `$_` and returning a Boolean value. For example: `{$_DatabaseName -notlike "Mailbox Database*"}` can be used to exclude the default databases from the report.|
 
 ### CollectOverMetrics.ps1 examples
 
@@ -225,16 +226,16 @@ The CollectReplicationMetrics.ps1 script supports parameters that allow you to c
 
 |**Parameter**|**Description**|
 |:-----|:-----|
-| _DagName_ <br/> |Specifies the name of the DAG from which you want to collect metrics. If this parameter is omitted, the DAG of which the local server is a member will be used.  <br/> |
-| _DatabaseNames_ <br/> |Provides a list of databases for which the report needs to be generated. Wildcard characters are supported for use, for example, `-DatabaseNames:"DB1","DB2"` or `-DatabaseNames:"DB*"`.  <br/> |
-| _ReportPath_ <br/> |Specifies the folder used to store the results of event processing. If this parameter is omitted, the Scripts folder will be used.  <br/> |
-| _Duration_ <br/> |Specifies the amount of time the collection process should run. Typical values would be one to three hours. Longer durations should be used only with long intervals between each sample or as a series of shorter jobs run by scheduled tasks.  <br/> |
-| _Frequency_ <br/> |Specifies the frequency at which data metrics are collected. Typical values would be 30 seconds, one minute, or five minutes. Under normal circumstances, intervals that are shorter than these won't show significant changes between each sample.  <br/> |
-| _Servers_ <br/> |Specifies the identity of the servers from which to collect statistics. You can specify any value, including wildcard characters or GUIDs.  <br/> |
-| _SummariseFiles_ <br/> |Specifies a list of .csv files to generate a summary report. These files are the files named **CounterData.\<CounterData\>\*** and are generated by the CollectReplicationMetrics.ps1 script.  <br/> |
-| _Mode_ <br/> |Specifies the processing stages that the script executes. You can use the following values:  <br/> `CollectAndReport`: This is the default value. This value signifies that the script should both collect the data from the servers and then process them to produce the summary report.  <br/> `CollectOnly`: This value signifies that the script should just collect the data and not produce the report.  <br/> `ProcessOnly`: This value signifies that the script should import data from a set of .csv files and process them to produce the summary report. The _SummariseFiles_ parameter is used to provide the script with the list of files to process.  <br/> |
-| _MoveFilestoArchive_ <br/> |Specifies that the script should move the files to a compressed folder after processing.  <br/> |
-| _LoadExchangeSnapin_ <br/> |Specifies that the script should load the Exchange Management Shell commands. This parameter is useful when the script needs to run from outside the Exchange Management Shell, such as in a scheduled task.  <br/> |
+| _DagName_|Specifies the name of the DAG from which you want to collect metrics. If this parameter is omitted, the DAG of which the local server is a member will be used.|
+| _DatabaseNames_|Provides a list of databases for which the report needs to be generated. Wildcard characters are supported for use, for example, `-DatabaseNames:"DB1","DB2"` or `-DatabaseNames:"DB*"`.|
+| _ReportPath_|Specifies the folder used to store the results of event processing. If this parameter is omitted, the Scripts folder will be used.|
+| _Duration_|Specifies the amount of time the collection process should run. Typical values would be one to three hours. Longer durations should be used only with long intervals between each sample or as a series of shorter jobs run by scheduled tasks.|
+| _Frequency_|Specifies the frequency at which data metrics are collected. Typical values would be 30 seconds, one minute, or five minutes. Under normal circumstances, intervals that are shorter than these won't show significant changes between each sample.|
+| _Servers_|Specifies the identity of the servers from which to collect statistics. You can specify any value, including wildcard characters or GUIDs.|
+| _SummariseFiles_|Specifies a list of .csv files to generate a summary report. These files are the files named **CounterData.\<CounterData\>\*** and are generated by the CollectReplicationMetrics.ps1 script.|
+| _Mode_|Specifies the processing stages that the script executes. You can use the following values:  <br/> `CollectAndReport`: This is the default value. This value signifies that the script should both collect the data from the servers and then process them to produce the summary report.  <br/> `CollectOnly`: This value signifies that the script should just collect the data and not produce the report.  <br/> `ProcessOnly`: This value signifies that the script should import data from a set of .csv files and process them to produce the summary report. The _SummariseFiles_ parameter is used to provide the script with the list of files to process.|
+| _MoveFilestoArchive_|Specifies that the script should move the files to a compressed folder after processing.|
+| _LoadExchangeSnapin_|Specifies that the script should load the Exchange Management Shell commands. This parameter is useful when the script needs to run from outside the Exchange Management Shell, such as in a scheduled task.|
 
 ### CollectReplicationMetrics.ps1 example
 
@@ -249,6 +250,3 @@ The following example reads the data from all the files matching CounterData\* a
 ```
 CollectReplicationMetrics.ps1 -SummariseFiles (dir CounterData*) -Mode ProcessOnly -ReportPath
 ```
-
-
-

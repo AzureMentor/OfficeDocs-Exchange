@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: eccd8f61-9706-4bb7-a62a-ec7c166f8019
 ms.date:
+ms.reviewer: 
 title: Recover a database availability group member server, recover Exchange DAG member, Exchange DAG server recovery, DAG server recovery, Exchange DAG failover
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -22,7 +23,7 @@ Microsoft Exchange Server Setup includes the switch _/m:RecoverServer_ that can 
 
 After the server's configuration information is gathered from Active Directory, the original Exchange files and services are then installed on the server, and the roles and settings that were stored in Active Directory are then applied to the server.
 
-Looking for other management tasks related to DAGs? Check out [Managing database availability groups](http://technet.microsoft.com/library/4abde67b-4995-4a57-894f-ba76aa72341c.aspx).
+Looking for other management tasks related to DAGs? Check out [Manage database availability groups](../manage-ha/manage-dags.md).
 
 ## What do you need to know before you begin?
 
@@ -32,15 +33,15 @@ Looking for other management tasks related to DAGs? Check out [Managing database
 
 - If Exchange is installed in a location other than the default location, you must use the _/TargetDir_ Setup switch to specify the location of the Exchange program files. If you don't use the _/TargetDir_ switch, the Exchange program files will be installed in the default location (%programfiles%\Microsoft\Exchange Server\V15).
 
-    To determine the install location, follow these steps:
+  To determine the install location, follow these steps:
 
-1. Open ADSIEDIT.MSC or LDP.EXE.
+  1. Open ADSIEDIT.MSC or LDP.EXE.
 
-2. Navigate to the following location: **CN=ExServerName,CN=Servers,CN=First Administrative Group,CN=Administrative Groups,CN=ExOrg Name,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=DomainName,CN=Com**
+  2. Navigate to the following location: **CN=ExServerName,CN=Servers,CN=First Administrative Group,CN=Administrative Groups,CN=ExOrg Name,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=DomainName,CN=Com**
 
-3. Right-click the Exchange server object, and then click **Properties**.
+  3. Right-click the Exchange server object, and then click **Properties**.
 
-4. Locate the **msExchInstallPath** attribute. This attribute stores the current installation path.
+  4. Locate the **msExchInstallPath** attribute. This attribute stores the current installation path.
 
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
@@ -51,21 +52,21 @@ Looking for other management tasks related to DAGs? Check out [Managing database
 
 1. Retrieve any replay lag or truncation lag settings for any mailbox database copies that exist on the server being recovered by using the [Get-MailboxDatabase](http://technet.microsoft.com/library/e12bd6d3-3793-49cb-9ab6-948d42dd409e.aspx) cmdlet:
 
-  ```
-  Get-MailboxDatabase DB1 | Format-List *lag*
-  ```
+   ```
+   Get-MailboxDatabase DB1 | Format-List *lag*
+   ```
 
 2. Remove any mailbox database copies that exist on the server being recovered by using the [Remove-MailboxDatabaseCopy](http://technet.microsoft.com/library/18a41719-99dd-4bf7-97af-2e9b0e39ba2d.aspx) cmdlet:
 
-  ```
-  Remove-MailboxDatabaseCopy DB1\MBX1
-  ```
+   ```
+   Remove-MailboxDatabaseCopy DB1\MBX1
+   ```
 
 3. Remove the failed server's configuration from the DAG by using the [Remove-DatabaseAvailabilityGroupServer](http://technet.microsoft.com/library/49290be7-9d3d-4bc3-80ea-f1992fdd1d12.aspx) cmdlet:
 
-  ```
-  Remove-DatabaseAvailabilityGroupServer -Identity DAG1 -MailboxServer MBX1
-  ```
+   ```
+   Remove-DatabaseAvailabilityGroupServer -Identity DAG1 -MailboxServer MBX1
+   ```
 
    > [!NOTE]
    > If the DAG member being removed is offline and can't be brought online, you must add the `-ConfigurationOnly` parameter to the preceding command. If you use the `-ConfigurationOnly` switch, you must also manually evict the node from the cluster.
@@ -74,23 +75,23 @@ Looking for other management tasks related to DAGs? Check out [Managing database
 
 5. Open a Command Prompt window. Using the original Setup media, run the following command:
 
-  ```
-  Setup /m:RecoverServer
-  ```
+   ```
+   Setup /m:RecoverServer
+   ```
 
 6. When the Setup recovery process is complete, add the recovered server to the DAG by using the [Add-DatabaseAvailabilityGroupServer](http://technet.microsoft.com/library/6bd0a3fe-dec6-47c2-b9a3-8dffb60e4aad.aspx) cmdlet:
 
-  ```
-  Add-DatabaseAvailabilityGroupServer -Identity DAG1 -MailboxServer MBX1
-  ```
+   ```
+   Add-DatabaseAvailabilityGroupServer -Identity DAG1 -MailboxServer MBX1
+   ```
 
 7. After the server has been added back to the DAG, you can reconfigure mailbox database copies by using the [Add-MailboxDatabaseCopy](http://technet.microsoft.com/library/84198fa9-ac8e-44ea-bd7b-64fe1e83e709.aspx) cmdlet. If any of the database copies being added previously had replay lag or truncation lag times greater than 0, you can use the _ReplayLagTime_ and _TruncationLagTime_ parameters of the [Add-MailboxDatabaseCopy](http://technet.microsoft.com/library/84198fa9-ac8e-44ea-bd7b-64fe1e83e709.aspx) cmdlet to reconfigure those settings:
 
-  ```
-  Add-MailboxDatabaseCopy -Identity DB1 -MailboxServer MBX1
-  Add-MailboxDatabaseCopy -Identity DB2 -MailboxServer MBX1 -ReplayLagTime 3.00:00:00
-  Add-MailboxDatabaseCopy -Identity DB3 -MailboxServer MBX1 -ReplayLagTime 3.00:00:00 -TruncationLagTime 3.00:00:00
-  ```
+   ```
+   Add-MailboxDatabaseCopy -Identity DB1 -MailboxServer MBX1
+   Add-MailboxDatabaseCopy -Identity DB2 -MailboxServer MBX1 -ReplayLagTime 3.00:00:00
+   Add-MailboxDatabaseCopy -Identity DB3 -MailboxServer MBX1 -ReplayLagTime 3.00:00:00 -TruncationLagTime 3.00:00:00
+   ```
 
 ## How do you know this worked?
 
@@ -106,7 +107,4 @@ To verify that you've successfully recovered the DAG member, do the following:
   Get-MailboxDatabaseCopyStatus -Server <ServerName>
   ```
 
-    All of the replication health tests should pass successfully, and the status of databases and their content indexes should be healthy.
-
-
-
+  All of the replication health tests should pass successfully, and the status of databases and their content indexes should be healthy.

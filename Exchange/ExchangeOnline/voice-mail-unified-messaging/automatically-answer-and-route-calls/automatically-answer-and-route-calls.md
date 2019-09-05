@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: Microsoft Exchange Unified Messaging (UM) enables you to create a single or multiple UM auto attendants, depending on the needs of your organization. Unlike other Unified Messaging components, such as UM dial plans and UM IP gateways, you aren't required to create UM auto attendants. However, auto attendants help internal and external callers locate users or departments that exist in an organization and transfer calls to them. This topic discusses the UM auto attendant feature found in Unified Messaging.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: d3dcd488-bd57-44cc-bdd4-ddee42a69dde
 ms.date: 6/24/2018
-title: Automatically answer and route incoming calls
+ms.reviewer: 
+title: Automatically answer and route incoming calls in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Automatically answer and route incoming calls
+# Automatically answer and route incoming calls in Exchange Online
 
 Microsoft Exchange Unified Messaging (UM) enables you to create a single or multiple UM auto attendants, depending on the needs of your organization. Unlike other Unified Messaging components, such as UM dial plans and UM IP gateways, you aren't required to create UM auto attendants. However, auto attendants help internal and external callers locate users or departments that exist in an organization and transfer calls to them. This topic discusses the UM auto attendant feature found in Unified Messaging.
 
@@ -120,6 +121,3 @@ The following examples demonstrate how you can use UM auto attendants with Unifi
     To create a UM auto attendant structure that supports this scenario, create and configure three UM auto attendants that have the appropriate external telephone numbers. Create three other UM auto attendants for each department in the Corporate Offices. You then configure each UM auto attendant based on your requirements, such as the greeting type or other navigational information.
 
 - **Example 2**: At a company called Contoso, Ltd., external customers call one main number for the business, 425-555-0100. When an external caller calls the external number, the UM auto attendant answers and prompts the caller by saying, "Welcome to Contoso, Ltd. Please press or say "One" to be transferred to corporate administration. Please press or say "Two" to be transferred to product support. Please press or say "Three" to be transferred to corporate information. Please press or say "Zero" to be transferred to the operator." To create a UM auto attendant structure that supports this scenario, you create a UM auto attendant that has customized extensions that route the call to the appropriate extension number.
-
-
-

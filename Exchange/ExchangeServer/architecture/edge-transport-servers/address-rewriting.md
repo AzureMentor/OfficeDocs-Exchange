@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how address rewriting on Edge Transport servers in Exchange Server can modify sender and recipient email addresses on email messages in transit.'
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 23f1eaf6-247a-4671-ad72-aae19d9b511d
 ms.date: 7/3/2018
+ms.reviewer: 
 title: Address rewriting on Edge Transport servers
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -184,6 +185,3 @@ The following values aren't rewritten because the information is part of message
 - Header fields located inside MIME body parts that may be signed.
 
 - The boundary string parameter of the MIME content type.
-
-
-

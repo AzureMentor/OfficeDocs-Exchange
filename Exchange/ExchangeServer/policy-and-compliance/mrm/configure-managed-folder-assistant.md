@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to configure the Managed Folder Assistant in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: article
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 9fcfb9b6-bd24-4218-a163-bc599cd5476a
 ms.date: 7/8/2018
+ms.reviewer: 
 title: Configure and run the Managed Folder Assistant in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -122,6 +123,3 @@ Start-ManagedFolderAssistant -Identity morris.cornejo@contoso.com
 ```
 
 For detailed syntax and parameter information, see [Start-ManagedFolderAssistant](http://technet.microsoft.com/library/75d840ea-5abc-44bb-b361-e81561fa1b04.aspx).
-
-
-

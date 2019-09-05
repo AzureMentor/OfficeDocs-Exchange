@@ -1,14 +1,16 @@
 ---
 description: 'Summary: Learn how administrators can view, create, modify, delete, suspend and resume requests to import .pst files into mailboxes in Exchange Server 2016 or Exchange Server 2019.'
 localization_priority: Normal
-ms.author: chrisda
+ms.author: dmaguire
 ms.topic: article
-author: chrisda
+author: msdmaguire
 ms.prod: exchange-server-it-pro
 ms.assetid: d2edc746-6647-41c4-a99a-b086caf893fa
 ms.collection: exchange-server
 ms.date: 7/5/2018
-ms.audience: ITPro
+ms.reviewer: 
+manager: serdars
+audience: ITPro
 title: Procedures for mailbox imports from .pst files in Exchange Server
 
 ---
@@ -340,6 +342,3 @@ To verify that you've successfully removed a mailbox import request, replace _\<
 ```
 Get-MailboxImportRequest -Mailbox <MailboxIdentity> | Format-List Name,FilePath,Mailbox,Status
 ```
-
-
-

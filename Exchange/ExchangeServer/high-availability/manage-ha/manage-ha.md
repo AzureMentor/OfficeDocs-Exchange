@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: f9677392-88d2-457f-a488-245771a8c1f2
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Managing high availability and site resilience
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -51,7 +52,7 @@ The operational management tasks associated with DAGs include:
 
 - **Shutting down DAG members**: The Exchange Server high availability solution is integrated with the Windows shutdown process. If an administrator or application initiates a shutdown of a Windows server in a DAG that has a mounted database that's replicated to one or more DAG members, the system will try to activate another copy of the mounted databases prior to allowing the shutdown process to complete. However, this new behavior doesn't guarantee that all of the databases on the server being shut down will experience a lossless activation. As a result, it's a best practice to perform a server switchover prior to shutting down a server that's a member of a DAG.
 
-For detailed steps about how to create a DAG, see [Create a database availability group](create-dags.md). For detailed steps about how to configure DAGs and DAG properties, see [Configure database availability group properties](configure-dag-properties.md). For more information about each of the preceding management tasks, and about managing DAGs in general, see [Managing database availability groups](http://technet.microsoft.com/library/4abde67b-4995-4a57-894f-ba76aa72341c.aspx).
+For detailed steps about how to create a DAG, see [Create a database availability group](create-dags.md). For detailed steps about how to configure DAGs and DAG properties, see [Configure database availability group properties](configure-dag-properties.md). For more information about each of the preceding management tasks, and about managing DAGs in general, see [Manage database availability groups](manage-dags.md).
 
 ## Mailbox database copy management
 <a name="Ma"> </a>
@@ -70,7 +71,7 @@ The operational management tasks associated with mailbox database copies include
 
 - **Removing a mailbox database copy**: Occasionally, it may be necessary to remove a mailbox database copy. For example, you can't remove a Mailbox server from a DAG until all mailbox database copies are removed from the server. In addition, you must remove all copies of a mailbox database before you can change the path for a mailbox database.
 
-For detailed steps about how to add a mailbox database copy, see [Add a mailbox database copy](add-db-copies.md). For detailed steps about how to configure mailbox database copies, see [Configure mailbox database copy properties](configure-db-properties.md). For more information about each of the preceding management tasks, and about managing mailbox database copies in general, see [Managing mailbox database copies](http://technet.microsoft.com/library/06df16b4-f209-4d3a-8c68-0805c745f9b2.aspx). For detailed steps about how to remove a mailbox database copy, see [Remove a mailbox database copy](remove-db-copies.md).
+For detailed steps about how to add a mailbox database copy, see [Add a mailbox database copy](add-db-copies.md). For detailed steps about how to configure mailbox database copies, see [Configure mailbox database copy properties](configure-db-properties.md). For more information about each of the preceding management tasks, and about managing mailbox database copies in general, see [Manage mailbox database copies](manage-database-copies.md). For detailed steps about how to remove a mailbox database copy, see [Remove a mailbox database copy](remove-db-copies.md).
 
 ## Proactive monitoring
 <a name="Pr"> </a>
@@ -93,6 +94,3 @@ For more detailed information about monitoring the health and status of DAGs and
 A *switchover* is a manual process in which an administrator manually activates one or more mailbox database copies. Switchovers, which can occur at the database or server level, are typically performed as part of preparation for maintenance activities. Switchover management involves performing database or server switchovers as needed. For example, if you need to perform maintenance on a Mailbox server in a DAG, you would first perform a server switchover so that the server didn't host any active mailbox database copies. For detailed steps about how to perform a database switchover, see [Activate a mailbox database copy](activate-db-copies.md). Switchovers can also be performed at the datacenter level.
 
 A *failover* is the automatic activation by the system of one or more database copies in reaction to a failure. For example, the loss of a disk drive in a RAID-less environment will trigger a database failover. The loss of the MAPI network or a power failure will trigger a server failover.
-
-
-

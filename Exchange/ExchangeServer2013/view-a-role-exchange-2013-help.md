@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'View a role: Exchange 2013 Help'
 TOCTitle: View a role
 ms:assetid: 1875b15f-22db-4ede-b310-ea894d6211c8
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd335117(v=EXCHG.150)
 ms:contentKeyID: 49289181
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # View a role
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Management roles can be listed in a variety of ways, depending on the information you want. For example, you can choose to return only roles of a specific role type, roles that contain only specific cmdlets and parameters, or view the details of a specific management role. For more information about management roles in Microsoft Exchange Server 2013, see [Understanding management roles](understanding-management-roles-exchange-2013-help.md).
 
@@ -23,27 +24,22 @@ Looking for other management tasks related to roles? Check out [Advanced permiss
 
 ## What do you need to know before you begin?
 
-  - Estimated time to complete each procedure: 5 minutes
+- Estimated time to complete each procedure: 5 minutes
 
-  - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Management roles" entry in the [Role management permissions](role-management-permissions-exchange-2013-help.md) topic.
+- You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Management roles" entry in the [Role management permissions](role-management-permissions-exchange-2013-help.md) topic.
 
-  - You must use the Shell to perform these procedures.
+- You must use the Shell to perform these procedures.
 
-  - This topic makes use of pipelining and the **Format-List** and **Format-Table** cmdlets. For more information about these concepts, see the following topics:
-    
-      - [Pipelining](https://technet.microsoft.com/en-us/library/aa998260\(v=exchg.150\))
-    
-      - [Working with command output](working-with-command-output-exchange-2013-help.md)
+- This topic makes use of pipelining and the **Format-List** and **Format-Table** cmdlets. For more information about these concepts, see the following topics:
 
-  - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
+  - [Pipelining](https://technet.microsoft.com/en-us/library/aa998260\(v=exchg.150\))
 
+  - [Working with command output](working-with-command-output-exchange-2013-help.md)
+
+- For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at <A href="https://go.microsoft.com/fwlink/p/?linkid=60612">Exchange Server</A>, <A href="https://go.microsoft.com/fwlink/p/?linkid=267542">Exchange Online</A>, or <A href="https://go.microsoft.com/fwlink/p/?linkid=285351">Exchange Online Protection</A>.
-
-
-
-## What do you want to do?
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612).
 
 ## View a specific management role
 
@@ -82,7 +78,7 @@ Get-ManagementRole | Format-Table <property 1>, <property 2...>
 This example returns a list of all the roles in your organization and includes the **Name** property and any property with the word **Implicit** at the beginning of the property name.
 
 ```powershell
-    Get-ManagementRole | Format-Table Name, Implicit*
+Get-ManagementRole | Format-Table Name, Implicit*
 ```
 
 For detailed syntax and parameter information, see [Get-ManagementRole](https://technet.microsoft.com/en-us/library/dd351125\(v=exchg.150\)).
@@ -114,7 +110,7 @@ When you use the *CmdletParameters* parameter, you can choose to include the *Cm
 To return a list of roles that contain the parameters you specify, use the following syntax.
 
 ```powershell
-    Get-ManagementRole [-Cmdlet <cmdlet>] -CmdletParameters <parameter 1>, <parameter 2...>
+Get-ManagementRole [-Cmdlet <cmdlet>] -CmdletParameters <parameter 1>, <parameter 2...>
 ```
 
 This example returns a list of roles that contain the *Database* and *Server* parameters, regardless of the cmdlets they exist on.
@@ -186,4 +182,3 @@ Get-ManagementRole "Mail Recipients" -Recurse
 ```
 
 For detailed syntax and parameter information, see [Get-ManagementRole](https://technet.microsoft.com/en-us/library/dd351125\(v=exchg.150\)).
-

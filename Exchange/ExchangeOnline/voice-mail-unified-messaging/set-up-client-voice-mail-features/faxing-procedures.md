@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: Set the partner fax server URI to allow faxing
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 6732a834-c9d2-4757-8ad9-44aeff6be9f7
 ms.date: 11/17/2014
-title: Faxing procedures
+ms.reviewer: 
+title: Faxing procedures in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Faxing procedures
+# Faxing procedures in Exchange Online
 
 [Set the partner fax server URI to allow faxing](set-the-partner-fax-server-uri-to-allow-faxing.md)
 
@@ -31,6 +32,3 @@ manager: scotv
 [Enable a user to receive faxes](enable-a-user-to-receive-faxes.md)
 
 [Prevent a user from receiving faxes](prevent-a-user-from-receiving-faxes.md)
-
-
-

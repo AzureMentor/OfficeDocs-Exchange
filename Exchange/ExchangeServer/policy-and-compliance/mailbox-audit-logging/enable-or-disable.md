@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to configure mailbox audit logging on mailboxes in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: article
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: c4bbfd52-6196-49c7-8c31-777fbbee11f2
 ms.date: 6/8/2018
+ms.reviewer: 
 title: Enable or disable mailbox audit logging for a mailbox
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -25,13 +26,13 @@ With mailbox audit logging in Exchange Server, you can track logons to a mailbox
 
 - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Mailbox audit logging" entry in the [Messaging policy and compliance permissions in Exchange Server](../../permissions/feature-permissions/policy-and-compliance-permissions.md) topic.
 
-- Entries in the mailbox audit log are retained for 90 days, by default. See the [More information](enable-or-disable.md#moreinfo) section change how long entries are retained.
+- Entries in the mailbox audit log are retained for 90 days, by default. See the [More information](#more-information) section change how long entries are retained.
 
 - You can't use the Exchange admin center (EAC) to enable or disable mailbox audit logging. You have to use the Exchange Management Shell. To learn how to open the Exchange Management Shell in your on-premises Exchange organization, see [Open the Exchange Management Shell](https://docs.microsoft.com/powershell/exchange/exchange-server/open-the-exchange-management-shell).
 
 - An administrator who has been assigned the Full Access permission to a user's mailbox is considered a delegate user.
 
--  Mailboxes are considered to be accessed by an administrator only in the following scenarios:
+- Mailboxes are considered to be accessed by an administrator only in the following scenarios:
 
   - In-Place eDiscovery is used to search a mailbox.
 
@@ -106,35 +107,31 @@ Get-Mailbox -ResultSize Unlimited -Filter {RecipientTypeDetails -eq "UserMailbox
 ```
 
 ## More information
-<a name="moreinfo"> </a>
 
-- The actions that are audited for each type of user may not all be displayed when you run the **Get-Mailbox** cmdlet. But you can run the following commands to display all the audited actions for a specific user logon type.
+The actions that are audited for each type of user may not all be displayed when you run the **Get-Mailbox** cmdlet. But you can run the following commands to display all the audited actions for a specific user logon type.
 
-  ```
-  Get-Mailbox <identity of mailbox> | Select-Object -ExpandProperty AuditAdmin
-  ```
+```
+Get-Mailbox <identity of mailbox> | Select-Object -ExpandProperty AuditAdmin
+```
 
-  ```
-  Get-Mailbox <identity of mailbox> | Select-Object -ExpandProperty AuditDelegate
-  ```
+```
+Get-Mailbox <identity of mailbox> | Select-Object -ExpandProperty AuditDelegate
+```
 
-  ```
-  Get-Mailbox <identity of mailbox> | Select-Object -ExpandProperty AuditOwner
-  ```
+```
+Get-Mailbox <identity of mailbox> | Select-Object -ExpandProperty AuditOwner
+```
 
-- By default, entries in the mailbox audit log are kept for 90 days. When an entry is older than 90 days, it's deleted. You can use the **Set-Mailbox** cmdlet to change this setting so items are kept for a longer (or shorter) period of time.
+By default, entries in the mailbox audit log are kept for 90 days. When an entry is older than 90 days, it's deleted. You can use the **Set-Mailbox** cmdlet to change this setting so items are kept for a longer (or shorter) period of time.
 
-    This example increases the age limit for mailbox audit log entries in Pilar Pinilla's mailbox to 180 days.
+This example increases the age limit for mailbox audit log entries in Pilar Pinilla's mailbox to 180 days.
 
-  ```
-  Set-Mailbox -Identity "Pilar Pinilla" -AuditLogAgeLimit 180
-  ```
+```
+Set-Mailbox -Identity "Pilar Pinilla" -AuditLogAgeLimit 180
+```
 
-    This example decreases the age limit for mailbox audit log entries for all user mailboxes in your organization to 60 days.
+This example decreases the age limit for mailbox audit log entries for all user mailboxes in your organization to 60 days.
 
-  ```
-  Get-Mailbox -ResultSize Unlimited -Filter {RecipientTypeDetails -eq "UserMailbox"} | Set-Mailbox -AuditLogAgeLimit 60
-  ```
-
-
-
+```
+Get-Mailbox -ResultSize Unlimited -Filter {RecipientTypeDetails -eq "UserMailbox"} | Set-Mailbox -AuditLogAgeLimit 60
+```

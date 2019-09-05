@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to add, remove, copy, and view management role groups in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: article
-author: dstrome
-ms.author: dstrome
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: ab9b7a3b-bf67-4ba1-bde5-8e6ac174b82c
 ms.date: 7/5/2018
+ms.reviewer: 
 title: Manage role groups
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -34,7 +35,6 @@ For additional management tasks related to role groups, see [Permissions](permis
 > Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Create a role group
-<a name="CreateRG"> </a>
 
 If you want to customize the permissions that you can assign to a group of users, create a new custom management role group.
 
@@ -65,7 +65,6 @@ To verify that you have successfully created a role group, do the following:
 3. Verify that members, assigned roles, and scope that you specified on the new role group are listed in the role group details pane.
 
 ## Copy a role group
-<a name="CopyRG"> </a>
 
 ### Use the EAC to copy a role group
 
@@ -89,45 +88,43 @@ If you have a role group that contains the permissions you want to grant to user
 7. Click **Save** to create the role group.
 
 ### Use the Exchange Management Shell to copy a role group with no scope
-<a name="NoScope"> </a>
 
 1. Store the role group that you want to copy in a variable using the following syntax.
 
-  ```
-  $RoleGroup = Get-RoleGroup <name of role group to copy>
-  ```
+   ```
+   $RoleGroup = Get-RoleGroup <name of role group to copy>
+   ```
 
 2. Create the new role group, and also add members to the role group and specify who can delegate the new role group to other users, using the following syntax.
 
-  ```
-  New-RoleGroup <name of new role group> -Roles $RoleGroup.Roles -Members <member1, member2, member3...> -ManagedBy <user1, user2, user3...>
-  ```
+   ```
+   New-RoleGroup <name of new role group> -Roles $RoleGroup.Roles -Members <member1, member2, member3...> -ManagedBy <user1, user2, user3...>
+   ```
 
-For example, the following commands copy the Organization Management role group, and name the new role group "Limited Organization Management". It adds the members Isabelle, Carter, and Lukas and can be delegated by Jenny and Katie.
+   For example, the following commands copy the Organization Management role group, and name the new role group "Limited Organization Management". It adds the members Isabelle, Carter, and Lukas and can be delegated by Jenny and Katie.
 
-```
-$RoleGroup = Get-RoleGroup "Organization Management"
-New-RoleGroup "Limited Organization Management" -Roles $RoleGroup.Roles -Members Isabelle, Carter, Lukas -ManagedBy Jenny, Katie
-```
+   ```
+   $RoleGroup = Get-RoleGroup "Organization Management"
+   New-RoleGroup "Limited Organization Management" -Roles $RoleGroup.Roles -Members Isabelle, Carter, Lukas -ManagedBy Jenny, Katie
+   ```
 
 After the new role group is created, you can add or remove roles, change the scope of role assignments on the role, and more.
 
 For detailed syntax and parameter information, see [Get-RoleGroup](http://technet.microsoft.com/library/369800ff-fced-4d1c-adb0-1ddbe798670d.aspx) and [New-RoleGroup](http://technet.microsoft.com/library/c59f596d-cbdd-459e-b31f-99d03e684299.aspx).
 
 ### Use the Exchange Management Shell to copy a role group with a custom scope
-<a name="NoScope"> </a>
 
 1. Store the role group that you want to copy in a variable using the following syntax.
 
-  ```
-  $RoleGroup = Get-RoleGroup <name of role group to copy>
-  ```
+   ```
+   $RoleGroup = Get-RoleGroup <name of role group to copy>
+   ```
 
 2. Create the new role group with a custom scope using the following syntax.
 
-  ```
-  New-RoleGroup <name of new role group> -Roles $RoleGroup.Roles -CustomRecipientWriteScope <recipient scope name> -CustomConfigWriteScope <configuraiton scope name>
-  ```
+   ```
+   New-RoleGroup <name of new role group> -Roles $RoleGroup.Roles -CustomRecipientWriteScope <recipient scope name> -CustomConfigWriteScope <configuraiton scope name>
+   ```
 
 For example, the following commands copy the Organization Management role group and create a new role group called Vancouver Organization Management with the Vancouver Users recipient scope and Vancouver Servers configuration scope.
 
@@ -146,15 +143,15 @@ For detailed syntax and parameter information, see [Get-RoleGroup](http://techne
 
 1. Store the role group that you want to copy in a variable using the following syntax.
 
-  ```
-  $RoleGroup = Get-RoleGroup <name of role group to copy>
-  ```
+   ```
+   $RoleGroup = Get-RoleGroup <name of role group to copy>
+   ```
 
 2. Create the new role group with a custom scope using the following syntax.
 
-  ```
-  New-RoleGroup <name of new role group> -Roles $RoleGroup.Roles -RecipientOrganizationalUnitScope <OU name>
-  ```
+   ```
+   New-RoleGroup <name of new role group> -Roles $RoleGroup.Roles -RecipientOrganizationalUnitScope <OU name>
+   ```
 
 For example, the following commands copy the Recipient Management role group and create a new role group called Toronto Recipient Management that allows management of only users in the Toronto Users OU.
 
@@ -506,19 +503,19 @@ To verify that you have successfully changed the scope of a role assignment on a
 
 - If you used the EAC to configure the scope on the role group, do the following:
 
-1. In the EAC, navigate to **Permissions**\> **Admin Roles**. All the role groups in your organization are listed here.
+  1. In the EAC, navigate to **Permissions**\> **Admin Roles**. All the role groups in your organization are listed here.
 
-2. Select a role group to view the scope that's configured on the role group.
+  2. Select a role group to view the scope that's configured on the role group.
 
 - If you used the Exchange Management Shell to configure the scope on the role group, do the following:
 
-1. Run the following command in the Exchange Management Shell.
+  1. Run the following command in the Exchange Management Shell.
 
-  ```
-  Get-ManagementRoleAssignment -RoleAssignee <role group name> | Format-Table *WriteScope
-  ```
+     ```
+     Get-ManagementRoleAssignment -RoleAssignee <role group name> | Format-Table *WriteScope
+     ```
 
-2. Verify that the write scope on the role assignments has been changed to the scope you specified.
+  2. Verify that the write scope on the role assignments has been changed to the scope you specified.
 
 ## Add or remove a role group delegate
 
@@ -536,15 +533,15 @@ To change the list of delegates on a role group, you use the _ManagedBy_ paramet
 
 1. Store the role group in a variable using the following command.
 
-   ```
-   $RoleGroup = Get-RoleGroup <role group name>
-   ```
+    ```
+    $RoleGroup = Get-RoleGroup <role group name>
+    ```
 
 2. Add the delegate to the role group stored in the variable using the following command.
 
-   ```
-   $RoleGroup.ManagedBy += (Get-User <user to add>).Identity
-   ```
+    ```
+    $RoleGroup.ManagedBy += (Get-User <user to add>).Identity
+    ```
 
     > [!NOTE]
     > Use the **Get-Group** cmdlet if you want to add a USG.

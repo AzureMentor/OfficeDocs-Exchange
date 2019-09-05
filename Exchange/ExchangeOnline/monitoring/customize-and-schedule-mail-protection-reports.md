@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: As an Exchange Online or Exchange Online Protection (EOP) admin, you probably want to keep an eye on your organization's mail flow, how much spam and malware is being detected, or how often your rules and policies are being matched. Read this article to get an overview of reports that are available
 ms.topic: article
-author: denisebmsft
+author: msdmaguire
 f1_keywords:
 - ms.exch.eac.ScheduledReports
-ms.author: deniseb
+ms.author: dmaguire
 ms.assetid: 51832055-1696-4443-8579-bc76b8db92a3
 ms.date: 7/26/2018
+ms.reviewer: 
 title: Customize and schedule mail protection reports in Office 365 to be automatically sent to your inbox
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 
@@ -39,5 +40,3 @@ To get started customizing and downloading reports, see the following resources:
 [View email security reports in the Security & Compliance Center](https://support.office.com/article/3a137e28-1174-42d5-99af-f18868b43e86)
 
 [Mail flow insights in the Office 365 Security & Compliance Center](https://support.office.com/article/beb6acaa-6016-4d54-ba7e-3d6d035e2b46)
-
-

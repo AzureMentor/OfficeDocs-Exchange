@@ -1,29 +1,22 @@
-﻿---
+---
 title: 'Exchange 2013 storage configuration options: Exchange 2013 Help'
 TOCTitle: Exchange 2013 storage configuration options
 ms:assetid: 37cdeacf-74f9-4399-9860-4d1dbec12bb1
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Ee832792(v=EXCHG.150)
 ms:contentKeyID: 49685283
 ms.date: 12/15/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Exchange 2013 storage configuration options
 
- 
-
-_**Applies to:** Exchange Online, Exchange Server, Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013_
 
 Understanding storage options and requirements for the Mailbox server role in Microsoft Exchange Server 2013 is an important part of your Mailbox server storage design solution.
-
-**Contents**
-
-Storage architectures
-
-Physical disk types
-
-Best practices for supported storage configurations
 
 ## Storage architectures
 
@@ -67,14 +60,11 @@ The following table describes supported storage architectures and provides best 
 </tbody>
 </table>
 
-
 A network-attached storage (NAS) unit is a self-contained computer connected to a network, with the sole purpose of supplying file-based data storage services to other devices on the network. The operating system and other software on the NAS unit provide the functionality of data storage, file systems, and access to files, and the management of these functionalities (for example, file storage).
 
 All storage used by Exchange for storage of Exchange data must be block-level storage because Exchange 2013 doesn't support the use of NAS volumes, other than in the SMB 3.0 scenario outlined in the topic [Exchange 2013 virtualization](exchange-2013-virtualization-exchange-2013-help.md). Also, in a virtualized environment, NAS storage that's presented to the guest as block-level storage via the hypervisor isn't supported.
 
 Using storage tiers is not recommended, as it could adversely affect system performance. For this reason, do not allow the storage controller to automatically move the most accessed files to "faster" storage.
-
-Return to top
 
 ## Physical disk types
 
@@ -166,7 +156,6 @@ The following table provides a list of supported physical disk types and provide
 </tr>
 </tbody>
 </table>
-
 
 ## Factors to consider when choosing disk types
 
@@ -336,9 +325,6 @@ From a performance perspective, using large, slower disks for Exchange storage i
 </tbody>
 </table>
 
-
-Return to top
-
 ## Best practices for supported storage configurations
 
 This section provides best practice information about supported disk and array controller configurations.
@@ -355,9 +341,9 @@ If you are deploying a standalone Mailbox server role architecture, RAID technol
 
 When using RAID-5 or RAID-6 configurations for the operating system, pagefile, or Exchange data volumes, note the following:
 
-  - RAID-5 configurations, including variations such as RAID-50 and RAID-51, should have no more than 7 disks per array group and array controller high-priority scrubbing and surface scanning enabled.
+- RAID-5 configurations, including variations such as RAID-50 and RAID-51, should have no more than 7 disks per array group and array controller high-priority scrubbing and surface scanning enabled.
 
-  - RAID-6 configurations should have array controller high-priority scrubbing and surface scanning enabled.
+- RAID-6 configurations should have array controller high-priority scrubbing and surface scanning enabled.
 
 While JBOD is supported in high availability architectures that have 3 or more highly available database copies, because the log and mailbox database volumes are separated, JBOD is not recommended.
 
@@ -365,9 +351,9 @@ While JBOD is supported in high availability architectures that have 3 or more h
 
 Mailbox database and log volume co-location is not recommended in standalone architectures. In high availability architectures, there are two possibilities for this scenario:
 
-1.  Single database per volume
+1. Single database per volume
 
-2.  Multiple databases per volume
+2. Multiple databases per volume
 
 **Single Database Per Volume**
 
@@ -414,7 +400,6 @@ From an Exchange perspective, JBOD means having both the database and its associ
 </tbody>
 </table>
 
-
 To deploy on JBOD with the primary datacenter servers, you need three or more highly available database copies within the DAG. If mixing lagged copies on the same server hosting highly available database copies (for example, not using dedicated lagged database copy servers), you need at least two lagged database copies.
 
 For the secondary datacenter servers to use JBOD, you should have at least two highly available database copies in the secondary datacenter. The loss of a copy in the secondary datacenter won't result in requiring a reseed across the WAN or having a single point of failure in the event the secondary datacenter is activated. If mixing lagged database copies on the same server hosting highly available database copies (for example, not using dedicated lagged database copy servers), you need at least two lagged database copies.
@@ -454,7 +439,6 @@ Multiple databases per volume is a new JBOD scenario available in Exchange 2013 
 </tbody>
 </table>
 
-
 The following table provides guidance about storage array configurations for Exchange 2013.
 
 ### Supported RAID types for the Exchange 2013 Mailbox server role
@@ -490,7 +474,6 @@ The following table provides guidance about storage array configurations for Exc
 </tr>
 </tbody>
 </table>
-
 
 The following table provides guidance about database and log file choices.
 
@@ -568,7 +551,6 @@ The following table provides guidance about database and log file choices.
 </tbody>
 </table>
 
-
 The following table provides guidance about Windows disk types.
 
 ### Windows disk types for the Exchange 2013 Mailbox server role
@@ -605,7 +587,6 @@ The following table provides guidance about Windows disk types.
 </tr>
 </tbody>
 </table>
-
 
 The following table provides guidance on volume configurations.
 
@@ -746,7 +727,3 @@ The following table provides guidance on volume configurations.
 </tr>
 </tbody>
 </table>
-
-
-Return to top
-

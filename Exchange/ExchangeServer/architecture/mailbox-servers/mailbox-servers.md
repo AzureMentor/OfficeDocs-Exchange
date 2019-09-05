@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: b6403e43-d263-46b6-bfeb-f70f13c32ff1
 ms.date: 7/3/2018
+ms.reviewer: 
 title: Mailbox servers
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -31,6 +32,3 @@ The following articles contain procedures for common Mailbox server management t
 - [Prepare mailboxes for cross-forest move requests](prep-mailboxes-for-cross-forest-moves.md)
 
 - [Enable the MRS Proxy endpoint for remote moves](mrs-proxy-endpoint.md)
-
-
-

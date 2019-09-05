@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Admins can learn about hierarchical address books that reflect the organization hierarchy in the address book in Exchange Online.
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: a1d277a0-5437-40af-aade-e4730a0d1308
 ms.date: 
+ms.reviewer: 
 title: Hierarchical address books in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -54,4 +55,3 @@ Detailed instructions for creating HABs are included in the topic [Enable or dis
 3. Add organization members. Modify the _SeniorityIndex_ parameter of the members so they're listed in the proper hierarchical order within the child tiers.
 
 4. For accessibility purposes, you can use the _PhoneticDisplayName_ parameter, which specifies a phonetic pronunciation of the _DisplayName_ parameter, and is also used for the sort order if the _SeniorityIndex_ parameter value isn't set.
-

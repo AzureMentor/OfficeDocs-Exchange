@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can configure dial codes, number prefixes, and number formats that are used by Unified Messaging to dial incoming and outgoing calls for users who are enabled for UM. In most cases, you'll configure a dial plan with the dial codes, prefixes, and number formats currently configured on your telephony network.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: e5b5efee-b734-4f70-8357-11be07b23bd0
 ms.date: 11/17/2014
-title: Configure dial codes
+ms.reviewer: 
+title: Configure dial codes in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Configure dial codes
+# Configure dial codes in Exchange Online
 
 You can configure dial codes, number prefixes, and number formats that are used by Unified Messaging to dial incoming and outgoing calls for users who are enabled for UM. In most cases, you'll configure a dial plan with the dial codes, prefixes, and number formats currently configured on your telephony network.
 
@@ -33,7 +34,7 @@ For additional management tasks related to outdialing, see [Allowing users to ma
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to configure dial codes, prefixes, and number formats
 
@@ -45,21 +46,21 @@ For additional management tasks related to outdialing, see [Allowing users to ma
 
 4. On the **UM dial plan** page \> **Dial codes**, configure the following options:
 
-  - **Outside line access code**
+   - **Outside line access code**
 
-  - **International access code**
+   - **International access code**
 
-  - **National number prefix**
+   - **National number prefix**
 
-  - **Country/Region code**
+   - **Country/Region code**
 
 5. Under **Number formats for dialing between dial plans**, configure the following:
 
-  - **Country/Region number format**
+   - **Country/Region number format**
 
-  - **International number format**
+   - **International number format**
 
-  - **Number formats for incoming calls within the same dial plan**: To add a number format, click **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif).
+   - **Number formats for incoming calls within the same dial plan**: To add a number format, click **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif).
 
 6. Click **Save** to save your changes.
 
@@ -78,6 +79,3 @@ This example configures a UM dial plan named `yUMDialPlan` with an in-country or
 ```
 Set-UMDialPlan -Identity MyUMDialPlan -OutsideLineAccessCode 9 -InternationalAccessCode 011 -NationalNumberPrefix 1 CountryorRegionCode 1 -InCountryOrRegionNumberFormat 1425xxxxxxx -InternationalNumberFormat 441425xxxxxxx
 ```
-
-
-

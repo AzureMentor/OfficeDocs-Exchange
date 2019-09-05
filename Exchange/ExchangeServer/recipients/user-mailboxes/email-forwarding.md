@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: c7a7afaf-577e-49d6-8cee-bb4c4a5d570b
 ms.date: 7/5/2018
+ms.reviewer: 
 title: Configure email forwarding for a mailbox
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -20,13 +21,13 @@ Email forwarding lets you to set up a mailbox to forward email messages sent to 
 
 ## Use the Exchange admin center and the Exchange Management Shell
 
-You can use either the Exchange Admin Center (EAC) or Exchange Management Shell to set up email forwarding.
+You can use either the Exchange admin center (EAC) or Exchange Management Shell to set up email forwarding.
 
 You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Recipient Provisioning Permissions" entry in the [Recipients Permissions](../../permissions/feature-permissions/recipient-permissions.md) topic.
 
 ### Use the Exchange admin center to set up email forwarding
 
-1. In the Exchange Admin Center, navigate to **Recipients** \> **Mailboxes**.
+1. In the Exchange admin center, navigate to **Recipients** \> **Mailboxes**.
 
 2. In the list of user mailboxes, click or tap the mailbox that you want to set up mail forwarding for, and then click or tap **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.png).
 
@@ -96,6 +97,3 @@ Check out the following topics on how to forward your email to another email add
 For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
 Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
-
-
-

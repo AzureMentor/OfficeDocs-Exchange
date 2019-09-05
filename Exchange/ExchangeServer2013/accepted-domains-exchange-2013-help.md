@@ -1,35 +1,22 @@
-﻿---
+---
 title: 'Accepted domains: Exchange 2013 Help'
 TOCTitle: Accepted domains
 ms:assetid: c1839a5b-49f9-4c53-b247-f4e5d78efc45
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb124423(v=EXCHG.150)
 ms:contentKeyID: 49289400
 ms.date: 06/17/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Accepted domains
 
- 
-
 _**Applies to:** Exchange Server 2013_
 
-
 An accepted domain is any SMTP namespace for which a Microsoft Exchange Server 2013 organization sends or receives email. Accepted domains include those domains for which the Exchange organization is authoritative. An Exchange organization is authoritative when it handles mail delivery for recipients in the accepted domain. Accepted domains also include domains for which the Exchange organization receives mail and then relays it to an email server that's outside the organization for delivery to the recipient.
-
-**Contents**
-
-Configuring accepted domains
-
-Authoritative domains
-
-Relay domains
-
-Internal relay domain
-
-External relay domain
-
-Accepted domains and email address policies
 
 ## Configuring accepted domains
 
@@ -37,11 +24,8 @@ Accepted domains are configured as global settings for the Exchange organization
 
 There are three types of accepted domains: authoritative, internal relay, and external relay. These accepted domain types are described in the following sections.
 
-
 > [!NOTE]
-> If you have a subscribed Edge Transport server in your perimeter network, you configure accepted domains on a Mailbox server in your Exchange organization. The accepted domains configuration is replicated to the Edge Transport server during EdgeSync synchronization. For more information, see <A href="edge-subscriptions-exchange-2013-help.md">Edge Subscriptions</A>.
-
-
+> If you have a subscribed Edge Transport server in your perimeter network, you configure accepted domains on a Mailbox server in your Exchange organization. The accepted domains configuration is replicated to the Edge Transport server during EdgeSync synchronization. For more information, see [Edge Subscriptions](edge-subscriptions-exchange-2013-help.md)
 
 ## Authoritative domains
 
@@ -51,9 +35,9 @@ By default, when the first Exchange 2013 Mailbox server is installed, one accept
 
 To learn more, see:
 
-  - [Configure an accepted domain within your Exchange organization as authoritative](configure-an-accepted-domain-within-your-exchange-organization-as-authoritative-exchange-2013-help.md)
+- [Configure an accepted domain within your Exchange organization as authoritative](configure-an-accepted-domain-within-your-exchange-organization-as-authoritative-exchange-2013-help.md)
 
-  - [Configure Exchange to accept mail for multiple authoritative domains](configure-exchange-to-accept-mail-for-multiple-authoritative-domains-exchange-2013-help.md)
+- [Configure Exchange to accept mail for multiple authoritative domains](configure-exchange-to-accept-mail-for-multiple-authoritative-domains-exchange-2013-help.md)
 
 ## Relay domains
 
@@ -84,4 +68,3 @@ For more information, see [Configure an accepted domain for an independent busin
 You need to configure an accepted domain before that SMTP address space can be used in an email address policy. When you create an accepted domain, you can use a wildcard character (\*) in the address space to indicate that all subdomains of the SMTP address space are also accepted by the Exchange organization. For example, to configure contoso.com and all its subdomains as accepted domains, enter **\*.contoso.com** as the SMTP address space. The accepted domain entries are automatically available for use in an email address policy.
 
 If you delete an accepted domain that's used in an email address policy, the policy is no longer valid, and recipients with email addresses in that SMTP domain will be unable to send or receive email.
-

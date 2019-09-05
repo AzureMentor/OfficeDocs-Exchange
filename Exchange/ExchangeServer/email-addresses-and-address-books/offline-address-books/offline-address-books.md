@@ -1,14 +1,16 @@
 ---
 description: 'Summary: Learn how offline address books are created and distributed in Exchange Server 2016 and Exchange Server 2019.'
 localization_priority: Normal
-ms.author: chrisda
+ms.author: dmaguire
 ms.topic: article
-author: chrisda
+author: msdmaguire
 ms.prod: exchange-server-it-pro
 ms.assetid: a6bcb072-4ab9-400e-a5d0-c05264629097
 ms.collection: exchange-server
 ms.date: 7/6/2018
-ms.audience: ITPro
+ms.reviewer: 
+manager: serdars
+audience: ITPro
 title: Offline address books in Exchange Server
 
 ---
@@ -40,11 +42,10 @@ For OAB procedures, see [Procedures for offline address books in Exchange Server
 To learn more about address lists, see [Address lists in Exchange Server](../../email-addresses-and-address-books/address-lists/address-lists.md).
 
 ## OAB generation
-<a name="OABGeneration"> </a>
 
 OAB generation is controlled by the mailbox assistant named **OABGeneratorAssistant** that runs under the Microsoft Exchange Mailbox Assistants service. OAB generation occurs in a designated arbitration mailbox that has the `OrganizationCapabilityOABGen` value for the **PersistedCapability** property. An arbitration mailbox with this capability is also known as an *organization mailbox*.
 
-By default, OABs are generated every 8 hours. To change the OAB generation schedule, see [Change the offline address book generation schedule in Exchange Server](../../plan-and-deploy/post-installation-tasks/change-oab-generation-schedule.md). To manually update an OAB, see [Use the Exchange Management Shell to update offline address books](oab-procedures.md#UpdateOAB).
+By default, OABs are generated every 8 hours. To change the OAB generation schedule, see [Change the offline address book generation schedule in Exchange Server](../../plan-and-deploy/post-installation-tasks/change-oab-generation-schedule.md). To manually update an OAB, see [Use the Exchange Management Shell to update offline address books](oab-procedures.md#use-the-exchange-management-shell-to-update-offline-address-books).
 
 The arbitration mailbox named `SystemMailbox{bb558c35-97f1-4cb9-8ff7-d53741dc928c}` is the first organization mailbox in your organization. By default, this organization mailbox is responsible for generating all OABs (the first OAB named Default Offline Address Book, and any new OABs that you create).
 
@@ -54,22 +55,21 @@ You can create additional organization mailboxes to generate OABs. Exchange Serv
 
 - You can configure an OAB to allow a read-only copy (also known as a *shadow copy*) to be distributed to all organization mailboxes in the organization (also known as *shadow distribution*). All copies of the OAB have the same unique identifier, so full a OAB download isn't required when a client is proxied to a different organization mailbox location.
 
-    Typically, shadow copies are only required in multi-site Exchange organizations. You configure an organization mailbox in each site, and you configure shadow distribution for an OAB to help prevent cross-site OAB download requests by clients (likely over slow WAN links). To create additional organization mailboxes, see [Use the Exchange Management Shell to create organization mailboxes](oab-procedures.md#CreateOrgMailboxes).
+   Typically, shadow copies are only required in multi-site Exchange organizations. You configure an organization mailbox in each site, and you configure shadow distribution for an OAB to help prevent cross-site OAB download requests by clients (likely over slow WAN links). To create additional organization mailboxes, see [Use the Exchange Management Shell to create organization mailboxes](oab-procedures.md#use-the-exchange-management-shell-to-create-organization-mailboxes).
 
-    Shadow distribution is described in detail in the next section.
+   Shadow distribution is described in detail in the next section.
 
-To find all organization mailboxes, and the organization mailbox that's defined for an OAB, see [Use the Exchange Management Shell to find organization mailboxes](oab-procedures.md#FindOrgMailboxes).
+To find all organization mailboxes, and the organization mailbox that's defined for an OAB, see [Use the Exchange Management Shell to find organization mailboxes](oab-procedures.md#use-the-exchange-management-shell-to-find-organization-mailboxes).
 
 The OAB files are generated and stored in the designated organization mailbox, so the destination for OAB download requests is the Mailbox server that holds the active copy of the organization mailbox. The OAB files are copied from the organization mailbox to `%ExchangeInstallPath%ClientAccess\OAB\<OAB GUID>` for retrieval by clients. Clients never connect directly to this backend location. Client requests for the OAB are proxied by the Client Access (frontend) services on a Mailbox server to this backend location.
 
 ## OAB distribution
-<a name="OABDistribution"> </a>
 
 By default, Outlook clients are configured to download the OAB every 24 hours, or users can initiate a manual download from Outlook at any time.
 
 OAB distribution to clients depends on Internet Information Services (IIS) virtual directories and the Autodiscover service. The IIS virtual directory that's used for client access to OABs is located in the default web site in the Client Access (frontend) services on the Mailbox server, and is named OAB (Default Web Site). This virtual directory is automatically created when you install Exchange, and is configured to service internal clients at the URL `https://<ServerName>/oab` (for example, `https://mailbox01.contoso.com/oab`). You'll need to manually configure the external URL that's used to distribute OABs to external clients. For more information, see [Step 4: Configure external URLs](../../plan-and-deploy/post-installation-tasks/configure-mail-flow-and-client-access.md#step-4-configure-external-urls) in [Configure mail flow and client access on Exchange servers](../../plan-and-deploy/post-installation-tasks/configure-mail-flow-and-client-access.md).
 
-In the properties of the OAB, you can configure the OAB virtual directories that are available to distribute the OAB to clients. The default setting restricts OAB distribution to the OAB virtual directories on the server that holds the OAB's organization mailbox. However, the Client Access services on *any* Mailbox server can proxy incoming OAB download requests to the correct location. Therefore, we recommend that you configure all OAB virtual directories to accept requests to download the OAB. For instructions, see [Use the Exchange Management Shell to configure any virtual directory in the organization to accept download requests for the OAB](oab-procedures.md#OABAllVdirs).
+In the properties of the OAB, you can configure the OAB virtual directories that are available to distribute the OAB to clients. The default setting restricts OAB distribution to the OAB virtual directories on the server that holds the OAB's organization mailbox. However, the Client Access services on *any* Mailbox server can proxy incoming OAB download requests to the correct location. Therefore, we recommend that you configure all OAB virtual directories to accept requests to download the OAB. For instructions, see [Use the Exchange Management Shell to configure any virtual directory in the organization to accept download requests for the OAB](oab-procedures.md#use-the-exchange-management-shell-to-configure-any-virtual-directory-in-the-organization-to-accept-download-requests-for-the-oab).
 
 The Autodiscover service advertises the OAB URLs that you've configured. Autodiscover is supported by all versions of Outlook and virtually all mobile devices that are currently by Exchange. Here's a summary of the OAB distribution process:
 
@@ -77,49 +77,49 @@ The Autodiscover service advertises the OAB URLs that you've configured. Autodis
 
 2. The Client Access services on the Mailbox server that accepted the connection performs these steps:
 
-1. Queries Active Directory to find the organization mailbox that's responsible for generating the user's OAB (the default OAB, the OAB that's specified for the mailbox database, or the OAB that's specified for the mailbox).
+   1. Queries Active Directory to find the organization mailbox that's responsible for generating the user's OAB (the default OAB, the OAB that's specified for the mailbox database, or the OAB that's specified for the mailbox).
 
-2. Queries Active Directory again to find the mailbox database that hosts the organization mailbox for the OAB, and the Mailbox server that currently holds the active copy of the database.
+   2. Queries Active Directory again to find the mailbox database that hosts the organization mailbox for the OAB, and the Mailbox server that currently holds the active copy of the database.
 
-3. Proxies the OAB download request to the identified Mailbox server.
+   3. Proxies the OAB download request to the identified Mailbox server.
 
-4. Retrieves the OAB files from the backend location `%ExchangeInstallPath%ClientAccess\OAB\<GUID>` and proxies them back to the client.
+   4. Retrieves the OAB files from the backend location `%ExchangeInstallPath%ClientAccess\OAB\<GUID>` and proxies them back to the client.
 
 If a shadow copy of the OAB exists in an organization mailbox in the local Active Directory site (the site where the user is connecting from), then a local Mailbox server is used to download the OAB. However, synchronization of the shadow copy between organization mailboxes is performed on-demand. Here's how it works:
 
 1. Let's say the organization mailbox doesn't have a suitable shadow copy of the OAB. This can be caused by the following conditions:
 
-  - A client has never requested a download of the shadow copy.
+   - A client has never requested a download of the shadow copy.
 
-  - The shadow copy is out of date. Shadow copies are aware when an updated copy of the parent OAB has been generated and published (manually, or by the default 8 hour OAB generation schedule). The affected Mailbox servers will stop distributing the outdated shadow copy to clients.
+   - The shadow copy is out of date. Shadow copies are aware when an updated copy of the parent OAB has been generated and published (manually, or by the default 8 hour OAB generation schedule). The affected Mailbox servers will stop distributing the outdated shadow copy to clients.
 
 2. The first client tries to download the shadow copy will receive error `0x80190194 (BG_E_HTTP_ERROR_404)` in Outlook. This will trigger a full copy of the OAB from the parent to the shadow copy. The following events are reported:
 
-  - `Event ID: 102`
+   - `Event ID: 102`
 
-    `Source: MSExchange OABRequestHandler`
+     `Source: MSExchange OABRequestHandler`
 
-    `Description: The OABRequestHandler has begun downloading the OAB <GUID> from the server <Server>.`
+     `Description: The OABRequestHandler has begun downloading the OAB <GUID> from the server <Server>.`
 
-  - `Event ID: 103`
+   - `Event ID: 103`
 
-    `Source: MSExchange OABRequestHandler`
+     `Source: MSExchange OABRequestHandler`
 
-    `Description: The OABRequestHandler has finished downloading the OAB <GUID>.`
+     `Description: The OABRequestHandler has finished downloading the OAB <GUID>.`
 
 3. The `OABRequestHandler` will make up to three immediate attempts to copy the OAB files from the Mailbox server that holds the parent OAB generation mailbox. If all three attempts fail, the `OABRequestHandler` will retry the copy after one hour. The following events are reported:
 
-  - `Event ID: 104`
+   - `Event ID: 104`
 
-    `Source: MSExchange OABRequestHandler`
+     `Source: MSExchange OABRequestHandler`
 
-    `Description: Download of the OAB <GUID> failed. The job will be re-submitted. The error was: BG_ERROR_CONTEXT=BE_ERROR_CONTEXT_REMOTE_FILE; error code=0x80190194`
+     `Description: Download of the OAB <GUID> failed. The job will be re-submitted. The error was: BG_ERROR_CONTEXT=BE_ERROR_CONTEXT_REMOTE_FILE; error code=0x80190194`
 
-  - `Event ID: 105`
+   - `Event ID: 105`
 
-    `Source: MSExchange OABRequestHandler`
+     `Source: MSExchange OABRequestHandler`
 
-    `Description: Download of the OAB <GUID> has failed too many times. The job will not be resubmitted for the next hour.`
+     `Description: Download of the OAB <GUID> has failed too many times. The job will not be resubmitted for the next hour.`
 
 4. If the OAB is configured for shadow distribution, but there's no organization mailbox in the local Active Directory site (the site where the user is connecting from), the Client Access services will proxy the OAB download request back to the Mailbox server that holds the organization mailbox for the parent OAB.
 
@@ -148,7 +148,6 @@ The improvements to OABs typically require clients to download OAB updates, not 
 - You initiated a manual download of the full OAB.
 
 ## OAB planning and deployment
-<a name="OABPlanning"> </a>
 
 Whether you use a single OAB or multiple OABs, consider the following factors as you plan and implement your OAB strategy:
 
@@ -173,17 +172,13 @@ Whether you use a single OAB or multiple OABs, consider the following factors as
 - Recipients that you've hidden in Active Directory by using methods outside of Exchange will be visible in OABs (for example, by using the Windows security descriptor). To effectively hide recipients in OABs, configure the **Hide from address lists** property for the recipient in the Exchange admin center (EAC) or the _HiddenFromAddressListsEnabled_ parameter in the corresponding recipient management cmdlet in the Exchange Management Shell. For more information, see [Hide recipients from address lists](../address-lists/address-list-procedures.md#hide-recipients-from-address-lists). Or, you can create an address list that doesn't include the hidden recipients, assign the address list to the OAB, and assign the OAB to users (directly or by making the OAB the default). For more information about creating address lists, see [Create address lists](../address-lists/address-list-procedures.md#create-address-lists).
 
 ## Move OAB generation to another server
-<a name="MoveOABGen"> </a>
 
 In Exchange 2010, moving OAB generation to another server required you to specify a different generation server in the properties of the OAB. But in Exchange 2013, Exchange 2016 and Exchange 2019, OAB generation occurs in a designed organization mailbox, not on a designated server. To move OAB generation to another server, you need to move the organization mailbox. For example:
 
 - Move the existing organization mailbox to a different Exchange 2013, Exchange 2016, or Exchange 2019 server (you can't move the organization mailbox to an Exchange 2010 server).
 
-- Configure the OAB to use an existing organization mailbox on a different server. For more information, see [Use the Exchange Management Shell to change the organization mailbox that's responsible for generating an offline address book](oab-procedures.md#OABChangeOrgMailbox).
+- Configure the OAB to use an existing organization mailbox on a different server. For more information, see [Use the Exchange Management Shell to change the organization mailbox that's responsible for generating an offline address book](oab-procedures.md#use-the-exchange-management-shell-to-change-the-organization-mailbox-thats-responsible-for-generating-an-offline-address-book).
 
-- Create a new organization mailbox on a different server, and configure the OAB to use that organization mailbox. For more information, see [Use the Exchange Management Shell to create organization mailboxes](oab-procedures.md#CreateOrgMailboxes).
+- Create a new organization mailbox on a different server, and configure the OAB to use that organization mailbox. For more information, see [Use the Exchange Management Shell to create organization mailboxes](oab-procedures.md#use-the-exchange-management-shell-to-create-organization-mailboxes).
 
-Remember, you can configure multiple OABs to use the same organization mailbox, but you can't configure an OAB to use more than one organization mailbox. If you need multiple copies of the OAB in different locations (typically, in different Active Directory sites), verify that an organization mailbox is exists in the site, and enable shadow distribution for the OAB. For more information, see [Use the Exchange Management Shell to enable shadow distribution for offline address books](oab-procedures.md#OABEnableShadow).
-
-
-
+Remember, you can configure multiple OABs to use the same organization mailbox, but you can't configure an OAB to use more than one organization mailbox. If you need multiple copies of the OAB in different locations (typically, in different Active Directory sites), verify that an organization mailbox is exists in the site, and enable shadow distribution for the OAB. For more information, see [Use the Exchange Management Shell to enable shadow distribution for offline address books](oab-procedures.md#use-the-exchange-management-shell-to-enable-shadow-distribution-for-offline-address-books).

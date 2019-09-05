@@ -1,22 +1,22 @@
-﻿---
+---
 title: 'Reseed the search catalog: Exchange 2013 Help'
 TOCTitle: Reseed the search catalog
 ms:assetid: 9d873bd4-0422-4975-b5e2-82a347479115
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Ee633475(v=EXCHG.150)
 ms:contentKeyID: 51407270
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Reseed the search catalog
 
- 
-
 _**Applies to:** Exchange Server 2013_
 
-
 If the content index catalog for a mailbox database copy gets corrupted, you may need to reseed the catalog. Corrupted content indexes are indicated in the Application event log by the following event.
-
 
 <table>
 <colgroup>
@@ -43,7 +43,6 @@ If the content index catalog for a mailbox database copy gets corrupted, you may
 </tbody>
 </table>
 
-
 If the mailbox database copy is located on a server that is part of a database availability group (DAG), you can reseed the content index catalog from another DAG member.
 
 If the mailbox database copy is the only copy, you have to manually create a new content index catalog.
@@ -52,13 +51,13 @@ For other management tasks related to Exchange Search, see [Exchange Search proc
 
 ## What do you need to know before you begin?
 
-  - Estimated time to complete: 2 minutes. Actual reseeding time may vary depending on the size of the content index catalog being reseeded.
+- Estimated time to complete: 2 minutes. Actual reseeding time may vary depending on the size of the content index catalog being reseeded.
 
-  - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Exchange Search" entry in the [Recipients Permissions](recipients-permissions-exchange-2013-help.md) topic.
+- You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Exchange Search" entry in the [Recipients Permissions](recipients-permissions-exchange-2013-help.md) topic.
 
-  - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
+- For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
 
-Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkid=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkid=285351).
+Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612).
 
 ## Reseed the content index catalog if the mailbox database is part of a DAG
 
@@ -88,9 +87,8 @@ For detailed syntax and parameter information, see [Update-MailboxDatabaseCopy](
 
 If there is only one copy of the mailbox database, you have to manually reseed the search catalog by recreating the content index catalog.
 
-1.  Run the following commands to stop the Microsoft Exchange Search and Microsoft Exchange Search Host Controller services.
-    
-        
+1. Run the following commands to stop the Microsoft Exchange Search and Microsoft Exchange Search Host Controller services.
+
     ```powershell
     Stop-Service MSExchangeFastSearch
     ```
@@ -99,25 +97,21 @@ If there is only one copy of the mailbox database, you have to manually reseed t
     Stop-Service HostControllerService
     ```
 
-2.  Delete, move, or rename the folder that contains the Exchange content index catalog. This folder is named `%ExchangeInstallPath\Mailbox\<name of mailbox database>_Catalog\<GUID>12.1.Single`. For example, you might rename the folder `C:\Program Files\Microsoft\Exchange Server\V15\Mailbox\Mailbox Database 0657134726_Catalog\F0627A72-9F1D-494A-839A-D7C915C279DB12.1.Single_OLD`.
-    
+2. Delete, move, or rename the folder that contains the Exchange content index catalog. This folder is named `%ExchangeInstallPath\Mailbox\<name of mailbox database>_Catalog\<GUID>12.1.Single`. For example, you might rename the folder `C:\Program Files\Microsoft\Exchange Server\V15\Mailbox\Mailbox Database 0657134726_Catalog\F0627A72-9F1D-494A-839A-D7C915C279DB12.1.Single_OLD`.
 
     > [!NOTE]
     > Deleting this folder will make additional disk space available. Alternatively, you might want to rename or move the folder to keep it for troubleshooting purposes.
 
+3. Run the following commands to restart the Microsoft Exchange Search and Microsoft Exchange Search Host Controller services.
 
-
-3.  Run the following commands to restart the Microsoft Exchange Search and Microsoft Exchange Search Host Controller services.
-    
     ```powershell
     Start-Service MSExchangeFastSearch
     ```
-    
+
     ```powershell
     Start-Service HostControllerService
     ```
-    
-    
+
     After you restart these services, Exchange Search will rebuild the content index catalog.
 
 ## How do you know this worked?
@@ -125,8 +119,7 @@ If there is only one copy of the mailbox database, you have to manually reseed t
 It might take a while for Exchange Search to reseed the content index catalog. Run the following command to display the status of the reseeding process.
 
 ```powershell
-    Get-MailboxDatabaseCopyStatus | FL Name,*Index*
+Get-MailboxDatabaseCopyStatus | FL Name,*Index*
 ```
 
 When the reseeding of the search catalog is in progress, the value of the *ContentIndexState* property is **Crawling**. When the reseeding is complete, this value is changed to **Healthy**.
-

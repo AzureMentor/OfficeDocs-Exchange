@@ -1,42 +1,40 @@
-﻿---
+---
 title: 'Edge Transport server planning: Exchange 2013 Help'
 TOCTitle: Edge Transport server planning
 ms:assetid: 3d34de82-58a5-4b30-9978-7d330102eb92
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dn641596(v=EXCHG.150)
 ms:contentKeyID: 62221565
 ms.date: 07/14/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Edge Transport server planning
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 The Edge Transport server role has been re-introduced in Exchange Service Pack 1. Edge Transport provides improved anti-spam protection for the Exchange organization. The Edge Transport server also applies policies to messages in transport between organizations. This server role is deployed in the perimeter network and outside the Active Directory forest. Edge Transport servers don't have direct access to Active Directory for configuration and recipient information in the way Client Access or Mailbox servers do. The Edge Transport server uses the Active Directory Lightweight Directory Service (AD LDS) to store configuration and recipient information locally.
 
 You can add an Edge Transport server to an existing Exchange 2013 organization. You don't have to perform any additional Active Directory preparation steps when you install the Edge Transport server.
 
-
 > [!NOTE]
 > If you are adding Edge Transport to an existing Exchange 2010 or Exchange 2007 organization, you will need to install specific rollup updates on your legacy servers before installing Exchange 2013 Edge Transport. For details, see <A href="exchange-2013-system-requirements-exchange-2013-help.md">Exchange 2013 system requirements</A>.
 
-
-
 When you're planning to deploy Edge Transport servers, you should consider the following issues:
 
-  - **Server Capacity**   Planning for server capacity includes planning to conduct performance monitoring of the Edge Transport server. Performance monitoring will help you understand how hard the server is working. This information will determine the capacity of your current hardware configuration.
+  - **Server Capacity**: Planning for server capacity includes planning to conduct performance monitoring of the Edge Transport server. Performance monitoring will help you understand how hard the server is working. This information will determine the capacity of your current hardware configuration.
 
-  - **Transport Features**   The Edge Transport server can provide anti-spam protection at the edge of the network. As part of your planning process, you should determine the anti-spam features that you will enable at the Edge Transport server and how they will be configured.
+  - **Transport Features**: The Edge Transport server can provide anti-spam protection at the edge of the network. As part of your planning process, you should determine the anti-spam features that you will enable at the Edge Transport server and how they will be configured.
 
-  - **Security**   The Edge Transport server role is designed to have a minimal attack surface. Therefore, it's important to correctly secure and manage both the physical access and network access to the server. Planning for security will help you make sure that IP connections are only enabled from authorized servers and from authorized users. For more information, see the [Deployment security checklist](deployment-security-checklist-exchange-2013-help.md).
-    
+  - **Security**: The Edge Transport server role is designed to have a minimal attack surface. Therefore, it's important to correctly secure and manage both the physical access and network access to the server. Planning for security will help you make sure that IP connections are only enabled from authorized servers and from authorized users. For more information, see the [Deployment security checklist](deployment-security-checklist-exchange-2013-help.md).
+
     The recommended practice is to put the Edge Transport server within a perimeter network. To make sure that the server can send and receive e-mail and receive recipient and configuration data updates from the Microsoft Exchange EdgeSync service, you must allow communication through the ports that are listed in the following table.
-    
+
     ### Communication port settings for Edge Transport servers
-    
+
     <table>
     <colgroup>
     <col style="width: 25%" />
@@ -85,14 +83,11 @@ When you're planning to deploy Edge Transport servers, you should consider the f
     </tr>
     </tbody>
     </table>
-    
 
     > [!NOTE]
     > The Edge Transport server role uses non-standard LDAP ports. The ports specified in this topic are the LDAP communication ports configured when the Edge Transport server role is installed.
 
-
-
-  - **EdgeSync**   The recommended deployment process is to create an Edge Subscription to subscribe the Edge Transport server to the Exchange organization. When you create an Edge Subscription, recipient and configuration data is replicated from Active Directory to AD LDS. You subscribe an Edge Transport server to an Active Directory site. Then the Microsoft Exchange EdgeSync service that is running on the Mailbox servers in that site periodically updates AD LDS by synchronizing data from Active Directory. The Edge Subscription process automatically provisions the Send connectors that are required to enable mail flow from the Exchange organization to the Internet through an Edge Transport server. If you're using the recipient lookup or safelist aggregation features on the Edge Transport server, you must subscribe the Edge Transport server to the organization.
+  - **EdgeSync**: The recommended deployment process is to create an Edge Subscription to subscribe the Edge Transport server to the Exchange organization. When you create an Edge Subscription, recipient and configuration data is replicated from Active Directory to AD LDS. You subscribe an Edge Transport server to an Active Directory site. Then the Microsoft Exchange EdgeSync service that is running on the Mailbox servers in that site periodically updates AD LDS by synchronizing data from Active Directory. The Edge Subscription process automatically provisions the Send connectors that are required to enable mail flow from the Exchange organization to the Internet through an Edge Transport server. If you're using the recipient lookup or safelist aggregation features on the Edge Transport server, you must subscribe the Edge Transport server to the organization.
 
 ## Configure DNS settings for the Edge Transport server role
 
@@ -116,23 +111,22 @@ To enable name resolution of Edge Transport servers by Mailbox servers, use one 
 
 Follow these steps to configure DNS settings for the Edge Transport server:
 
-1.  Verify that the DNS server settings for each network interface are correct for the network segment.
+1. Verify that the DNS server settings for each network interface are correct for the network segment.
 
-2.  Configure the DNS suffix for the Edge Transport server name using the following steps:
-    
-    1.  Open Control Panel, and then choose **System Properties**.
-    
-    2.  Choose the **Computer Name** tab.
-    
-    3.  Choose **Change**.
-    
-    4.  On the **Computer Name Changes** page, click **More**.
-    
-    5.  In the **Primary DNS suffix of this computer** field, type a DNS domain name and suffix for the Edge Transport server.
-    
+2. Configure the DNS suffix for the Edge Transport server name using the following steps:
+
+    1. Open Control Panel, and then choose **System Properties**.
+
+    2. Choose the **Computer Name** tab.
+
+    3. Choose **Change**.
+
+    4. On the **Computer Name Changes** page, click **More**.
+
+    5. In the **Primary DNS suffix of this computer** field, type a DNS domain name and suffix for the Edge Transport server.
+
     This name can't be changed after the Edge Transport server role is installed.
 
 ## Override DNS settings
 
 You might need to override the default DNS settings on the Exchange server so mail can be routed and delivered correctly. To do this, modify the **Internal DNS Lookups** and **External DNS Lookups** settings of the transport server's properties. These settings override the settings on the network adapter to route e-mail messages.
-

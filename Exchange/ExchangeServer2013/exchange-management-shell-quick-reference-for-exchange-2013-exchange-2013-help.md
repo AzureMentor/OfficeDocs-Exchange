@@ -1,27 +1,25 @@
-﻿---
+---
 title: 'Exchange Management Shell quick reference for Exchange 2013'
 TOCTitle: Exchange Management Shell quick reference for Exchange 2013
 ms:assetid: 3ea4a105-a93c-48ba-96ce-6170125354e1
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ619302(v=EXCHG.150)
 ms:contentKeyID: 49352789
 ms.date: 03/23/2018
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Exchange Management Shell quick reference for Exchange 2013
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 This topic describes the most frequently used cmdlets available in the release to manufacturing (RTM) and later versions of Microsoft Exchange Server 2013 and provides examples of their use.
 
-
 > [!NOTE]
 > More content will be added about other areas of Exchange 2013 soon.
-
-
 
 For more information about the Exchange Management Shell in Exchange 2013 and all the available cmdlets, see the following topics:
 
@@ -34,7 +32,6 @@ For more information about the Exchange Management Shell in Exchange 2013 and al
 ## Common cmdlet actions
 
 The following verbs are supported by most cmdlets and are associated with a specific action.
-
 
 <table>
 <colgroup>
@@ -71,11 +68,9 @@ The following verbs are supported by most cmdlets and are associated with a spec
 </tbody>
 </table>
 
-
 ## Important parameters
 
 The following parameters help you control how your commands run and indicate exactly what a command will do before it affects data.
-
 
 <table>
 <colgroup>
@@ -103,11 +98,9 @@ The following parameters help you control how your commands run and indicate exa
 </tbody>
 </table>
 
-
 ## Tips and tricks
 
 The following commands are associated with various tasks that you can use when administering Exchange 2013.
-
 
 <table>
 <colgroup>
@@ -142,9 +135,7 @@ The following commands are associated with various tasks that you can use when a
 </tbody>
 </table>
 
-
 ## Permissions
-
 
 <table>
 <colgroup>
@@ -198,9 +189,7 @@ The following commands are associated with various tasks that you can use when a
 </tbody>
 </table>
 
-
 ## Remote Shell
-
 
 <table>
 <colgroup>
@@ -229,10 +218,9 @@ The following commands are associated with various tasks that you can use when a
 <p>The FileData parameter accepts data from a file on your local computer using this syntax on most cmdlets.</p></td>
 </tr>
 <tr class="odd">
-<td><p>Export-RecipientDataProperty -Identity tony@contoso.com -SpokenName <em>| ForEach { $_.FileData | Add-Content C:\tonysmith.wma -Encoding Byte}</em></p></td>
+<td><p>Export-RecipientDataProperty -Identity tony@contoso.com -SpokenName <em>| ForEach {$_.FileData | Add-Content C:\tonysmith.wma -Encoding Byte}</em></p></td>
 <td><p>This command shows an example of the syntax, shown in italics, required to export a file from a remote Exchange 2013 server. The syntax encapsulates the data stored in the FileData property on the object returned by the cmdlet and then streams the data to your local computer. The data is then stored in the <em>C:\tonysmith.wma</em> file.</p>
 <p>Most cmdlets that output objects with a FileData property use this syntax to export data to a file on your local computer.</p></td>
 </tr>
 </tbody>
 </table>
-

@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Exchange Server 2016 or Exchange Server 2019 Setup can't continue because MachinePolicy or UserPolicy (or both) are defined in the ExecutionPolicy GPO.
 ms.topic: reference
-author: chrisda
+author: msdmaguire
 f1_keywords:
 - ms.exch.setupreadiness.PowerShellExecutionPolicyCheckSet
-ms.author: chrisda
+ms.author: dmaguire
 ms.assetid: 63de83e2-9a6b-4f57-85b9-df445bea18dd
 ms.date: 8/3/2018
+ms.reviewer: 
 title: ExecutionPolicy GPO is defined [PowerShellExecutionPolicyCheckSet]
 ms.collection: exchange-server
-ms.audience: Developer
+audience: Developer
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -33,4 +34,3 @@ To allow Setup to continue, you need to temporarily remove any definition of **M
 For information on how to remove any definitions of **MachinePolicy** or **UserPolicy** in the **ExecutionPolicy** GPO on Exchange 2010 or later servers, see [KB981474](http://go.microsoft.com/fwlink/?linkid=3052&kbid=981474).
 
 Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612).
-

@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Sender filtering: Exchange 2013 Help'
 TOCTitle: Sender filtering
 ms:assetid: b833f864-ff10-46a0-a653-28fb9ba30896
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb124354(v=EXCHG.150)
 ms:contentKeyID: 49248686
 ms.date: 06/02/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Sender filtering
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Sender filtering relies on the MAIL FROM: SMTP header to determine what action, if any, to take on an inbound email message. Sender filtering is provided by the Sender Filter agent.
 
@@ -25,11 +26,8 @@ The Sender Filter agent acts on messages from specific senders outside the organ
 
 You can designate blocked senders and define how the Sender Filter agent should act on messages from blocked senders. For more information about how to configure the Sender Filter agent, see [Manage sender filtering](manage-sender-filtering-exchange-2013-help.md).
 
-
 > [!IMPORTANT]
 > The MAIL FROM: SMTP headers can be spoofed. Therefore, you shouldn't rely on the Sender Filter agent only. Use the Sender Filter agent and the Sender ID agent together. The Sender ID agent uses the originating IP address of the sending server to verify that the domain in the MAIL FROM: SMTP header matches the domain that's registered. For more information about the Sender ID agent, see <A href="sender-id-exchange-2013-help.md">Sender ID</A>.
-
-
 
 ## Using the Sender Filter agent to block messages
 
@@ -52,4 +50,3 @@ There are only two scenarios in which legitimate messages may be rejected by the
   - If a domain name is reregistered to a legitimate company after you add the domain to your Blocked Senders list, you will unintentionally block legitimate messages.
 
 In either of these cases, it may still make sense to reject the messages.
-

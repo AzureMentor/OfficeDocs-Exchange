@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: This topic describes the client features that give users who are enabled for Exchange Unified Messaging (UM) access to the email and voice mail messages in their mailbox. These features let you offer your users simplified access to voice mail and email and an improved overall user experience.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 58493d02-0f66-4ea0-9686-ece51828f9f9
 ms.date: 6/24/2018
-title: Set up client voice mail features in Exchange Online
+ms.reviewer: 
+title: Set up client voice mail features in Exchange
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -25,7 +26,7 @@ This topic describes the client features that give users who are enabled for Exc
 
  **Integration with Outlook**: Microsoft Outlook enables users to access their Exchange mailbox and view email messages in their Inbox, view and change calendar information, and listen to voice messages by using Microsoft Windows Media Player, which is embedded inside the email messages. By using a supported email client, users gain additional features, such as the Play on Phone functionality.
 
- **Integration with Outlook Web App**: Microsoft Outlook Web App provides users with a set of UM interfaces and tools comparable to a full-featured email client like Outlook. With Outlook Web App, users can access their Exchange mailbox by using a compliant web browser. Like Outlook, Outlook Web App provides Windows Media Player embedded in email messages so that users can listen to voice messages, and enables users to access other features such as Play on Phone.
+ **Integration with Outlook on the web**: Outlook on the web (formerly known as Outlook Web App) provides users with a set of UM interfaces and tools comparable to a full-featured email client like Outlook. With Outlook on the web, users can access their Exchange mailbox by using a compliant web browser. Like Outlook, Outlook on the web provides Windows Media Player embedded in email messages so that users can listen to voice messages, and enables users to access other features such as Play on Phone.
 
 ## Outlook Voice Access
 <a name="OutlookVoiceAccess"> </a>
@@ -35,7 +36,7 @@ In Exchange UM, a UM-enabled user can call in to an internal or external telepho
 ## Forwarding calls
 <a name="forwardingcalls"> </a>
 
-A UM-enabled user can create and configure call answering rules using Outlook or Outlook Web App. Call answering rules let users control how their incoming calls should be handled. The rules are applied to incoming calls similar to the way Inbox rules are applied to incoming email messages, and are stored along with other voice settings in the user's mailbox. Up to nine call answering rules can be set up for each UM-enabled mailbox. These rules are independent of the Inbox rules and don't take up part of the user's Inbox rules storage quota. For details, see [Allow voice mail users to forward calls](allow-voice-mail-users-to-forward-calls.md).
+A UM-enabled user can create and configure call answering rules using Outlook or Outlook on the web. Call answering rules let users control how their incoming calls should be handled. The rules are applied to incoming calls similar to the way Inbox rules are applied to incoming email messages, and are stored along with other voice settings in the user's mailbox. Up to nine call answering rules can be set up for each UM-enabled mailbox. These rules are independent of the Inbox rules and don't take up part of the user's Inbox rules storage quota. For details, see [Allow voice mail users to forward calls](allow-voice-mail-users-to-forward-calls.md).
 
 ## Voice Mail Preview
 <a name="VoiceMailPreview"> </a>
@@ -56,6 +57,3 @@ UM forwards incoming fax calls for a UM-enabled user to a dedicated fax partner 
 - Set the partner fax server URI to allow inbound faxing.
 
 - Configure authentication between the Mailbox server and the fax partner server.
-
-
-

@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: Microsoft Outlook Voice Access lets users who are enabled for Exchange Unified Messaging (UM) access their mailboxes by using analog, digital, or cellular telephones.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 5ce8c877-35f3-4e55-a65e-5ca469aeae99
 ms.date: 6/24/2018
-title: Setting up Outlook Voice Access
+ms.reviewer: 
+title: Setting up Outlook Voice Access in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Setting up Outlook Voice Access
+# Setting up Outlook Voice Access in Exchange Online
 
 Microsoft Outlook Voice Access lets users who are enabled for Exchange Unified Messaging (UM) access their mailboxes by using analog, digital, or cellular telephones.
 
@@ -90,7 +91,7 @@ They can send messages and meeting requests by using the VUI (if ASR has been tu
 ## Choosing a language
 <a name="BKMK_Choosingalanguage"> </a>
 
-Users can't change the language that Outlook Voice Access uses to speak to them and that they use when they reply to it. The voice mail system tries to find and use the best match for the language the user chose when they signed in to Microsoft Outlook Web App or the language they chose on the regional settings in Outlook Web App. If the language they chose isn't supported by Outlook Voice Access, the voice mail system will use the same language that callers hear when they're prompted to leave a voice message.
+Users can't change the language that Outlook Voice Access uses to speak to them and that they use when they reply to it. The voice mail system tries to find and use the best match for the language the user chose when they signed in to Outlook on the web (formerly known as Outlook Web App) or the language they chose on the regional settings in Outlook on the web. If the language they chose isn't supported by Outlook Voice Access, the voice mail system will use the same language that callers hear when they're prompted to leave a voice message.
 
 ## Controlling Outlook Voice Access features
 <a name="BKMK_ControllingOutlookVoiceAccessfeatures"> </a>
@@ -125,6 +126,3 @@ By default, when users dial in to Outlook Voice Access, they can use the telepho
 - Automatic Speech Recognition
 
 You can prevent users from receiving voice mail, but let them retain the ability to access their mailbox using Outlook Voice Access. You can enable a user for UM and configure the user's mailbox with an extension number that isn't currently being used by another user in the organization.
-
-
-

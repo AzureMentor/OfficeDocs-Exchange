@@ -1,30 +1,20 @@
-﻿---
+---
 title: Exchange 2013 Management Pack Health Sets
 TOCTitle: '@NoTitle'
 ms:assetid: 3a12acb0-a6b7-4452-9306-a3d000c94a50
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dn195892(v=EXCHG.150)
 ms:contentKeyID: 53181763
-ms.date: 10/08/2015
+ms.date: 
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-<div data-xmlns="http://www.w3.org/1999/xhtml">
-
-<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="http://msdn.microsoft.com/en-us/">
-
-<div data-asp="http://msdn2.microsoft.com/asp">
-
 # Exchange 2013 Management Pack Health Sets
 
-</div>
-
-<div id="mainSection">
-
-<div id="mainBody">
-
-<span> </span>
-
-_**Topic Last Modified:** 2013-05-17_
+_**Applies to:** Exchange Server 2013_
 
 The Exchange Server 2013 Management Pack relies on the Managed Availability feature in Microsoft Exchange Server 2013. In Managed Availability, each component in Exchange Server 2013 monitors itself using probes, monitors, and responders. Any component that implements Managed Availability is referred to as a *health set*. The following list provides troubleshooting guidance for all the health sets available in Exchange 2013:
 
@@ -166,23 +156,8 @@ The Exchange Server 2013 Management Pack relies on the Managed Availability feat
 
 [Troubleshooting UserThrottling Health Set](troubleshooting-userthrottling-health-set.md)
 
-<div>
-
 ## For more information
 
 [Exchange Server 2013 Management Pack Guide](https://technet.microsoft.com/en-us/library/ee758046\(v=exchg.150\))
 
 [Server health and performance](https://technet.microsoft.com/en-us/library/jj150551\(v=exchg.150\))
-
-</div>
-
-</div>
-
-<span> </span>
-
-</div>
-
-</div>
-
-</div>
-

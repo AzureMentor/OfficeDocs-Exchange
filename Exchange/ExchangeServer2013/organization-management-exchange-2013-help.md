@@ -1,29 +1,27 @@
-﻿---
+---
 title: 'Organization Management: Exchange 2013 Help'
 TOCTitle: Organization Management
 ms:assetid: 0bfd21c1-86ac-4369-86b7-aeba386741c8
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd335087(v=EXCHG.150)
 ms:contentKeyID: 49289160
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Organization Management
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 The Organization Management management role group is one of several built-in role groups that make up the Role Based Access Control (RBAC) permissions model in Microsoft Exchange Server 2013. Role groups are assigned one or more management roles that contain the permissions required to perform a given set of tasks. The members of a role group are granted access to the management roles assigned to the role group. For more information about role groups, see [Understanding management role groups](understanding-management-role-groups-exchange-2013-help.md).
 
 Administrators that are members of the Organization Management role group have administrative access to the entire Exchange 2013 organization and can perform almost any task against any Exchange 2013 object, with some exceptions. By default, members of this role group can't perform mailbox searches and management of unscoped top-level management roles. For more information, see the "Delegating Only Role Assignments" section later in this topic.
 
-
 > [!IMPORTANT]
 > The Organization Management role group is a very powerful role and as such, only users or universal security groups (USGs) that perform organizational-level administrative tasks that can potentially impact the entire Exchange organization should be members of this role group.
-
-
 
 This role group is equivalent to the Exchange Organization Administrators role in Exchange Server 2007.
 
@@ -59,13 +57,13 @@ For more information about how to customize this role group, see the following t
 
   - [Manage role group members](manage-role-group-members-exchange-2013-help.md)
 
-If you want to create a role group and assign some of the roles that are assigned to this role group to the new role group, see the “Create a role group” section in [Manage role groups](manage-role-groups-exchange-2013-help.md).
+If you want to create a role group and assign some of the roles that are assigned to this role group to the new role group, see the "Create a role group" section in [Manage role groups](manage-role-groups-exchange-2013-help.md).
 
 The following are some ways you might want to customize this role:
 
-  - **Permissions owner**   If the permissions in your organization are controlled by a specific group other than the Exchange administrators, you can create a role group and move the regular and delegating role assignments for the Role Management role to the new role group. Doing so prevents members of the Organization Management role group from managing any RBAC permissions.
+  - **Permissions owner**: If the permissions in your organization are controlled by a specific group other than the Exchange administrators, you can create a role group and move the regular and delegating role assignments for the Role Management role to the new role group. Doing so prevents members of the Organization Management role group from managing any RBAC permissions.
 
-  - **Active Directory split permissions**   If the creation of security principals in your organization, such as user accounts, is controlled by a specific group other than the Exchange administrators, you can create a role group and move the regular and delegating role assignments for the Mail Recipient Creation role and the Security Group Creation and Membership role to the new role group. Doing so prevents members of the Organization Management role group from creating Active Directory objects. They can, however, continue to mail-enable the new Active Directory objects. For more information about split permissions, see [Understanding split permissions](understanding-split-permissions-exchange-2013-help.md).
+  - **Active Directory split permissions**: If the creation of security principals in your organization, such as user accounts, is controlled by a specific group other than the Exchange administrators, you can create a role group and move the regular and delegating role assignments for the Mail Recipient Creation role and the Security Group Creation and Membership role to the new role group. Doing so prevents members of the Organization Management role group from creating Active Directory objects. They can, however, continue to mail-enable the new Active Directory objects. For more information about split permissions, see [Understanding split permissions](understanding-split-permissions-exchange-2013-help.md).
 
 ## Customization limitations
 
@@ -77,11 +75,8 @@ Any role can be added to or removed from this role group, with the following lim
 
 These limitations are intended to help prevent you from inadvertently locking yourself out of the system. By requiring that at least one delegating role assignment exists between every role and one or more role groups or USGs, you will always be able to assign roles to role assignees. By requiring that at least one regular role assignment exists between the Role Management role and one or more role groups or USGs, you will always be able to configure role groups and role assignments.
 
-
 > [!IMPORTANT]
 > These limitations require that role groups or USGs be the targets of the delegating and regular role assignments. You can't remove a delegating role assignment or the regular assignment for the Role Management role if the last assignment is to a user.
-
-
 
 ## Delegating only role assignments
 
@@ -107,17 +102,17 @@ The following tasks are granted permissions by way of ACLs on Active Directory o
 
 The following table lists all the management roles that are assigned to this role group and the following attributes of each role assignment:
 
-  - **Regular assignment**   Enables members of the role group to access the management role entries made available by the associated management role.
+  - **Regular assignment**: Enables members of the role group to access the management role entries made available by the associated management role.
 
-  - **Delegating assignment**   Gives members of the role group the ability to assign the specified role to other role groups, role assignment policies, users, or USGs.
+  - **Delegating assignment**: Gives members of the role group the ability to assign the specified role to other role groups, role assignment policies, users, or USGs.
 
-  - **Recipient read scope**   Determines what recipient objects members of the role group are allowed to read from Active Directory.
+  - **Recipient read scope**: Determines what recipient objects members of the role group are allowed to read from Active Directory.
 
-  - **Recipient write scope**   Determines what recipient objects members of the role group are allowed to modify in Active Directory.
+  - **Recipient write scope**: Determines what recipient objects members of the role group are allowed to modify in Active Directory.
 
-  - **Configuration read scope**   Determines what configuration and server objects members of the role group are allowed to read from Active Directory.
+  - **Configuration read scope**: Determines what configuration and server objects members of the role group are allowed to read from Active Directory.
 
-  - **Configuration write scope**   Determines what organizational and server objects members of the role group are allowed to modify in Active Directory.
+  - **Configuration write scope**: Determines what organizational and server objects members of the role group are allowed to modify in Active Directory.
 
 For more information about role assignments and management scopes, see the following topics:
 
@@ -835,4 +830,3 @@ For more information about role assignments and management scopes, see the follo
 </tr>
 </tbody>
 </table>
-

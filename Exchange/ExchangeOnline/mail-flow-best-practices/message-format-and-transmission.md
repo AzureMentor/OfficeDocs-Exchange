@@ -1,16 +1,17 @@
 ---
-ms.audience: ITPro
+audience: ITPro
 localization_priority: Normal
-ms.author: chrisda
-manager: laurawi
+ms.author: dmaguire
+manager: serdars
 ms.topic: article
-author: chrisda
+author: msdmaguire
 ms.service: exchange-online
 ms.assetid: 828cf844-0f26-44f4-9a76-20bdbd58b992
 ms.collection: 
 - exchange-online
 - M365-email-calendar
 ms.date: 6/24/2018
+ms.reviewer: 
 title: Message format and transmission in Exchange Online
 
 ---
@@ -21,19 +22,19 @@ There are settings in Outlook, Outlook on the web, and Exchange Online that cont
 
 There are two types of settings you can use:
 
-- **Message format**: When a user creates a message, they can choose the message format in which to author the message. In Outlook, they have a choice between plain text, HTML, and rich-text format. In Outlook Web App they have a choice between plain text and HTML.
+- **Message format**: When a user creates a message, they can choose the message format in which to author the message. In Outlook, they have a choice between plain text, HTML, and rich-text format. In Outlook on the web (formerly known as Outlook Web App) they have a choice between plain text and HTML.
 
 - **Message transmission**: This means how the message is actually sent to the other email system. Exchange can send messages to other domains by using Multipurpose Internet Mail Extensions (MIME) or Transport Neutral Encapsulation Format (TNEF). All three message formats can be sent using TNEF. Only HTML and plain text can be sent using MIME. Message transmission format can be set by an admin per domain or per recipient, and users can also specify message transmission format.
 
 ## Message formats
 
-The following list describes the three message formats available in Exchange Online, and shows which ones are available in Outlook and Outlook Web App:
+The following list describes the three message formats available in Exchange Online, and shows which ones are available in Outlook and Outlook on the web:
 
 |**Format**|**Description**|**Available in Outlook**|**Available in Outlook on the web**|
 |:-----|:-----|:-----|:-----|
 |**Plain text**|A plain text message uses only US-ASCII text as described in RFC 2822. The message can't contain different fonts or other text formatting.|Yes|Yes|
 |**HTML**|An HTML message supports text formatting, background images, tables, bullet points, and other graphical elements.|Yes|Yes|
-|**Rich text format (RTF)**|RTF supports text formatting and other graphical elements. <br/> Only Outlook, Outlook Web App, and a few other MAPI email clients understand RTF messages.|Yes|Can read messages formatted in RTF, but can't format or send this format|
+|**Rich text format (RTF)**|RTF supports text formatting and other graphical elements. <br/> Only Outlook, Outlook on the web, and a few other MAPI email clients understand RTF messages.|Yes|Can read messages formatted in RTF, but can't format or send this format|
 
 ## Message transmission formats for mail sent to external recipients
 
@@ -68,10 +69,8 @@ Users can control the following settings:
 
   - **International options**: You can control the character sets used in messages.
 
-    For more information about Outlook settings, see [Change the message format in Outlook](https://go.microsoft.com/fwlink/p/?LinkID=397890).
+  For more information about Outlook settings, see [Change the message format in Outlook](https://go.microsoft.com/fwlink/p/?LinkID=397890).
 
-- **Outlook Web App/Outlook on the web settings**: You can set the message formatting options described in the following list:
+- **Outlook on the web settings**: You can set the default message format for all messages. You can override the default message format as you compose a specific message.
 
-  - **Message format**: You can set the default message format for all messages. You can override the default message format as you compose a specific message.
-
-    For more information on Outlook Web App settings, see [Create and respond to messages in Outlook Web App](https://go.microsoft.com/fwlink/p/?LinkID=399384).
+  For more information on Outlook on the web settings, see [Create and respond to messages in Outlook on the web](https://go.microsoft.com/fwlink/p/?LinkID=399384).

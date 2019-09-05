@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: Outlook Voice Access is a feature in Unified Messaging (UM) that enables users to retrieve email and voice mail messages and manage their calendar and personal contacts by using an analog, digital, or mobile telephone. They can interact with their mailbox using their telephone keypad or voice commands, but must use the keypad on their telephone to search for a user in the directory for your organization.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: dc6a74f2-85fd-43d3-a324-b236b4d2eb3b
 ms.date: 6/24/2018
-title: Navigating menus with Outlook Voice Access
+ms.reviewer: 
+title: Navigating menus with Outlook Voice Access in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Navigating menus with Outlook Voice Access
+# Navigating menus with Outlook Voice Access in Exchange Online
 
 Outlook Voice Access is a feature in Unified Messaging (UM) that enables users to retrieve email and voice mail messages and manage their calendar and personal contacts by using an analog, digital, or mobile telephone. They can interact with their mailbox using their telephone keypad or voice commands, but must use the keypad on their telephone to search for a user in the directory for your organization.
 
@@ -26,7 +27,7 @@ When UM-enabled users call in to an Outlook Voice Access number, they can sign i
 
 - Change personal options, such as a PIN, or call or send a voice message to a personal contact.
 
-An Outlook Voice Access number is assigned to a user when they're enabled for UM. The user can find an Outlook Voice Access number to access their mailbox in the welcome message that's sent to them when they're enabled for UM or by signing in to their mailbox using Outlook Web App, going to **Options** \> **Telephone**, and locating the Outlook Voice Access number or numbers in the **Outlook Voice Access** section.
+An Outlook Voice Access number is assigned to a user when they're enabled for UM. The user can find an Outlook Voice Access number to access their mailbox in the welcome message that's sent to them when they're enabled for UM or by signing in to their mailbox using Outlook on the web (formerly known as Outlook Web App), going to **Options** \> **Telephone**, and locating the Outlook Voice Access number or numbers in the **Outlook Voice Access** section.
 
 After a user enters their extension number and PIN, the voice mail system will let them know how many new voice mail and email messages they have and when their next meeting is. After the voice mail system has played this prompt, an Outlook Voice Access main menu will be read to the user and the user can say one of the following:
 
@@ -39,7 +40,6 @@ After a user enters their extension number and PIN, the voice mail system will l
 - Personal options
 
 ## Reading and reviewing email
-<a name="readreviewemail"> </a>
 
 Users can listen to, reply to, create, and forward unread email messages using the telephone. For example, if a user is expecting an important email message, and does not have access to the internet, they can use a mobile telephone to dial an Outlook Voice Access number.
 
@@ -53,13 +53,13 @@ To listen to email messages using their voice, the user must dial an Outlook Voi
 
 3. The user can then say one of the following options:
 
-  - "Next message" to mark the message as Read and go to the next email message.
+   - "Next message" to mark the message as Read and go to the next email message.
 
-  - "Mark unread" to keep the message marked as Unread and go to the next message.
+   - "Mark unread" to keep the message marked as Unread and go to the next message.
 
-  - "End" to jump to the end of the message.
+   - "End" to jump to the end of the message.
 
-  - "Delete" to delete the message.
+   - "Delete" to delete the message.
 
 This process is shown in the following figure.
 
@@ -73,13 +73,13 @@ To listen to email messages using the telephone keypad, users must dial an Outlo
 
 3. The user can then press one of the following options:
 
-  - Pound (#) key to mark the message as Read and go to the next email message.
+   - Pound (#) key to mark the message as Read and go to the next email message.
 
-  - 9 to keep the message marked as Unread and go to the next message.
+   - 9 to keep the message marked as Unread and go to the next message.
 
-  - 33 to jump to the end of the message.
+   - 33 to jump to the end of the message.
 
-  - 7 to delete the message.
+   - 7 to delete the message.
 
 This process is shown in the following figure.
 
@@ -97,11 +97,11 @@ To listen to email messages and then reply using their voice, users must do the 
 
 4. Say one of the following:
 
-  - "Reply" to reply to the sender.
+   - "Reply" to reply to the sender.
 
-  - "Reply all" to reply to the sender and all other recipients.
+   - "Reply all" to reply to the sender and all other recipients.
 
-  - "Forward" to forward the message to another user or group.
+   - "Forward" to forward the message to another user or group.
 
 5. Record a reply and then hang up, remain silent, or press any key. To accept the reply message and send it, say "Send it."
 
@@ -119,11 +119,11 @@ To listen to email messages and then reply using the telephone keypad, users mus
 
 4. Press one of the following:
 
-  - 8 to reply to the sender.
+   - 8 to reply to the sender.
 
-  - 88 to reply to the sender and all other recipients.
+   - 88 to reply to the sender and all other recipients.
 
-  - 6 to forward the message to another user or group.
+   - 6 to forward the message to another user or group.
 
 5. Record a reply, and then press #. To accept the reply message and send it, press 1.
 
@@ -285,9 +285,9 @@ To cancel a meeting, the user must be the meeting organizer. To cancel the meeti
 
 4. If the meeting organizer chooses to send a voice message, they can then press one of the following options:
 
-  - pound key to stop recording the message.
+   - pound key to stop recording the message.
 
-  - 1 to accept the recorded message.
+   - 1 to accept the recorded message.
 
 This process is shown in the following figure.
 
@@ -321,9 +321,9 @@ To clear their calendar using the telephone keypad, users must do the following:
 
 5. If users choose to send a voice message, they can do one of the following:
 
-  - Press # to not send a voice message.
+   - Press # to not send a voice message.
 
-  - Record the voice message when prompted, press # to stop recording the message, and then press 1 to accept the recorded message.
+   - Record the voice message when prompted, press # to stop recording the message, and then press 1 to accept the recorded message.
 
 This process is shown in the following figure.
 
@@ -515,6 +515,3 @@ To change their PIN using the telephone keypad, users must do the following:
 This process is shown in the following figure.
 
 ![Change PIN](../../media/ChangePinTUI.gif)
-
-
-

@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'IPv6 support in Unified Messaging: Exchange 2013 Help'
 TOCTitle: IPv6 support in Unified Messaging
 ms:assetid: 91242c85-ce4e-422a-954e-ab623d3d6939
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ150536(v=EXCHG.150)
 ms:contentKeyID: 47560052
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-# IPv6 support in Unified Messaging
+# IPv6 support in Unified Messaging in Exchange Server
 
- 
-
-_**Applies to:** Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013, Exchange Server 2016_
 
 Internet Protocol version 6 (IPv6) is the most recent version of the Internet Protocol (IP). IPv6 is intended to correct many of the shortcomings of IPv4, which was the previous version of the IP. In Microsoft Exchange Server 2010, IPv6 is supported only when IPv4 is also used. A pure IPv6 Exchange environment isn't supported. The use of IPv6 addresses and IP address ranges is supported only when both IPv6 and IPv4 are enabled on the computer running Exchange 2010 and the network supports both IP address versions. However, because IPv4 and IPv6 are completely different protocols, an IPv4 network can't communicate directly with an IPv6 network, and vice versa. To handle this shortcoming, network administrators are required to deploy devices, such as routers, that can route information between IPv4 networks and IPv6 networks. If Exchange 2010 is deployed using both IPv4 and IPv6, all server roles except Unified Messaging (UM) can send data to and receive data from devices, servers, and clients that use IPv6 addresses. With Exchange 2013, Unified Messaging is no longer a separate server role like the Transport, Client Access, and Mailbox server roles in Exchange 2007 and Exchange 2010. UM-related components and speech services run on only Client Access and Mailbox servers.
 
@@ -35,15 +36,15 @@ Some of the reasons why UM now uses UCMA 4.0 to support the new features in Exch
 
   - Online services allow clients to connect to their service using either IPv4 orIPv6.
 
-  - Public IPv4 address space is running out. For Exchange Server 2013 Enterprise, this isn’t really an issue for UM, since UM always communicates with internal SIP peers that can be deployed with a private IPv4 address space. However, for hosted Exchange UM, the customer’s equipment must support hosted UM using IPv4 and IPv6.
+  - Public IPv4 address space is running out. For Exchange Server 2013 Enterprise, this isn't really an issue for UM, since UM always communicates with internal SIP peers that can be deployed with a private IPv4 address space. However, for hosted Exchange UM, the customer's equipment must support hosted UM using IPv4 and IPv6.
 
 With the exception of UM and a small part of Transport, Exchange 2013 can connect to Exchange 2010 servers in an organization when either a Client Access or Mailbox server runs in dual-stack mode with IPv4 and IPv6 enabled. This means that customers can install Exchange 2013 on computers that are running with both IPv4 and IPv6 stack addresses configured. This allows IPv6 clients and other Exchange servers, including Exchange Server 2010, to connect directly to Exchange 2013.
 
-UM works on Windows servers running in dual-stack mode. This is because protocols such as HTTP ignore the transport type, and UM uses voice over IP (VoIP) protocols (including SIP/RTP/STUN/TURN/ICE), which aren’t dependent on one another. This includes media negotiation (RTP/SRTP), in which UM advertises and communicates a list of IP addresses to SIP peers, such as IP gateways, IP PBXs, or SBCs.
+UM works on Windows servers running in dual-stack mode. This is because protocols such as HTTP ignore the transport type, and UM uses voice over IP (VoIP) protocols (including SIP/RTP/STUN/TURN/ICE), which aren't dependent on one another. This includes media negotiation (RTP/SRTP), in which UM advertises and communicates a list of IP addresses to SIP peers, such as IP gateways, IP PBXs, or SBCs.
 
 ## What does it mean to support IPv6 for UM?
 
-To enable Exchange 2013 UM to support IPv6, both enterprise and online UM administrators must be able to take advantage of IPv6 when they connect UM to IPv6-capable devices, including devices such as routers, IP gateways, IP PBXs, and Office Communications Server 2007 R2 and Microsoft Lync servers. However, if IPv6 isn’t available for interoperability and backward compatibility with previous versions of Exchange, administrators don’t need to make additional configuration changes, and IPv4 can be used instead.
+To enable Exchange 2013 UM to support IPv6, both enterprise and online UM administrators must be able to take advantage of IPv6 when they connect UM to IPv6-capable devices, including devices such as routers, IP gateways, IP PBXs, and Office Communications Server 2007 R2 and Microsoft Lync servers. However, if IPv6 isn't available for interoperability and backward compatibility with previous versions of Exchange, administrators don't need to make additional configuration changes, and IPv4 can be used instead.
 
 For Exchange 2013 Enterprise, UM must communicate directly with SIP peers (IP gateways, IP PBXs, and SBCs) that may not support IPv6 in their software or firmware. Therefore, UM must be able to communicate directly with SIP peers that support IPv4 and, more important, with IPv6. For hosted Exchange 2013, UM communicates with customer equipment through SBCs or Lync Server 2010 or Lync Server 15. In hosted Exchange 2013 environments, IPv6 SIP-aware clients such as SBCs and Lync servers can potentially be deployed and thus handle the IPv6-to-IPv4 conversion process.
 
@@ -51,34 +52,34 @@ For Exchange 2013 Enterprise, UM must communicate directly with SIP peers (IP ga
 
 Because Exchange 2013 Mailbox and Client Access servers that run UM components and services support IPv6, IP gateway, IP PBX, and SBC vendors must also be able to support IPv6. There are several issues that affect device support for IPv6:
 
-  - There are IP gateways, IP PBXs, and SBCs that may be able to support IPv6 but haven’t yet been tested with IPv6 and UM. This support may be added in the future, but it’s dependent on the hardware vendor.
+  - There are IP gateways, IP PBXs, and SBCs that may be able to support IPv6 but haven't yet been tested with IPv6 and UM. This support may be added in the future, but it's dependent on the hardware vendor.
 
   - Some IP gateways currently have no IPv6 support.
 
-  - Some SBCs have IPv4-IPv6 functionality, but they don’t currently work for UM because they don’t support SRTP (Secure Real-time Transport Protocol)/SDES (Session Description Protocol Security).
+  - Some SBCs have IPv4-IPv6 functionality, but they don't currently work for UM because they don't support SRTP (Secure Real-time Transport Protocol)/SDES (Session Description Protocol Security).
 
-  - There are IP PBXs that don’t support a dual stack and pure IPv6, but these devices haven’t been tested to work with Exchange 2013.
+  - There are IP PBXs that don't support a dual stack and pure IPv6, but these devices haven't been tested to work with Exchange 2013.
 
-Currently UCMA 4.0 is IPv6-enabled, meaning that it can accept IPv6 connections but that IPv4 also can be accepted, when operating in dual mode or when making outbound connections. Running in dual mode allows IPv4 connections to be made when they’re needed to connect to previous versions of Exchange UM. For Lync installations, this is done by Lync Server, which obtains the version information from Active Directory for the latest version of Exchange Server. For traditional telephony devices—including IP gateways, IP PBXs, and SBCs—to support IPv6 connections along with IPv4, they must listen for both types of connections. This is because each SIP peer must be able to accept both types of connections for backward compatibility with previous versions of Exchange UM. This is also necessary to support outdialing for both types of connections.
+Currently UCMA 4.0 is IPv6-enabled, meaning that it can accept IPv6 connections but that IPv4 also can be accepted, when operating in dual mode or when making outbound connections. Running in dual mode allows IPv4 connections to be made when they're needed to connect to previous versions of Exchange UM. For Lync installations, this is done by Lync Server, which obtains the version information from Active Directory for the latest version of Exchange Server. For traditional telephony devices (including IP gateways, IP PBXs, and SBCs) to support IPv6 connections along with IPv4, they must listen for both types of connections. This is because each SIP peer must be able to accept both types of connections for backward compatibility with previous versions of Exchange UM. This is also necessary to support outdialing for both types of connections.
 
 ## UM configuration for supporting IPv6
 
 After you install your Client Access and Mailbox servers, you need to create Unified Messaging dial plans, auto attendants, IP gateways, and hunt groups. To allow UM to support IPv6, you must:
 
-  - Create a new UM IP gateway or configure an existing UM IP gateway with an IPv6 address for each of the IP gateways, IP PBXs, or SBCs on your network. When you’re creating and configuring the required UM IP gateways, you must add the IPv6 address or the Fully Qualified Domain Name (FQDN) for the UM IP gateway. If you’re adding the FQDN to the UM IP gateway, you must have created the correct DNS records to resolve the UM IP gateway FQDN to the IPv6 address. If you have an existing UM IP gateway, you can use the **Set-UMIPgateway** cmdlet to configure the IPv6 address or FQDN. After you create or configure the UM IP gateways, you can use the **Get-UMIPgateway** cmdlet to view the properties of the UM IP gateway to ensure that the IPv6 settings are correct.
+  - Create a new UM IP gateway or configure an existing UM IP gateway with an IPv6 address for each of the IP gateways, IP PBXs, or SBCs on your network. When you're creating and configuring the required UM IP gateways, you must add the IPv6 address or the Fully Qualified Domain Name (FQDN) for the UM IP gateway. If you're adding the FQDN to the UM IP gateway, you must have created the correct DNS records to resolve the UM IP gateway FQDN to the IPv6 address. If you have an existing UM IP gateway, you can use the **Set-UMIPgateway** cmdlet to configure the IPv6 address or FQDN. After you create or configure the UM IP gateways, you can use the **Get-UMIPgateway** cmdlet to view the properties of the UM IP gateway to ensure that the IPv6 settings are correct.
 
   - Configure the *IPAddressFamily* parameter on each UM IP gateway. To enable the IP gateway to accept IPv6 packets, you must set the UM IP gateway to either accept both IPv4 and IPv6 connections, or accept only IPv6 connections, by using the **Set-UMIPgateway** cmdlet and setting the *IPAddressFamily* parameter to one of the following:
-    
-      - *IPv4* – This is the default and is used if no other value is configured.
-    
-      - *IPv6* - This enables IPv6 to be used. However, IPv4 isn’t used.
-    
-      - *Any* – This allows IPv6 to be used, but if the device doesn’t support IPv6, then IPv4 is used instead.
 
-  - After you’ve configured your UM IP gateways, you must also configure the IP gateways, IP PBXs, and SBCs on your network to support IPv6. For details, see your hardware vendor for a list of devices that support IPv6 and how to correctly configure them.
+      - *IPv4* - This is the default and is used if no other value is configured.
+
+      - *IPv6* - This enables IPv6 to be used. However, IPv4 isn't used.
+
+      - *Any* - This allows IPv6 to be used, but if the device doesn't support IPv6, then IPv4 is used instead.
+
+  - After you've configured your UM IP gateways, you must also configure the IP gateways, IP PBXs, and SBCs on your network to support IPv6. For details, see your hardware vendor for a list of devices that support IPv6 and how to correctly configure them.
 
   - Optionally, you may need to set the Client Access and Mailbox servers to accept IPv6 traffic if either of the servers are only set to receive IPv4 traffic. However, the default setting is for both Client Access servers running the Microsoft Exchange Unified Messaging Call Router service and Mailbox servers running the Microsoft Exchange Unified Messaging service to accept IPv4 and IPv6 traffic. For details about configuring the IPv6 settings on Client Access and Mailbox servers, see [Set-UMCallRouterSettings](https://technet.microsoft.com/en-us/library/jj215758\(v=exchg.150\)) and [Set-UMService](https://technet.microsoft.com/en-us/library/jj552412\(v=exchg.150\)).
-    
+
     There are two parameters that may need to be configured on Client Access and Mailbox servers to support IPv6: *IPAddressFamily* and *IPAddressFamilyConfigurable*. To enable a Client Access and a Mailbox server to accept IPv6 packets, you must set the Client Access and Mailbox server either to accept both IPv4 and IPv6 connections, or accept only IPv6 connections. To configure the *IPAddressFamily* parameter, the *IPAddressFamilyConfigurable* parameter must be set to `$true`.
 
 ## UM IP addressing logic
@@ -91,11 +92,10 @@ The logic behind IPv6 support for UM in Exchange 2013 is as follows:
 
 When making outgoing calls in dual mode, if the *IPAddressFamily* parameter is set to *IPv6* or *Any*:
 
-  - UCMA will obtain a list of addresses in the FQDN for a SIP peer that it’s trying to reach.
+  - UCMA will obtain a list of addresses in the FQDN for a SIP peer that it's trying to reach.
 
   - UCMA will try all IPv6 addresses, if any.
 
-  - If UCMA determines that an address isn’t available, it will include the address in a list and not try it again based on a configured interval. This prevents UM from needlessly retrying known bad addresses.
+  - If UCMA determines that an address isn't available, it will include the address in a list and not try it again based on a configured interval. This prevents UM from needlessly retrying known bad addresses.
 
   - If no IPv6 addresses are available, UCMA will fall back to IPv4 addresses in the list of addresses for SIP peers.
-

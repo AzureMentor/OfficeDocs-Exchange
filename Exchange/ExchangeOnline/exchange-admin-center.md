@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: You use the Exchange admin center to manage email settings for your organization.
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: ace44f6b-4084-4f9c-89b3-e0317962472b
 ms.date: 
+ms.reviewer: 
 title: Exchange admin center in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -22,11 +23,11 @@ You use the Exchange admin center to manage email settings for your organization
 
 ## Get to the Exchange admin center
 
-You must have [Office 365 admin permissions](https://go.microsoft.com/fwlink/p/?LinkID=255444) to access the Exchange admin center.
+You must have [Microsoft 365 admin permissions](https://go.microsoft.com/fwlink/p/?LinkID=255444) to access the Exchange admin center.
 
 1. [Sign in](https://go.microsoft.com/fwlink/p/?LinkID=529144) to Office 365 using your work or school account, and then choose the **Admin** tile.
 
-2. In the Office 365 admin center, choose **Admin centers** \> **Exchange**.
+2. In the Microsoft  365 admin center, choose **Admin centers** \> **Exchange**.
 
     ![Get to the Exchange admin center](media/ae439954-b836-47fa-9d02-3709b93cdb10.jpg)
 
@@ -49,7 +50,7 @@ Here are the features you'll find in the left-hand navigation.
 |:-----|:-----|
 |**Dashboard**|An overview of the admin center.|
 |**Recipients**|View and manage your mailboxes, groups, resource mailboxes, contacts, shared mailboxes, and mailbox migrations.|
-|**Permissions**|Manage administrator roles, user roles, and Outlook Web App policies.|
+|**Permissions**|Manage administrator roles, user roles, and Outlook on the web (formerly known as Outlook Web App) policies.|
 |**Compliance management**|Manage In-Place eDiscovery & Hold, auditing, data loss prevention (DLP), retention policies, retention tags, and journal rules.|
 |**Organization**|Manage organization sharing and apps for Outlook|
 |**Protection**|Manage malware filters, connection filters, content filters, outbound spam, and quarantine for your organization.|
@@ -112,6 +113,3 @@ See the following articles:
 Are you using Exchange Server? See [Exchange admin center in Exchange Server](https://technet.microsoft.com/library/a9aea11a-6ba3-4f4a-a76e-79072e7cfc7d.aspx).
 
 Are you using Exchange Online Protection? See [Exchange admin center in Exchange Online Protection](https://technet.microsoft.com/library/97921f0e-832f-40c7-b56d-414faede5191.aspx).
-
-
-

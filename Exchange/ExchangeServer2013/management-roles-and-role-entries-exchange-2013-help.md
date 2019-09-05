@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Management roles and role entries: Exchange 2013 Help'
 TOCTitle: Management roles and role entries
 ms:assetid: 243be502-b3d7-4bb3-8f9b-063ab7a85c02
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd638097(v=EXCHG.150)
 ms:contentKeyID: 49289196
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Management roles and role entries
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 The following procedures enable you to perform advanced permissions management. You should only use these procedures if management role groups and management role assignment policies don't meet the needs of your organization.
 
@@ -44,4 +45,3 @@ For more information about managing role groups and role assignment policies, se
 [Manage linked role groups](manage-linked-role-groups-exchange-2013-help.md)
 
 [Manage role assignment policies](manage-role-assignment-policies-exchange-2013-help.md)
-

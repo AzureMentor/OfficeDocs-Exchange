@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: Sharing policies control how your users share their calendars with people outside your organization. The sharing policy that an admin applies to the user's mailbox determines what level of access a user can share and with whom. If you don't change anything, then all users can invite anyone with an email address to view their calendar. If you create a new sharing policy, you have to apply that policy to mailboxes before it takes effect. Sharing policies are applied to individual user's mailboxes. An admin can also disable a user's sharing policy to prevent external access to calendars.
 ms.topic: article
-author: dstrome
-ms.author: dstrome
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: a075b1ec-5a96-4d0e-a609-ab64e50cdb9e
 ms.date: 4/29/2016
+ms.reviewer: 
 title: Apply a sharing policy to mailboxes in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -31,7 +32,7 @@ Sharing policies control how your users share their calendars with people outsid
 ## Use the Exchange admin center to apply a sharing policy to one mailbox
 <a name="BKMK_EAC"> </a>
 
-1. From the Office 365 admin center dashboard, go to **Admin** \> **Exchange**.
+1. From the Microsoft 365 admin center dashboard, go to **Admin** \> **Exchange**.
 
 2. Go to **recipients** \> **mailboxes**.
 
@@ -46,7 +47,7 @@ Sharing policies control how your users share their calendars with people outsid
 ## Use the Exchange admin center to apply a sharing policy to multiple mailboxes
 <a name="BKMK_EAC"> </a>
 
-1. From the Office 365 admin center dashboard, go to **Admin** \> **Exchange**.
+1. From the Microsoft 365 admin center dashboard, go to **Admin** \> **Exchange**.
 
 2. Go to **recipients** \> **mailboxes**.
 
@@ -97,6 +98,3 @@ To verify that you have successfully applied the sharing policy to a user mailbo
 
 > [!TIP]
 > Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
-
-
-

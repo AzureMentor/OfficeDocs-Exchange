@@ -1,40 +1,40 @@
-﻿---
-title: 'Mail flow rule actions in Exchange 2013: Exchange 2013 Help'
-TOCTitle: Mail flow rule actions
+---
+title: 'Transport rule actions in Exchange 2013: Exchange 2013 Help'
+TOCTitle: Transport rule actions
 ms:assetid: 5d11a955-b1cc-4150-a0b9-a8cc48ba9bde
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Aa998315(v=EXCHG.150)
 ms:contentKeyID: 49361077
 ms.date: 05/03/2017
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-# Mail flow rule actions in Exchange 2013
-
- 
+# Transport rule actions in Exchange 2013
 
 _**Applies to:** Exchange Server 2013_
 
-
-Actions in mail flow rules (also known as transport rules) specify what you want to do to messages that match conditions of the rule. For example, you can create a rule that forwards message from specific senders to a moderator, or adds a disclaimer or personalized signature to all outbound messages.
+Actions in transport rules specify what you want to do to messages that match conditions of the rule. For example, you can create a rule that forwards message from specific senders to a moderator, or adds a disclaimer or personalized signature to all outbound messages.
 
 Actions typically require additional properties. For example, when the rule redirects a message, you need to specify where to redirect the message. Some actions have multiple properties that are available or required. For example, when the rule adds a header field to the message header, you need to specify both the name and value of the header. When the rule adds a disclaimer to messages, you need to specify the disclaimer text, but you can also specify where to insert the text, or what to do if the disclaimer can't be added to the message. Typically, you can configure multiple actions in a rule, but some actions are exclusive. For example, one rule can't reject and redirect the same message.
 
-For more information about mail flow rules in Exchange Server 2013, see [Mail flow rules (transport rules) in Exchange 2013](mail-flow-rules-transport-rules-in-exchange-2013-exchange-2013-help.md).
+For more information about transport rules in Exchange Server 2013, see [Transport rules in Exchange 2013](mail-flow-rules-transport-rules-in-exchange-2013-exchange-2013-help.md).
 
-For more information about conditions and exceptions in mail flow rules, see [Mail flow rule conditions and exceptions (predicates) in Exchange 2013](mail-flow-rule-conditions-and-exceptions-predicates-in-exchange-2013-exchange-2013-help.md).
+For more information about conditions and exceptions in transport rules, see [Transport rule conditions and exceptions (predicates) in Exchange 2013](mail-flow-rule-conditions-and-exceptions-predicates-in-exchange-2013-exchange-2013-help.md).
 
-For more information about actions in mail flow rules in Exchange Online or Exchange Online Protection, see [Mail flow rule actions in Exchange Online](https://technet.microsoft.com/en-us/library/jj919237\(v=exchg.150\)) or [Mail flow rule actions in Exchange Online Protection](https://technet.microsoft.com/en-us/library/jj920117\(v=exchg.150\)).
+For more information about actions in transport rules in Exchange Online or Exchange Online Protection, see [Transport rule actions in Exchange Online](https://technet.microsoft.com/en-us/library/jj919237\(v=exchg.150\)) or [Transport rule actions in Exchange Online Protection](https://technet.microsoft.com/en-us/library/jj920117\(v=exchg.150\)).
 
-## Actions for mail flow rules on Mailbox servers
+## Actions for transport rules on Mailbox servers
 
-The actions that are available in mail flow rules on Mailbox servers are described in the following table. Valid values for each property are described in the Property values section.
+The actions that are available in transport rules on Mailbox servers are described in the following table. Valid values for each property are described in the Property values section.
 
 **Notes**:
 
-  - After you select an action in the Exchange admin center (EAC), the value that's ultimately shown in the **Do the following** field is often different from the click path you selected. Also, when you create new rules, you can sometimes (depending on the selections you make) select a short action name from a template (a filtered list of actions) instead of following the complete click path. The short names and full click path values are shown in the EAC column in the table.
+- After you select an action in the Exchange admin center (EAC), the value that's ultimately shown in the **Do the following** field is often different from the click path you selected. Also, when you create new rules, you can sometimes (depending on the selections you make) select a short action name from a template (a filtered list of actions) instead of following the complete click path. The short names and full click path values are shown in the EAC column in the table.
 
-  - The names of some of the actions that are returned by the **Get-TransportRuleAction** cmdlet are different than the corresponding parameter names, and multiple parameters might be required for an action.
-
+- The names of some of the actions that are returned by the **Get-TransportRuleAction** cmdlet are different than the corresponding parameter names, and multiple parameters might be required for an action.
 
 <table>
 <colgroup>
@@ -281,13 +281,9 @@ The actions that are available in mail flow rules on Mailbox servers are describ
 </tbody>
 </table>
 
+## Actions for transport rules on Edge Transport servers
 
-Return to top
-
-## Actions for mail flow rules on Edge Transport servers
-
-A small subset of actions that are available on Mailbox servers are also available on Edge Transport servers, but there are also some actions that are only available on Edge Transport servers. There's no EAC on Edge Transport servers, so you can only manage mail flow rules in the Exchange Management Shell on the local Edge Transport server. The actions are described in the following table. The properties types are described in the Property values section.
-
+A small subset of actions that are available on Mailbox servers are also available on Edge Transport servers, but there are also some actions that are only available on Edge Transport servers. There's no EAC on Edge Transport servers, so you can only manage transport rules in the Exchange Management Shell on the local Edge Transport server. The actions are described in the following table. The properties types are described in the Property values section.
 
 <table>
 <colgroup>
@@ -423,11 +419,9 @@ A small subset of actions that are available on Mailbox servers are also availab
 </tbody>
 </table>
 
-
 ## Property values
 
-The property values that are used for actions in mail flow rules are described in the following table.
-
+The property values that are used for actions in transport rules are described in the following table.
 
 <table>
 <colgroup>
@@ -489,7 +483,7 @@ The property values that are used for actions in mail flow rules are described i
 <li><p><strong>Wrap</strong>   The original message is wrapped in a new message envelope, and the disclaimer text is inserted into the new message. This is the default value.</p>
 <p><strong>Notes</strong>:</p>
 <ul>
-<li><p>Subsequent mail flow rules are applied to the new message envelope, not to the original message. Therefore, configure these rules with a lower priority than other rules.</p></li>
+<li><p>Subsequent transport rules are applied to the new message envelope, not to the original message. Therefore, configure these rules with a lower priority than other rules.</p></li>
 <li><p>If the original message can't be wrapped in a new message envelope, the original message isn't delivered. The message is returned to the sender in an NDR.</p></li>
 </ul></li>
 <li><p><strong>Ignore</strong>   The rule is ignored and the message is delivered without the disclaimer</p></li>
@@ -625,20 +619,16 @@ The property values that are used for actions in mail flow rules are described i
 </tbody>
 </table>
 
-
-Return to top
-
 ## For more information
 
-[Manage mail flow rules](https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/manage-mail-flow-rules)
+[Manage transport rules in Exchange 2013](manage-transport-rules-exchange-2013-help.md)
 
-[Mail flow rules (transport rules) in Exchange 2013](mail-flow-rules-transport-rules-in-exchange-2013-exchange-2013-help.md)
+[Transport rules in Exchange 2013](mail-flow-rules-transport-rules-in-exchange-2013-exchange-2013-help.md)
 
-[Mail flow rule conditions and exceptions (predicates) in Exchange 2013](mail-flow-rule-conditions-and-exceptions-predicates-in-exchange-2013-exchange-2013-help.md)
+[Transport rule conditions and exceptions (predicates) in Exchange 2013](mail-flow-rule-conditions-and-exceptions-predicates-in-exchange-2013-exchange-2013-help.md)
 
-[Mail flow rule actions in Exchange Online](https://technet.microsoft.com/en-us/library/jj919237\(v=exchg.150\)) for Exchange Online
+[Transport rule actions in Exchange Online](https://technet.microsoft.com/en-us/library/jj919237\(v=exchg.150\)) for Exchange Online
 
-[Mail flow rule actions in Exchange Online Protection](https://technet.microsoft.com/en-us/library/jj920117\(v=exchg.150\)) for Exchange Online Protection
+[Transport rule actions in Exchange Online Protection](https://technet.microsoft.com/en-us/library/jj920117\(v=exchg.150\)) for Exchange Online Protection
 
 [Organization-wide message disclaimers, signatures, footers, or headers in Office 365](https://technet.microsoft.com/en-us/library/dn600323\(v=exchg.150\))
-

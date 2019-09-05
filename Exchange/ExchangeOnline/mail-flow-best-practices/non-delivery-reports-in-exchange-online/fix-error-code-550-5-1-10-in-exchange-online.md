@@ -1,10 +1,11 @@
 ---
 title: "Fix email delivery issues for error code 550 5.1.10 in Exchange Online"
-ms.author: chrisda
-author: chrisda
+ms.author: dmaguire
+author: msdmaguire
 manager: serdars
 ms.date:
-ms.audience: Admin
+ms.reviewer: 
+audience: Admin
 ms.topic: troubleshooting
 ms.service: o365-administration
 localization_priority: Priority
@@ -20,13 +21,9 @@ description: "Learn how to fix email issues for error code 550 5.1.10 in Exchang
 
 Problems sending and receiving email messages can be frustrating. If you get a non-delivery report (NDR), also called a bounce message, for error code 550 5.1.10, this article can help you fix the problem and get your message sent.
 
-[I got this bounce message. How do I fix it?](#i-got-this-bounce-message-how-do-i-fix-it)
+![Email user icon](../../media/31425afd-41a9-435e-aa85-6886277c369b.png) [I got this bounce message. How do I fix it?](#i-got-this-bounce-message-how-do-i-fix-it)
 
-[I'm an email admin. How can I fix this?](#im-an-email-admin-how-can-i-fix-this)
-
-|||||
-|:-----|:-----|:-----|:-----|
-|[![Email user icon](../../media/31425afd-41a9-435e-aa85-6886277c369b.png)]|[I got this bounce message. How do I fix it?](#i-got-this-bounce-message-how-do-i-fix-it)|[![Email admin icon](../../media/3d4c569e-b819-4a29-86b1-4b9619cf2acf.png)][I'm an email admin. How can I fix this?](#im-an-email-admin-how-can-i-fix-this)|
+![Email admin icon](../../media/3d4c569e-b819-4a29-86b1-4b9619cf2acf.png) [I'm an email admin. How can I fix this?](#im-an-email-admin-how-can-i-fix-this)
 
 ## Why did I get this bounce message?
 
@@ -138,7 +135,7 @@ If the sender can't fix the issue themselves, the problem might be that an email
 
 To verify that the recipient exists and has an active license assigned:
 
-1. In the Office 365 admin center, choose **Users** to go to the **Active users** page.
+1. In the Microsoft 365 admin center, choose **Users** to go to the **Active users** page.
 
 2. In the **Active users** \> **Filters** search field, type part of the recipient's name, and then press Enter to locate the recipient. If the recipient doesn't exist, then you must create a new mailbox or contact for this user. (For more information, see [Add users individually or in bulk to Office 365 - Admin Help](https://support.office.com/article/1970f7d6-03b5-442f-b385-5880b9c256ec.aspx).) If the recipient does exist, make sure the recipient's user name matches the email address the sender used.
 
@@ -170,7 +167,7 @@ The recipient might have an Inbox rule that is forwarding messages to a problema
 
 #### Account forwarding (user and email admin)
 
-1. In the Office 365 admin center, choose **Users**.
+1. In the Microsoft 365 admin center, choose **Users**.
 
 2. In the **Active users** \> **Filters** search field, type part of the recipient's name and then press Enter to locate the recipient. Click the user's record to view its details.
 
@@ -186,9 +183,9 @@ The recipient might have an Inbox rule that is forwarding messages to a problema
 
 Unlike Inbox rules which are associated with a user's mailbox, mail flow rules (also known as transport rules) are organization-wide settings and can only be created and edited by email admins.
 
-1. In the Office 365 Admin center, select **Admin centers** \> **Exchange**.
+1. In the Microsoft 365 Admin center, select **Admin centers** \> **Exchange**.
 
-   ![Screenshot shows the Office 365 admin center with the Admin centers option expanded and Exchange selected.](../../media/47399df2-0bc4-42e2-b183-07750a46bc68.png)
+   ![Screenshot shows the admin center with the Admin centers option expanded and Exchange selected.](../../media/47399df2-0bc4-42e2-b183-07750a46bc68.png)
 
 2. In the Exchange admin center (EAC), go to **Mail flow** \> **Rules**.
 
@@ -252,9 +249,9 @@ When synchronization completes, repeat the steps in the [Verify that the recipie
 
 If you have a custom domain (for example, contoso.com instead of contoso.onmicrosoft.com), it's possible that your domain's MX record isn't configured correctly.
 
-1. In the Office 365 Admin center, go to **Settings** \> **Domains**, and then select the recipient's domain.
+1. In the Microsoft 365 Admin center, go to **Settings** \> **Domains**, and then select the recipient's domain.
 
-   ![Screenshot shows Office 365 admin center with the Domains option selected. Domain names are shown on the page along with the options to add or buy a domain.](../../media/2cbbe5c3-9d92-4d27-84bc-04e2e78caaf2.png)
+   ![Screenshot shows admin center with the Domains option selected. Domain names are shown on the page along with the options to add or buy a domain.](../../media/2cbbe5c3-9d92-4d27-84bc-04e2e78caaf2.png)
 
 2. In the pop-out **Required DNS settings** pane, select **Check DNS**.
 
@@ -262,7 +259,7 @@ If you have a custom domain (for example, contoso.com instead of contoso.onmicro
 
 3. Verify that there's only one MX record configured for the recipient's domain. Microsoft doesn't support using more than one MX record for a domain that's enrolled in Exchange Online.
 
-4. If Office 365 detects any issues with your Exchange Online DNS record settings, follow the recommended steps to fix them. You might be prompted to make the changes directly within the Office 365 admin center. Otherwise, you must update the MX record from your DNS host provider's portal. For more information, see [Create DNS records for Office 365 at any DNS hosting provider](https://go.microsoft.com/fwlink/p/?LinkID=512839).
+4. If Office 365 detects any issues with your Exchange Online DNS record settings, follow the recommended steps to fix them. You might be prompted to make the changes directly within the Microsoft 365 admin center. Otherwise, you must update the MX record from your DNS host provider's portal. For more information, see [Create DNS records for Office 365 at any DNS hosting provider](https://go.microsoft.com/fwlink/p/?LinkID=512839).
 
    > [!NOTE]
    > Typically, your domain's MX record should point to the Office 365 fully qualified domain name: \<your domain\>.mail.protection.outlook.com. DNS record updates usually propagate across the Internet in a few hours, but they can take up to 72 hours.

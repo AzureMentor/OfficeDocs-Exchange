@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: This topic contains the terms and definitions that are used with Unified Messaging.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 3a6d93f2-1802-4aed-8b83-35c7fd004d0c
 ms.date: 6/24/2018
-title: UM and voice mail terminology
+ms.reviewer: 
+title: UM and voice mail terminology in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# UM and voice mail terminology
+# UM and voice mail terminology in Exchange Online
 
 This topic contains the terms and definitions that are used with Unified Messaging.
 
@@ -24,7 +25,7 @@ audio codec
 
 audio notes
 
-> Text-based notes that can be added to a voice mail message that has been received in Outlook or Outlook Web App.
+> Text-based notes that can be added to a voice mail message that has been received in Outlook or Outlook on the web (formerly known as Outlook Web App).
 
 auto attendant
 
@@ -64,7 +65,7 @@ dialing rule group
 
 fax partner
 
-> UM fax partners provide applications or services that can accept calls handed off by UM when a fax tone is detected. The partner's product or service then receives the fax data, creates a message, and delivers it to the UM-enabled user as an email message with a .tif attachment. These messages will appear in the Fax search folder in Outlook and Outlook Web App.
+> UM fax partners provide applications or services that can accept calls handed off by UM when a fax tone is detected. The partner's product or service then receives the fax data, creates a message, and delivers it to the UM-enabled user as an email message with a .tif attachment. These messages will appear in the Fax search folder in Outlook and Outlook on the web.
 
 hunt group
 
@@ -255,6 +256,3 @@ VoIP gateway
 welcome greeting
 
 > A greeting that is played when an external caller calls in to a UM auto attendant or when an Outlook Voice Access user or another caller calls a subscriber access number that is configured on a UM dial plan. The default welcome greetings can be changed by a customer to make them specific to an organization or location.
-
-
-

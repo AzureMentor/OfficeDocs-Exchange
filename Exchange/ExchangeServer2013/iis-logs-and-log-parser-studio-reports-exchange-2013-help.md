@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'IIS Logs and Log Parser Studio Reports: Exchange 2013 Help'
 TOCTitle: IIS Logs and Log Parser Studio Reports
 ms:assetid: 01fa67d4-dc02-4c5f-93af-6da7b97d282f
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dn904092(v=EXCHG.150)
 ms:contentKeyID: 63917935
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # IIS Logs and Log Parser Studio Reports
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 ## Analyzing Log Parser Studio Reports
 
@@ -72,4 +73,3 @@ A .zip file containing the Log Parser Studio reports listed here, and additional
   - **OWA\_WP: Requests per user (Top 10k)**. Lists OWA requests per user for the top 10,000 users.
 
   - **OWA\_WP: Top Talkers (CSV)**. Lists the top OWA clients from highest to lowest request count and sends the result to a CSV file.
-

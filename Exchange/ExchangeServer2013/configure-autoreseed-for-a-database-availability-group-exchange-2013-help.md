@@ -1,49 +1,42 @@
-﻿---
+---
 title: 'Configure AutoReseed for a database availability group: Exchange 2013 Help'
 TOCTitle: Configure AutoReseed for a database availability group
 ms:assetid: 4a8bd779-b52a-40ed-8040-4d76eabeb41e
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ619303(v=EXCHG.150)
 ms:contentKeyID: 49289245
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Configure AutoReseed for a database availability group
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 AutoReseed is a feature for quickly restoring database redundancy after a disk failure. If a disk fails, the database copies stored on that disk are automatically reseeded to a preconfigured spare disk on the Mailbox server. You can use the steps in this topic to configure AutoReseed for a database availability group (DAG).
 
-
 > [!WARNING]
 > The AutoReseed feature doesn't perform any prerequisite configuration tasks for you. Installing disks correctly, adding spare disks to the system, replacing bad disks, and formatting new disks must be done manually by an administrator.
-
-
 
 For additional management tasks related to DAGs, see [Managing database availability groups](managing-database-availability-groups-exchange-2013-help.md).
 
 ## What do you need to know before you begin?
 
-  - Estimated time to complete this task: 10 minutes.
+- Estimated time to complete this task: 10 minutes.
 
-  - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Database availability groups" entry in the [High availability and site resilience permissions](high-availability-and-site-resilience-permissions-exchange-2013-help.md) topic.
+- You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Database availability groups" entry in the [High availability and site resilience permissions](high-availability-and-site-resilience-permissions-exchange-2013-help.md) topic.
 
-  - A single logical disk/partition per physical disk must be created.
+- A single logical disk/partition per physical disk must be created.
 
-  - The specific database and log folder structure described in the steps below must be used.
+- The specific database and log folder structure described in the steps below must be used.
 
-  - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
-
+- For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at <A href="https://go.microsoft.com/fwlink/p/?linkid=60612">Exchange Server</A>, <A href="https://go.microsoft.com/fwlink/p/?linkid=267542">Exchange Online</A>, or <A href="https://go.microsoft.com/fwlink/p/?linkid=285351">Exchange Online Protection</A>..
-
-
-
-## How do you do this?
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612).
 
 ## Step 1: Configure the root paths for databases and volumes
 
@@ -66,7 +59,7 @@ Set-DatabaseAvailabilityGroup DAG1 -AutoDagVolumesRootFolderPath "C:\ExchVols"
 To verify that you've successfully configured the root paths for databases and volumes, run the following command.
 
 ```powershell
-    Get-DatabaseAvailabilityGroup DAG1 | Format-List *auto*
+Get-DatabaseAvailabilityGroup DAG1 | Format-List *auto*
 ```
 
 The output for *AutoDagDatabasesRootFolderPath* and *AutoDagVolumesRootFolderPath* should reflect the configured paths.
@@ -86,7 +79,7 @@ Set-DatabaseAvailabilityGroup DAG1 -AutoDagDatabaseCopiesPerVolume 4
 To verify that you've successfully configured the number of databases per volume, run the following command.
 
 ```powershell
-    Get-DatabaseAvailabilityGroup DAG1 | Format-List *auto*
+Get-DatabaseAvailabilityGroup DAG1 | Format-List *auto*
 ```
 
 The output for *AutoDagDatabaseCopiesPerVolume* should reflect the configured value.
@@ -96,8 +89,8 @@ The output for *AutoDagDatabaseCopiesPerVolume* should reflect the configured va
 Next, create the directories that correspond to the root directories you configured in Step 1. This example shows how to create the default directories using the command prompt.
 
 ```powershell
-    md C:\ExchangeDatabases
-    md C:\ExchangeVolumes
+md C:\ExchangeDatabases
+md C:\ExchangeVolumes
 ```
 
 ## How do you know this step worked?
@@ -114,20 +107,20 @@ The created directories should appear in the output list.
 
 For every volume that will be used for databases (including spare volumes), use the Windows Disk Management application (diskmgmt.msc) to mount each volume in a mounted folder under C:\\ExchangeVolumes\\. For example, if there are 2 volumes with databases and 1 spare volume, mount the volumes to the following mounted folders:
 
-  - C:\\ExchangeVolumes\\Volume1
+- C:\\ExchangeVolumes\\Volume1
 
-  - C:\\ExchangeVolumes\\Volume2
+- C:\\ExchangeVolumes\\Volume2
 
-  - C:\\ExchangeVolumes\\Volume3
+- C:\\ExchangeVolumes\\Volume3
 
-The names of the mounted folders can be any folder name, as long as the folders are mounted under the root volume’s path.
+The names of the mounted folders can be any folder name, as long as the folders are mounted under the root volume's path.
 
 ## How do you know this step worked?
 
 To verify that you've successfully mounted the volume folders, run the following command.
 
 ```powershell
-Dir C:\
+Dir C:\ExchangeVolumes
 ```
 
 The mounted volumes should appear in the output list.
@@ -167,7 +160,7 @@ The created directories should appear in the output list.
 Create the mount points for each database and link the mount point to the correct volume. For example, the mounted folder for db001 should be at C:\\ExchangeDatabases\\db001. You can use diskmgmt.msc or mountvol.exe to do this. This example illustrates how to mount db001 to C:\\ExchangeDatabases\\db001 using mountvol.exe.
 
 ```powershell
-    Mountvol.exe c:\ExchangeDatabases\db001 \\?\Volume (GUID)
+Mountvol.exe c:\ExchangeDatabases\db001 \\?\Volume (GUID)
 ```
 
 ## How do you know this step worked?
@@ -184,9 +177,9 @@ The mounted volume should appear in the mount point list.
 
 Next, create two directories underneath the folders you created in Step 5, one for each database and one for each of the database's log stream that will be stored on the same volume. You must use the following format for your directory structure:
 
-C:\\\< *DatabaseFolderName*\>\\*DatabaseName*\\\<*DatabaseName*\>.db
+C:\\\<*DatabaseFolderName*\>\\*DatabaseName*\\\<*DatabaseName*\>.db
 
-C:\\\< *DatabaseFolderName*\>\\*DatabaseName*\\\<*DatabaseName*\>.log
+C:\\\<*DatabaseFolderName*\>\\*DatabaseName*\\\<*DatabaseName*\>.log
 
 This example illustrates how to create directories for 4 databases that will be stored on Volume 1:
 
@@ -239,7 +232,7 @@ The created directories should appear in the output list.
 Create databases with log and database paths configured with the appropriate folders. This example illustrates how to create a database that's stored in the newly created directory and mount point structure.
 
 ```powershell
-    New-MailboxDatabase -Name db001 -Server MBX1 -LogFolderPath C:\ExchangeDatabases\db001\db001.log -EdbFilePath C:\ExchangeDatabases\db001\db001.db\db001.edb
+New-MailboxDatabase -Name db001 -Server MBX1 -LogFolderPath C:\ExchangeDatabases\db001\db001.log -EdbFilePath C:\ExchangeDatabases\db001\db001.db\db001.edb
 ```
 
 ## How do you know this step worked?
@@ -247,7 +240,7 @@ Create databases with log and database paths configured with the appropriate fol
 To verify that you've successfully created databases in the appropriate folder, run the following command.
 
 ```powershell
-    Get-MailboxDatabase db001 | Format List *path*
+Get-MailboxDatabase db001 | Format List *path*
 ```
 
 Database properties that are returned should indicate that the database file and log files are being stored in the above folders.
@@ -256,14 +249,14 @@ Database properties that are returned should indicate that the database file and
 
 To verify that you've configured AutoReseed for a DAG, do the following:
 
-1.  Run the following command to verify the DAG is configured correctly.
-    
+1. Run the following command to verify the DAG is configured correctly.
+
     ```powershell
     Get-DatabaseAvailabilityGroup DAG1 | Format-List *auto*
     ```
-    
-2.  Run the following command to verify the directory structure is configured correctly (below are the default paths; if necessary, substitute the paths for the paths you're using).
-        
+
+2. Run the following command to verify the directory structure is configured correctly (below are the default paths; if necessary, substitute the paths for the paths you're using).
+
     ```powershell
     Dir C:\ExchangeDatabases /s
     ```
@@ -271,5 +264,3 @@ To verify that you've configured AutoReseed for a DAG, do the following:
     ```powershell
     Dir c:\ExchangeVolumes /s
     ```
-
-

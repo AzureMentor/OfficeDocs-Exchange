@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: Learn how to create the Send connector that's required to send mail to the internet in Exchange 2016 and Exchange 2019.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 6deaefa8-1152-40d9-b1ba-9c19bdf8a928
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Create a Send connector in Exchange Server to send mail to the internet
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -43,27 +44,27 @@ See also [Send connectors](send-connectors.md) for more information about connec
 
 2. On the first page, enter the following information:
 
-  - **Name**: Enter a descriptive name for the Send connector, for example, To internet.
+   - **Name**: Enter a descriptive name for the Send connector (for example, To internet).
 
-  - **Type**: Select **Internet**.
+   - **Type**: Select **Internet**.
 
-    When you're finished, click **Next**.
+   When you're finished, click **Next**.
 
 3. On the next page, verify that **MX record associated with recipient domain** is selected. This means the connector uses DNS on the internet to route mail, as opposed to routing all outbound mail to a smart host. For information about creating a Send connector that uses smart host routing, see [Create a Send connector to route outbound mail through a smart host](outbound-smart-host-routing.md).
 
-    When you're finished, click **Next**.
+   When you're finished, click **Next**.
 
 4. On the next page, enter the following information:
 
-  - In the **Address space** section, click **Add** ![Add icon](../../media/ITPro_EAC_AddIcon.png). In the **Add domain** dialog box that appears, in **Fully Qualified Domain Name (FQDN)**, enter an asterisk (\*), and then click **Save**. This value indicates that the Send connector applies to messages addressed to all external domains.
+   - In the **Address space** section, click **Add** ![Add icon](../../media/ITPro_EAC_AddIcon.png). In the **Add domain** dialog box that appears, in **Fully Qualified Domain Name (FQDN)**, enter an asterisk (\*), and then click **Save**. This value indicates that the Send connector applies to messages addressed to all external domains.
 
-  - The **Scoped send connector** setting is important if your organization has Exchange servers installed in multiple Active Directory sites:
+   - The **Scoped send connector** setting is important if your organization has Exchange servers installed in multiple Active Directory sites:
 
-  - If you don't select **Scoped send connector**, the connector is usable by all transport servers (Exchange 2013 or later Mailbox servers and Exchange 2010 Hub Transport servers) in the entire Active Directory forest. This is the default value.
+     - If you don't select **Scoped send connector**, the connector is usable by all transport servers (Exchange 2013 or later Mailbox servers and Exchange 2010 Hub Transport servers) in the entire Active Directory forest. This is the default value.
 
-  -  If you select **Scoped send connector**, the connector is only usable by other transport servers in the same Active Directory site.
+     - If you select **Scoped send connector**, the connector is only usable by other transport servers in the same Active Directory site.
 
-    When you're finished, click **Next**.
+   When you're finished, click **Next**.
 
 5. On the next page, in the **Source server** section, click **Add** ![Add icon](../../media/ITPro_EAC_AddIcon.png). In the **Select a Server** dialog box that appears, select one or more Mailbox servers that you want to use to send mail to the internet. If you have multiple Mailbox servers in your environment, select the ones that can route mail to the internet. If you have only one Mailbox server, select that one. After you've selected at least one Mailbox server, click **Add**, click **OK**, and then click **Finish**.
 
@@ -75,27 +76,27 @@ After you create the Send connector, it appears in the Send connector list. To c
 
 2. Use the following syntax:
 
-  ```
-  New-SendConnector -Name <Name> -AddressSpaces * -Internet [-SourceTransportServer <fqdn1>,<fqdn2>...]
-  ```
+   ```
+   New-SendConnector -Name <Name> -AddressSpaces * -Internet [-SourceTransportServer <fqdn1>,<fqdn2>...]
+   ```
 
-    This example creates the internet Send connector named "To internet" with the following properties:
+   This example creates the internet Send connector named "To internet" with the following properties:
 
-  - The usage type is Internet.
+   - The usage type is Internet.
 
-  - The Send connector uses DNS routing. We aren't using the _DNSRoutingEnabled_ parameter, and the default value is `$true`.
+   - The Send connector uses DNS routing. We aren't using the _DNSRoutingEnabled_ parameter, and the default value is `$true`.
 
-  - The Send connector is for all external domains (\*).
+   - The Send connector is for all external domains (\*).
 
-  - The local Exchange server is the source server. We aren't using the _SourceTransportServer_ parameter, and the default value is the local Exchange server.
+   - The local Exchange server is the source server. We aren't using the _SourceTransportServer_ parameter, and the default value is the local Exchange server.
 
-  - The Send connector isn't scoped to the local Active Directory site. We aren't using the _IsScopedConnector_ parameter, and the default value is `$false`.
+   - The Send connector isn't scoped to the local Active Directory site. We aren't using the _IsScopedConnector_ parameter, and the default value is `$false`.
 
-  ```
-  New-SendConnector -Name "To internet" -AddressSpaces * -Internet
-  ```
+   ```
+   New-SendConnector -Name "To internet" -AddressSpaces * -Internet
+   ```
 
-    For information about other options, see [New-SendConnector](http://technet.microsoft.com/library/7b315ab0-8778-4835-a252-fb94129d7a8e.aspx).
+   For information about other options, see [New-SendConnector](http://technet.microsoft.com/library/7b315ab0-8778-4835-a252-fb94129d7a8e.aspx).
 
 > [!NOTE]
 > To configure the Send connector to proxy outbound mail through the Front End Transport service, add `-FrontEndProxyEnabled $true` to the command. For more information, see [Configure Send connectors to proxy outbound mail](proxy-outbound-mail.md).
@@ -105,6 +106,3 @@ After you create the Send connector, it appears in the Send connector list. To c
 To verify that you have successfully created a Send Connector that sends mail to the internet, create and send a message from an internal mailbox to an outside recipient, and verify the recipient receives the message.
 
 You can also turn on protocol logging for the Send connector, and view the information in the log. For more information, see [Protocol logging](protocol-logging.md).
-
-
-

@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Delivery reports for administrators: Exchange 2013 Help'
 TOCTitle: Delivery reports for administrators
 ms:assetid: d98623d3-e0b7-4cb9-93fb-6351b4a06137
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ919241(v=EXCHG.150)
 ms:contentKeyID: 50646520
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Delivery reports for administrators
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 With delivery reports for administrators, you can track delivery information about messages sent by or received from any specific mailbox in your organization. Specifically, delivery reports for administrators uses the Exchange admin center (EAC) to perform a targeted search of the message tracking logs. The search is always scoped to a specific mailbox. You can search for messages sent by the mailbox, or sent to the mailbox, and you can filter the search results by the message subject.
 
@@ -38,8 +39,7 @@ After you create a delivery report search, the resulting delivery report will sh
   - Users can track their own messages. For more information, see [Delivery Reports for Users](https://go.microsoft.com/fwlink/?linkid=279920).
 
   - If your organization contains a previous version of Exchange, you need to consider how the delivery reports feature in Exchange 2013 works across Exchange versions.
-    
-      - Exchange 2013 delivery reports can track messages across Exchange 2010 servers in the same Active Directory site.
-    
-      - Exchange 2013 delivery reports can't track messages across Exchange 2007 servers in the same Active Directory site. The delivery reports feature uses a remote procedure call and a web service interface that doesn't exist in Exchange 2007.
 
+      - Exchange 2013 delivery reports can track messages across Exchange 2010 servers in the same Active Directory site.
+
+      - Exchange 2013 delivery reports can't track messages across Exchange 2007 servers in the same Active Directory site. The delivery reports feature uses a remote procedure call and a web service interface that doesn't exist in Exchange 2007.

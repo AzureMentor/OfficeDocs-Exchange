@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: If your organization has its own email server (also called on-premises server), you must set up connectors to enable mail flow between Office 365 and your email server. For mail flow to work correctly, your connectors must be validated and turned on. Connector validation runs as part of the connector setup process. This article helps if you want to validate your connectors at a different time, or if you want to understand more about the process. Use built-in connector validation to test whether a connector is set up correctly and fix any mail flow issues before you turn the connector on.
 ms.topic: article
-author: supotter
-ms.author: supotter
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 7805c2f9-302d-4409-a57f-2b4d8296cd5e
 ms.date: 5/4/2016
+ms.reviewer: 
 title: Validate connectors in Office 365
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -53,5 +54,3 @@ If your organization has its own email server (also called on-premises server), 
 [Fixing connector validation errors](https://technet.microsoft.com/library/abbae1e7-2cbe-434c-bd9f-ede00cebc170.aspx)
 
 [When do I need a connector?](use-connectors-to-configure-mail-flow.md#when-do-i-need-a-connector)
-
-

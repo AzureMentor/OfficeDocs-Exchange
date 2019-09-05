@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: 'Summary: Learn how to configure IM integration with Outlook on the web in Exchange 2016 or Exchange 2019.'
 ms.topic: get-started-article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 0eda267b-41e5-4a60-a209-70a8522a9f41
 ms.date: 
+ms.reviewer: 
 title: Configure instant messaging integration with Outlook on the web in Exchange
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -43,7 +44,7 @@ Use the procedures in this topic to fix these errors and configure IM integratio
 - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Client Access virtual directory settings" entry in the [Clients and mobile devices permissions](../../permissions/feature-permissions/client-and-mobile-device-permissions.md) topic.
 
 - Depending on your Skype for Business Server topology, you may have multiple FrontEnd pools, you should pick the regional endpoint (closest pool to the exchange AD site): `IMServerName=<Skype Server\pool Name>`.
- 
+
 > [!TIP]
 > Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
@@ -54,7 +55,7 @@ Use the procedures in this topic to fix these errors and configure IM integratio
 Use the following syntax in the Exchange Management Shell to specify the IM server and IM certificate thumbprint:
 
 ```
-New-SettingOverride -Name "<UniqueOverrideName>" -Component OwaServer -Section IMSettings -Parameters @("IMServerName=<Skype server/pool  name>","IMCertificateThumbprint=<Certificate Thumbprint>") -Reason "<DescriptiveReason>" [-Server <ServerName> ]
+New-SettingOverride -Name "<UniqueOverrideName>" -Component OwaServer -Section IMSettings -Parameters @("IMServerName=<Skype server/pool  name>","IMCertificateThumbprint=<Certificate Thumbprint>") -Reason "<DescriptiveReason>" [-Server <ServerName>]
 ```
 
  **Notes:**
@@ -120,4 +121,3 @@ To verify the values of the **IMServerName** and **IMCertificateThumbprint** pro
 - _Process_: `Microsoft.Exchange.Directory.TopologyService` (instead of `MSExchangeMailboxAssistants`).
 
 - _Argument_: `Config` (instead of `"Config,Component=OwaServer"`).
-

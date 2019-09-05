@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: a4f84312-6cfa-4f17-9707-676aadab1143
 ms.date: 6/8/2018
+ms.reviewer: 
 title: Manage health sets and server health
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -104,6 +105,3 @@ Get-ServerHealth -HealthSet <HealthSetName> -Server <ServerName> | Format-Table 
 ```
 
 For detailed syntax and parameter information, see [Get-ServerHealth](http://technet.microsoft.com/library/ca9cff3a-ecda-422d-abd7-b7d8da71a6c7.aspx).
-
-
-

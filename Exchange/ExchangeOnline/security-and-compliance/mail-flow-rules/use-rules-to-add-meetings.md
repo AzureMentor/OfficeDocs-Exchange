@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Admins can learn how to use mail flow rules to add meetings to calendars in Exchange Online.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: c93c31a4-fe5e-479b-83b6-ee114d4f236c
 ms.date: 
+ms.reviewer: 
 title: Use mail flow rules to automatically add meetings to calendars in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -60,7 +61,7 @@ For more information about mail flow rules, see [Mail flow rules (transport rule
 
 3. In the **New rule** page that opens, click **More options**.
 
-![In the new mail flow rule window, click More options](../../media/d91f0335-f3b4-4760-bd50-6cdc46b84ce8.png)
+   ![In the new mail flow rule window, click More options](../../media/d91f0335-f3b4-4760-bd50-6cdc46b84ce8.png)
 
 4. Configure these additional settings on the **New rule** page:
 
@@ -86,15 +87,15 @@ For more information about mail flow rules, see [Mail flow rules (transport rule
 
 7. Configure these additional settings on the **New rule** page:
 
-  - **Name**: Direct to Calendar triage action (or anything descriptive).
+   - **Name**: Direct to Calendar triage action (or anything descriptive).
 
-  - **Apply this rule if** \> **The sender** \> **is this person**: Select the same users as in step 3.
+   - **Apply this rule if** \> **The sender** \> **is this person**: Select the same users as in step 3.
 
-  - **Do the following** \> **Modify the message properties** \> **set a message header**: Enter the following values:
+   - **Do the following** \> **Modify the message properties** \> **set a message header**: Enter the following values:
 
-  - **Set the message header** `X-MS-Exchange-Organization-CalendarBooking-TriageAction`
+   - **Set the message header** `X-MS-Exchange-Organization-CalendarBooking-TriageAction`
 
-  - **to the value** `MoveToDeletedItems`
+   - **to the value** `MoveToDeletedItems`
 
    When you're finished, click **Save**.
 
@@ -136,11 +137,10 @@ To verify that you have successfully configured Direct to Calendar meeting invit
 
 - The designated sender mailbox will receive meeting acceptance responses to Direct to Calendar meetings. Use the following strategies to help minimize the impact of these messages on the designated sender:
 
-   - In Outlook, enable the **Update tracking information, and then delete responses that don't contain comments** and **After updating tracking information, move receipt to \<Deleted Items\>** settings in **Mail** \> **Tracking** for the designated sender mailbox. For more information, see [Change how meeting requests, polls, and read or delivery receipts are processed](https://go.microsoft.com/fwlink/p/?linkid=847058).
+  - In Outlook, enable the **Update tracking information, and then delete responses that don't contain comments** and **After updating tracking information, move receipt to \<Deleted Items\>** settings in **Mail** \> **Tracking** for the designated sender mailbox. For more information, see [Change how meeting requests, polls, and read or delivery receipts are processed](https://go.microsoft.com/fwlink/p/?linkid=847058).
 
-   - Clearing the **Request Responses** setting in Direct to Calendar meeting invitations doesn't prevent responses from being sent back to the designated sender mailbox.
+  - Clearing the **Request Responses** setting in Direct to Calendar meeting invitations doesn't prevent responses from being sent back to the designated sender mailbox.
 
 - If the designated mailbox sends a meeting cancellation for a Direct to Calendar meeting, the cancelled meeting title is always changed to **CANCELED: \<previous meeting title\>**, and the cancelled meeting remains in the calendars of attendees until they manually remove it.
 
 - Meeting cancellation messages for Direct to Calendar meetings will always appear in the Inbox of recipients.
-

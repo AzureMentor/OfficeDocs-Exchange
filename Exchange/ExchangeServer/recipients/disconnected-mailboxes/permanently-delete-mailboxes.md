@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to permanently delete a mailbox in Exchange Server 2016 or Exchange Server 2019.'
 ms.topic: article
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: df35765a-0bef-4561-9846-d91d69c0269c
 ms.date: 6/12/2018
+ms.reviewer: 
 title: Permanently delete a mailbox
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -44,7 +45,7 @@ To learn more about disconnected mailboxes and perform other related management 
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the Exchange Management Shell to permanently delete an active mailbox
 
@@ -66,30 +67,33 @@ To verify that you've permanently deleted an active mailbox, do the following:
 
 2. Verify that the associated user account is no longer listed in Active Directory Users and Computers.
 
-3. Run the following command in the Exchange Management Shell to verify that the mailbox was successfully purged from the Exchange mailbox database:
+3. Replace _\<DisplayName\>_ with the display name of the mailbox and run the following commands in the Exchange Management Shell to verify that the mailbox was successfully purged from the Exchange mailbox database:
 
-  ```
-  Get-MailboxDatabase | Get-MailboxStatistics | where {$_.DisplayName -eq "<display name>"}
-  ```
+   ```
+   $dbs = Get-MailboxDatabase
+   $dbs | foreach {Get-MailboxStatistics -Database $_.DistinguishedName} | where {$_.DisplayName -eq "<DisplayName>"}
+   ```
 
-    If you successfully purged the mailbox, the command won't return any results. If the mailbox wasn't purged, the command will return information about the mailbox.
+   If you successfully purged the mailbox, the command won't return any results. If the mailbox wasn't purged, the command will return information about the mailbox.
 
 ## Use the Exchange Management Shell to find the disconnected mailbox type
 
 A disconnected mailbox can be either disabled or soft-deleted. You need to specify the correct type to permanently delete a disconnected mailbox. If you don't, the command will fail.
 
-Run the following command to determine whether a disconnected mailbox is disabled or soft-deleted:
+Replace _\<DisplayName\>_ with the display name of the mailbox and run the following command to determine whether a disconnected mailbox is disabled or soft-deleted:
 
 ```
-Get-MailboxDatabase | Get-MailboxStatistics | where { $_.DisplayName -eq "<display name>" } | Format-List DisplayName,MailboxGuid,Database,DisconnectReason
+$dbs = Get-MailboxDatabase
+$dbs | foreach {Get-MailboxStatistics -Database $_.DistinguishedName} | where {$_.DisplayName -eq "<DisplayName>"} | Format-List DisplayName,MailboxGuid,Database,DisconnectReason
 ```
 
 The value for the _DisconnectReason_ property will be either `Disabled` or `SoftDeleted`.
 
-You can run the following command to display the type for all disconnected mailboxes in your organization:
+You can run the following commands to display the type for all disconnected mailboxes in your organization:
 
 ```
-Get-MailboxDatabase | Get-MailboxStatistics | where { $_.DisconnectReason -ne $null } | Format-List DisplayName,MailboxGuid,Database,DisconnectReason
+$dbs = Get-MailboxDatabase
+$dbs | foreach {Get-MailboxStatistics -Database $_.DistinguishedName} | where {$_.DisconnectReason -ne $null} | Format-List DisplayName,MailboxGuid,Database,DisconnectReason
 ```
 
 ## Use the Exchange Management Shell to permanently delete a disconnected mailbox
@@ -119,13 +123,11 @@ For detailed syntax and parameter information, see [Remove-StoreMailbox](http://
 
 ### How do you know this worked?
 
-To verify that you've permanently deleted a disconnected mailbox and that it was successfully purged from the mailbox database, run the following command.
+To verify that you've permanently deleted a disconnected mailbox and that it was successfully purged from the mailbox database, replace _\<DisplayName\>_ with the display name of the mailbox and run the following command:
 
 ```
-Get-MailboxDatabase | Get-MailboxStatistics | where {$_.DisplayName -eq "<display name>"}
+$dbs = Get-MailboxDatabase
+$dbs | foreach {Get-MailboxStatistics -Database $_.DistinguishedName} | where {$_.DisplayName -eq "<DisplayName>"}
 ```
 
 If you successfully purged the mailbox, the command won't return any results. If the mailbox wasn't purged, the command will return information about the mailbox.
-
-
-

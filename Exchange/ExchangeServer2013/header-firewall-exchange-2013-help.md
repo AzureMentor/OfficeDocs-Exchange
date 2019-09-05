@@ -1,10 +1,14 @@
-﻿---
+---
 title: 'Header firewall: Exchange 2013 Help'
 TOCTitle: Header firewall
 ms:assetid: 9b148f7b-47a9-4379-a55b-8d5310c1772f
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb232136(v=EXCHG.150)
 ms:contentKeyID: 50934222
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 f1_keywords:
 - header firewall, organization X-headers
@@ -17,54 +21,35 @@ f1_keywords:
 
 # Header firewall
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 In Microsoft Exchange Server 2013, *header firewall* is a mechanism that removes specific header fields from inbound and outbound messages. There are two different types of header fields that are affected by header firewall:
 
-  - **X-headers**   An *X-header* is a user-defined, unofficial header field. X-headers aren't specifically mentioned in RFC 2822, but the use of an undefined header field starting with **X-** has become an accepted way to add unofficial header fields to a message. Messaging applications, such as anti-spam, antivirus, and messaging servers may add their own X-headers to a message. In Exchange, the X-header fields contain details about the actions that are performed on the message by the Transport service, such as the spam confidence level (SCL), content filtering results, and rules processing status. Revealing this information to unauthorized sources could pose a potential security risk.
+- **X-headers**: An *X-header* is a user-defined, unofficial header field. X-headers aren't specifically mentioned in RFC 2822, but the use of an undefined header field starting with **X-** has become an accepted way to add unofficial header fields to a message. Messaging applications, such as anti-spam, antivirus, and messaging servers may add their own X-headers to a message. In Exchange, the X-header fields contain details about the actions that are performed on the message by the Transport service, such as the spam confidence level (SCL), content filtering results, and rules processing status. Revealing this information to unauthorized sources could pose a potential security risk.
 
-  - **Routing headers**   Routing headers are standard SMTP header fields that are defined in RFC 2821 and RFC 2822. Routing headers stamp a message by using information about the different messaging servers that were used to deliver the message to the recipient. Routing headers that are inserted into messages by malicious users can misrepresent the routing path that a message traveled to reach a recipient.
+- **Routing headers**: Routing headers are standard SMTP header fields that are defined in RFC 2821 and RFC 2822. Routing headers stamp a message by using information about the different messaging servers that were used to deliver the message to the recipient. Routing headers that are inserted into messages by malicious users can misrepresent the routing path that a message traveled to reach a recipient.
 
 Header firewall prevents the spoofing of these Exchange-related X-headers by removing them from inbound messages that enter the Exchange organization from untrusted sources. Header firewall prevents the disclosure of these Exchange-related X-headers by removing them from outbound messages sent to untrusted destinations outside the Exchange organization. Header firewall also prevents the spoofing of standard routing headers that are used to track the routing history of a message.
-
-**Contents**
-
-Message header fields affected by header firewall in Exchange
-
-How header firewall is applied to Receive connectors and Send connectors
-
-Header firewall for inbound messages on Receive connectors
-
-Header firewall for outbound messages on Send connectors
-
-Header firewall for other message sources
-
-Organization X-headers and forest X-headers in Exchange
 
 ## Message header fields affected by header firewall in Exchange
 
 The following types of X-headers and routing headers are affected by header firewall:
 
-  - **Organization X-headers**   These X-header fields start with **X-MS-Exchange-Organization-**.
+- **Organization X-headers**: These X-header fields start with **X-MS-Exchange-Organization-**.
 
-  - **Forest X-headers**   These X-header fields start with **X-MS-Exchange-Forest-**.
-    
+- **Forest X-headers**: These X-header fields start with **X-MS-Exchange-Forest-**.
+
     For examples of organization X-headers and forest X-headers, see the Organization X-headers and forest X-headers in Exchange section at the end of this topic.
 
-  - **Received: routing headers**   A different instance of this header field is added to the message header by every messaging server that accepted and forwarded the message to the recipient. The **Received:** header typically includes the name of the messaging server and a date-timestamp.
+- **Received: routing headers**: A different instance of this header field is added to the message header by every messaging server that accepted and forwarded the message to the recipient. The **Received:** header typically includes the name of the messaging server and a date-timestamp.
 
-  - **Resent-\*: routing headers**   Resent header fields are informational header fields that can be used to determine whether a message has been forwarded by a user. The following resent header fields are available: **Resent-Date:**, **Resent-From:**, **Resent-Sender:**, **Resent-To:**, **Resent-Cc:**, **Resent-Bcc:**, and **Resent-Message-ID:**. The **Resent-** fields are used so that the message appears to the recipient as if it was sent directly by the original sender. The recipient can view the message header to discover who forwarded the message.
+- **Resent-\*: routing headers**: Resent header fields are informational header fields that can be used to determine whether a message has been forwarded by a user. The following resent header fields are available: **Resent-Date:**, **Resent-From:**, **Resent-Sender:**, **Resent-To:**, **Resent-Cc:**, **Resent-Bcc:**, and **Resent-Message-ID:**. The **Resent-** fields are used so that the message appears to the recipient as if it was sent directly by the original sender. The recipient can view the message header to discover who forwarded the message.
 
 Exchange uses two different ways to apply header firewall to organization X-headers, forest X-headers, and routing headers that exist in messages:
 
-  - Permissions are assigned to Send connectors or Receive connectors that can be used to preserve or remove specific types of headers in messages when the message travels through the connector.
+- Permissions are assigned to Send connectors or Receive connectors that can be used to preserve or remove specific types of headers in messages when the message travels through the connector.
 
-  - Header firewall is automatically implemented for specific types of headers in messages during other types of message submission.
-
-Return to top
+- Header firewall is automatically implemented for specific types of headers in messages during other types of message submission.
 
 ## How header firewall is applied to Receive connectors and Send connectors
 
@@ -75,7 +60,6 @@ If the permission is assigned to the Receive connector or Send connector, header
 If the permission isn't assigned to the Receive connector or Send connector, header firewall is applied to the messages that travel through the connector. The affected header fields are removed from the messages.
 
 The following table describes the permissions on Send connectors and Receive connectors that are used to apply header firewall, and the affected header fields.
-
 
 <table>
 <colgroup>
@@ -124,11 +108,9 @@ The following table describes the permissions on Send connectors and Receive con
 </tbody>
 </table>
 
-
 ## Header firewall for inbound messages on Receive connectors
 
 The following table describes the default application of the header firewall permissions on Receive connectors.
-
 
 <table>
 <colgroup>
@@ -155,7 +137,6 @@ The following table describes the default application of the header firewall per
 
 > [!NOTE]
 > On Hub Transport servers only
-
 
 </li>
 </ul></td>
@@ -184,7 +165,6 @@ The following table describes the default application of the header firewall per
 > [!NOTE]
 > Hub Transport servers only
 
-
 </li>
 <li><p>Externally Secured servers</p></li>
 </ul></td>
@@ -200,43 +180,37 @@ The following table describes the default application of the header firewall per
 </tbody>
 </table>
 
-
-Return to top
-
 ## Header firewall on custom Receive connectors
 
 If you want to apply header firewall to messages in a custom Receive connector scenario, use any of the following methods:
 
-  - Create the Receive connector with a usage type that automatically applies header firewall to messages. Note that you can set the usage type only when you create the Receive connector.
-    
-      - To remove the organization X-headers or forest X-headers from messages, create a Receive connector and select a usage type other than `Internal`.
-    
-      - To remove the routing headers from messages, do one of the following actions:
-        
-          - Create a Receive connector and select the usage type `Custom`. Don't assign any permission groups to the Receive connector.
-        
-          - Modify an existing Receive connector, and set the *PermissionGroups* parameter to the value `None`.
-        
-        Note that if you have a Receive connector that has no permission groups assigned to it, you need to add security principals to the Receive connector as described in the last step.
+- Create the Receive connector with a usage type that automatically applies header firewall to messages. Note that you can set the usage type only when you create the Receive connector.
 
-  - Use the **Remove-ADPermission** cmdlet to remove the **Ms-Exch-Accept-Headers-Organization** permission, the **Ms-Exch-Accept-Headers-Forest** permission, and the **Ms-Exch-Accept-Headers-Routing** permission from a security principal that's configured on the Receive connector. This method doesn't work if the permission has been assigned to the security principal using a permission group on the Receive connector, because you can't modify the permissions assignments or the group membership of a permission group.
+  - To remove the organization X-headers or forest X-headers from messages, create a Receive connector and select a usage type other than `Internal`.
 
-  - Use the **Add-ADPermission** cmdlet to add the appropriate security principals that are required for mail flow on the Receive connector. Make sure that no security principals have the **Ms-Exch-Accept-Headers-Organization** permission, the **Ms-Exch-Accept-Headers-Forest** permission, and the **Ms-Exch-Accept-Headers-Routing** permission assigned to them. If necessary, use the **Add-ADPermission** cmdlet to deny the **Ms-Exch-Accept-Headers-Organization** permission, the **Ms-Exch-Accept-Headers-Forest** permission, and the **Ms-Exch-Accept-Headers-Routing** permission to the security principals that are configured on the Receive connector.
+  - To remove the routing headers from messages, do one of the following actions:
+
+    - Create a Receive connector and select the usage type `Custom`. Don't assign any permission groups to the Receive connector.
+
+    - Modify an existing Receive connector, and set the *PermissionGroups* parameter to the value `None`.
+
+      Note that if you have a Receive connector that has no permission groups assigned to it, you need to add security principals to the Receive connector as described in the last step.
+
+- Use the **Remove-ADPermission** cmdlet to remove the **Ms-Exch-Accept-Headers-Organization** permission, the **Ms-Exch-Accept-Headers-Forest** permission, and the **Ms-Exch-Accept-Headers-Routing** permission from a security principal that's configured on the Receive connector. This method doesn't work if the permission has been assigned to the security principal using a permission group on the Receive connector, because you can't modify the permissions assignments or the group membership of a permission group.
+
+- Use the **Add-ADPermission** cmdlet to add the appropriate security principals that are required for mail flow on the Receive connector. Make sure that no security principals have the **Ms-Exch-Accept-Headers-Organization** permission, the **Ms-Exch-Accept-Headers-Forest** permission, and the **Ms-Exch-Accept-Headers-Routing** permission assigned to them. If necessary, use the **Add-ADPermission** cmdlet to deny the **Ms-Exch-Accept-Headers-Organization** permission, the **Ms-Exch-Accept-Headers-Forest** permission, and the **Ms-Exch-Accept-Headers-Routing** permission to the security principals that are configured on the Receive connector.
 
 For more information, see the following topics:
 
-  - [Receive connectors](receive-connectors-exchange-2013-help.md)
+- [Receive connectors](receive-connectors-exchange-2013-help.md)
 
-  - [Add-ADPermission](https://technet.microsoft.com/en-us/library/bb124403\(v=exchg.150\))
+- [Add-ADPermission](https://technet.microsoft.com/en-us/library/bb124403\(v=exchg.150\))
 
-  - [Remove-ADPermission](https://technet.microsoft.com/en-us/library/aa996048\(v=exchg.150\))
-
-Return to top
+- [Remove-ADPermission](https://technet.microsoft.com/en-us/library/aa996048\(v=exchg.150\))
 
 ## Header firewall for outbound messages on Send connectors
 
 The following table describes the default application of the header firewall permissions on Send connectors.
-
 
 <table>
 <colgroup>
@@ -262,7 +236,6 @@ The following table describes the default application of the header firewall per
 > [!NOTE]
 > On Hub Transport servers only
 
-
 </li>
 <li><p>Externally Secured servers</p></li>
 <li><p><strong>ExchangeLegacyInterop</strong> universal security group</p></li>
@@ -278,7 +251,6 @@ The following table describes the default application of the header firewall per
 
 > [!NOTE]
 > On Hub Transport servers only
-
 
 </li>
 <li><p>Externally Secured servers</p></li>
@@ -299,91 +271,83 @@ The following table describes the default application of the header firewall per
 </tbody>
 </table>
 
-
-Return to top
-
 ## Header firewall on custom Send connectors
 
 If you want to apply header firewall to messages in a custom Send connector scenario, use the any of the following methods:
 
-  - Create the Send connector with a usage type that automatically applies header firewall to messages. Note that you can set the usage type only when you create the Send connector.
-    
-      - To remove the organization X-headers or forest X-headers from messages, create a Send connector and select a usage type other than `Internal` or `Partner`.
-    
-      - To remove the routing headers from messages, create a Send connector and select the usage type `Custom`. The **Ms-Exch-Send-Headers-Routing** permission is assigned to all Send connector usage types except `Custom`.
+- Create the Send connector with a usage type that automatically applies header firewall to messages. Note that you can set the usage type only when you create the Send connector.
 
-  - Remove a security principal that assigns the **Ms-Exch-Send-Headers-Organization** permission, the **Ms-Exch-Send-Headers-Forest**, and the **Ms-Exch-Send-Headers-Routing** permission from the connector.
+  - To remove the organization X-headers or forest X-headers from messages, create a Send connector and select a usage type other than `Internal` or `Partner`.
 
-  - Use the **Remove-ADPermission** cmdlet to remove the **Ms-Exch-Send-Headers-Organization** permission, the **Ms-Exch-Send-Headers-Forest** permission, and the **Ms-Exch-Send-Headers-Routing** permission from one of the security principals that's configured on the Send connector.
+  - To remove the routing headers from messages, create a Send connector and select the usage type `Custom`. The **Ms-Exch-Send-Headers-Routing** permission is assigned to all Send connector usage types except `Custom`.
 
-  - Use the **Add-ADPermission** cmdlet to deny the **Ms-Exch-Send-Headers-Organization** permission, the **Ms-Exch-Send-Headers-Forest** permission, and the **Ms-Exch-Send-Headers-Routing** permission to one of the security principals that are configured on the Send connector.
+- Remove a security principal that assigns the **Ms-Exch-Send-Headers-Organization** permission, the **Ms-Exch-Send-Headers-Forest**, and the **Ms-Exch-Send-Headers-Routing** permission from the connector.
+
+- Use the **Remove-ADPermission** cmdlet to remove the **Ms-Exch-Send-Headers-Organization** permission, the **Ms-Exch-Send-Headers-Forest** permission, and the **Ms-Exch-Send-Headers-Routing** permission from one of the security principals that's configured on the Send connector.
+
+- Use the **Add-ADPermission** cmdlet to deny the **Ms-Exch-Send-Headers-Organization** permission, the **Ms-Exch-Send-Headers-Forest** permission, and the **Ms-Exch-Send-Headers-Routing** permission to one of the security principals that are configured on the Send connector.
 
 For more information, see the following topics:
 
-  - [Send connectors](send-connectors-exchange-2013-help.md)
+- [Send connectors](send-connectors-exchange-2013-help.md)
 
-  - [Add-ADPermission](https://technet.microsoft.com/en-us/library/bb124403\(v=exchg.150\))
+- [Add-ADPermission](https://technet.microsoft.com/en-us/library/bb124403\(v=exchg.150\))
 
-  - [Remove-ADPermission](https://technet.microsoft.com/en-us/library/aa996048\(v=exchg.150\))
-
-Return to top
+- [Remove-ADPermission](https://technet.microsoft.com/en-us/library/aa996048\(v=exchg.150\))
 
 ## Header firewall for other message sources
 
 Messages can enter the transport pipeline on a Mailbox server or an Edge Transport server without using Send connectors or Receive connectors. Header firewall is applied to these other message sources as described in the following list:
 
-  - **Pickup directory and Replay directory**   The Pickup directory is used by administrators or applications to submit message files. The Replay directory is used to resubmit messages that have been exported from Exchange message queues. For more information about the Pickup and Replay directories, see [Pickup directory and Replay directory](pickup-directory-and-replay-directory-exchange-2013-help.md).
-    
-    Organization X-headers, forest X-headers, and routing headers are removed from the message files in the Pickup directory.
-    
-    Routing headers are preserved in messages submitted by the Replay directory.
-    
-    Whether or not organization X-headers and forest X-headers are preserved or removed from messages in the Replay directory is controlled by the **X-CreatedBy:** header field in the message file:
-    
-      - If the value of **X-CreatedBy:** is `MSExchange15`, organization X-headers and forest X-headers are preserved in messages.
-    
-      - If the value of **X-CreatedBy:** isn't `MSExchange15`, organization X-headers and forest X-headers are removed from messages.
-    
-      - If the **X-CreatedBy:** header field doesn't exist in the message file, organization X-headers and forest X-headers are removed from messages.
+- **Pickup directory and Replay directory**: The Pickup directory is used by administrators or applications to submit message files. The Replay directory is used to resubmit messages that have been exported from Exchange message queues. For more information about the Pickup and Replay directories, see [Pickup directory and Replay directory](pickup-directory-and-replay-directory-exchange-2013-help.md).
 
-  - **Drop directory**   The Drop directory is used by Foreign connectors on Mailbox servers to send messages to messaging servers that don't use SMTP to transfer messages. For more information about Foreign connectors, see [Foreign connectors](foreign-connectors-exchange-2013-help.md).
-    
-    Organization X-headers and forest X-headers are removed from message files before they're put in the Drop directory.
-    
-    Routing headers are preserved in messages submitted by the Drop directory.
+  Organization X-headers, forest X-headers, and routing headers are removed from the message files in the Pickup directory.
 
-  - **Mailbox Transport**   The Mailbox Transport service exists on Mailbox servers to transmit messages to and from mailboxes on Mailbox servers. For more information about the Mailbox Transport service, see [Mail flow](mail-flow-exchange-2013-help.md).
-    
-    Organization X-headers, forest X-headers, and routing headers are removed from outgoing messages that are sent from mailboxes by the Mailbox Transport Submission service.
-    
-    Routing headers are preserved for inbound messages to mailbox recipients by the Mailbox Transport Delivery service. The following organization X-headers are preserved for inbound messages to mailbox recipients by the Mailbox Transport Delivery service:
-    
-      - **X-MS-Exchange-Organization-SCL**
-    
-      - **X-MS-Exchange-Organization-AuthDomain**
-    
-      - **X-MS-Exchange-Organization-AuthMechanism**
-    
-      - **X-MS-Exchange-Organization-AuthSource**
-    
-      - **X-MS-Exchange-Organization-AuthAs**
-    
-      - **X-MS-Exchange-Organization-OriginalArrivalTime**
-    
-      - **X-MS-Exchange-Organization-OriginalSize**
+  Routing headers are preserved in messages submitted by the Replay directory.
 
-  - **DSN messages**   Organization X-headers, forest X-headers, and routing headers are removed from the original message or the original message header that's attached to the DSN message. For more information about DSN messages, see [DSNs and NDRs in Exchange 2013](dsns-and-ndrs-in-exchange-2013-exchange-2013-help.md).
+  Whether or not organization X-headers and forest X-headers are preserved or removed from messages in the Replay directory is controlled by the **X-CreatedBy:** header field in the message file:
 
-  - **Transport agent submission**   Organization X-headers, forest X-headers, and routing headers are preserved in messages that are submitted by transport agents.
+  - If the value of **X-CreatedBy:** is `MSExchange15`, organization X-headers and forest X-headers are preserved in messages.
 
-Return to top
+  - If the value of **X-CreatedBy:** isn't `MSExchange15`, organization X-headers and forest X-headers are removed from messages.
+
+  - If the **X-CreatedBy:** header field doesn't exist in the message file, organization X-headers and forest X-headers are removed from messages.
+
+- **Drop directory**: The Drop directory is used by Foreign connectors on Mailbox servers to send messages to messaging servers that don't use SMTP to transfer messages. For more information about Foreign connectors, see [Foreign connectors](foreign-connectors-exchange-2013-help.md).
+
+  Organization X-headers and forest X-headers are removed from message files before they're put in the Drop directory.
+
+  Routing headers are preserved in messages submitted by the Drop directory.
+
+- **Mailbox Transport**: The Mailbox Transport service exists on Mailbox servers to transmit messages to and from mailboxes on Mailbox servers. For more information about the Mailbox Transport service, see [Mail flow](mail-flow-exchange-2013-help.md).
+
+  Organization X-headers, forest X-headers, and routing headers are removed from outgoing messages that are sent from mailboxes by the Mailbox Transport Submission service.
+
+  Routing headers are preserved for inbound messages to mailbox recipients by the Mailbox Transport Delivery service. The following organization X-headers are preserved for inbound messages to mailbox recipients by the Mailbox Transport Delivery service:
+
+  - **X-MS-Exchange-Organization-SCL**
+
+  - **X-MS-Exchange-Organization-AuthDomain**
+
+  - **X-MS-Exchange-Organization-AuthMechanism**
+
+  - **X-MS-Exchange-Organization-AuthSource**
+
+  - **X-MS-Exchange-Organization-AuthAs**
+
+  - **X-MS-Exchange-Organization-OriginalArrivalTime**
+
+  - **X-MS-Exchange-Organization-OriginalSize**
+
+- **DSN messages**: Organization X-headers, forest X-headers, and routing headers are removed from the original message or the original message header that's attached to the DSN message. For more information about DSN messages, see [DSNs and NDRs in Exchange 2013](dsns-and-ndrs-in-exchange-2013-exchange-2013-help.md).
+
+- **Transport agent submission**: Organization X-headers, forest X-headers, and routing headers are preserved in messages that are submitted by transport agents.
 
 ## Organization X-headers and forest X-headers in Exchange
 
 The Transport service on Mailbox servers or Edge Transport servers insert custom X-header fields into the message header.
 
 Organization X-headers start with **X-MS-Exchange-Organization-**. Forest X-headers start with **X-MS-Exchange-Forest-**. The following table describes some of the organization X-headers and forest X-headers that are used in messages in an Exchange organization.
-
 
 <table>
 <colgroup>
@@ -459,7 +423,3 @@ Organization X-headers start with **X-MS-Exchange-Organization-**. Forest X-head
 </tr>
 </tbody>
 </table>
-
-
-Return to top
-

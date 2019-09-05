@@ -2,16 +2,18 @@
 localization_priority: Normal
 description: Admins can learn how to combine DLP policies with mail flow rules in Exchange Online.
 ms.topic: article
-author: stephow-msft
-ms.author: stephow
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: feb014a7-89dd-4f2d-a06d-52806ce435d4
-ms.date:title: Integrating sensitive information rules with mail flow rules in Exchange Online
+ms.date:
+title: Integrating sensitive information rules with mail flow rules in Exchange Online
+ms.reviewer: 
 ms.collection:
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 

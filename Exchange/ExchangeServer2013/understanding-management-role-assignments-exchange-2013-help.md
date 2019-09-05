@@ -1,27 +1,25 @@
-﻿---
+---
 title: 'Understanding management role assignments: Exchange 2013 Help'
 TOCTitle: Understanding management role assignments
 ms:assetid: 1dc33dd6-52fb-4852-a5ce-027bc73e1d8f
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd335131(v=EXCHG.150)
 ms:contentKeyID: 49289190
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Understanding management role assignments
 
- 
-
-_**Applies to:** Exchange Online, Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013_
 
 A *management role assignment*, which is part of the Role Based Access Control (RBAC) permissions model in Microsoft Exchange Server 2013, is the link between a management role and a role assignee. A *role assignee* is a role group, role assignment policy, user, or universal security group (USG). A role must be assigned to a role assignee for it to take effect. For more information about RBAC, see [Understanding Role Based Access Control](understanding-role-based-access-control-exchange-2013-help.md).
 
-
 > [!NOTE]
 > This topic focuses on advanced RBAC functionality. If you want to manage basic Exchange 2013 permissions, such as using the Exchange admin center (EAC) to add and remove members to and from role groups, create and modify role groups, or create and modify role assignment policies, see <A href="permissions-exchange-2013-help.md">Permissions</A>.
-
-
 
 This topic discusses the assignment of roles to role groups and role assignment policies and direct role assignment to users and USGs. It doesn't talk about assignment of role groups or role assignment policies to users. For more information about role groups and role assignment policies, which are the recommended way to assign permissions to users, see the following topics:
 
@@ -52,25 +50,25 @@ You can add, remove, and enable role assignments, modify the management scope on
 For more information about managing role assignments, see the following topics:
 
   - Role groups:
-    
+
       - [Manage role groups](manage-role-groups-exchange-2013-help.md)
 
   - Role assignment policies:
-    
+
       - [Manage role assignment policies](manage-role-assignment-policies-exchange-2013-help.md)
-    
+
       - [Change a role assignment](change-a-role-assignment-exchange-2013-help.md)
 
   - Users and USGs:
-    
+
       - [Add a role to a user or USG](add-a-role-to-a-user-or-usg-exchange-2013-help.md)
-    
+
       - [Remove a role from a user or USG](remove-a-role-from-a-user-or-usg-exchange-2013-help.md)
-    
+
       - [Change a role assignment](change-a-role-assignment-exchange-2013-help.md)
-    
+
       - [Change a role scope](change-a-role-scope-exchange-2013-help.md)
-    
+
       - [Delegate role assignments](delegate-role-assignments-exchange-2013-help.md)
 
 ## Regular and delegating role assignments
@@ -79,17 +77,14 @@ Regular role assignments enable the role assignee to access the management role 
 
 Delegating role assignments doesn't give access to manage features. Delegating role assignments gives a role assignee the ability to assign the specified role to other role assignees. If the role assignee is a role group, any member of the role group can assign the role to another role assignee. By default, only the Organization Management role group has the ability to assign roles to other role assignees. Only the user that installed Exchange 2013 is a member of the Organization Management role group by default. You can, however, add other users to this role group as needed, or create other role groups and assign delegating role assignments to those groups.
 
-
 > [!NOTE]
 > Delegating role assignments enables role assignees to delegate management roles to other role assignees. This doesn't enable users to delegate role groups. For more information about role group delegation, see <A href="understanding-management-role-groups-exchange-2013-help.md">Understanding management role groups</A>.
 
-
-
 If you want a user to be able to manage a feature and assign the role that gives permissions to use the feature to other users, assign the following:
 
-1.  A regular role assignment for each management role that grants access to the features that need to be managed.
+1. A regular role assignment for each management role that grants access to the features that need to be managed.
 
-2.  A delegating role assignment for each management role that you allow to be assigned to other role assignees.
+2. A delegating role assignment for each management role that you allow to be assigned to other role assignees.
 
 The regular and delegating role assignments for a role assignee don't need to be identical. For example, a user is a member of a role group assigned the Transport Rules role using a regular role assignment. This enables the user to manage the Transport Rules feature. However the user isn't assigned a delegating role assignment for the Transport Rules role so the user can't assign this role to other users. However, the user is a member of a role group assigned the Journaling management role using a delegating role assignment. The role group the user is a member of doesn't have a regular role assignment for the Journaling role but because it has a delegating role assignment, the user can assign the role to other role assignees.
 
@@ -128,4 +123,3 @@ For example, consider the following:
 Because John's mailbox matches the VIP Users exclusive scope, only Bill can manage his mailbox. Even though John's mailbox also matches the Redmond Users regular scope, Chris isn't associated with the VIP Restricted exclusive assignment. Therefore, Exchange denies Chris the ability to manage John's mailbox. For Chris to manage John's mailbox, Chris needs to be assigned an exclusive assignment that has an exclusive scope that matches John's mailbox.
 
 For more information, see [Understanding exclusive scopes](understanding-exclusive-scopes-exchange-2013-help.md).
-

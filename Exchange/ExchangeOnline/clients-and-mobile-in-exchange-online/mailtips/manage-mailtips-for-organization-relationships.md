@@ -6,13 +6,14 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 6e6b48ef-c41c-47ad-8063-66901765c2a5
 ms.date: 4/8/2015
+ms.reviewer: 
 title: Manage MailTips for organization relationships
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 
@@ -97,6 +98,3 @@ Set-OrganizationRelationship "Contoso Online" -MailTipsAccessScope ShareMailTips
 ```
 
 For detailed syntax and parameter information, see [Set-OrganizationRelationship](https://technet.microsoft.com/library/4e3b9d1d-cf41-4fd0-97e3-a0bbc816cf87.aspx).
-
-
-

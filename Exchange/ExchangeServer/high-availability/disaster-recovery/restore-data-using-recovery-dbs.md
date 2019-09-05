@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: d64c18e7-16af-4bd8-a5c5-01206984d4d1
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Restore data using a recovery database
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -40,63 +41,67 @@ For additional management tasks related to RDBs, see [Recovery databases](recove
 
 2. Use Eseutil to bring that database into a clean shutdown state. In the following example, EXX is the log generation prefix for the database (for example, E00, E01, E02, and so on).
 
-  ```
-  Eseutil /R EXX /l <RDBLogFilePath> /d <RDBEdbFolder>
-  ```
+   ```
+   Eseutil /R EXX /l <RDBLogFilePath> /d <RDBEdbFolder>
+   ```
 
-> The following example illustrates a log generation prefix of E01 and a recovery database and log file path of E:\Databases\RDB1:
-  ```
-  Eseutil /R E01 /l E:\Databases\RDB1 /d E:\Databases\RDB1
-  ```
+   The following example illustrates a log generation prefix of E01 and a recovery database and log file path of E:\Databases\RDB1:
+
+   ```
+   Eseutil /R E01 /l E:\Databases\RDB1 /d E:\Databases\RDB1
+   ```
 
 3. Create a recovery database. Give the recovery database a unique name, but use the name and path of the database file for the EdbFilePath parameter, and the location of the recovered log files for the LogFolderPath parameter.
 
-  ```
-  New-MailboxDatabase -Recovery -Name <RDBName> -Server <ServerName> -EdbFilePath <RDBPathandFileName> -LogFolderPath <LogFilePath>
-  ```
+   ```
+   New-MailboxDatabase -Recovery -Name <RDBName> -Server <ServerName> -EdbFilePath <RDBPathandFileName> -LogFolderPath <LogFilePath>
+   ```
 
-> The following example illustrates creating a recovery database that will be used to recover DB1.edb and its log files, which are located at E:\Databases\RDB1.
-  ```
-  New-MailboxDatabase -Recovery -Name <RDBName> -Server <ServerName> -EdbFilePath "E:\Databases\RDB1\DB1.EDB" -LogFolderPath "E:\Databases\RDB1"
-  ```
+   The following example illustrates creating a recovery database that will be used to recover DB1.edb and its log files, which are located at E:\Databases\RDB1.
+
+   ```
+   New-MailboxDatabase -Recovery -Name <RDBName> -Server <ServerName> -EdbFilePath "E:\Databases\RDB1\DB1.EDB" -LogFolderPath "E:\Databases\RDB1"
+   ```
 
 4. Restart the Microsoft Exchange Information Store service:
 
-  ```
-  Restart-Service MSExchangeIS
-  ```
+   ```
+   Restart-Service MSExchangeIS
+   ```
 
 5. Mount the recovery database:
 
-  ```
-  Mount-database <RDBName>
-  ```
+   ```
+   Mount-database <RDBName>
+   ```
 
 6. Verify that the mounted database contains the mailbox(es) you want to restore:
 
-  ```
-  Get-MailboxStatistics -Database <RDBName> | Format-Table Name,MailboxGUID -AutoSize
-  ```
+   ```
+   Get-MailboxStatistics -Database <RDBName> | Format-Table Name,MailboxGUID -AutoSize
+   ```
 
 7. Use the New-MailboxRestoreRequest cmdlet to restore a mailbox or items from the recovery database to a production mailbox.
 
-> The following example restores the source mailbox that has the MailboxGUID 1d20855f-fd54-4681-98e6-e249f7326ddd on mailbox database DB1 to the target mailbox with the alias Morris.
-  ```
-  New-MailboxRestoreRequest -SourceDatabase DB1 -SourceStoreMailbox 1d20855f-fd54-4681-98e6-e249f7326ddd -TargetMailbox Morris
-  ```
+   The following example restores the source mailbox that has the MailboxGUID 1d20855f-fd54-4681-98e6-e249f7326ddd on mailbox database DB1 to the target mailbox with the alias Morris.
 
-> The following example restores the content of the source mailbox that has the display name Morris Cornejo on mailbox database DB1 to the archive mailbox for Morris@contoso.com.
-  ```
-  New-MaiboxRestoreRequest -SourceDatabase DB1 -SourceStoreMailbox "Morris Cornejo" -TargetMailbox Morris@contoso.com -TargetIsArchive
-  ```
+   ```
+   New-MailboxRestoreRequest -SourceDatabase DB1 -SourceStoreMailbox 1d20855f-fd54-4681-98e6-e249f7326ddd -TargetMailbox Morris
+   ```
+
+   The following example restores the content of the source mailbox that has the display name Morris Cornejo on mailbox database DB1 to the archive mailbox for Morris@contoso.com.
+
+   ```
+   New-MaiboxRestoreRequest -SourceDatabase DB1 -SourceStoreMailbox "Morris Cornejo" -TargetMailbox Morris@contoso.com -TargetIsArchive
+   ```
 
 8. Periodically check the status of the Mailbox restore request using [Get-MailboxRestoreRequest](http://technet.microsoft.com/library/6e2a5296-7820-4266-a96f-609588390a18.aspx).
 
-    Once the restore has a status of Completed, remove the restore request using [Remove-MailboxRestoreRequest](http://technet.microsoft.com/library/a3d3327e-99b0-4d44-bd81-3e8f59eab41d.aspx). For example:
+   Once the restore has a status of Completed, remove the restore request using [Remove-MailboxRestoreRequest](http://technet.microsoft.com/library/a3d3327e-99b0-4d44-bd81-3e8f59eab41d.aspx). For example:
 
-  ```
-  Get-MailboxRestoreRequest -Status Completed | Remove-MailboxRestoreRequest
-  ```
+   ```
+   Get-MailboxRestoreRequest -Status Completed | Remove-MailboxRestoreRequest
+   ```
 
 ## How do you know this worked?
 
@@ -104,6 +109,3 @@ To verify that you have successfully recovered the mailbox data, open the target
 
 > [!TIP]
 > Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
-
-
-

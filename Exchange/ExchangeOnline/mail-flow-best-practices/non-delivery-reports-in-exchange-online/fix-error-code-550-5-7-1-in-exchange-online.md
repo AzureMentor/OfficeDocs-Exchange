@@ -1,10 +1,11 @@
 ---
 title: "Fix email delivery issues for error code 550 5.7.1 in Exchange Online"
-ms.author: chrisda
-author: chrisda
+ms.author: dmaguire
+author: msdmaguire
 manager: serdars
 ms.date: 
-ms.audience: Admin
+ms.reviewer: 
+audience: Admin
 ms.topic: troubleshooting
 ms.service: o365-administration
 localization_priority: Priority
@@ -154,21 +155,31 @@ The Sender Policy Framework (SPF) record for your domain might be incomplete, an
 
 ### Hybrid configuration issues
 
-If your domain is part of a hybrid deployment between on-premises Exchange and Exchange Online, the Hybrid Configuration Wizard should automatically configure the required connectors for mail flow. Even so, you can use the steps in this section to verify the connector settings.
+- If your domain is part of a hybrid deployment between on-premises Exchange and Exchange Online, the Hybrid Configuration Wizard should automatically configure the required connectors for mail flow. Even so, you can use the steps in this section to verify the connector settings.
 
-1. Open the Office 365 portal at <https://portal.microsoftonline.com>, and click **Admin** \> **Exchange**.
+  1. Open the Office 365 portal at <https://portal.microsoftonline.com>, and click **Admin** \> **Exchange**.
 
-2. In the Exchange admin center, click **Mail Flow** \> **Connectors**. In the **Outbound connectors** section, select the connector that's used for hybrid, and choose **Edit**. Verify the following information:
+  2. In the Exchange admin center, click **Mail Flow** \> **Connectors**. In the **Outbound connectors** section, select the connector that's used for hybrid, and choose **Edit**. Verify the following information:
 
-   - **Delivery**: If **Route mail through smart hosts** is selected, confirm the correct IP address or FQDN is specified. If **MX record associated with the recipient domain** is selected, confirm the MX record for the domain points to the correct mail server.
+     - **Delivery**: If **Route mail through smart hosts** is selected, confirm the correct IP address or FQDN is specified. If **MX record associated with the recipient domain** is selected, confirm the MX record for the domain points to the correct mail server.
 
        You can test your MX record and your ability to send mail from your Exchange Online organization by using the **Verify MX Record and Outbound Connector Test** at **Office 365** \> **Mail Flow Configuration** in the [Microsoft Remote Connectivity Analyzer](https://go.microsoft.com/fwlink/p/?LinkID=390941).
 
-   - **Scope**: If you need to route inbound internet mail to your on-premises Exchange organization, **Domains** needs to include all email domains that are used in your on-premises organization. You can use the value asterisk (\*) to also route all outbound internet mail through the on-premises organization.
+     - **Scope**: If you need to route inbound internet mail to your on-premises Exchange organization, **Domains** needs to include all email domains that are used in your on-premises organization. You can use the value asterisk (\*) to also route all outbound internet mail through the on-premises organization.
 
-If the connectors are configured incorrectly, your Exchange administrator needs to rerun the Hybrid Configuration Wizard in the on-premises Exchange organization.
+  If the connectors are configured incorrectly, your Exchange administrator needs to rerun the Hybrid Configuration Wizard in the on-premises Exchange organization.
 
-For more information about mail routing in hybrid deployments, see [Transport routing in Exchange hybrid deployments](https://docs.microsoft.com/exchange/transport-routing).
+- If you disable an on-premises Active Directory account, you'll get the following error message:
+
+  > Your message couldn't be delivered to the recipient because you don't have permission to send to it.
+Ask the recipient's email admin to add you to the accept list for the recipient.
+For more information, see DSN 5.7.129 Errors in Exchange Online and Office 365.
+
+  To cease all communication with the Exchange Online mailbox, you need to **delete** the on-premises user account instead of disabling it.
+
+  Another solution would be to remove the license, but then you would need to create a mail flow rule (also known as a transport rule) to prevent the user from receiving email messages. Otherwise, the user would continue to receive messages for about 30 days after removal of the license.
+
+  Consider this scenario as part of the workflow for disabling a user on Exchange Online.
 
 ## Still need help?
 

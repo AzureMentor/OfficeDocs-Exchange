@@ -5,6 +5,7 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: a1f79f3c-4967-4a15-8b3a-f4933aac0c34
 ms.date: 8/15/2018
+ms.reviewer: 
 description: Convert Exchange 2007 mailboxes to mail enabled users
 title: Convert Exchange 2007 mailboxes to mail-enabled users
 ms.collection: 
@@ -18,7 +19,7 @@ search.appverid:
 - GPA150
 - GEA150
 - BCS160
-ms.audience: Admin
+audience: Admin
 ms.custom: Adm_O365
 ms.service: exchange-online
 manager: serdars
@@ -31,7 +32,7 @@ After you have completed a staged migration, convert the mailboxes to mail-enabl
 
 ## Why convert mailboxes to mail-enabled users?
 
-If you've completed a staged Exchange migration to migrate your organization's Exchange 2007 on-premises mailboxes to Office 365 and you want to manage cloud-based users from your on-premises organization—using Active Directory—you should convert the on-premises mailboxes to mail-enabled users (MEUs). Why? Two things happen after a mailbox is migrated to the cloud in a staged Exchange migration:
+If you've completed a staged Exchange migration to migrate your organization's Exchange 2007 on-premises mailboxes to Office 365 and you want to manage cloud-based users from your on-premises organization (using Active Directory) you should convert the on-premises mailboxes to mail-enabled users (MEUs). Why? Two things happen after a mailbox is migrated to the cloud in a staged Exchange migration:
 
 - A user has an on-premises mailbox and a cloud mailbox.
 
@@ -270,11 +271,11 @@ Follow these steps to complete the process.
 
 3. In the Exchange Management Shell, run the following command. The script assumes that the CSV file is in the same directory and is named migration.csv.
 
-  ```
-  .\ExportO365UserInfo.ps1
-  ```
+   ```
+   .\ExportO365UserInfo.ps1
+   ```
 
-    You will be prompted to use the existing session or open a new session.
+   You will be prompted to use the existing session or open a new session.
 
 4. Type n and press **Enter** to open a new session.
 
@@ -284,41 +285,38 @@ Follow these steps to complete the process.
 
 6. Run the following command in a new Exchange Management Shell session. This command assumes that ExportO365UserInfo.ps1 and Cloud.csv are located in the same directory.
 
-  ```
-  .\Exchange2007MBtoMEU.ps1 <FQDN of on-premises domain controller>
-  ```
+   ```
+   .\Exchange2007MBtoMEU.ps1 <FQDN of on-premises domain controller>
+   ```
 
-    For example:
+   For example:
 
-  ```
-  .\Exchange2007MBtoMEU.ps1 DC1.contoso.com
-  ```
+   ```
+   .\Exchange2007MBtoMEU.ps1 DC1.contoso.com
+   ```
 
-    The script converts on-premises mailboxes to MEUs for all users included in the Cloud.csv.
+   The script converts on-premises mailboxes to MEUs for all users included in the Cloud.csv.
 
 7. Verify that the new MEUs have been created. In Active Directory Users and Computers, do the following:
 
-1. Click Action \> Find
+   1. Click Action \> Find
 
-2. Click the Exchange tab
+   2. Click the Exchange tab
 
-3. Select **Show only Exchange recipients**, and then select **Users with external email address**.
+   3. Select **Show only Exchange recipients**, and then select **Users with external email address**.
 
-4. Click **Find Now**.
+   4. Click **Find Now**.
 
-    The mailboxes that were converted to MEUs are listed under **Search results**.
+      The mailboxes that were converted to MEUs are listed under **Search results**.
 
 8. Use Active Directory Users and Computers, ADSI Edit, or Ldp.exe to verify that the following MEU properties are populated with the correct information.
 
-  - legacyExchangeDN
+   - legacyExchangeDN
 
-  - mail
+   - mail
 
-  - msExchMailboxGuid
+   - msExchMailboxGuid
 
-  - proxyAddresses
+   - proxyAddresses
 
-  - targetAddress
-
-
-
+   - targetAddress

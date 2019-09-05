@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: 'User call logs are used to view the following information about specific Unified Messaging (UM) users:'
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 95768fe3-3ae2-43bd-9cbf-18c3b85c4592
 ms.date: 11/17/2014
-title: Review the voice mail calls for a user
+ms.reviewer: 
+title: Review the voice mail calls for a user in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Review the voice mail calls for a user
+# Review the voice mail calls for a user in Exchange Online
 
 User call logs are used to view the following information about specific Unified Messaging (UM) users:
 
@@ -38,7 +39,7 @@ For additional tasks related to UM reporting, see [UM reports procedures](um-rep
 
 The user call log includes the following information for each call:
 
-- **DATE AND TIME**: The date and time of the call, in the time zone that the selected user has set in Microsoft Outlook Web App.
+- **DATE AND TIME**: The date and time of the call, in the time zone that the selected user has set in Outlook on the web (formerly known as Outlook Web App).
 
 - **DURATION**: How long the call lasted in minutes (MM) and seconds (SS), in the following format: MM:SS.
 
@@ -54,7 +55,7 @@ The user call log includes the following information for each call:
 
   - **Fax**: A call was received in which a fax tone was detected. If you've configured fax partners, this call was sent to the partner.
 
-  - **PlayonPhone**: A call was placed by UM because the user clicked the Play on Phone button in a voice message in Microsoft Outlook Web App or Outlook.
+  - **PlayonPhone**: A call was placed by UM because the user clicked the Play on Phone button in a voice message in Microsoft Outlook or Outlook on the web.
 
   - **FindMe**: An outbound call was placed by UM as a result of a Find Me rule in a call answering rule.
 
@@ -71,6 +72,3 @@ The user call log includes the following information for each call:
 - **UM IP GATEWAY**: The UM IP gateway that took the call.
 
 - **AUDIO QUALITY**: The overall audio quality of the call. For more details about audio quality, select the row and click **Audio Quality Details**.
-
-
-

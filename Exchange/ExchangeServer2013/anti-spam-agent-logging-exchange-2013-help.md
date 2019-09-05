@@ -1,65 +1,53 @@
-﻿---
+---
 title: 'Anti-spam agent logging: Exchange 2013 Help'
 TOCTitle: Anti-spam agent logging
 ms:assetid: dbd478d2-7993-4931-80db-5b2f7d4269bd
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb124795(v=EXCHG.150)
 ms:contentKeyID: 49287005
 ms.date: 06/02/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Anti-spam agent logging
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Agent logs record the actions performed on a message by specific anti-spam agents in Microsoft Exchange Server 2013. Only the following agents can write information to the agent log:
 
-  - Connection Filtering agent
+- Connection Filtering agent
 
-  - Content Filter agent
+- Content Filter agent
 
-  - Edge Rules agent
+- Edge Rules agent
 
-  - Recipient Filter agent
+- Recipient Filter agent
 
-  - Sender Filter agent
+- Sender Filter agent
 
-  - Sender ID agent
+- Sender ID agent
 
-
-> [!NOTE]  
+> [!NOTE]
 > The Connection Filtering agent and the Edge Rules agent aren't available on Mailbox servers.
-
-
 
 The information written to the agent log depends on the agent, the SMTP event, and the action performed on the message.
 
 You use the **Set-TransportService** cmdlet in the Exchange Management Shell to perform all agent log configuration tasks. The following options are available for the agent logs:
 
-  - Enable or disable agent logging. The default is enabled.
+- Enable or disable agent logging. The default is enabled.
 
-  - Specify the location of the agent log files. The default value is %ExchangeInstallPath%TransportRoles\\Logs\\Hub\\AgentLog.
+- Specify the location of the agent log files. The default value is %ExchangeInstallPath%TransportRoles\\Logs\\Hub\\AgentLog.
 
-  - Specify a maximum size for the individual agent log files. The default size is 10 megabytes (MB).
+- Specify a maximum size for the individual agent log files. The default size is 10 megabytes (MB).
 
-  - Specify a maximum size for the directory that contains agent log files. The default size is 250 MB.
+- Specify a maximum size for the directory that contains agent log files. The default size is 250 MB.
 
-  - Specify a maximum age for the agent log files. The default age is 7 days.
+- Specify a maximum age for the agent log files. The default age is 7 days.
 
 Exchange uses circular logging to limit the agent logs based on file size and file age to help control the hard disk space used by the log files.
-
-**Contents**
-
-Overview of transport agents
-
-Structure of the agent log files
-
-Information written to the agent log
-
-Search the agent logs
 
 ## Overview of transport agents
 
@@ -109,16 +97,10 @@ The following table lists the SMTP events in order of occurrence and the agents 
 </tbody>
 </table>
 
-
-
 > [!NOTE]
 > The Connection Filtering agent and the Edge Rules agent aren't available on Mailbox servers.
 
-
-
 For more information about agents, SMTP events, and agent priority, see [Transport agents](transport-agents-exchange-2013-help.md).
-
-Return to top
 
 ## Structure of the agent log files
 
@@ -126,25 +108,23 @@ The agent logs exist in %ExchangeInstallPath%TransportRoles\\Logs\\Hub\\AgentLog
 
 The naming convention for the agent log files is AGENTLOG*yyyymmdd-nnnn*.log. The placeholders represent the following information:
 
-  - The placeholder *yyyymmdd* is the Coordinated Universal Time (UTC) date that the log file was created. The placeholder *yyyy* = year, *mm* = month, and *dd* = day.
+- The placeholder *yyyymmdd* is the Coordinated Universal Time (UTC) date that the log file was created. The placeholder *yyyy* = year, *mm* = month, and *dd* = day.
 
-  - The placeholder *nnnn* is an instance number that starts at the value of 1 for each day.
+- The placeholder *nnnn* is an instance number that starts at the value of 1 for each day.
 
 Information is written to the log file until the file size reaches its maximum specified value, and a new log file that has an incremented instance number is opened. This process is repeated throughout the day. Circular logging deletes the oldest log files when the agent log directory reaches its maximum specified size, or when a log file reaches its maximum specified age.
 
 The agent log files are text files that contain data in the comma-separated value file (CSV) format. Each agent log file has a header that contains the following information:
 
-  - **\#Software**   Name of the software that created the agent log file. Typically, the value is Microsoft Exchange Server.
+- **\#Software**: Name of the software that created the agent log file. Typically, the value is Microsoft Exchange Server.
 
-  - **\#Version**   Version number of the software that created the agent log file. Currently, the value is 15.0.0.0.
+- **\#Version**: Version number of the software that created the agent log file. Currently, the value is 15.0.0.0.
 
-  - **\#Log-Type**   Log type value, which is Agent Log.
+- **\#Log-Type**: Log type value, which is Agent Log.
 
-  - **\#Date**   UTC date-time when the log file was created. The UTC date-time is represented in the ISO 8601 date-time format: *yyyy-mm-dd*T*hh:mm:ss.fff*Z, where *yyyy* = year, *mm* = month, *dd* = day, T indicates the beginning of the time component, *hh* = hour, *mm* = minute, *ss* = second, *fff* = fractions of a second, and Z signifies Zulu, which is another way to denote UTC.
+- **\#Date**: UTC date-time when the log file was created. The UTC date-time is represented in the ISO 8601 date-time format: *yyyy-mm-dd*T*hh:mm:ss.fff*Z, where *yyyy* = year, *mm* = month, *dd* = day, T indicates the beginning of the time component, *hh* = hour, *mm* = minute, *ss* = second, *fff* = fractions of a second, and Z signifies Zulu, which is another way to denote UTC.
 
-  - **\#Fields**   Comma delimited field names used in the agent log files.
-
-Return to top
+- **\#Fields**: Comma delimited field names used in the agent log files.
 
 ## Information written to the agent log
 
@@ -257,9 +237,6 @@ The agent log stores each agent transaction on a single line in the log. The inf
 </tbody>
 </table>
 
-
-Return to top
-
 ## Search the agent logs
 
 You can use the **Get-AgentLog** cmdlet and the **Get-AntiSpamFilteringReport.ps1** script to search the agent logs.
@@ -281,6 +258,3 @@ For details about using the script, run the following command:
 ```powershell
 Get-Help -Detailed .\Get-AntiSpamFilteringReport.ps1
 ```
-
-Return to top
-

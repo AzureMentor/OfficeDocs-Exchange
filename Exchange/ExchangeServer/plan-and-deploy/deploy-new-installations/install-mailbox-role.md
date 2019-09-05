@@ -1,18 +1,19 @@
 ---
 localization_priority: Critical
 ms.topic: get-started-article
-author: chrisda
+author: msdmaguire
 f1_keywords:
 - Microsoft.Exchange.Management.ExSetupUI.SetupWizardForm.IntroductionPage
-ms.author: chrisda
+ms.author: dmaguire
 ms.assetid: da690d47-3384-4430-a69e-0cd4d3bf80a7
 ms.date: 7/27/2018
+ms.reviewer: 
 description: 'Summary: Learn how to use the Setup wizard in Exchange 2016 or Exchange 2019 to install the Edge Mailbox server role on a computer.'
 title: Install Exchange Mailbox servers using the Setup wizard
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -24,7 +25,7 @@ Before you install an Exchange Server 2016 or Exchange Server 2019 Mailbox serve
 
 - Verify the network, computer hardware, operating system, and software requirements at: [Exchange Server system requirements](../../plan-and-deploy/system-requirements.md) and [Exchange Server prerequisites](../../plan-and-deploy/prerequisites.md).
 
- - The target server must be a member of an Active Directory domain.
+- The target server must be a member of an Active Directory domain.
 
 - The account that you use to install Exchange requires the following permissions<sup>*</sup>:
 
@@ -34,7 +35,7 @@ Before you install an Exchange Server 2016 or Exchange Server 2019 Mailbox serve
 
   - **Exchange Organization Management role group membership**: Required if you've already [prepared the Active Directory domain](../../plan-and-deploy/prepare-ad-and-domains.md#step-3-prepare-active-directory-domains) that will contain the Exchange server, or if other Exchange servers already exist in the organization.
 
-    <sup>*</sup> Members of the **Delegated Setup** role group can install Exchange on servers that have already been provisioned in Active Directory by an Exchange administrator. For more information, see [Delegate the installation of Exchange servers](../../plan-and-deploy/deploy-new-installations/delegate-installations.md).
+  <sup>*</sup> Members of the **Delegated Setup** role group can install Exchange on servers that have already been provisioned in Active Directory by an Exchange administrator. For more information, see [Delegate the installation of Exchange servers](../../plan-and-deploy/deploy-new-installations/delegate-installations.md).
 
 - Verify that you've read the release notes at [Release notes for Exchange Server](../../release-notes.md).
 
@@ -59,49 +60,49 @@ To install the Edge Transport role on a computer, see [Install Exchange Edge Tra
 
 3. The Exchange Server Setup wizard opens. On the **Check for Updates?** page, choose one of the following options, and then click **Next** to continue:
 
-  - **Connect to the Internet and check for updates**: We recommend this option, which searches for updates to the version of Exchange _that you're currently installing_ (it doesn't detect newer Cumulative Updates). This option takes you to the **Downloading Updates** page that searches for updates. Click **Next** to continue.
+   - **Connect to the Internet and check for updates**: We recommend this option, which searches for updates to the version of Exchange _that you're currently installing_ (it doesn't detect newer Cumulative Updates). This option takes you to the **Downloading Updates** page that searches for updates. Click **Next** to continue.
 
-  - **Don't check for updates right now**
+   - **Don't check for updates right now**
 
-    ![Exchange Setup, Check for Updates page](../../media/f0ca225e-b88f-45e9-a8cb-21adaabe984e.png)
+   ![Exchange Setup, Check for Updates page](../../media/f0ca225e-b88f-45e9-a8cb-21adaabe984e.png)
 
 4. The **Copying Files** page shows the progress of copying files to the local hard drive. Typically, the files are copied to `%WinDir%\Temp\ExchangeSetup`, but you can confirm the location in the Exchange Setup log at `C:\ExchangeSetupLogs\ExchangeSetup.log`.
 
-    ![Exchange Setup, Copying Files page](../../media/78813be2-745d-4a58-8da8-883c43aa2650.png)
+   ![Exchange Setup, Copying Files page](../../media/78813be2-745d-4a58-8da8-883c43aa2650.png)
 
 5. On the **Introduction** page, we recommend that you visit the Exchange Server deployment planning links if you haven't already reviewed them. Click **Next** to continue.
 
-    ![Exchange Setup, Introduction page](../../media/9f605305-979a-4667-a042-38854677cf0b.png)
+   ![Exchange Setup, Introduction page](../../media/9f605305-979a-4667-a042-38854677cf0b.png)
 
 6. On the **License Agreement** page, review the software license terms, select **I accept the terms in the license agreement**, and then click **Next** to continue.
 
-    ![Exchange Setup, License Agreement page](../../media/2bb6bfaa-1b39-4052-9420-a7a053b07d58.png)
+   ![Exchange Setup, License Agreement page](../../media/2bb6bfaa-1b39-4052-9420-a7a053b07d58.png)
 
 7. On the **Recommended Settings** page, choose one of the following settings:
 
    - **Use recommended settings**: Exchange automatically sends error reports and information about your computer hardware and how you use Exchange to Microsoft. For information about what's sent to Microsoft and how it's used, click **?** or the help links on the page.
 
-    - **Don't use recommended settings**: These settings are disabled, but you can enable them at any time after Setup completes.
+   - **Don't use recommended settings**: These settings are disabled, but you can enable them at any time after Setup completes.
 
-    Click **Next** to continue.
+   Click **Next** to continue.
 
-    ![Exchange Setup, Recommended Settings page](../../media/26af58f0-52ab-4482-8710-9a7cd2e7a6c3.png)
+   ![Exchange Setup, Recommended Settings page](../../media/26af58f0-52ab-4482-8710-9a7cd2e7a6c3.png)
 
 8. On the **Server Role Selection** page, configure the following options:
 
-    - **Mailbox role**: Select this option, which also automatically installs the **Management Tools**.
+   - **Mailbox role**: Select this option, which also automatically installs the **Management Tools**.
 
-    - **Automatically install Windows Server roles and features that are required to install Exchange**: Select this option to have the Setup wizard install the required Windows prerequisites. You might need to reboot the computer to complete the installation of some Windows features. If you don't select this option, you need to install the Windows features manually.
+   - **Automatically install Windows Server roles and features that are required to install Exchange**: Select this option to have the Setup wizard install the required Windows prerequisites. You might need to reboot the computer to complete the installation of some Windows features. If you don't select this option, you need to install the Windows features manually.
 
-      **Note**: Selecting this option installs only the _Windows features_ that are required by Exchange. You need to install other prerequisites manually. For more information, see [Exchange Server prerequisites](../../plan-and-deploy/prerequisites.md).
+   **Note**: Selecting this option installs only the _Windows features_ that are required by Exchange. You need to install other prerequisites manually. For more information, see [Exchange Server prerequisites](../../plan-and-deploy/prerequisites.md).
 
-    Click **Next** to continue.
+   Click **Next** to continue.
 
-    ![Exchange Setup, Server Role Selection page, Mailbox role selection](../../media/483b4804-4609-4653-956f-03711ea4234c.png)
+   ![Exchange Setup, Server Role Selection page, Mailbox role selection](../../media/483b4804-4609-4653-956f-03711ea4234c.png)
 
 9. On the **Installation Space and Location** page, either accept the default installation location (`C:\Program Files\Microsoft\Exchange Server\V15`), or click **Browse** to choose a new location. Make sure that you have enough disk space available in the location where you want to install Exchange. Click **Next** to continue.
 
-    ![Exchange Setup, Installation Space and Location page](../../media/7ae7f248-3cdc-4453-9d7d-e99edc300d16.png)
+   ![Exchange Setup, Installation Space and Location page](../../media/7ae7f248-3cdc-4453-9d7d-e99edc300d16.png)
 
 10. If this is the first Exchange 2016 or Exchange 2019 server in your organization and you haven't already done the steps in [Prepare Active Directory and domains for Exchange](../../plan-and-deploy/prepare-ad-and-domains.md), you arrive on the **Exchange Organization** page. On this page, configure the following settings:
 
@@ -148,4 +149,3 @@ To install the Edge Transport role on a computer, see [Install Exchange Edge Tra
 - Complete your deployment by performing the tasks provided in [Exchange post-installation tasks](../../plan-and-deploy/post-installation-tasks/post-installation-tasks.md).
 
 - Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612).
-

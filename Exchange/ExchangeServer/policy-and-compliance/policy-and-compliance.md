@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: Email has become a reliable and ubiquitous communication medium for information workers in organizations of all sizes. Messaging stores and mailboxes have become repositories of valuable data. It's important for organizations to formulate messaging policies that dictate the fair use of their messaging systems, provide user guidelines for how to act on the policies, and where required, provide details about the types of communication that may not be allowed.
 ms.topic: hub-page
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 65f20a20-27a4-4f6e-9b27-f8705d65b8d9
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Messaging policy and compliance in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 

@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn about user workload management and throttling in Exchange 2016 and Exchange 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 276740c4-bdb7-49f1-9470-ae6f2bfd65aa
 ms.date: 7/9/2018
+ms.reviewer: 
 title: User workload management in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -66,6 +67,3 @@ Users with mailboxes on Exchange 2016 servers are throttled using Exchange 2016 
 - Exchange 2010 mailboxes remain throttled by Exchange 2010 throttling features when users access their mailboxes through Exchange 2010 Client Access servers.
 
 - When you install Exchange 2016 in an Exchange 2010 organization, Exchange 2016 setup might try to carry some of the Exchange 2010 throttling settings forward. However, the throttling functionality is so different that the effects of any legacy throttling settings will generally not alter how throttling works in Exchange 2016.
-
-
-

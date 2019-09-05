@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Admins can learn about mailbox plans and how view, modify, and set the default mailbox plan in Exchange Online.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 
 ms.date: 
+ms.reviewer: 
 title: Mailbox plans in Exchange Online
 ms.collection:
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -225,4 +226,3 @@ To verify that you've successfully modified a mailbox plan, use any of the follo
    ```
    Get-CasMailbox -Identity "<MailboxIdentity>" | Format-List ActiveSyncEnabled,ImapEnabled,PopEnabled,OwaMailboxPolicy
    ```
-

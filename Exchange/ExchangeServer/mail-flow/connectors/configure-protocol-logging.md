@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to configure protocol logging for Send connectors and Receive connectors in Exchange Server 2016 or Exchange Server 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: c81cac9c-b990-492a-b899-5be8d08a6068
 ms.date: 6/7/2018
+ms.reviewer: 
 title: Configure protocol logging
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -62,8 +63,8 @@ The following options are available for the protocol logs of all Send connectors
 
 - You enable or disable protocol logging on each individual connector. You configure other protocol logging options for all Receive connectors or all Send connectors that affect each individual transport service on the Exchange server. All Receive connectors in a transport service share the same protocol log files and protocol log options. These files and options are separate from the Send connector protocol log files and protocol log options in the same transport service.
 
-    > [!CAUTION]
-    > Don't perform this procedure on an Edge Transport server that has been subscribed to the Exchange organization by using EdgeSync. Instead, make the changes in the Transport service on the Mailbox server. The changes are then replicated to the Edge Transport server the next time EdgeSync synchronization occurs.
+  > [!CAUTION]
+  > Don't perform this procedure on an Edge Transport server that has been subscribed to the Exchange organization by using EdgeSync. Instead, make the changes in the Transport service on the Mailbox server. The changes are then replicated to the Edge Transport server the next time EdgeSync synchronization occurs.
 
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
@@ -78,17 +79,17 @@ Use this procedure to enable or disable protocol logging on a Send connector or 
 
 1. Open the EAC and navigate to one of the following locations:
 
-  - **Mail flow** \> **Send connectors**.
+   - **Mail flow** \> **Send connectors**.
 
-  - **Mail flow** \> **Receive connectors**.
+   - **Mail flow** \> **Receive connectors**.
 
 2. Select the connector you want to configure, and then click **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.png).
 
 3. On the **General** tab in the **Protocol logging level** section, select one of the following options:
 
-  - **None**: Protocol logging disabled on the connector.
+   - **None**: Protocol logging disabled on the connector.
 
-  - **Verbose**: Protocol logging is enabled on the connector.
+   - **Verbose**: Protocol logging is enabled on the connector.
 
 4. When you're finished, click **Save**.
 
@@ -102,11 +103,11 @@ Use this procedure to configure the location of the protocol logs for all Send c
 
 3. On the server properties page, click **Transport logs**. In the **Protocol log** section, change the following settings:
 
-  - **Send protocol log path**
+   - **Send protocol log path**
 
-  - **Receive protocol log path**
+   - **Receive protocol log path**
 
-  Specify a location on the local Exchange server. If the folder doesn't exist, it's created when you click **Save**.
+   Specify a location on the local Exchange server. If the folder doesn't exist, it's created when you click **Save**.
 
 4. When you're finished, click **Save**.
 
@@ -196,9 +197,9 @@ To verify that you have successfully used the Exchange Management Shell to enabl
 
 1. Run the following command in the Exchange Management Shell to verify whether protocol logging is enabled or disabled for all connectors on the Exchange server:
 
-  ```
-  Write-Host "Send Connectors:" -ForegroundColor yellow; Get-SendConnector | Format-List Name,ProtocolLoggingLevel; Write-Host "Receive Connectors:" -ForegroundColor yellow; Get-ReceiveConnector | Format-List Name,TransportRole,ProtocolLoggingLevel; Write-Host "Mailbox Transport Delivery service:" -ForegroundColor yellow; Get-MailboxTransportService | Format-List *ProtocolLoggingLevel; Write-Host "Front End Transport service:" -ForegroundColor yellow; Get-FrontEndTransportService | Format-List *ProtocolLoggingLevel; Write-Host "Transport service and Mailbox Transport Submission service:" -ForegroundColor yellow; Get-TransportService | Format-List *ProtocolLoggingLevel
-  ```
+   ```
+   Write-Host "Send Connectors:" -ForegroundColor yellow; Get-SendConnector | Format-List Name,ProtocolLoggingLevel; Write-Host "Receive Connectors:" -ForegroundColor yellow; Get-ReceiveConnector | Format-List Name,TransportRole,ProtocolLoggingLevel; Write-Host "Mailbox Transport Delivery service:" -ForegroundColor yellow; Get-MailboxTransportService | Format-List *ProtocolLoggingLevel; Write-Host "Front End Transport service:" -ForegroundColor yellow; Get-FrontEndTransportService | Format-List *ProtocolLoggingLevel; Write-Host "Transport service and Mailbox Transport Submission service:" -ForegroundColor yellow; Get-TransportService | Format-List *ProtocolLoggingLevel
+   ```
 
 2. Browse to the location of the protocol log. If you enabled protocol logging, verify that a log file exists, and that the file is being updated for the connector. If you disabled protocol logging, verify that the latest log file is no longer being updated for the connector.
 
@@ -238,11 +239,8 @@ To verify that you have successfully used the Exchange Management Shell to confi
 
 1. Run the following command in the Exchange Management Shell and verify the protocol log settings on the Exchange server:
 
-  ```
-  Write-Host "Front End Transport service:" -ForegroundColor yellow; Get-FrontEndTransportService | Format-List ReceiveProtocolLog*,SendProtocolLog*; Write-Host "Mailbox Transport Submission and Mailbox Transport Delivery services:" -ForegroundColor yellow; Get-MailboxTransportService | Format-List ReceiveProtocolLog*,SendProtocolLog*; Write-Host "Transport service:" -ForegroundColor yellow; Get-TransportService | Format-List ReceiveProtocolLog*,SendProtocolLog*
-  ```
+   ```
+   Write-Host "Front End Transport service:" -ForegroundColor yellow; Get-FrontEndTransportService | Format-List ReceiveProtocolLog*,SendProtocolLog*; Write-Host "Mailbox Transport Submission and Mailbox Transport Delivery services:" -ForegroundColor yellow; Get-MailboxTransportService | Format-List ReceiveProtocolLog*,SendProtocolLog*; Write-Host "Transport service:" -ForegroundColor yellow; Get-TransportService | Format-List ReceiveProtocolLog*,SendProtocolLog*
+   ```
 
 2. Open the location of the protocol log in Windows Explorer or File Explorer to verify that the log files exist, that data is being written to the files, and that the files are being recycled based on the maximum file size and maximum directory size values that you configured.
-
-
-

@@ -1,33 +1,22 @@
-﻿---
+---
 title: 'Voice mail greetings, announcements, menus, and prompts: Exchange 2013 Help'
 TOCTitle: Voice mail greetings, announcements, menus, and prompts
 ms:assetid: df61105d-c9d8-452c-b028-50cbda47aecf
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb124902(v=EXCHG.150)
 ms:contentKeyID: 49315544
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-# Voice mail greetings, announcements, menus, and prompts
+# Voice mail greetings, announcements, menus, and prompts in Exchange Server
 
- 
-
-_**Applies to:** Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013, Exchange Server 2016_
 
 When you install Unified Messaging (UM), a common set of default audio files used for the voice mail system and for menu prompts, greetings, and informational announcements is installed. Although you can create a fully functional UM auto attendant or dial plan that uses only the default audio prompts, these prompts are too generic to serve as an acceptable public interface for many companies. This topic discusses the system and menu prompts, greetings, and informational announcements that are used by UM dial plans and auto attendants and how they're used when callers access the voice mail system.
-
-**Contents**
-
-Overview of audio prompts and greetings
-
-System prompts
-
-UM dial plan greetings and announcements
-
-UM auto attendant greetings, announcements, and menu prompts
-
-Customizing greetings, announcements, and menu prompts
 
 ## Overview of audio prompts and greetings
 
@@ -65,7 +54,6 @@ The following table summarizes the prompts and greetings used with UM dial plans
 </tr>
 </tbody>
 </table>
-
 
 The following table summarizes the prompts and greetings used with UM auto attendants.
 
@@ -110,40 +98,28 @@ The following table summarizes the prompts and greetings used with UM auto atten
 </tbody>
 </table>
 
-
-
 > [!WARNING]
 > Modifying the installed system prompts isn't supported.
-
-
-
-Return to top
 
 ## System prompts
 
 Unified Messaging is installed with a set of default audio prompts for use with Outlook Voice Access, dial plans, and auto attendants. Hundreds of system prompts for each language are installed on a Mailbox server. The Mailbox server plays the audio files for these system prompts to callers when they access the voice mail system. The following are some examples of these system prompts:
 
-  - "Please enter your PIN."
+- "Please enter your PIN."
 
-  - "To access your mailbox, enter your extension."
+- "To access your mailbox, enter your extension."
 
-  - "To contact someone, press the \# key."
+- "To contact someone, press the \# key."
 
-  - "Spell the name of the person you are calling, last name first."
+- "Spell the name of the person you are calling, last name first."
 
-  - "To reach a specific person, just tell me the name."
-
+- "To reach a specific person, just tell me the name."
 
 > [!WARNING]
 > Modifying the installed system prompts isn't supported.
 
-
-
-
 > [!NOTE]
 > When the Unified Messaging service starts on the Mailbox server, it will verify that all the system prompts are available. If a system prompt can't be found, Unified Messaging will return an error. To fix the error that is returned, locate the event using Event Viewer and copy the file listed in the <STRONG>Event Properties</STRONG> window from the installation DVD into the appropriate folder on the Mailbox server.
-
-
 
 ## UM dial plan greetings and announcements
 
@@ -184,10 +160,7 @@ The following table describes the UM dial plan greetings and informational annou
 </tbody>
 </table>
 
-
 When you are customizing and configuring greetings and announcements, make sure the language setting configured on the UM dial plan is the same as the language of the custom prompts you create. If not, a caller may hear a message or greeting in one language and another message or greeting in a different language.
-
-Return to top
 
 ## UM auto attendant greetings, announcements, and menu prompts
 
@@ -243,32 +216,26 @@ The following table describes the UM auto attendant greetings and informational 
 </tbody>
 </table>
 
-
 As with UM dial plans, make sure the language setting configured on the UM auto attendant is the same as the language of the custom greetings you create and is set to the same language as the UM dial plan. If not, a caller may hear a message or greeting in one language and another message or greeting in a different language.
-
-Return to top
 
 ## Customizing greetings, announcements, and menu prompts, and navigation menus
 
 Although the system prompts mustn't be replaced or changed, you'll probably want to customize the greetings, informational announcements, menu prompts and navigation menus used with UM dial plans and auto attendants. After installation, you can configure the UM dial plans and auto attendants to use custom audio files (.wav or .wma). You must follow these steps before you can enable custom voice prompts for callers:
 
-1.  Record the custom greetings, announcements, and prompts and save then as .wav files. The Linear PCM (16 bit/sample), 8 kilohertz (kHz) audio codec must be used to encode the .wav files. If you don't use this specific format for the .wav files, an error will be generated stating that the source file is in an unsupported format. Although an error is generated, the error won't appear in Event Viewer.
+1. Record the custom greetings, announcements, and prompts and save then as .wav files. The Linear PCM (16 bit/sample), 8 kilohertz (kHz) audio codec must be used to encode the .wav files. If you don't use this specific format for the .wav files, an error will be generated stating that the source file is in an unsupported format. Although an error is generated, the error won't appear in Event Viewer.
 
-2.  Configure the UM dial plan or auto attendant to use the customized greetings, announcements, and prompts.
+2. Configure the UM dial plan or auto attendant to use the customized greetings, announcements, and prompts.
 
 By default, when you create a UM auto attendant, the business and non-business hours greetings or prompts aren't configured and no key mappings are defined for business or non-business hours main menu prompts. To correctly configure customized greetings and prompts for an auto attendant, you must:
 
-  - Configure business and non-business hours on the **Business hours** page.
+- Configure business and non-business hours on the **Business hours** page.
 
-  - Create the greeting audio (.wav or .wma) files that will be used for the business and non-business hours welcome greetings.
+- Create the greeting audio (.wav or .wma) files that will be used for the business and non-business hours welcome greetings.
 
-  - Configure the business and non-business hours welcome greetings on the **Greetings** page.
+- Configure the business and non-business hours welcome greetings on the **Greetings** page.
 
-  - Create the greeting files that will be used for the business and non-business hours main menu prompt greetings.
+- Create the greeting files that will be used for the business and non-business hours main menu prompt greetings.
 
-  - Configure the business and non-business hours main menu prompt greetings on the **Greetings** page.
+- Configure the business and non-business hours main menu prompt greetings on the **Greetings** page.
 
-  - Enable and configure the business and non-business hours menu navigation on the **Menu navigation** page.
-
-Return to top
-
+- Enable and configure the business and non-business hours menu navigation on the **Menu navigation** page.

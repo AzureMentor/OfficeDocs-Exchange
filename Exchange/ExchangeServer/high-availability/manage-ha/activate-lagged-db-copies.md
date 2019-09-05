@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 493d9c40-644d-49d6-9291-949acbcfdcb6
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Activate a lagged mailbox database copy
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -18,7 +19,7 @@ manager: serdars
 
 A lagged mailbox database copy is a mailbox database copy configured with a replay lag time value greater than 0. If you want the database to replay all log files and make the database copy current, activating and recovering a lagged mailbox database copy is a simple process. However, if you want to replay log files up to a specific point in time, it's a more difficult operation because you have to manually manipulate log files and run Eseutil.
 
-Looking for other information related to lagged mailbox database copies? Check out [Managing mailbox database copies](http://technet.microsoft.com/library/06df16b4-f209-4d3a-8c68-0805c745f9b2.aspx).
+Looking for other information related to lagged mailbox database copies? Check out [Manage mailbox database copies](manage-database-copies.md)
 
 > [!NOTE]
 > The amount of time it takes to activate a lagged mailbox database copy directly depends on how many log files need to be replayed and how fast the hardware can replay them. At a minimum, you should experience a log replay rate of at least two logs per second per database.
@@ -45,14 +46,14 @@ Looking for other information related to lagged mailbox database copies? Check o
 
 1. This example suspends replication for the lagged copy being activated by using the [Suspend-MailboxDatabaseCopy](http://technet.microsoft.com/library/b6e03402-706e-40c6-b392-92e3da21b5c0.aspx) cmdlet.
 
-  ```
-  Suspend-MailboxDatabaseCopy DB1\EX3 -SuspendComment "Activate lagged copy of DB1 on Server EX3" -Confirm:$false
-  ```
+   ```
+   Suspend-MailboxDatabaseCopy DB1\EX3 -SuspendComment "Activate lagged copy of DB1 on Server EX3" -Confirm:$false
+   ```
 
 2. Optionally (to preserve a lagged copy), make a copy of the database copy and its log files.
 
-    > [!NOTE]
-    > At this point, continuing to perform this procedure on the existing volume would incur a copy on write performance penalty. As an alternative, you can copy the database and log files to another volume to perform the recovery.
+   > [!NOTE]
+   > At this point, continuing to perform this procedure on the existing volume would incur a copy on write performance penalty. As an alternative, you can copy the database and log files to another volume to perform the recovery.
 
 3. Determine which log files are required to replay into the database to meet your point-in-time requirement for this recovery (based on log file date and time, as shown in Windows Explorer). All logs created after this point should be moved to a different directory, until the recovery process is completed, and the logs are no longer needed.
 
@@ -60,23 +61,20 @@ Looking for other information related to lagged mailbox database copies? Check o
 
 5. This example uses Eseutil to perform the recovery operation.
 
-  ```
-  Eseutil.exe /r eXX /a
-  ```
+   ```
+   Eseutil.exe /r eXX /a
+   ```
 
-    > [!NOTE]
-    > In the preceding example, e _XX_ is the log generation prefix for the database (for example, E00, E01, E02, and so on).
-
-    > [!IMPORTANT]
-    > This step may take a considerable amount of time, depending on several factors, such as the length of the replay lag time, the number of log files generated during that period, and the speed at which your hardware can replay those logs into the database being recovered.
+   > [!NOTE]
+   > • In the preceding example, e _XX_ is the log generation prefix for the database (for example, E00, E01, E02, and so on). <br/><br/>• This step may take a considerable amount of time, depending on several factors, such as the length of the replay lag time, the number of log files generated during that period, and the speed at which your hardware can replay those logs into the database being recovered.
 
 6. After log replay is finished, the database is in a clean shutdown state and can be copied and used for recovery purposes.
 
 7. After the recovery process is complete, this example resumes replication for the database that was used as part of the recovery process.
 
-  ```
-  Resume-MailboxDatabaseCopy DB1\EX3
-  ```
+   ```
+   Resume-MailboxDatabaseCopy DB1\EX3
+   ```
 
 For detailed syntax and parameter information, see [Suspend-MailboxDatabaseCopy](http://technet.microsoft.com/library/b6e03402-706e-40c6-b392-92e3da21b5c0.aspx) or [Resume-MailboxDatabaseCopy](http://technet.microsoft.com/library/3d90b006-9914-415b-9a1f-730bd91c8548.aspx).
 
@@ -86,18 +84,18 @@ For detailed syntax and parameter information, see [Suspend-MailboxDatabaseCopy]
 
 1. This example suspends replication for the lagged copy being activated by using the [Suspend-MailboxDatabaseCopy](http://technet.microsoft.com/library/b6e03402-706e-40c6-b392-92e3da21b5c0.aspx) cmdlet.
 
-  ```
-  Suspend-MailboxDatabaseCopy DB1\EX3 -SuspendComment "Activate lagged copy of DB1 on Server EX3" -Confirm:$false
-  ```
+   ```
+   Suspend-MailboxDatabaseCopy DB1\EX3 -SuspendComment "Activate lagged copy of DB1 on Server EX3" -Confirm:$false
+   ```
 
 2. Optionally (to preserve a lagged copy), make a copy of the database copy and its log files.
 
-    > [!NOTE]
-    > At this point, continuing to perform this procedure on the existing volume would incur a copy on write performance penalty. If this isn't desirable, you can copy the database and log files to another volume to perform the recovery.
+     > [!NOTE]
+     > At this point, continuing to perform this procedure on the existing volume would incur a copy on write performance penalty. If this isn't desirable, you can copy the database and log files to another volume to perform the recovery.
 
 2. This example activates the lagged mailbox database copy using the [Move-ActiveMailboxDatabase](http://technet.microsoft.com/library/755d1ecb-95d1-45e3-9a21-56df9f196f37.aspx) cmdlet with the _SkipLagChecks_ parameter.
 
-  ```
+   ```
   Move-ActiveMailboxDatabase DB1 -ActivateOnServer EX3 -SkipLagChecks
   ```
 
@@ -105,34 +103,34 @@ For detailed syntax and parameter information, see [Suspend-MailboxDatabaseCopy]
 
 1. Optionally (to preserve a lagged copy), take a file system-based (non-Exchange aware) Volume Shadow Copy Service (VSS) snapshot of the volumes containing the database copy and its log files.
 
-1. This example suspends replication for the lagged copy being activated by using the [Suspend-MailboxDatabaseCopy](http://technet.microsoft.com/library/b6e03402-706e-40c6-b392-92e3da21b5c0.aspx) cmdlet.
+2. This example suspends replication for the lagged copy being activated by using the [Suspend-MailboxDatabaseCopy](http://technet.microsoft.com/library/b6e03402-706e-40c6-b392-92e3da21b5c0.aspx) cmdlet.
 
-  ```
-  Suspend-MailboxDatabaseCopy DB1\EX3 -SuspendComment "Activate lagged copy of DB1 on Server EX3" -Confirm:$false
-  ```
+   ```
+   Suspend-MailboxDatabaseCopy DB1\EX3 -SuspendComment "Activate lagged copy of DB1 on Server EX3" -Confirm:$false
+   ```
 
-2. Optionally (to preserve a lagged copy), make a copy of the database copy and its log files.
+3. Optionally (to preserve a lagged copy), make a copy of the database copy and its log files.
 
-    > [!NOTE]
-    > At this point, continuing to perform this procedure on the existing volume would incur a copy-on-write performance penalty. If this isn't desirable, you can copy the database and log files to another volume to perform the recovery.
+   > [!NOTE]
+   > At this point, continuing to perform this procedure on the existing volume would incur a copy-on-write performance penalty. If this isn't desirable, you can copy the database and log files to another volume to perform the recovery.
 
-2. Determine the required logs for the lagged database copy by looking for the "Log Required:" value in ESEUTIL database header output
+4. Determine the required logs for the lagged database copy by looking for the "Log Required:" value in ESEUTIL database header output
 
-  ```
-  Eseutil /mh <DBPath> | findstr /c:"Log Required"
-  ```
+   ```
+   Eseutil /mh <DBPath> | findstr /c:"Log Required"
+   ```
 
-    Take note of the hexadecimal numbers in parentheses. The first number is the lowest generation required (referred to as LowGeneration), and the second number is the highest generation required (referred to as HighGeneration). Move all log generation files that have a generation sequence greater than HighGeneration to a different location so that they are not replayed into the database.
+   Take note of the hexadecimal numbers in parentheses. The first number is the lowest generation required (referred to as LowGeneration), and the second number is the highest generation required (referred to as HighGeneration). Move all log generation files that have a generation sequence greater than HighGeneration to a different location so that they are not replayed into the database.
 
-3. On the server hosting the active copy of database, either delete the log files for the lagged copy being activated from the active copy, or stop the Microsoft Exchange Replication service.
+5. On the server hosting the active copy of database, either delete the log files for the lagged copy being activated from the active copy, or stop the Microsoft Exchange Replication service.
 
 4. Perform a database switchover and activate the lagged copy. This example activates the database by using the [Move-ActiveMailboxDatabase](http://technet.microsoft.com/library/755d1ecb-95d1-45e3-9a21-56df9f196f37.aspx) cmdlet with several parameters.
 
-  ```
-  Move-ActiveMailboxDatabase DB1 -ActivateOnServer EX3 -MountDialOverride BestEffort -SkipActiveCopyChecks -SkipClientExperienceChecks -SkipHealthChecks -SkipLagChecks
-  ```
+   ```
+   Move-ActiveMailboxDatabase DB1 -ActivateOnServer EX3 -MountDialOverride BestEffort -SkipActiveCopyChecks -SkipClientExperienceChecks -SkipHealthChecks -SkipLagChecks
+   ```
 
-5. At this point, the database will automatically mount and request redelivery of missing messages from SafetyNet.
+6. At this point, the database will automatically mount and request redelivery of missing messages from SafetyNet.
 
 ## How do you know this worked?
 
@@ -145,6 +143,3 @@ To verify that you've successfully activated a lagged mailbox database copy, do 
   ```
   Get-MailboxDatabaseCopyStatus <DatabaseCopyName> | Format-List
   ```
-
-
-

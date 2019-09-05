@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: Use In-Place eDiscovery to search across all mailbox content, including deleted items and original versions of modified items for users placed on In-Place Hold and Litigation Hold.
 ms.topic: article
-author: markjjo
-ms.author: markjjo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: feedc0c9-4a44-4bb2-8520-cc29d66d4fc3
 ms.date: 7/20/2017
+ms.reviewer: 
 title: Create an In-Place eDiscovery search
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 
@@ -56,33 +57,32 @@ As previously explained, to create eDiscovery searches, you have to sign in to a
 
 4. On the **Mailboxes** page, select the mailboxes to search. You can search across all mailboxes or select specific ones to search. In Exchange Online, you can also select Office 365 groups as a content source for the search.
 
-    > [!IMPORTANT]
-    > You can't use the **Search all mailboxes** option to place all mailboxes on hold. To create an In-Place Hold, you must select **Specify mailboxes to search**. For more details, see [Create or remove an In-Place Hold](../../security-and-compliance/create-or-remove-in-place-holds.md).
+   > [!IMPORTANT]
+   > You can't use the **Search all mailboxes** option to place all mailboxes on hold. To create an In-Place Hold, you must select **Specify mailboxes to search**. For more details, see [Create or remove an In-Place Hold](../../security-and-compliance/create-or-remove-in-place-holds.md).
 
 5. On the **Search query** page, complete the following fields:
 
-  - **Include all user mailbox content**: Select this option to place all content in the selected mailboxes on hold. If you select this option, you can't specify additional search criteria.
+   - **Include all user mailbox content**: Select this option to place all content in the selected mailboxes on hold. If you select this option, you can't specify additional search criteria.
 
-  - **Filter based on criteria**: Select this option to specify search criteria, including keywords, start and end dates, sender and recipient addresses, and message types.
+   - **Filter based on criteria**: Select this option to specify search criteria, including keywords, start and end dates, sender and recipient addresses, and message types.
 
-    ![Configure eDiscovery Search Query](../../media/TA_MRM_SearchQuery.png)
+   ![Configure eDiscovery Search Query](../../media/TA_MRM_SearchQuery.png)
 
-    > [!NOTE]
-    > The **From:** and **To/Cc/Bcc:** fields are connected by an **OR** operator in the search query that's created when you run the search. That means any message sent or received by any of the specified users (and matches the other search criteria) is included in the search results. > The dates are connected by an **AND** operator.
+   > [!NOTE]
+   > The **From:** and **To/Cc/Bcc:** fields are connected by an **OR** operator in the search query that's created when you run the search. That means any message sent or received by any of the specified users (and matches the other search criteria) is included in the search results. > The dates are connected by an **AND** operator.
 
 6. On the **In-place hold settings** page, you can select the **Place content matching the search query in selected mailboxes on hold** check box, and then select one of the following options to place items on In-Place Hold:
 
-  - **Hold indefinitely**: Select this option to place the returned items on an indefinite hold. Items on hold will be preserved until you remove the mailbox from the search or remove the search.
+   - **Hold indefinitely**: Select this option to place the returned items on an indefinite hold. Items on hold will be preserved until you remove the mailbox from the search or remove the search.
 
-  - **Specify number of days to hold items relative to their received date**: Use this option to hold items for a specific period. For example, you can use this option if your organization requires that all messages be retained for at least seven years. You can use a time-based In-Place Hold along with a retention policy to make sure items are deleted in seven years.
+   - **Specify number of days to hold items relative to their received date**: Use this option to hold items for a specific period. For example, you can use this option if your organization requires that all messages be retained for at least seven years. You can use a time-based In-Place Hold along with a retention policy to make sure items are deleted in seven years.
 
-    > [!IMPORTANT]
-    > When placing mailboxes or items on In-Place Hold for legal purposes, it is generally recommended to hold items indefinitely and remove the hold when the case or investigation is completed.
+   > [!IMPORTANT]
+   > When placing mailboxes or items on In-Place Hold for legal purposes, it is generally recommended to hold items indefinitely and remove the hold when the case or investigation is completed.
 
 7. Click **Finish** to save the search and return an estimate of the total size and number of items that will be returned by the search based on the criteria you specified. Estimates are displayed in the details pane. Click **Refresh** ![Refresh Icon](../../media/ITPro_EAC_RefreshIcon.gif) to update the information displayed in the details pane.
 
 ## Use Exchange Online PowerShell to create an In-Place eDiscovery search
-<a name="newmailboxsearch"> </a>
 
 This example creates the In-Place eDiscovery search named Discovery-CaseId012 that searches for items containing the keywords Contoso and ProjectA and that also meet the following criteria:
 
@@ -121,7 +121,6 @@ After using Exchange Online PowerShell to create an In-Place eDiscovery search, 
 For detailed syntax and parameter information, see [New-MailboxSearch](https://technet.microsoft.com/library/74303b47-bb49-407c-a43b-590356eae35c.aspx).
 
 ## Use the EAC to estimate or preview search results
-<a name="newmailboxsearch"> </a>
 
 After you create an In-Place eDiscovery search, you can use the EAC to get an estimate and preview of the search results. If you created a new search using the **New-MailboxSearch** cmdlet, you can use Exchange Online PowerShell to start the search to get an estimate of the search results. You can't use Exchange Online PowerShell to preview messages returned in search results.
 
@@ -129,19 +128,18 @@ After you create an In-Place eDiscovery search, you can use the EAC to get an es
 
 2. In the list view, select the In-Place eDiscovery search, and then do one of the following:
 
-  - Click **Search** ![Search icon](../../media/ITPro_EAC_.gif) \> **Estimate search results** to return an estimate of the total size and number of items that will be returned by the search based on the criteria you specified. Selecting this option restarts the search and performs an estimate.
+   - Click **Search** ![Search icon](../../media/ITPro_EAC_.gif) \> **Estimate search results** to return an estimate of the total size and number of items that will be returned by the search based on the criteria you specified. Selecting this option restarts the search and performs an estimate.
 
-    Search Estimates are displayed in the details pane. Click **Refresh** ![Refresh Icon](../../media/ITPro_EAC_RefreshIcon.gif) to update the information displayed in the details pane.
+     Search Estimates are displayed in the details pane. Click **Refresh** ![Refresh Icon](../../media/ITPro_EAC_RefreshIcon.gif) to update the information displayed in the details pane.
 
-  - Click **Preview search results** in the details pane to preview the results after the search estimate is completed. Selecting this option opens the **eDiscovery search preview** window. All messages returned from the mailboxes that were searched are displayed.
+   - Click **Preview search results** in the details pane to preview the results after the search estimate is completed. Selecting this option opens the **eDiscovery search preview** window. All messages returned from the mailboxes that were searched are displayed.
 
-    > [!NOTE]
-    > The mailboxes that were searched are listed in the right pane in the **eDiscovery search preview** window. For each mailbox, the number of items returned and the total size of these items is also displayed. All items returned by the search are listed in the right pane, and can be sorted by newest or oldest date. Items from each mailbox can't be displayed in the right pane by clicking a mailbox in the left pane. To view the items returned from a specific mailbox, you can copy the search results and view the items in the discovery mailbox.
+     > [!NOTE]
+     > The mailboxes that were searched are listed in the right pane in the **eDiscovery search preview** window. For each mailbox, the number of items returned and the total size of these items is also displayed. All items returned by the search are listed in the right pane, and can be sorted by newest or oldest date. Items from each mailbox can't be displayed in the right pane by clicking a mailbox in the left pane. To view the items returned from a specific mailbox, you can copy the search results and view the items in the discovery mailbox.
 
 ![Estimate or Preview Search Results](../../media/TA_Discovery_EstimatePreviewUI.gif)
 
 ## Use Exchange Online PowerShell to estimate search results
-<a name="newmailboxsearch"> </a>
 
 You can use the _EstimateOnly_ switch to return only get an estimate of the search results and not copy the results to a discovery mailbox. You have to start an estimate-only search with the **Start-MailboxSearch** cmdlet. Then you can retrieve the estimated search results by using the **Get-MailboxSearch** cmdlet.
 
@@ -166,7 +164,6 @@ Get-MailboxSearch "FY13 Q2 Financial Results" | Format-List Name,Status,LastRunB
 ```
 
 ## More information about eDiscovery searches
-<a name="newmailboxsearch"> </a>
 
 - After you create a new eDiscovery search, you can copy search results to the discovery mailbox and export those search results to a PST file. For more information, see:
 
@@ -190,4 +187,4 @@ Get-MailboxSearch "FY13 Q2 Financial Results" | Format-List Name,Status,LastRunB
 
   - Errors
 
-    The reason is that it requires a lot of resources to return these properties for all eDiscovery searches in your organization.
+  The reason is that it requires a lot of resources to return these properties for all eDiscovery searches in your organization.

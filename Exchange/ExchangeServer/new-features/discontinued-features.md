@@ -8,8 +8,9 @@ ms.assetid: 0ac0001c-b314-4108-b895-d9c0e271b489
 monikerRange: exchserver-2016 || exchserver-2019
 title: What's discontinued in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.date: 9/20/2018
+ms.reviewer: 
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -151,4 +152,3 @@ This section lists the Exchange 2010 features that are no longer available in Ex
 |:-----|:-----|
 |**Update-MailboxDatabaseCopy** <br/> Update Mailbox Database Copy wizard|Content index catalog seeding is no longer possible over the replication network; it can only be done over a MAPI network. This is true even when you use the `-Network` parameter in the **Update-MailboxDatabaseCopy** cmdlet.|
 ::: moniker-end
-

@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Deployment security checklist: Exchange 2013 Help'
 TOCTitle: Deployment security checklist
 ms:assetid: 0cbfad59-f503-48a0-8184-6ca999d89e61
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Aa996026(v=EXCHG.150)
 ms:contentKeyID: 49289162
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Deployment security checklist
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Microsoft Exchange Server 2013 features are designed to help improve the security of your messaging environment. Generally, for Exchange 2013, the following conditions are true:
 
@@ -30,7 +31,6 @@ Microsoft Exchange Server 2013 features are designed to help improve the securit
 This topic lists steps that we recommend you take to harden the messaging environment before you install Microsoft Exchange. We recommend that you refer to this checklist every time that you install a new Exchange server role.
 
 Before installing Exchange 2013, perform the following procedures.
-
 
 <table>
 <colgroup>
@@ -58,4 +58,3 @@ Before installing Exchange 2013, perform the following procedures.
 </tr>
 </tbody>
 </table>
-

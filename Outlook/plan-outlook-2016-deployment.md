@@ -1,10 +1,11 @@
 ---
 title: "Planning considerations for deploying Outlook 2016 for Windows"
-ms.author: danbrown
-author: DHB-MSFT
-manager: laurawi
+ms.author: dmaguire
+author: msdmaguire
+manager: serdars
 ms.date: 6/27/2018
-ms.audience: ITPro
+ms.reviewer: 
+audience: ITPro
 ms.topic: get-started-article
 ms.prod: office-perpetual-itpro
 localization_priority: Normal
@@ -54,7 +55,7 @@ Office 2016 product consists of the language-neutral core package plus one or mo
   
 ### Client and messaging server platforms
 
-Although Outlook 2016 works well with many versions of Exchange and other email servers, some features of Outlook 2016 require specific versions of Exchange. For more information, see [Exchange Online Service Description](https://technet.microsoft.com/library/exchange-online-service-description.aspx).
+Although Outlook 2016 works well with many versions of Exchange and other email servers, some features of Outlook 2016 require specific versions of Exchange. For more information, see [Exchange Online Service Description](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-service-description).
   
 If you have an on-premises Exchange Server and plan to add Exchange Online to coexist in your environment, there are two things to consider:
   

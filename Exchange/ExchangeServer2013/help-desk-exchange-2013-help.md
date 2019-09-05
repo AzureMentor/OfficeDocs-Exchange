@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Help Desk: Exchange 2013 Help'
 TOCTitle: Help Desk
 ms:assetid: e7958752-22e4-4155-a2fc-948099dec6f7
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd876949(v=EXCHG.150)
 ms:contentKeyID: 49289444
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Help Desk
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 The Help Desk management role group is one of several built-in role groups that make up the Role Based Access Control (RBAC) permissions model in Microsoft Exchange Server 2013. Role groups are assigned one or more management roles that contain the permissions required to perform a given set of tasks. The members of a role group are granted access to the management roles assigned to the role group. For more information about role groups, see [Understanding management role groups](understanding-management-role-groups-exchange-2013-help.md).
 
@@ -23,11 +24,8 @@ The Help Desk role group, by default, enables members to view and modify the Out
 
 The members of this role group can only modify the Outlook Web App options that the user can modify. This means that if a user can modify his or her display name, a member of the Help Desk role group can also modify that user's display name. However, if another user isn't allowed to modify his or her display name, a member of the Help Desk role group can't modify that user's display name.
 
-
 > [!WARNING]
-> The limitations on which Outlook Web App options a member of the Help Desk role group can modify are enforced by the Exchange Administration Center (EAC). If a member of the Help Desk role group has access to the Exchange Management Shell, he or she can modify any Outlook Web App option for any user. You should carefully consider who you make a member of the Help Desk role group and whether they should also be given access to the Shell.
-
-
+> The limitations on which Outlook Web App options a member of the Help Desk role group can modify are enforced by the Exchange admin center (EAC). If a member of the Help Desk role group has access to the Exchange Management Shell, he or she can modify any Outlook Web App option for any user. You should carefully consider who you make a member of the Help Desk role group and whether they should also be given access to the Shell.
 
 The Help Desk role group doesn't enable any other tasks because there are so many different types of organizations. Instead, you can add management roles to this role group to create a Help Desk role group that matches the needs of your organization. For example, if you want members of the Help Desk role group to be able to manage mailboxes, mail contacts, and mail-enabled users, assign the Mail Recipients management role to this role group. For more information about how to add management roles to this role group, see the "Role Group Customization" section later in this topic.
 
@@ -61,23 +59,23 @@ For more information about how to customize this role group, see the following t
 
   - [Manage role group members](manage-role-group-members-exchange-2013-help.md)
 
-If you want to create a role group and assign some of the roles that are assigned to this role group to the new role group, see the “Create a role group” section in [Manage role groups](manage-role-groups-exchange-2013-help.md).
+If you want to create a role group and assign some of the roles that are assigned to this role group to the new role group, see the "Create a role group" section in [Manage role groups](manage-role-groups-exchange-2013-help.md).
 
 ## Management roles assigned to this role group
 
 The following table lists all the management roles that are assigned to this role group and the following attributes of each role assignment:
 
-  - **Regular assignment**   Enables members of the role group to access the management role entries made available by the associated management role.
+  - **Regular assignment**: Enables members of the role group to access the management role entries made available by the associated management role.
 
-  - **Delegating assignment**   Gives members of the role group the ability to assign the specified role to other role groups, role assignment policies, users, or USGs.
+  - **Delegating assignment**: Gives members of the role group the ability to assign the specified role to other role groups, role assignment policies, users, or USGs.
 
-  - **Recipient read scope**   Determines what recipient objects members of the role group are allowed to read from Active Directory.
+  - **Recipient read scope**: Determines what recipient objects members of the role group are allowed to read from Active Directory.
 
-  - **Recipient write scope**   Determines what recipient objects members of the role group are allowed to modify in Active Directory.
+  - **Recipient write scope**: Determines what recipient objects members of the role group are allowed to modify in Active Directory.
 
-  - **Configuration read scope**   Determines what configuration and server objects members of the role group are allowed to read from Active Directory.
+  - **Configuration read scope**: Determines what configuration and server objects members of the role group are allowed to read from Active Directory.
 
-  - **Configuration write scope**   Determines what organizational and server objects members of the role group are allowed to modify in Active Directory.
+  - **Configuration write scope**: Determines what organizational and server objects members of the role group are allowed to modify in Active Directory.
 
 For more information about role assignments and management scopes, see the following topics:
 
@@ -129,4 +127,3 @@ For more information about role assignments and management scopes, see the follo
 </tr>
 </tbody>
 </table>
-

@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can specify which users can receive transferred calls or voice mail messages from Outlook Voice Access users. By default, the In this dial plan only option is selected. You can change this setting to allow Outlook Voice Access users to transfer calls or send voice messages to users located in the entire organization, to an existing UM auto attendant, or to a specific extension number.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: a8dc0f9e-dc86-4128-af63-d4e550aed5bb
 ms.date: 11/17/2014
-title: Configure the group of users that Outlook Voice Access users can contact
+ms.reviewer: 
+title: Configure the group of users that Outlook Voice Access users can contact in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Configure the group of users that Outlook Voice Access users can contact
+# Configure the group of users that Outlook Voice Access users can contact in Exchange Online
 
 You can specify which users can receive transferred calls or voice mail messages from Outlook Voice Access users. By default, the **In this dial plan only** option is selected. You can change this setting to allow Outlook Voice Access users to transfer calls or send voice messages to users located in the entire organization, to an existing UM auto attendant, or to a specific extension number.
 
@@ -31,7 +32,7 @@ For additional tasks related to UM dial plans, see [UM Dial Plan Procedures](htt
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to configure the group of users that Outlook Voice Access users can contact
 
@@ -43,13 +44,13 @@ For additional tasks related to UM dial plans, see [UM Dial Plan Procedures](htt
 
 4. In **Transfer & search**, under **Allow callers to search for users by name or alias**, select one of the following options:
 
-  - **In this dial plan only**: Use this option to allow Outlook Voice Access users who call in to an Outlook Voice Access number to locate and contact users who are within the same dial plan.
+   - **In this dial plan only**: Use this option to allow Outlook Voice Access users who call in to an Outlook Voice Access number to locate and contact users who are within the same dial plan.
 
-  - **In the entire organization**: Use this option to allow Outlook Voice Access users who call in to an Outlook Voice Access number to locate and contact anyone in the entire organization. This includes all users who are mailbox-enabled.
+   - **In the entire organization**: Use this option to allow Outlook Voice Access users who call in to an Outlook Voice Access number to locate and contact anyone in the entire organization. This includes all users who are mailbox-enabled.
 
-  - **Only on this auto attendant**: Use this option to allow Outlook Voice Access users who call in to an Outlook Voice Access number to connect to a specific auto attendant. You must create the auto attendant before you specify it here. This allows Outlook Voice Access users to be transferred to another auto attendant. The auto attendant you choose here can be a speech-enabled or non-speech-enabled auto attendant.
+   - **Only on this auto attendant**: Use this option to allow Outlook Voice Access users who call in to an Outlook Voice Access number to connect to a specific auto attendant. You must create the auto attendant before you specify it here. This allows Outlook Voice Access users to be transferred to another auto attendant. The auto attendant you choose here can be a speech-enabled or non-speech-enabled auto attendant.
 
-  - **Only for this extension**: Use this option to allow Outlook Voice Access users to connect to an extension number that you specify. You can use only numeric digits for the extension. The number of digits that you define in this field must match the number of digits in the extension numbers that are configured on the UM dial plan.
+   - **Only for this extension**: Use this option to allow Outlook Voice Access users to connect to an extension number that you specify. You can use only numeric digits for the extension. The number of digits that you define in this field must match the number of digits in the extension numbers that are configured on the UM dial plan.
 
 5. Click **Save**.
 
@@ -66,6 +67,3 @@ This example sets the group of users that Outlook Voice Access users can contact
 ```
 Set-UMDialPlan -Identity MyUMDialPlan -ContactScope DialPlan -AllowDialPlanSubscribers $false -AllowExtensions $false
 ```
-
-
-

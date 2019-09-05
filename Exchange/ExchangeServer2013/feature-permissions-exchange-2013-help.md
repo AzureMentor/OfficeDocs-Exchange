@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Feature permissions: Exchange 2013 Help'
 TOCTitle: Feature permissions
 ms:assetid: 48d06fa6-e4a2-4d5c-bdbd-718eeaade4be
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd638127(v=EXCHG.150)
 ms:contentKeyID: 48385045
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Feature permissions
 
- 
-
-_**Applies to:** Exchange Online, Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013_
 
 Permissions in Microsoft Exchange Server 2013 are managed using the Role Based Access Control (RBAC) permissions model. The following topics identify the management role groups required to administer the features associated with each functional area in Exchange 2013.
 
@@ -40,4 +41,3 @@ Permissions in Microsoft Exchange Server 2013 are managed using the Role Based A
   - [Exchange and Shell infrastructure permissions](exchange-and-shell-infrastructure-permissions-exchange-2013-help.md)
 
   - [Server health and performance permissions](server-health-and-performance-permissions-exchange-2013-help.md)
-

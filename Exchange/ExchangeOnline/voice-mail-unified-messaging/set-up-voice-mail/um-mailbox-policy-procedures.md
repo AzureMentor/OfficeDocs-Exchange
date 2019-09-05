@@ -2,25 +2,23 @@
 localization_priority: Normal
 description: Create a UM mailbox policy
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 37db12de-109f-4e81-9e6a-effab2c2171d
 ms.date: 11/17/2014
-title: UM mailbox policy procedures
+ms.reviewer: 
+title: UM mailbox policy procedures in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# UM mailbox policy procedures
+# UM mailbox policy procedures in Exchange Online
 
 [Create a UM mailbox policy](create-um-mailbox-policy.md)
 
 [Manage a UM mailbox policy](manage-um-mailbox-policy.md)
 
 [Delete a UM mailbox policy](delete-um-mailbox-policy.md)
-
-
-

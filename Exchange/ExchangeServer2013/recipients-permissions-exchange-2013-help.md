@@ -1,42 +1,39 @@
-﻿---
+---
 title: 'Recipients Permissions: Exchange 2013 Help'
 TOCTitle: Recipients Permissions
 ms:assetid: 5b690bcb-c6df-4511-90e1-08ca91f43b37
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd638132(v=EXCHG.150)
 ms:contentKeyID: 48385139
 ms.date: 07/14/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Recipients Permissions
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 The permissions required to perform tasks to manage recipients vary depending on the procedure being performed or the cmdlet you want to run.
 
 To find out what permissions you need to perform the procedure or run the cmdlet, do the following:
 
-1.  In the table below, find the feature that is most related to the procedure you want to perform or the cmdlet you want to run.
+1. In the table below, find the feature that is most related to the procedure you want to perform or the cmdlet you want to run.
 
-2.  Next, look at the permissions required for the feature. You must be assigned one of those role groups, an equivalent custom role group, or an equivalent management role. You can also click on a role group to see its management roles. If a feature lists more than one role group, you only need to be assigned one of the role groups to use the feature. For more information about role groups and management roles, see [Understanding Role Based Access Control](understanding-role-based-access-control-exchange-2013-help.md).
+2. Next, look at the permissions required for the feature. You must be assigned one of those role groups, an equivalent custom role group, or an equivalent management role. You can also click on a role group to see its management roles. If a feature lists more than one role group, you only need to be assigned one of the role groups to use the feature. For more information about role groups and management roles, see [Understanding Role Based Access Control](understanding-role-based-access-control-exchange-2013-help.md).
 
-3.  Now, run the **Get-ManagementRoleAssignment** cmdlet to look at the role groups or management roles assigned to you to see if you have the permissions that are necessary to manage the feature.
-    
+3. Now, run the **Get-ManagementRoleAssignment** cmdlet to look at the role groups or management roles assigned to you to see if you have the permissions that are necessary to manage the feature.
 
-    > [!NOTE]  
+    > [!NOTE]
     > You must be assigned the Role Management management role to run the <STRONG>Get-ManagementRoleAssignment</STRONG> cmdlet. If you don't have permissions to run the <STRONG>Get-ManagementRoleAssignment</STRONG> cmdlet, ask your Exchange administrator to retrieve the role groups or management roles assigned to you.
-
-
 
 If you want to delegate the ability to manage a feature to another user, see [Delegate role assignments](delegate-role-assignments-exchange-2013-help.md).
 
 ## Mailbox server permissions
 
 Users who are assigned the View-Only Management role group can view the configuration of the features in the following table. For more information, see [View-only Organization Management](view-only-organization-management-exchange-2013-help.md).
-
 
 <table>
 <colgroup>
@@ -71,14 +68,13 @@ Users who are assigned the View-Only Management role group can view the configur
 <p><a href="server-management-exchange-2013-help.md">Server Management</a></p></td>
 </tr>
 <tr class="odd">
-<td><p>Exchange Search – diagnostics</p></td>
+<td><p>Exchange Search - diagnostics</p></td>
 <td><p><a href="organization-management-exchange-2013-help.md">Organization Management</a></p>
 <p><a href="view-only-organization-management-exchange-2013-help.md">View-only Organization Management</a></p>
 <p>Support Diagnostics role</p>
 
-> [!NOTE]  
+> [!NOTE]
 > The Support Diagnostics role isn't assigned to a role group. For more information, see <A href="add-a-role-to-a-user-or-usg-exchange-2013-help.md">Add a role to a user or USG</A>.
-
 
 </td>
 </tr>
@@ -91,9 +87,8 @@ Users who are assigned the View-Only Management role group can view the configur
 <td><p>Import Export</p></td>
 <td><p>Mailbox Import Export role</p>
 
-> [!NOTE]  
+> [!NOTE]
 > The Mailbox Import Export role isn't assigned to a role group. For more information, see <A href="mailbox-import-export-role-exchange-2013-help.md">Mailbox Import Export role</A>.
-
 
 </td>
 </tr>
@@ -148,11 +143,9 @@ Users who are assigned the View-Only Management role group can view the configur
 </tbody>
 </table>
 
-
 ## Calendar and sharing permissions
 
 Users who are assigned the View-Only Management role group can view the configuration of the features in the following table. For more information, see [View-only Organization Management](view-only-organization-management-exchange-2013-help.md).
-
 
 <table>
 <colgroup>
@@ -202,11 +195,9 @@ Users who are assigned the View-Only Management role group can view the configur
 </tbody>
 </table>
 
-
 ## Resource mailbox configuration permissions
 
 Users who are assigned the View-Only Management role group can view the configuration of the features in the following table. For more information, see [View-only Organization Management](view-only-organization-management-exchange-2013-help.md).
-
 
 <table>
 <colgroup>
@@ -238,11 +229,9 @@ Users who are assigned the View-Only Management role group can view the configur
 </tbody>
 </table>
 
-
 ## Mailbox database permissions
 
 Users who are assigned the View-Only Management role group can view the configuration of the features in the following table. For more information, see [View-only Organization Management](view-only-organization-management-exchange-2013-help.md).
-
 
 <table>
 <colgroup>
@@ -264,13 +253,11 @@ Users who are assigned the View-Only Management role group can view the configur
 </tbody>
 </table>
 
-
 ## Recipient provisioning permissions
 
 This table contains the various permissions that are required to manage recipients.
 
 Users who are assigned the View-Only Management role group can view the configuration of the features in the following table. For more information, see [View-only Organization Management](view-only-organization-management-exchange-2013-help.md).
-
 
 <table>
 <colgroup>
@@ -471,11 +458,9 @@ Users who are assigned the View-Only Management role group can view the configur
 </tbody>
 </table>
 
-
 ## Mailbox move and migration permissions
 
 The table contains the permissions that are required to move on-premises mailboxes to different domains or forests and to migrate on-premises mailboxes to and from your cloud-based organization.
-
 
 <table>
 <colgroup>
@@ -506,4 +491,3 @@ The table contains the permissions that are required to move on-premises mailbox
 </tr>
 </tbody>
 </table>
-

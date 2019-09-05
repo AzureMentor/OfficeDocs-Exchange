@@ -1,37 +1,24 @@
-﻿---
+---
 title: 'Administrator audit logging: Exchange 2013 Help'
 TOCTitle: Administrator audit logging
 ms:assetid: 22b17eb8-d8ee-4599-b202-d6a7928c20d9
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd335144(v=EXCHG.150)
 ms:contentKeyID: 50117641
 ms.date: 03/05/2018
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Administrator audit logging
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 You can use administrator audit logging in Microsoft Exchange Server 2013 to log when a user or administrator makes a change in your organization. By keeping a log of the changes, you can trace changes to the person who made the change, augment your change logs with detailed records of the change as it was implemented, comply with regulatory requirements and requests for discovery, and more.
 
 By default, audit logging is enabled in new installations of Exchange 2013.
-
-**Contents**
-
-What gets audited
-
-Audit logging configuration
-
-Audit logs
-
-Manual audit log entries
-
-Active Directory replication
-
-Admin Audit Log agent
 
 ## What gets audited
 
@@ -39,27 +26,19 @@ Cmdlets that are run directly in the Exchange Management Shell are audited. In a
 
 Cmdlets, regardless of where they're run, are audited if a cmdlet is on the cmdlet auditing list and one or more parameters on that cmdlet are on the parameter auditing list. Audit logging is intended to show what actions have been taken to modify objects in an Exchange organization rather than what objects have been viewed.
 
-
 > [!IMPORTANT]
 > A cmdlet might not be logged if an error occurs before the cmdlet calls the Admin Audit Log cmdlet extension agent. If an error occurs after the Admin Audit Log agent is called, the cmdlet is logged along with the associated error. For more information, see the Admin Audit Log Agent section later in this topic.<BR>Changes made using Microsoft Exchange Server 2010 management tools are logged; however, changes using Microsoft Exchange Server 2007 management tools aren't logged.<BR>Changes to the audit log configuration are refreshed every 60 minutes on computers that have the Shell open at the time a configuration change is made. If you want to apply the changes immediately, close and then open the Shell again on each computer.<BR>A command may take up to 15 minutes after it's run to appear in audit log search results. This is because audit log entries must be indexed before they can be searched. If a command doesn't appear in the administrator audit log, wait a few minutes and run the search again.
-
-
 
 ## Audit logging configuration
 
 By default, if audit logging is enabled, a log entry is created every time any cmdlet is run. If you don't want to audit every cmdlet that's run, you can configure audit logging to audit only the cmdlets and parameters you're interested in. You configure audit logging with the **Set-AdminAuditLogConfig** cmdlet. The parameters referenced in the following sections are used with this cmdlet.
 
-
 > [!IMPORTANT]
 > Changes to the administrator audit log configuration are always logged, regardless of whether the <STRONG>Set-AdministratorAuditLog</STRONG> cmdlet is included in the list of cmdlets being audited and whether audit logging is enabled or disabled.
-
-
 
 When a command is run, Exchange inspects the cmdlet that was used. If the cmdlet that was run matches any of the cmdlets provided with the *AdminAuditLogConfigCmdlets* parameter, Exchange then checks the parameters specified in the *AdminAuditLogConfigParameters* parameter. If at least one or more parameters from the parameters list are matched, Exchange logs the cmdlet that was run in the mailbox specified using the *AdminAuditLogMailbox* parameter. The following sections contain more information about each aspect of the audit logging configuration.
 
 For more information about managing audit logging configuration, see [Manage administrator audit logging](manage-administrator-audit-logging-exchange-2013-help.md).
-
-Return to top
 
 ## Cmdlets
 
@@ -73,25 +52,22 @@ In addition to specifying which cmdlets you want to log, you can also indicate t
 
 By default, audit logging is configured to store audit log entries for 90 days. After 90 days, the audit log entry is deleted. You can change the audit log age limit using the *AdminAuditLogAgeLimit* parameter. You can specify the number of days, hours, minutes, and seconds that audit log entries should be kept. To specify a value, use the format `dd.hh:mm:ss` where the following applies:
 
-  - **dd**   The number of days to keep the audit log entry.
+- **dd**: The number of days to keep the audit log entry.
 
-  - **hh**   The number of hours to keep the audit log entry.
+- **hh**: The number of hours to keep the audit log entry.
 
-  - **mm**   The number of minutes to keep the audit log entry.
+- **mm**: The number of minutes to keep the audit log entry.
 
-  - **ss**   The number of seconds to keep the audit log entry.
+- **ss**: The number of seconds to keep the audit log entry.
 
 You must specify multiple years using the `dd` field. For example, 365 days equals one year; 730 days equals two years; 913 days equals two years and six months. For example, to set the audit log age limit to two years and six months, use the syntax `913.00:00:00`.
-
 
 > [!WARNING]
 > You can set the audit log age limit to a value that's less than the current age limit. If you do this, any audit log entry whose age exceeds the new age limit is deleted.<BR>If you set the age limit to 0, Exchange deletes all the entries in the audit log.<BR>We recommend that you grant permissions to configure the audit log age limit only to highly trusted users.
 
-
-
 ## Verbose logging
 
-By default, the administrator audit log records only the cmdlet name, cmdlet parameters (and values specified), the object that was modified, who ran the cmdlet, when the cmdlet was run, and on what server the cmdlet was run. The administrator audit log doesn’t log what properties were modified on the object. If you want the audit log to also include the properties of the object that were modified, you can enable verbose logging by setting the *LogLevel* parameter to `Verbose`. When you enable verbose logging, in addition to the information logged by default, the properties modified on an object, including their old and new values, are included in the audit log.
+By default, the administrator audit log records only the cmdlet name, cmdlet parameters (and values specified), the object that was modified, who ran the cmdlet, when the cmdlet was run, and on what server the cmdlet was run. The administrator audit log doesn't log what properties were modified on the object. If you want the audit log to also include the properties of the object that were modified, you can enable verbose logging by setting the *LogLevel* parameter to `Verbose`. When you enable verbose logging, in addition to the information logged by default, the properties modified on an object, including their old and new values, are included in the audit log.
 
 ## Test cmdlets
 
@@ -101,11 +77,11 @@ Cmdlets that begin with the verb **Test** aren't logged by default. You can indi
 
 Each time a cmdlet is logged, an audit log entry is created. Audit logs are stored in a hidden, dedicated arbitration mailbox that can only be accessed using the EAC or the **Search-AdminAuditLog** or **New-AdminAuditLogSearch** cmdlet. It can't be opened using Microsoft Outlook Web App or Microsoft Outlook. The following sections provide information about the following:
 
-  - What's included in the logs
+- What's included in the logs
 
-  - Reports available on the EAC **auditing** page
+- Reports available on the EAC **auditing** page
 
-  - Audit log search cmdlets
+- Audit log search cmdlets
 
 ## Audit log contents
 
@@ -148,7 +124,6 @@ Each audit log entry contains the information described in the following table. 
 > [!IMPORTANT]
 > This field is only populated if the <EM>LogLevel</EM> parameter on the <STRONG>Set-AdminAuditLogConfig</STRONG> cmdlet is set to <CODE>Verbose</CODE>.
 
-
 </td>
 </tr>
 <tr class="even">
@@ -186,16 +161,13 @@ Each audit log entry contains the information described in the following table. 
 </tbody>
 </table>
 
-
-Return to top
-
 ## EAC auditing reports
 
 The **auditing** page in the EAC has several reports that provide information about various types of compliance and administrative configuration changes. The following reports provide information about configuration changes in your organization:
 
-  - **Administrator role group report**   This report enables you to search for changes to management role groups that you specify within a specified timeframe. The results that are returned include the role groups that have been changed, who changed them and when, and what changes were made. A maximum of 3,000 entries can be returned. If your search might return more than 3,000 entries, use the **Administrator audit log** report or the **Search-AdminAuditLog** cmdlet.
+- **Administrator role group report**: This report enables you to search for changes to management role groups that you specify within a specified timeframe. The results that are returned include the role groups that have been changed, who changed them and when, and what changes were made. A maximum of 3,000 entries can be returned. If your search might return more than 3,000 entries, use the **Administrator audit log** report or the **Search-AdminAuditLog** cmdlet.
 
-  - **Administrator audit log**   This report enables you to export the audit log entries recorded within a specified timeframe to a XML file and then send the file via email to a recipient you specify. For more information about the contents of the XML file, see [Administrator audit log structure](administrator-audit-log-structure-exchange-2013-help.md).
+- **Administrator audit log**: This report enables you to export the audit log entries recorded within a specified timeframe to a XML file and then send the file via email to a recipient you specify. For more information about the contents of the XML file, see [Administrator audit log structure](administrator-audit-log-structure-exchange-2013-help.md).
 
 For information about how to use these reports, see [Search the role group changes or administrator audit logs](https://docs.microsoft.com/en-us/exchange/security-and-compliance/exchange-auditing-reports/search-role-group-changes).
 
@@ -205,19 +177,19 @@ For information about the other reports included on the **auditing** page see [E
 
 When you run the **Search-AdminAuditLog** cmdlet, all the audit log entries that match the search criteria you specify are returned. You can specify the following search criteria:
 
-  - **Cmdlets**   Specifies the cmdlets you want to search for in the administrator audit log.
+- **Cmdlets**: Specifies the cmdlets you want to search for in the administrator audit log.
 
-  - **Parameters**   Specifies the parameters, separated by commas, you want to search for in the administrator audit log. You can only search for parameters if you specify a cmdlet to search for.
+- **Parameters**: Specifies the parameters, separated by commas, you want to search for in the administrator audit log. You can only search for parameters if you specify a cmdlet to search for.
 
-  - **End date**   Scopes the administrator audit log results to log entries that occurred on or before the specified date.
+- **End date**: Scopes the administrator audit log results to log entries that occurred on or before the specified date.
 
-  - **Start date**   Scopes the administrator audit log results to log entries that occurred on or after the specified date.
+- **Start date**: Scopes the administrator audit log results to log entries that occurred on or after the specified date.
 
-  - **Object IDs**   Specifies that only administrator audit log entries that contain the specified changed objects should be returned
+- **Object IDs**: Specifies that only administrator audit log entries that contain the specified changed objects should be returned
 
-  - **User IDs**   Specifies that only the administrator audit log entries that contain the specified IDs of the user who ran the cmdlet should be returned.
+- **User IDs**: Specifies that only the administrator audit log entries that contain the specified IDs of the user who ran the cmdlet should be returned.
 
-  - **Successful completion**   Specifies whether only administrator audit log entries that indicated a success or failure should be returned.
+- **Successful completion**: Specifies whether only administrator audit log entries that indicated a success or failure should be returned.
 
 Each audit log entry returned contains the information described in the table in Audit Log Contents. By default, only the first 1,000 log entries that match the criteria you specify are returned. However, you can override this default and return more or fewer entries using the *ResultSize* parameter. You can specify a value of `Unlimited` with the *ResultSize* parameter to return all log entries that match the specified criteria.
 
@@ -231,25 +203,20 @@ You can use the same search criteria with the **New-AdminAuditLogSearch** cmdlet
 
 After you run the **New-AdminAuditLogSearch** cmdlet, Exchange may take up to 15 minutes to deliver the report to the specified recipient. The XML file attached report can be a maximum of 10 megabytes (MB). The XML file contains the same information described in the table in Audit Log Contents. For more information about the structure of the XML file, see [Administrator audit log structure](administrator-audit-log-structure-exchange-2013-help.md).
 
-
 > [!NOTE]
 > Outlook Web App doesn't allow you to open XML attachments by default. You can either configure Exchange to allow XML attachments to be viewed using Outlook Web App, or you can use another email client, such as Microsoft Outlook, to view the attachment. For information about how to configure Outlook Web App to allow you to view an XML attachment, see <A href="view-or-configure-outlook-web-app-virtual-directories-exchange-2013-help.md">View or configure Outlook Web App virtual directories</A>.
 
-
-
 For information about how to use the **New-AdminAuditLogSearch** cmdlet, see [Search the role group changes or administrator audit logs](https://docs.microsoft.com/en-us/exchange/security-and-compliance/exchange-auditing-reports/search-role-group-changes).
-
-Return to top
 
 ## Manual audit log entries
 
 In addition to logging Exchange cmdlets when they're run, Exchange 2013 enables you to manually write log entries to the audit log. Exchange 2013 supports this using the **Write-AdminAuditLog** cmdlet. Situations where you might want to add a manual log entry include the following:
 
-  - Custom script entry and exit
+- Custom script entry and exit
 
-  - Change control information
+- Change control information
 
-  - Maintenance start and end times
+- Maintenance start and end times
 
 With the **Write-AdminAuditLog** cmdlet, you specify a string of text to include in the audit log using the *Comment* parameter. The *Comment* parameter accepts an alphanumeric string up to 500 characters. Included in the manual audit log entry along with the comment string is all of the same information captured when an Exchange cmdlet is logged. For a description of each field included in the audit log, see the table in Audit Log Contents.
 
@@ -266,4 +233,3 @@ Administrator audit logging relies on Active Directory replication to replicate 
 The Admin Audit Log built-in cmdlet extension agent performs administrator audit logging of cmdlet operations in Exchange 2013. This agent reads the audit log configuration and then performs an evaluation of each cmdlet run in your organization. If the criteria you've specified in the audit log configuration matches the cmdlet that's being run, the agent generates an audit log.
 
 The Admin Audit Log agent is enabled by default, which is required for audit logging to function. It can't be disabled, and its priority can't be changed. For more information about cmdlet extension agents, see [Cmdlet extension agents](cmdlet-extension-agents-exchange-2013-help.md).
-

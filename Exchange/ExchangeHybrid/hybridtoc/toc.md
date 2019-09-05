@@ -56,5 +56,7 @@
 ### [Organization Config](../org-config-transfer-attributes/organization-config.md)
 ### [OWA Mailbox Policy](../org-config-transfer-attributes/owa-mailbox-policy.md)
 ### [Policy tip config attributes](../org-config-transfer-attributes/policy-tip-config.md)
+### [Remote Domains attributes](../org-config-transfer-attributes/remote-domains.md)
 ### [Retention Policy Tags](../org-config-transfer-attributes/retention-policy-tags.md)
 ### [Retention Policy](../org-config-transfer-attributes/retention-policy.md)
+### [Sharing Policy attributes](../org-config-transfer-attributes/sharing-policy.md)

@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: A mail-enabled security group can be used to distribute messages as well as to grant access permissions to resources in Active Directory. For more information, see Recipients.
 ms.topic: article
-author: kwekua
-ms.author: kwekua
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 80b3b537-4786-4d02-9202-44e373811a25
 ms.date: 6/24/2018
+ms.reviewer: 
 title: Manage mail-enabled security groups
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -29,7 +30,7 @@ A mail-enabled security group can be used to distribute messages as well as to g
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Create a mail-enabled security group
 
@@ -41,28 +42,28 @@ A mail-enabled security group can be used to distribute messages as well as to g
 
 3. On the **New security group** page, complete the following fields:
 
-  - **\* Display name**: Use this box to type the display name. This name appears in the shared address book, on the To: line when email is sent to this group, and in the Groups list in the EAC. The display name is required and should be user-friendly so people recognize what it is. It also must be unique in the forest.
+   - **\* Display name**: Use this box to type the display name. This name appears in the shared address book, on the To: line when email is sent to this group, and in the Groups list in the EAC. The display name is required and should be user-friendly so people recognize what it is. It also must be unique in the forest.
 
     > [!NOTE]
     > If a group naming policy is applied, you must follow the naming constraints enforced for your organization. For more information, see [Create a distribution group naming policy](manage-distribution-groups/create-group-naming-policy.md). If you want to override your organization's group naming policy, see [Override the distribution group naming policy](manage-distribution-groups/override-group-naming-policy.md).
 
-  - **\* Alias**: Use this box to type the alias for the security group. The alias can't exceed 64 characters and must be unique in the forest. When a user types the alias on the To: line of an email message, it resolves to the group's display name.
+   - **\* Alias**: Use this box to type the alias for the security group. The alias can't exceed 64 characters and must be unique in the forest. When a user types the alias on the To: line of an email message, it resolves to the group's display name.
 
-  - **Description**: Use this box to describe the security group so people know what the purpose of the group is.
+   - **Description**: Use this box to describe the security group so people know what the purpose of the group is.
 
-  - **Organizational unit**: You can select an organizational unit (OU) other than the default (which is the recipient scope). If the recipient scope is set to the forest, the default value is set to the Users container in the Active Directory domain that contains the computer on which the EAC is running. If the recipient scope is set to a specific domain, the Users container in that domain is selected by default. If the recipient scope is set to a specific OU, that OU is selected by default.
+   - **Organizational unit**: You can select an organizational unit (OU) other than the default (which is the recipient scope). If the recipient scope is set to the forest, the default value is set to the Users container in the Active Directory domain that contains the computer on which the EAC is running. If the recipient scope is set to a specific domain, the Users container in that domain is selected by default. If the recipient scope is set to a specific OU, that OU is selected by default.
 
-    To select a different OU, click **Browse**. The dialog box displays all OUs in the forest that are within the specified scope. Select the desired OU, and then click **OK**.
+     To select a different OU, click **Browse**. The dialog box displays all OUs in the forest that are within the specified scope. Select the desired OU, and then click **OK**.
 
-  - **\* Owners**: By default, the person who creates a group is the owner. All groups must have at least one owner. You can add owners by clicking **Add**.
+   - **\* Owners**: By default, the person who creates a group is the owner. All groups must have at least one owner. You can add owners by clicking **Add**.
 
-  - **Members**: Use this section to add members and to specify whether approval is required for people to join or leave the group.
+   - **Members**: Use this section to add members and to specify whether approval is required for people to join or leave the group.
 
-    Group owners don't have to be members of the group. Use **Add group owners as members** to add or remove the owners as members.
+     Group owners don't have to be members of the group. Use **Add group owners as members** to add or remove the owners as members.
 
-    To add members to the group, click **Add** ![Add Icon](../media/ITPro_EAC_AddIcon.gif). When you've finished adding members, click **OK** to return to the **New security group** page.
+     To add members to the group, click **Add** ![Add Icon](../media/ITPro_EAC_AddIcon.gif). When you've finished adding members, click **OK** to return to the **New security group** page.
 
-    Select the **Owner approval is required** check box if you want the group owners to receive user requests to join the group. If you select this option, members can only be removed by the group owners.
+     Select the **Owner approval is required** check box if you want the group owners to receive user requests to join the group. If you select this option, members can only be removed by the group owners.
 
 4. When you've finished, click **Save** to create the security group.
 
@@ -102,7 +103,6 @@ To verify that you've successfully created a mail-enabled security group, do one
 3. On the group properties page, click one of the following sections to view or change properties.
 
 #### General
-<a name="general"> </a>
 
 Use this section to view or change basic information about the group.
 
@@ -120,19 +120,16 @@ Use this section to view or change basic information about the group.
 - **Organizational unit**: This read-only box displays the organizational unit (OU) that contains the security group. You have to use Active Directory Users and Computers to move the group to a different OU.
 
 #### Ownership
-<a name="Ownership"> </a>
 
 Use this section to assign group owners. The group owner can add members to the group, and approve or reject requests to join the group. By default, the person who creates a group is the owner. All groups must have at least one owner.
 
 You can add owners by clicking **Add** ![Add Icon](../media/ITPro_EAC_AddIcon.gif). You can remove an owner by selecting the owner and then clicking **Remove** ![Remove icon](../media/ITPro_EAC_RemoveIcon.gif).
 
 #### Membership
-<a name="membership"> </a>
 
 Use this section to add or remove members. Group owners don't have to be members of the group. Under **Members**, you can add members by clicking **Add** ![Add Icon](../media/ITPro_EAC_AddIcon.gif). You can remove a member by selecting a user in the member list and then clicking **Remove** ![Remove icon](../media/ITPro_EAC_RemoveIcon.gif).
 
 #### Membership approval
-<a name="membershipapproval"> </a>
 
 Use this section to specify whether owner approval is required for users to join the group. If you select the **Owner approval is required** check box, the group owner or owners receive an email requesting approval to join the group. As previously mentioned, only owners can remove members from the group.
 
@@ -140,7 +137,6 @@ Use this section to specify whether owner approval is required for users to join
 > This option will not work with mail-enabled security groups because of security-related limitations.
 
 #### Delivery management
-<a name="deliverymanagement"> </a>
 
 Use this section to manage who can send email to this group.
 
@@ -148,15 +144,14 @@ Use this section to manage who can send email to this group.
 
 - **Senders inside and outside of my organization**: Select this option to allow anyone to send messages to the group.
 
-    You can further limit who can send messages to the group by allowing only specific senders to send messages to this group. Click **Add** ![Add Icon](../media/ITPro_EAC_AddIcon.gif) and then select one or more recipients. If you add senders to this list, they are the only ones who can send mail to the group. Mail sent by anyone not in the list will be rejected.
+  You can further limit who can send messages to the group by allowing only specific senders to send messages to this group. Click **Add** ![Add Icon](../media/ITPro_EAC_AddIcon.gif) and then select one or more recipients. If you add senders to this list, they are the only ones who can send mail to the group. Mail sent by anyone not in the list will be rejected.
 
-    To remove a person or a group from the list, select them in the list and then click **Remove** ![Remove icon](../media/ITPro_EAC_RemoveIcon.gif).
+  To remove a person or a group from the list, select them in the list and then click **Remove** ![Remove icon](../media/ITPro_EAC_RemoveIcon.gif).
 
-    > [!IMPORTANT]
-    > If you've configured the group to allow only senders inside your organization to send messages to the group, email sent from a mail contact will be rejected, even if they're added to this list.
+  > [!IMPORTANT]
+  > If you've configured the group to allow only senders inside your organization to send messages to the group, email sent from a mail contact will be rejected, even if they're added to this list.
 
 #### Message approval
-<a name="messageapproval"> </a>
 
 Use this section to set options for moderating the group. Moderators approve or reject messages sent to the group before they reach the group members.
 
@@ -175,7 +170,6 @@ Use this section to set options for moderating the group. Moderators approve or 
   - **Don't notify anyone when a message isn't approved**: When you select this option, notifications aren't sent to message senders whose messages aren't approved by the group moderators.
 
 #### Email options
-<a name="emailoptions"> </a>
 
 Use this section to view or change the email addresses associated with the group. This includes the group's primary SMTP addresses and any associated proxy addresses. The primary SMTP address (also known as the reply address) is displayed in bold text in the address list, with the uppercase **SMTP** value in the **Type** column.
 
@@ -201,7 +195,6 @@ Use this section to view or change the email addresses associated with the group
 - **Automatically update email addresses based on the email address policy applied to this recipient**: Select this check box to have the recipient's email addresses automatically updated based on changes made to email address policies in your organization. By default, this box is selected.
 
 #### MailTip
-<a name="mailtip"> </a>
 
 Use this section to add a MailTip to alert users of potential issues before they send a message to this group. A MailTip is text that's displayed in the InfoBar when this group is added to the To, Cc, or Bcc lines of a new email message. For example, you could add a MailTip to large groups to warn potential senders that their message will be sent to lots of people.
 
@@ -209,13 +202,12 @@ Use this section to add a MailTip to alert users of potential issues before they
 > MailTips can include HTML tags, but scripts aren't allowed. The length of a custom MailTip can't exceed 175 displayed characters. HTML tags aren't counted in the limit.
 
 #### Group delegation
-<a name="groupdelegation"> </a>
 
 Use this section to assign permissions to a user (called a delegate) to allow them to send messages as the group or send messages on behalf of the group. You can assign the following permissions:
 
 - **Send As**: This permission allows the delegate to send messages as the group. After this permission is assigned, the delegate has the option to add the group to the **From** line to indicate that the message was sent by the group.
 
-- **Send on Behalf Of**: This permission also allows a delegate to send messages on behalf of the group. After this permission is assigned, the delegate has the option to add the group in the **From** line. The message will appear to be sent by the group and will say that it was sent by the delegate on behalf of the group.
+- **Send on Behalf**: This permission also allows a delegate to send messages on behalf of the group. After this permission is assigned, the delegate has the option to add the group in the **From** line. The message will appear to be sent by the group and will say that it was sent by the delegate on behalf of the group.
 
 To assign permissions to delegates, click **Add** under the appropriate permission to display the **Select Recipient** page, which displays a list of all recipients in your Exchange organization that can be assigned the permission. Select the recipients you want, add them to the list, and then click **OK**. You can also search for a specific recipient by typing the recipient's name in the search box and then clicking **Search** ![Search icon](../media/ITPro_EAC_.gif).
 
@@ -256,9 +248,5 @@ To verify that you've successfully changed properties for a security group, do t
 - In Exchange Online PowerShell, use the **Get-DistributionGroup** cmdlet to verify the changes. One advantage of using Exchange Online PowerShell is that you can view multiple properties for multiple groups. In the example above where all security groups were hidden from the address book, run the following command to verify the new value.
 
   ```
-  Get-DistributionGroup -ResultSize unlimited -Filter {(RecipientTypeDetails -eq 'MailUniversalSecurityGroup')} |
-   fl Name,HiddenFromAddressListsEnabled
+  Get-DistributionGroup -ResultSize unlimited -Filter {(RecipientTypeDetails -eq 'MailUniversalSecurityGroup')} | Format-List Name,HiddenFromAddressListsEnabled
   ```
-
-
-

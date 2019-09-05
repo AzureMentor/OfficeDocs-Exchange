@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Collaboration: Exchange 2013 Help'
 TOCTitle: Collaboration
 ms:assetid: f45c1be1-2a66-4610-a28d-4adc6d212769
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ218725(v=EXCHG.150)
 ms:contentKeyID: 48385713
 ms.date: 06/04/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Collaboration
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Exchange 2013 provides the following rich features that can help your end users easily collaborate in email:
 
@@ -25,7 +26,7 @@ Exchange 2013 provides the following rich features that can help your end users 
 
   - Distribution groups
 
-Each of these features has a different user experience and feature set and should be used based on what the user needs to accomplish and what your organization can provide. For example, site mailboxes provide great documentation collaboration features. However site mailboxes rely on SharePoint Server 2013, so if you aren’t planning on deploying SharePoint, you should use public folders to share documents.
+Each of these features has a different user experience and feature set and should be used based on what the user needs to accomplish and what your organization can provide. For example, site mailboxes provide great documentation collaboration features. However site mailboxes rely on SharePoint Server 2013, so if you aren't planning on deploying SharePoint, you should use public folders to share documents.
 
 This topic compares these collaboration features to help you decide which features to offer your users.
 
@@ -39,7 +40,7 @@ To learn more, see [Site mailboxes](site-mailboxes-exchange-2013-help.md).
 
 Public folders are designed for shared access and provide an easy and effective way to collect, organize, and share information with other people in your workgroup or organization.
 
-Public folders organize content in a deep hierarchy that’s easy to browse. Users discover interesting and relevant content by browsing through branches of the hierarchy that are relevant to them. Users always see the full hierarchy in their Outlook folder view. Public folders are a great technology for distribution group archiving. A public folder can be mail-enabled and added as a member of the distribution group. Email sent to the distribution group is automatically added to the public folder for later reference. Public folders also provide simple document sharing and don’t require SharePoint Server 2013 to be installed in your organization. Finally, end users can use public folders with the following supported Outlook clients: Outlook 2007, Outlook 2010, and Outlook 2013.
+Public folders organize content in a deep hierarchy that's easy to browse. Users discover interesting and relevant content by browsing through branches of the hierarchy that are relevant to them. Users always see the full hierarchy in their Outlook folder view. Public folders are a great technology for distribution group archiving. A public folder can be mail-enabled and added as a member of the distribution group. Email sent to the distribution group is automatically added to the public folder for later reference. Public folders also provide simple document sharing and don't require SharePoint Server 2013 to be installed in your organization. Finally, end users can use public folders with the following supported Outlook clients: Outlook 2007, Outlook 2010, and Outlook 2013.
 
 To learn more, see [Public folders](public-folders-exchange-2013-help.md).
 
@@ -51,14 +52,13 @@ To learn more, see [Shared mailboxes](shared-mailboxes-exchange-2013-help.md).
 
 ## Groups
 
-Groups (also called distribution groups) are a collection of two or more recipients that appears in the shared address book. When an email message is sent to a group, it’s received by all members of the group. Distribution groups can be organized by a particular discussion subject (such as “Dog Lovers”) or by users who share a common work structure that requires them to communicate frequently.
+Groups (also called distribution groups) are a collection of two or more recipients that appears in the shared address book. When an email message is sent to a group, it's received by all members of the group. Distribution groups can be organized by a particular discussion subject (such as "Dog Lovers") or by users who share a common work structure that requires them to communicate frequently.
 
 To learn more, see [Recipients](recipients-exchange-2013-help.md).
 
 ## Which one to use?
 
 The following table gives you a quick glance at each of the collaboration features to help you decide which one to use.
-
 
 <table>
 <colgroup>
@@ -107,7 +107,7 @@ The following table gives you a quick glance at each of the collaboration featur
 <td><p>No</p></td>
 </tr>
 <tr class="odd">
-<td><p><strong>Email arrives in user’s personal Inbox?</strong></p></td>
+<td><p><strong>Email arrives in user's personal Inbox?</strong></p></td>
 <td><p>No. Email arrives in the site mailbox.</p></td>
 <td><p>No. Email arrives in the public folder.</p></td>
 <td><p>No. Email arrives in the Inbox of the shared mailbox.</p></td>
@@ -139,4 +139,3 @@ The following table gives you a quick glance at each of the collaboration featur
 </tr>
 </tbody>
 </table>
-

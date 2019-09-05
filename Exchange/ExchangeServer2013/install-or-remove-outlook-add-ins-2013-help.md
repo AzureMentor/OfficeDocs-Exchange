@@ -2,9 +2,13 @@
 title: 'Install or remove add-ins for Outlook for your Exchange 2013 organization'
 TOCTitle: Install or remove add-ins for Outlook for your organization
 ms:assetid: 112f3ef7-9943-4a1e-8a42-e08e8e9f67f4
-ms:mtpsurl: 
-ms:contentKeyID: 
-ms.date: 
+ms:mtpsurl:
+ms:contentKeyID:
+ms.date:
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
@@ -12,10 +16,10 @@ mtps_version: v=EXCHG.150
 
 _**Applies to:** Exchange Server 2013_
 
-You can install or remove add-ins for Outlook for your organization by using the EAC or the Exchange Management Shell. 
+You can install or remove add-ins for Outlook for your organization by using the EAC or the Exchange Management Shell.
 
 > [!NOTE]
-> By default, after you install an add-in for your organization, the add-in is available for all users in your organization. After installation, you can use the EAC or the Exchange Management Shell to make the add-in optional or required for your users, and to specify whether you want the add-in to be enabled or disabled. For information about how to change the default settings for an add-in, see [Manage user access to add-ins for Outlook](manage-user-access-to-add-ins-2013-help.md). To limit availability of add-ins to specific users in your organization, you must use the Exchange Management Shell. For more information, see [Manage user access to add-ins for Outlook](manage-user-access-to-add-ins-2013-help.md). 
+> By default, after you install an add-in for your organization, the add-in is available for all users in your organization. After installation, you can use the EAC or the Exchange Management Shell to make the add-in optional or required for your users, and to specify whether you want the add-in to be enabled or disabled. For information about how to change the default settings for an add-in, see [Manage user access to add-ins for Outlook](manage-user-access-to-add-ins-2013-help.md). To limit availability of add-ins to specific users in your organization, you must use the Exchange Management Shell. For more information, see [Manage user access to add-ins for Outlook](manage-user-access-to-add-ins-2013-help.md).
 
 For additional management tasks, see [Add-ins for Outlook](add-ins-for-outlook-2013-help.md).
 
@@ -23,20 +27,20 @@ For additional management tasks, see [Add-ins for Outlook](add-ins-for-outlook-2
 
 - Estimated time to complete: 5 minutes.
 
-- You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Apps for Outlook" entry in the [Recipients permissions](https://technet.microsoft.com/library/5b690bcb-c6df-4511-90e1-08ca91f43b37.aspx) topic. 
+- You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Apps for Outlook" entry in the [Recipients permissions](https://technet.microsoft.com/library/5b690bcb-c6df-4511-90e1-08ca91f43b37.aspx) topic.
 
 - For more information about the EAC, see [Exchange admin center in Exchange 2013](exchange-admin-center-in-exchange-2013-exchange-2013-help.md).
 
 - To learn how to connect to the Exchange Management Shell, see [Open the Exchange Management Shell](https://docs.microsoft.com/powershell/exchange/exchange-server/open-the-exchange-management-shell).
 
-- You can assign administrators permission to install and manage add-ins for your organization. You can also assign users permission to install and manage add-ins for their own use. For more information, see [Specify the administrators and users who can install and manage add-ins for Outlook](specify-who-can-install-and-manage-add-ins-2013-help.md). 
+- You can assign administrators permission to install and manage add-ins for your organization. You can also assign users permission to install and manage add-ins for their own use. For more information, see [Specify the administrators and users who can install and manage add-ins for Outlook](specify-who-can-install-and-manage-add-ins-2013-help.md).
 
 - Access to the Office Store isn't supported for mailboxes or organizations in specific regions. If you don't see **Add from the Office Store** as an option in the **Exchange admin center** under **Organization** \> **Add-ins** \> **New** ![Add Icon](images/ITPro_EAC_AddIcon.gif), you may be able to install an add-in for Outlook from a URL or file location. For more information, contact your service provider.
 
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center in Exchange 2013](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612). 
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612).
 
 ## Install an add-in for Outlook
 
@@ -49,7 +53,7 @@ For additional management tasks, see [Add-ins for Outlook](add-ins-for-outlook-2
    - **Add from the Office Store**: At the Office Store, select the app you want to install, and then click **Add**. Apps that work with Outlook Web App are listed under **Add-ins for Office and SharePoint** \> **Outlook**.
 
    > [!NOTE]
-   > Access to the Office Store isn't supported for mailboxes or organizations in specific regions. If you don't see **Add from the Office Store** as an option in the **Exchange admin center** under **Organization** \> **Add-ins** \> **New** ![Add Icon](images/ITPro_EAC_AddIcon.gif), you may be able to install an add-in for Outlook from a URL or file location. For more information, contact your service provider. 
+   > Access to the Office Store isn't supported for mailboxes or organizations in specific regions. If you don't see **Add from the Office Store** as an option in the **Exchange admin center** under **Organization** \> **Add-ins** \> **New** ![Add Icon](images/ITPro_EAC_AddIcon.gif), you may be able to install an add-in for Outlook from a URL or file location. For more information, contact your service provider.
 
    - **Add from URL**: In **URL**, enter the full URL for the add-in manifest file that you want to install.
 
@@ -72,7 +76,7 @@ New-App -OrganizationApp -FileData <File location for add-in manifest file>
 ```
 
 > [!TIP]
-> When you use the Exchange Management Shell to install an add-in for your organization, you can install the add-in and configure settings for it at the same time. 
+> When you use the Exchange Management Shell to install an add-in for your organization, you can install the add-in and configure settings for it at the same time.
 
 For syntax and parameters, see [New-App](https://technet.microsoft.com/library/f05951d8-1e49-42b6-a341-66eb67b2870f.aspx).
 
@@ -82,14 +86,14 @@ For syntax and parameters, see [New-App](https://technet.microsoft.com/library/f
 
 1. In the EAC, navigate to **Organization** \> **Add-ins**.
 
-2. In the list view, select the app that you want to remove, and then click **Delete** ![Delete icon](images/ITPro_EAC_DeleteIcon.gif). 
+2. In the list view, select the app that you want to remove, and then click **Delete** ![Delete icon](images/ITPro_EAC_DeleteIcon.gif).
 
 ### Use the Exchange Management Shell to remove an add-in
 
 You can use the Exchange Management Shell to remove an add-in from your organization.
 
 > [!NOTE]
-> Run the following command to look up the display names and application IDs for all the add-ins for Outlook installed for your organization. 
+> Run the following command to look up the display names and application IDs for all the add-ins for Outlook installed for your organization.
 
 ```
 Get-App -OrganizationApp |Format-List DisplayName,AppID
@@ -101,7 +105,7 @@ Run the following command to remove the custom add-in Finance Test Add-in from t
 Remove-App -OrganizationApp -Identity <GUID for Finance Test Add-in>
 ```
 
-For syntax and parameters, see [Remove-App](https://technet.microsoft.com/library/cfd1245f-dcd2-48c1-b753-a7ebedd2803f.aspx). 
+For syntax and parameters, see [Remove-App](https://technet.microsoft.com/library/cfd1245f-dcd2-48c1-b753-a7ebedd2803f.aspx).
 
 ## How do you know this worked?
 

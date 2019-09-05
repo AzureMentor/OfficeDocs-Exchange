@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Admins can learn how to use Exchange Online PowerShell to display information about mailboxes in their Office 365 organization.
 ms.topic: article
-author: JoeDavies-MSFT
-ms.author: josephd
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: e09b354c-1e3e-4bbf-a865-035d28d1a388
 ms.date: 3/1/2018
+ms.reviewer: 
 title: Use Exchange Online PowerShell to display Office 365 mailbox information
 ms.collection:
 - Ent_O365
 - exchange-online
-ms.audience: Admin
+audience: Admin
 ms.service: exchange-online
 manager: serdars
 
@@ -122,11 +123,8 @@ For another example, suppose you'd like to make sure that all of your users have
 Get-Mailbox -ResultSize unlimited | Get-MailboxJunkEmailConfiguration | Where-Object {$_.Enabled -eq $False}
 ```
 
-This is just one example. If you want to display a set of mailboxes based on a setting and can't filter on that setting in the Office 365 admin center, do these steps:
+This is just one example. If you want to display a set of mailboxes based on a setting and can't filter on that setting in the Microsoft 365 admin center, do these steps:
 
 1. Find the mailbox property that corresponds to the setting you're interested in by running the command `Get-Mailbox -Identity "<MailboxIdentity" | Select-Object *` to list all the properties of a mailbox. `<MailboxIdentity>` is any unique identifier for the mailbox (name, email address, alias, etc.)
 
 2. Construct your Office 365 PowerShell command like this: `Get-Mailbox -ResultSize unlimited | Where-Object {$_.<PropertyName> -<ComparisonOperator> <PropertyValue>}`
-
-
-

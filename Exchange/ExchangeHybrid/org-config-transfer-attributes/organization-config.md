@@ -1,10 +1,10 @@
 ---
 title: "Organization Config"
-ms.author: kchandra
-author: ChandraKavya
+ms.author: dmaguire
+author: msdmaguire
 manager: serdars
 ms.reviewer: dstrome
-ms.audience: ITPro
+audience: ITPro
 ms.topic: article
 ms.prod: exchange-server-it-pro
 localization_priority: Normal
@@ -19,58 +19,58 @@ description: "Organization configuration transfer attributes can be copied by th
 
 The following attributes of Organization Config are copied from an on-premises Exchange organization to Exchange Online when the **Organization Configuration Transfer** option is selected in the Hybrid Configuration Wizard.
 
-| **OrganizationConfig**                                    | **Available In**          |
-|-----------------------------------------------------------|---------------------------|
-| ActivityBasedAuthenticationTimeoutEnabled                 | Exchange 2010, 2013, 2016 |
-| ActivityBasedAuthenticationTimeoutInterval                | Exchange 2010, 2013, 2016 |
-| ActivityBasedAuthenticationTimeoutWithSingleSignOnEnabled | Exchange 2010, 2013, 2016 |
-| AppsForOfficeEnabled                                      | Exchange 2013, 2016       |
-| AsyncSendEnabled                                          | Exchange 2016             |
-| BookingsEnabled                                           | Exchange 2016             |
-| ByteEncoderTypeFor7BitCharsets                            | Exchange 2010, 2013, 2016 |
-| ConnectorsActionableMessagesEnabled                       | Exchange 2016             |
-| ConnectorsEnabled                                         | Exchange 2016             |
-| DefaultPublicFolderAgeLimit                               | Exchange 2013, 2016       |
-| DefaultPublicFolderDeletedItemRetention                   | Exchange 2013, 2016       |
-| DefaultPublicFolderIssueWarningQuota                      | Exchange 2013, 2016       |
-| DefaultPublicFolderMaxItemSize                            | Exchange 2013, 2016       |
-| DefaultPublicFolderMovedItemRetention                     | Exchange 2013, 2016       |
-| DefaultPublicFolderProhibitPostQuota                      | Exchange 2013, 2016       |
-| DirectReportsGroupAutoCreationEnabled                     | Exchange 2016             |
-| DistributionGroupDefaultOU                                | Exchange 2010, 2013, 2016 |
-| DistributionGroupNameBlockedWordsList                     | Exchange 2010, 2013, 2016 |
-| DistributionGroupNamingPolicy                             | Exchange 2010, 2013, 2016 |
-| ElcProcessingDisabled                                     | Exchange 2016             |
-| EndUserDLUpgradeFlowsDisabled                             | Exchange 2016             |
-| EwsAllowEntourage                                         | Exchange 2010, 2013, 2016 |
-| EwsAllowList                                              | Exchange 2010, 2013, 2016 |
-| EwsAllowMacOutlook                                        | Exchange 2010, 2013, 2016 |
-| EwsAllowOutlook                                           | Exchange 2010, 2013, 2016 |
-| EwsApplicationAccessPolicy                                | Exchange 2010, 2013, 2016 |
-| EwsBlockList                                              | Exchange 2010, 2013, 2016 |
-| EwsEnabled                                                | Exchange 2010, 2013, 2016 |
-| ExchangeNotificationEnabled                               | Exchange 2010, 2013, 2016 |
-| ExchangeNotificationRecipients                            | Exchange 2010, 2013, 2016 |
-| FocusedInboxOn                                            | Exchange 2016             |
-| HierarchicalAddressBookRoot                               | Exchange 2010, 2013, 2016 |
-| IPListBlocked                                             | Exchange 2016             |
-| IsAgendaMailEnabled                                       | Exchange 2016             |
-| LeanPopoutEnabled                                         | Exchange 2016             |
-| LinkPreviewEnabled                                        | Exchange 2016             |
-| MailTipsAllTipsEnabled                                    | Exchange 2010, 2013, 2016 |
-| MailTipsExternalRecipientsTipsEnabled                     | Exchange 2010, 2013, 2016 |
-| MailTipsGroupMetricsEnabled                               | Exchange 2010, 2013, 2016 |
-| MailTipsLargeAudienceThreshold                            | Exchange 2010, 2013, 2016 |
-| MailTipsMailboxSourcedTipsEnabled                         | Exchange 2010, 2013, 2016 |
-| OAuth2ClientProfileEnabled                                | Exchange 2013, 2016       |
-| PerTenantSwitchToESTSEnabled                              | Exchange 2016             |
-| PreferredInternetCodePageForShiftJis                      | Exchange 2010, 2013, 2016 |
-| PublicComputersDetectionEnabled                           | Exchange 2013, 2016       |
-| PublicFoldersEnabled                                      | Exchange 2013, 2016       |
-| ReadTrackingEnabled                                       | Exchange 2010, 2013, 2016 |
-| RefreshSessionEnabled                                     | Exchange 2016             |
-| RemotePublicFolderMailboxes                               | Exchange 2013, 2016       |
-| RequiredCharsetCoverage                                   | Exchange 2010, 2013, 2016 |
-| SiteMailboxCreationURL                                    | Exchange 2013, 2016       |
-| SmtpActionableMessagesEnabled                             | Exchange 2016             |
-| UnblockUnsafeSenderPromptEnabled                          | Exchange 2016             |
+|**OrganizationConfig**|**Available In**|
+|:-----|:-----|
+|ActivityBasedAuthenticationTimeoutEnabled|Exchange 2010, 2013, 2016, 2019|
+|ActivityBasedAuthenticationTimeoutInterval|Exchange 2010, 2013, 2016, 2019|
+|ActivityBasedAuthenticationTimeoutWithSingleSignOnEnabled|Exchange 2010, 2013, 2016, 2019|
+|AppsForOfficeEnabled|Exchange 2013, 2016, 2019|
+|AsyncSendEnabled|Exchange 2016, 2019|
+|BookingsEnabled|Exchange 2016, 2019|
+|ByteEncoderTypeFor7BitCharsets|Exchange 2010, 2013, 2016, 2019|
+|ConnectorsActionableMessagesEnabled|Exchange 2016, 2019|
+|ConnectorsEnabled|Exchange 2016, 2019|
+|DefaultPublicFolderAgeLimit|Exchange 2013, 2016, 2019|
+|DefaultPublicFolderDeletedItemRetention|Exchange 2013, 2016, 2019|
+|DefaultPublicFolderIssueWarningQuota|Exchange 2013, 2016, 2019|
+|DefaultPublicFolderMaxItemSize|Exchange 2013, 2016, 2019|
+|DefaultPublicFolderMovedItemRetention|Exchange 2013, 2016, 2019|
+|DefaultPublicFolderProhibitPostQuota|Exchange 2013, 2016, 2019|
+|DirectReportsGroupAutoCreationEnabled|Exchange 2016, 2019|
+|DistributionGroupDefaultOU|Exchange 2010, 2013, 2016, 2019|
+|DistributionGroupNameBlockedWordsList|Exchange 2010, 2013, 2016, 2019|
+|DistributionGroupNamingPolicy|Exchange 2010, 2013, 2016, 2019|
+|ElcProcessingDisabled|Exchange 2016, 2019|
+|EndUserDLUpgradeFlowsDisabled|Exchange 2016, 2019|
+|EwsAllowEntourage|Exchange 2010, 2013, 2016, 2019|
+|EwsAllowList|Exchange 2010, 2013, 2016, 2019|
+|EwsAllowMacOutlook|Exchange 2010, 2013, 2016, 2019|
+|EwsAllowOutlook|Exchange 2010, 2013, 2016, 2019|
+|EwsApplicationAccessPolicy|Exchange 2010, 2013, 2016, 2019|
+|EwsBlockList|Exchange 2010, 2013, 2016, 2019|
+|EwsEnabled|Exchange 2010, 2013, 2016, 2019|
+|ExchangeNotificationEnabled|Exchange 2010, 2013, 2016, 2019|
+|ExchangeNotificationRecipients|Exchange 2010, 2013, 2016, 2019|
+|FocusedInboxOn|Exchange 2016, 2019|
+|HierarchicalAddressBookRoot|Exchange 2010, 2013, 2016, 2019|
+|IPListBlocked|Exchange 2016, 2019|
+|IsAgendaMailEnabled|Exchange 2016, 2019|
+|LeanPopoutEnabled|Exchange 2016, 2019|
+|LinkPreviewEnabled|Exchange 2016, 2019|
+|MailTipsAllTipsEnabled|Exchange 2010, 2013, 2016, 2019|
+|MailTipsExternalRecipientsTipsEnabled|Exchange 2010, 2013, 2016, 2019|
+|MailTipsGroupMetricsEnabled|Exchange 2010, 2013, 2016, 2019|
+|MailTipsLargeAudienceThreshold|Exchange 2010, 2013, 2016, 2019|
+|MailTipsMailboxSourcedTipsEnabled|Exchange 2010, 2013, 2016, 2019|
+|OAuth2ClientProfileEnabled|Exchange 2013, 2016, 2019|
+|PerTenantSwitchToESTSEnabled|Exchange 2016, 2019|
+|PreferredInternetCodePageForShiftJis|Exchange 2010, 2013, 2016, 2019|
+|PublicComputersDetectionEnabled|Exchange 2013, 2016, 2019|
+|PublicFoldersEnabled|Exchange 2013, 2016, 2019|
+|ReadTrackingEnabled|Exchange 2010, 2013, 2016, 2019|
+|RefreshSessionEnabled|Exchange 2016, 2019|
+|RemotePublicFolderMailboxes|Exchange 2013, 2016, 2019|
+|RequiredCharsetCoverage|Exchange 2010, 2013, 2016, 2019|
+|SiteMailboxCreationURL|Exchange 2013, 2016, 2019|
+|SmtpActionableMessagesEnabled|Exchange 2016, 2019|
+|UnblockUnsafeSenderPromptEnabled|Exchange 2016, 2019|

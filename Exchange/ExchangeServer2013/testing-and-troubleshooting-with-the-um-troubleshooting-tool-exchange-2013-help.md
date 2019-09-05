@@ -1,19 +1,20 @@
-﻿---
-title: 'Test and troubleshoot with the UM Troubleshooting Tool'
+---
+title: 'Test and troubleshoot with the UM Troubleshooting Tool: Exchange 2013 Help'
 TOCTitle: Testing and troubleshooting with the UM Troubleshooting Tool
 ms:assetid: 1fab2e52-bd2d-4e46-b222-53fee9d34cba
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg621148(v=EXCHG.150)
 ms:contentKeyID: 55129208
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-# Testing and troubleshooting with the UM Troubleshooting Tool
+# Testing and troubleshooting with the UM Troubleshooting Tool in Exchange Server
 
- 
-
-_**Applies to:** Exchange Online, Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013, Exchange Server 2016_
 
 The Microsoft Exchange 2010 UM Troubleshooting Tool is an Exchange Management Shell cmdlet named **Test-ExchangeUMCallFlow**. You can use the cmdlet to diagnose configuration errors specific to call answering scenarios and to test whether voice mail is functioning correctly in both on-premises and cross-premises Microsoft Exchange Server 2010 Service Pack 1 (SP1) or later UM deployments. You can use this cmdlet in deployments with Microsoft Office Microsoft Lync Server 2010 or later or in UM deployments with Vo IP gateways, IP PBXs or session border controllers (SBCs).
 
@@ -25,11 +26,8 @@ When you run the cmdlet, it states the reason and possible solutions for issues 
 
 By default, when you're running the UM Troubleshooting Tool, it uses the credentials that are used when you log on to the computer. The credentials used are those that are specified for the calling party. You must set or specify the credentials to be used when you're running the UM Troubleshooting Tool in `SIPClient` mode. However, you don't need to set the credentials when running the UM Troubleshooting Tool in `Gateway` mode. If you will be using the UM Troubleshooting Tool in `SIPClient` mode, several other Office Communications Server 2007 R2 or Lync Server requirements and prerequisites must be met. For more information, see [Checklist: Deploy Office Communications Server 2007 R2 and Exchange 2010 Unified Messaging](https://go.microsoft.com/fwlink/p/?linkid=311961) or [Checklist: Integrate Exchange 2013 UM with Lync Server](checklist-integrate-exchange-2013-um-with-lync-server-exchange-2013-help.md).
 
-
 > [!IMPORTANT]
 > The <STRONG>Test-ExchangeUMCallFlow</STRONG> cmdlet must be used to test only the voice mail functionality of a Microsoft Exchange Server 2010 Unified Messaging server that has Exchange 2010 Service Pack 1 (SP1) installed or Microsoft Exchange 2013.
-
-
 
 The **Test-ExchangeUMCallFlow** cmdlet can be installed on a local Exchange 2010 Unified Messaging server, an Exchange 2013 Mailbox server, or on another 64-bit computer running:
 
@@ -52,4 +50,3 @@ The **Test-ExchangeUMCallFlow** cmdlet requires the following components to be i
 The **Test-ExchangeUMCallFlow** cmdlet isn't included on the Exchange 2010 SP1 DVD, the Exchange 2010 SP1-only download, or the Exchange 2013 installation media; however, you can download the cmdlet from the [Microsoft Download Center](https://go.microsoft.com/fwlink/p/?linkid=182625).
 
 For more information about syntax and parameters, see [Test-ExchangeUMCallFlow](https://technet.microsoft.com/en-us/library/ff630913\(v=exchg.150\)).
-

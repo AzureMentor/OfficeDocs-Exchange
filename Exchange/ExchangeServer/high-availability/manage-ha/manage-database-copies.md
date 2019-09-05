@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 28cedf1d-365a-4e36-b2ba-6bf81af8684f
 ms.date: 6/12/2018
+ms.reviewer: 
 title: Manage mailbox database copies
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -215,9 +216,9 @@ Enabling loose truncation and configuring loose truncation parameters is perform
 
 |**Registry Value**|**Description**|**Default Value**|
 |:-----|:-----|:-----|
-|LooseTruncation_MinCopiesToProtect  <br/> |This key is used to enable loose truncation. It represents the number of passive copies to protect from loose truncation on the active copy of a database. Setting the value of this key to 0 disables loose truncation.  <br/> |0  <br/> |
-|LooseTruncation_MinDiskFreeSpaceThresholdInMB  <br/> |Available disk space (in MB) threshold for triggering loose truncation. If free disk space falls below this value, loose truncation is triggered.  <br/> |If this registry value is not configured, the default value used by loose truncation is 200 GB.  <br/> |
-|LooseTruncation_MinLogsToProtect  <br/> |The minimum number of log files to retain on healthy copies whose logs are being truncated. If this registry value is configured, then the configured value applies to both active and passive copies.  <br/> |If this registry value is not configured, then default values of 100,000 for passive database copies and 10,000 for active database copies is used.  <br/> |
+|LooseTruncation_MinCopiesToProtect|This key is used to enable loose truncation. It represents the number of passive copies to protect from loose truncation on the active copy of a database. Setting the value of this key to 0 disables loose truncation.|0|
+|LooseTruncation_MinDiskFreeSpaceThresholdInMB|Available disk space (in MB) threshold for triggering loose truncation. If free disk space falls below this value, loose truncation is triggered.|If this registry value is not configured, the default value used by loose truncation is 200 GB.|
+|LooseTruncation_MinLogsToProtect|The minimum number of log files to retain on healthy copies whose logs are being truncated. If this registry value is configured, then the configured value applies to both active and passive copies.|If this registry value is not configured, then default values of 100,000 for passive database copies and 10,000 for active database copies is used.|
 
 When using the LooseTruncation_MinLogsToProtect registry value, note that the behavior is different for active and passive database copies. On the active database copy, this is the number of extra logs that are retained preceding those that are required by the protected passive copies and the required range of the active copy.On a passive database copy, this is the number of logs maintained from the latest available log. One tenth of this number is also used to maintain logs prior to the required range of this passive copy. The two limits are in place to ensure that lagged database copies don't take up too much space, since their required range is typically very large.
 
@@ -281,12 +282,12 @@ In all scenarios, the passive database copy must meet the following conditions:
 
 ****
 
-|**If the _DataMoveReplicationConstraint_ parameter is set to…**|**Then, for a given database…**|
+|**If the _DataMoveReplicationConstraint_ parameter is set to...**|**Then, for a given database...**|
 |:-----|:-----|
-| `SecondCopy` <br/> |At least one passive database copy for a replicated database must meet the previously described conditions.  <br/> |
-| `SecondDatacenter` <br/> |At least one passive database copy in another Active Directory site must meet the previously described conditions.  <br/> |
-| `AllDatacenters` <br/> |The active copy must be mounted, and a passive copy in each Active Directory site must meet the previously described conditions.  <br/> |
-| `AllCopies` <br/> |The active copy must be mounted, and all passive database copies must meet the previously described conditions.  <br/> |
+| `SecondCopy`|At least one passive database copy for a replicated database must meet the previously described conditions.|
+| `SecondDatacenter`|At least one passive database copy in another Active Directory site must meet the previously described conditions.|
+| `AllDatacenters`|The active copy must be mounted, and a passive copy in each Active Directory site must meet the previously described conditions.|
+| `AllCopies`|The active copy must be mounted, and all passive database copies must meet the previously described conditions.|
 
  **Check Replication Flush**
 
@@ -294,14 +295,14 @@ The Data Guarantee API can also be used to validate that a prerequisite number o
 
 Before moving large numbers of mailboxes to or from replication databases within a DAG, we recommend that you configure the _DataMoveReplicationConstraint_ parameter on each mailbox database according to the following:
 
-|**If you're deploying…**|**Set DataMoveReplicationConstraint to…**|
+|**If you're deploying...**|**Set DataMoveReplicationConstraint to...**|
 |:-----|:-----|
-|Mailbox databases that don't have any database copies  <br/> | `None` <br/> |
-|A DAG within a single Active Directory site  <br/> | `SecondCopy` <br/> |
-|A DAG in multiple datacenters using a stretched Active Directory site  <br/> | `SecondCopy` <br/> |
-|A DAG that spans twoActive Directory sites, and you will have highly available database copies in each site  <br/> | `SecondDatacenter` <br/> |
-|A DAG that spans two Active Directory sites, and you will have only lagged database copies in the second site  <br/> | `SecondCopy` <br/> This is because the Data Guarantee API won't guarantee data being committed until the log file is replayed into the database copy, and due to the nature of the database copy being lagged, this constraint will fail the move request, unless the lagged database copy ReplayLagTime value is less than 30 minutes.  <br/> |
-|A DAG that spans three or more Active Directory sites, and each site will contain highly available database copies  <br/> | `AllDatacenters` <br/> |
+|Mailbox databases that don't have any database copies| `None`|
+|A DAG within a single Active Directory site| `SecondCopy`|
+|A DAG in multiple datacenters using a stretched Active Directory site| `SecondCopy`|
+|A DAG that spans twoActive Directory sites, and you will have highly available database copies in each site| `SecondDatacenter`|
+|A DAG that spans two Active Directory sites, and you will have only lagged database copies in the second site| `SecondCopy` <br/> This is because the Data Guarantee API won't guarantee data being committed until the log file is replayed into the database copy, and due to the nature of the database copy being lagged, this constraint will fail the move request, unless the lagged database copy ReplayLagTime value is less than 30 minutes.|
+|A DAG that spans three or more Active Directory sites, and each site will contain highly available database copies| `AllDatacenters`|
 
 ### Balancing database copies
 <a name="Effect"> </a>
@@ -312,10 +313,10 @@ Due to the inherent nature of DAGs, as the result of database switchovers and fa
 
 |**Server**|**Number of active databases**|**Number of passive databases**|**Number of mounted databases**|**Number of dismounted databases**|**Preference count list**|
 |:-----|:-----|:-----|:-----|:-----|:-----|
-|EX1  <br/> |5  <br/> |11  <br/> |5  <br/> |0  <br/> |4, 4, 3, 5  <br/> |
-|EX2  <br/> |1  <br/> |15  <br/> |1  <br/> |0  <br/> |1, 8, 6, 1  <br/> |
-|EX3  <br/> |12  <br/> |4  <br/> |12  <br/> |0  <br/> |13, 2, 1, 0  <br/> |
-|EX4  <br/> |1  <br/> |15  <br/> |1  <br/> |0  <br/> |1, 1, 5, 9  <br/> |
+|EX1|5|11|5|0|4, 4, 3, 5|
+|EX2|1|15|1|0|1, 8, 6, 1|
+|EX3|12|4|12|0|13, 2, 1, 0|
+|EX4|1|15|1|0|1, 1, 5, 9|
 
 In the preceding example, there are four copies of each database, and therefore, only four possible values for activation preference (1, 2, 3, or 4). The **Preference count list** column shows the count of the number of databases with each of these values. For example, on EX3, there are 13 database copies with an activation preference of 1, two copies with an activation preference of 2, one copy with an activation preference of 3, and no copies with an activation preference of 4.
 
@@ -335,10 +336,10 @@ After running the script with the first option, the preceding unbalanced DAG bec
 
 |**Server**|**Number of active databases**|**Number of passive databases**|**Number of mounted databases**|**Number of dismounted databases**|**Preference count list**|
 |:-----|:-----|:-----|:-----|:-----|:-----|
-|EX1  <br/> |4  <br/> |12  <br/> |4  <br/> |0  <br/> |4, 4, 4, 4  <br/> |
-|EX2  <br/> |4  <br/> |12  <br/> |4  <br/> |0  <br/> |4, 4, 4, 4  <br/> |
-|EX3  <br/> |4  <br/> |12  <br/> |4  <br/> |0  <br/> |4, 4, 4, 4  <br/> |
-|EX4  <br/> |4  <br/> |12  <br/> |4  <br/> |0  <br/> |4, 4, 4, 4  <br/> |
+|EX1|4|12|4|0|4, 4, 4, 4|
+|EX2|4|12|4|0|4, 4, 4, 4|
+|EX3|4|12|4|0|4, 4, 4, 4|
+|EX4|4|12|4|0|4, 4, 4, 4|
 
 As shown in the preceding table, this DAG is now balanced in terms of number of active and passive databases on each server and activation preference across the servers.
 
@@ -348,17 +349,17 @@ The following table lists the available parameters for the RedistributeActiveDat
 
 |**Parameter**|**Description**|
 |:-----|:-----|
-| _DagName_ <br/> |Specifies the name of the DAG you want to rebalance. If this parameter is omitted, the DAG of which the local server is a member is used.  <br/> |
-| _BalanceDbsByActivationPreference_ <br/> |Specifies that the script should move databases to their most preferred copy without regard to the Active Directory site.  <br/> |
-| _BalanceDbsBySiteAndActivationPreference_ <br/> |Specifies that the script should attempt to move active databases to their most preferred copy, while also trying to balance active databases within each Active Directory site.  <br/> |
-| _ShowFinalDatabaseDistribution_ <br/> |Specifies that a report of current database distribution be displayed after redistribution is complete.  <br/> |
-| _AllowedDeviationFromMeanPercentage_ <br/> |Specifies the allowed variation of active databases across sites, expressed as a percentage. The default is 20%. For example, if there were 99 databases distributed between three sites, the ideal distribution would be 33 databases in each site. If the allowed deviation is 20%, the script attempts to balance the databases so that each site has no more than 10% more or less than this number. 10% of 33 is 3.3, which is rounded up to 4. Therefore, the script attempts to have between 29 and 37 databases in each site.  <br/> |
-| _ShowDatabaseCurrentActives_ <br/> |Specifies that the script produce a report for each database detailing how the database was moved and whether it's now active on its most-preferred copy.  <br/> |
-| _ShowDatabaseDistributionByServer_ <br/> |Specifies that the script produce a report for each server showing its database distribution.  <br/> |
-| _RunOnlyOnPAM_ <br/> |Specifies that the script run only on the DAG member that currently has the PAM role. The script verifies it's being run from the PAM. If it isn't being run from the PAM, the script exits.  <br/> |
-| _LogEvents_ <br/> |Specifies that the script logs an event (MsExchangeRepl event 4115) containing a summary of the actions.  <br/> |
-| _IncludeNonReplicatedDatabases_ <br/> |Specifies that the script should include non-replicated databases (databases without copies) when determining how to redistribute the active databases. Although non-replicated databases can't be moved, they may affect the distribution of the replicated databases.  <br/> |
-| _Confirm_ <br/> |The Confirm switch can be used to suppress the confirmation prompt that appears by default when this script is run. To suppress the confirmation prompt, use the syntax -Confirm:$False. You must include a colon ( : ) in the syntax.  <br/> |
+| _DagName_|Specifies the name of the DAG you want to rebalance. If this parameter is omitted, the DAG of which the local server is a member is used.|
+| _BalanceDbsByActivationPreference_|Specifies that the script should move databases to their most preferred copy without regard to the Active Directory site.|
+| _BalanceDbsBySiteAndActivationPreference_|Specifies that the script should attempt to move active databases to their most preferred copy, while also trying to balance active databases within each Active Directory site.|
+| _ShowFinalDatabaseDistribution_|Specifies that a report of current database distribution be displayed after redistribution is complete.|
+| _AllowedDeviationFromMeanPercentage_|Specifies the allowed variation of active databases across sites, expressed as a percentage. The default is 20%. For example, if there were 99 databases distributed between three sites, the ideal distribution would be 33 databases in each site. If the allowed deviation is 20%, the script attempts to balance the databases so that each site has no more than 10% more or less than this number. 10% of 33 is 3.3, which is rounded up to 4. Therefore, the script attempts to have between 29 and 37 databases in each site.|
+| _ShowDatabaseCurrentActives_|Specifies that the script produce a report for each database detailing how the database was moved and whether it's now active on its most-preferred copy.|
+| _ShowDatabaseDistributionByServer_|Specifies that the script produce a report for each server showing its database distribution.|
+| _RunOnlyOnPAM_|Specifies that the script run only on the DAG member that currently has the PAM role. The script verifies it's being run from the PAM. If it isn't being run from the PAM, the script exits.|
+| _LogEvents_|Specifies that the script logs an event (MsExchangeRepl event 4115) containing a summary of the actions.|
+| _IncludeNonReplicatedDatabases_|Specifies that the script should include non-replicated databases (databases without copies) when determining how to redistribute the active databases. Although non-replicated databases can't be moved, they may affect the distribution of the replicated databases.|
+| _Confirm_|The Confirm switch can be used to suppress the confirmation prompt that appears by default when this script is run. To suppress the confirmation prompt, use the syntax -Confirm:$False. You must include a colon ( : ) in the syntax.|
 
 #### RedistributeActiveDatabases.ps1 examples
 
@@ -415,6 +416,3 @@ There are several internal checks that will be performed before a passive copy i
 When you perform a database switchover, you also have the option of overriding the mount dial settings configured for the server that hosts the passive database copy being activated. Using the _MountDialOverride_ parameter of the **Move-ActiveMailboxDatabase** cmdlet instructs the target server to override its own mount dial settings and use those specified by the _MountDialOverride_ parameter.
 
 For detailed steps about how to perform a switchover of a database copy, see [Activate a mailbox database copy](activate-db-copies.md).
-
-
-

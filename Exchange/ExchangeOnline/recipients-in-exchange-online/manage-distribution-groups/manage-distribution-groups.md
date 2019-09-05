@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: Use the Exchange admin center (EAC) or Exchange Online PowerShell to create a new distribution group in your Exchange Online organization or to mail-enable an existing group.
 ms.topic: article
-author: kwekua
+author: msdmaguire
 f1_keywords:
 - Microsoft.Exchange.Management.SnapIn.Esm.Recipients.CreateDistributionGroupWizardForm.CreateDistributionGroupIntroductionWizardPage
-ms.author: kwekua
+ms.author: dmaguire
 ms.assetid: c4c43493-55e1-46d2-bd4b-d6f6cecd747f
 ms.date: 7/11/2018
+ms.reviewer: 
 title: Create and manage distribution groups
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -60,17 +61,17 @@ It's important to note the terminology differences between Active Directory and 
 
 4. On the **New distribution group** page, complete the following boxes:
 
-  - **\* Display name**: Use this box to type the display name. This name appears in your organization's address book, on the To: line when email is sent to this group, and in the Groups list in the EAC. The display name is required and should be user-friendly so people recognize what it is. It also must be unique in the forest.
+   - **\* Display name**: Use this box to type the display name. This name appears in your organization's address book, on the To: line when email is sent to this group, and in the Groups list in the EAC. The display name is required and should be user-friendly so people recognize what it is. It also must be unique in the forest.
 
-  - **\* Alias**: Use this box to type the name of the alias for the group. The alias can't exceed 64 characters and must be unique in the forest. When a user types the alias in the To: line of an email message, it resolves to the group's display name.
+   - **\* Alias**: Use this box to type the name of the alias for the group. The alias can't exceed 64 characters and must be unique in the forest. When a user types the alias in the To: line of an email message, it resolves to the group's display name.
 
-  - **Organizational unit** (You'll only see this option in Exchange Server on-premises) You can select an organizational unit (OU) other than the default (which is the recipient scope). If the recipient scope is set to the forest, the default value is set to the Users container in the Active Directory domain that contains the computer on which the EAC is running. If the recipient scope is set to a specific domain, the Users container in that domain is selected by default. If the recipient scope is set to a specific OU, that OU is selected by default.
+   - **Organizational unit** (You'll only see this option in Exchange Server on-premises) You can select an organizational unit (OU) other than the default (which is the recipient scope). If the recipient scope is set to the forest, the default value is set to the Users container in the Active Directory domain that contains the computer on which the EAC is running. If the recipient scope is set to a specific domain, the Users container in that domain is selected by default. If the recipient scope is set to a specific OU, that OU is selected by default.
 
     To select a different OU, click **Browse**. The dialog box displays all OUs in the forest that are within the specified scope. Select the OU you want, and then click **OK**.
 
-  - **\* Owners**: By default, the person who creates a group is the owner. All groups must have at least one owner. You can add owners by clicking **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif).
+   - **\* Owners**: By default, the person who creates a group is the owner. All groups must have at least one owner. You can add owners by clicking **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif).
 
-  - **Members**: Use this section to add members and to specify whether approval is required for people to join or leave the group.
+   - **Members**: Use this section to add members and to specify whether approval is required for people to join or leave the group.
 
     Group owners don't have to be members of the group. Use **Add group owners as members** to add or remove the owners as members.
 
@@ -78,11 +79,11 @@ It's important to note the terminology differences between Active Directory and 
 
     Under **Choose whether owner approval is required to join the group**, specify whether approval is required for people to join the group. Select one of the following settings:
 
-  - **Open: Anyone can join this group without being approved by the group owners**: This is the default setting.
+   - **Open: Anyone can join this group without being approved by the group owners**: This is the default setting.
 
-  - **Closed: Members can be added only by the group owners. All requests to join will be rejected automatically**
+   - **Closed: Members can be added only by the group owners. All requests to join will be rejected automatically**
 
-  - **Owner Approval: All requests are manually approved or rejected by the group owners**: If you select this option, the group owner or owners will receive an email message requesting approval to join the group.
+   - **Owner Approval: All requests are manually approved or rejected by the group owners**: If you select this option, the group owner or owners will receive an email message requesting approval to join the group.
 
     Under **Choose whether the group is open to leave**, specify whether approval is required for people to leave the group. Select one of the following settings:
 
@@ -131,13 +132,12 @@ To verify that you've successfully created a distribution group, do one of the f
 3. On the group properties page, click one of the following sections to view or change properties.
 
 #### General
-<a name="general"> </a>
 
 Use this section to view or change basic information about the group.
 
 - **\* Display name**: This name appears in the address book, on the To: line when email is sent to this group, and in the Groups list. The display name is required and should be user-friendly so people recognize what it is. It also has to be unique in your domain.
 
-    If you've implemented a group naming policy, the display name has to conform to the naming format defined by the policy.
+  If you've implemented a group naming policy, the display name has to conform to the naming format defined by the policy.
 
 - **\* Alias**: This is the portion of the email address that appears to the left of the at (@) symbol. If you change the alias, the primary SMTP address for the group will also be changed, and contain the new alias. Also, the email address with the previous alias will be kept as a proxy address for the group.
 
@@ -145,25 +145,22 @@ Use this section to view or change basic information about the group.
 
 - **Hide this group from address lists**: Select this check box if you don't want users to see this group in the address book. To send email to this group, a sender has to type the group's alias or email address on the To: or Cc: lines.
 
-    > [!TIP]
-    > Consider hiding security groups because they're typically used to assign permissions to group members and not to send email.
+  > [!TIP]
+  > Consider hiding security groups because they're typically used to assign permissions to group members and not to send email.
 
 - **Organizational unit**: This read-only box displays the organizational unit (OU) that contains the distribution group. You have to use Active Directory Users and Computers to move the group to a different OU.
 
 #### Ownership
-<a name="Ownership"> </a>
 
 Use this section to assign group owners. The group owner can add members to the group, approve or reject requests to join or leave the group, and approve or reject messages sent to the group. By default, the person who creates a group is the owner. All groups must have at least one owner.
 
 You can add owners by clicking **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif). You can remove an owner by selecting the owner and then clicking **Remove** ![Remove icon](../../media/ITPro_EAC_RemoveIcon.gif).
 
 #### Membership
-<a name="membership"> </a>
 
 Use this section to add or remove members. Group owners don't have to be members of the group. Under **Members**, you can add members by clicking **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif). You can remove a member by selecting a user in the member list and then clicking **Remove** ![Remove icon](../../media/ITPro_EAC_RemoveIcon.gif).
 
 #### Membership approval
-<a name="membershipapproval"> </a>
 
 Use this section to specify whether approval is required for users to join or leave the group.
 
@@ -182,7 +179,6 @@ Use this section to specify whether approval is required for users to join or le
   - **Closed: Members can be removed only by the group owners. All requests to leave will be rejected automatically**
 
 #### Delivery management
-<a name="deliverymanagement"> </a>
 
 Use this section to manage who can send email to this group.
 
@@ -190,15 +186,14 @@ Use this section to manage who can send email to this group.
 
 - **Senders inside and outside of my organization**: Select this option to allow anyone to send messages to the group.
 
-    You can further limit who can send messages to the group by allowing only specific senders to send messages to this group. Click **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif) and then select one or more recipients. If you add senders to this list, they are the only ones who can send mail to the group. Mail sent by anyone not in the list will be rejected.
+  You can further limit who can send messages to the group by allowing only specific senders to send messages to this group. Click **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif) and then select one or more recipients. If you add senders to this list, they are the only ones who can send mail to the group. Mail sent by anyone not in the list will be rejected.
 
-    To remove a person or a group from the list, select them in the list and then click **Remove** ![Remove icon](../../media/ITPro_EAC_RemoveIcon.gif).
+  To remove a person or a group from the list, select them in the list and then click **Remove** ![Remove icon](../../media/ITPro_EAC_RemoveIcon.gif).
 
-    > [!IMPORTANT]
-    > If you've configured the group to allow only senders inside your organization to send messages to the group, email sent from a mail contact will be rejected, even if they are added to this list.
+  > [!IMPORTANT]
+  > If you've configured the group to allow only senders inside your organization to send messages to the group, email sent from a mail contact will be rejected, even if they are added to this list.
 
 #### Message approval
-<a name="messageapproval"> </a>
 
 Use this section to set options for moderating the group. Moderators approve or reject messages sent to the group before they reach the group members.
 
@@ -217,7 +212,6 @@ Use this section to set options for moderating the group. Moderators approve or 
   - **Don't notify anyone when a message isn't approved**: When you select this option, notifications aren't sent to message senders whose messages aren't approved by the group moderators.
 
 #### Email options
-<a name="emailoptions"> </a>
 
 Use this section to view or change the email addresses associated with the group. This includes the group's primary SMTP addresses and any associated proxy addresses. The primary SMTP address (also known as the reply address) is displayed in bold text in the address list, with the uppercase **SMTP** value in the **Type** column.
 
@@ -235,15 +229,14 @@ Use this section to view or change the email addresses associated with the group
 
 - **Edit**: To change an email address associated with the group, select it in the list, and then click **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.gif).
 
-    > [!NOTE]
-    > To make an existing address the primary SMTP address for the group, select the **Make this the reply address** check box.
+  > [!NOTE]
+  > To make an existing address the primary SMTP address for the group, select the **Make this the reply address** check box.
 
 - **Remove**: To delete an email address associated with the group, select it in the list, and then click **Remove** ![Remove icon](../../media/ITPro_EAC_RemoveIcon.gif).
 
 - **Automatically update email addresses based on the email address policy applied to this recipient**: Select this check box to have the recipient's email addresses automatically updated based on changes made to email address policies in your organization. This box is selected by default.
 
 #### MailTip
-<a name="mailtip"> </a>
 
 Use this section to add a MailTip to alert users of potential issues if they send a message to this group. A MailTip is text that's displayed in the InfoBar when this group is added to the To, Cc, or Bcc lines of a new email message. For example, you could add a MailTip to large groups to warn potential senders that their message will be sent to lots of people.
 
@@ -251,13 +244,12 @@ Use this section to add a MailTip to alert users of potential issues if they sen
 > MailTips can include HTML tags, but scripts aren't allowed. The length of a custom MailTip can't exceed 175 displayed characters. HTML tags aren't counted in the limit.
 
 #### Group delegation
-<a name="groupdelegation"> </a>
 
 Use this section to assign permissions to a user (called a delegate) to allow them to send messages as the group or send messages on behalf of the group. You can assign the following permissions:
 
 - **Send As**: This permission allows the delegate to send messages as the group. After this permission is assigned, the delegate has the option to add the group to the **From** line to indicate that the message was sent by the group.
 
-- **Send on Behalf Of**: This permission also allows a delegate to send messages on behalf of the group. After this permission is assigned, the delegate has the option to add the group in the **From** line. The message will appear to be sent by the group and will say that it was sent by the delegate on behalf of the group.
+- **Send on Behalf**: This permission also allows a delegate to send messages on behalf of the group. After this permission is assigned, the delegate has the option to add the group in the **From** line. The message will appear to be sent by the group and will say that it was sent by the delegate on behalf of the group.
 
 To assign permissions to delegates, click **Add** under the appropriate permission to display the **Select Recipient** page, which displays a list of all recipients in your Exchange organization that can be assigned the permission. Select the recipients you want, add them to the list, and then click **OK**. You can also search for a specific recipient by typing the recipient's name in the search box and then clicking **Search**.
 
@@ -307,11 +299,8 @@ To verify that you've successfully changed properties for a distribution group, 
   Get-Mailbox -ResultSize unlimited -Filter {(RecipientTypeDetails -eq 'UserMailbox')} | Format-List Name,RecipientLimits
   ```
 
-    For the example above where the message limits were changed, run this command.
+  For the example above where the message limits were changed, run this command.
 
   ```
   Get-Mailbox -OrganizationalUnit "Marketing" | Format-List Name,IssueWarningQuota,ProhibitSendQuota,ProhibitSendReceiveQuota,UseDatabaseQuotaDefaults
   ```
-
-
-

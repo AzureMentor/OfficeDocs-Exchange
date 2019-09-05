@@ -1,16 +1,18 @@
 ---
 localization_priority: Normal
 ms.topic: article
-author: maggsl
-ms.author: v-maleo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: da491136-78c1-48dc-b665-29a2fbe468ac
 ms.date: 
+ms.reviewer: 
+manager: serdars
 description: Admins can learn how to use a screen reader to configure Unified Messaging (UM) settings in the Exchange admin center (EAC) in Exchange Online.
 title: Use a screen reader to configure voice mail in the Exchange admin center in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.custom: A11y_UseSR
 ms.service: exchange-online
 ROBOTS: NOINDEX, NOFOLLOW
@@ -91,4 +93,3 @@ After you've configured your UM dial plan, you can enable voice features for ind
 17. The focus returns to the **User Mailbox** dialog box, where the **Phone and Voice Features** section now shows that Unified Messaging is enabled.
 
 18. Tab to the **Save** button and press Enter. The **mailboxes** list view has the focus.
-

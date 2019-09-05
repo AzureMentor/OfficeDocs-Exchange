@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can allow users who are associated with a Unified Messaging (UM) mailbox policy to configure call answering rules, or prevent them from doing so. If the option to configure call answering rules is disabled on a UM dial plan, the Call Answering Rules feature won't be available to UM-enabled users associated with the UM mailbox policy. The default setting is enabled.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: e44acaa6-d5a8-41e8-94aa-100be0bd6391
 ms.date: 11/17/2014
-title: Call answering rules in the same mailbox policy
+ms.reviewer: 
+title: Call answering rules in the same mailbox policy in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Call answering rules in the same mailbox policy
+# Call answering rules in the same mailbox policy in Exchange Online
 
 You can allow users who are associated with a Unified Messaging (UM) mailbox policy to configure call answering rules, or prevent them from doing so. If the option to configure call answering rules is disabled on a UM dial plan, the Call Answering Rules feature won't be available to UM-enabled users associated with the UM mailbox policy. The default setting is enabled.
 
@@ -33,7 +34,7 @@ For additional management tasks related to allowing users to forward calls, see 
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to enable or disable call answering rules on a UM mailbox policy
 
@@ -58,6 +59,3 @@ This example prevents users who are associated with the UM mailbox policy `MyUMM
 ```
 Set-UMMailboxPolicy -identity MyUMMailboxPolicy -AllowCallAnsweringRules $false
 ```
-
-
-

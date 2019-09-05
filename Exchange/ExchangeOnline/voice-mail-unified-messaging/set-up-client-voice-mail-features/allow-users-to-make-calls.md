@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: Outdialing is the process by which users call in to a UM dial plan using an Outlook Voice Access number and place or transfer a call to an internal or external telephone number. Unified Messaging uses many outdialing settings to dial calls for users. To configure outdialing, you must configure dialing rules, dialing rule groups, and dialing authorizations on Unified Messaging (UM) dial plans and then authorize outdialing on UM dial plans, UM mailbox policies, and auto attendants. You can also configure UM dial plans to have dialing or access codes, a national number prefix, and in-country/region or international number formats that enable you to control outdialing in your organization. This topic discusses dialing rules, dialing rule groups, and dialing authorizations and how they are used to authorize and control outdialing for your organization.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: b6e696ce-c848-475b-a598-9035677497e2
 ms.date: 6/24/2018
-title: Allow users to make calls
+ms.reviewer: 
+title: Allow users to make calls in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Allow users to make calls
+# Allow users to make calls in Exchange Online
 
 Outdialing is the process by which users call in to a UM dial plan using an Outlook Voice Access number and place or transfer a call to an internal or external telephone number. Unified Messaging uses many outdialing settings to dial calls for users. To configure outdialing, you must configure dialing rules, dialing rule groups, and dialing authorizations on Unified Messaging (UM) dial plans and then authorize outdialing on UM dial plans, UM mailbox policies, and auto attendants. You can also configure UM dial plans to have dialing or access codes, a national number prefix, and in-country/region or international number formats that enable you to control outdialing in your organization. This topic discusses dialing rules, dialing rule groups, and dialing authorizations and how they are used to authorize and control outdialing for your organization.
 
@@ -23,7 +24,7 @@ Outdialing is the process by which users call in to a UM dial plan using an Outl
 
 Outdialing happens when:
 
--  A call is placed to an external telephone number.
+- A call is placed to an external telephone number.
 
 - A call is transferred to an auto attendant.
 
@@ -189,13 +190,10 @@ The outdialing process happens when:
 
 - Unified Messaging places a call to an external telephone number for a caller.
 
--  Unified Messaging transfers a call to an auto attendant.
+- Unified Messaging transfers a call to an auto attendant.
 
--  Unified Messaging transfers a call to a user in your organization.
+- Unified Messaging transfers a call to a user in your organization.
 
 - A UM-enabled user uses the Play on Phone feature.
 
 In each outdialing scenario, UM will apply the dialing rules that have been configured, and then place the call for the user. However, depending on the scenario and how the call is initiated by the user, UM may apply only some of the dialing rules to the telephone number being dialed. In other outdialing scenarios, UM may apply all the outdialing rules configured to the telephone number being dialed.
-
-
-

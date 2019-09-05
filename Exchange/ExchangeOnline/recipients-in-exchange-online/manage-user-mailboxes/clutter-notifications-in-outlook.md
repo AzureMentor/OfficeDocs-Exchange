@@ -6,13 +6,14 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: abdd0474-db84-49b1-a915-f5710f206a58
 ms.date: 12/9/2016
+ms.reviewer: 
 title: Clutter notifications in Outlook
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 
@@ -27,7 +28,7 @@ Clutter is a feature in Office 365 designed to help users focus on the most impo
 These notifications are an integral part of the Clutter feature and therefore can't be suspended by administrators. Clutter is a user election, similar to someone opting to use Conversation view, and the notifications help the user understand the state of Clutter across all clients. There is no central reporting available at this time. For information on how to change the branding of the notifications see [Change the branding of Clutter notifications](change-clutter-notification-branding.md).
 
 > [!NOTE]
-> For information on how end users can enable and begin using Clutter, see [Use Clutter to sort low priority messages in Outlook Web App](https://go.microsoft.com/fwlink/p/?LinkId=528411).
+> For information on how end users can enable and begin using Clutter, see [Use Clutter to sort low priority messages in Outlook on the web](https://go.microsoft.com/fwlink/p/?LinkId=528411).
 
  **Invitation to use Clutter**
 
@@ -68,6 +69,3 @@ To make sure the user understands that the new feature is on, Clutter will send 
 During the first three weeks of Clutter usage, the following notification is sent periodically for two reasons. First, it reminds the user to inspect the **Clutter** folder and make sure that Clutter is filtering messages correctly. Second, this notification provides a way for the user to provide feedback on Clutter. Additionally, there are links that provide more information about the feature and that turn Clutter off.
 
 ![Picture of notification sent by Clutter that asks users for feedback](../../media/d47e91a3-d60f-4f81-8c2c-14d9bc9bfa7d.png)
-
-
-

@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn about permissions that are required to manage high availability in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: reference
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 66085107-4d4d-41c3-a425-82314acd9eee
 ms.date: 7/5/2018
+ms.reviewer: 
 title: High availability and site resilience permissions
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -39,10 +40,10 @@ Users who are assigned the View-Only Management role group can view the configur
 
 |**Feature**|**Permissions required**|
 |:-----|:-----|
-|Database availability group membership  <br/> |[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Availability Groups](http://technet.microsoft.com/library/0b3e0f7a-21e5-4209-8d5b-b63c6b9de3cc.aspx) <br/> |
-|Database availability group properties  <br/> |[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Availability Groups](http://technet.microsoft.com/library/0b3e0f7a-21e5-4209-8d5b-b63c6b9de3cc.aspx) <br/> |
-|Database availability groups  <br/> |[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Availability Groups](http://technet.microsoft.com/library/0b3e0f7a-21e5-4209-8d5b-b63c6b9de3cc.aspx) <br/> |
-|Database availability networks  <br/> |[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Availability Groups](http://technet.microsoft.com/library/0b3e0f7a-21e5-4209-8d5b-b63c6b9de3cc.aspx) <br/> |
+|Database availability group membership|[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Availability Groups](http://technet.microsoft.com/library/0b3e0f7a-21e5-4209-8d5b-b63c6b9de3cc.aspx)|
+|Database availability group properties|[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Availability Groups](http://technet.microsoft.com/library/0b3e0f7a-21e5-4209-8d5b-b63c6b9de3cc.aspx)|
+|Database availability groups|[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Availability Groups](http://technet.microsoft.com/library/0b3e0f7a-21e5-4209-8d5b-b63c6b9de3cc.aspx)|
+|Database availability networks|[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Availability Groups](http://technet.microsoft.com/library/0b3e0f7a-21e5-4209-8d5b-b63c6b9de3cc.aspx)|
 
 ## Mailbox database copy permissions
 
@@ -50,10 +51,7 @@ You can use the features in the following table to add, remove, update, and acti
 
 |**Feature**|**Permissions required**|
 |:-----|:-----|
-|Database switchover  <br/> |[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Copies](http://technet.microsoft.com/library/71a95f5b-1f75-4ae9-9ee9-515c3a19d394.aspx) <br/> |
-|Mailbox database copies  <br/> |[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Copies](http://technet.microsoft.com/library/71a95f5b-1f75-4ae9-9ee9-515c3a19d394.aspx) <br/> |
-|Server switchover  <br/> |[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Copies](http://technet.microsoft.com/library/71a95f5b-1f75-4ae9-9ee9-515c3a19d394.aspx) <br/> |
-|Update a mailbox database copy  <br/> |[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Copies](http://technet.microsoft.com/library/71a95f5b-1f75-4ae9-9ee9-515c3a19d394.aspx) <br/> |
-
-
-
+|Database switchover|[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Copies](http://technet.microsoft.com/library/71a95f5b-1f75-4ae9-9ee9-515c3a19d394.aspx)|
+|Mailbox database copies|[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Copies](http://technet.microsoft.com/library/71a95f5b-1f75-4ae9-9ee9-515c3a19d394.aspx)|
+|Server switchover|[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Copies](http://technet.microsoft.com/library/71a95f5b-1f75-4ae9-9ee9-515c3a19d394.aspx)|
+|Update a mailbox database copy|[Organization Management](http://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Database Copies](http://technet.microsoft.com/library/71a95f5b-1f75-4ae9-9ee9-515c3a19d394.aspx)|

@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Domains: Exchange 2013 Help'
 TOCTitle: Domains
 ms:assetid: 11748c2d-2e32-43a4-b77d-e0c17db6200b
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ673041(v=EXCHG.150)
 ms:contentKeyID: 49289175
 ms.date: 07/14/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Domains
 
- 
-
-_**Applies to:** Exchange Server 2013, Office 365_
-
+_**Applies to:** Exchange Server 2013_
 
 Domains represent SMTP namespaces for which email directories and mailboxes are set up. By configuring the domains that interact with your Microsoft Exchange Server 2013 organization, you can configure how email to and from various domains is processed by Exchange.
 
@@ -30,4 +31,3 @@ In Exchange 2013, you create remote domain entries to define the settings for me
 Settings for remote domains are global configuration settings for your Exchange organization. Remote domain settings are applied to messages during categorization. When recipient resolution occurs, the recipient domain is matched against the configured remote domains. If a remote domain configuration blocks a specific message type from being sent to recipients in that domain, the message is deleted. If you specify a particular message format for the remote domain, the message headers and content are modified. The settings apply to all messages that are processed by the Exchange organization.
 
 For more information about remote domains, see [Remote domains](remote-domains-exchange-2013-help.md).
-

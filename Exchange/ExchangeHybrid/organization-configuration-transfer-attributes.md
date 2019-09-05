@@ -1,14 +1,15 @@
 ---
 title: "Organization Configuration Transfer Attributes"
-ms.author: dstrome
-author: dstrome
+ms.author: dmaguire
+author: msdmaguire
 manager: serdars
 ms.date: 6/25/2018
-ms.audience: ITPro
+ms.reviewer: 
+audience: ITPro
 ms.topic: article
 ms.prod: exchange-server-it-pro
 localization_priority: Normal
-ms.collection: 
+ms.collection:
 - Hybrid
 - M365-email-calendar
 ms.assetid: 696bddbc-d86b-4f43-8dc5-bf3d1f10a02c
@@ -18,223 +19,217 @@ description: "The following attributes can be copied from an on-premises Exchang
 # Organization Configuration Transfer Attributes
 
 The following attributes can be copied from an on-premises Exchange organization to Exchange Online when the Organization Configuration Transfer option is selected in the Hybrid Configuration Wizard.
-  
- **OWA Mailbox Policy**
-  
-|||
+
+## OWA Mailbox Policy
+
+|**OWAMailboxPolicy**|**Available In**|
 |:-----|:-----|
-|**OWAMailboxPolicy** <br/> |**Available In** <br/> |
-| ActionForUnknownFileAndMIMETypes  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| ActiveSyncIntegrationEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllAddressListsEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowCopyContactsToDeviceAddressBook  <br/> | Exchange 2013, 2016  <br/> |
-| AllowedFileTypes  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowedMimeTypes  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowOfflineOn  <br/> | Exchange 2013, 2016  <br/> |
-| BlockedFileTypes  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| BlockedMimeTypes  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| CalendarEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| ClassicAttachmentsEnabled  <br/> | Exchange 2016  <br/> |
-| ContactsEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| DefaultTheme  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| DelegateAccessEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| DirectFileAccessOnPrivateComputersEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| DirectFileAccessOnPublicComputersEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| DisplayPhotosEnabled  <br/> | Exchange 2013, 2016  <br/> |
-| ExplicitLogonEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| ForceSaveAttachmentFilteringEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| ForceSaveFileTypes  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| ForceSaveMimeTypes  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| ForceWacViewingFirstOnPrivateComputers  <br/> | Exchange 2013, 2016  <br/> |
-| ForceWacViewingFirstOnPublicComputers  <br/> | Exchange 2013, 2016  <br/> |
-| GlobalAddressListEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| Identity  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| InstantMessagingEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| InstantMessagingType  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| IRMEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| IsDefault  <br/> | Exchange 2013, 2016  <br/> |
-| JournalEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| LogonAndErrorLanguage  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| Name  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| NotesEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| OrganizationEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| OutboundCharset  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| OWALightEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| RecoverDeletedItemsEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| ReferenceAttachmentsEnabled  <br/> | Exchange 2016  <br/> |
-| RemindersAndNotificationsEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| ReportJunkEmailEnabled  <br/> | Exchange 2013, 2016  <br/> |
-| RulesEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| SaveAttachmentsToCloudEnabled  <br/> | Exchange 2016  <br/> |
-| SearchFoldersEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| SetPhotoEnabled  <br/> | Exchange 2013, 2016  <br/> |
-| SetPhotoURL  <br/> | Exchange 2013, 2016  <br/> |
-| SignaturesEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| SpellCheckerEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| TasksEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| TextMessagingEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| ThemeSelectionEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| UMIntegrationEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| UseGB18030  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| UseISO885915  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| WacEditingEnabled  <br/> | Exchange 2016  <br/> |
-| WacExternalServicesEnabled  <br/> | Exchange 2013, 2016  <br/> |
-| WacOMEXEnabled  <br/> | Exchange 2013, 2016  <br/> |
-| WacViewingOnPrivateComputersEnabled  <br/> | Exchange 2013, 2016  <br/> |
-| WacViewingOnPublicComputersEnabled  <br/> | Exchange 2013, 2016  <br/> |
-| WebPartsFrameOptionsType  <br/> | Exchange 2013, 2016  <br/> |
-   
- **Retention Policy**
-  
-|||
+|ActionForUnknownFileAndMIMETypes|Exchange 2010, 2013, 2016|
+|ActiveSyncIntegrationEnabled|Exchange 2010, 2013, 2016|
+|AllAddressListsEnabled|Exchange 2010, 2013, 2016|
+|AllowCopyContactsToDeviceAddressBook|Exchange 2013, 2016|
+|AllowedFileTypes|Exchange 2010, 2013, 2016|
+|AllowedMimeTypes|Exchange 2010, 2013, 2016|
+|AllowOfflineOn|Exchange 2013, 2016|
+|BlockedFileTypes|Exchange 2010, 2013, 2016|
+|BlockedMimeTypes|Exchange 2010, 2013, 2016|
+|CalendarEnabled|Exchange 2010, 2013, 2016|
+|ClassicAttachmentsEnabled|Exchange 2016|
+|ContactsEnabled|Exchange 2010, 2013, 2016|
+|DefaultTheme|Exchange 2010, 2013, 2016|
+|DelegateAccessEnabled|Exchange 2010, 2013, 2016|
+|DirectFileAccessOnPrivateComputersEnabled|Exchange 2010, 2013, 2016|
+|DirectFileAccessOnPublicComputersEnabled|Exchange 2010, 2013, 2016|
+|DisplayPhotosEnabled|Exchange 2013, 2016|
+|ExplicitLogonEnabled|Exchange 2010, 2013, 2016|
+|ForceSaveAttachmentFilteringEnabled|Exchange 2010, 2013, 2016|
+|ForceSaveFileTypes|Exchange 2010, 2013, 2016|
+|ForceSaveMimeTypes|Exchange 2010, 2013, 2016|
+|ForceWacViewingFirstOnPrivateComputers|Exchange 2013, 2016|
+|ForceWacViewingFirstOnPublicComputers|Exchange 2013, 2016|
+|GlobalAddressListEnabled|Exchange 2010, 2013, 2016|
+|Identity|Exchange 2010, 2013, 2016|
+|InstantMessagingEnabled|Exchange 2010, 2013, 2016|
+|InstantMessagingType|Exchange 2010, 2013, 2016|
+|IRMEnabled|Exchange 2010, 2013, 2016|
+|IsDefault|Exchange 2013, 2016|
+|JournalEnabled|Exchange 2010, 2013, 2016|
+|LogonAndErrorLanguage|Exchange 2010, 2013, 2016|
+|Name|Exchange 2010, 2013, 2016|
+|NotesEnabled|Exchange 2010, 2013, 2016|
+|OrganizationEnabled|Exchange 2010, 2013, 2016|
+|OutboundCharset|Exchange 2010, 2013, 2016|
+|OWALightEnabled|Exchange 2010, 2013, 2016|
+|RecoverDeletedItemsEnabled|Exchange 2010, 2013, 2016|
+|ReferenceAttachmentsEnabled|Exchange 2016|
+|RemindersAndNotificationsEnabled|Exchange 2010, 2013, 2016|
+|ReportJunkEmailEnabled|Exchange 2013, 2016|
+|RulesEnabled|Exchange 2010, 2013, 2016|
+|SaveAttachmentsToCloudEnabled|Exchange 2016|
+|SearchFoldersEnabled|Exchange 2010, 2013, 2016|
+|SetPhotoEnabled|Exchange 2013, 2016|
+|SetPhotoURL|Exchange 2013, 2016|
+|SignaturesEnabled|Exchange 2010, 2013, 2016|
+|SpellCheckerEnabled|Exchange 2010, 2013, 2016|
+|TasksEnabled|Exchange 2010, 2013, 2016|
+|TextMessagingEnabled|Exchange 2010, 2013, 2016|
+|ThemeSelectionEnabled|Exchange 2010, 2013, 2016|
+|UMIntegrationEnabled|Exchange 2010, 2013, 2016|
+|UseGB18030|Exchange 2010, 2013, 2016|
+|UseISO885915|Exchange 2010, 2013, 2016|
+|WacEditingEnabled|Exchange 2016|
+|WacExternalServicesEnabled|Exchange 2013, 2016|
+|WacOMEXEnabled|Exchange 2013, 2016|
+|WacViewingOnPrivateComputersEnabled|Exchange 2013, 2016|
+|WacViewingOnPublicComputersEnabled|Exchange 2013, 2016|
+|WebPartsFrameOptionsType|Exchange 2013, 2016|
+
+## Retention Policy
+
+|**Retention Policy**|**Available In**|
 |:-----|:-----|
-|**Retention Policy** <br/> |**Available In** <br/> |
-| Identity  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| IsDefault  <br/> | Exchange 2013, 2016  <br/> |
-| IsDefaultArbitrationMailbox  <br/> | Exchange 2013, 2016  <br/> |
-| Name  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| RetentionId  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| RetentionPolicyTagLinks  <br/> | Exchange 2010, 2013, 2016  <br/> |
-   
- **Retention Policy Tags**
-  
-|||
+|Identity|Exchange 2010, 2013, 2016|
+|IsDefault|Exchange 2013, 2016|
+|IsDefaultArbitrationMailbox|Exchange 2013, 2016|
+|Name|Exchange 2010, 2013, 2016|
+|RetentionId|Exchange 2010, 2013, 2016|
+|RetentionPolicyTagLinks|Exchange 2010, 2013, 2016|
+
+## Retention Policy Tags**
+
+|**RetentionPolicyTag**|**Available In**|
 |:-----|:-----|
-|**RetentionPolicyTag** <br/> |**Available In** <br/> |
-| AgeLimitForRetention  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| Comment  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| Identity  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| LegacyManagedFolder  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| LocalizedComment  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| LocalizedRetentionPolicyTagName  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| MessageClass  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| MustDisplayCommentEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| Name  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| RetentionAction  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| RetentionEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| RetentionId  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| SystemTag  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| Type  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| IsDefaultAutoGroupPolicyTag  <br/> | Exchange 2013, 2016  <br/> |
-| IsDefaultModeratedRecipientsPolicyTag  <br/> | Exchange 2013, 2016  <br/> |
-   
- **Mobile Device Mailbox Policy**
-  
-|||
+|AgeLimitForRetention|Exchange 2010, 2013, 2016|
+|Comment|Exchange 2010, 2013, 2016|
+|Identity|Exchange 2010, 2013, 2016|
+|LegacyManagedFolder|Exchange 2010, 2013, 2016|
+|LocalizedComment|Exchange 2010, 2013, 2016|
+|LocalizedRetentionPolicyTagName|Exchange 2010, 2013, 2016|
+|MessageClass|Exchange 2010, 2013, 2016|
+|MustDisplayCommentEnabled|Exchange 2010, 2013, 2016|
+|Name|Exchange 2010, 2013, 2016|
+|RetentionAction|Exchange 2010, 2013, 2016|
+|RetentionEnabled|Exchange 2010, 2013, 2016|
+|RetentionId|Exchange 2010, 2013, 2016|
+|SystemTag|Exchange 2010, 2013, 2016|
+|Type|Exchange 2010, 2013, 2016|
+|IsDefaultAutoGroupPolicyTag|Exchange 2013, 2016|
+|IsDefaultModeratedRecipientsPolicyTag|Exchange 2013, 2016|
+
+### Mobile Device Mailbox Policy
+
+|**MobileDeviceMailboxPolicy**|**Available In**|
 |:-----|:-----|
-|**MobileDeviceMailboxPolicy** <br/> |**Available In** <br/> |
-| AllowBluetooth  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowBrowser  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowCamera  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowConsumerEmail  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowDesktopSync  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowExternalDeviceManagement  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowHTMLEmail  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowInternetSharing  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowIrDA  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowMobileOTAUpdate  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowNonProvisionableDevices  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowPOPIMAPEmail  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowRemoteDesktop  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowSimplePassword  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowSMIMEEncryptionAlgorithmNegotiation  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowSMIMESoftCerts  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowStorageCard  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowTextMessaging  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowUnsignedApplications  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowUnsignedInstallationPackages  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AllowWiFi  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AlphanumericPasswordRequired  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| ApprovedApplicationList  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| AttachmentsEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| DeviceEncryptionEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| DevicePolicyRefreshInterval  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| Identity  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| IrmEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| IsDefault  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| MaxAttachmentSize  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| MaxCalendarAgeFilter  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| MaxEmailAgeFilter  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| MaxEmailBodyTruncationSize  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| MaxEmailHTMLBodyTruncationSize  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| MaxInactivityTimeLock  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| MaxPasswordFailedAttempts  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| MinPasswordComplexCharacters  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| MinPasswordLength  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| Name  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| PasswordEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| PasswordExpiration  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| PasswordHistory  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| PasswordRecoveryEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| RequireDeviceEncryption  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| RequireEncryptedSMIMEMessages  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| RequireEncryptionSMIMEAlgorithm  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| RequireManualSyncWhenRoaming  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| RequireSignedSMIMEAlgorithm  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| RequireSignedSMIMEMessages  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| RequireStorageCardEncryption  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| UnapprovedInROMApplicationList  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| UNCAccessEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-| WSSAccessEnabled  <br/> | Exchange 2010, 2013, 2016  <br/> |
-   
- **Active Sync Mailbox Policy**
-  
+|AllowBluetooth|Exchange 2010, 2013, 2016|
+|AllowBrowser|Exchange 2010, 2013, 2016|
+|AllowCamera|Exchange 2010, 2013, 2016|
+|AllowConsumerEmail|Exchange 2010, 2013, 2016|
+|AllowDesktopSync|Exchange 2010, 2013, 2016|
+|AllowExternalDeviceManagement|Exchange 2010, 2013, 2016|
+|AllowHTMLEmail|Exchange 2010, 2013, 2016|
+|AllowInternetSharing|Exchange 2010, 2013, 2016|
+|AllowIrDA|Exchange 2010, 2013, 2016|
+|AllowMobileOTAUpdate|Exchange 2010, 2013, 2016|
+|AllowNonProvisionableDevices|Exchange 2010, 2013, 2016|
+|AllowPOPIMAPEmail|Exchange 2010, 2013, 2016|
+|AllowRemoteDesktop|Exchange 2010, 2013, 2016|
+|AllowSimplePassword|Exchange 2010, 2013, 2016|
+|AllowSMIMEEncryptionAlgorithmNegotiation|Exchange 2010, 2013, 2016|
+|AllowSMIMESoftCerts|Exchange 2010, 2013, 2016|
+|AllowStorageCard|Exchange 2010, 2013, 2016|
+|AllowTextMessaging|Exchange 2010, 2013, 2016|
+|AllowUnsignedApplications|Exchange 2010, 2013, 2016|
+|AllowUnsignedInstallationPackages|Exchange 2010, 2013, 2016|
+|AllowWiFi|Exchange 2010, 2013, 2016|
+|AlphanumericPasswordRequired|Exchange 2010, 2013, 2016|
+|ApprovedApplicationList|Exchange 2010, 2013, 2016|
+|AttachmentsEnabled|Exchange 2010, 2013, 2016|
+|DeviceEncryptionEnabled|Exchange 2010, 2013, 2016|
+|DevicePolicyRefreshInterval|Exchange 2010, 2013, 2016|
+|Identity|Exchange 2010, 2013, 2016|
+|IrmEnabled|Exchange 2010, 2013, 2016|
+|IsDefault|Exchange 2010, 2013, 2016|
+|MaxAttachmentSize|Exchange 2010, 2013, 2016|
+|MaxCalendarAgeFilter|Exchange 2010, 2013, 2016|
+|MaxEmailAgeFilter|Exchange 2010, 2013, 2016|
+|MaxEmailBodyTruncationSize|Exchange 2010, 2013, 2016|
+|MaxEmailHTMLBodyTruncationSize|Exchange 2010, 2013, 2016|
+|MaxInactivityTimeLock|Exchange 2010, 2013, 2016|
+|MaxPasswordFailedAttempts|Exchange 2010, 2013, 2016|
+|MinPasswordComplexCharacters|Exchange 2010, 2013, 2016|
+|MinPasswordLength|Exchange 2010, 2013, 2016|
+|Name|Exchange 2010, 2013, 2016|
+|PasswordEnabled|Exchange 2010, 2013, 2016|
+|PasswordExpiration|Exchange 2010, 2013, 2016|
+|PasswordHistory|Exchange 2010, 2013, 2016|
+|PasswordRecoveryEnabled|Exchange 2010, 2013, 2016|
+|RequireDeviceEncryption|Exchange 2010, 2013, 2016|
+|RequireEncryptedSMIMEMessages|Exchange 2010, 2013, 2016|
+|RequireEncryptionSMIMEAlgorithm|Exchange 2010, 2013, 2016|
+|RequireManualSyncWhenRoaming|Exchange 2010, 2013, 2016|
+|RequireSignedSMIMEAlgorithm|Exchange 2010, 2013, 2016|
+|RequireSignedSMIMEMessages|Exchange 2010, 2013, 2016|
+|RequireStorageCardEncryption|Exchange 2010, 2013, 2016|
+|UnapprovedInROMApplicationList|Exchange 2010, 2013, 2016|
+|UNCAccessEnabled|Exchange 2010, 2013, 2016|
+|WSSAccessEnabled|Exchange 2010, 2013, 2016|
+
+## Active Sync Mailbox Policy**
+
 |**ActiveSyncMailboxPolicy**|**Available In**|
 |:-----|:-----|
-|AllowApplePushNotifications  <br/> |Exchange 2013, 2016  <br/> |
-|AllowBluetooth  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowBrowser  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowCamera  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowConsumerEmail  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowDesktopSync  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowExternalDeviceManagement  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowHTMLEmail  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowInternetSharing  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowIrDA  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowMobileOTAUpdate  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowNonProvisionableDevices  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowPOPIMAPEmail  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowRemoteDesktop  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowSimpleDevicePassword  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowSMIMEEncryptionAlgorithmNegotiation  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowSMIMESoftCerts  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowStorageCard  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowTextMessaging  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowUnsignedApplications  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowUnsignedInstallationPackages  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AllowWiFi  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AlphanumericDevicePasswordRequired  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|ApprovedApplicationList  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|AttachmentsEnabled  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|DeviceEncryptionEnabled  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|DevicePasswordEnabled  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|DevicePasswordExpiration  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|DevicePasswordHistory  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|DevicePolicyRefreshInterval  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|Identity  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|IrmEnabled  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|IsDefault  <br/> |Exchange 2013, 2016  <br/> |
-|IsDefaultPolicy  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|MaxAttachmentSize  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|MaxCalendarAgeFilter  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|MaxDevicePasswordFailedAttempts  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|MaxEmailAgeFilter  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|MaxEmailBodyTruncationSize  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|MaxEmailHTMLBodyTruncationSize  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|MaxInactivityTimeDeviceLock  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|MinDevicePasswordComplexCharacters  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|MinDevicePasswordLength  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|Name  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|PasswordRecoveryEnabled  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|RequireDeviceEncryption  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|RequireEncryptedSMIMEMessages  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|RequireEncryptionSMIMEAlgorithm  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|RequireManualSyncWhenRoaming  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|RequireSignedSMIMEAlgorithm  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|RequireSignedSMIMEMessages  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|RequireStorageCardEncryption  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|UnapprovedInROMApplicationList  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|UNCAccessEnabled  <br/> |Exchange 2010, 2013, 2016  <br/> |
-|WSSAccessEnabled  <br/> |Exchange 2010, 2013, 2016  <br/> |
-   
-
+|AllowApplePushNotifications|Exchange 2013, 2016|
+|AllowBluetooth|Exchange 2010, 2013, 2016|
+|AllowBrowser|Exchange 2010, 2013, 2016|
+|AllowCamera|Exchange 2010, 2013, 2016|
+|AllowConsumerEmail|Exchange 2010, 2013, 2016|
+|AllowDesktopSync|Exchange 2010, 2013, 2016|
+|AllowExternalDeviceManagement|Exchange 2010, 2013, 2016|
+|AllowHTMLEmail|Exchange 2010, 2013, 2016|
+|AllowInternetSharing|Exchange 2010, 2013, 2016|
+|AllowIrDA|Exchange 2010, 2013, 2016|
+|AllowMobileOTAUpdate|Exchange 2010, 2013, 2016|
+|AllowNonProvisionableDevices|Exchange 2010, 2013, 2016|
+|AllowPOPIMAPEmail|Exchange 2010, 2013, 2016|
+|AllowRemoteDesktop|Exchange 2010, 2013, 2016|
+|AllowSimpleDevicePassword|Exchange 2010, 2013, 2016|
+|AllowSMIMEEncryptionAlgorithmNegotiation|Exchange 2010, 2013, 2016|
+|AllowSMIMESoftCerts|Exchange 2010, 2013, 2016|
+|AllowStorageCard|Exchange 2010, 2013, 2016|
+|AllowTextMessaging|Exchange 2010, 2013, 2016|
+|AllowUnsignedApplications|Exchange 2010, 2013, 2016|
+|AllowUnsignedInstallationPackages|Exchange 2010, 2013, 2016|
+|AllowWiFi|Exchange 2010, 2013, 2016|
+|AlphanumericDevicePasswordRequired|Exchange 2010, 2013, 2016|
+|ApprovedApplicationList|Exchange 2010, 2013, 2016|
+|AttachmentsEnabled|Exchange 2010, 2013, 2016|
+|DeviceEncryptionEnabled|Exchange 2010, 2013, 2016|
+|DevicePasswordEnabled|Exchange 2010, 2013, 2016|
+|DevicePasswordExpiration|Exchange 2010, 2013, 2016|
+|DevicePasswordHistory|Exchange 2010, 2013, 2016|
+|DevicePolicyRefreshInterval|Exchange 2010, 2013, 2016|
+|Identity|Exchange 2010, 2013, 2016|
+|IrmEnabled|Exchange 2010, 2013, 2016|
+|IsDefault|Exchange 2013, 2016|
+|IsDefaultPolicy|Exchange 2010, 2013, 2016|
+|MaxAttachmentSize|Exchange 2010, 2013, 2016|
+|MaxCalendarAgeFilter|Exchange 2010, 2013, 2016|
+|MaxDevicePasswordFailedAttempts|Exchange 2010, 2013, 2016|
+|MaxEmailAgeFilter|Exchange 2010, 2013, 2016|
+|MaxEmailBodyTruncationSize|Exchange 2010, 2013, 2016|
+|MaxEmailHTMLBodyTruncationSize|Exchange 2010, 2013, 2016|
+|MaxInactivityTimeDeviceLock|Exchange 2010, 2013, 2016|
+|MinDevicePasswordComplexCharacters|Exchange 2010, 2013, 2016|
+|MinDevicePasswordLength|Exchange 2010, 2013, 2016|
+|Name|Exchange 2010, 2013, 2016|
+|PasswordRecoveryEnabled|Exchange 2010, 2013, 2016|
+|RequireDeviceEncryption|Exchange 2010, 2013, 2016|
+|RequireEncryptedSMIMEMessages|Exchange 2010, 2013, 2016|
+|RequireEncryptionSMIMEAlgorithm|Exchange 2010, 2013, 2016|
+|RequireManualSyncWhenRoaming|Exchange 2010, 2013, 2016|
+|RequireSignedSMIMEAlgorithm|Exchange 2010, 2013, 2016|
+|RequireSignedSMIMEMessages|Exchange 2010, 2013, 2016|
+|RequireStorageCardEncryption|Exchange 2010, 2013, 2016|
+|UnapprovedInROMApplicationList|Exchange 2010, 2013, 2016|
+|UNCAccessEnabled|Exchange 2010, 2013, 2016|
+|WSSAccessEnabled|Exchange 2010, 2013, 2016|

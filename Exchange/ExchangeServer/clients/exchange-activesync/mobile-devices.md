@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 93a949e7-b3ef-43ea-ae0c-6698826fc8d2
 ms.date: 7/5/2018
+ms.reviewer: 
 title: Mobile devices
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -37,6 +38,3 @@ Exchange ActiveSync lets users generate a recovery password. This recovery passw
 ## POP3 and IMAP4 limitations
 
 If your mobile device doesn't support Exchange ActiveSync, or you don't need the rich feature set that Exchange ActiveSync provides, you can use POP3 or IMAP4 to access your email on your mobile device. For more information about POP3 and IMAP4 access to your mailbox, see [POP3 and IMAP4 in Exchange Server](../../clients/pop3-and-imap4/pop3-and-imap4.md).
-
-
-

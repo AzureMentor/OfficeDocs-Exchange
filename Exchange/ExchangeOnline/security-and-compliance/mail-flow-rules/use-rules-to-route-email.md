@@ -1,16 +1,18 @@
 ---
 description: Learn how to use mail flow rules to route email messages based on their contents in Exchange Online.
 localization_priority: Normal
-ms.author: chrisda
+ms.author: dmaguire
 ms.topic: article
-author: chrisda
+author: msdmaguire
 ms.service: exchange-online
 ms.assetid: 4c5bee1b-58b5-4152-baef-86fa103050ae
 ms.collection: 
 - exchange-online
 - M365-email-calendar
 ms.date: 6/23/2018
-ms.audience: ITPro
+ms.reviewer: 
+manager: serdars
+audience: ITPro
 title: Use mail flow rules to route email based on a list of words, phrases, or patterns in Exchange Online
 
 ---
@@ -34,7 +36,7 @@ This example blocks messages with common typos.
 If your list of words, phrases, or patterns is long, you can put them in a text file with each word, phrase, or pattern on its own line. Use Exchange Online PowerShell to read in the list of keywords into a variable, create a mail flow rule, and assign the variable with the keywords to the mail flow rule condition. For example, the following script takes a list of misspellings from a file called C:\My Documents\misspelled_companyname.txt.
 
 ```
-$Keywords=Import-Content "C:\My Documents\misspelled_companyname.txt"
+$Keywords=Get-Content "C:\My Documents\misspelled_companyname.txt"
 New-TransportRule -Name "Block messages with unacceptable words" -SubjectOrBodyContainsWords $Keywords -SentToScope "NotInOrganization" -RejectMessageReasonText "Do not use internal acronyms, product names, or misspellings in external communications."
 ```
 
@@ -59,4 +61,3 @@ For example, this text file contains common misspellings of Microsoft.
 ```
 
 To learn how to specify patterns using regular expressions, see [Regular Expression Reference](https://go.microsoft.com/fwlink/p/?LinkId=532394).
-

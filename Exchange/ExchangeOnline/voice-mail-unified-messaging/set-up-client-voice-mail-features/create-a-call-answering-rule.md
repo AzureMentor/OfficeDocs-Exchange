@@ -2,26 +2,27 @@
 localization_priority: Normal
 description: You can use Exchange Online PowerShell to create one or more call answering rules for a user. You can also use the New-UMCallAnsweringRule cmdlet in a PowerShell script to create call answering rules for multiple users.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 0976f8f2-3449-44f1-b0d1-20c91622e827
 ms.date: 4/8/2015
-title: Create a call answering rule
+ms.reviewer: 
+title: Create a call answering rule in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Create a call answering rule
+# Create a call answering rule in Exchange Online
 
 You can use Exchange Online PowerShell to create one or more call answering rules for a user. You can also use the **New-UMCallAnsweringRule** cmdlet in a PowerShell script to create call answering rules for multiple users.
 
 Call answering rules are applied to incoming calls similar to the way Inbox rules are applied to incoming email messages. By default, when a user is enabled for Unified Messaging (UM), no call answering rules are configured. Even so, incoming calls are answered by the mail system and callers are prompted to leave a voice message.
 
 > [!NOTE]
-> Users that are UM-enabled can sign in to Outlook Web App to create, manage, and remove call answering rules.
+> Users that are UM-enabled can sign in to Outlook on the web (formerly known as Outlook Web App)p to create, manage, and remove call answering rules.
 
 For additional management tasks related to Call Answering Rules, see [Forwarding calls procedures](forwarding-calls-procedures.md).
 
@@ -42,7 +43,7 @@ For additional management tasks related to Call Answering Rules, see [Forwarding
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use Exchange Online PowerShell to create a call answering rule
 
@@ -79,6 +80,3 @@ This example creates the call answering rule `MyCallAnsweringRule` in the mailbo
 ```
 New-UMCallAnsweringRule -Name MyCallAnsweringRule -Priority 2 -Mailbox tonysmith -ScheduleStatus 0x4 - -KeyMappings "1,1,Receptionist,,,,,45678,","5,2,Urgent Issues,23456,23,45671,50,,"
 ```
-
-
-

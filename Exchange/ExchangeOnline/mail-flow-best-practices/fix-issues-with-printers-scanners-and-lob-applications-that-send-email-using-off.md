@@ -2,9 +2,10 @@
 localization_priority: Normal
 description: 'Fix issues with printers, scanners, and line of business applications that use Office 365 to send email. '
 ms.topic: troubleshooting
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: c75542a8-c792-42c0-a8c5-291df987512d
+ms.reviewer: 
 title: Fix issues with printers, scanners, and LOB applications that send email using Office 365
 ms.collection: 
 - exchange-online
@@ -70,10 +71,10 @@ Below are the three configuration options to help you identify which one is in u
 |
 |**Printer setting**|**Value**|
 |:-----|:-----|
-|Server/smart host  <br/> |smtp.office365.com  <br/> |
-|Port  <br/> |Port 587 (recommended) or port 25  <br/> |
-|TLS/ StartTLS  <br/> |Enabled  <br/> |
-|Username/email address and password  <br/> |Login credentials of Office 365 mailbox the printer uses  <br/> |
+|Server/smart host|smtp.office365.com|
+|Port|Port 587 (recommended) or port 25|
+|TLS/ StartTLS|Enabled|
+|Username/email address and password|Login credentials of Office 365 mailbox the printer uses|
 
 2. If your printer didn't require a password for the email address you entered, your printer is trying to send emails without logging on to Office 365. SMTP client submission requires your printer to log on to Office 365. Direct send and Office 365 SMTP relay do not require a logon; consider one of these options instead.
 
@@ -173,5 +174,3 @@ Office 365 SMTP relay requires your device to send email from a static IP addres
 ## See also
 
 [How to configure IIS for relay with Office 365](how-to-configure-iis-for-relay-with-office-365.md)
-
-

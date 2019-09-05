@@ -7,6 +7,7 @@ f1_keywords:
 ms.author: dmaguire
 ms.assetid: 961978ef-f434-472d-a811-1801733869da
 ms.date: 8/15/2018
+ms.reviewer: 
 description: Learn what happens and what you need to do to prepare for a cutover migration to Office 365.
 title: What you need to know about a cutover email migration to Office 365
 ms.collection: 
@@ -18,7 +19,7 @@ search.appverid:
 - MED150
 - MBS150
 - BCS160
-ms.audience: Admin
+audience: Admin
 ms.custom: Adm_O365
 ms.service: exchange-online
 manager: serdars
@@ -45,11 +46,11 @@ Setting up an email cutover migration to Office 365 requires careful planning. B
 
 - You can move your entire email organization to Office 365 over a few days and manage user accounts in Office 365.
 
--  A maximum of 2,000 mailboxes can be migrated to Office 365 by using a cutover Exchange migration. However, it is recommended that you only migrate 150 mailboxes.
+- A maximum of 2,000 mailboxes can be migrated to Office 365 by using a cutover Exchange migration. However, it is recommended that you only migrate 150 mailboxes.
 
 - The primary domain name used for your on-premises Exchange organization must be an accepted as a domain owned by you in your Office 365 organization.
 
--  After the migration is complete, each user who has an on-premises Exchange mailbox also will be a new user in Office 365. But you'll still have to assign licenses to users whose mailboxes are migrated.
+- After the migration is complete, each user who has an on-premises Exchange mailbox also will be a new user in Office 365. But you'll still have to assign licenses to users whose mailboxes are migrated.
 
 ## Impact to users
 <a name="Impacttousers"> </a>
@@ -83,7 +84,7 @@ The main steps you perform for a cutover migration are shown in the following il
 
 8. The administrator completes post-migration tasks in Office 365 (assigns licenses to users and creates an Autodiscover Domain Name System (DNS) record), and optionally decommissions the on-premises Exchange servers.
 
-    See how-to steps in [Complete post migration tasks](cutover-migration-to-office-365.md#PostMigration).
+    See how-to steps in [Complete post migration tasks](cutover-migration-to-office-365.md#complete-post-migration-tasks).
 
 9. The administrator sends a welcome letter to users to tell them about Office 365 and to describe how to sign in to their new mailboxes.
 
@@ -92,7 +93,7 @@ The main steps you perform for a cutover migration are shown in the following il
 
 If you're comfortable setting up a migration to Office 365, here are the tasks that need to be done:
 
--  Set up Exchange Server by using the Exchange admin center.
+- Set up Exchange Server by using the Exchange admin center.
 
 - Change your organization's MX record to point to Office 365 when the migration is complete. Your MX record is how other mail systems find the location of your email system. Changing your MX record allows other mail systems to begin to send email directly to the new mailboxes in Office 365. We provide instructions on how to do this for many DNS providers. To set up your public DNS servers, you need to change your organization's MX record to point to Office 365 if you choose to route all incoming internet mail for your on-premises Exchange organization through Office 365.
 
@@ -104,5 +105,3 @@ If you're ready to begin a cutover migration, go to [Perform a cutover migration
 [Ways to migrate email to Office 365](mailbox-migration.md)
 
 [Use PowerShell to perform a cutover migration to Office 365](https://go.microsoft.com/fwlink/p/?LinkId=615253)
-
-

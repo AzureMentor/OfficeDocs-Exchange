@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: Learn how to remove address book policies (ABPs) from Exchange Online.
 ms.topic: article
-author: kwekua
-ms.author: kwekua
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: c20c6f82-2f75-4116-9be1-c5af10113f71
 ms.date: 6/24/2018
+ms.reviewer: 
 title: Remove an address book policy in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -108,4 +109,3 @@ To verify that you've successfully removed an ABP, use either of these procedure
   ```
   Get-AddressBookPolicy -Identity "<ABPName>"
   ```
-

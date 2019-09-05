@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: f4be27b7-1d7c-47b4-87ac-bfdfcc046f00
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Active Manager
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -39,15 +40,15 @@ When a failure occurs that prevents access to the active copy of a replicated ma
 
 4. After the ACLL process has completed, the value of the _AutoDatabaseMountDial_ for the Mailbox servers hosting copies of the database is compared with the copy queue length of the database being activated. At this point, either:
 
-  - The number of missing log files is equal to or less than the value of _AutoDatabaseMountDial_, in which case Step 5 occurs.
+   - The number of missing log files is equal to or less than the value of _AutoDatabaseMountDial_, in which case Step 5 occurs.
 
-  - The number of missing log files is greater than the value of _AutoDatabaseMountDial_, in which case Active Manager will try to activate next best available copy, if there is one.
+   - The number of missing log files is greater than the value of _AutoDatabaseMountDial_, in which case Active Manager will try to activate next best available copy, if there is one.
 
 5. The PAM issues a mount request to the Microsoft Exchange Information Store via remote procedure call (RPC). At this point, either:
 
-  - The database mounts and is made available to clients.
+   - The database mounts and is made available to clients.
 
-  - The database doesn't mount, and PAM performs steps 3 and 4 on the next best copy (if one is available).
+   - The database doesn't mount, and PAM performs steps 3 and 4 on the next best copy (if one is available).
 
 In earlier versions of Exchange, the BCS process evaluated several aspects of each database copy to determine the best copy to activate. These included:
 
@@ -134,6 +135,3 @@ If none of the database copies meets all of the eighth set of criteria, Active M
 If none of the database copies meets the ninth set of criteria, Active Manager tries to activate any database copy with a status of Healthy, DisconnectedAndHealthy, DisconnectedAndResynchronizing, or SeedingSource (the tenth set of criteria). If it can't find any database copies that meet the tenth set of criteria, it isn't able to automatically activate a database copy.
 
 After one or more copies are located that meet one or more sets of criteria, the ACLL process copies any log files from the original source to the potential new active copy. After the ACLL process has completed, the PAM issues a mount request and either the database mounts and is made available to clients, or the database doesn't mount and the PAM searches for the next best copy (if one is available).
-
-
-

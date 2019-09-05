@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: 'Summary: Admins can learn how to remove items from the Recoverable Items folder in Exchange Online.'
 ms.topic: article
-author: markjjo
-ms.author: markjjo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 82c310f8-de2f-46f2-8e1a-edb6055d6e69
 ms.date: 
+ms.reviewer: 
 title: Clean up or delete items from the Recoverable Items folder in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
-manager: laurawi
+manager: serdars
 
 ---
 
@@ -43,7 +44,7 @@ To learn more about In-Place Hold and Litigation Hold, see [In-Place Hold and Li
 
 This example permanently deletes items from the user Gurinder Singh's Recoverable Items folder and also copies the items to the GurinderSingh-RecoverableItems folder in the Discovery Search Mailbox (a built-in mailbox in Exchange Online).
 
-```
+```powershell
 Search-Mailbox -Identity "Gurinder Singh" -SearchDumpsterOnly -TargetMailbox "Discovery Search Mailbox" -TargetFolder "GurinderSingh-RecoverableItems" -DeleteContent
 ```
 
@@ -62,7 +63,6 @@ To verify that you've successfully cleaned up or deleted items from the Recovera
 
 This example retrieves the size of the Recoverable Items folder and its subfolders and an item count in the folder and each subfolder.
 
-```
+```powershell
 Get-MailboxFolderStatistics -Identity "Gurinder Singh" -FolderScope RecoverableItems | Format-Table Name,FolderAndSubfolderSize,ItemsInFolderAndSubfolders -Auto
 ```
-

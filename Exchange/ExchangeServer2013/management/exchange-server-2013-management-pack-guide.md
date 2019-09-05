@@ -1,30 +1,20 @@
-﻿---
+---
 title: Exchange Server 2013 Management Pack Guide
 TOCTitle: '@NoTitle'
 ms:assetid: 5e3d40c1-9230-467e-be80-633407078468
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Ee758046(v=EXCHG.150)
 ms:contentKeyID: 53181776
-ms.date: 05/14/2016
+ms.date: 
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-<div data-xmlns="http://www.w3.org/1999/xhtml">
-
-<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="http://msdn.microsoft.com/en-us/">
-
-<div data-asp="http://msdn2.microsoft.com/asp">
-
 # Exchange Server 2013 Management Pack Guide
 
-</div>
-
-<div id="mainSection">
-
-<div id="mainBody">
-
-<span> </span>
-
-_**Topic Last Modified:** 2015-03-09_
+_**Applies to:** Exchange Server 2013_
 
 The Microsoft Exchange Server 2013 Management Pack provides comprehensive service health information for your Exchange organization.
 
@@ -52,10 +42,7 @@ The following sections of this guide provide detailed information about the mana
 
 [Appendix B: Additional resources](appendix-b-additional-resources.md)
 
-<div>
-
 ## Guide history
-
 
 <table>
 <colgroup>
@@ -75,17 +62,3 @@ The following sections of this guide provide detailed information about the mana
 </tr>
 </tbody>
 </table>
-
-
-</div>
-
-</div>
-
-<span> </span>
-
-</div>
-
-</div>
-
-</div>
-

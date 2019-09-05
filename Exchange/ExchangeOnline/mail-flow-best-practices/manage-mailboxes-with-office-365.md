@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: 'Summary: How to use hosted mail flow with Office 365.'
 ms.topic: article
-author: tirich
-ms.author: tirich
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 24cac303-c8de-474b-a894-e42683db30f1
 ms.date: 1/6/2017
+ms.reviewer: 
 title: Manage all mailboxes and mail flow using Office 365
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -37,9 +38,9 @@ For this scenario, your organization's mail flow setup looks like the following 
 
 #### Best practices for hosted mail flow scenarios
 
-To set up hosted mail flow, we recommend using the Office 365 setup wizard. To get to the Office 365 setup wizard, go to **Setup** in the Office 365 admin center.
+To set up hosted mail flow, we recommend using the Office 365 setup wizard. To get to the Office 365 setup wizard, go to **Setup** in the Microsoft 365 admin center.
 
-![Screenshot of the Setup option in the Office 365 admin center navigation menu](../media/41bc173f-5a06-4325-b613-b307d3eb0873.png)
+![Screenshot of the Setup option in the admin center navigation menu](../media/41bc173f-5a06-4325-b613-b307d3eb0873.png)
 
 The Office 365 setup wizard walks you through the following steps.
 
@@ -77,5 +78,3 @@ For a full list of setup instructions, check out [Set up Office 365 for business
 [Troubleshoot Office 365 mail flow](troubleshoot-mail-flow.md)
 
 [Test mail flow by validating your Office 365 connectors](test-mail-flow.md)
-
-

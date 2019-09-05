@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can enable callers to transfer calls to users through an auto attendant, or prevent them from doing so. By default this option is enabled, and lets callers transfer calls to UM-enabled users in the Unified Messaging (UM) dial plan that's associated with the UM auto attendant.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: ca961cc8-cc24-4e05-b72d-79979c155cf9
 ms.date: 11/17/2014
-title: Enable or prevent transferring calls from an auto attendant
+ms.reviewer: 
+title: Enable or prevent transferring calls from an auto attendant in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Enable or prevent transferring calls from an auto attendant
+# Enable or prevent transferring calls from an auto attendant in Exchange Online
 
 You can enable callers to transfer calls to users through an auto attendant, or prevent them from doing so. By default this option is enabled, and lets callers transfer calls to UM-enabled users in the Unified Messaging (UM) dial plan that's associated with the UM auto attendant.
 
@@ -33,7 +34,7 @@ For additional management tasks related to UM auto attendants, see [UM auto atte
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to enable or prevent call transfers to users from a UM auto attendant
 
@@ -61,6 +62,3 @@ This example enables call transfers on a UM auto attendant named `MyUMAutoAttend
 ```
 Set-UMAutoAttendant -Identity MyUMAutoAttendant -AllowDialPlanSubscribers $true
 ```
-
-
-

@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: The group naming policy for distribution groups is applied only to groups created by users. When you or other administrators use the Exchange admin center (EAC) to create distribution groups, the group naming policy is ignored and not applied to the group name.
 ms.topic: article
-author: kwekua
-ms.author: kwekua
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 9eb23fc9-3f59-4d09-9077-85c89a051ee0
 ms.date: 11/17/2014
+ms.reviewer: 
 title: Override the distribution group naming policy
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -31,7 +32,7 @@ However, if you use Exchange Online PowerShell to create or rename a distributio
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use Exchange Online PowerShell to override the group naming policy when you create a new group
 
@@ -79,6 +80,3 @@ Get-OrganizationConfig | Format-List DistributionGroupNamingPolicy
 ```
 
 If the format of the display name for the group is different than the one enforced by your organization's group naming policy, it worked.
-
-
-

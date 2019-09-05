@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'UM dial plan procedures: Exchange 2013 Help'
 TOCTitle: UM dial plan procedures
 ms:assetid: 1bda77c8-c4e2-4ae0-a001-76ae029bf843
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ822152(v=EXCHG.150)
 ms:contentKeyID: 49980466
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-# UM dial plan procedures
+# UM dial plan procedures in Exchange Server
 
- 
-
-_**Applies to:** Exchange Online, Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013, Exchange Server 2016_
 
 [Create a UM dial plan](https://docs.microsoft.com/en-us/exchange/voice-mail-unified-messaging/connect-voice-mail-system/create-um-dial-plan)
 
@@ -36,4 +37,3 @@ _**Applies to:** Exchange Online, Exchange Server 2013_
 [Configure a dial plan for users who have similar names](https://docs.microsoft.com/en-us/exchange/voice-mail-unified-messaging/connect-voice-mail-system/configure-dial-plan-for-users-with-similar-names)
 
 [Delete a UM dial plan](https://docs.microsoft.com/en-us/exchange/voice-mail-unified-messaging/connect-voice-mail-system/delete-um-dial-plan)
-

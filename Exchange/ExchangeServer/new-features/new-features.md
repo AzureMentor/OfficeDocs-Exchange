@@ -8,8 +8,9 @@ ms.assetid: 97501135-2149-4590-8373-98e638ac8eb1
 monikerRange: exchserver-2016 || exchserver-2019
 title: What's new in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.date: 9/20/2018
+ms.reviewer: 
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -234,7 +235,7 @@ When you update to Exchange 2016 Cumulative Update 1 (CU1) from Exchange 2016 RT
 
 [MAPI over HTTP](new-features.md#MAPIHTTP2013)
 
-[Document collaboration ](new-features.md#DocCollab2013)
+[Document collaboration](new-features.md#DocCollab2013)
 
 [Office 365 hybrid](new-features.md#O3652013)
 
@@ -843,4 +844,3 @@ There are two ways to manage Exchange workloads in Exchange 2016:
 
 For more information about these features, see [User workload management in Exchange 2016](../server-health/workload-management.md).
 ::: moniker-end
-

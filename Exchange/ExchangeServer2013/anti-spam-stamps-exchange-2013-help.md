@@ -5,25 +5,23 @@ ms:assetid: 28d3a5c2-8509-4b25-9876-763536e77c27
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Aa996878(v=EXCHG.150)
 ms:contentKeyID: 49248677
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Anti-spam stamps
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Anti-spam stamps help you diagnose spam-related problems by applying diagnostic metadata, or stamps, such as sender-specific information, puzzle validation results, and content filtering results, to messages as they pass through the anti-spam features that filter inbound messages from the Internet. There are three anti-spam stamps: the phishing confidence level stamp, the spam confidence level stamp, and the Sender ID stamp.
 
 You can use anti-spam stamps as diagnostic tools to determine what actions to take on false-positives and on suspected spam messages that individuals receive in their mailboxes.
 
-
 > [!NOTE]
 > On November 1, 2016, Microsoft stopped producing spam definition updates for the SmartScreen filters in Exchange and Outlook. The existing SmartScreen spam definitions will be left in place, but their effectiveness will likely degrade over time. For more information, see <A href="https://go.microsoft.com/fwlink/p/?linkid=835894">Deprecating support for SmartScreen in Outlook and Exchange</A>.
-
-
 
 ## Viewing anti-spam stamps
 
@@ -34,16 +32,13 @@ You can view anti-spam stamps by using Microsoft Outlook. For more information, 
 The anti-spam report is a summary report of the anti-spam filter results that have been applied to an email message. The Content Filter agent applies this stamp to the message envelope in the form of an X-header as follows.
 
 ```powershell
-    X-MS-Exchange-Organization-Antispam-Report: DV:<DATVersion>;CW:CustomList;PCL:PhishingVerdict <verdict>;P100:PhishingBlock;PP:Presolve;SID:SenderIDStatus <status>;TIME:<SendReceiveDelta>;MIME:MimeCompliance 
+X-MS-Exchange-Organization-Antispam-Report: DV:<DATVersion>;CW:CustomList;PCL:PhishingVerdict <verdict>;P100:PhishingBlock;PP:Presolve;SID:SenderIDStatus <status>;TIME:<SendReceiveDelta>;MIME:MimeCompliance
 ```
 
 The following table describes the filter information that can appear in an anti-spam report.
 
-
 > [!NOTE]
 > The anti-spam report only displays information from the filters that were applied to the specific message. An anti-spam report doesn't usually contain all the information listed in the following table. For example, you may receive the following anti-spam report: <CODE>DV:3.1.3924.1409;SID:SenderIDStatus Fail;PCL:PhishingLevel SUSPICIOUS;CW:CustomList;PP:Presolved;TIME:TimeBasedFeatures</CODE>.
-
-
 
 ### Filter information in an anti-spam report
 
@@ -162,4 +157,3 @@ The following table describes the filter information that can appear in an anti-
 </tr>
 </tbody>
 </table>
-

@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Learn how to view the administrator audit log in Exchange Online
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 5c62072a-556d-4fea-9973-d668c6b9fd57
 ms.date: 7/11/2018
+ms.reviewer: 
 title: View the administrator audit log
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: Admin
+audience: Admin
 ms.service: exchange-online
 manager: serdars
 
@@ -21,7 +22,7 @@ manager: serdars
 In Exchange Online, you can use the Exchange admin center (EAC) to search for and view entries in the administrator audit log. The administrator audit log records specific actions, based on Exchange Online PowerShell cmdlets, performed by administrators and users who have been assigned administrative privileges. Entries in the administrator audit log provide you with information about what cmdlet was run, which parameters were used, who ran the cmdlet, and what objects were affected.
 
 > [!NOTE]
->  Administrator auditing logging is enabled by default. >  The administrator audit log doesn't record any action that's based on an Exchange Online PowerShell cmdlet that begins with the verbs **Get**, **Search**, or **Test**. >  Audit log entries are kept for 90 days. When an entry is older than 90 days, it's deleted.
+> Administrator auditing logging is enabled by default. <br/> The administrator audit log doesn't record any action that's based on an Exchange Online PowerShell cmdlet that begins with the verbs **Get**, **Search**, or **Test**. <br/> Audit log entries are kept for 90 days. When an entry is older than 90 days, it's deleted.
 
 ## What do you need to know before you begin?
 
@@ -54,17 +55,17 @@ In Exchange Online, you can use the Exchange admin center (EAC) to search for an
 
 2. Choose a **Start date** and **End date**, and then choose **Search**. All configuration changes made during the specified time period are displayed, and can be sorted, using the following information:
 
-  - **Date**: The date and time that the configuration change was made. The date and time are stored in Coordinated Universal Time (UTC) format.
+   - **Date**: The date and time that the configuration change was made. The date and time are stored in Coordinated Universal Time (UTC) format.
 
-  - **Cmdlet**: The name of the cmdlet that was used to make the configuration change.
+   - **Cmdlet**: The name of the cmdlet that was used to make the configuration change.
 
-  - **User**: The name of the user account of the user who made the configuration change.
+   - **User**: The name of the user account of the user who made the configuration change.
 
-    Up to 5000 entries will be displayed on multiple pages. Specify a smaller date range if you need to narrow your results. If you select an individual search result, the following additional information is displayed in the details pane:
+     Up to 5000 entries will be displayed on multiple pages. Specify a smaller date range if you need to narrow your results. If you select an individual search result, the following additional information is displayed in the details pane:
 
-  - **Object modified**: The object that was modified by the cmdlet.
+   - **Object modified**: The object that was modified by the cmdlet.
 
-  - **Parameters (Parameter:Value)**: The cmdlet parameters that were used, and any value specified with the parameter.
+   - **Parameters (Parameter:Value)**: The cmdlet parameters that were used, and any value specified with the parameter.
 
 3. If you want to print a specific audit log entry, choose the **Print** button in the details pane.
 
@@ -74,6 +75,3 @@ If you've successfully run an administrator audit log report, configuration chan
 
 > [!NOTE]
 > When a change is made in your organization, it may take up to 15 minutes to appear in audit log search results. If a change doesn't appear in the administrator audit log, wait a few minutes and run the search again.
-
-
-

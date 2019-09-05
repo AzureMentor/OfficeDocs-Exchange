@@ -5,44 +5,41 @@ ms:assetid: baebc865-ec3e-48ca-ac48-7aac8b34c003
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb124376(v=EXCHG.150)
 ms:contentKeyID: 61200297
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Manage Connection Filtering on Edge Transport Servers
 
- 
 _**Applies to:** Exchange Server 2013_
-
 
 Connection filtering is an anti-spam feature that's provided by the Connection Filtering agent, which is available only on Edge Transport servers in Microsoft Exchange 2013. Connection filtering enables the following features:
 
-  - IP Block list
+- IP Block list
 
-  - IP Block List providers
+- IP Block List providers
 
-  - IP Allow list
+- IP Allow list
 
-  - IP Allow List providers
+- IP Allow List providers
 
 Each of these features can be enabled or disabled separately.
 
 ## What do you need to know before you begin?
 
-  - Estimated time to complete: 15 minutes.
+- Estimated time to complete: 15 minutes.
 
-  - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Anti-spam features" entry in the [Anti-spam and anti-malware permissions](anti-spam-and-anti-malware-permissions-exchange-2013-help.md) topic.
+- You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Anti-spam features" entry in the [Anti-spam and anti-malware permissions](anti-spam-and-anti-malware-permissions-exchange-2013-help.md) topic.
 
-  - You can only use the Shell to perform this procedure.
+- You can only use the Shell to perform this procedure.
 
-  - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
+- For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
 
-
-> [!TIP]  
-> Having problems? Ask for help in the Exchange forums. Visit the forums at <A href="https://go.microsoft.com/fwlink/p/?linkid=60612">Exchange Server</A>, <A href="https://go.microsoft.com/fwlink/p/?linkid=267542">Exchange Online</A>, or <A href="https://go.microsoft.com/fwlink/p/?linkid=285351">Exchange Online Protection</A>.
-
-
-
-## What do you want to do?
+> [!TIP]
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612).
 
 ## Use the Shell to enable or disable connection filtering
 
@@ -120,13 +117,11 @@ Set-IPBlockListConfig [-ExternalMailEnabled <$true | $false>] [-InternalMailEnab
 
 This example configures the IP Block list with the settings as follows:
 
-  - The IP Block list filters incoming connections from internal and external mail servers. By default, connections are filtered from external mail servers only (*ExternalMailEnabled* is set to `$true`, and *InternalMailEnabled* is set to `$false`). Non-authenticated connections and authenticated connections from external partners are considered external.
+- The IP Block list filters incoming connections from internal and external mail servers. By default, connections are filtered from external mail servers only (*ExternalMailEnabled* is set to `$true`, and *InternalMailEnabled* is set to `$false`). Non-authenticated connections and authenticated connections from external partners are considered external.
 
-  - The custom response text for connections that were filtered by IP addresses that were automatically added to the IP Block list by the sender reputation feature of the Protocol Analysis agent is set to the value "Connection from IP address {0} was rejected by sender reputation."
+- The custom response text for connections that were filtered by IP addresses that were automatically added to the IP Block list by the sender reputation feature of the Protocol Analysis agent is set to the value "Connection from IP address {0} was rejected by sender reputation."
 
-  - The custom response text for connections that were filtered by IP addresses that were manually added to the IP Block list is set to the value "Connection from IP address {0} was rejected by connection filtering."
-
-<!-- end list -->
+- The custom response text for connections that were filtered by IP addresses that were manually added to the IP Block list is set to the value "Connection from IP address {0} was rejected by connection filtering."
 
 ```powershell
 Set-IPBlockListConfig -InternalMailEnabled $true -MachineEntryRejectionResponse "Connection from IP address {0} was rejected by sender reputation." -StaticEntryRejectionResponse "Connection from IP address {0} was rejected by connection filtering."
@@ -161,7 +156,6 @@ For example, to view the IP Block list entry that contains the IP address 192.16
 ```powershell
 Get-IPBlockListEntry -IPAddress 192.168.1.13
 ```
-
 
 > [!NOTE]
 > When you use the <EM>IPAddress</EM> parameter, the resulting IP Block list entry can be an individual IP address, an IP address range, or a Classless InterDomain Routing (CIDR) IP. To use the <EM>Identity</EM> parameter, you specify the integer value that's assigned to the IP Block list entry.
@@ -262,14 +256,12 @@ Set-IPBlockListProvidersConfig [-BypassedRecipients <recipient1,recipient2...>] 
 
 The following example configures all IP Block List providers with the following settings:
 
-  - IP Block List providers filter incoming connections from internal and external mail servers. By default, connections are filtered from external mail servers only (*ExternalMailEnabled* is set to `$true`, and *InternalMailEnabled* is set to `$false`). Non-authenticated connections and authenticated connections from external partners are considered external.
+- IP Block List providers filter incoming connections from internal and external mail servers. By default, connections are filtered from external mail servers only (*ExternalMailEnabled* is set to `$true`, and *InternalMailEnabled* is set to `$false`). Non-authenticated connections and authenticated connections from external partners are considered external.
 
-  - Messages sent to the internal recipients chris@fabrikam.com and michelle@fabrikam.com are excluded from filtering by IP Block List providers. Note that if you want to add recipients to the list without affecting existing recipients, use the syntax, `@{Add="<recipient1>","<recipient2>"...}`.
-
-<!-- end list -->
+- Messages sent to the internal recipients chris@fabrikam.com and michelle@fabrikam.com are excluded from filtering by IP Block List providers. Note that if you want to add recipients to the list without affecting existing recipients, use the syntax, `@{Add="<recipient1>","<recipient2>"...}`.
 
 ```powershell
-    Set-IPBlockListProvidersConfig -BypassedRecipients chris@fabrikam.com,michelle@fabrikam.com -InternalMailEnabled $true
+Set-IPBlockListProvidersConfig -BypassedRecipients chris@fabrikam.com,michelle@fabrikam.com -InternalMailEnabled $true
 ```
 
 For more information, see [Set-IPBlockListProvidersConfig](https://technet.microsoft.com/en-us/library/aa998543\(v=exchg.150\)).
@@ -312,17 +304,15 @@ Add-IPBlockListProvider -Name "<Descriptive Name>" -LookupDomain <FQDN> [-Priori
 
 This example creates an IP Block List provider named "Contoso IP Block List Provider" with the following options:
 
-  - **FQDN to use the provider**   rbl.contoso.com
+- **FQDN to use the provider**: rbl.contoso.com
 
-  - **Bitmask code to use from the provider**   127.0.0.1
-
-<!-- end list -->
+- **Bitmask code to use from the provider**: 127.0.0.1
 
 ```powershell
 Add-IPBlockListProvider -Name "Contoso IP Block List Provider" -LookupDomain rbl.contoso.com -BitmaskMatch 127.0.0.1
 ```
 
-> [!NOTE]  
+> [!NOTE]
 > When you add a new IP Block List provider, it's enabled by default (the value of <EM>Enabled</EM> is <CODE>$true</CODE>), and the priority value is incremented (the first entry has the <EM>Priority</EM> value 1).
 
 For more information, see [Add-IPBlockListProvider](https://technet.microsoft.com/en-us/library/bb124358\(v=exchg.150\)).
@@ -370,7 +360,7 @@ The configuration options that are available on the **Set-IPBlockListProvider** 
 To configure an existing IP Block List provider, use the following syntax:
 
 ```powershell
-    Set-IPBlockListProvider <IPBlockListProviderIdentity> -Name "<Descriptive Name>" -LookupDomain <FQDN> [-Priority <Integer>] [-AnyMatch <$true | $false>] [-BitmaskMatch <IPAddress>] [-IPAddressesMatch <IPAddressStatusCode1,IPAddressStatusCode2...>] [-RejectionResponse "<Custom Text>"]
+Set-IPBlockListProvider <IPBlockListProviderIdentity> -Name "<Descriptive Name>" -LookupDomain <FQDN> [-Priority <Integer>] [-AnyMatch <$true | $false>] [-BitmaskMatch <IPAddress>] [-IPAddressesMatch <IPAddressStatusCode1,IPAddressStatusCode2...>] [-RejectionResponse "<Custom Text>"]
 ```
 
 For example, to add the IP address status code 127.0.0.1 to the list of existing status codes for the provider named Contoso IP Block List Provider, run the following command:
@@ -648,17 +638,15 @@ Add-IPAllowListProvider -Name "<Descriptive Name>" -LookupDomain <FQDN> [-Priori
 
 This example creates an IP Allow List provider named "Contoso IP Allow List Provider" with the following options:
 
-  - **FQDN to use the provider**   allow.contoso.com
+- **FQDN to use the provider**: allow.contoso.com
 
-  - **Bitmask code to use from the provider**   127.0.0.1
-
-<!-- end list -->
+- **Bitmask code to use from the provider**: 127.0.0.1
 
 ```powershell
 Add-IPAllowListProvider -Name "Contoso IP Allow List Provider" -LookupDomain allow.contoso.com -BitmaskMatch 127.0.0.1
 ```
 
-> [!NOTE]  
+> [!NOTE]
 > When you add a new IP Allow List provider, it's enabled by default (the value of <EM>Enabled</EM> is <CODE>$true</CODE>), and the priority value is incremented (the first entry has the <EM>Priority</EM> value 1).
 
 For more information, see [Add-IPBlockListProvider](https://technet.microsoft.com/en-us/library/bb124358\(v=exchg.150\)).

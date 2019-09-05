@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Transport protection rules: Exchange 2013 Help'
 TOCTitle: Transport protection rules
 ms:assetid: 9bd6d049-165e-4e51-a79f-3b8ff409da55
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd298166(v=EXCHG.150)
 ms:contentKeyID: 49319926
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Transport protection rules
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Email messages and attachments increasingly contain business critical information such as product specifications, business strategy documents, and financial data, or personally identifiable information (PII) such as contact details, social security numbers, credit card numbers, and employee records. There are a number of industry-specific and local regulations in many parts of the world that govern the collection, storage, and disclosure of PII.
 
@@ -25,11 +26,8 @@ For management tasks related to managing IRM, see [Information Rights Management
 
 Transport protection rules allow you to use transport rules to IRM-protect messages by applying an [Active Directory Rights Management Services](https://go.microsoft.com/fwlink/p/?linkid=129823) (AD RMS) rights policy template.
 
-
 > [!NOTE]
 > AD&nbsp;RMS is an information protection technology that works with Rights Management Service (RMS)-enabled applications and clients to protect sensitive information online and offline. To use IRM protection in an on-premise Exchange deployment, Exchange 2013 requires an on-premises deployment of AD&nbsp;RMS running on Windows Server 2008 or later.
-
-
 
 AD RMS uses XML-based policy templates to allow compatible IRM-enabled applications to apply consistent protection policies. In Windows Server 2008 and later, the AD RMS server exposes a Web service that can be used to enumerate and acquire templates. Exchange 2013 ships with the Do Not Forward template.
 
@@ -37,11 +35,8 @@ When the Do Not Forward template is applied to a message, only the recipients ad
 
 Additional RMS templates can be created in the on-premises AD RMS deployment to meet rights protection requirements in your organization.
 
-
 > [!IMPORTANT]
 > If a rights policy template is removed from the AD&nbsp;RMS server, you must modify any transport protection rules that use the removed template. If a transport protection rule continues to use a rights policy template that's been removed, the AD&nbsp;RMS server will fail to license the content to any of the recipients, and a non-delivery report (NDR) will be delivered to the sender.<BR>In Windows Server 2008 and later, rights policy templates can be archived instead of deleted. Archived templates can still be used to license content, but when you create or modify a transport protection rule, archived templates aren't included in the list of templates.
-
-
 
 For more information about creating AD RMS templates, see [AD RMS Rights Policy Templates Deployment Step-by-Step Guide](https://go.microsoft.com/fwlink/p/?linkid=136593).
 
@@ -64,4 +59,3 @@ When the transport service is restarted, and it processes the first message that
 When planning to use transport protection rules, you must consider the type of information you want to protect and plan on creating rules accordingly. In Exchange 2013, transport rules have a large number of predicates that allow you to inspect message content, including supported attachments, message headers, sender and recipient addresses, their Active Directory attributes such as department, distribution group membership, and management relationships of the sender with recipients. For more details about transport rule predicates available in Exchange 2013, see [Transport rule conditions (predicates)](mail-flow-rule-conditions-and-exceptions-predicates-in-exchange-2013-exchange-2013-help.md).
 
 You must also consider the messaging traffic in your organization, and the number of messages that will be protected using transport protection rules. Applying IRM protection to a large number of messages requires more resources on the Mailbox server. Additionally, protecting a large number of messages or all messages also impacts the client experience, particularly for Microsoft Outlook users.
-

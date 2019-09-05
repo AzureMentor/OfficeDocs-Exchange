@@ -1,9 +1,10 @@
 ---
 localization_priority: Normal
 ms.topic: troubleshooting
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: b3e740b9-171d-4179-bcd1-e279a363fa75
+ms.reviewer: 
 description: "When you can't send or receive Office 365 email, use these steps to find and fix problems with Outlook. "
 title: Fix Outlook connection problems in Office 365 and Exchange Online
 ms.collection: 
@@ -17,7 +18,7 @@ search.appverid:
 - ZOL140
 - ZOL150
 - ZOL160
-ms.audience: Admin
+audience: Admin
 ms.custom: MiniMaven
 keywords:
 - fix outlook
@@ -55,4 +56,3 @@ Out-of-date software and corrupted Outlook profiles are two of the most common i
 |[![Monitor](../media/ee28b1cf-f0fa-420d-8480-fa1ceda550fe.png)](https://windows.microsoft.com/windows/is-computer-up-to-date)|**Run Windows Update**|If your Outlook client software or Windows operating system software is out of date, you might have problems sending and receiving email. For Windows Update instructions, see [Windows Update: FAQ](https://support.microsoft.com/help/12373/windows-update-faq)|
 |[![Shows symbols of screwdriver and wrench.](../media/4217c379-67b5-49c2-b252-e625f45629f8.png)](https://support.office.com/article/4d5febf6-7623-486b-9a9f-d5cfc4264af3.aspx)|**Repair your Outlook profile**|An Outlook profile is a set of configuration information that includes your user name, password, and file storage location. To repair your Outlook profile, see [Fix your Outlook email connection by repairing your profile](https://support.office.com/article/4D5FEBF6-7623-486B-9A9F-D5CFC4264AF3).|
 |[![Settings](../media/7a603ec9-4a6c-4c60-9168-7549023cbd92.png)](https://go.microsoft.com/fwlink/p/?LinkID=402339)|**Check for service issues**|**Admin only:** If more than one person in your organization is experiencing email problems in Office 365, it could be due to a problem with the service. Go to the [Office 365 service health dashboard page](https://go.microsoft.com/fwlink/p/?LinkID=402339) (admin sign in required), and check the status of the services under **Exchange Online**.|
-

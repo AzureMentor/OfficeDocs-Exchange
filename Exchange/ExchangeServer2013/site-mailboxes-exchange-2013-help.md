@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Site mailboxes: Exchange 2013 Help'
 TOCTitle: Site mailboxes
 ms:assetid: 2c4393f4-d274-4e6c-bd09-9577e68c5a33
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ150499(v=EXCHG.150)
 ms:contentKeyID: 47559965
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Site mailboxes
 
- 
-
-_**Applies to:** Exchange Online, Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013_
 
 Email and documents are traditionally kept in two unique and separate data repositories. Most organizations collaborate using both mediums. The challenge is that both email and documents are accessed using different clients. This usually results in a reduction in user productivity and a degraded user experience.
 
@@ -21,17 +22,11 @@ The *site mailbox* is a new concept in Microsoft Exchange 2013 that attempts to 
 
 Site mailboxes require Exchange 2013 and SharePoint Server 2013 integration and configuration. For more information about how to configure your Exchange 2013 organization to work with your SharePoint Server 2013 organization, see the following topics:
 
-  - [Configure site mailboxes in SharePoint Server 2013](https://go.microsoft.com/fwlink/p/?linkid=258264).
+- [Configure site mailboxes in SharePoint Server 2013](https://go.microsoft.com/fwlink/p/?linkid=258264).
 
-  - [Integration with SharePoint and Lync](integration-with-sharepoint-and-lync-exchange-2013-help.md)
+- [Integration with SharePoint and Lync](integration-with-sharepoint-and-lync-exchange-2013-help.md)
 
 For more information about collaboration features in Exchange Server 2013, see [Collaboration](collaboration-exchange-2013-help.md).
-
-**Contents**
-
-How do site mailboxes work?
-
-Site mailbox provisioning policies
 
 ## How do site mailboxes work?
 
@@ -41,8 +36,7 @@ When one project member files mail or documents using the site mailbox, any proj
 
 ## Site mailbox provisioning policies
 
-Site mailbox quotas can be set by using the **SiteMailboxProvisioningPolicy** cmdlets in the Exchange Management Shell. The Site mailbox provisioning policies only apply to the email that is sent to and from the site mailbox and the size of the site mailbox on the Exchange server. The document repository settings are configured in SharePoint. Although you can create multiple site mailbox provisioning policies using the **New-SiteMailboxProvisioningPolicy** cmdlet, only the default provisioning policy will be applied to all site mailboxes. You can’t apply multiple policies within your organization. The provisioning policies allow you to set the following quotas:
-
+Site mailbox quotas can be set by using the **SiteMailboxProvisioningPolicy** cmdlets in the Exchange Management Shell. The Site mailbox provisioning policies only apply to the email that is sent to and from the site mailbox and the size of the site mailbox on the Exchange server. The document repository settings are configured in SharePoint. Although you can create multiple site mailbox provisioning policies using the **New-SiteMailboxProvisioningPolicy** cmdlet, only the default provisioning policy will be applied to all site mailboxes. You can't apply multiple policies within your organization. The provisioning policies allow you to set the following quotas:
 
 <table>
 <colgroup>
@@ -76,40 +70,31 @@ Site mailbox quotas can be set by using the **SiteMailboxProvisioningPolicy** cm
 </tbody>
 </table>
 
-
 For more information about how to configure site mailbox provisioning policies, see [Manage site mailbox provisioning policies](manage-site-mailbox-provisioning-policies-exchange-2013-help.md).
-
-Return to top
 
 ## Lifecycle policy and retention
 
 The lifecycle of a site mailbox is managed through a SharePoint. It is through SharePoint that you should perform all site mailbox tasks such as creating and removing site mailboxes. In addition, you can create a SharePoint Lifecycle policy to manage the lifecycle of a site mailbox. For example, you can create a lifecycle policy in SharePoint that automatically closes all site mailboxes after 6 months. If the user still requires the use of the site mailbox, the user can reactivate the site mailbox through SharePoint. We recommend that you use the Lifecycle application is in the farm. Manually deleting active site mailboxes from Exchange will result in orphaned site mailboxes. .
 
-When the lifecycle application in SharePoint closes a site mailbox, the site mailbox is retained for the period stated in the lifecycle policy in the closed state. The mailbox can then be reactivated by an end-user or by an administrator from SharePoint. After the retention period, the Exchange site mailbox that is housed in the mailbox database will have its name prepended with **MDEL:** to indicate that it has been marked for deletion. You will need to manually remove these site mailboxes from the mailbox database in order to free storage space and the alias. If you don’t have the SharePoint Lifecycle Policy enabled, you’ll lose the ability to determine which site mailboxes are marked for deletion. Until the site mailbox has been removed by an administrator, the content of the mailbox is still recoverable.
+When the lifecycle application in SharePoint closes a site mailbox, the site mailbox is retained for the period stated in the lifecycle policy in the closed state. The mailbox can then be reactivated by an end-user or by an administrator from SharePoint. After the retention period, the Exchange site mailbox that is housed in the mailbox database will have its name prepended with **MDEL:** to indicate that it has been marked for deletion. You will need to manually remove these site mailboxes from the mailbox database in order to free storage space and the alias. If you don't have the SharePoint Lifecycle Policy enabled, you'll lose the ability to determine which site mailboxes are marked for deletion. Until the site mailbox has been removed by an administrator, the content of the mailbox is still recoverable.
 
 You can use the following command to search for and remove site mailboxes that have been marked for deletion.
 
 ```powershell
-    Get-Mailbox MDEL:* | ?{$_.RecipientTypeDetails -eq "TeamMailbox"} | Remove-Mailbox -Confirm:$false
+Get-Mailbox MDEL:* | ?{$_.RecipientTypeDetails -eq "TeamMailbox"} | Remove-Mailbox -Confirm:$false
 ```
 
-Site mailboxes don’t support retention at the item-level. Retention works on a project-level for site mailboxes, so when the entire site mailbox is deleted, the retained items will be deleted.
+Site mailboxes don't support retention at the item-level. Retention works on a project-level for site mailboxes, so when the entire site mailbox is deleted, the retained items will be deleted.
 
 ## Compliance
 
 Using the eDiscovery Console in SharePoint, site mailboxes can be part of the In-Place eDiscovery scope as you can do keyword searches against user mailboxes or site mailboxes. In addition, you can put a site mailbox on legal hold. For more info, see [In-Place eDiscovery](https://docs.microsoft.com/en-us/exchange/security-and-compliance/in-place-ediscovery/in-place-ediscovery).
 
-
 > [!NOTE]
 > To place a site mailbox on legal hold in Office 365, it must be assigned an Exchange Online (Plan 2) license. If a site mailbox is assigned an Exchange Online (Plan 1) license, you would have to assign it a separate Exchange Online Archiving license to place it on hold.
-
-
-
-Return to top
 
 ## Backup and restore
 
 Backup and Restore for the Exchange site mailboxes housed on the mailbox server will use the same backup and restore method that you use for all Exchange mailboxes. For more information, see [Database availability groups (DAGs)](database-availability-groups-dags-exchange-2013-help.md).
 
-For SharePoint documents, you should backup and restore into the same place. If you restore your SharePoint content to same URLs, then the site mailbox will continue to work and no additional configuration is needed. If you restore to a different URL, then you’ll need to run **Set-SiteMailbox** cmdlet to update the *SharePointURL* property. We recommend that you don’t restore SharePoint to a new forest.
-
+For SharePoint documents, you should backup and restore into the same place. If you restore your SharePoint content to same URLs, then the site mailbox will continue to work and no additional configuration is needed. If you restore to a different URL, then you'll need to run **Set-SiteMailbox** cmdlet to update the *SharePointURL* property. We recommend that you don't restore SharePoint to a new forest.

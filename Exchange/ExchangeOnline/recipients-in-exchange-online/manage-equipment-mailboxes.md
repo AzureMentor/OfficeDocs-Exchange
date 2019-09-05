@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: An equipment mailbox is a resource mailbox assigned to a resource that's not location specific, such as a portable computer, projector, microphone, or a company car. After an administrator creates an equipment mailbox, users can easily reserve the piece of equipment by including the corresponding equipment mailbox in a meeting request. You can use the EAC and Exchange Online PowerShell to create an equipment mailbox or change equipment mailbox properties. For more information, see Recipients.
 ms.topic: article
-author: kwekua
-ms.author: kwekua
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: e5f58b3a-83e1-4742-8846-85103a44ee18
 ms.date: 6/24/2018
+ms.reviewer: 
 title: Manage equipment mailboxes
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -31,7 +32,7 @@ For information about another type of resource mailbox, a room mailbox, see [Cre
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Create an equipment mailbox
 
@@ -43,12 +44,12 @@ For information about another type of resource mailbox, a room mailbox, see [Cre
 
 3. Use the options on the page to specify the settings for the new resource mailbox.
 
-  - **\* Equipment name**: Use this box to type a name for the equipment mailbox. This is the name that's listed in the resource mailbox list in the EAC and in your organization's address book. This name is required and it can't exceed 64 characters.
+   - **\* Equipment name**: Use this box to type a name for the equipment mailbox. This is the name that's listed in the resource mailbox list in the EAC and in your organization's address book. This name is required and it can't exceed 64 characters.
 
-    > [!TIP]
-    > Although there are other fields that describe the details of the room, for example, Capacity, consider summarizing the most important details in the equipment name using a consistent naming convention. Why? So users can easily see the details when they select the equipment from the address book in a meeting request.
+   > [!TIP]
+   > Although there are other fields that describe the details of the room, for example, Capacity, consider summarizing the most important details in the equipment name using a consistent naming convention. Why? So users can easily see the details when they select the equipment from the address book in a meeting request.
 
-  - **\* Email address**: An equipment mailbox has an email address so it can receive booking requests. The email address consists of an alias on the left side of the @ symbol, which must be unique in the forest, and your domain name on the right. The email address is required.
+   - **\* Email address**: An equipment mailbox has an email address so it can receive booking requests. The email address consists of an alias on the left side of the @ symbol, which must be unique in the forest, and your domain name on the right. The email address is required.
 
 4. When you're finished, click **Save** to create the equipment mailbox.
 
@@ -99,7 +100,6 @@ After you create an equipment mailbox, you can make changes and set additional p
 3. On the equipment mailbox properties page, click one of the following sections to view or change properties.
 
 #### General
-<a name="General"> </a>
 
 Use the **General** section to view or change basic information about the resource.
 
@@ -125,12 +125,11 @@ Click **More options** to view or change these additional properties:
 
 - **Address book policy**: Use this option to specify an address book policy (ABP) for the resource. ABPs contain a global address list (GAL), an offline address book (OAB), a room list, and a set of address lists. To learn more, see [Address book policies](../address-books/address-book-policies/address-book-policies.md).
 
-    In the drop-down list, select the policy that you want associated with this mailbox.
+  In the drop-down list, select the policy that you want associated with this mailbox.
 
 - **Custom attributes**: This section displays the custom attributes defined for the equipment mailbox. To specify custom attribute values, click **Edit** ![Edit icon](../media/ITPro_EAC_EditIcon.gif). You can specify up to 15 custom attributes for the recipient.
 
 #### Delegates
-<a name="Delegates"> </a>
 
 Use this section to view or change how the equipment mailbox handles reservation requests and to define who can accept or decline booking requests if it isn't done automatically.
 
@@ -143,7 +142,6 @@ Use this section to view or change how the equipment mailbox handles reservation
 - **Delegates**: If you selected the option requiring that booking requests be sent to delegates, the specified delegates are listed. Click **Add** ![Add Icon](../media/ITPro_EAC_AddIcon.gif) or **Remove** ![Remove icon](../media/ITPro_EAC_RemoveIcon.gif) to add or remove delegates from this list.
 
 #### Booking Options
-<a name="BookingOptions"> </a>
 
 Use the **Booking Options** section to view or change the settings for the booking policy that defines when the resource can be scheduled, how long it can be reserved, and how far in advance it can be reserved.
 
@@ -161,12 +159,11 @@ Use the **Booking Options** section to view or change the settings for the booki
 
 - **Maximum duration (hours)**: This setting specifies the maximum duration that the resource can be reserved in a booking request. The default value is 24 hours.
 
-    For repeating booking requests, the maximum booking duration applies to the length of each instance of the repeating booking request.
+  For repeating booking requests, the maximum booking duration applies to the length of each instance of the repeating booking request.
 
 There is also a box on this page that you can use to write a message that will be sent to users who send meeting requests to reserve the resource.
 
 #### Contact Information
-<a name="ContactInformation"> </a>
 
 Use the **Contact Information** section to view or change the contact information for the resource. The information on this page is displayed in the address book.
 
@@ -174,7 +171,6 @@ Use the **Contact Information** section to view or change the contact informatio
 > You can use the **State/Province** box to create recipient conditions for dynamic distribution groups, email address policies, or address lists.
 
 #### Email Address
-<a name="EmailAddress"> </a>
 
 Use the **Email Address** section to view or change the email addresses associated with the equipment mailbox. This includes the mailbox's primary SMTP address and any associated proxy addresses. The primary SMTP address (also known as the reply address) is displayed in bold text in the address list, with the uppercase **SMTP** value in the **Type** column.
 
@@ -182,25 +178,19 @@ Use the **Email Address** section to view or change the email addresses associat
 
   - **SMTP**: This is the default address type. Click this button and then type the new SMTP address in the **\* Email address** box.
 
-  - **EUM**: An EUM (Exchange Unified Messaging) address is used by the Microsoft Exchange Unified Messaging service to locate UM-enabled recipients within an Exchange organization. EUM addresses consist of the extension number and the UM dial plan for the UM-enabled user. Click this button and type the extension number in the **Address/Extension** box. Then click **Browse** and select a dial plan for the mailbox.
-
   - **Custom address type**: Click this button and type one of the supported non-SMTP email address types in the **\* Email address** box.
 
     > [!NOTE]
-    > With the exception of X.400 addresses, Exchange doesn't validate custom addresses for correct formatting. You must make sure that the custom address you specify complies with the format requirements for that address type.
-
-    > [!NOTE]
-    > When you add a new email address, you have the option to make it the primary SMTP address.
+    > With the exception of X.400 addresses, Exchange doesn't validate custom addresses for correct formatting. You must make sure that the custom address you specify complies with the format requirements for that address type. <br/><br/> When you add a new email address, you have the option to make it the primary SMTP address.
 
 - **Automatically update email addresses based on the email address policy applied to this recipient**: Select this check box to have the recipient's email addresses automatically updated based on changes made to email address policies in your organization.
 
 #### MailTip
-<a name="MailTip"> </a>
 
 Use the **MailTip** section to add a MailTip to alert users of potential issues before they send a booking request to the equipment mailbox. A MailTip is text that's displayed in the InfoBar when this recipient is added to the To, Cc, or Bcc lines of a new email message.
 
 > [!NOTE]
->  MailTips can include HTML tags, but scripts aren't allowed. The length of a custom MailTip can't exceed 175 displayed characters. HTML tags aren't counted in the limit.
+> MailTips can include HTML tags, but scripts aren't allowed. The length of a custom MailTip can't exceed 175 displayed characters. HTML tags aren't counted in the limit.
 
 ### Use Exchange Online PowerShell to change equipment mailbox properties
 
@@ -257,6 +247,3 @@ To verify that you've successfully changed properties for an equipment mailbox, 
   ```
   Get-Mailbox -ResultSize unlimited -Filter {(RecipientTypeDetails -eq 'EquipmentMailbox')} | Get-CalendarProcessing | Format-List Identity,ScheduleOnlyDuringWorkHours
   ```
-
-
-

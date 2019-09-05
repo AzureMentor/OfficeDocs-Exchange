@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: Enable outgoing calls on UM IP gateways
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 6997797d-4b79-4f6d-a89a-f36eea4e5ca4
 ms.date: 11/17/2014
-title: Allowing users to make calls procedures
+ms.reviewer: 
+title: Allowing users to make calls procedures in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Allowing users to make calls procedures
+# Allowing users to make calls procedures in Exchange Online
 
 [Enable outgoing calls on UM IP gateways](enable-outgoing-calls-on-um-ip-gateways.md)
 
@@ -31,6 +32,3 @@ manager: scotv
 [Authorize calls for users in a dial plan](authorize-calls-for-users-in-a-dial-plan.md)
 
 [Authorize calls for a group of users](authorize-calls-for-a-group-of-users.md)
-
-
-

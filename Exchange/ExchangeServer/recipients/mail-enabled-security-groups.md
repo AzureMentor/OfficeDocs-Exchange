@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: 'Summary: Learn how to create and manage mail-enabled security groups in Exchange Server 2016 or Exchange Server 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 80b3b537-4786-4d02-9202-44e373811a25
 ms.date: 7/5/2018
+ms.reviewer: 
 title: Manage mail-enabled security groups in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
-manager: scotv
+manager: serdars
 
 ---
 
@@ -53,7 +54,7 @@ You can use mail-enabled security groups to distribute messages as well as grant
 
 2. Click **New** ![Add icon](../media/ITPro_EAC_AddIcon.png) and then select **Security group** in the drop down list that appears.
 
-    ![In the EAC, click Recipients, Groups, New, Security Group](../media/36d5bb51-b232-410a-886a-7326aecec78b.png)
+   ![In the EAC, click Recipients, Groups, New, Security Group](../media/36d5bb51-b232-410a-886a-7326aecec78b.png)
 
 3. On the **New security group** page that opens, configure these settings (values marked with an **\*** are required):
 
@@ -180,7 +181,7 @@ To verify that you've successfully created a mail-enabled security group, do any
 
    - [Ownership](#ownership)
 
-   - [Membership](#membership
+   - [Membership](#membership)
 
    - [Membership approval](#membership-approval)
 
@@ -206,7 +207,7 @@ Use this tab to view or change basic information about the group.
 
 - **Alias**: This value is used to generate the primary email address (_\<alias\>_@ _\<domain_\>). This value can contain letters, numbers and the characters !, #, $, %, &, ', \*, +, -, /, =, ?, ^, _, `, {, |, } and ~. Periods (.) are allowed, but each period must be surrounded by other valid characters (for example, help.desk). Unicode characters from U+00A1 to U+00FF are also allowed, but are mapped to best-fit US-ASCII text characters in the primary email address (for example, U+00F6 (ö) is changed to oe). The alias can't exceed 64 characters and must be unique in the forest. When a user types the alias on the To: line of an email message, it resolves to the group's display name.
 
-   When you change the alias value, the previous primary email address is kept as a proxy address for the group.
+  When you change the alias value, the previous primary email address is kept as a proxy address for the group.
 
 - **Notes**: Use this box to describe the purpose of the group. This description appears in the global address list and in the details pane in the EAC.
 
@@ -254,7 +255,7 @@ Use this tab to control who's allowed to send messages to the group.
 
 - Restrict the internal senders who can send messages to the group by clicking **Add** ![Add icon](../media/ITPro_EAC_AddIcon.png). In the **Select Allowed Senders** dialog that appears, select one or more senders, click **Add**, and then click **OK**. Only the specified senders can send messages to the group.
 
-   To remove internal senders that are allowed to send messages to the group, select the sender in the list, and then click **Remove** ![Remove icon](../media/ITPro_EAC_RemoveIcon.png).
+  To remove internal senders that are allowed to send messages to the group, select the sender in the list, and then click **Remove** ![Remove icon](../media/ITPro_EAC_RemoveIcon.png).
 
 > [!IMPORTANT]
 > Mail contacts are always considered unauthenticated (external) senders. If you select **Only senders inside my organization** and add the mail contact to the list of approved internal senders, messages sent to the group by the mail contact will be rejected.
@@ -398,15 +399,15 @@ For detailed syntax and parameter information, see [Get-DistributionGroup](http:
 
 2. In the list of groups, find the security group that you want to remove. You can:
 
-  - Scroll through the list of groups.
+   - Scroll through the list of groups.
 
-  - Click **Search** ![Search icon](../media/ITPro_EAC_.png) and enter part of the group's name, email address, or alias.
+   - Click **Search** ![Search icon](../media/ITPro_EAC_.png) and enter part of the group's name, email address, or alias.
 
-  - Click **More options** ![More Options icon](../media/ITPro_EAC_MoreOptionsIcon.png) \> **Advanced search** to find the group.
+   - Click **More options** ![More Options icon](../media/ITPro_EAC_MoreOptionsIcon.png) \> **Advanced search** to find the group.
 
-  - Click the **Group Type** column header to sort the groups by **Security group**.
+   - Click the **Group Type** column header to sort the groups by **Security group**.
 
-    Once you've found the security group that you want to remove, select it, click **Delete** ![Delete icon](../media/ITPro_EAC_DeleteIcon.png), and then click **Yes** in the warning message that appears.
+   Once you've found the security group that you want to remove, select it, click **Delete** ![Delete icon](../media/ITPro_EAC_DeleteIcon.png), and then click **Yes** in the warning message that appears.
 
 ### Use the Exchange Management Shell to remove a mail-enabled security group
 
@@ -537,4 +538,3 @@ To verify that you've successfully mail-disabled an existing mail-enabled univer
   ```
   Get-Group -Filter {RecipientTypeDetails -eq 'UniversalSecurityGroup'}
   ```
-

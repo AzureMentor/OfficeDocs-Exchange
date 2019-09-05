@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how administrators can track delivery information about messages sent or received from any mailbox in the organization.'
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: d98623d3-e0b7-4cb9-93fb-6351b4a06137
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Delivery reports for administrators
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -39,6 +40,3 @@ After you create a delivery report search, the resulting delivery report will sh
 - A more powerful option for administrators in on-premises Exchange organizations is to use the Exchange Management Shell to query the message tracking logs directly. For more information, see [Search message tracking logs](search-message-tracking-logs.md).
 
 - Exchange 2016 or Exchange 2019 delivery reports can track messages across Exchange 2019, Exchange 2016, and Exchange 2013 servers in the same Active Directory site.
-
-
-

@@ -1,59 +1,50 @@
-﻿---
+---
 title: 'Back pressure: Exchange 2013 Help'
 TOCTitle: Back pressure
 ms:assetid: 03003544-e802-4988-9427-5fc4da64dcb8
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb201658(v=EXCHG.150)
 ms:contentKeyID: 50934208
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Back pressure
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Back pressure is a system resource monitoring feature of the Microsoft Exchange Transport service that exists on Microsoft Exchange 2013 Mailbox servers and Edge Transport servers.
 
 Exchange can detect when vital resources, such as available hard drive space and memory, are under pressure, and take action in an attempt to prevent service unavailability. Back pressure prevents the system resources from being completely overwhelmed, and the Exchange server tries to process the existing messages before accepting any new messages. When utilization of the system resource returns to a normal level, the Exchange server gradually resumes normal operation and starts accepting new messages again.
 
-In Exchange 2013, when the Transport service on a Mailbox server or an Edge Transport server is under resource pressure, incoming connections are accepted, but incoming messages over those connections are either accepted at a slower rate or are rejected. When an SMTP host attempts to connect to an Exchange server that's under resurce pressure, the connection will succeed. However, when the host issues the **MAIL FROM** command to submit a message, depending on the resource that's under pressure, the Transport service either delays the acknowledgement of the **MAIL FROM** command or rejects the connection.
-
-**Contents**
-
-Resources monitored
-
-Actions taken by Exchange Transport when under resource pressure
-
-Back pressure configuration options in the EdgeTransport.exe.config file
-
-Back pressure logging information
+In Exchange 2013, when the Transport service on a Mailbox server or an Edge Transport server is under resource pressure, incoming connections are accepted, but incoming messages over those connections are either accepted at a slower rate or are rejected. When an SMTP host attempts to connect to an Exchange server that's under resource pressure, the connection will succeed. However, when the host issues the **MAIL FROM** command to submit a message, depending on the resource that's under pressure, the Transport service either delays the acknowledgement of the **MAIL FROM** command or rejects the connection.
 
 ## Resources monitored
 
 The following system resources are monitored as part of the back pressure feature:
 
-  - Free space on the hard drive that stores the message queue database.
+- Free space on the hard drive that stores the message queue database.
 
-  - Free space on the hard drive that stores the message queue database transaction logs.
+- Free space on the hard drive that stores the message queue database transaction logs.
 
-  - The number of uncommitted message queue database transactions that exist in memory.
+- The number of uncommitted message queue database transactions that exist in memory.
 
-  - The memory that's used by the EdgeTransport.exe process.
+- The memory that's used by the EdgeTransport.exe process.
 
-  - The memory that's used by all other processes.
+- The memory that's used by all other processes.
 
-  - The number of messages in the Submission queue.
+- The number of messages in the Submission queue.
 
 For each monitored system resource on a Mailbox server or Edge Transport server, the following three levels of resource utilization are applied:
 
-  - **Normal**   The resource isn't overused. The server accepts new connections and messages.
+- **Normal**: The resource isn't overused. The server accepts new connections and messages.
 
-  - **Medium**   The resource is slightly overused. Back pressure is applied to the server in a limited manner. Mail from senders in the authoritative domain can flow. However, depending on the specific resource under pressure, the server uses tarpitting to delay server response or rejects incoming **MAIL FROM** commands from other sources.
+- **Medium**: The resource is slightly overused. Back pressure is applied to the server in a limited manner. Mail from senders in the authoritative domain can flow. However, depending on the specific resource under pressure, the server uses tarpitting to delay server response or rejects incoming **MAIL FROM** commands from other sources.
 
-  - **High**   The resource is severely overused. Full back pressure is applied. All message flow stops, and the server rejects all new incoming **MAIL FROM** commands.
+- **High**: The resource is severely overused. Full back pressure is applied. All message flow stops, and the server rejects all new incoming **MAIL FROM** commands.
 
 The following sections explain how Exchange handles the situation when a specific resource is under pressure.
 
@@ -67,25 +58,18 @@ The value of *fixed constant* is 500 megabytes (MB).
 
 The results of this formula are expressed as a percentage of the total hard drive space that's being used. The results of the formula are always rounded down to the nearest integer. By default, the medium level of hard drive utilization is 2 percent less than the high level. By default, the normal level of hard drive utilization is 4 percent less than the high level.
 
-Return to top
-
 ## Free hard drive space for the message queue database transaction logs
 
 By default, the message queue database transaction logs are stored at %ExchangeInstallPath%TransportRoles\\data\\Queue. Exchange monitors the hard drive space utilization for this location. The %ExchangeInstallPath%Bin\\EdgeTransport.exe.config application configuration file contains a *DatabaseCheckPointDepthMax* key that has a default value of 384 MB. This key controls the total allowed size of all uncommitted transaction logs that exist on the hard drive. This key is used in the formula that calculates hard drive utilization.
 
-
 > [!NOTE]
 > The value of the <EM>DatabaseCheckPointDepthMax</EM> key applies to all transport-related Extensible Storage Engine (ESE) databases that exist on the Mailbox server or Edge Transport server. This would include the message queue database and the IP filter database.
-
-
 
 By default, the high level of disk utilization is calculated by using the following formula:
 
 100 \* (*hard drive size* - Min(5 GB, 3\**DatabaseCheckPointDepthMax*)) / *hard drive size*
 
 The results of the formula are always rounded down to the nearest integer. By default, the medium level of hard drive utilization is 2 percent less than the high level. The normal level of hard drive utilization is 4 percent less than the high level.
-
-Return to top
 
 ## Number of uncommitted message queue database transactions in memory
 
@@ -96,8 +80,6 @@ When Exchange starts receiving messages, these messages are grouped together in 
 When version buckets or batch points are under pressure, the Exchange server will start throttling incoming connections by delaying acknowledgement to incoming messages. Exchange will reduce the rate of inbound message flow by tarpitting, which introduces a delay to the **MAIL FROM** commands. If the resource pressure condition continues, Exchange will gradually increase the tarpitting delay. After the resource utilization returns to normal, Exchange will gradually start reducing the acknowledgement delay and ease into normal operation. By default, Exchange will start delaying message acknowledgements 10 seconds when under resource pressure. If the resources continue to be under pressure, the delay is increased in 5-second increments up to 55 seconds.
 
 Exchange keeps a history of version bucket and batch point resource utilization. If the resource utilization doesn't go down to normal level for a specific number of polling intervals, known as the history depth, Exchange will stop the tarpitting delay and start rejecting incoming messages until the resource utilization goes back to normal. By default, the history depths for version buckets and batch points are in 10 and 300 polling intervals respectively.
-
-Return to top
 
 ## Memory used by the EdgeTransport.exe process
 
@@ -113,15 +95,11 @@ If the memory utilization of the EdgeTransport.exe process is higher than the sp
 
 Exchange keeps a history of the memory utilization of the EdgeTransport.exe process. If the utilization doesn't go down to normal level for a specific number of polling intervals, known as the history depth, Exchange will start rejecting incoming messages until the resource utilization goes back to normal. By default, the history depth for EdgeTransport.exe memory utilization is 30 polling intervals.
 
-Return to top
-
 ## Memory used by all processes
 
 By default, the high level of memory utilization by all processes is 94 percent of total physical memory. This value doesn't include virtual memory that's available on the hard drive in the paging file.
 
 When the specified memory utilization level is reached, *message dehydration* occurs. Message dehydration is the act of removing unnecessary elements of queued messages that are cached in memory. Complete messages are cached in memory for enhanced performance. Removal of the MIME content of queued messages from memory reduces the memory that's used at the expense of higher latency because the messages are read directly from the message queue database. By default, message dehydration is enabled.
-
-Return to top
 
 ## Number of messages in the Submission queue
 
@@ -293,18 +271,12 @@ The following table summarizes the actions taken by Exchange transport when a sp
 </tbody>
 </table>
 
-
-Return to top
-
 ## Back pressure configuration options in the EdgeTransport.exe.config file
 
 All configuration options for back pressure are available in the %ExchangeInstallPath%Bin\\EdgeTransport.exe.config XML application configuration file.
 
-
 > [!WARNING]
 > These settings are listed as a reference only. We strongly discourage any modifications to the back pressure settings in the EdgeTransport.exe.config file. Modifications to the back pressure settings may result in poor performance or data loss. We recommend that you investigate and correct the root cause of any back pressure events that you may encounter.
-
-
 
 ### Back pressure configuration options
 
@@ -459,60 +431,54 @@ All configuration options for back pressure are available in the %ExchangeInstal
 </tbody>
 </table>
 
-
-Return to top
-
 ## Back pressure logging information
 
 The following list describes the event log entries that are generated by specific back pressure events in Exchange:
 
-  - **Event log entry for an increase in any resource utilization level**
-    
+- **Event log entry for an increase in any resource utilization level**
+
     Event Type: Error
-    
+
     Event Source: MSExchangeTransport
-    
+
     Event Category: Resource Manager
-    
+
     Event ID: 15004
-    
+
     Description: Resource pressure increased from *Previous Utilization Level* to *Current Utilization Level*.
 
-  - **Event log entry for a decrease in any resource utilization level**
-    
+- **Event log entry for a decrease in any resource utilization level**
+
     Event Type: Information
-    
+
     Event Source: MSExchangeTransport
-    
+
     Event Category: Resource Manager
-    
+
     Event ID: 15005
-    
+
     Description: Resource pressure decreased from *Previous Utilization Level* to *Current Utilization Level*.
 
-  - **Event log entry for critically low available disk space**
-    
+- **Event log entry for critically low available disk space**
+
     Event Type: Error
-    
+
     Event Source: MSExchangeTransport
-    
+
     Event Category: Resource Manager
-    
+
     Event ID: 15006
-    
+
     Description: The Microsoft Exchange Transport service is rejecting messages because available disk space is below the configured threshold. Administrative action may be required to free disk space for the service to continue operations.
 
-  - **Event log entry for critically low available memory**
-    
+- **Event log entry for critically low available memory**
+
     Event Type: Error
-    
+
     Event Source: MSExchangeTransport
-    
+
     Event Category: Resource Manager
-    
+
     Event ID: 15007
-    
+
     Description: The Microsoft Exchange Transport service is rejecting message submissions because the service continues to consume more memory than the configured threshold. This may require that this service be restarted to continue normal operation.
-
-Return to top
-

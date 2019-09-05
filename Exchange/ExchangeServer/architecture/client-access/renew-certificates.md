@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: 'Summary: Learn how to renew Exchange self-signed certificate or create certificate renewal requests for a certification authority in Exchange Server 2016 or Exchange Server 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 356ca7cd-b9d4-487d-aa21-3b38e91bde58
 ms.date: 6/7/2018
+ms.reviewer: 
 title: Renew an Exchange Server certificate
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -154,6 +155,3 @@ To verify that you have successfully renewed an Exchange self-signed certificate
 ```
 Get-ExchangeCertificate | where {$_.Status -eq "Valid" -and $_.IsSelfSigned -eq $true} | Format-List FriendlyName,Subject,CertificateDomains,Thumbprint,NotBefore,NotAfter
 ```
-
-
-

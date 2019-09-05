@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can enable or disable outgoing calls for a Unified Messaging (UM) IP gateway. When you clear the Allow outgoing calls through this UM IP gateway option on the properties for the UM IP gateway, you configure the UM IP gateway to not accept and send outgoing calls to a Voice over IP (VoIP) gateway, IP PBX, or session border controller (SBC). Although the Allow outgoing calls through this UM IP gateway setting controls whether the UM IP gateway is able to initiate outgoing calls for users, it doesn't affect call transfers or incoming calls from a VoIP gateway, IP PBX, or SBC.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: a3777cc6-37e4-4359-ada3-a962ac0ef0c3
 ms.date: 11/17/2014
-title: Disable outgoing calls on UM IP gateways
+ms.reviewer: 
+title: Disable outgoing calls on UM IP gateways in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Disable outgoing calls on UM IP gateways
+# Disable outgoing calls on UM IP gateways in Exchange Online
 
 You can enable or disable outgoing calls for a Unified Messaging (UM) IP gateway. When you clear the **Allow outgoing calls through this UM IP gateway** option on the properties for the UM IP gateway, you configure the UM IP gateway to not accept and send outgoing calls to a Voice over IP (VoIP) gateway, IP PBX, or session border controller (SBC). Although the **Allow outgoing calls through this UM IP gateway** setting controls whether the UM IP gateway is able to initiate outgoing calls for users, it doesn't affect call transfers or incoming calls from a VoIP gateway, IP PBX, or SBC.
 
@@ -33,7 +34,7 @@ For additional management tasks related to UM IP gateways, see [UM IP gateway pr
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to disable outgoing calls for a UM IP gateway
 
@@ -50,6 +51,3 @@ This example disables outgoing calls on a UM IP gateway named `MyUMIPGateway`.
 ```
 Set-UMIPGateway -Identity MyUMIPGateway -OutcallsAllowed $false
 ```
-
-
-

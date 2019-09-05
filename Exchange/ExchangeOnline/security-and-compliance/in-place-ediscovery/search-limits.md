@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: Various types of limits are applied to In-Place eDiscovery searches in Exchange Online and Office 365. These limits help to maintain the health and quality of services provided to Office 365 organizations. In most cases, you can't modify these limits, but you should be aware of them so that you can take these limits into consideration when planning, running, and troubleshooting eDiscovery searches.
 ms.topic: article
-author: markjjo
-ms.author: markjjo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 65864987-f734-4fab-be97-1ba190a083d4
 ms.date: 6/23/2018
+ms.reviewer: 
 title: Search limits for In-Place eDiscovery in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: Admin
+audience: Admin
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -56,6 +57,3 @@ The following table describes other limits that affect In-Place eDiscovery searc
 |The maximum number of items displayed on the search preview page when previewing In-Place eDiscovery search results.|200|When you preview search results, the mailboxes that were searched are listed in the right pane on the eDiscovery search preview page. For each mailbox, the number of items returned and the total size of these items are also displayed. Items returned by the search are listed in the right pane. Up to 200 items are displayed on the preview page. <br/> **Note**: Items from each mailbox can't be displayed in the right pane by clicking a mailbox in the left pane. To view the items returned from a specific mailbox, you can copy the search results and view the items in the discovery mailbox.|
 |The maximum number of keywords that can be specified in all In-Place Holds placed on a single mailbox.|500|If multiple In-Place Holds are placed on a user's mailbox, the maximum number of keywords in all search queries is 500. That's because Exchange Online combines all the keyword search parameters from of all In-Place Holds by using the **OR** operator. If there are more than 500 keywords in the hold queries, then all content in the mailbox is placed on hold (and not just that content that matches the search criteria of any query-based hold). All content is held until the total number of keywords in all In-Place Holds is reduced to 500 or less. Holding all mailbox content is similar in functionality to a Litigation Hold.|
 |Maximum number of variants returned when using a prefix wildcard to search for an exact phrase in a keyword search query or when using a prefix wildcard and the **NEAR** operator.|10,000|For non-phrase queries we use a special prefix index. This only tells us that a word occurs in a document, not where in the document it occurs. To do a phrase query we need to compare the position within the document for the words in the phrase. This means that we cannot use the prefix index for phrase queries. In this case we are internally expanding the query with all possible words that the prefix expands to (i.e. "time\*" can expand to "time OR timer OR times OR timex OR timeboxed OR ..."). 10,000 is the maximum number of variants the word can expand to, not the number of documents matching the query. For non-phrase terms there are no upper limit.|
-
-
-

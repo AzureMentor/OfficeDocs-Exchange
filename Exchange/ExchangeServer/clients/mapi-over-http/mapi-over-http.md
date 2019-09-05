@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 4663b5db-5b30-4a5a-a302-be6fef7fe5da
 ms.date: 7/10/2018
+ms.reviewer: 
 title: MAPI over HTTP in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -27,13 +28,13 @@ MAPI over HTTP offers the following benefits to the clients that support it:
 
 - Enables future innovation in authentication by using an HTTP based protocol.
 
-- Provides faster reconnection times after a communications break because only TCP connections—not RPC connections—need to be rebuilt. Examples of a communication break include:
+- Provides faster reconnection times after a communications break because only TCP connections (not RPC connections) need to be rebuilt. Examples of a communication break include:
 
   - Device hibernation
 
   - Changing from a wired network to a wireless or cellular network
 
-- Offers a session context that is not dependent on the connection. The server maintains the session context for a configurable period of time—even if the user changes networks.
+- Offers a session context that is not dependent on the connection. The server maintains the session context for a configurable period of time, even if the user changes networks.
 
 ## MAPI over HTTP when upgrading Exchange
 In Exchange 2016 or later, MAPI over HTTP is enabled by default at the organization level, although you still need to configure the virtual directories as described in [Configure MAPI over HTTP](configure-mapi-over-http.md) for users to take advantage of it.
@@ -67,6 +68,4 @@ The following conditions are required for clients and servers to support MAPI ov
 
 - Supported Outlook clients (see the table in the previous section).
 
-- .NET Framework 4.5.2 or later. Note that this is no longer an issue for Exchange 2016 CU5 or later. For more information about the .NET Framework requirements for Exchange 2016, see [.NET Framework](../../plan-and-deploy/system-requirements.md#net-framework).
-
-
+- .NET Framework 4.5.2 or later. Note that this is no longer an issue for Exchange 2016 CU5 or later. For more information about the .NET Framework requirements for Exchange 2016, see [Supported .NET Framework versions for Exchange 2016](https://docs.microsoft.com/Exchange/plan-and-deploy/system-requirements?view=exchserver-2016#supported-net-framework-versions-for-exchange-2016).

@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Message retry, resubmit, and expiration intervals: Exchange 2013 Help'
 TOCTitle: Message retry, resubmit, and expiration intervals
 ms:assetid: 03020e6f-4c01-4c6e-ae47-fd74d4c4f96a
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ891103(v=EXCHG.150)
 ms:contentKeyID: 50646229
 ms.date: 07/14/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Message retry, resubmit, and expiration intervals
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 In Microsoft Exchange Server 2013, messages that can't be successfully delivered are subject to various retry, resubmit, and expiration deadlines based on the message's source and destination. *Retry* is a renewed connection attempt with the destination. *Resubmit* is the act of sending messages back to the Submission queue for the categorizer to reprocess. The message *expires* after all delivery efforts have failed over a specified period of time. After a message expires, the sender is notified of the delivery failure. Then the message is deleted from the queue.
 
@@ -65,7 +66,7 @@ The configuration options that are available for message retry intervals are des
 <tr class="odd">
 <td><p><em>TransientFailureRetryCount</em></p></td>
 <td><p>6</p></td>
-<td><p><strong>Set-TransportService</strong> cmdlet or server properties in the Exchange Administration Center (EAC)</p></td>
+<td><p><strong>Set-TransportService</strong> cmdlet or server properties in the Exchange admin center (EAC)</p></td>
 <td><p>This parameter specifies the number of connection attempts that are tried after the connection attempts that are controlled by the <em>QueueGlitchRetryCount</em> and <em>QueueGlitchRetryInterval</em> keys have failed. Connection problems that exhaust the <em>QueueGlitchRetryCount</em> and <em>QueueGlitchRetryInterval</em> keys can be caused by server restarts or cached DNS lookup failures.</p>
 <p>Valid input for this parameter is an integer from 0 through 15. If you set this parameter to 0, the next connection attempt is controlled by the <em>OutboundConnectionFailureRetryInterval</em> parameter.</p></td>
 </tr>
@@ -106,16 +107,11 @@ The configuration options that are available for message retry intervals are des
 </tbody>
 </table>
 
-
-Return to top
-
 ## Configuration options for manual message retry
 
 When a delivery queue is in the status of Retry, you can manually force an immediate connection attempt by using Queue Viewer in the Exchange toolbox or the **Retry-Queue** cmdlet in the Shell. The manual retry attempt overrides the next scheduled retry time. If the connection isn't successful, the retry interval timer is reset. The delivery queue must be in a status of Retry for this action to have any effect.
 
 For more information, see the "Retry queues" section in [Manage queues](manage-queues-exchange-2013-help.md).
-
-Return to top
 
 ## Configuration options for delay DSN messages
 
@@ -165,14 +161,8 @@ The configuration options that are available for delay DSN notification messages
 </tbody>
 </table>
 
-
-
 > [!NOTE]
 > On Exchange 2007 Hub Transport servers, all <EM>ExternalDSN*</EM> and <EM>InternalDSN*</EM> parameters are available on the <STRONG>Set-TransportServer</STRONG> cmdlet, not the <STRONG>Set-TransportConfig</STRONG> cmdlet. If you have any Exchange 2007 Hub Transport servers in your organization, you need to make changes to these values using the <STRONG>Set-TransportServer</STRONG> cmdlet on each Exchange 2007 Hub Transport server.
-
-
-
-Return to top
 
 ## Configuration options for message resubmission
 
@@ -202,15 +192,10 @@ If you want to manually resubmit messages that are located in delivery queues or
 
 Another way that you can manually resubmit messages is to suspend the messages, export the messages to text files that have the .eml file name extension, and then copy the .eml files to the Replay directory on any Mailbox server or Edge Transport server. This resubmission method works for messages that are located in delivery queues or the Unreachable queue. Messages that are located in the poison message queue are already in the Suspended state. Messages that are located in the Submission queue can't be suspended or exported.
 
-
 > [!NOTE]
 > When you export messages from a queue, you don't remove the messages from the queue. After you export the messages and successfully resubmit them by using the Replay directory, you should remove the suspended messages to avoid duplicate message delivery.
 
-
-
 For more information, see [Export messages from queues](export-messages-from-queues-exchange-2013-help.md).
-
-Return to top
 
 ## Configuration options for message expiration
 
@@ -229,6 +214,3 @@ The default value is `2.00:00:00` or 2 days. The valid input range for this par
 Although you can't manually force messages to expire, you can manually remove messages from any queue, except the Submission queue, with or without an NDR.
 
 For more information, see the "Remove messages from queues" section in [Manage messages in queues](manage-messages-in-queues-exchange-2013-help.md).
-
-Return to top
-

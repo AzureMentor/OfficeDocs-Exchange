@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how you can configure mail flow between your Exchange organization and an Edge Transport server without using an Edge Subscription.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 6bb98d10-6f12-4b08-a58e-36375f605d65
 ms.date:
+ms.reviewer: 
 title: Configure internet mail flow through Edge Transport servers without using EdgeSync
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -254,4 +255,3 @@ To verify that you've successfully created a Send connector to send outgoing mes
    ```
    Get-SendConnector -Identity "To Edge" | Format-List Usage,AddressSpaces,DSNRoutingEnabled,SmartHosts,SourceTransportServers,SmartHostAuthMechanism
    ```
-

@@ -1,40 +1,29 @@
-﻿---
+---
 title: 'DSNs and NDRs in Exchange 2013: Exchange 2013 Help'
 TOCTitle: DSNs and NDRs in Exchange 2013
 ms:assetid: 8e91de84-76fa-49b2-898c-c5eface76560
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb232118(v=EXCHG.150)
 ms:contentKeyID: 49286851
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # DSNs and NDRs in Exchange 2013
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
-
 
 > [!NOTE]
 > If you need help with NDRs in Office 365 or Exchange Online, see <A href="https://go.microsoft.com/fwlink/p/?linkid=524931">Email non-delivery reports in Office 365</A>.
 
-
-
 When there's a problem delivering a message, Exchange Server 2013 will send a delivery status notification (DSN) to the message sender. These system-generated messages are also known as bounce messages, and they contain an error code, technical details about the problem, and sometimes troubleshooting steps for the message sender. Non-delivery report (NDR) messages are a common type of status notification. This topic for email administrators describes likely causes and solutions for many NDR status codes. It also tells how to read and interpret NDR messages.
-
-**Contents**
-
-Common enhanced status codes
-
-NDR sections
-
-Examples of NDR messages
 
 ## Common enhanced status codes
 
 The following table contains a list of the enhanced status codes that are returned in NDRs for the most common message delivery failures.
-
 
 <table>
 <colgroup>
@@ -259,16 +248,13 @@ The following table contains a list of the enhanced status codes that are return
 </tbody>
 </table>
 
-
-Return to top
-
 ## NDR sections
 
 In Exchange 2013, NDRs are designed to be easy to read and understand by both end users and administrators. Information that is displayed in an NDR is separated into the following two areas:
 
-  - A user information section
+- A user information section
 
-  - A administrator information section
+- A administrator information section
 
 The information in each section is targeted to the readers of that section. The user information section appears first and contains feedback to help the user understand in nontechnical terms why the delivery of the message failed. The **Diagnostic information for administrators** section provides deeper technical information, such as the original message headers, which help email administrators troubleshoot a delivery issue. The following figure shows the user information section and **Diagnostic information for administrators** section of an NDR.
 
@@ -284,33 +270,29 @@ The text in the user information section is designed to help end users determine
 
 You can modify the text in the user information section by using the **New-SystemMessage** cmdlet. By creating a custom message, you can provide specific information to end users, such as a telephone number to use to contact the helpdesk department or a hyperlink to use to obtain self-service support.
 
-Return to top
-
 ## Diagnostic information for administrators
 
 The **Diagnostic information for administrators** section contains more detailed information about the specific error that occurred during delivery of the message, the server that generated the NDR, and the server that rejected the message. The following fields are present in most NDRs and are visible in the "NDR sections" figure earlier in this topic:
 
-  - **Generating server**   The generating server is the SMTP server that created the NDR. The generating server takes the enhanced status code that is explained later in this topic. This code creates an easy-to-read NDR. If no remote server is listed below the email address of the sender in the **Diagnostic information for administrators** section, the generating server is also the server that rejected the original email message. If message delivery fails when the message is sent to another recipient in the Exchange organization, the same server typically rejects the original message and generates the NDR.
+- **Generating server**: The generating server is the SMTP server that created the NDR. The generating server takes the enhanced status code that is explained later in this topic. This code creates an easy-to-read NDR. If no remote server is listed below the email address of the sender in the **Diagnostic information for administrators** section, the generating server is also the server that rejected the original email message. If message delivery fails when the message is sent to another recipient in the Exchange organization, the same server typically rejects the original message and generates the NDR.
 
-  - **Rejected recipient**   The rejected recipient is the email address of the recipient to which delivery of the original message failed. If delivery to more than one recipient has failed, the email address for each recipient is listed. The rejected recipient field also contains the following subfields for each email address listed:
-    
-      - **Remote server**   The remote server field contains the FQDN of the server that rejects delivery of the message during the SMTP conversation. The remote server field is only populated when delivery has been attempted to a remote server, and that delivery attempt has been rejected before the receiving server successfully acknowledges the message after the message body is sent. If the original message is successfully acknowledged by the receiving server and is then rejected because of content restrictions, for example, the remote server field is not populated.
-    
-      - **Enhanced status code**   The enhanced status code is the code returned by the server that rejected the original message. The enhanced status code indicates why the original message was rejected. The enhanced status code is not rewritten by Exchange but is used to determine what text to display in the user information section. The enhanced status codes you're most likely to encounter are listed in "Common Enhanced Status Codes" later in this topic. For a detailed list of enhanced status codes, see RFC 3463.
-    
-      - **SMTP response**   The SMTP response is the machine readable text returned by the server that rejected the original message. The SMTP response typically contains a short string that provides an explanation of the enhanced status code that is also returned. The SMTP response is not rewritten by Exchange. Additionally, this response is always presented in US-ASCII format.
+- **Rejected recipient**: The rejected recipient is the email address of the recipient to which delivery of the original message failed. If delivery to more than one recipient has failed, the email address for each recipient is listed. The rejected recipient field also contains the following subfields for each email address listed:
 
-  - **Original message headers**   The original message headers section contains the message headers of the rejected message. These headers can provide useful diagnostic information, such as information that can help you determine the path that the message took before it was rejected or whether the **To** field matches the email address that is specified in the rejected recipient field.
+  - **Remote server**: The remote server field contains the FQDN of the server that rejects delivery of the message during the SMTP conversation. The remote server field is only populated when delivery has been attempted to a remote server, and that delivery attempt has been rejected before the receiving server successfully acknowledges the message after the message body is sent. If the original message is successfully acknowledged by the receiving server and is then rejected because of content restrictions, for example, the remote server field is not populated.
 
-Return to top
+  - **Enhanced status code**: The enhanced status code is the code returned by the server that rejected the original message. The enhanced status code indicates why the original message was rejected. The enhanced status code is not rewritten by Exchange but is used to determine what text to display in the user information section. The enhanced status codes you're most likely to encounter are listed in "Common Enhanced Status Codes" later in this topic. For a detailed list of enhanced status codes, see RFC 3463.
+
+  - **SMTP response**: The SMTP response is the machine readable text returned by the server that rejected the original message. The SMTP response typically contains a short string that provides an explanation of the enhanced status code that is also returned. The SMTP response is not rewritten by Exchange. Additionally, this response is always presented in US-ASCII format.
+
+- **Original message headers**: The original message headers section contains the message headers of the rejected message. These headers can provide useful diagnostic information, such as information that can help you determine the path that the message took before it was rejected or whether the **To** field matches the email address that is specified in the rejected recipient field.
 
 ## Examples of NDR messages
 
 The following sections provide examples of two ways that NDR messages can be generated:
 
-  - By the same server
+- By the same server
 
-  - By different servers
+- By different servers
 
 ## NDR generated and original message rejected by the same server
 
@@ -324,8 +306,6 @@ Also, messages that are rejected when they are sent to recipients that are part 
 
 In both situations, no remote server is included under the email address of the recipients listed in the NDR message.
 
-Return to top
-
 ## NDR generated and original message rejected by different servers
 
 The following example shows what happens when a remote email organization rejects delivery of an email message before it ever accepts the message. In this example, the remote server rejects the message and returns an enhanced status code to the local sending server because the specified recipient does not exist. The rejection happens before the receiving server ever acknowledges the message. Because the receiving server doesn't successfully acknowledge the message, the receiving server is not responsible for the message. Therefore, the local sending server generates the NDR message and sends it to the sender of the original message.
@@ -334,10 +314,6 @@ The following example shows what happens when a remote email organization reject
 
 ![NDR showing different generating/sending servers](images/Bb232118.adfb8d5a-9c1d-4cd9-8a71-ce14224434f8(EXCHG.150).gif "NDR showing different generating/sending servers")
 
-Return to top
-
 ## See Also
 
-
 [What are Exchange NDRs in Exchange Online and Office 365](https://go.microsoft.com/fwlink/p/?linkid=524931)
-

@@ -5,6 +5,7 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: eb39cfa7-7c76-4403-a2f5-403354ebb7ae
 ms.date: 8/16/2018
+ms.reviewer: 
 description: When you migrate on-premises Exchange mailboxes to Office 365, certain permissions to access and, in some cases, modify those mailboxes, are required. The user account used to connect to your on-premises Exchange organization during the migration needs those permissions. Known as the migration administrator, the user account is used to create a migration endpoint to your on-premises organization.
 title: Assign Exchange permissions to migrate mailboxes to Office 365
 ms.collection: 
@@ -14,7 +15,7 @@ search.appverid:
 - MET150
 - MOE150
 - BCS160
-ms.audience: Admin
+audience: Admin
 ms.custom: Adm_O365
 ms.service: exchange-online
 manager: serdars
@@ -222,6 +223,3 @@ Get-Mailbox -ResultSize unlimited -Filter {(CustomAttribute15 -eq 'StagedMigrati
 ```
 Get-Mailbox -ResultSize unlimited -Filter {(RecipientTypeDetails -eq 'UserMailbox')} | Get-ADPermission -User migadmin
 ```
-
-
-

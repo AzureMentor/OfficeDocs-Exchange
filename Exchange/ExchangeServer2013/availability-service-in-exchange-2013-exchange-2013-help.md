@@ -1,45 +1,34 @@
-﻿---
+---
 title: 'Availability service in Exchange 2013: Exchange 2013 Help'
 TOCTitle: Availability service in Exchange 2013
 ms:assetid: 9722dea2-2bf8-437c-85c0-3ab65b8a07b9
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb232134(v=EXCHG.150)
 ms:contentKeyID: 51492808
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Availability service in Exchange 2013
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 The Exchange 2013 Availability service makes free/busy information available to Microsoft Outlook and Outlook Web App clients. The Availability service improves information workers' calendaring and meeting scheduling experience by providing secure, consistent, and up-to-date free/busy information.
 
 Outlook and Outlook Web App use the Availability service to perform the following tasks:
 
-  - Retrieve current free/busy information for Exchange 2013 mailboxes
+- Retrieve current free/busy information for Exchange 2013 mailboxes
 
-  - Retrieve current free/busy information from other Exchange 2013 organizations
+- Retrieve current free/busy information from other Exchange 2013 organizations
 
-  - Retrieve published free/busy information from public folders for mailboxes on servers that have previous versions of Exchange
+- Retrieve published free/busy information from public folders for mailboxes on servers that have previous versions of Exchange
 
-  - View attendee working hours
+- View attendee working hours
 
-  - Show meeting time suggestions
-
-**Contents**
-
-Overview of the Availability service
-
-Information about away status
-
-Availability service API
-
-Availability service Network Load Balancing
-
-Methods used to retrieve free/busy information
+- Show meeting time suggestions
 
 ## Overview of the Availability service
 
@@ -47,7 +36,7 @@ The Availability service retrieves free/busy information directly from the targe
 
 Outlook uses the Exchange Autodiscover service to obtain the URL of the Availability service. For more information about the Autodiscover service, see [Autodiscover service](autodiscover-service-for-exchange-2013.md).
 
-You can use the Exchange Management Shell to configure the Availability service. You can't use the Exchange Administration Center (EAC) to configure the Availability service.
+You can use the Exchange Management Shell to configure the Availability service. You can't use the Exchange admin center (EAC) to configure the Availability service.
 
 ## Information about away status
 
@@ -65,16 +54,12 @@ Using Network Load Balancing (NLB) on your Client Access servers that are runnin
 
 The internal URL is used from the intranet, and the external URL is used from the Internet. If you want to use the same URL for both internal and external traffic, make sure that DNS is correctly configured to route internal traffic directly to the internal URL. Also, make sure that the URL can be accessed both internally and externally. For the Autodiscover and Availability services to work, DNS must be configured so that mail.\<*domain name*\>.com and autodiscover.mail.\<*domain name*\>.com point to the virtual IP (VIP) of your load-balancing solution, where \<*domain name*\> is the name of your domain.
 
-
 > [!NOTE]
 > For more information, see <A href="https://go.microsoft.com/fwlink/p/?linkid=45959">Network Load Balancing Technical Reference</A> and <A href="https://go.microsoft.com/fwlink/p/?linkid=49315">Network Load Balancing Clusters</A>. You can also search for third-party load-balancing software websites.
-
-
 
 ## Methods used to retrieve free/busy information
 
 The following table lists the different methods used to retrieve free/busy information in different single-forest topologies.
-
 
 <table>
 <colgroup>
@@ -118,4 +103,3 @@ The following table lists the different methods used to retrieve free/busy infor
 </tr>
 </tbody>
 </table>
-

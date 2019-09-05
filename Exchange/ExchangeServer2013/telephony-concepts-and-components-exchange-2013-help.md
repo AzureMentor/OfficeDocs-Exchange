@@ -1,41 +1,22 @@
-﻿---
+---
 title: 'Telephony concepts and components: Exchange 2013 Help'
 TOCTitle: Telephony concepts and components
 ms:assetid: ce70bf6a-db85-411b-8b93-2987703963a9
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb124606(v=EXCHG.150)
 ms:contentKeyID: 49315524
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-# Telephony concepts and components
+# Telephony concepts and components in Exchange Server
 
- 
-
-_**Applies to:** Exchange Online, Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013, Exchange Server 2016_
 
 If you're planning and deploying Microsoft Exchange 2013 Unified Messaging (UM) on your network, you must understand Unified Messaging and telephony networks. This topic provides an overview of telephony infrastructure concepts and components that will help you plan and deploy servers running Exchange 2013 Unified Messaging.
-
-**Contents**
-
-Overview
-
-Concepts and components
-
-Circuit-switched networks
-
-Packet-switched networks
-
-PBX
-
-IP PBX
-
-SIP-enabled PBX
-
-VoIP
-
-IP gateways
 
 ## Overview
 
@@ -45,15 +26,15 @@ In versions of Microsoft Exchange before Exchange Server 2007, the Exchange admi
 
 To successfully deploy Unified Messaging in Exchange 2013, you must have a good understanding of basic telephony concepts and telephony components. After you gain a good understanding of telephony basics, you can successfully integrate Exchange 2013 Unified Messaging into an Exchange 2013 organization. Basic concepts and components include the following:
 
-  - Circuit-switched and packet-switched networks
+- Circuit-switched and packet-switched networks
 
-  - Private Branch eXchange (PBX)
+- Private Branch eXchange (PBX)
 
-  - IP PBX
+- IP PBX
 
-  - Voice over Internet Protocol (VoIP)
+- Voice over Internet Protocol (VoIP)
 
-  - VoIP gateways
+- VoIP gateways
 
 ## Circuit-switched networks
 
@@ -61,11 +42,8 @@ In circuit-switched networks, such as the Public Switched Telephone Network (PST
 
 A circuit-switched network is a network in which there exists a dedicated connection. A dedicated connection is a circuit or channel set up between two nodes so that they can communicate. After a call is established between two nodes, the connection may be used only by these two nodes. When the call is ended by one of the nodes, the connection is canceled.
 
-
 > [!NOTE]
 > PSTN is a grouping of the world's public circuit-switched telephone networks. This grouping resembles the way that the Internet is a grouping of the world's public IP-based packet-switched networks.
-
-
 
 There are two basic types of circuit-switched networks: analog and digital. Analog was designed for voice transmission. For many years, the PSTN was only analog, but today, circuit-based networks such as the PSTN have transitioned from analog to digital. To support an analog voice transmission signal over a digital network, the analog transmission signal must be encoded or converted into a digital format before it enters the telephony WAN. On the receiving end of the connection, the digital signal must be decoded or converted back into an analog signal format.
 
@@ -73,13 +51,8 @@ There are advantages and disadvantages to circuit-switched networks. Circuit-swi
 
 Circuit switching has one big advantage over packet-switched networks. In a circuit-switched network, when you use a circuit, you have the full circuit for the time that you're using the circuit without competition from other users. This isn't the case with packet-switched networks.
 
-
 > [!NOTE]
 > Synchronous Digital Hierarchy (SDH) has become the primary transmission protocol for most PSTN networks. SDH is carried over fiber optic networks.
-
-
-
-Return to top
 
 ## Packet-switched networks
 
@@ -87,29 +60,21 @@ Packet switching is a technique that divides a data message into smaller units c
 
 In packet-switched networks such as the Internet, packets are routed to their destination through the most expedient route, but not all packets traveling between two hosts travel the same route, even those from a single message. This almost guarantees that the packets will arrive at different times and out of order. In a packet-switched network, packets (messages or fragments of messages) are individually routed between nodes over data links that may be shared by other nodes. With packet switching, unlike circuit switching, multiple connections to nodes on the network share the available bandwidth.
 
-
 > [!NOTE]
 > With circuit switching, all packets go to the receiver in order and along a single path.
-
-
 
 Packet-switched networks exist to enable data communication on the Internet throughout the world. A public data network or packet-switched network is the data counterpart to the PSTN.
 
 Packet-switched networks are also found in such network environments as LAN and WAN networks. A WAN packet-switched environment relies on telephone circuits, but the circuits are arranged so that they retain a permanent connection with their endpoint. In a LAN packet-switched environment, such as with an Ethernet network, the transmission of the data packets relies on packet switches, routers, and LAN cables. In a LAN, the switch establishes a connection between two segments only long enough to send the current packet. Incoming packets are saved to a temporary memory area or buffer in memory. In an Ethernet-based LAN, an Ethernet frame contains the payload or data portion of the packet and a special header that includes the media access control (MAC) address information for the source and destination of the packet. When the packets arrive at their destination, they are put back in order by a packet assembler. A packet assembler is needed because of the different routes that the packets may take.
 
-Packet-switched networking has made it possible for the Internet to exist and, at the same time, has made data networks—especially LAN-based IP networks—more available and widespread.
-
-Return to top
+Packet-switched networking has made it possible for the Internet to exist and, at the same time, has made data networks (especially LAN-based IP networks) more available and widespread.
 
 ## PBX
 
 A legacy PBX is a telephony device that acts as a switch for switching calls in a telephony or circuit-switched network.
 
-
 > [!NOTE]
 > A legacy PBX is a PBX that cannot pass IP packets. In many businesses, legacy PBXs have been replaced by IP PBXs.
-
-
 
 A PBX is a telephony device used by most medium-size and larger-size companies. A PBX enables users or subscribers of the PBX to share a certain number of outside lines for making telephone calls considered external to the PBX. A PBX is a much less expensive solution than giving each user in a business a dedicated external telephone line. Telephone sets, in addition to fax machines, modems, and many other communication devices, can be connected to a PBX.
 
@@ -119,19 +84,14 @@ Internal business calls made to external telephone numbers using a PBX are made 
 
 In medium-size and larger-size businesses, the following PBX configurations are possible:
 
-  - A single PBX that supports the whole business.
+- A single PBX that supports the whole business.
 
-  - A grouping of two or more PBXs not networked or connected to each other.
+- A grouping of two or more PBXs not networked or connected to each other.
 
-  - A grouping of two or more PBXs connected together or networked.
-
+- A grouping of two or more PBXs connected together or networked.
 
 > [!NOTE]
 > An Exchange 2013 UM dial plan can span more than one PBX or IP PBX.
-
-
-
-Return to top
 
 ## IP PBX
 
@@ -145,7 +105,7 @@ A SIP-enabled PBX is a telephony device that acts as a networking switch for swi
 
 SIP-enabled PBXs use a format for calls that includes a SIP URI containing a global E.164 number and the "user=phone" parameter. For example: sip:+14255551234@contoso.com;user=phone
 
-The E164 number begins with a leading "+", and doesn’t contain a phone-context parameter or any separators. SIP-enabled PBXs support both TCP and UDP. UDP is still widely used with legacy systems. SIP-enabled PBXs also support Mutual Transport Layer Security (mutual TLS) and DNS lookups.
+The E164 number begins with a leading "+", and doesn't contain a phone-context parameter or any separators. SIP-enabled PBXs support both TCP and UDP. UDP is still widely used with legacy systems. SIP-enabled PBXs also support Mutual Transport Layer Security (mutual TLS) and DNS lookups.
 
 ## VoIP
 
@@ -155,27 +115,18 @@ Voice over Internet Protocol (VoIP) is a technology that contains hardware and s
 
 A VoIP gateway is a third-party hardware device or product that connects a legacy PBX to your LAN. The VoIP gateway lets the PBX system communicate with your Exchange 2013 Mailbox and Client Access servers running the Microsoft Exchange Unified Messaging and Unified Messaging Call Router services.
 
-
 > [!NOTE]
 > The VoIP gateway can also connect to PBX systems that use VoIP instead of PSTN circuit-switched protocols.
 
-
-
 Exchange 2013 Unified Messaging relies on the VoIP gateway's abilities to translate or convert TDM or telephony circuit-switched based protocols like ISDN and QSIG from a PBX to IP-based or VoIP-based protocols like Session Initiated Protocol (SIP), Realtime Transport Protocol (RTP), or T.38 for Realtime Facsimile Transport. The VoIP gateway is integral to the functionality and operation of Unified Messaging.
-
 
 > [!IMPORTANT]
 > After you install the VoIP gateway, IP PBX, or SIP-enabled PBX, you must create a UM IP gateway to represent the physical device. After you create a UM IP gateway, the Client Access and Mailbox servers linked with the UM IP gateway will send a SIP OPTIONS request to the VoIP gateway, IP PBX, or SIP-enabled PBX to ensure that the device is responsive. If the VoIP gateway doesn't respond to the SIP OPTIONS request from the Mailbox server, the Mailbox server will log an event with ID 1088 stating that the request failed. To resolve this issue, ensure that the VoIP gateway, IP PBX, or is available and online and that the Unified Messaging configuration on both the Client Access and Mailbox server is correct.
 
-
-
 For more information about IP PBX and PBX configurations, see [PBX and IP PBX configurations](pbx-and-ip-pbx-configurations-exchange-2013-help.md).
-
-Return to top
 
 ## For more information
 
 [UM protocols, ports, and services](um-protocols-ports-and-services-exchange-2013-help.md)
 
 [Telephony advisor for Exchange 2013](https://docs.microsoft.com/en-us/exchange/voice-mail-unified-messaging/telephone-system-integration-with-um/telephony-advisor-for-exchange-2013)
-

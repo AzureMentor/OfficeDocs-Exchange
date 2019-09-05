@@ -2,9 +2,13 @@
 title: 'Manage user access to add-ins for Outlook in Exchange 2013'
 TOCTitle: Manage user access to add-ins for Outlook
 ms:assetid: e5833dec-a23a-439e-ac03-92671817bff8
-ms:mtpsurl: 
-ms:contentKeyID: 
-ms.date: 
+ms:mtpsurl:
+ms:contentKeyID:
+ms.date:
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
@@ -28,7 +32,7 @@ For additional management tasks, see [Add-ins for Outlook](add-ins-for-outlook-2
 
 - To learn how to connect to the Exchange Management Shell, see [Open the Exchange Management Shell](https://docs.microsoft.com/powershell/exchange/exchange-server/open-the-exchange-management-shell).
 
-- You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Add-ins for Outlook" entry in the [Recipients permissions](https://technet.microsoft.com/library/5b690bcb-c6df-4511-90e1-08ca91f43b37.aspx) topic. 
+- You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Add-ins for Outlook" entry in the [Recipients permissions](https://technet.microsoft.com/library/5b690bcb-c6df-4511-90e1-08ca91f43b37.aspx) topic.
 
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center in Exchange 2013](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
 
@@ -63,27 +67,27 @@ First, run the following command to find the display names and add-in IDs for al
 Get-App -OrganizationApp | Format-List DisplayName,AppId
 ```
 
-The **AppId** value is a GUID that uniquely identifies the add-in (for example, `fe93bfe1-7947-460a-a5e0-7a5906b51360`). You use the **AppId** value to identify and change the settings of the add-in. 
+The **AppId** value is a GUID that uniquely identifies the add-in (for example, `fe93bfe1-7947-460a-a5e0-7a5906b51360`). You use the **AppId** value to identify and change the settings of the add-in.
 
-To disable and hide an add-in from all your users, replace _\<AppId\>_ with the real **AppId** value and run the following command: 
+To disable and hide an add-in from all your users, replace _\<AppId\>_ with the real **AppId** value and run the following command:
 
 ```
 Set-App -Identity <AppId> -OrganizationApp -Enabled $false
 ```
 
-To enable an add-in by default, but allow your users to turn it off, replace _\<AppId\>_ with the real **AppId** value and run the following command: 
+To enable an add-in by default, but allow your users to turn it off, replace _\<AppId\>_ with the real **AppId** value and run the following command:
 
 ```
 Set-App -Identity <AppId> -OrganizationApp -Enabled $true -DefaultStateForUser Enabled
 ```
 
-To disable an add-in by default, but allow your users to turn it on, replace _\<AppId\>_ with the real **AppId** value and run the following command: 
+To disable an add-in by default, but allow your users to turn it on, replace _\<AppId\>_ with the real **AppId** value and run the following command:
 
 ```
 Set-App -Identity <AppId> -OrganizationApp -Enabled $true -DefaultStateForUser Disabled
 ```
 
-If you want the add-in to be required for your users, replace _\<AppId\>_ with the real **AppId** value and run the following command: 
+If you want the add-in to be required for your users, replace _\<AppId\>_ with the real **AppId** value and run the following command:
 
 ```
 Set-App -Identity <AppId> -OrganizationApp -Enabled $true -DefaultStateForUser AlwaysEnabled
@@ -95,9 +99,9 @@ For detailed syntax and parameters, see [Set-App](https://technet.microsoft.com/
 
 To verify that you've successfully configured an add-in, use either of the following steps:
 
-- In the EAC, navigate to **Organization** \> **Add-ins** and review the values in the **User Default** and **Provided To** columns. 
+- In the EAC, navigate to **Organization** \> **Add-ins** and review the values in the **User Default** and **Provided To** columns.
 
-- In the Exchange Management Shell, run the following command and verify the values of the **DefaultStateForUser** and **Enabled** properties: 
+- In the Exchange Management Shell, run the following command and verify the values of the **DefaultStateForUser** and **Enabled** properties:
 
   ```
   Get-App -OrganizationApp | Format-List DisplayName,AppId,Enabled,DefaultStateForUser
@@ -107,7 +111,7 @@ To verify that you've successfully configured an add-in, use either of the follo
 
 To limit the availability of an add-in to specific users, you can't use the EAC. You can only use the Exchange Management Shell.
 
-This example limits the LinkedIn add-in with the hypothetical **AppId** value `ac83a9d5-5af2-446f-956a-c583adc94d5e` to the members of the distribution group named Marketing. 
+This example limits the LinkedIn add-in with the hypothetical **AppId** value `ac83a9d5-5af2-446f-956a-c583adc94d5e` to the members of the distribution group named Marketing.
 
 ```
 $a = Get-DistributionGroupMember Marketing
@@ -121,7 +125,7 @@ For detailed syntax and parameters, see [Set-App](https://technet.microsoft.com/
 
 ### How do you know this worked?
 
-To verify that you've successfully limited add-in availability to specific users, run the following command in the Exchange Management Shell and verify the value of the **ProvidedTo** and **UserList** properties: 
+To verify that you've successfully limited add-in availability to specific users, run the following command in the Exchange Management Shell and verify the value of the **ProvidedTo** and **UserList** properties:
 
 ```
 Get-App -OrganizationApp | Format-List DisplayName,AppId,Enabled,DefaultStateForUser,ProvidedTo,UserList

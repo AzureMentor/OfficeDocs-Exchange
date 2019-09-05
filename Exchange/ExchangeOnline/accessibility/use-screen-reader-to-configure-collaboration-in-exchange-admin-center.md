@@ -1,16 +1,18 @@
 ---
 localization_priority: Normal
 ms.topic: article
-author: maggsl
-ms.author: v-maleo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 2cb9cae4-3eee-4da1-8a01-3d37d4b6b8b2
 ms.date: 
+ms.reviewer: 
+manager: serdars
 description: Admins can learn how to use a screen reader to configure different methods of collaboration in the Exchange admin center (EAC) in Exchange Online.
 title: Use a screen reader to configure collaboration in the Exchange admin center in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.custom: A11y_UseSR
 ms.service: exchange-online
 
@@ -18,7 +20,7 @@ ms.service: exchange-online
 
 # Use a screen reader to configure collaboration in the Exchange admin center in Exchange Online
 
-You can use your screen reader in the Exchange admin center (EAC) in Exchange Online to configure different methods of collaboration. These methods might include public folders, distribution groups, shared mailboxes, or—in conjunction with SharePoint—site mailboxes.
+You can use your screen reader in the Exchange admin center (EAC) in Exchange Online to configure different methods of collaboration. These methods might include public folders, distribution groups, or shared mailboxes.
 
 ## Get started
 
@@ -129,7 +131,7 @@ After you create a public folder, specify the users who can access it. Also spec
 
 ## Create a distribution group
 
-Another method for facilitating and configuring collaboration in Exchange Online is a distribution group—a collection of two or more recipients that appears in the shared address book. When an email message is sent to a distribution group, it's received by all members of the group. Distribution groups can be organized by a particular discussion subject (such as "Resource Management Best Practices") or by users who share a common work structure—as in a workgroup or project team—that requires them to communicate frequently. [Use a screen reader to create a new distribution group in the Exchange admin center](use-screen-reader-to-create-distribution-group-in-exchange-admin-center.md). [Learn more about managing distribution groups](https://go.microsoft.com/fwlink/p/?LinkId=613635).
+Another method for facilitating and configuring collaboration in Exchange Online is a distribution group: a collection of two or more recipients that appears in the shared address book. When an email message is sent to a distribution group, it's received by all members of the group. Distribution groups can be organized by a particular discussion subject (such as "Resource Management Best Practices") or by users who share a common work structure (as in, a workgroup or project team) that requires them to communicate frequently. [Use a screen reader to create a new distribution group in the Exchange admin center](use-screen-reader-to-create-distribution-group-in-exchange-admin-center.md). [Learn more about managing distribution groups](https://go.microsoft.com/fwlink/p/?LinkId=613635).
 
 ## Work with a shared mailbox
 
@@ -144,4 +146,3 @@ The [Microsoft Accessibility](https://go.microsoft.com/fwlink/p/?LinkID=21487) w
 Microsoft wants to provide the best possible experience for all our customers. If you have a disability or have questions related to accessibility, please contact the [Microsoft Disability Answer Desk](https://go.microsoft.com/fwlink/p/?LinkID=518252) for technical assistance.
 
 The Disability Answer Desk support team is trained in using many popular assistive technologies and can offer assistance in English, Spanish, French, and American Sign Language. Please visit the [Microsoft Disability Answer Desk](https://go.microsoft.com/fwlink/p/?LinkID=518252) site to find the contact details for your region.
-

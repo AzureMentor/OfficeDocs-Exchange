@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: 'Summary: Learn how to configure the deleted item retention period for a mailbox or mailbox database in Exchange Server 2016 or Exchange Server 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: de7d667a-1c93-4364-a4f9-2aa5e3678b12
 ms.date: 7/5/2018
+ms.reviewer: 
 title: Configure Deleted Item retention and Recoverable Items quotas
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
-manager: scotv
+manager: serdars
 
 ---
 
@@ -46,17 +47,17 @@ To learn more about deleted item retention, the Recoverable Items folder, In-Pla
 
 3. On the mailbox property page, click **Mailbox usage**, click **More options**, and then select one of the following:
 
-  - **Use the default retention settings from the mailbox database**: Use the deleted item retention setting that's configured for the mailbox database.
+   - **Use the default retention settings from the mailbox database**: Use the deleted item retention setting that's configured for the mailbox database.
 
-  - **Customize the settings for this mailbox**: Configure deleted item retention settings for the mailbox.
+   - **Customize the settings for this mailbox**: Configure deleted item retention settings for the mailbox.
 
-    **\*Keep deleted items for (days)**: Displays the length of time that deleted items are retained before they're permanently deleted and can't be recovered by the user. When the mailbox is created, this value is based on the deleted item retention settings configured for the mailbox database. By default, a mailbox database is configured to retain deleted items for 14 days. The value range for this property is from 0 through 24,855 days.
+   - **\*Keep deleted items for (days)**: Displays the length of time that deleted items are retained before they're permanently deleted and can't be recovered by the user. When the mailbox is created, this value is based on the deleted item retention settings configured for the mailbox database. By default, a mailbox database is configured to retain deleted items for 14 days. The value range for this property is from 0 through 24,855 days.
 
-  - **Don't permanently delete items until the database is backed up**: Check this box to prevent mailboxes and email messages from being deleted until after the mailbox database on which the mailbox is located has been backed up.
+   - **Don't permanently delete items until the database is backed up**: Check this box to prevent mailboxes and email messages from being deleted until after the mailbox database on which the mailbox is located has been backed up.
 
-![default retention settings](../../media/f91ba717-276d-4b2b-87c4-036b92db1e85.jpg)
+   ![default retention settings](../../media/f91ba717-276d-4b2b-87c4-036b92db1e85.jpg)
 
- **Use the Exchange Management Shell to configure deleted item retention for a mailbox**
+### Use the Exchange Management Shell to configure deleted item retention for a mailbox
 
 This example configures April Stewart's mailbox to retain deleted items for 30 days.
 
@@ -107,6 +108,3 @@ Set-MailboxDatabase -Identity MDB2 -RecoverableItemsWarningQuota 15GB -Recoverab
 ```
 
 For detailed syntax and parameter information, see [Set-MailboxDatabase](http://technet.microsoft.com/library/a01edc66-bc10-4f65-9df4-432cb9e88f58.aspx).
-
-
-

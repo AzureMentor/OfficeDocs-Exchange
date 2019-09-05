@@ -1,16 +1,17 @@
 ---
 localization_priority: Normal
-ms.author: chrisda
+ms.author: dmaguire
 manager: serdars
 ms.topic: article
-author: chrisda
+author: msdmaguire
 ms.service: exchange-online
 ms.assetid: bba2059a-7242-41d0-bb3f-baaf7ec1abd7
+ms.reviewer: 
 ms.collection: 
 - exchange-online
 - M365-email-calendar
 description: Learn how to block Basic auth for client authentication in Exchange Online
-ms.audience: Admin
+audience: Admin
 title: Disable Basic authentication in Exchange Online
 
 ---
@@ -110,7 +111,7 @@ You manage all aspects of authentication policies in Exchange Online PowerShell.
 |Exchange Web Services (EWS)|A programming interface that's used by Outlook, Outlook for Mac, and third-party apps.|*AllowBasicAuthWebServices*|
 |PowerShell|Used to connect to Exchange Online with remote PowerShell. If you block Basic authentication for Exchange Online PowerShell, you need to use the Exchange Online PowerShell Module to connect. For instructions, see [Connect to Exchange Online PowerShell using multi-factor authentication](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|*AllowBasicAuthPowerShell*|
 
-Typically, when you block Basic authentication for a user, we recommend that you block Basic authentication for all protocols. However, you can use the *AllowBasicAuth\**  parameters (switches) on the **New-AuthenticationPolicy** and **Set-AuthenticationPolicy** cmdlets to selectively allow or block Basic authentication for specific protocols.
+Typically, when you block Basic authentication for a user, we recommend that you block Basic authentication for all protocols. However, you can use the *AllowBasicAuth\** parameters (switches) on the **New-AuthenticationPolicy** and **Set-AuthenticationPolicy** cmdlets to selectively allow or block Basic authentication for specific protocols.
 
 For email clients and apps that don't support modern authentication, you need to allow Basic authentication for the protocols and services that they require. These protocols and services are described in the following table:
 
@@ -459,4 +460,3 @@ New-AuthenticationPolicy -Name "Marketing Policy" -AllowBasicAuthActiveSync $fal
 $users = Get-ADGroupMember "Marketing Department"
 foreach ($user in $users) {Set-User -Identity $user.SamAccountName -AuthenticationPolicy "Marketing Policy"}
 ```
-

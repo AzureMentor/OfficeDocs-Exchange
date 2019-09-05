@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: The privacy statement for Exchange Server 2016 and Exchange Server 2019.
 ms.topic: overview
-author: dstrome
-ms.author: dstrome
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: f9569bb0-9a65-4121-a354-fa5a394b66c3
 ms.date: 7/13/2018
+ms.reviewer: 
 title: Exchange Server Privacy Statement
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -153,6 +154,3 @@ Redmond, Washington 98052 USA
 425-882-8080
 
 To find the Microsoft subsidiary in your country or region, see [Microsoft office locations around the world](https://go.microsoft.com/fwlink/p/?linkid=848727).
-
-
-

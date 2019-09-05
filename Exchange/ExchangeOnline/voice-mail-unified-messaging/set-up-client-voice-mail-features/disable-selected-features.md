@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: 'Outlook Voice Access contains two interfaces: the telephone user interface (TUI) and the voice user interface (VUI). By default, when users dial in to Outlook Voice Access, they can access their calendar, email, and personal contacts, and search the directory. You can use Exchange Online PowerShell to prevent users from accessing one or more of these features when they use Outlook Voice Access to access their mailbox. When you modify Outlook Voice Access features on a Unified Messaging (UM) mailbox policy, your changes affect all users who are associated with the UM mailbox policy.'
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 37421edf-af60-4ca9-9e8b-262b8b851607
 ms.date: 11/17/2014
-title: Disable selected features for Outlook Voice Access users
+ms.reviewer: 
+title: Disable selected features for Outlook Voice Access users in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Disable selected features for Outlook Voice Access users
+# Disable selected features for Outlook Voice Access users in Exchange Online
 
 Outlook Voice Access contains two interfaces: the telephone user interface (TUI) and the voice user interface (VUI). By default, when users dial in to Outlook Voice Access, they can access their calendar, email, and personal contacts, and search the directory. You can use Exchange Online PowerShell to prevent users from accessing one or more of these features when they use Outlook Voice Access to access their mailbox. When you modify Outlook Voice Access features on a Unified Messaging (UM) mailbox policy, your changes affect all users who are associated with the UM mailbox policy.
 
@@ -52,7 +53,7 @@ For additional management tasks related to UM mailboxes, see [Voice mail for use
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use Exchange Online PowerShell to disable selected Outlook Voice Access features for UM-enabled users on a UM mailbox policy
 
@@ -97,6 +98,3 @@ This example disables access to email on a UM mailbox named tony@contoso.com whe
 ```
 Set-UMMailbox -Identity tony@contoso.com -TUIAccessToEmailEnabled $false
 ```
-
-
-

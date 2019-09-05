@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: After you've deployed all the required telephony equipment for your organization, including your VoIP gateways, IP PBXs, and SIP-enabled PBXs or Microsoft Lync Server, you need to create all the Unified Messaging (UM) components that will enable your telephony devices to communicate with servers in your organization.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: b606b49d-5bd3-4321-ae77-99fa4604c875
 ms.date: 11/17/2014
-title: Connect your voice mail system to your telephone network
+ms.reviewer: 
+title: Connect your voice mail system to your telephone network in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Connect your voice mail system to your telephone network
+# Connect your voice mail system to your telephone network in Exchange Online
 
 After you've deployed all the required telephony equipment for your organization, including your VoIP gateways, IP PBXs, and SIP-enabled PBXs or Microsoft Lync Server, you need to create all the Unified Messaging (UM) components that will enable your telephony devices to communicate with servers in your organization.
 
@@ -39,6 +40,3 @@ For more information about setting up voice mail for users, see:
 - [UM mailbox policies](../../voice-mail-unified-messaging/set-up-voice-mail/um-mailbox-policies.md)
 
 - [Voice mail for users](../../voice-mail-unified-messaging/set-up-voice-mail/voice-mail-for-users.md)
-
-
-

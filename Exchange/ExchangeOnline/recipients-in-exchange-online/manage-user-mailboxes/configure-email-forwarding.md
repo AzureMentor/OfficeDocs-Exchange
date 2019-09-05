@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: Email forwarding lets you to set up a mailbox to forward email messages sent to that mailbox to another user's mailbox in or outside of your organization.
 ms.topic: article
-author: kwekua
-ms.author: kwekua
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: c7a7afaf-577e-49d6-8cee-bb4c4a5d570b
 ms.date: 12/9/2016
+ms.reviewer: 
 title: Configure email forwarding for a mailbox
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -21,7 +22,7 @@ manager: scotv
 Email forwarding lets you to set up a mailbox to forward email messages sent to that mailbox to another user's mailbox in or outside of your organization.
 
 > [!IMPORTANT]
-> If you're using Office 365 for business, you should configure email forwarding in the [Office 365 admin center: Configure email forwarding in Office 365 ](https://go.microsoft.com/fwlink/p/?LinkId=834774)
+> If you're using Office 365 for business, you should configure email forwarding in the [Microsoft 365 admin center: Configure email forwarding in Office 365 ](https://go.microsoft.com/fwlink/p/?LinkId=834774)
 
 If your organization uses an on-premises Exchange or hybrid Exchange environment, you should use the on-premises Exchange admin center (EAC) to create and manage shared mailboxes.
 
@@ -74,6 +75,3 @@ This topic is for admins. If you want to forward your own email to another recip
 For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
-
-
-

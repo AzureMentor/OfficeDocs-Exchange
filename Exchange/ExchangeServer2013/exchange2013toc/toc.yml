@@ -773,31 +773,31 @@
         href: https://docs.microsoft.com/en-us/exchange/security-and-compliance/journaling/manage-journaling
       - name: Disable or enable journaling of voice mail and missed call notifications
         href: ../disable-or-enable-journaling-of-voice-mail-and-missed-call-notifications-exchange-2013-help.md
-    - name: Mail flow rules (transport rules)
+    - name: Transport rules
       href: ../mail-flow-rules-transport-rules-in-exchange-2013-exchange-2013-help.md
       items:
-      - name: Mail flow rule conditions and exceptions (predicates)
+      - name: Transport rule conditions and exceptions (predicates)
         href: ../mail-flow-rule-conditions-and-exceptions-predicates-in-exchange-2013-exchange-2013-help.md
-      - name: Mail flow rule actions
+      - name: Transport rule actions
         href: ../mail-flow-rule-actions-in-exchange-2013-exchange-2013-help.md
-      - name: Best practices for configuring mail flow rules
+      - name: Best practices for configuring transport rules
         href: https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/configuration-best-practices
       - name: Use transport rules to inspect message attachments
         href: ../use-transport-rules-to-inspect-message-attachments-exchange-2013-help.md
-      - name: Common attachment blocking scenarios for mail flow rules
+      - name: Common attachment blocking scenarios for transport rules
         href: https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/common-attachment-blocking-scenarios
       - name: Organization-wide disclaimers, signatures, footers, or headers
         href: ../organization-wide-disclaimers-signatures-footers-or-headers-exchange-online-help.md
-      - name: Mail flow rule procedures
+      - name: Transport rule procedures
         href: ../mail-flow-or-transport-rule-procedures-exchange-2013-help.md
         items:
-        - name: Manage mail flow rules
+        - name: Manage transport rules
           href: https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/manage-mail-flow-rules
-        - name: Test a mail flow rule
+        - name: Test a transport rule
           href: https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/test-mail-flow-rules
-        - name: Use mail flow rules so messages can bypass Clutter
+        - name: Use transport rules so messages can bypass Clutter
           href: https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/use-rules-to-bypass-clutter
-        - name: Use mail flow rules to route email based on a list of words, phrases, or patterns
+        - name: Use transport rules to route email based on a list of words, phrases, or patterns
           href: https://docs.microsoft.com/en-us/exchange/security-and-compliance/mail-flow-rules/use-rules-to-route-email
         - name: Register Filter Pack IFilters with Exchange 2013
           href: ../register-filter-pack-ifilters-with-exchange-2013-exchange-2013-help.md
@@ -1375,10 +1375,10 @@
         - name: Use batch migration to migrate legacy public folders to Office 365 and Exchange Online
           href: https://docs.microsoft.com/en-us/exchange/collaboration-exo/public-folders/batch-migration-of-legacy-public-folders
         - name: Use batch migration to migrate Exchange 2013 public folders to Exchange Online
-          href: https://docs.microsoft.com/en-us/exchange/collaboration-exo/public-folders/batch-migration-of-exchange-2013-public-folders
+          href: https://docs.microsoft.com/exchange/collaboration/public-folders/migrate-to-exchange-online
           items:
           - name: Roll back a public folder migration from Exchange 2013 to Exchange Online
-            href: https://docs.microsoft.com/en-us/exchange/collaboration-exo/public-folders/roll-back-exchange-2013-public-folder-migration
+            href: https://docs.microsoft.com/exchange/collaboration/public-folders/roll-back-exchange-online-migration
         - name: Use batch migration to migrate Exchange 2010 public folders to Office 365 Groups
           href: ../use-batch-migration-to-migrate-exchange-2010-public-folders-to-office-365-groups-exchange-2013-help.md
         - name: Use batch migration to migrate Exchange 2013 public folders to Office 365 Groups

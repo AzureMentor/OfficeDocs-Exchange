@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: b03c0f21-cbc2-4be8-ad03-73a7dac16ffc
 ms.date: 7/3/2018
+ms.reviewer: 
 title: Autodiscover service in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -29,7 +30,7 @@ Exchange 2016 introduced changes to services that were previously handled by the
 - Outlook configures services with only the user name and password.
 
 > [!NOTE]
->  If you are a user looking for help with connecting your Outlook client to your Exchange server, see [Outlook email setup](https://go.microsoft.com/fwlink/p/?linkId=843935).
+> If you are a user looking for help with connecting your Outlook client to your Exchange server, see [Outlook email setup](https://go.microsoft.com/fwlink/p/?linkId=843935).
 
 ## Autodiscover services and Active Directory
 
@@ -118,7 +119,7 @@ A typical CNAME record looks like this:
 
 In this example, autodiscover.contoso.com resolves to mail.contoso.com. For more information, see [Step 4: Configure external URLs](../../plan-and-deploy/post-installation-tasks/configure-mail-flow-and-client-access.md#step-4-configure-external-urls) in [Configure mail flow and client access on Exchange servers](../../plan-and-deploy/post-installation-tasks/configure-mail-flow-and-client-access.md).
 
-We recommend that you create an Autodiscover CNAME record for every domain on your account, including domain aliases and accepted domains. You need to create either a CNAME or SRV record where your domain is hosted. Only then can you synchronize your offline address book, show free/busy information and enable the Out of office feature in Outlook.
+We recommend that you create an Autodiscover CNAME record for every domain on your account, including domain aliases and accepted domains. You need to create either a CNAME or SRV record where your domain is hosted. Only then you can synchronize your offline address book, show free/busy information and enable the Out of office feature in Outlook.
 
 Service (SRV) resource records let you specify the location of the servers for a specific service, protocol, and DNS domain. For example, if you have two Web servers in your domain, you can create SRV resource records indicating which hosts serve as Web servers. Resolvers can then retrieve all the SRV resource records for the Web servers.
 
@@ -177,10 +178,10 @@ You'll need to make sure that you have configured the correct external URLs for 
 
 |**Service**|**Exchange Management Shell**|**Modifies**|
 |:-----|:-----|:-----|
-|[Offline Address Book](https://docs.microsoft.com/powershell/module/exchange/email-addresses-and-address-books/Set-OabVirtualDirectory)|`Get-OabVirtualDirectory | Set-OabVirtualDirectory –ExternalURL https://mail.companycontoso.com/oab`|OAB virtual directories used in IIS|
-|[Exchange Web Sevices](https://docs.microsoft.com/powershell/module/exchange/client-access-servers/Set-WebServicesVirtualDirectory)|`Get-WebServicesVirtualDirectory | Set-WebServicesVirtualDirectory –ExternalURL https://mail.companycontoso.com/ews/exchange.asmx`|Exchange Web Services virtual directories in IIS|
-|[Outlook Anywhere (RPC over HTTP)](https://docs.microsoft.com/powershell/module/exchange/client-access-servers/Set-OutlookAnywhere)|`Get-OutlookAnywhere | Set-OutlookAnywhere –ExternalHostname mail.contoso.com –ExternalClientsRequireSsl $true`|Outlook Anywhere virtual directories in IIS|
-|[Messaging Application Programming Interface (MAPI) over HTTP](https://docs.microsoft.com/powershell/module/exchange/client-access-servers/Set-MapiVirtualDirectory) (Exchange 2013 SP1 or later)|`Get-MapiVirtualDirectory | Set-MapiVirtualDirectory –ExternalURL https://mail.companycontoso.com/mapi` <br/><br/> `Set-OrganizationConfig -MapiHttpEnabled $true`|MAPI virtual directories in IIS|
+|[Offline Address Book](https://docs.microsoft.com/powershell/module/exchange/email-addresses-and-address-books/Set-OabVirtualDirectory)|`Get-OabVirtualDirectory | Set-OabVirtualDirectory -ExternalURL https://mail.companycontoso.com/oab`|OAB virtual directories used in IIS|
+|[Exchange Web Sevices](https://docs.microsoft.com/powershell/module/exchange/client-access-servers/Set-WebServicesVirtualDirectory)|`Get-WebServicesVirtualDirectory | Set-WebServicesVirtualDirectory -ExternalURL https://mail.companycontoso.com/ews/exchange.asmx`|Exchange Web Services virtual directories in IIS|
+|[Outlook Anywhere (RPC over HTTP)](https://docs.microsoft.com/powershell/module/exchange/client-access-servers/Set-OutlookAnywhere)|`Get-OutlookAnywhere | Set-OutlookAnywhere -ExternalHostname mail.contoso.com -ExternalClientsRequireSsl $true`|Outlook Anywhere virtual directories in IIS|
+|[Messaging Application Programming Interface (MAPI) over HTTP](https://docs.microsoft.com/powershell/module/exchange/client-access-servers/Set-MapiVirtualDirectory) (Exchange 2013 SP1 or later)|`Get-MapiVirtualDirectory | Set-MapiVirtualDirectory -ExternalURL https://mail.companycontoso.com/mapi` <br/><br/> `Set-OrganizationConfig -MapiHttpEnabled $true`|MAPI virtual directories in IIS|
 
 
 Click the Service name in the preceding table for more information about how to obtain or reconfigure these URLs.
@@ -213,5 +214,3 @@ In deployments where clients connect to multiple Exchange servers, the Autodisco
 You can run the Exchange ActiveSync Autodiscover and Outlook Autodiscover tests in the Microsoft Remote Connectivity Analyzer. If the user is using a local wireless network to connect to Exchange Online, the user should run both tests to make sure that the local network allows for connections to the ActiveSync endpoints.
 
 You can get help for planning and deploying Autodiscover services as part of your Exchange deployment in [Planning and deployment for Exchange Server](../../plan-and-deploy/plan-and-deploy.md).
-
-

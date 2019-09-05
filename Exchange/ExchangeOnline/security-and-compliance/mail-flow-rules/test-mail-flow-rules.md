@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Learn how to test mail flow rules in Exchange Online.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 3d949e2a-8ba4-4261-8cfb-736fd2446ea1
 ms.date: 
+ms.reviewer: 
 title: Test a mail flow rule in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -132,7 +133,7 @@ Here are some common problems and resolutions:
 
 If you're using Exchange Online or Exchange Online Protection, you can check the number of times each rule is matched by using a rules report. In order to be included in the reports, a rule must have the **Audit this rule with severity level** check box selected. These reports help you spot trends in rule usage and identify rules that are not matched.
 
-To view a rules report, in the Office 365 admin center, select **Reports**.
+To view a rules report, in the Microsoft 365 admin center, select **Reports**.
 
 > [!NOTE]
 > While most data is in the report within 24 hours, some data may take as long as 5 days to appear.
@@ -150,4 +151,3 @@ To learn more, see [View mail protection reports](https://go.microsoft.com/fwlin
 [Mail flow rules (transport rules) in Exchange Online Protection](https://technet.microsoft.com/library/9c2cf227-eff7-48ef-87fb-487186e47363.aspx)
 
 [Mail flow rules (transport rules) in Exchange Server](https://technet.microsoft.com/library/c3d2031c-fb7b-4866-8ae1-32928d0138ef.aspx)
-

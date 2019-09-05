@@ -5,6 +5,7 @@ ms.topic: article
 author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 65af7d77-3e79-44d4-9173-04fd991358b7
+ms.reviewer: 
 title: How to migrate mailboxes from one Office 365 tenant to another
 ms.collection: 
 - exchange-online
@@ -13,14 +14,15 @@ search.appverid:
 - MET150
 - MOE150
 - BCS160
-ms.audience: Admin
+audience: Admin
 ms.custom: Adm_O365
 ms.service: exchange-online
 manager: serdars
+localization_priority: Priority
 
 ---
 
-# How to migrate mailboxes from one Office 365 tenant to another 
+# How to migrate mailboxes from one Office 365 tenant to another
 
 This article explains how to migrate mailboxes and service settings from one Office 365 tenant to another Office 365 tenant in a business-merger scenario. If you have more than 500 users to migrate or a large amount of SharePoint data to migrate, it's a good idea to work with an [Office 365 partner](https://go.microsoft.com/fwlink/p/?LinkId=393485).
 
@@ -43,7 +45,7 @@ When complete, all Fabrikam accounts will exist in the Contoso.com Office 365 te
 
 If using a third party migration tool to migrate your users, purchase the needed licenses for your migration.
 
- **Client considerations**
+#### Client considerations
 
 For Outlook 2010 or above, you only need to [remove the Outlook user profile](https://support.office.com/en-us/article/remove-a-profile-d5f0f365-c10d-4a97-aa74-3b38e40e7cdd) and [create it again](https://support.office.com/en-us/article/create-an-outlook-profile-f544c1ba-3352-4b3b-be0b-8d42a540459d).
 
@@ -51,8 +53,7 @@ For Outlook 2007 and Outlook 2010, when you are restarting the client, auto-disc
 
 For the skype for business client, once migration is complete, since the process creates a new profile, you will need to [add contacts](https://support.office.com/en-us/article/video-add-a-contact-in-skype-for-business-3f102f2f-4bfc-4d67-a8e2-66aee1e7c0da).
 
-
- **Tenant preparation and licensing**
+#### Tenant preparation and licensing
 
 The source tenant is the Fabrikam Office 365 tenant from which you are migrating users and data. The target tenant is the Contoso Office 365 tenant to which you are migrating.
 
@@ -60,45 +61,44 @@ The source tenant is the Fabrikam Office 365 tenant from which you are migrating
 
 2. Create Administrator accounts in source and target tenants for use in migrating from Office 365 to another Office 365. Some migration tools may require more than one admin account in the source tenant to optimize the data throughput.
 
-
- **Room, resource, distribution group, and user object creation in the target tenant**
+#### Room, resource, distribution group, and user object creation in the target tenant
 
 To create the resources in the target (Contoso) tenant:
 
 1. If the [Azure AD Connect](https://go.microsoft.com/fwlink/p/?LinkId=626003) tool will be used to sync all objects from the Contoso Active Directory Domain Services (AD DS), the objects from the source (Fabrikam) tenant AD DS must be created in the target tenant (Contoso) AD DS through consolidation.
 
-  1. AD DS consolidation can be done using various AD DS tools. Consolidation can take extra time and planning depending on how many objects are being moved, so it can be completed ahead of the migration project.
+   1. AD DS consolidation can be done using various AD DS tools. Consolidation can take extra time and planning depending on how many objects are being moved, so it can be completed ahead of the migration project.
 
-  2. Verify that all new users and groups are synced to the Contoso.com target tenant via directory synchronization. The objects should appear as user@contoso.onmicrosoft.com in the new tenant since the Fabrikam domain has not been moved over at this time. The primary email address for the users and groups can be updated to @fabrikam.com after the domain move is complete.
+   2. Verify that all new users and groups are synced to the Contoso.com target tenant via directory synchronization. The objects should appear as user@contoso.onmicrosoft.com in the new tenant since the Fabrikam domain has not been moved over at this time. The primary email address for the users and groups can be updated to @fabrikam.com after the domain move is complete.
 
-2. If directory synchronization will not be used, or if any Rooms, Resources, Groups or Users are managed in the Office 365 admin center of the source tenant; these objects must be created in the target tenant. Objects can be created manually in the Office 365 admin center or for larger numbers import a CSV file by using the bulk add feature in the Office 365 admin center, or by using Windows PowerShell.
+2. If directory synchronization will not be used, or if any Rooms, Resources, Groups or Users are managed in the Microsoft 365 admin center of the source tenant; these objects must be created in the target tenant. Objects can be created manually in the Microsoft 365 admin center or for larger numbers import a CSV file by using the bulk add feature in the Microsoft 365 admin center, or by using Windows PowerShell.
 
- **End-user communications**
+#### End-user communications
 
 To communicate the migration to the end users in your organization:
 
 1. Create a communication plan and begin to notify users of the upcoming migration and service changes.
 
-2. After migration, the nickname cache will have to be cleared on all Outlook clients. See [How to reset the nickname and the automatic completion caches in Outlook](https://go.microsoft.com/fwlink/p/?LinkId=393486) for an automated fix-it-tool that can be run by the end users.
+2. After migration, the Auto-Complete List (also known as the nickname cache) will have to be cleared on all Outlook clients. To remove all recipients from your Auto-Complete list in Outlook 2010 later, see [Manage suggested recipients in the To, Cc, and Bcc boxes with Auto-Complete](https://support.office.com/article/dbe46e31-c098-4881-8cf7-66b037bce23e).
 
-3. Make users aware of how to connect to Outlook Web App with their new sign on information in case they have a problem after migration.
+3. Make users aware of how to connect to Outlook on the web (formerly known as Outlook Web App) with their new sign on information in case they have a problem after migration.
 
 ### Preparation and pre-migration activities: Three days before you migrate
 
- **Domain preparation**
+#### Domain preparation
 
 To prepare the domain for migration, complete the following steps.
 
 1. Begin domain verification process on target (Contoso) tenant for the Fabrikam.com email domain.
 
-2. In the contoso.com Office 365 admin center, add the Fabrikam.com domain and create TXT records in Domain Name Systems (DNS) for verification.
+2. In the contoso.com Microsoft 365 admin center, add the Fabrikam.com domain and create TXT records in Domain Name Systems (DNS) for verification.
 
-    > [!NOTE]
-    > The verification will fail because the domain is still in use in the other tenant.
+   > [!NOTE]
+   > The verification will fail because the domain is still in use in the other tenant.
 
-    Performing this step now will allow the DNS record time to propagate as it can take up to 72 hours. Final validation will occur later in the process.
+   Performing this step now will allow the DNS record time to propagate as it can take up to 72 hours. Final validation will occur later in the process.
 
- **Migration scheduling**
+#### Migration scheduling
 
 To schedule the migration:
 
@@ -108,7 +108,7 @@ To schedule the migration:
 
 ![CSV file used to migrate mailbox data from one Office 365 tenant to another](media/54c3358b-1743-4104-b767-03aea0a29084.jpg)
 
- **Mail exchanger record (MX record) time to live (TTL) test**
+#### Mail exchanger record (MX record) time to live (TTL) test
 
 Next, you'll schedule the TTL test.
 
@@ -116,15 +116,15 @@ Next, you'll schedule the TTL test.
 
 2. [Mx Lookup](https://go.microsoft.com/fwlink/p/?LinkId=393487) can be used to verify MX and DNS changes.
 
- **Disable directory sync in source tenant**
+#### Disable directory sync in source tenant
 
-In the source tenant Office 365 admin center, disable directory sync. This process can take 24 hours or more so it must be done ahead of the migration. Once disabled in the portal, any changes to the source tenant AD DS will no longer sync to the Office 365 tenant. Adjust your existing user and group provisioning process accordingly.
+In the source tenant Microsoft 365 admin center, disable directory sync. This process can take 24 hours or more so it must be done ahead of the migration. Once disabled in the portal, any changes to the source tenant AD DS will no longer sync to the Office 365 tenant. Adjust your existing user and group provisioning process accordingly.
 
 ### Migration: The day you migrate
 
 These are the steps you'll need the day you perform the migration.
 
- **MX record change - Stop inbound mail flow**
+#### MX record change - Stop inbound mail flow
 
 Change your primary MX record from Office 365 to domain that is not reachable, i.e. "unreachable.example.com". Internet mail servers attempting to deliver new mail will queue the mail and attempt redelivery for 24 hours. Using this method, some email may return a non-delivery report (NDR) depending on the server attempting to deliver the email. If this is a problem use an MX record backup service. There are many third party services that will queue your email for days or weeks. Once your migration is complete, these services will deliver the queued mail to your new Office 365 tenant.
 
@@ -133,7 +133,7 @@ Change your primary MX record from Office 365 to domain that is not reachable, i
 
 Verify your MX and DNS changes if necessary. Nslookup or a service like [MxToolbox](https://go.microsoft.com/fwlink/p/?LinkId=393487) can be used to verify MX and DNS changes.
 
- **Source tenant preparation**
+#### Source tenant preparation
 
 The primary email domain, fabrikam.com, must be removed from all objects in the source tenant before the domain can be moved to the target tenant.
 
@@ -153,7 +153,7 @@ The primary email domain, fabrikam.com, must be removed from all objects in the 
 
 8. For common domain removal issues, see [You get an error message when you try to remove a domain from Office 365](https://go.microsoft.com/fwlink/p/?LinkId=393489).
 
- **Target tenant preparation**
+#### Target tenant preparation
 
 Complete the verification of the Fabrikam.com domain in the contoso.com tenant. You may have to wait one hour after removing the domain from the old tenant.
 
@@ -173,7 +173,7 @@ Complete the verification of the Fabrikam.com domain in the contoso.com tenant. 
 
 8. If you are using Exchange Online Protection (EOP): In the target tenant recreate mail flow rules (also known as transport rules), connectors, white/black lists etc. from source tenant.
 
- **Begin migration**
+#### Begin migration
 
 To minimize downtime and user inconvenience, determine the best method for migration.
 
@@ -189,15 +189,15 @@ Start your mail migration via the third party migration tool.
 
 At the end of migration, Outlook 2007 and 2010 will sync the entire mailbox for each user, consuming considerable bandwidth depending on how much data you migrated into each mailbox. Outlook 2013 will only cache 12 months of data by default. This setting can be configured to more or less data, for example, only 3 months of data, which can lighten bandwidth usage.
 
- **Post migration: Cleanup**
+#### Post migration: Cleanup
 
-User may receive NDRs when replying to migrated email messages. The Outlook nickname cache needs to be cleared. See [How to reset the nickname and the automatic completion caches in Outlook](https://go.microsoft.com/fwlink/p/?LinkId=393486). Alternatively, add the old legacy DN as an x.500 proxy address to all users.
+User may receive NDRs when replying to migrated email messages. The Outlook Auto-Complete List (also known as the nickname cache) needs to be cleared. To remove all recipients from your Auto-Complete list in Outlook 2010 later, see [Manage suggested recipients in the To, Cc, and Bcc boxes with Auto-Complete](https://support.office.com/article/dbe46e31-c098-4881-8cf7-66b037bce23e). Alternatively, add the old legacy DN as an x.500 proxy address to all users.
 
 ## Sample Windows PowerShell scripts
 
 Use the following sample Windows PowerShell scripts as a starting point for creating your own scripts.
 
- **Office 365 bulk password reset**
+### Office 365 bulk password reset
 
 1. Create a CSV file named password.csv.
 
@@ -205,13 +205,13 @@ Use the following sample Windows PowerShell scripts as a starting point for crea
 
 3. Use the Windows PowerShell command:
 
-  ```Powershell
-  Import-Csv password.csv|%{Set-MsolUserPassword -userPrincipalName $_.upn -NewPassword $_.newpassword -ForceChangePassword $false}
-  ```
+   ```Powershell
+   Import-Csv password.csv|%{Set-MsolUserPassword -userPrincipalName $_.upn -NewPassword $_.newpassword -ForceChangePassword $false}
+   ```
 
 ### Copy all Office 365 accounts with a specific proxy address into a CSV file
 
-```Powershell
+```powershell
 ##########################################################################
 # Script: showproxies.ps1
 # Copies all accounts in Office 365 that contain/don't contain a specific
@@ -248,14 +248,13 @@ Invoke-Item addresses.csv
 ##### END OF SHOWPROXIES.PS1
 ```
 
-
 ### Bulk Create es in Office 365
 
-```Powershell
+```powershell
 ################################################################################
-#  Script: create-rooms.ps1
-#  Description:*** RUN THIS SCRIPT FROM A WINDOWS POWERSHELL SESSION ***
-#This script creates es in Office 365.
+# Script: create-rooms.ps1
+# Description:*** RUN THIS SCRIPT FROM A WINDOWS POWERSHELL SESSION ***
+# This script creates es in Office 365.
 # Syntax:Create-Rooms.ps1 -inputfile "file name.csv"
 #
 # Dependencies: Input file should contain 3 columns: RoomName, RoomSMTPAddress, RoomCapacity
@@ -273,7 +272,7 @@ C:\PS> .\$strScriptFileName -inputfile `"file name.csv`"
 "@
 }
 If (-not $inputFile) {Usage;Exit}
-#Get MSO creds and initialize session
+# Get MSO creds and initialize session
 If ($cred -eq $NULL) {$Global:cred = Get-Credential}
 #
 If ($ExchRemoteCmdlets.AccessMode -ne "ReadWrite")
@@ -284,9 +283,9 @@ Write-Host
 $NewSession = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://ps.outlook.com/powershell -Credential $cred -Authentication Basic -AllowRedirection
 $Global:ExchRemoteCmdlets = Import-PSSession $NewSession
 }
-#Import the CSV file
+# Import the CSV file
 $csv = Import-CSV $inputfile
-#Create Rooms contained in the CSV file
+# Create Rooms contained in the CSV file
 $csv | foreach-object{
 New-mailbox -Name $_.RoomName -room -primarysmtpaddress $_.RoomSMTPAddress -resourcecapacity $_.RoomCapacity
 }
@@ -295,18 +294,18 @@ New-mailbox -Name $_.RoomName -room -primarysmtpaddress $_.RoomSMTPAddress -reso
 
 ### Bulk remove secondary email address from mailboxes
 
-```Powershell
+```powershell
 ##########################################################################
 #      Script:  remove-proxy.ps1
-#Description:*** RUN THIS SCRIPT FROM A WINDOWS POWERSHELL SESSION ***
-#This script will remove a secondary email address from many users
+# Description:*** RUN THIS SCRIPT FROM A WINDOWS POWERSHELL SESSION ***
+# This script will remove a secondary email address from many users
 #
 # Syntax:remove-proxy.ps1 -inputfile "filename.csv"
 #
 # Dependencies:Input file should contain 2 columns: Username, Emailsuffix
 #               Example:  Username=tim, Emailsuffix=fabrikam.com
-#Script will remove the address tim@fabrikam.com from the mailbox for Tim.
-#NOTE: Address must be secondary; it will not remove primary email address.
+# Script will remove the address tim@fabrikam.com from the mailbox for Tim.
+# NOTE: Address must be secondary; it will not remove primary email address.
 #
 ################################################################################
 param( $inputFile )
@@ -322,7 +321,7 @@ C:\PS> .\$strScriptFileName -inputfile `"file name.csv`"
 "@
 }
 If (-not $inputFile) {Usage;Exit}
-#Get MSO creds and initialize session
+# Get MSO creds and initialize session
 If ($cred -eq $NULL) {$Global:cred = Get-Credential}
 #
 If ($ExchRemoteCmdlets.AccessMode -ne "ReadWrite")
@@ -334,7 +333,7 @@ $NewSession = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri
 https://ps.outlook.com/powershell -Credential $cred -Authentication Basic -AllowRedirection
 $Global:ExchRemoteCmdlets = Import-PSSession $NewSession
 }
-#Import the CSV file and change primary smtp address
+# Import the CSV file and change primary smtp address
 $csv = Import-CSV $inputfile
 $csv | foreach-object{
 # Set variable for email address to remove
@@ -344,6 +343,3 @@ Set-Mailbox $_.Username -EmailAddresses @{Remove=$removeaddr}
 }
 ##### END OF REMOVE-PROXY.PS1
 ```
-
-
-

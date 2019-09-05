@@ -1,16 +1,17 @@
 ---
-ms.audience: ITPro
+audience: ITPro
 localization_priority: Normal
-ms.author: chrisda
+ms.author: dmaguire
 manager: serdars
 ms.topic: article
-author: chrisda
+author: msdmaguire
 ms.service: exchange-online
 ms.assetid: 7235e5ed-f7f4-41b1-b1a0-47bb96223a2f
 ms.collection: 
 - exchange-online
 - M365-email-calendar
 ms.date: 
+ms.reviewer: 
 title: Mail flow rule conditions and exceptions (predicates) in Exchange Online
 
 ---
@@ -184,7 +185,7 @@ The conditions in this section that look for values in the **To** and **Cc** fie
 
 |**Condition or exception in the EAC**|**Condition and exception parameters in Exchange Online PowerShell**|**Property type**|**Description**|
 |:-----|:-----|:-----|:-----|
-|**The message type is** <br/><br/> **The message properties** \> **include the message type**|_MessageTypeMatches_ <br/> _ExceptIfMessageTypeMatches_|`MessageType`|Messages of the specified type. <br/> **Note**: When Outlook or Outlook Web App is configured to forward a message, the **ForwardingSmtpAddress** property is added to the message. The message type isn't changed to `AutoForward`.|
+|**The message type is** <br/><br/> **The message properties** \> **include the message type**|_MessageTypeMatches_ <br/> _ExceptIfMessageTypeMatches_|`MessageType`|Messages of the specified type. <br/> **Note**: When Outlook or Outlook on the web (formerly known as Outlook Web App) is configured to forward a message, the **ForwardingSmtpAddress** property is added to the message. The message type isn't changed to `AutoForward`.|
 |**The message is classified as** <br/><br/> **The message properties** \> **include this classification**|_HasClassification_ <br/> _ExceptIfHasClassification_|`MessageClassification`|Messages that have the specified message classification. This is a custom message classification that you can create in your organization by using the **New-MessageClassification** cmdlet.|
 |**The message isn't marked with any classifications** <br/><br/> **The message properties** \> **don't include any classification**|_HasNoClassification_ <br/> _ExceptIfHasNoClassification_|n/a|Messages that don't have a message classification.|
 |**The message has an SCL greater than or equal to** <br/><br/> **The message properties** \> **include an SCL greater than or equal to**|_SCLOver_ <br/> _ExceptIfSCLOver_|`SCLValue`|Messages that are assigned a spam confidence level (SCL) that's greater than or equal to the specified value.|

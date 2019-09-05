@@ -8,9 +8,10 @@ f1_keywords:
 ms.author: dmaguire
 ms.assetid: 8ef85d0a-41df-4b5c-b8e7-ca8d09c048ca
 ms.date: 7/5/2018
+ms.reviewer: 
 title: Manage dynamic distribution groups
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -36,7 +37,7 @@ Unlike regular distribution groups that contain a defined set of members, the me
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Create a dynamic distribution group
 
@@ -81,13 +82,13 @@ Unlike regular distribution groups that contain a defined set of members, the me
 
 5. Select one of the following recipient attributes from the drop-down list and provide a value. If the value for the selected attribute matches that value you define, the recipient receives a message sent to this group.
 
-    |**Attribute**|**Send message to a recipient if…**|
+    |**Attribute**|**Send message to a recipient if...**|
     |:-----|:-----|
-    |**Recipient container** <br/> |The recipient object resides in the specified domain or OU.  <br/> |
-    |**State or province** <br/> |The specified value matches the recipient's State or province property.  <br/> |
-    |**Company** <br/> |The specified value matches the recipient's Company property.  <br/> |
-    |**Department** <br/> |The specified value matches the recipient's Department property.  <br/> |
-    |**Custom attributeN** (where N is a number from 1 to 15)  <br/> |The specified value matches the recipient's CustomAttributeN property.  <br/> |
+    |**Recipient container**|The recipient object resides in the specified domain or OU.|
+    |**State or province**|The specified value matches the recipient's State or province property.|
+    |**Company**|The specified value matches the recipient's Company property.|
+    |**Department**|The specified value matches the recipient's Department property.|
+    |**Custom attributeN** (where N is a number from 1 to 15)|The specified value matches the recipient's CustomAttributeN property.|
 
      > [!IMPORTANT]
      > The values that you enter for the selected attribute must exactly match those that appear in the recipient's properties. For example, if you enter **Washington** for **State or province**, but the value for the recipient's property is **WA**, the condition will not be met. Also, text-based values that you specify aren't case-sensitive. For example, if you specify **Contoso** for the **Company** attribute, messages will be sent to a recipient if this value is **contoso**.

@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: 'Summary: Learn to use the custom attributes in Exchange Server 2016 or Exchange Server 2019 to add information about a mail recipient.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 2b043878-0b34-4563-a9c2-28a9efa7447e
 ms.date: 4/19/2018
+ms.reviewer: 
 title: Custom attributes
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
-manager: scotv
+manager: serdars
 
 ---
 
@@ -110,6 +111,3 @@ In this example, Kweku's _ExtensionCustomAttribute1_ values are updated to refle
 ```
 Set-Mailbox -Identity Kweku -ExtensionCustomAttribute1 @{Add="ENGL210"; Remove="ECON202"}
 ```
-
-
-

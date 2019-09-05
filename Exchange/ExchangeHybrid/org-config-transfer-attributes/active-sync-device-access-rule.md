@@ -1,10 +1,10 @@
 ---
 title: "ActiveSync device access rule attributes"
-ms.author: kchandra
-author: ChandraKavya
+ms.author: dmaguire
+author: msdmaguire
 manager: serdars
 ms.reviewer: dstrome
-ms.audience: ITPro
+audience: ITPro
 ms.topic: article
 ms.prod: exchange-server-it-pro
 localization_priority: Normal
@@ -19,10 +19,9 @@ description: "ActiveSync device access rule attributes can be copied by the Hybr
 
 The following attributes of ActiveSync device access rules are copied from an on-premises Exchange organization to Exchange Online when the **Organization Configuration Transfer** option is selected in the Hybrid Configuration Wizard.
 
-| **ActiveSyncDeviceAccessRule** | **Available In**          |
-|--------------------------------|---------------------------|
-| AccessLevel                    | Exchange 2010, 2013, 2016 |
-| Characteristic                 | Exchange 2010, 2013, 2016 |
-| Identity                       | Exchange 2010, 2013, 2016 |
-| QueryString                    | Exchange 2010, 2013, 2016 |
-
+|**ActiveSyncDeviceAccessRule**|**Available In**|
+|:-----|:-----|
+|AccessLevel|Exchange 2010, 2013, 2016, 2019|
+|Characteristic|Exchange 2010, 2013, 2016, 2019|
+|Identity|Exchange 2010, 2013, 2016, 2019|
+|QueryString|Exchange 2010, 2013, 2016, 2019|

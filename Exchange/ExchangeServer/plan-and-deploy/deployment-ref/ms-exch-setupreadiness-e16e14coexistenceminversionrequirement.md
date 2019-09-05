@@ -3,15 +3,16 @@ localization_priority: Normal
 monikerRange: exchserver-2016
 description: Setup can't continue because the organization contains one or more Exchange 2010 servers that aren't running the minimum required version of Exchange.
 ms.topic: reference
-author: dstrome
+author: msdmaguire
 f1_keywords:
 - ms.exch.setupreadiness.E16E14CoexistenceMinVersionRequirement
-ms.author: dstrome
+ms.author: dmaguire
 ms.assetid: 24d16ace-249f-4c74-b617-3b0242e5aeca
 ms.date: 9/15/2015
+ms.reviewer: 
 title: Exchange 2010 SP3 RU11 or later is required for coexistence with Exchange 2016 [E16E14CoexistenceMinVersionRequirement]
 ms.collection: exchange-server
-ms.audience: Developer
+audience: Developer
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -23,4 +24,3 @@ The installation of Exchange Server 2016 can't continue because Setup found one 
 
 > [!IMPORTANT]
 > After you upgrade your Exchange 2010 Edge Transport servers to Exchange 2010 SP3 RU11 or later, you need to **re-create** the Edge subscription between your Exchange organization and each Edge Transport server (to update the Edge Transport server's Exchange version in Active Directory). For more information about re-creating Edge subscriptions in Exchange 2010, see [Managing Edge Subscriptions](https://go.microsoft.com/fwlink/p/?LinkId=269724).
-

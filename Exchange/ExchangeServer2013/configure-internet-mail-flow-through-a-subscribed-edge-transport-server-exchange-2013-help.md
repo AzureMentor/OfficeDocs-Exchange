@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Configure internet mail flow through a subscribed Edge Transport server'
 TOCTitle: Configure Internet mail flow through a subscribed Edge Transport server
 ms:assetid: d12ea770-99ce-4ab4-a373-96f2554641fa
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb738158(v=EXCHG.150)
 ms:contentKeyID: 61200301
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Configure Internet mail flow through a subscribed Edge Transport server
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 To establish Internet mail through an Edge Transport server, subscribe the Edge Transport server to an Active Directory site. This automatically creates the two Send connectors required for Internet mail flow:
 
@@ -35,50 +36,44 @@ If you don't want to subscribe the Edge Transport server to an Active Directory 
 
   - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
 
-
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at <A href="https://go.microsoft.com/fwlink/p/?linkid=60612">Exchange Server</A>, <A href="https://go.microsoft.com/fwlink/p/?linkid=267542">Exchange Online</A>, or <A href="https://go.microsoft.com/fwlink/p/?linkid=285351">Exchange Online Protection</A>.
-
-
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612).
 
 ## Configure Internet mail flow through a subscribed Edge Transport server
 
-1.  On the Edge Transport server, create the Edge Subscription file using the following syntax.
-    
+1. On the Edge Transport server, create the Edge Subscription file using the following syntax.
+
     ```powershell
-        New-EdgeSubscription -FileName <FileName>.xml [-Force]
+    New-EdgeSubscription -FileName <FileName>.xml [-Force]
     ```
 
     The following example creates an Edge Subscription file named EdgeSubscriptionInfo.xml in the folder C:\\My Documents. The *Force* parameter suppresses prompts confirming commands that will be disabled and warnings that configuration data will be overwritten on the Edge Transport server.
-    
+
     ```powershell
     New-EdgeSubscription -FileName "C:\My Documents\EdgeSubscriptionInfo.xml" -Force
     ```
 
-2.  Copy the resulting Edge Subscription file to a Mailbox server in the Active Directory site you're subscribing the Edge Transport server to.
+2. Copy the resulting Edge Subscription file to a Mailbox server in the Active Directory site you're subscribing the Edge Transport server to.
 
-3.  On the Mailbox server, to import the Edge Subscription file, use the following syntax.
-    
+3. On the Mailbox server, to import the Edge Subscription file, use the following syntax.
+
     ```powershell
-        New-EdgeSubscription -FileData ([byte[]]$(Get-Content -Path "<FileName>.xml" -Encoding Byte -ReadCount 0)) -Site <SiteName>
+    New-EdgeSubscription -FileData ([byte[]]$(Get-Content -Path "<FileName>.xml" -Encoding Byte -ReadCount 0)) -Site <SiteName>
     ```
 
     This example imports the Edge Subscription file named EdgeSubscriptionInfo.xml from the folder D:\\Data, and subscribes the Edge Transport server to the Active Directory site named "Default-First-Site-Name".
-    
+
     ```powershell
-        New-EdgeSubscription -FileData ([byte[]]$(Get-Content -Path "D:\Data\EdgeSubscriptionInfo.xml" -Encoding Byte -ReadCount 0)) -Site "Default-First-Site-Name"
+    New-EdgeSubscription -FileData ([byte[]]$(Get-Content -Path "D:\Data\EdgeSubscriptionInfo.xml" -Encoding Byte -ReadCount 0)) -Site "Default-First-Site-Name"
     ```
 
     > [!NOTE]
     > You can use the <EM>CreateInternetSendConnector</EM> or <EM>CreateInboundSendConnector</EM> parameters to prevent one or both of the required Send connectors from being automatically created. For more information, see <A href="edge-subscriptions-exchange-2013-help.md">Edge Subscriptions</A>.
 
+4. On the Mailbox server, run the following command to start the first EdgeSync synchronization.
 
-
-4.  On the Mailbox server, run the following command to start the first EdgeSync synchronization.
-    
     ```powershell
     Start-EdgeSynchronization
     ```
 
-5.  When you're finished, we strongly recommend you delete the Edge Subscription file from both the Edge Transport server and from the Mailbox server. The Edge Subscription file contains information about credentials used during the LDAP communication process.
-
+5. When you're finished, we strongly recommend you delete the Edge Subscription file from both the Edge Transport server and from the Mailbox server. The Edge Subscription file contains information about credentials used during the LDAP communication process.

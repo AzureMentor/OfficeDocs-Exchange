@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: 'Summary: Learn about installing Cumulative Updates (CUs) in Exchange 2016 or Exchange 2019.'
 ms.topic: get-started-article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 928a4a0b-0082-4d50-a696-bfaf2782f42d
 ms.date:
+ms.reviewer: 
 title: Upgrade Exchange to the latest Cumulative Update
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -33,13 +34,13 @@ If you have Exchange Server 2016 or Exchange Server 2019 installed, you can upgr
 
 - Verify the target server meets the potentially new system requirements and prerequisites for the CU. For more information, see [Exchange Server system requirements](system-requirements.md) and [Exchange Server prerequisites](prerequisites.md).
 
-    > [!CAUTION]
-    > Any customized Exchange or Internet Information Server (IIS) settings that you made in Exchange XML application configuration files on the Exchange server (for example, web.config files or the EdgeTransport.exe.config file) **will be overwritten** when you install an Exchange CU. Be sure save this information so you can easily re-apply the settings after the install. After you install the Exchange CU, you need to re-configure these settings.
+  > [!CAUTION]
+  > Any customized Exchange or Internet Information Server (IIS) settings that you made in Exchange XML application configuration files on the Exchange server (for example, web.config files or the EdgeTransport.exe.config file) **will be overwritten** when you install an Exchange CU. Be sure save this information so you can easily re-apply the settings after the install. After you install the Exchange CU, you need to re-configure these settings.
 
 - After you install an Exchange CU, you need to restart the computer so that changes can be made to the registry and operating system.
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612).
 
 ## Best Practices
 
@@ -63,7 +64,6 @@ If you have Exchange Server 2016 or Exchange Server 2019 installed, you can upgr
 
 - Reboot your server upon completion of the update.
 
-
 ## Install an Exchange CU using the Setup wizard
 
 1. Download the latest version of Exchange on the target computer. For more information, see [Updates for Exchange Server](../new-features/updates.md).
@@ -72,39 +72,39 @@ If you have Exchange Server 2016 or Exchange Server 2019 installed, you can upgr
 
 3. The Exchange Server Setup wizard opens. On the **Check for Updates?** page, choose one of the following options, and then click **Next** to continue:
 
-  - **Connect to the Internet and check for updates**: We recommend this option, which searches for updates to the version of Exchange _that you're currently installing_ (it doesn't detect newer CUs). This option takes you to the **Downloading Updates** page that searches for updates. Click **Next** to continue.
+   - **Connect to the Internet and check for updates**: We recommend this option, which searches for updates to the version of Exchange _that you're currently installing_ (it doesn't detect newer CUs). This option takes you to the **Downloading Updates** page that searches for updates. Click **Next** to continue.
 
-  - **Don't check for updates right now**
+   - **Don't check for updates right now**
 
-    ![Exchange Setup, Check for Updates page](../media/f0ca225e-b88f-45e9-a8cb-21adaabe984e.png)
+   ![Exchange Setup, Check for Updates page](../media/f0ca225e-b88f-45e9-a8cb-21adaabe984e.png)
 
 4. The **Copying Files** page shows the progress of copying files to the local hard drive. Typically, the files are copied to `%WinDir%\Temp\ExchangeSetup`, but you can confirm the location in the Exchange Setup log at `C:\ExchangeSetupLogs\ExchangeSetup.log`.
 
-    ![Exchange Setup, Copying Files page](../media/78813be2-745d-4a58-8da8-883c43aa2650.png)
+   ![Exchange Setup, Copying Files page](../media/78813be2-745d-4a58-8da8-883c43aa2650.png)
 
 5. The **Upgrade** page shows that Setup detected the existing installation of Exchange, so you're upgrading Exchange on the server (not installing a new Exchange server). Click **Next** to continue.
 
 6. On the **License Agreement** page, review the software license terms, select **I accept the terms in the license agreement**, and then click **Next** to continue.
 
-    ![Exchange Setup, License Agreement page](../media/2bb6bfaa-1b39-4052-9420-a7a053b07d58.png)
+   ![Exchange Setup, License Agreement page](../media/2bb6bfaa-1b39-4052-9420-a7a053b07d58.png)
 
 7. On the **Readiness Checks** page, verify that the prerequisite checks completed successfully. If they haven't, the only option on the page is **Retry**, so you need to resolve the errors before you can continue.
 
-    ![Exchange Setup, Readiness Check page with errors detected](../media/d4ee435a-a383-4be6-8233-da4cc2a19eea.png)
+   ![Exchange Setup, Readiness Check page with errors detected](../media/d4ee435a-a383-4be6-8233-da4cc2a19eea.png)
 
-    After you resolve the errors, click **Retry** to run the prerequisite checks again. You can fix some errors without exiting Setup, while the fix for other errors requires you to restart the computer. If you restart the computer, you need to start over at Step 1.
+   After you resolve the errors, click **Retry** to run the prerequisite checks again. You can fix some errors without exiting Setup, while the fix for other errors requires you to restart the computer. If you restart the computer, you need to start over at Step 1.
 
-    When no more errors are detected on the **Readiness Checks** page, the **Retry** button changes to **Install** so you can continue. Be sure to review any warnings, and then click **Install** to install Exchange.
+   When no more errors are detected on the **Readiness Checks** page, the **Retry** button changes to **Install** so you can continue. Be sure to review any warnings, and then click **Install** to install Exchange.
 
-    ![Exchange Setup, Readiness Check page with errors resolved](../media/a9aca4d0-19ac-4783-8071-cdd435b1658d.png)
+   ![Exchange Setup, Readiness Check page with errors resolved](../media/a9aca4d0-19ac-4783-8071-cdd435b1658d.png)
 
 8. On the **Setup Progress** page, a progress bar indicates how the installation is proceeding.
 
-    ![Exchange Setup, Setup Progress page](../media/8fddda28-6e29-44c1-b1bc-149fa7798460.png)
+   ![Exchange Setup, Setup Progress page](../media/8fddda28-6e29-44c1-b1bc-149fa7798460.png)
 
 9. On the **Setup Completed** page, click **Finish**, and then restart the computer.
 
-    ![Exchange Setup, Setup Completed page](../media/b2646172-8088-4d8a-a7f0-888f786c29cf.png)
+   ![Exchange Setup, Setup Completed page](../media/b2646172-8088-4d8a-a7f0-888f786c29cf.png)
 
 ## Install an Exchange CU using unattended Setup from the command line
 
@@ -131,4 +131,3 @@ For more information about unattended Setup from the command line, see [Install 
 ## How do you know this worked?
 
 To verify that you've successfully installed an Exchange CU, see [Verify Exchange Server installations](post-installation-tasks/verify-installation.md).
-

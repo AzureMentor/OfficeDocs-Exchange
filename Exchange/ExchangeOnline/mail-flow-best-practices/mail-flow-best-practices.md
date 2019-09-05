@@ -1,16 +1,17 @@
 ---
 localization_priority: Normal
-ms.author: chrisda
+ms.author: dmaguire
 manager: serdars
 ms.topic: article
-author: chrisda
+author: msdmaguire
 ms.service: exchange-online
 ms.assetid: 0e6cd9d5-ad3e-418a-8ea9-3bf33332c491
+ms.reviewer: 
 ms.collection: 
 - exchange-online
 - M365-email-calendar
 description: Use Microsoft Exchange Online and Office 365 to manage mail flow. Find out how, and get tips and best practices for setting up and managing your email.
-ms.audience: ITPro
+audience: ITPro
 title: Mail flow best practices for Exchange Online and Office 365 (overview)
 
 ---
@@ -76,7 +77,7 @@ Use SPF, DKIM, and DMARC together for the best experience.
 
 ### How MX records affect spam filtering
 
-For the best mail flow experience-especially for spam filtering—we recommend pointing the MX record for your organization's domain to Office 365. Spam scanning is the initial connection point to the Office 365 service. Who is sending the message, the IP address of the server that originally sent the message, and the behavior of the connecting mail server, all help determine whether a message is legitimate or spam. If your domain's MX record doesn't point to Office 365, the spam filters won't be as effective. If your MX record doesn't point to Office 365, there will be some valid messages that the service misclassifies as spam and some spam messages that the service misclassifies as legitimate email.
+For the best mail flow experience (especially for spam filtering) we recommend pointing the MX record for your organization's domain to Office 365. Spam scanning is the initial connection point to the Office 365 service. Who is sending the message, the IP address of the server that originally sent the message, and the behavior of the connecting mail server, all help determine whether a message is legitimate or spam. If your domain's MX record doesn't point to Office 365, the spam filters won't be as effective. If your MX record doesn't point to Office 365, there will be some valid messages that the service misclassifies as spam and some spam messages that the service misclassifies as legitimate email.
 
 With that said, there are legitimate business scenarios that require your domain's MX record to point to somewhere other than Office 365. For example, email destined for your organization might need to initially arrive at another destination (such as a third-party archiving solution), then route through Office 365, and then be delivered to mailboxes on your organization's mail server. This setup might provide the best solution to meet your business requirements.
 
@@ -101,4 +102,3 @@ The following are additional topics related to mail flow in Exchange Online:
 [Configure the external postmaster address in Exchange Online](configure-external-postmaster-address.md)
 
 [How to set up a multifunction device or application to send email using Office 365](https://technet.microsoft.com/library/2c0012a9-7e71-40cd-a516-1b26117bf491.aspx)
-

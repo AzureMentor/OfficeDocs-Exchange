@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Recovery databases: Exchange 2013 Help'
 TOCTitle: Recovery databases
 ms:assetid: f3c6fd0b-2e25-442e-a0fc-46f663130c3e
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd876954(v=EXCHG.150)
 ms:contentKeyID: 48385711
 ms.date: 06/06/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Recovery databases
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 A recovery database (RDB) is a special kind of mailbox database that allows you to mount a restored mailbox database and extract data from the restored database as part of a recovery operation. You can use the [New-MailboxRestoreRequest](https://technet.microsoft.com/en-us/library/ff829875\(v=exchg.150\)) cmdlet to extract data from an RDB. After extraction, the data can be exported to a folder or merged into an existing mailbox. RDBs enable you to recover data from a backup or copy of a database without disturbing user access to current data.
 
@@ -55,33 +56,29 @@ Before you can use an RDB, there are certain requirements that must be met. An R
 
 An RDB can be used to recover data in several situations, such as:
 
-  - **Same server dial tone recovery**   You can perform a recovery from an RDB after the original database has been restored from backup, as part of a dial tone recovery operation.
+  - **Same server dial tone recovery**: You can perform a recovery from an RDB after the original database has been restored from backup, as part of a dial tone recovery operation.
 
-  - **Alternate server dial tone recovery**   You can use an alternate server to host the dial tone database, and then later recover data from an RDB after the original database has been restored from backup.
+  - **Alternate server dial tone recovery**: You can use an alternate server to host the dial tone database, and then later recover data from an RDB after the original database has been restored from backup.
 
-  - **Mailbox recovery**   You can recover an individual mailbox from backup when the deleted mailbox retention period has elapsed. You then extract data from the restored mailbox and copy it to a target folder or merge it with another mailbox.
+  - **Mailbox recovery**: You can recover an individual mailbox from backup when the deleted mailbox retention period has elapsed. You then extract data from the restored mailbox and copy it to a target folder or merge it with another mailbox.
 
-  - **Specific item recovery**   You can restore from backup data that has been deleted or purged from a mailbox.
-
+  - **Specific item recovery**: You can restore from backup data that has been deleted or purged from a mailbox.
 
 > [!NOTE]
 > Folder access control lists (ACLs) aren't preserved when recovering content into an active mailbox. Because the recovery process typically involves recovering mailbox data and merging the content back into the original database, there should be no need to recover or copy ACLs.
-
-
 
 An RDB is designed for mailbox database recovery under the following conditions and scenarios:
 
   - The logical information about the original database and the mailboxes in that database remains intact and unchanged in Active Directory.
 
   - You need to recover a single mailbox or a single database. Recovery scenarios include:
-    
+
       - Recovering or repairing a database while a dial tone database is in use, with the goal of merging the two databases.
-    
+
       - Recovering a database on a server other than the original server for that database. If needed, you can then merge the recovered data back to the original server.
-    
+
       - Recovering deleted items that users previously deleted from their mailbox, after the deleted item retention period has expired.
 
 RDBs are generally not designed for scenarios in which you have to restore entire servers, when you have to restore multiple databases, or when you're in an emergency situation that requires changing or rebuilding your Active Directory topology.
 
 For detailed steps about how to create an RDB, see [Create a recovery database](create-a-recovery-database-exchange-2013-help.md). For detailed steps about how to use an RDB, see [Restore data using a recovery database](restore-data-using-a-recovery-database-exchange-2013-help.md).
-

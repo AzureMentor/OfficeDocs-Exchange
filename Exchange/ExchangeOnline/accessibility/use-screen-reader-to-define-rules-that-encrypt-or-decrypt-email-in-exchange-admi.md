@@ -1,16 +1,18 @@
 ---
 localization_priority: Normal
 ms.topic: article
-author: maggsl
-ms.author: v-maleo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 3d8f2b49-c27e-40c9-808b-4bc48f3cdb07
 ms.date: 
+ms.reviewer: 
+manager: serdars
 description: Admins can learn how to use a screen reader to create mail flow rules (also known as transport rules) in the Exchange admin center (EAC) that use Office 365 Message Encryption (OME) to encrypt and decrypt messages in Exchange Online.
 title: Use a screen reader to define rules that encrypt or decrypt email messages in the Exchange admin center in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.custom: A11y_UseSR
 ms.service: exchange-online
 
@@ -20,7 +22,7 @@ ms.service: exchange-online
 
 In the Exchange admin center (EAC) in Exchange Online, you can create mail flow rules (also known as transport rules) to enable or disable Office 365 Message Encryption. This lets you encrypt outgoing email messages and remove encryption from encrypted messages coming from inside your organization or from replies to encrypted messages sent from your organization.
 
- **Note**: To learn more about message encryption, go to [Encryption in Office 365](https://go.microsoft.com/fwlink/p/?LinkID=526003). Your organization must have [Windows Azure Rights Management set up for Office 365 Message Encryption](https://go.microsoft.com/fwlink/p/?LinkId=797620) to complete the tasks in this topic.
+ **Note**: To learn more about message encryption, go to [Encryption in Office 365](https://go.microsoft.com/fwlink/p/?LinkID=526003). Your organization must have [Set up new Office 365 Message Encryption capabilities](https://docs.microsoft.com/Office365/securitycompliance/set-up-new-message-encryption-capabilities) to complete the tasks in this topic.
 
 ## Get started
 
@@ -46,7 +48,7 @@ To complete the tasks covered in this topic, [Use a screen reader to open the Ex
 
 ## Create a mail flow rule to encrypt email messages
 
-1. In the EAC, to move the focus to the first link in the navigation pane— **Dashboard** —press Ctrl+F6 *twice*. You hear "Dashboard, Primary navigation link..
+1. In the EAC, to move the focus to the first link in the navigation pane (**Dashboard**) press Ctrl+F6 *twice*. You hear "Dashboard, Primary navigation link..
 
 2. To move the focus to the **mail flow** link in the navigation pane, press the Tab key until you hear "Mail flow, Primary navigation link." Press Enter.
 
@@ -96,7 +98,7 @@ To complete the tasks covered in this topic, [Use a screen reader to open the Ex
 
 ## Create a mail flow rule to decrypt email messages
 
-1. In the EAC, to move the focus to the first link in the navigation pane— **Dashboard** —press Ctrl+F6 *twice*. You hear "Dashboard, Primary navigation link..
+1. In the EAC, to move the focus to the first link in the navigation pane (**Dashboard**) press Ctrl+F6 *twice*. You hear "Dashboard, Primary navigation link..
 
 2. To move the focus to the **mail flow** link in the navigation pane, press the Tab key until you hear "Mail flow, Primary navigation link." Press Enter.
 
@@ -135,4 +137,3 @@ To complete the tasks covered in this topic, [Use a screen reader to open the Ex
 
 > [!TIP]
 > To turn off a new rule, press the Tab key to tab through the elements of the **rules** content area of the page, use the Up Arrow and Down Arrow keys to select a rule, and then press Spacebar. To hear the settings for a selected rule, press the Tab key until the focus moves to the details pane for the selected rule, and you hear the details for the rule.
-

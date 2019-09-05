@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 03d1e215-518b-4b48-bfcd-8d187ff8f5ef
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Using a Microsoft Azure VM as a DAG witness server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -89,8 +90,8 @@ Do the following to register your DNS servers:
 
 4. Repeat steps 1 through 3 for any other DNS servers you want to add.
 
-    > [!NOTE]
-    > The DNS servers you register are not used in a round robin fashion. Azure VMs will use the first DNS server listed and will only use any additional servers if the first one is not available.
+   > [!NOTE]
+   > The DNS servers you register are not used in a round robin fashion. Azure VMs will use the first DNS server listed and will only use any additional servers if the first one is not available.
 
 5. Repeat steps 1 through 3 to add the IP address you will use for the domain controller you will deploy on Microsoft Azure.
 
@@ -122,8 +123,8 @@ Now, do the following to create an Azure virtual network that will be used by th
 
 5. Select the **Configure a site-to-site VPN** check box under **SITE-TO-SITE CONNECTIVITY**.
 
-    > [!IMPORTANT]
-    > Do not select **Use ExpressRoute** because this will prevent the necessary configuration changes required to set up a multi-site VPN.
+   > [!IMPORTANT]
+   > Do not select **Use ExpressRoute** because this will prevent the necessary configuration changes required to set up a multi-site VPN.
 
 6. Under **LOCAL NETWORK**, select one of the two on-premises networks you configured.
 
@@ -162,7 +163,7 @@ To establish the VPN gateway on the Azure side, follow the instructions in the [
 
 #### Export virtual network configuration settings
 
-The Azure management portal doesn't currently allow you to configure a multi-site VPN. For this configuration, you need to export the virtual network configuration settings to an XML file and then modify that file. Follow the instructions at[Export Virtual Network Settings to a Network Configuration File](https://msdn.microsoft.com/library/azure/dn133804.aspx) to export your settings.
+The Azure management portal doesn't currently allow you to configure a multi-site VPN. For this configuration, you need to export the virtual network configuration settings to an XML file and then modify that file. Follow the instructions at[Export Virtual Network Settings to a Network Configuration File](https://docs.microsoft.com/azure/virtual-network/virtual-networks-using-network-configuration-file) to export your settings.
 
 #### Modify the network configuration settings for the multi-site VPN
 
@@ -203,8 +204,8 @@ You need to use PowerShell to get the pre-shared keys. If you aren't familiar wi
 Use the [Get-AzureVNetGatewayKey](https://msdn.microsoft.com/library/azure/dn495198.aspx) cmdlet to extract the pre-shared keys. Run this cmdlet once for each tunnel. The following example shows the commands you need to run to extract the keys for tunnels between the virtual network "Azure Site" and sites "Site A" and "Site B." In this example, the outputs are saved into separate files. Alternatively, you can pipeline these keys to other PowerShell cmdlets or use them in a script.
 
 ```
-Get-AzureVNETGatewayKey -VNetName "Azure Site" -LocalNetworkSiteName "Site A" > C:\Keys\KeysForTunnelToSiteA.txt
-Get-AzureVNETGatewayKey -VNetName "Azure Site" -LocalNetworkSiteName "Site B" > C:\Keys\KeysForTunnelToSiteB.txt
+Get-AzureVNETGatewayKey -VNetName "Azure Site" -LocalNetworkSiteName "Site A" | Set-Content -Path C:\Keys\KeysForTunnelToSiteA.txt
+Get-AzureVNETGatewayKey -VNetName "Azure Site" -LocalNetworkSiteName "Site B" | Set-Content -Path C:\Keys\KeysForTunnelToSiteB.txt
 ```
 
 #### Configure on-premises VPN devices
@@ -267,24 +268,24 @@ You need to create a minimum of two virtual machines in Microsoft Azure for this
 
 2. Specify preferred IP addresses for both the domain controller and the file server using Azure PowerShell. When you specify a preferred IP address for a VM, it needs to be updated, which will require restarting the VM. The following example sets the IP addresses for Azure-DC and Azure-FSW to 10.0.0.10 and 10.0.0.11 respectively.
 
-  ```
-  Get-AzureVM Azure-DC | Set-AzureStaticVNetIP -IPAddress 10.0.0.10 | Update-AzureVM
-  ```
+   ```
+   Get-AzureVM Azure-DC | Set-AzureStaticVNetIP -IPAddress 10.0.0.10 | Update-AzureVM
+   ```
 
-  ```
-  Get-AzureVM Azure-FSW | Set-AzureStaticVNetIP -IPAddress 10.0.0.11 | Update-AzureVM
-  ```
+   ```
+   Get-AzureVM Azure-FSW | Set-AzureStaticVNetIP -IPAddress 10.0.0.11 | Update-AzureVM
+   ```
 
-    > [!NOTE]
-    > A VM with a preferred IP address will attempt to use that address. However, if that address has been assigned to a different VM, the VM with the preferred IP address configuration will not start. To avoid this situation, make sure that the IP address you use isn't assigned to another VM. See [Configure a Static Internal IP Address for a VM](https://msdn.microsoft.com/library/azure/dn630228.aspx) for more information.
+   > [!NOTE]
+   > A VM with a preferred IP address will attempt to use that address. However, if that address has been assigned to a different VM, the VM with the preferred IP address configuration will not start. To avoid this situation, make sure that the IP address you use isn't assigned to another VM. See [Configure a Static Internal IP Address for a VM](https://msdn.microsoft.com/library/azure/dn630228.aspx) for more information.
 
 3. Provision the domain controller VM on Azure using the standards used by your organization.
 
 4. Prepare the file server with the prerequisites for an Exchange DAG witness:
 
-1. Add the File Server role using the Add Roles and Features Wizard or the [Add-WindowsFeature](https://technet.microsoft.com/library/ee662309.aspx) cmdlet.
+   1. Add the File Server role using the Add Roles and Features Wizard or the [Add-WindowsFeature](https://technet.microsoft.com/library/ee662309.aspx) cmdlet.
 
-2. Add the Exchange Trusted Subsystems universal security group to the Local Administrators group.
+   2. Add the Exchange Trusted Subsystems universal security group to the Local Administrators group.
 
 #### Checkpoint: Review virtual machine status
 
@@ -304,9 +305,9 @@ Finally, you need to configure your DAG to use the new witness server. By defaul
 
 2. Run the following command to configure the witness server for your DAGs.
 
-  ```
-  Set-DatabaseAvailabilityGroup -Identity DAG1 -WitnessServer Azure-FSW
-  ```
+   ```
+   Set-DatabaseAvailabilityGroup -Identity DAG1 -WitnessServer Azure-FSW
+   ```
 
 See the following topics for more information:
 
@@ -320,25 +321,22 @@ At this point, you have configured your DAG to use the file server on Azure as y
 
 1. Validate the DAG configuration by running the following command.
 
-  ```
-  Get-DatabaseAvailabilityGroup -Identity DAG1 -Status | Format-List Name, WitnessServer, WitnessDirectory, WitnessShareInUse
-  ```
+   ```
+   Get-DatabaseAvailabilityGroup -Identity DAG1 -Status | Format-List Name, WitnessServer, WitnessDirectory, WitnessShareInUse
+   ```
 
-    Verify that the _WitnessServer_ parameter is set to the file server on Azure, the _WitnessDirectory_ parameter is set to the correct path, and the _WitnessShareInUse_ parameter shows **Primary**.
+   Verify that the _WitnessServer_ parameter is set to the file server on Azure, the _WitnessDirectory_ parameter is set to the correct path, and the _WitnessShareInUse_ parameter shows **Primary**.
 
 2. If the DAG has an even number of nodes, the file share witness will be configured. Validate the file share witness setting in cluster properties by running the following command. The value for the _SharePath_ parameter should point to the file server and display the correct path.
 
-  ```
-  Get-ClusterResource -Cluster MBX1 | Get-ClusterParameter | Format-List
-  ```
+   ```
+   Get-ClusterResource -Cluster MBX1 | Get-ClusterParameter | Format-List
+   ```
 
 3. Next, verify the status of the "File Share Witness" cluster resource by running the following command. The _State_ of the cluster resource should display **Online**.
 
-  ```
-  Get-ClusterResource -Cluster MBX1
-  ```
+   ```
+   Get-ClusterResource -Cluster MBX1
+   ```
 
 4. Lastly, verify that the share is successfully created on the file server by reviewing the folder in File Explorer and the shares in Server Manager.
-
-
-

@@ -1,16 +1,18 @@
 ---
 localization_priority: Normal
 ms.topic: article
-author: maggsl
-ms.author: v-maleo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 775bb2a2-5ada-489b-944f-422d56d94fbf
 ms.date: 
+ms.reviewer: 
+manager: serdars
 description: Admins can learn how to use a screen reader to enable or disable mailbox archiving in the Exchange admin center (EAC) in Exchange Online.
 title: Use a screen reader to archive mailbox items in the Exchange admin center in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.custom: A11y_UseSR
 ms.service: exchange-online
 
@@ -96,7 +98,7 @@ If you disable a user's archive, the existing content is retained for 30 days. T
 
 ## Apply a retention policy to a user
 
-The messaging records management (MRM) feature in Exchange Online helps you manage the life cycle of your organization's email; it allows you to set retention policies. Retention policies specify when certain types of mailbox items—including regular email messages, deleted items, and junk mail—should be moved, archived, or deleted. Exchange Online automatically applies the Default MRM Policy when you create a new mailbox with an archive or when you enable an archive for an existing mailbox user.
+The messaging records management (MRM) feature in Exchange Online helps you manage the life cycle of your organization's email; it allows you to set retention policies. Retention policies specify when certain types of mailbox items (including regular email messages, deleted items, and junk mail) should be moved, archived, or deleted. Exchange Online automatically applies the Default MRM Policy when you create a new mailbox with an archive or when you enable an archive for an existing mailbox user.
 
  **Note**: You can customize the Default MRM Policy by adding or removing retention tags or by modifying tag settings. You can also replace the default policy with any retention policies you create. To view, edit, or create a retention policy, on the EAC primary navigation pane, select the compliance management link and then, on the menu bar, select the retention policies link. [Learn more about retention policies](https://go.microsoft.com/fwlink/p/?LinkId=799151).
 
@@ -129,4 +131,3 @@ The [Microsoft Accessibility](https://go.microsoft.com/fwlink/p/?LinkID=21487) w
 Microsoft wants to provide the best possible experience for all our customers. If you have a disability or have questions related to accessibility, please contact the [Microsoft Disability Answer Desk](https://go.microsoft.com/fwlink/p/?LinkID=518252) for technical assistance.
 
 The Disability Answer Desk support team is trained in using many popular assistive technologies and can offer assistance in English, Spanish, French, and American Sign Language. Please visit the [Microsoft Disability Answer Desk](https://go.microsoft.com/fwlink/p/?LinkID=518252) site to find the contact details for your region.
-

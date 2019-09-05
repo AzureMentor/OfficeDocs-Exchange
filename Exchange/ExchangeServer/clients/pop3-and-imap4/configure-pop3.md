@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to enable and configure POP3 on an Exchange server 2016 or 2019 for access by POP3 clients.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: e226a5f1-429d-4046-b925-da6cc151709e
 ms.date: 6/8/2018
+ms.reviewer: 
 title: Enable and configure POP3 on an Exchange server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -20,20 +21,21 @@ By default, POP3 client connectivity isn't enabled in Exchange. To enable POP3 c
 
 1. Start the POP3 services, and configure the services to start automatically:
 
-  - **Microsoft Exchange POP3**: This is the Client Access (frontend) service that POP3 clients connect to.
+   - **Microsoft Exchange POP3**: This is the Client Access (frontend) service that POP3 clients connect to.
 
-  - **Microsoft Exchange POP3 Backend**: POP3 client connections from the Client Access service are proxied to the backend service on the server that hold the active copy of the user's mailbox. For more information, see [Client access protocol architecture](http://technet.microsoft.com/library/0dac9f83-efd2-4a2d-940a-c03310bf9c6a.aspx#ClientAccessProtocol).
+   - **Microsoft Exchange POP3 Backend**: POP3 client connections from the Client Access service are proxied to the backend service on the server that hold the active copy of the user's mailbox. For more information, see [Client Access protocol architecture](../../architecture/architecture.md#client-access-protocol-architecture).
 
 2. Configure the POP3 settings for external clients.
 
-    By default, Exchange uses the following settings for **internal** POP3 connections:
+   By default, Exchange uses the following settings for **internal** POP3 connections:
 
-  - **POP3 server FQDN**: `<ServerFQDN>`. For example, `mailbox01.contoso.com`.
+   - **POP3 server FQDN**: `<ServerFQDN>`. For example, `mailbox01.contoso.com`.
 
-  - **TCP port and encryption method**: 995 for always TLS encrypted connections, and 110 for unencrypted connections, or for opportunistic TLS (**STARTTLS**) that results in an encrypted connection after the initial plain text protocol handshake.
+   - **TCP port and encryption method**: 995 for always TLS encrypted connections, and 110 for unencrypted connections, or for opportunistic TLS (**STARTTLS**) that results in an encrypted connection after the initial plain text protocol handshake.
 
-    To allow **external** POP3 clients to connect to mailboxes, you need to configure the POP3 server FQDN, TCP port, and encryption method for external connections. This step causes the external POP3 settings to be displayed in Outlook on the web (formerly known as Outlook Web App) at **Settings** \> **Options** \> **Mail** \> **Accounts** \> **POP and IMAP**.
-    ![POP settings in Outlook on the web](../../media/8c89500e-90ad-4fb5-9334-7013de6607a2.png)
+   To allow **external** POP3 clients to connect to mailboxes, you need to configure the POP3 server FQDN, TCP port, and encryption method for external connections. This step causes the external POP3 settings to be displayed in Outlook on the web (formerly known as Outlook Web App) at **Settings** \> **Options** \> **Mail** \> **Accounts** \> **POP and IMAP**.
+
+   ![POP settings in Outlook on the web](../../media/8c89500e-90ad-4fb5-9334-7013de6607a2.png)
 
 3. Restart the POP3 services to save the changes.
 
@@ -54,7 +56,7 @@ For more information about POP3, see [POP3 and IMAP4 in Exchange Server](pop3-an
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Step 1: Start the POP3 services, and configure the services to start automatically
 
@@ -64,27 +66,27 @@ You can perform this step by using the Windows Services console, or the Exchange
 
 1. On the Exchange server, open the Windows Services console. For example:
 
-  - Run the command `services.msc` from the **Run** dialog, a Command Prompt window, or the Exchange Management Shell.
+   - Run the command `services.msc` from the **Run** dialog, a Command Prompt window, or the Exchange Management Shell.
 
-  - Open Server Manager, and then click **Tools** \> **Services**.
+   - Open Server Manager, and then click **Tools** \> **Services**.
 
 2. In the list of services, select **Microsoft Exchange POP3**, and then click **Action** \> **Properties**.
 
 3. The **Microsoft Exchange POP3 Properties** window opens. On the **General** tab, configure the following settings:
 
-  - **Startup type**: Select **Automatic**.
+   - **Startup type**: Select **Automatic**.
 
-  - **Service status**: Click **Start**.
+   - **Service status**: Click **Start**.
 
-    When you're finished, click **OK**.
+   When you're finished, click **OK**.
 
 4. In the list of services, select **Microsoft Exchange POP3 Backend**, and then click **Action** \> **Properties**.
 
 5. The **Microsoft Exchange POP3 Backend Properties** window opens. On the **General** tab, configure the following settings:
 
-  - **Startup type**: Select **Automatic**.
+   - **Startup type**: Select **Automatic**.
 
-  - **Service status**: Click **Start**.
+   - **Service status**: Click **Start**.
 
     When you're finished, click **OK**.
 
@@ -92,15 +94,15 @@ You can perform this step by using the Windows Services console, or the Exchange
 
 1. Run the following command to start the POP3 services:
 
-  ```
-  Start-Service MSExchangePOP3; Start-Service MSExchangePOP3BE
-  ```
+   ```
+   Start-Service MSExchangePOP3; Start-Service MSExchangePOP3BE
+   ```
 
 2. Run the following command to configure the POP3 services to start automatically:
 
-  ```
-  Set-Service MSExchangePOP3 -StartupType Automatic; Set-Service MSExchangePOP3BE -StartupType Automatic
-  ```
+   ```
+   Set-Service MSExchangePOP3 -StartupType Automatic; Set-Service MSExchangePOP3BE -StartupType Automatic
+   ```
 
 For more information about these cmdlets, see [Start-Service](https://go.microsoft.com/fwlink/p/?LinkID=113406) and [Set-Service](https://go.microsoft.com/fwlink/p/?LinkID=113399).
 
@@ -140,7 +142,7 @@ This example allows configures the following settings for external POP3 connecti
 Set-PopSettings -ExternalConnectionSettings "mail.contoso.com:995:SSL","mail.contoso.com:110:TLS" -X509CertificateName mail.contoso.com
 ```
 
- **Notes**:
+**Notes**:
 
 - For detailed syntax and parameter information, see [Set-PopSettings](http://technet.microsoft.com/library/307a1dd0-3a4c-4431-bd9f-35aa5cb57aad.aspx).
 
@@ -211,17 +213,14 @@ To verify that you have enabled and configured POP3 on the Exchange server, perf
 
 3. You can test POP3 client connectivity to the Exchange server by using the following methods:
 
-  - **Internal clients**: Use the **Test-PopConnectivity** cmdlet. For example, `Test-PopConnectivity -ClientAccessServer <ServerName> -Lightmode -MailboxCredential (Get-Credential)`. For more information, see [Test-PopConnectivity](http://technet.microsoft.com/library/73f0ce87-e723-43e5-a32c-29cd2d899ff9.aspx).
+   - **Internal clients**: Use the **Test-PopConnectivity** cmdlet. For example, `Test-PopConnectivity -ClientAccessServer <ServerName> -Lightmode -MailboxCredential (Get-Credential)`. For more information, see [Test-PopConnectivity](http://technet.microsoft.com/library/73f0ce87-e723-43e5-a32c-29cd2d899ff9.aspx).
 
-    **Note**: The _Lightmode_ switch tells the command test POP3 logons to the server. To test sending (SMTP) and receiving (POP3) a message, you need to configure the authenticated SMTP settings as described in [POP3 and IMAP4 in Exchange Server](pop3-and-imap4.md).
+     **Note**: The _Lightmode_ switch tells the command test POP3 logons to the server. To test sending (SMTP) and receiving (POP3) a message, you need to configure the authenticated SMTP settings as described in [POP3 and IMAP4 in Exchange Server](pop3-and-imap4.md).
 
-  - **External clients**: Use the **Exchange Server** \> **POP Email** test in the Microsoft Remote Connectivity Analyzer at [https://go.microsoft.com/fwlink/p/?LinkID=313839](https://go.microsoft.com/fwlink/p/?LinkID=313839).
+   - **External clients**: Use the **Exchange Server** \> **POP Email** test in the Microsoft Remote Connectivity Analyzer at [https://go.microsoft.com/fwlink/p/?LinkID=313839](https://go.microsoft.com/fwlink/p/?LinkID=313839).
 
-    **Note**: You can't use POP3 to connect to the Administrator mailbox. This limitation was intentionally included in Exchange 2016 and Exchange 2019 to enhance the security of the Administrator mailbox.
+     **Note**: You can't use POP3 to connect to the Administrator mailbox. This limitation was intentionally included in Exchange 2016 and Exchange 2019 to enhance the security of the Administrator mailbox.
 
 ## Next steps
 
 To enabled or disable POP3 access to individual mailboxes, see [Enable or disable POP3 or IMAP4 access to mailboxes in Exchange Server](configure-mailbox-access.md).
-
-
-

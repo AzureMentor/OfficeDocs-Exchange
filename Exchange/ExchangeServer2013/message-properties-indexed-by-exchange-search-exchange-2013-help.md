@@ -1,26 +1,26 @@
-﻿---
+---
 title: 'Message properties indexed by Exchange Search: Exchange 2013 Help'
 TOCTitle: Message properties indexed by Exchange Search
 ms:assetid: a9754dc1-44aa-4076-8b59-a5d39246d5b0
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ983804(v=EXCHG.150)
 ms:contentKeyID: 51407271
 ms.date: 06/04/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Message properties indexed by Exchange Search
 
- 
-
-_**Applies to:** Exchange Online, Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013_
 
 Exchange Search indexes many item properties, including sender, recipients, message body, and attachments for email messages.
 
 ## Properties indexed by Exchange Search
 
 The following table includes a list of all item properties indexed by Exchange Search.
-
 
 <table>
 <colgroup>
@@ -498,12 +498,10 @@ The following table includes a list of all item properties indexed by Exchange S
 </tbody>
 </table>
 
-
 **Notes about indexed properties**:
 
   - **Queryable properties** can be used in AQS queries by search clients such as Outlook Web App in `property:value` pairs, for example, `from:bsuneja@cotoso.com`. A subset of the queryable properties listed in the previous table can also be used in search queries for In-Place eDiscovery. For a list of these properties, see [Message properties and search operators for In-Place eDiscovery](message-properties-and-search-operators-for-https://docs.microsoft.com/en-us/exchange/security-and-compliance/in-place-ediscovery/in-place-ediscovery).
 
-  - **Searchable properties** are properties that can’t be specified in `property:value` pairs, but a keyword search returns the value if found in any searchable property. For example, you can’t use `body:Contoso` to search for the string `contoso` in the message body only. However, a search for that string will return all items where the property is found in any searchable property.
+  - **Searchable properties** are properties that can't be specified in `property:value` pairs, but a keyword search returns the value if found in any searchable property. For example, you can't use `body:Contoso` to search for the string `contoso` in the message body only. However, a search for that string will return all items where the property is found in any searchable property.
 
   - **Retrievable properties** such as `documenteid` and `ispartiallyprocessed` are returned with every search.
-

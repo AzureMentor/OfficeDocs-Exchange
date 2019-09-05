@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: Learn about transport high availability in Exchange 2016 and Exchange 2019 and the features that improve the reliability of message delivery.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: e9ec6d05-f441-4cca-8592-8f7469948299
-ms.date: 7/6/2018
+ms.date: 
+ms.reviewer: 
 title: Transport high availability in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -38,21 +39,21 @@ This diagram provides a high-level overview of how transport high availability w
 
 1. An Exchange Mailbox server named Mailbox01 receives a message from an SMTP server that's outside the transport high availability boundary. The *transport high availability boundary* is a DAG or an Active Directory site in non-DAG environments. The message could come from:
 
-  - An internal third-party messaging server.
+   - An internal third-party messaging server.
 
-  - An Internet messaging server that's proxied through the Front End Transport service on a Mailbox server.
+   - An Internet messaging server that's proxied through the Front End Transport service on a Mailbox server.
 
-  - Another Exchange server in your organization.
+   - Another Exchange server in your organization.
 
 2. Before acknowledging receipt of the message, Mailbox01 initiates a new SMTP session to another Exchange Mailbox server named Mailbox03 that's within the Transport high availability boundary, and Mailbox03 makes a shadow copy of the message. In DAG environments, a shadow server in a remote Active Directory site is preferred. Mailbox01 is the primary server holding the primary message, and Mailbox03 is the shadow server holding the shadow message.
 
 3. The Transport service on Mailbox01 processes the primary message.
 
-1. In this example, the recipient's mailbox is located on Mailbox01, so the Transport service transmits the message to the local Mailbox Transport service.
+   a. In this example, the recipient's mailbox is located on Mailbox01, so the Transport service transmits the message to the local Mailbox Transport service.
 
-2. The Mailbox Transport service delivers the message to the local mailbox database.
+   b. The Mailbox Transport service delivers the message to the local mailbox database.
 
-3. Mailbox01 queues a discard status for Mailbox03 that indicates the primary message was successfully processed, and Mailbox01 moves a copy of the primary message into the local Primary Safety Net. Note that the message moves between queues within the same queue database.
+   c. Mailbox01 queues a discard status for Mailbox03 that indicates the primary message was successfully processed, and Mailbox01 moves a copy of the primary message into the local Primary Safety Net. Note that the message moves between queues within the same queue database.
 
 4. Mailbox03 periodically polls Mailbox01 for the discard status of the primary message.
 
@@ -66,11 +67,8 @@ The Front End Transport service on a Mailbox server (part of the Client Access s
 
 - The primary message is transmitted to the Transport service on a Mailbox server.
 
-    and
+  and
 
 - A shadow copy of the message is made by the Transport service on a different Mailbox server within the transport high availability boundary (DAG or Active Directory site).
 
 Only after both the primary message and shadow message are successfully created, the end of data SMTP command is sent back to the sending SMTP server through the Front End Transport service.
-
-
-

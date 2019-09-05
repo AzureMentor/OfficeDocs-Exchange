@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 9317b3bc-44a1-4e54-bc51-4f0b194b6a55
 ms.date: 7/5/2018
+ms.reviewer: 
 title: Mobile device mailbox policies
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 

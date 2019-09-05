@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Learn how to manage mail flow with a third-party cloud service in an Exchange hybrid environment (where your mailboxes are in both an on-premises organization and in Exchange Online).
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: fb335522-11ba-48d7-956f-2d980c22ab51
 ms.date: 
+ms.reviewer: 
 title: Manage mail flow using a third-party cloud service with Exchange Online and on-premises mailboxes
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -41,19 +42,19 @@ In this scenario, your organization's mail flow setup looks like the following d
 
 3. Update the DNS records for the domains that you added in step 1. (Not sure how to do this? Follow the instructions on [this page](https://go.microsoft.com/fwlink/p/?LinkID=534835).) The following DNS records control mail flow:
 
-  - **MX record**: Point your MX record to your third-party service. Follow their guidelines for configuring your MX record.
+   - **MX record**: Point your MX record to your third-party service. Follow their guidelines for configuring your MX record.
 
-  - **SPF record**: Because your domain's MX record must point to a third-party service (in other words, you require complex routing), include the third-party service in your SPF record. Follow the third-party provider's guidelines for adding them to your SPF record. Also add Office 365 and the IP addresses of your on-premises servers as valid senders. For example, if contoso.com is your domain name, the third-party cloud service IP address is 10.10.10.1, and your on-premises server IP address is 131.107.21.231, the SPF record for contoso.com should be:
+   - **SPF record**: Because your domain's MX record must point to a third-party service (in other words, you require complex routing), include the third-party service in your SPF record. Follow the third-party provider's guidelines for adding them to your SPF record. Also add Office 365 and the IP addresses of your on-premises servers as valid senders. For example, if contoso.com is your domain name, the third-party cloud service IP address is 10.10.10.1, and your on-premises server IP address is 131.107.21.231, the SPF record for contoso.com should be:
 
-  ```
-  v=spf1 ip4:10.10.10.1 ip4:131.107.21.231 include:spf.protection.outlook.com -all
-  ```
+   ```
+   v=spf1 ip4:10.10.10.1 ip4:131.107.21.231 include:spf.protection.outlook.com -all
+   ```
 
-Alternatively, depending on the third-party's requirements, you might need to include the domain from the third-party, as shown in the following example:
+   Alternatively, depending on the third-party's requirements, you might need to include the domain from the third-party, as shown in the following example:
 
-  ```
-  v=spf1 ip4:131.107.21.231 include:spf.protection.outlook.com include:third_party_cloud_service.com -all
-  ```
+   ```
+   v=spf1 ip4:131.107.21.231 include:spf.protection.outlook.com include:third_party_cloud_service.com -all
+   ```
 
 ### More information
 
@@ -72,5 +73,3 @@ There are additional considerations in hybrid deployments between on-premise Exc
 [Troubleshoot Office 365 mail flow](troubleshoot-mail-flow.md)
 
 [Test mail flow by validating your Office 365 connectors](test-mail-flow.md)
-
-

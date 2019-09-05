@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can enable or disable missed call notifications for a Unified Messaging (UM) mailbox policy by using Exchange Online PowerShell or the EAC. A missed call notification is an email message that's sent to a user when the user doesn't answer an incoming call and the caller doesn't leave a voice message. This is a different email message than the one that contains the voice message that's left for a user.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: e54937d5-3074-454f-b561-e601fecfc6ad
 ms.date: 11/17/2014
-title: Disable missed call notifications for a user
+ms.reviewer: 
+title: Disable missed call notifications for a user in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Disable missed call notifications for a user
+# Disable missed call notifications for a user in Exchange Online
 
 You can enable or disable missed call notifications for a Unified Messaging (UM) mailbox policy by using Exchange Online PowerShell or the EAC. A missed call notification is an email message that's sent to a user when the user doesn't answer an incoming call and the caller doesn't leave a voice message. This is a different email message than the one that contains the voice message that's left for a user.
 
@@ -38,7 +39,7 @@ For additional management tasks related to UM mailbox policies, see [Manage a UM
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to disable missed call notifications for a UM mailbox policy
 
@@ -57,6 +58,3 @@ This example disables missed call notifications for a UM mailbox policy named `M
 ```
 Set-UMMailboxPolicy -identity MyUMMailboxPolicy -AllowMissedCallNotifications $false
 ```
-
-
-

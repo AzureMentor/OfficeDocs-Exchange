@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: An organization relationship lets users in your Office 365 organization share calendar free/busy information with other Office 365 or on-premises Exchange organizations. You may want to change the settings of an organization relationship, such as changing the name, temporarily disabling calendar sharing, changing the access level, or changing which security groups will share calendars.
 ms.topic: article
-author: dstrome
-ms.author: dstrome
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 6875cd79-41d4-422c-80a7-549ded9a1ea7
 ms.date: 4/29/2016
+ms.reviewer: 
 title: Modify an organization relationship in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -41,7 +42,7 @@ To learn more about organization relationships, see [Organization relationships 
 ## Use the Exchange admin center to add a domain to an organization relationship
 <a name="BKMK_EAC"> </a>
 
-1. From the Office 365 admin center go to **Admin** \> **Exchange**.
+1. From the Microsoft 365 admin center go to **Admin** \> **Exchange**.
 
 2. Go to **organization** \> **sharing**.
 
@@ -56,7 +57,7 @@ To learn more about organization relationships, see [Organization relationships 
 ## Use the Exchange admin center to disable free/busy sharing for the organization relationship
 <a name="BKMK_EAC2"> </a>
 
-1. From the Office 365 admin center go to **Admin** \> **Exchange**.
+1. From the Microsoft 365 admin center go to **Admin** \> **Exchange**.
 
 2. Go to **organization** \> **sharing**.
 
@@ -71,7 +72,7 @@ To learn more about organization relationships, see [Organization relationships 
 ## Use the Exchange admin center to change the free/busy access level for the organization relationship
 <a name="BKMK_EAC3"> </a>
 
-1. From the Office 365 admin center go to **Admin** \> **Exchange**.
+1. From the Microsoft 365 admin center go to **Admin** \> **Exchange**.
 
 2. Go to **organization** \> **sharing**.
 
@@ -119,6 +120,3 @@ Get-OrganizationRelationship | format-list
 
 > [!TIP]
 > Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
-
-
-

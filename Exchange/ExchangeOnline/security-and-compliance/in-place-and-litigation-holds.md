@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: "When a reasonable expectation of litigation exists, organizations are required to preserve electronically stored information (ESI), including email that's relevant to the case. This expectation often exists before the specifics of the case are known, and preservation is often broad. Organizations may need to preserve all email related to a specific topic or all email for certain individuals. Depending on the organization's electronic discovery (eDiscovery) practices, the following measures can be adopted to preserve email:"
 ms.topic: overview
-author: markjjo
-ms.author: markjjo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 71031c06-852d-44d8-b558-dff444eaef8c
 ms.date: 
+ms.reviewer: 
 title: In-Place Hold and Litigation Hold
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: Admin
+audience: Admin
 ms.service: exchange-online
 manager: serdars
 
@@ -107,7 +108,7 @@ The result is that any message (related to the synchronization of the public fol
 
 ## Holds and the Recoverable Items folder
 
-In-Place Hold and Litigation Hold uses the Recoverable Items folder to preserve items. The Recoverable Items folder replaces the feature informally known as the dumpster in previous versions of Exchange. The Recoverable Items folder is hidden from the default view of Outlook, Outlook Web App, and other email clients. To learn more about the Recoverable Items folder, see [Recoverable Items folder](https://technet.microsoft.com/library/efc48fb4-2ed8-4d05-93af-f3505fbc389d.aspx).
+In-Place Hold and Litigation Hold uses the Recoverable Items folder to preserve items. The Recoverable Items folder replaces the feature informally known as the dumpster in previous versions of Exchange. The Recoverable Items folder is hidden from the default view of Outlook, Outlook on the web (formerly known as Outlook Web App), and other email clients. To learn more about the Recoverable Items folder, see [Recoverable Items folder](https://technet.microsoft.com/library/efc48fb4-2ed8-4d05-93af-f3505fbc389d.aspx).
 
 By default, when a user deletes a message from a folder other than the Deleted Items folder, the message is moved to the Deleted Items folder. This is known as a move. When a user soft deletes an item (accomplished by pressing the SHIFT and DELETE keys) or deletes an item from the Deleted Items folder, the message is moved to the Recoverable Items folder, thereby disappearing from the user's view.
 
@@ -115,9 +116,9 @@ Items in the Recoverable Items folder are retained for the deleted item retentio
 
 The Recoverable Items folder contains the following subfolders used to store deleted items in various sites and facilitate In-Place Hold and Litigation Hold:
 
-- **Deletions** - Items removed from the Deleted Items folder or soft-deleted from other folders are moved to the Deletions subfolder and are visible to the user when using the Recover Deleted Items feature in Outlook and Outlook Web App. By default, items reside in this folder until the deleted item retention period configured for the mailbox expires.
+- **Deletions** - Items removed from the Deleted Items folder or soft-deleted from other folders are moved to the Deletions subfolder and are visible to the user when using the Recover Deleted Items feature in Outlook and Outlook on the web. By default, items reside in this folder until the deleted item retention period configured for the mailbox expires.
 
-- **Purges** - When a user deletes an item from the Recoverable Items folder (by using the Recover Deleted Items tool in Outlook and Outlook Web App, the item is moved to the Purges folder. Items that exceed the deleted item retention period configured for the mailbox are also moved to the Purges folder. Items in this folder aren't visible to users if they use the Recover Deleted Items tool. When the Managed Folder Assistant processes the mailbox, items in the Purges folder are purged from the mailbox. When you place the mailbox user on Litigation Hold, the Managed Folder Assistant doesn't purge items in this folder.
+- **Purges** - When a user deletes an item from the Recoverable Items folder (by using the Recover Deleted Items tool in Outlook and Outlook on the web, the item is moved to the Purges folder. Items that exceed the deleted item retention period configured for the mailbox are also moved to the Purges folder. Items in this folder aren't visible to users if they use the Recover Deleted Items tool. When the Managed Folder Assistant processes the mailbox, items in the Purges folder are purged from the mailbox. When you place the mailbox user on Litigation Hold, the Managed Folder Assistant doesn't purge items in this folder.
 
 - **DiscoveryHold** - If a user is placed on an In-Place Hold, deleted items are moved to this folder. When the Managed Folder Assistant processes the mailbox, it evaluates messages in this folder. Items matching the In-Place Hold query are retained until the hold period specified in the query. If no hold period is specified, items are held indefinitely or until the user is removed from the hold.
 
@@ -154,7 +155,7 @@ For more information, see [Increase the Recoverable Items quota for mailboxes on
 
 ## Holds and email forwarding
 
-Users can use Outlook and Outlook Web App to set up email forwarding for their mailbox. Email forwarding lets users configure their mailbox to forward email messages sent to their mailbox to another mailbox located in or outside of their organization. Email forwarding can be configured so that any message sent to the original mailbox isn't copied to that mailbox and is only sent to the forwarding address.
+Users can use Outlook and Outlook on the web to set up email forwarding for their mailbox. Email forwarding lets users configure their mailbox to forward email messages sent to their mailbox to another mailbox located in or outside of their organization. Email forwarding can be configured so that any message sent to the original mailbox isn't copied to that mailbox and is only sent to the forwarding address.
 
 If email forwarding is set up for a mailbox and messages aren't copied to the original mailbox, what happens if the mailbox is on hold? The hold settings for the mailbox are checked during the delivery process. If the message meets the hold criteria for the mailbox, a copy of the message is saved to the Recoverable Items folder. That means you can use eDiscovery tools to search the original mailbox to find messages that were forwarded to another mailbox.
 

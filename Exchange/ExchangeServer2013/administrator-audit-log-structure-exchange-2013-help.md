@@ -1,21 +1,22 @@
-﻿---
+---
 title: 'Administrator audit log structure: Exchange 2013 Help'
 TOCTitle: Administrator audit log structure
 ms:assetid: 87e259c9-c884-4d53-bd78-d13f2300d73e
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Ff459251(v=EXCHG.150)
 ms:contentKeyID: 50117644
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Administrator audit log structure
 
- 
-
 _**Applies to:** Exchange Server 2013_
 
-
-Administrator audit logs contain a record of all the cmdlets and parameters that have been run in the Exchange Management Shell and by the Exchange Administration Center (EAC). They're created on-demand when you run the Administrator audit log report in the EAC, or when you run the **New-AdminAuditLogSearch** cmdlet in the Shell. For more information about audit logs, see [Administrator audit logging](administrator-audit-logging-exchange-2013-help.md).
+Administrator audit logs contain a record of all the cmdlets and parameters that have been run in the Exchange Management Shell and by the Exchange admin center (EAC). They're created on-demand when you run the Administrator audit log report in the EAC, or when you run the **New-AdminAuditLogSearch** cmdlet in the Shell. For more information about audit logs, see [Administrator audit logging](administrator-audit-logging-exchange-2013-help.md).
 
 The audit logs are XML files and can contain multiple audit log entries. The following table describes each XML tag and its associated attributes.
 
@@ -121,7 +122,6 @@ Looking for management tasks related to Administrator audit logs? See [Manage ad
 > [!IMPORTANT]
 > This tag is only populated if the <EM>LogLevel</EM> parameter on the <STRONG>Set-AdminAuditLogConfig</STRONG> cmdlet is set to <CODE>Verbose</CODE>.
 
-
 </td>
 </tr>
 <tr class="even">
@@ -148,44 +148,39 @@ Looking for management tasks related to Administrator audit logs? See [Manage ad
 </tbody>
 </table>
 
-
 ## Example audit log entry
 
 The following is an example of a typical audit log entry. Based on the information in log entry, we know the following occurred:
 
-  - On 10/18/2012 at 3:48 P.M. Pacific Daylight Time (UTC-7), the user `Administrator` ran the cmdlet **Set-Mailbox**.
+- On 10/18/2012 at 3:48 P.M. Pacific Daylight Time (UTC-7), the user `Administrator` ran the cmdlet **Set-Mailbox**.
 
-  - The two following parameters were provided when the **Set-Mailbox** cmdlet was run:
-    
-      - *Identity* with a value of `david`
-    
-      - *ProhibitSendReceiveQuota* with a value of `10GB`
+- The two following parameters were provided when the **Set-Mailbox** cmdlet was run:
 
-  - The two following properties on the object `david` were modified:
-    
+  - *Identity* with a value of `david`
 
-    > [!NOTE]
-    > The modified properties are saved to the audit log because the <EM>LogLevel</EM> parameter on the <CODE>Set-AdminAuditLogConfig</CODE> cmdlet was set to <CODE>Verbose</CODE> in this example.
+  - *ProhibitSendReceiveQuota* with a value of `10GB`
 
-    
-      - *ProhibitSendReceiveQuota* with a new value of `10GB`, which replaced the old value of `35GB`
+- The two following properties on the object `david` were modified:
 
-  - The operation completed successfully without any errors.
+  > [!NOTE]
+  > The modified properties are saved to the audit log because the <EM>LogLevel</EM> parameter on the <CODE>Set-AdminAuditLogConfig</CODE> cmdlet was set to <CODE>Verbose</CODE> in this example.
 
-<!-- end list -->
+  - *ProhibitSendReceiveQuota* with a new value of `10GB`, which replaced the old value of `35GB`
+
+- The operation completed successfully without any errors.
 
 ```XML
-    <?xml version="1.0" encoding="utf-8"?>
-    <SearchResults>
-    
-      <Event Caller="corp.e15a.contoso.com/Users/Administrator" Cmdlet="Set-Mailbox" ObjectModified="corp.e15a.contoso.com/Users/david" RunDate="2012-10-18T15:48:15-07:00" Succeeded="true" Error="None" OriginatingServer="WIN8MBX (15.00.0516.032)">
-        <CmdletParameters>
-          <Parameter Name="Identity" Value="david" />
-          <Parameter Name="ProhibitSendReceiveQuota" Value="10 GB (10,737,418,240 bytes)" />
-        </CmdletParameters>
-        <ModifiedProperties>
-          <Property Name="ProhibitSendReceiveQuota" OldValue="35 GB (37,580,963,840 bytes)" NewValue="10 GB (10,737,418,240 bytes)" />
-        </ModifiedProperties>
-      </Event>
-    </SearchResults>
+<?xml version="1.0" encoding="utf-8"?>
+<SearchResults>
+
+  <Event Caller="corp.e15a.contoso.com/Users/Administrator" Cmdlet="Set-Mailbox" ObjectModified="corp.e15a.contoso.com/Users/david" RunDate="2012-10-18T15:48:15-07:00" Succeeded="true" Error="None" OriginatingServer="WIN8MBX (15.00.0516.032)">
+    <CmdletParameters>
+      <Parameter Name="Identity" Value="david" />
+      <Parameter Name="ProhibitSendReceiveQuota" Value="10 GB (10,737,418,240 bytes)" />
+    </CmdletParameters>
+    <ModifiedProperties>
+      <Property Name="ProhibitSendReceiveQuota" OldValue="35 GB (37,580,963,840 bytes)" NewValue="10 GB (10,737,418,240 bytes)" />
+    </ModifiedProperties>
+  </Event>
+</SearchResults>
 ```

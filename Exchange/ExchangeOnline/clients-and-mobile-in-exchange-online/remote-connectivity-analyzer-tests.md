@@ -6,11 +6,12 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 251505e6-0907-44cd-859f-bd9402e6a397
 ms.date: 11/17/2014
+ms.reviewer: 
 title: Remote Connectivity Analyzer tests for Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 

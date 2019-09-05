@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: 'Summary: Learn how to create a new self-signed certificate in Exchange Server 2016 or Exchange Server 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: ae826efe-7558-4007-b255-7dfe5933bbbf
 ms.date: 7/5/2018
+ms.reviewer: 
 title: Create a new Exchange Server self-signed certificate
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -37,7 +38,7 @@ You can create self-signed certificates certificate in the Exchange admin center
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to create a new Exchange self-signed certificate
 
@@ -47,7 +48,7 @@ You can create self-signed certificates certificate in the Exchange admin center
 
 3. The **New Exchange certificate** wizard opens. On the **This wizard will create a new certificate or a certificate request file** page, select **Create a self-signed certificate**, and then click **Next**.
 
-    **Note:** To create a new certificate request for a certificate authority, see [Create an Exchange Server certificate request for a certification authority](create-ca-certificate-requests.md).
+   **Note:** To create a new certificate request for a certificate authority, see [Create an Exchange Server certificate request for a certification authority](create-ca-certificate-requests.md).
 
 4. On the **Friendly name for this certificate** page, enter a friendly name for the certificate, and then click **Next**.
 
@@ -59,46 +60,46 @@ You can create self-signed certificates certificate in the Exchange admin center
 
 6. The **Specify the domains you want to be included in your certificate** page is basically a worksheet that helps you determine the internal and external host names that are required in the certificate for the following Exchange services:
 
-  - Outlook on the web
+   - Outlook on the web
 
-  - Offline address book generation (OAB)
+   - Offline address book generation (OAB)
 
-  - Exchange Web Services
+   - Exchange Web Services
 
-  - Exchange ActiveSync
+   - Exchange ActiveSync
 
-  - Autodiscover
+   - Autodiscover
 
-  - POP
+   - POP
 
-  - IMAP
+   - IMAP
 
-  - Outlook Anywhere
+   - Outlook Anywhere
 
-    If you enter a value for each service based on the location (internal or external), the wizard determines the host names that are required in the certificate, and the information is displayed on the next page. To modify a value for a service, click **Edit** (![Edit icon](../../media/ITPro_EAC_EditIcon.png)) and enter the host name value that you want to use (or delete the value). When you're finished, click **Next**.
+     If you enter a value for each service based on the location (internal or external), the wizard determines the host names that are required in the certificate, and the information is displayed on the next page. To modify a value for a service, click **Edit** (![Edit icon](../../media/ITPro_EAC_EditIcon.png)) and enter the host name value that you want to use (or delete the value). When you're finished, click **Next**.
 
-    If you've already determined the host name values that you need in the certificate, you don't need to fill out the information on this page. Instead, click **Next** to manually enter the host names on the next page.
+     If you've already determined the host name values that you need in the certificate, you don't need to fill out the information on this page. Instead, click **Next** to manually enter the host names on the next page.
 
 7. The **Based on your selections, the following domains will be included in your certificate** page lists the host names that will be included in the self-signed certificate. The host name that's used in the certificate's **Subject** field is bold, which can be hard to see if that host name is selected. You can verify the host name entries that are required in the certificate based on the selections that you made on the previous page. Or, you can ignore the values from the last page and add, edit, or remove host name values.
 
-  - If you want a SAN certificate, the **Subject** field still requires one common name (CN) value. To select the host name for the certificate's **Subject** field, select the value and click **Set as common name** (check mark). The value should now appear bold.
+   - If you want a SAN certificate, the **Subject** field still requires one common name (CN) value. To select the host name for the certificate's **Subject** field, select the value and click **Set as common name** (check mark). The value should now appear bold.
 
-  - If you want a certificate for a single host name, select the other values one at a time and click **Remove** (![Remove icon](../../media/ITPro_EAC_RemoveIcon.png)).
+   - If you want a certificate for a single host name, select the other values one at a time and click **Remove** (![Remove icon](../../media/ITPro_EAC_RemoveIcon.png)).
 
-    When you're finished on this page, click **Finish**.
+     When you're finished on this page, click **Finish**.
 
-    **Notes:**
+     **Notes:**
 
-  - You can't delete the bold host name value that will be used for the certificate's **Subject** field. First, you need to select or add a different host name, and then click **Set as common name** (check mark).
+   - You can't delete the bold host name value that will be used for the certificate's **Subject** field. First, you need to select or add a different host name, and then click **Set as common name** (check mark).
 
-  - The changes that you make on this page might be lost if you click the **Back** button.
+   - The changes that you make on this page might be lost if you click the **Back** button.
 
 ## Use the Exchange Management Shell to create a new Exchange self-signed certificate
 
 To create a new Exchange self-signed certificate, use the following syntax:
 
 ```
-New-ExchangeCertificate [-FriendlyName <DescriptiveName>] [-SubjectName [C=<CountryOrRegion>,S=<StateOrProvince>,L=<LocalityOrCity>,O=<Organization>,OU=<Department>],CN=<HostNameOrFQDN>]] [-DomainName <Host1>,<Host2>...]  [-Services <None | IIS | IMAP | POP | SMTP | UM | UMCallRouter> [-PrivateKeyExportable < $true | $false>] [-Server <ServerIdentity>] -[Force]
+New-ExchangeCertificate [-FriendlyName <DescriptiveName>] [-SubjectName [C=<CountryOrRegion>,S=<StateOrProvince>,L=<LocalityOrCity>,O=<Organization>,OU=<Department>],CN=<HostNameOrFQDN>]] [-DomainName <Host1>,<Host2>...] [-Services <None | IIS | IMAP | POP | SMTP | UM | UMCallRouter> [-PrivateKeyExportable < $true | $false>] [-Server <ServerIdentity>] -[Force]
 ```
 
 This example creates a self-signed certificate on the local Exchange server with the following properties:
@@ -143,7 +144,7 @@ New-ExchangeCertificate -FriendlyName "Contoso Exchange Certificate" -SubjectNam
 
 - The only required part of the X.500 _SubjectName_ parameter value (the certificate's **Subject** field) is `CN=<HostNameOrFQDN>`.
 
--  Some _Services_ parameter values generate warning or confirmation messages. For more information, see [Assign certificates to Exchange Server services](assign-certificates-to-services.md).
+- Some _Services_ parameter values generate warning or confirmation messages. For more information, see [Assign certificates to Exchange Server services](assign-certificates-to-services.md).
 
 - For more information, see [New-ExchangeCertificate](http://technet.microsoft.com/library/5e0b61b0-ece6-4d9b-949a-f6a032dd0fb9.aspx).
 
@@ -158,6 +159,3 @@ To verify that you have successfully created an Exchange self-signed certificate
   ```
   Get-ExchangeCertificate | where {$_.Status -eq "Valid" -and $_.IsSelfSigned -eq $true} | Format-List FriendlyName,Subject,CertificateDomains,Thumbprint,NotBefore,NotAfter
   ```
-
-
-

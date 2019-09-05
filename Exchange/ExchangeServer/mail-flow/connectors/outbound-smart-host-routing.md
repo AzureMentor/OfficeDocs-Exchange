@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: Learn how to create a Send connector in Exchange 2016 and Exchange 2019 that's configured to route outbound mail through a smart host.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 4a9ef08e-bd62-4c6b-8790-d24fb0f8f24b
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Create a Send connector to route outbound mail through a smart host
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -39,51 +40,51 @@ Instead of routing all outbound messages directly to the Internet, you may need 
 
 2. On the first page, enter the following information:
 
-  - **Name**: Enter a descriptive name for the Send connector, for example, Smart host to Internet.
+   - **Name**: Enter a descriptive name for the Send connector, for example, Smart host to Internet.
 
-  - **Type**: Select a descriptive value. For example, **Internet** or **Custom**. For more information about Send connector usage types, see [Send connector usage types](send-connectors.md#send-connector-usage-types).
+   - **Type**: Select a descriptive value. For example, **Internet** or **Custom**. For more information about Send connector usage types, see [Send connector usage types](send-connectors.md#send-connector-usage-types).
 
-    When you're finished, click **Next**.
+   When you're finished, click **Next**.
 
 3. On the next page, select **Route mail through smart hosts**, and then click **Add** ![Add icon](../../media/ITPro_EAC_AddIcon.png). In the **Add smart host** dialog box that appears, identify the smart host by using one of the following values:
 
-  - **IP address**: For example, 192.168.3.2.
+   - **IP address**: For example, 192.168.3.2.
 
-  - **Fully qualified domain name (FQDN)**: For example, securitydevice01.contoso.com. Note that the Exchange source servers for the Send connector must be able to resolve the smart host in DNS by using this FQDN.
+   - **Fully qualified domain name (FQDN)**: For example, securitydevice01.contoso.com. Note that the Exchange source servers for the Send connector must be able to resolve the smart host in DNS by using this FQDN.
 
-    When you're finished, click **Save**.
+   When you're finished, click **Save**.
 
 4. You can enter multiple smart hosts by repeating Step 3. When you're finished, click **Next**.
 
 5. On the next page, in the **Route mail through smart hosts** section, select the authentication method that's required by the smart host. Valid values are:
 
-    |**Authentication mechanism**|**Description**|
-    |:-----|:-----|
-    |**None** <br/> |No authentication. For example, when access to the smart host is restricted by the source IP address.  <br/> |
-    |**Basic authentication** <br/> |Basic authentication. Requires a user name and password. The user name and password are sent in clear text.  <br/> |
-    |**Offer basic authentication only after starting TLS** <br/> |Basic authentication that's encrypted with TLS. This requires a server certificate on the smart host that contains the exact FQDN of the smart host that's defined on the Send connector.  <br/> |
-    |**Exchange Server authentication** <br/> |Generic Security Services application programming interface (GSSAPI) and Mutual GSSAPI authentication.  <br/> |
-    |**Externally secured** <br/> |The connection is presumed to be secured by using a security mechanism that's external to Exchange. The connection may be an Internet Protocol security (IPsec) association or a virtual private network (VPN). Alternatively, the servers may reside in a trusted, physically controlled network.  <br/> |
+   |**Authentication mechanism**|**Description**|
+   |:-----|:-----|
+   |**None**|No authentication. For example, when access to the smart host is restricted by the source IP address.|
+   |**Basic authentication**|Basic authentication. Requires a user name and password. The user name and password are sent in clear text.|
+   |**Offer basic authentication only after starting TLS**|Basic authentication that's encrypted with TLS. This requires a server certificate on the smart host that contains the exact FQDN of the smart host that's defined on the Send connector.|
+   |**Exchange Server authentication**|Generic Security Services application programming interface (GSSAPI) and Mutual GSSAPI authentication.|
+   |**Externally secured**|The connection is presumed to be secured by using a security mechanism that's external to Exchange. The connection may be an Internet Protocol security (IPsec) association or a virtual private network (VPN). Alternatively, the servers may reside in a trusted, physically controlled network.|
 
-    When you're finished, click **Next**.
+   When you're finished, click **Next**.
 
 6. On the next page, in the **Address space** section, click **Add** ![Add icon](../../media/ITPro_EAC_AddIcon.png). In the **Add domain** dialog box that appears, enter the following information:
 
-  - **Type**: Verify SMTP is entered.
+   - **Type**: Verify SMTP is entered.
 
-  - **Fully Qualified Domain Name (FQDN)**: Enter an asterisk (\*) to indicate the Send connector applies to messages addressed to all external domains. Alternatively, you can enter a specific external domain (for example, contoso.com), or a domain and all subdomains (for example, \*.contoso.com).
+   - **Fully Qualified Domain Name (FQDN)**: Enter an asterisk (\*) to indicate the Send connector applies to messages addressed to all external domains. Alternatively, you can enter a specific external domain (for example, contoso.com), or a domain and all subdomains (for example, \*.contoso.com).
 
-  - **Cost**: Verify 1 is entered. A lower value indicates a more preferred route for the domains you specified.
+   - **Cost**: Verify 1 is entered. A lower value indicates a more preferred route for the domains you specified.
 
-    When you're finished, click **Save**.
+   When you're finished, click **Save**.
 
 7. Back on the previous page, the **Scoped send connector** setting is important if your organization has Exchange servers installed in multiple Active Directory sites:
 
-  - If you don't select **Scoped send connector**, the connector is usable by all transport servers (Exchange 2013 or later Mailbox servers and Exchange 2010 Hub Transport servers) in the entire Active Directory forest. This is the default value.
+   - If you don't select **Scoped send connector**, the connector is usable by all transport servers (Exchange 2013 or later Mailbox servers and Exchange 2010 Hub Transport servers) in the entire Active Directory forest. This is the default value.
 
-  - If you select **Scoped send connector**, the connector is only usable by other transport servers in the same Active Directory site.
+   - If you select **Scoped send connector**, the connector is only usable by other transport servers in the same Active Directory site.
 
-    When you're finished, click **Next**.
+   When you're finished, click **Next**.
 
 8. On the next page, in the **Source server** section, click **Add** ![Add icon](../../media/ITPro_EAC_AddIcon.png). In the **Select a Server** dialog box that appears, select one or more Mailbox servers that you want to use to send outbound mail to the smart host. If you have multiple Mailbox servers in your environment, select the ones that can route mail to the smart host. If you have only one Mailbox server, select that one. After you've selected at least one Mailbox server, click **Add**, click **OK**, and then click **Finish**.
 
@@ -95,25 +96,25 @@ After you create the Send connector, it appears in the Send connector list.
 
 2. Use the following syntax:
 
-  ```
-  New-SendConnector -Name <Name> -AddressSpaces * -Custom -DnsRoutingEnabled $false -SmartHosts <SmartHost1>[,<SmartHost2>...] [-SourceTransportServer <fqdn1>,<fqdn2>...]
-  ```
+   ```
+   New-SendConnector -Name <Name> -AddressSpaces * -Custom -DnsRoutingEnabled $false -SmartHosts <SmartHost1>[,<SmartHost2>...] [-SourceTransportServer <fqdn1>,<fqdn2>...]
+   ```
 
-    This example creates the Internet Send connector named "Smart host to Internet" with the following properties:
+   This example creates the Internet Send connector named "Smart host to Internet" with the following properties:
 
-  - The usage type is Custom.
+   - The usage type is Custom.
 
-  - The Send connector uses smart host routing (the _DNSRoutingEnabled_ parameter is set to the value `$false`). The smart host's IP address is 192.168.3.2, and the authentication method is None, because the smart host is configured to listen for connections only from a restricted list of source servers.
+   - The Send connector uses smart host routing (the _DNSRoutingEnabled_ parameter is set to the value `$false`). The smart host's IP address is 192.168.3.2, and the authentication method is None, because the smart host is configured to listen for connections only from a restricted list of source servers.
 
-  - The Send connector is for all external domains (\*). The value `*` is equivalent to the value `"SMTP:*;1"`, where the address space type is `SMTP`, and the address space cost value is `1`.
+   - The Send connector is for all external domains (\*). The value `*` is equivalent to the value `"SMTP:*;1"`, where the address space type is `SMTP`, and the address space cost value is `1`.
 
-  - The local Exchange server is the source server. We aren't using the _SourceTransportServer_ parameter, and the default value is the local Exchange server.
+   - The local Exchange server is the source server. We aren't using the _SourceTransportServer_ parameter, and the default value is the local Exchange server.
 
-  - The Send connector isn't scoped to the local Active Directory site. We aren't using the _IsScopedConnector_ parameter, and the default value is `$false`. The Send connector is useable by all Exchange transport servers in the Active Directory forest.
+   - The Send connector isn't scoped to the local Active Directory site. We aren't using the _IsScopedConnector_ parameter, and the default value is `$false`. The Send connector is useable by all Exchange transport servers in the Active Directory forest.
 
-  ```
-  New-SendConnector -Name "Smart host to Internet" -AddressSpaces * -Custom -DNSRoutingEnabled $false -SmartHosts 192.168.3.2 -SmartHostAuthMechanism None
-  ```
+   ```
+   New-SendConnector -Name "Smart host to Internet" -AddressSpaces * -Custom -DNSRoutingEnabled $false -SmartHosts 192.168.3.2 -SmartHostAuthMechanism None
+   ```
 
 For information about other options, see [New-SendConnector](http://technet.microsoft.com/library/7b315ab0-8778-4835-a252-fb94129d7a8e.aspx).
 
@@ -122,6 +123,3 @@ For information about other options, see [New-SendConnector](http://technet.micr
 To verify that you have successfully created a Send connector to route outbound email through a smart host, send a message from a user in your organization to an external domain that's serviced by the Send connector.
 
 You can also turn on protocol logging for the Send connector, and view the information in the log. For more information, see [Protocol logging](protocol-logging.md).
-
-
-

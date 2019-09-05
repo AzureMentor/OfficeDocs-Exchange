@@ -5,6 +5,7 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 5296a30b-00cb-44be-8855-ed9d14d93e17
 ms.date: 8/15/2018
+ms.reviewer: 
 description: Convert Exchange 2007 mailboxes to mail enabled users.
 title: Convert Exchange 2003 mailboxes to mail-enabled users
 ms.collection: 
@@ -19,7 +20,7 @@ search.appverid:
 - GPA150
 - GEA150
 - BCS160
-ms.audience: Admin
+audience: Admin
 ms.custom: Adm_O365
 ms.service: exchange-online
 manager: serdars
@@ -32,7 +33,7 @@ After you have completed a staged migration, convert the mailboxes to mail-enabl
 
 ## Why convert mailboxes to mail-enabled users?
 
-If you've completed a staged Exchange migration to migrate your organization's Exchange 2003 on-premises mailboxes to Office 365 and you want to manage cloud-based users from your on-premises organization—using Active Directory—you should convert the on-premises mailboxes to mail-enabled users (MEUs).
+If you've completed a staged Exchange migration to migrate your organization's Exchange 2003 on-premises mailboxes to Office 365 and you want to manage cloud-based users from your on-premises organization (using Active Directory) you should convert the on-premises mailboxes to mail-enabled users (MEUs).
 
 This article includes a Windows PowerShell script that collects information from the cloud-based mailboxes and a Visual Basic (VB) script that you can run to convert Exchange 2003 mailboxes to MEUs. When you run this script, the proxy addresses from the cloud-based mailbox are copied to the MEU, which resides in Active Directory. Also, the properties of the MEU enable the Microsoft Online Services Directory Synchronization tool (DirSync) to match the MEU with its corresponding cloud mailbox
 
@@ -163,7 +164,7 @@ ElseIf StrComp(WScript.Arguments(0), "-c", vbTextCompare) = 0 Then
     csvFileName = WScript.Arguments(1)
     domainController = WScript.Arguments(2)
     csvMode = TRUE
-    WScript.Echo("CSV mode detected. Filename: " &amp; WScript.Arguments(1) &amp; vbCrLf)
+    WScript.Echo("CSV mode detected. Filename: " & WScript.Arguments(1) & vbCrLf)
 ElseIf wscript.Arguments.Count <> 4 Then
     'Invalid Arguments
     WScript.Echo WScript.Arguments.Count
@@ -182,7 +183,7 @@ Sub Main
     If csvMode = TRUE Then
         UserInfoArray = GetUserInfoFromCSVFile()
     Else
-        WScript.Echo "Manual Mode Detected" &amp; vbCrLf
+        WScript.Echo "Manual Mode Detected" & vbCrLf
         Set info = New UserInfo
         info.CloudEmailAddress = remoteSMTPAddress
         info.DistinguishedName = UserDN
@@ -192,8 +193,8 @@ Sub Main
 End Sub
 'Process a single user (manual mode)
 Sub ProcessSingleUser(ByRef UserInfo)
-    userADSIPath = "LDAP://" &amp; domainController &amp; "/" &amp; UserInfo.DistinguishedName
-    WScript.Echo "Processing user " &amp; userADSIPath
+    userADSIPath = "LDAP://" & domainController & "/" & UserInfo.DistinguishedName
+    WScript.Echo "Processing user " & userADSIPath
 	Set MyUser = GetObject(userADSIPath)
     proxyCounter = 1
     For Each address in MyUser.Get("proxyAddresses")
@@ -215,7 +216,7 @@ Function GetUserInfoFromCSVFile()
         info.CloudLegacyDN = Split(CSVInfo(i+1), ",")(0)
         info.CloudEmailAddress = Split(CSVInfo(i+1), ",")(1)
         info.OnPremiseEmailAddress = Split(CSVInfo(i+1), ",")(2)
-        WScript.Echo "Processing user " &amp; info.OnPremiseEmailAddress
+        WScript.Echo "Processing user " & info.OnPremiseEmailAddress
         WScript.Echo "Calling LookupADInformationFromSMTPAddress"
         LookupADInformationFromSMTPAddress(info)
         If lastADLookupFailed = false Then
@@ -235,27 +236,27 @@ Sub LookupADInformationFromSMTPAddress(ByRef info)
     objConnection.Provider = "ADsDSOObject"
     objConnection.Open "Active Directory Provider"
     Set objCommand = CreateObject("ADODB.Command")
-    BaseDN = "<LDAP://" &amp; domainController &amp; "/" &amp; strDomain &amp; ">"
-    adFilter = "(&amp;(proxyAddresses=SMTP:" &amp; info.OnPremiseEmailAddress &amp; "))"
+    BaseDN = "<LDAP://" & domainController & "/" & strDomain & ">"
+    adFilter = "(&(proxyAddresses=SMTP:" & info.OnPremiseEmailAddress & "))"
     Attributes = "distinguishedName,msExchMailboxGUID,mail,proxyAddresses,legacyExchangeDN"
-    Query = BaseDN &amp; ";" &amp; adFilter &amp; ";" &amp; Attributes &amp; ";subtree"
+    Query = BaseDN & ";" & adFilter & ";" & Attributes & ";subtree"
     objCommand.CommandText = Query
     Set objCommand.ActiveConnection = objConnection
     On Error Resume Next
     Set objRecordSet = objCommand.Execute
     'Handle any errors that result from the query
     If Err.Number <> 0 Then
-        WScript.Echo "Error encountered on query " &amp; Query &amp; ". Skipping user."
+        WScript.Echo "Error encountered on query " & Query & ". Skipping user."
         lastADLookupFailed = true
         return
     End If
     'Handle zero or ambiguous search results
     If objRecordSet.RecordCount = 0 Then
-        WScript.Echo "No users found for address " &amp; info.OnPremiseEmailAddress
+        WScript.Echo "No users found for address " & info.OnPremiseEmailAddress
         lastADLookupFailed = true
         return
     ElseIf objRecordSet.RecordCount > 1 Then
-        WScript.Echo "Ambiguous search results for email address " &amp; info.OnPremiseEmailAddress
+        WScript.Echo "Ambiguous search results for email address " & info.OnPremiseEmailAddress
         lastADLookupFailed = true
         return
     ElseIf Not objRecordSet.EOF Then
@@ -297,47 +298,47 @@ End Function
 'Process the migration
 Sub ProcessMailbox(User)
 	'Get user properties
-	userADSIPath = "LDAP://" &amp; domainController &amp; "/" &amp; User.DistinguishedName
+	userADSIPath = "LDAP://" & domainController & "/" & User.DistinguishedName
 	Set MyUser = GetObject(userADSIPath)
 	'Add x.500 address to list of existing proxies
 	existingLegDnFound = FALSE
 	newLegDnFound = FALSE
     'Loop through each address in User.ProxyAddresses
 	For i = 1 To User.ProxyAddresses.Count
-		If StrComp(address, "x500:" &amp; User.LegacyDN, vbTextCompare) = 0 Then
-			WScript.Echo "x500 proxy " &amp; User.LegacyDN &amp; " already exists"
+		If StrComp(address, "x500:" & User.LegacyDN, vbTextCompare) = 0 Then
+			WScript.Echo "x500 proxy " & User.LegacyDN & " already exists"
 			existingLegDNFound = true
 		End If
-		If StrComp(address, "x500:" &amp; User.CloudLegacyDN, vbTextCompare) = 0 Then
-			WScript.Echo "x500 proxy " &amp; User.CloudLegacyDN &amp; " already exists"
+		If StrComp(address, "x500:" & User.CloudLegacyDN, vbTextCompare) = 0 Then
+			WScript.Echo "x500 proxy " & User.CloudLegacyDN & " already exists"
 			newLegDnFound = true
 		End If
 	Next
 	'Add existing leg DN to proxy list
 	If existingLegDnFound = FALSE Then
-		WScript.Echo "Adding existing legacy DN " &amp; User.LegacyDN &amp; " to proxy addresses"
-        User.ProxyAddresses.Add (User.ProxyAddresses.Count+1),("x500:" &amp; User.LegacyDN)
+		WScript.Echo "Adding existing legacy DN " & User.LegacyDN & " to proxy addresses"
+        User.ProxyAddresses.Add (User.ProxyAddresses.Count+1),("x500:" & User.LegacyDN)
 	End If
 	'Add new leg DN to proxy list
 	If newLegDnFound = FALSE Then
 		'Add new leg DN to proxy addresses
-		WScript.Echo "Adding new legacy DN " &amp; User.CloudLegacyDN &amp; " to existing proxy addresses"
-        User.ProxyAddresses.Add (User.ProxyAddresses.Count+1),("x500:" &amp; User.CloudLegacyDN)
+		WScript.Echo "Adding new legacy DN " & User.CloudLegacyDN & " to existing proxy addresses"
+        User.ProxyAddresses.Add (User.ProxyAddresses.Count+1),("x500:" & User.CloudLegacyDN)
 	End If
     'Dump out new list of addresses
-    WScript.Echo "Original proxy addresses updated count: " &amp; User.ProxyAddresses.Count
+    WScript.Echo "Original proxy addresses updated count: " & User.ProxyAddresses.Count
 	For i = 1 to User.ProxyAddresses.Count
-		WScript.Echo "	proxyAddress " &amp; i &amp; ": " &amp; User.ProxyAddresses(i)
+		WScript.Echo "	proxyAddress " & i & ": " & User.ProxyAddresses(i)
 	Next
     'Delete the Mailbox
-	WScript.Echo "Opening " &amp; userADSIPath &amp; " as CDOEXM::IMailboxStore object"
+	WScript.Echo "Opening " & userADSIPath & " as CDOEXM::IMailboxStore object"
 	Set Mailbox = MyUser
 	Wscript.Echo "Deleting Mailbox"
     On Error Resume Next
 	Mailbox.DeleteMailbox
     'Handle any errors deleting the mailbox
     If Err.Number <> 0 Then
-        WScript.Echo "Error " &amp; Err.number &amp; ". Skipping User." &amp; vbCrLf &amp; "Description: " &amp; Err.Description &amp; vbCrLf
+        WScript.Echo "Error " & Err.number & ". Skipping User." & vbCrLf & "Description: " & Err.Description & vbCrLf
         Exit Sub
     End If
     On Error Goto 0
@@ -348,9 +349,9 @@ Sub ProcessMailbox(User)
 	MyUser.GetInfo
 	Set Mailbox = nothing
 	'Mail Enable the User
-	WScript.Echo "Opening " &amp; userADSIPath &amp; " as CDOEXM::IMailRecipient"
+	WScript.Echo "Opening " & userADSIPath & " as CDOEXM::IMailRecipient"
 	Set MailUser = MyUser
-	WScript.Echo "Mail Enabling user using targetAddress " &amp; User.CloudEmailAddress
+	WScript.Echo "Mail Enabling user using targetAddress " & User.CloudEmailAddress
 	MailUser.MailEnable User.CloudEmailAddress
 	WScript.Echo "Disabling Recipient Update Service for user"
 	MyUser.PutEx ADS_PROPERTY_APPEND, "msExchPoliciesExcluded", Array("{26491CFC-9E50-4857-861B-0CB8DF22B5D7}")
@@ -359,7 +360,7 @@ Sub ProcessMailbox(User)
 	WScript.Echo "Refreshing ADSI Cache"
 	MyUser.GetInfo
 	'Add Legacy DN back on to the user
-	WScript.Echo "Writing legacyExchangeDN as " &amp; User.LegacyDN
+	WScript.Echo "Writing legacyExchangeDN as " & User.LegacyDN
 	MyUser.Put "legacyExchangeDN", User.LegacyDN
     'Add old proxies list back on to the MEU
 	WScript.Echo "Writing proxyAddresses back to the user"
@@ -369,17 +370,17 @@ Sub ProcessMailbox(User)
         MyUser.GetInfo
     Next
 	'Add mail attribute back on to the MEU
-	WScript.Echo "Writing mail attribute as " &amp; User.Mail
+	WScript.Echo "Writing mail attribute as " & User.Mail
 	MyUser.Put "mail", User.Mail
 	'Add msExchMailboxGUID back on to the MEU
 	WScript.Echo "Converting mailbox GUID to writable format"
 	Dim mbxGUIDByteArray
 	Call ConvertHexStringToByteArray(OctetToHexString(User.MailboxGUID), mbxGUIDByteArray)
-	WScript.Echo "Writing property msExchMailboxGUID to user object with value " &amp; OctetToHexString(User.MailboxGUID)
+	WScript.Echo "Writing property msExchMailboxGUID to user object with value " & OctetToHexString(User.MailboxGUID)
 	MyUser.Put "msExchMailboxGUID", mbxGUIDByteArray
 	WScript.Echo "Saving Changes"
 	MyUser.SetInfo
-	WScript.Echo "Migration Complete!" &amp; vbCrLf
+	WScript.Echo "Migration Complete!" & vbCrLf
 End Sub
 'Returns the primary SMTP address of a user
 Function GetPrimarySMTPAddress(Addresses)
@@ -394,7 +395,7 @@ Sub ConvertHexStringToByteArray(ByVal strHexString, ByRef pByteArray)
 	Temp = FSO.GetTempName()
 	Set TS = FSO.CreateTextFile(Temp)
 	For i = 1 To (Len (strHexString) -1) Step 2
-		TS.Write Chr("&amp;h" &amp; Mid (strHexString, i, 2))
+		TS.Write Chr("&h" & Mid (strHexString, i, 2))
 	Next
 	TS.Close
 	Stream.Type = 1
@@ -410,16 +411,15 @@ End Sub
 Function OctetToHexString (arrbytOctet)
 	OctetToHexStr = ""
 	For k = 1 To Lenb (arrbytOctet)
-		OctetToHexString = OctetToHexString &amp; Right("0" &amp; Hex(Ascb(Midb(arrbytOctet, k, 1))), 2)
+		OctetToHexString = OctetToHexString & Right("0" & Hex(Ascb(Midb(arrbytOctet, k, 1))), 2)
 	Next
 End Function
 Sub ShowHelp()
-    WScript.Echo("This script runs in two modes, CSV Mode and Manual Mode." &amp; vbCrLf &amp; "CSV Mode allows you to specify a CSV file from which to pull usernames." &amp; vbCrLf&amp; "Manual mode allows you to run the script against a single user.")
-    WSCript.Echo("Both modes require you to specify the name of a DC to use in the local domain." &amp; vbCrLf &amp; "To run the script in CSV Mode, use the following syntax:")
+    WScript.Echo("This script runs in two modes, CSV Mode and Manual Mode." & vbCrLf & "CSV Mode allows you to specify a CSV file from which to pull usernames." & vbCrLf& "Manual mode allows you to run the script against a single user.")
+    WSCript.Echo("Both modes require you to specify the name of a DC to use in the local domain." & vbCrLf & "To run the script in CSV Mode, use the following syntax:")
     WScript.Echo("  cscript Exchange2003MBtoMEU.vbs -c x:\csv\csvfilename.csv dc.domain.com")
     WScript.Echo("To run the script in Manual Mode, you must specify the users AD Distinguished Name, Remote SMTP Address, Remote Legacy Exchange DN, and Domain Controller Name.")
-    WSCript.Echo("  cscript Exchange2003MBtoMEU.vbs " &amp; chr(34) &amp; "CN=UserName,CN=Users,DC=domain,DC=com" &amp; chr(34) &amp; " " &amp; chr(34) &amp; "user@cloudaddress.com" &amp; chr(34) &amp; " " &amp; chr(34) &amp; "/o=Cloud Org/ou=Cloud Site/ou=Recipients/cn=CloudUser" &amp;
-chr(34) &amp; " dc.domain.com")
+    WSCript.Echo("  cscript Exchange2003MBtoMEU.vbs " & chr(34) & "CN=UserName,CN=Users,DC=domain,DC=com" & chr(34) & " " & chr(34) & "user@cloudaddress.com" & chr(34) & " " & chr(34) & "/o=Cloud Org/ou=Cloud Site/ou=Recipients/cn=CloudUser" & chr(34) & " dc.domain.com")
     WScript.Quit
 End Sub
 ```
@@ -491,17 +491,17 @@ Instead of using the input CSV file to convert a batch of mailboxes, you can run
 
 1. Run the ExportO365UserInfo in your cloud organization. Use the CSV file for the migration batch as the input file. The script creates a CSV file named Cloud.csv.
 
-    ```
-    .\ExportO365UserInfo.ps1 <CSV input file>
-    ```
+   ```
+   .\ExportO365UserInfo.ps1 <CSV input file>
+   ```
 
-    For example:
+   For example:
 
-    ```
-    .\ExportO365UserInfo.ps1 .\MigrationBatch1.csv
-    ```
+   ```
+   .\ExportO365UserInfo.ps1 .\MigrationBatch1.csv
+   ```
 
-    This example assumes that the script and input CSV file are located in the same directory.
+   This example assumes that the script and input CSV file are located in the same directory.
 
 2. Copy Exchange2003MBtoMEU.vbs and Cloud.csv to the same directory in your on-premises organization.
 
@@ -531,29 +531,26 @@ Instead of using the input CSV file to convert a batch of mailboxes, you can run
 
 4. Verify that the new MEUs have been created. In Active Directory Users and Computers, do the following:
 
-  1. Click **Action** \> **Find**.
+   1. Click **Action** \> **Find**.
 
-  2. Click the **Exchange tab**.
+   2. Click the **Exchange tab**.
 
-  3. Select **Show only Exchange recipients**, and then select **Users with external email address**.
+   3. Select **Show only Exchange recipients**, and then select **Users with external email address**.
 
-  4. Click **Find Now**.
+   4. Click **Find Now**.
 
-    The mailboxes that were converted to MEUs are listed under **Search results**.
+      The mailboxes that were converted to MEUs are listed under **Search results**.
 
 5. Use Active Directory Users and Computers, ADSI Edit, or Ldp.exe to verify that the following MEU properties are populated with the correct information.
 
-  - legacyExchangeDN
+   - legacyExchangeDN
 
-  - mail
+   - mail
 
-  - msExchMailboxGuid<sup>*</sup>
+   - msExchMailboxGuid<sup>*</sup>
 
-  - proxyAddresses
+   - proxyAddresses
 
-  - targetAddress
+   - targetAddress
 
     <sup>*</sup>As previously explained, the Exchange2003MBtoMEU.vbs script retains the **msExchMailboxGuid** value from the on-premises mailbox. To enable off-boarding from Office 365 to Exchange 2003, you have to replace the value for the **msExchMailboxGuid** property on the MEU with the Guid from the cloud-based mailbox.
-
-
-

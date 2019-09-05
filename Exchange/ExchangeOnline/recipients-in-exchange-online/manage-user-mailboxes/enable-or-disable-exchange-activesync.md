@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: You can use the EAC or Exchange Online PowerShell to enable or disable Microsoft Exchange ActiveSync for a user mailbox. Exchange ActiveSync is a client protocol that lets users synchronize a mobile device with their Exchange mailbox. Exchange ActiveSync is enabled by default when a user mailbox is created. To learn more, see Exchange ActiveSync.
 ms.topic: article
-author: kwekua
-ms.author: kwekua
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: dcf7c05b-b1b9-4b0f-800d-fec9f2ddc9e4
 ms.date: 11/17/2014
+ms.reviewer: 
 title: Enable or disable Exchange ActiveSync for a mailbox
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -29,7 +30,7 @@ You can use the EAC or Exchange Online PowerShell to enable or disable Microsoft
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to enable or disable Exchange ActiveSync
 
@@ -41,11 +42,11 @@ You can use the EAC or Exchange Online PowerShell to enable or disable Microsoft
 
 4. Under **Mobile Devices**, do one of the following:
 
-  - To disable Exchange ActiveSync click **Disable Exchange ActiveSync**.
+   - To disable Exchange ActiveSync click **Disable Exchange ActiveSync**.
 
-    A warning appears asking if you're sure you want to disable Exchange ActiveSync. Click **Yes**.
+     A warning appears asking if you're sure you want to disable Exchange ActiveSync. Click **Yes**.
 
-  - To enable Exchange ActiveSync, click **Enable Exchange ActiveSync**.
+   - To enable Exchange ActiveSync, click **Enable Exchange ActiveSync**.
 
 5. Click **Save** to save your change.
 
@@ -86,7 +87,4 @@ Or
   Get-CASMailbox <identity>
   ```
 
-    If Exchange ActiveSync is enabled, the value for the _ActiveSyncEnabled_ property is `True`. If Exchange ActiveSync is disabled, the value is `False`.
-
-
-
+  If Exchange ActiveSync is enabled, the value for the _ActiveSyncEnabled_ property is `True`. If Exchange ActiveSync is disabled, the value is `False`.

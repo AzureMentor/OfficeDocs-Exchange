@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can set the maximum message duration for a Voice Mail Preview partner on a Unified Messaging (UM) mailbox policy. After you've set the maximum message duration, the setting will apply to all UM-enabled users who are linked with that mailbox policy.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 18f928ff-f4cc-4eed-a466-de13388780b3
 ms.date: 11/17/2014
-title: Set the maximum message duration for a Voice Mail Preview partner
+ms.reviewer: 
+title: Set the maximum message duration for a Voice Mail Preview partner in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Set the maximum message duration for a Voice Mail Preview partner
+# Set the maximum message duration for a Voice Mail Preview partner in Exchange Online
 
 You can set the maximum message duration for a Voice Mail Preview partner on a Unified Messaging (UM) mailbox policy. After you've set the maximum message duration, the setting will apply to all UM-enabled users who are linked with that mailbox policy.
 
@@ -38,7 +39,7 @@ For additional management tasks related to Voice Mail Preview, see [Voice Mail P
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use Exchange Online PowerShell to set the maximum message duration for a Voice Mail Preview partner
 
@@ -47,6 +48,3 @@ This example sets the maximum message duration for a Voice Mail Preview partner 
 ```
 Set-UMMailboxPolicy -identity MyUMMailboxPolicy -VoiceMailPreviewPartnerMaxMessageDuration 300
 ```
-
-
-

@@ -8,7 +8,7 @@ monikerRange: exchserver-2019
 title: MetaCacheDatabase (MCDB) setup
 ms.collection: exchange-server
 ms.reviewer: toklima
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -33,7 +33,7 @@ It is recommended to target a 1:3 ratio between SSD and HDD devices per server. 
 
 Providing 5% to 6% of SSD capacity relative to total HDD capacity is sufficient for on-premises deployments. For example, if your server contains 100 TB of HDD capacity for mailbox databases, an allocation of 5 TB to 6 TB for SSD capacity is enough.
 
-The SSDs you use should qualify for “mixed use” and support one drive write per day (DWPD) or greater in terms of write endurance.
+The SSDs you use should qualify for "mixed use" and support one drive write per day (DWPD) or greater in terms of write endurance.
 
 ## Prerequisites
 
@@ -82,7 +82,7 @@ This parameter sets the Active Directory state for the DAG object. Full replicat
 - **DAG**: _ConfigureMCDBPrerequisite_ operates on a DAG object.
 
 > [!NOTE]
-> MCDB will utilize up to 95% of an SSD’s physical capacity. The remaining 5% is kept free to account for file system and partition overhead, as well as for a small amount of additional buffer and over-provisioning.
+> MCDB will utilize up to 95% of an SSD's physical capacity. The remaining 5% is kept free to account for file system and partition overhead, as well as for a small amount of additional buffer and over-provisioning.
 
 **Example**:
 
@@ -159,7 +159,7 @@ After performing the previous three steps (configuring _ConfigureMCDBPrerequisit
 You can use the _ServerAllowMCDB_ parameter set to cause fail overs of all DB instances present on a given server. Alternatively, you can use the **Move-ActiveMailboxDatabase** cmdlet to cause individual databases to fail over.
 
 ```
-Manage-MCDB.ps1 -DagName TestDag1 -ServerAllowMCDB:$true -ServerName “exhs-5046” -ForceFailover $true
+Manage-MCDB.ps1 -DagName TestDag1 -ServerAllowMCDB:$true -ServerName "exhs-5046" -ForceFailover $true
 ```
 
 ## MCDB health states

@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to export messages from queues in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 688b342c-f380-4fe0-afce-7e38cf490627
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Export messages from queues
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -24,7 +25,7 @@ On Mailbox servers and Edge Transport servers in Exchange Server, you can export
 
 - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Queues" entry in [Mail flow permissions](../../permissions/feature-permissions/mail-flow-permissions.md) topic.
 
-- To export messages from a delivery queue, the Submission queue, or the Unreachable queue, the messages need to be in the Suspended state. For active, healthy queues, you first suspend the queue so you can then suspend the messages. Messages in the poison message queue are already in the Suspended state. For more information, see [Suspend queues](queue-procedures.md#Suspend) and [Suspend messages in queues](message-procedures.md#Suspend).
+- To export messages from a delivery queue, the Submission queue, or the Unreachable queue, the messages need to be in the Suspended state. For active, healthy queues, you first suspend the queue so you can then suspend the messages. Messages in the poison message queue are already in the Suspended state. For more information, see [Suspend queues](queue-procedures.md#suspend-queues) and [Suspend messages in queues](message-procedures.md#suspend-messages-in-queues).
 
 - You can't use Queue Viewer in the Exchange Toolbox to export messages. However, you can use Queue Viewer to locate, identify, and suspend the messages before you export them using the Exchange Management Shell. For more information about Queue Viewer, see [Queue Viewer](queue-viewer.md). To learn how to open the Exchange Management Shell in your on-premises Exchange organization, see [Open the Exchange Management Shell](https://docs.microsoft.com/powershell/exchange/exchange-server/open-the-exchange-management-shell).
 
@@ -164,6 +165,3 @@ Get-Queue -Server Mailbox01 | Get-Message -ResultSize Unlimited | Suspend-Messag
 ```
 Get-Message -Server Mailbox01 -ResultSize Unlimited | ForEach-Object {$Temp="D:\Mailbox01 Export\"+$_.InternetMessageID+".eml"; $Temp=$Temp.Replace("<","_"); $Temp=$Temp.Replace(">","_"); Export-Message $_.Identity | AssembleMessage -Path $Temp}
 ```
-
-
-

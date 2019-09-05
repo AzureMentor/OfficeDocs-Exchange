@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'DLP procedures: Exchange 2013 Help'
 TOCTitle: DLP procedures
 ms:assetid: e2f575aa-552e-4dcc-8d7b-1ffd697d67df
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ657736(v=EXCHG.150)
 ms:contentKeyID: 49300741
 ms.date: 06/13/2017
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # DLP procedures
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 You can begin using a data loss prevention (DLP) solution in your messaging environment by using the following procedures. To learn about concepts and objectives for DLP, see [Data loss prevention](https://docs.microsoft.com/en-us/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention).
 
@@ -27,11 +28,8 @@ You can begin using a data loss prevention (DLP) solution in your messaging envi
 
 [View DLP policy detection reports](view-dlp-policy-detection-reports-exchange-2013-help.md)   Track policy violations.
 
-
 > [!NOTE]
 > Data Loss Prevention is a premium feature that requires an Enterprise Client Access License (CAL).
-
-
 
 ## For more information
 
@@ -40,4 +38,3 @@ You can begin using a data loss prevention (DLP) solution in your messaging envi
 [Create incident reports for DLP policy detections](create-incident-reports-for-dlp-policy-detections-exchange-2013-help.md)
 
 [Learn more about modes for DLP policies and rules](https://technet.microsoft.com/en-us/library/jj156481\(v=exchg.150\))
-

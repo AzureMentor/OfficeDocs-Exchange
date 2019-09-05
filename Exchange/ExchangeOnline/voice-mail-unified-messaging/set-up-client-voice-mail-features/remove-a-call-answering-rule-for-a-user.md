@@ -2,26 +2,27 @@
 localization_priority: Normal
 description: You can use Exchange Online PowerShell to remove one or more call answering rules for a user. You can also use the Remove-UMCallAnsweringRule cmdlet in a PowerShell script to remove one or more call answering rules for multiple users.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 1da3c5bc-7227-4b37-96f6-67ceefc084d5
 ms.date: 4/8/2015
-title: Remove a call answering rule for a user
+ms.reviewer: 
+title: Remove a call answering rule for a user in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Remove a call answering rule for a user
+# Remove a call answering rule for a user in Exchange Online
 
 You can use Exchange Online PowerShell to remove one or more call answering rules for a user. You can also use the **Remove-UMCallAnsweringRule** cmdlet in a PowerShell script to remove one or more call answering rules for multiple users.
 
 Call answering rules are applied to incoming calls similar to the way Inbox rules are applied to incoming email messages. By default, when a user is enabled for Unified Messaging (UM), no call answering rules are configured. Even so, incoming calls are answered by the mail system and callers are prompted to leave a voice message.
 
 > [!NOTE]
-> Users that are UM-enabled can sign in to Outlook Web App to create, manage, and remove call answering rules.
+> Users that are UM-enabled can sign in to Outlook on the web (formerly known as Outlook Web App) to create, manage, and remove call answering rules.
 
 For additional management tasks related to Call Answering Rules, see [Forwarding calls procedures](forwarding-calls-procedures.md).
 
@@ -42,7 +43,7 @@ For additional management tasks related to Call Answering Rules, see [Forwarding
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use Exchange Online PowerShell to remove a call answering rule
 
@@ -57,6 +58,3 @@ This example removes the call answering rule `MyUMCallAnsweringRule` from the ma
 ```
 Remove-UMCallAnsweringRule -Identity MyUMCallAnsweringRule -Mailbox tonysmith
 ```
-
-
-

@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Keyboard shortcuts in the Exchange admin center'
 TOCTitle: Keyboard shortcuts in the Exchange admin center
 ms:assetid: 146b2b52-1ef8-4606-991a-4cf4da694970
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ150484(v=EXCHG.150)
 ms:contentKeyID: 47559942
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Keyboard shortcuts in the Exchange admin center
 
- 
-
-_**Applies to:** Exchange Online, Exchange Online Protection, Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013_
 
 Microsoft is committed to making its products and services easier for everyone to use. The following sections provide information about the keyboard shortcuts that make Microsoft Exchange and other Microsoft products and services more accessible for people with disabilities.
 
@@ -46,7 +47,6 @@ By using keyboard shortcuts in the Exchange admin center (EAC), you can quickly 
 > [!NOTE]
 > Tab and SHIFT-Tab aren't supported to be used to move between menu items in this case.
 
-
 </td>
 </tr>
 <tr class="odd">
@@ -55,7 +55,6 @@ By using keyboard shortcuts in the Exchange admin center (EAC), you can quickly 
 
 > [!NOTE]
 > You can also use Up, Down, Left, and Right arrow keys to move between option buttons or within a group of associated check boxes.
-
 
 </td>
 </tr>
@@ -70,10 +69,8 @@ By using keyboard shortcuts in the Exchange admin center (EAC), you can quickly 
 </tbody>
 </table>
 
-
 ## Keyboard shortcuts in other Microsoft products and services
 
 To learn about keyboard shortcuts for other Microsoft products, visit the [Keyboard Shortcuts](https://go.microsoft.com/fwlink/p/?linkid=248894) page on the Microsoft Accessibility Web site. There, you can search for the keyboard shortcuts for a specific product, such as Windows Server 2008.
 
 In addition, for information about accessibility features in Microsoft Office 365, including keyboard shortcuts, see [Accessibility in Office 365](https://officepreview.microsoft.com/search/redir/ha102817204.aspx).
-

@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: The permissions required to perform tasks to manage Microsoft Exchange Online vary depending on the procedure being performed or the cmdlet you want to run.
 ms.topic: article
-author: dstrome
-ms.author: dstrome
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 15073ce1-0917-403b-8839-02a2ebc96e16
 ms.date: 
+ms.reviewer: 
 title: Feature permissions in Exchange Online, permissions Exchange Online, Exchange Online management roles, Exchange Online management permissions, Exchange Online admin permissions, Exchange online features
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 
@@ -58,4 +59,3 @@ You can use the features in the following table to manage your Exchange Online o
 |Subscriptions|[Organization Management](https://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) <br/> [Recipient Management](https://technet.microsoft.com/library/669d602e-68e3-41f9-a455-b942d212d130.aspx) <br/> **Note**: A user can create subscriptions in their own mailbox. An administrator can't create subscriptions in another user's mailbox, but they can modify or delete subscriptions in another user's mailbox.|
 |Supervision|[Organization Management](https://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx)|
 |View reports|[Organization Management](https://technet.microsoft.com/library/0bfd21c1-86ac-4369-86b7-aeba386741c8.aspx) - users have access to mailbox reports and mail protection reports. <br/> [View-Only Organization Management](https://technet.microsoft.com/library/c514c6d0-0157-4c52-9ec6-441d9a30f3df.aspx) - users have access to mailbox reports. <br/> [View-Only Recipients](https://technet.microsoft.com/library/37e66b92-81d3-412f-b7a9-e1bb8cbeb468.aspx) - users have access to mail protection reports. <br/> [Compliance Management](https://technet.microsoft.com/library/b91b23a4-e9c7-4bd0-9ee3-ec5cb498da15.aspx) - users have access to mail protection reports and Data Loss Prevention (DLP) reports (if their subscription has DLP capabilities).|
-

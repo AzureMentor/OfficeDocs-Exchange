@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: "Summary: Learn about the Exchange admin center, the web-based management console that's available in Exchange Server."
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: a9aea11a-6ba3-4f4a-a76e-79072e7cfc7d
 ms.date: 6/8/2018
+ms.reviewer: 
 title: Exchange admin center in Exchange Server
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -172,9 +173,9 @@ The feature pane is the first level of navigation for most of the tasks that you
 
   - [Manage Outlook Anywhere](http://technet.microsoft.com/library/9026d461-ec6a-4ef5-ba9d-de33030858f3.aspx#managing)
 
-  - [Managing mailbox database copies](http://technet.microsoft.com/library/06df16b4-f209-4d3a-8c68-0805c745f9b2.aspx)
+  - [Manage mailbox database copies](../../high-availability/manage-ha/manage-database-copies.md)
 
-  - [Managing database availability groups](http://technet.microsoft.com/library/4abde67b-4995-4a57-894f-ba76aa72341c.aspx)
+  - [Manage database availability groups](../../high-availability/manage-ha/manage-dags.md)
 
   - [Virtual Directory Management](http://technet.microsoft.com/library/1af30fd5-621c-4acb-b6df-d8fa64d719ba.aspx)
 
@@ -194,15 +195,15 @@ When you click most tabs, you'll see a toolbar. The toolbar has icons that perfo
 
 |**Icon**|**Name**|**Action**|
 |:-----|:-----|:-----|
-|![Add icon](../../media/ITPro_EAC_AddIcon.png)           <br/> |Add, New  <br/> |Create a new object.  <br/>  Some of these icons have an associated down arrow you can click to show additional objects you can create. For example, in **Recipients** \> **Mailboxes**, clicking the down arrow displays **User mailbox** and **Linked mailbox** as additional options.  <br/> |
-|![Edit icon](../../media/ITPro_EAC_EditIcon.png)           <br/> |Edit  <br/> |Edit an object.  <br/> |
-|![Delete icon](../../media/ITPro_EAC_DeleteIcon.png)           <br/> |Delete  <br/> |Delete an object. Some delete icons have a down arrow you can click to show additional options.  <br/> |
-|![Search icon](../../media/ITPro_EAC_.png)           <br/> |Search  <br/> |Open a search box so you can enter text for an object that you want to find you want to find in a long list of objects. Check out [Advanced search](http://technet.microsoft.com/library/cf4251f9-e4ec-44d7-97c2-c5cdd67ce60c.aspx) for more search options.  <br/> |
-|![Refresh icon](../../media/ITPro_EAC_RefreshIcon.png)           <br/> |Refresh  <br/> |Refresh the list view.  <br/> |
-|![More Options icon](../../media/ITPro_EAC_MoreOptionsIcon.png)           <br/> |More options  <br/> |View more actions you can perform for that tab's objects.  <br/> For example, in **Recipients** \> **Mailboxes** clicking this icon shows the following options: **Disable**, **Add/Remove columns**, **Export data to a CSV file**, **Connect a mailbox**, and **Advanced search**.  <br/> |
-|![Up Arrow Icon](../../media/ITPro_EAC_UpArrowIcon.png)           <br/> ![Down Arrow Icon](../../media/ITPro_EAC_DownArrowIcon.png)           <br/> |Up arrow and down arrow  <br/> |Move an object up or down in the list, when the order is important.  <br/> For example, in **Mail flow** \> **Email address policies** click the up arrow to move the policy higher in the list, which increases the priority of the policy by specifying which policy is applied first.  <br/> You can also use these arrows to navigate the public folder hierarchy and to move rules up or down in the list view.  <br/> |
-|![Copy icon](../../media/ITPro_EAC_CopyIcon.png)           <br/> |Copy  <br/> |Copy an object so you can make changes to it without changing the original object.  <br/> For example, in **Permissions** \> **Admin roles**, select a role from the list view, and then click this icon to create a new role group based on an existing one.  <br/> |
-|![Remove icon](../../media/ITPro_EAC_RemoveIcon.png)           <br/> |Remove  <br/> |Remove an item from a list.  <br/>  For example, in the **Public Folder Permissions** dialog box, you can remove users from the list of users allowed to access the public folder by selecting the user and clicking this icon.  <br/> |
+|![Add icon](../../media/ITPro_EAC_AddIcon.png)|Add, New|Create a new object.  <br/>  Some of these icons have an associated down arrow you can click to show additional objects you can create. For example, in **Recipients** \> **Mailboxes**, clicking the down arrow displays **User mailbox** and **Linked mailbox** as additional options.|
+|![Edit icon](../../media/ITPro_EAC_EditIcon.png)|Edit|Edit an object.|
+|![Delete icon](../../media/ITPro_EAC_DeleteIcon.png)|Delete|Delete an object. Some delete icons have a down arrow you can click to show additional options.|
+|![Search icon](../../media/ITPro_EAC_.png)|Search|Open a search box so you can enter text for an object that you want to find you want to find in a long list of objects. Check out [Advanced search](http://technet.microsoft.com/library/cf4251f9-e4ec-44d7-97c2-c5cdd67ce60c.aspx) for more search options.|
+|![Refresh icon](../../media/ITPro_EAC_RefreshIcon.png)|Refresh|Refresh the list view.|
+|![More Options icon](../../media/ITPro_EAC_MoreOptionsIcon.png)|More options|View more actions you can perform for that tab's objects.  <br/> For example, in **Recipients** \> **Mailboxes** clicking this icon shows the following options: **Disable**, **Add/Remove columns**, **Export data to a CSV file**, **Connect a mailbox**, and **Advanced search**.|
+|![Up Arrow Icon](../../media/ITPro_EAC_UpArrowIcon.png)           <br/> ![Down Arrow Icon](../../media/ITPro_EAC_DownArrowIcon.png)|Up arrow and down arrow|Move an object up or down in the list, when the order is important.  <br/> For example, in **Mail flow** \> **Email address policies** click the up arrow to move the policy higher in the list, which increases the priority of the policy by specifying which policy is applied first.  <br/> You can also use these arrows to navigate the public folder hierarchy and to move rules up or down in the list view.|
+|![Copy icon](../../media/ITPro_EAC_CopyIcon.png)|Copy|Copy an object so you can make changes to it without changing the original object.  <br/> For example, in **Permissions** \> **Admin roles**, select a role from the list view, and then click this icon to create a new role group based on an existing one.|
+|![Remove icon](../../media/ITPro_EAC_RemoveIcon.png)|Remove|Remove an item from a list.  <br/>  For example, in the **Public Folder Permissions** dialog box, you can remove users from the list of users allowed to access the public folder by selecting the user and clicking this icon.|
 
 ### 5: List view
 
@@ -267,25 +268,22 @@ The levels of support for operating system and browser combinations that you can
 
 ****
 
-|Web browser  <br/> |Windows 7  <br/> |Windows 8.1  <br/> |Windows 10  <br/> |Mac OS X  <br/> |Linux  <br/> |
+|Web browser|Windows 7|Windows 8.1|Windows 10|Mac OS X|Linux|
 |:-----|:-----|:-----|:-----|:-----|:-----|
-|Internet Explorer 9  <br/> |Unsupported  <br/> |n/a  <br/> |n/a  <br/> |n/a  <br/> |n/a  <br/> |
-|Internet Explorer 10  <br/> |Unsupported  <br/> |n/a  <br/> |n/a  <br/> |n/a  <br/> |n/a  <br/> |
-|Internet Explorer 11  <br/> |Supported  <br/> |Supported  <br/> |Supported  <br/> |n/a  <br/> |n/a  <br/> |
-|Microsoft Edge  <br/> |n/a  <br/> |n/a  <br/> |Supported  <br/> |n/a  <br/> |n/a  <br/> |
-|Mozilla Firefox latest version or one previous  <br/> |Supported  <br/> |Supported  <br/> |Supported  <br/> |Supported  <br/> |Supported  <br/> |
-|Apple Safari 6 or later versions  <br/> |n/a  <br/> |n/a  <br/> |n/a  <br/> |Supported  <br/> |n/a  <br/> |
-|Google Chrome latest version or one previous  <br/> |Supported  <br/> |Supported  <br/> |Supported  <br/> |Supported  <br/> |Supported  <br/> |
+|Internet Explorer 9|Unsupported|n/a|n/a|n/a|n/a|
+|Internet Explorer 10|Unsupported|n/a|n/a|n/a|n/a|
+|Internet Explorer 11|Supported|Supported|Supported|n/a|n/a|
+|Microsoft Edge|n/a|n/a|Supported|n/a|n/a|
+|Mozilla Firefox latest version or one previous|Supported|Supported|Supported|Supported|Supported|
+|Apple Safari 6 or later versions|n/a|n/a|n/a|Supported|n/a|
+|Google Chrome latest version or one previous|Supported|Supported|Supported|Supported|Supported|
 
 **Windows Server operating systems**
 
 ****
 
-|Web browser  <br/> |Windows Server 2008 R2  <br/> |Windows Server 2012  <br/> |Windows Server 2012 R2  <br/> |Windows Server 2016  <br/> |
+|Web browser|Windows Server 2008 R2|Windows Server 2012|Windows Server 2012 R2|Windows Server 2016|
 |:-----|:-----|:-----|:-----|:-----|
-|Internet Explorer 9  <br/> |Unsupported  <br/> |n/a  <br/> |n/a  <br/> |n/a  <br/> |
-|Internet Explorer 10  <br/> |Unsupported  <br/> |Supported  <br/> |n/a  <br/> |n/a  <br/> |
-|Internet Explorer 11  <br/> |Supported  <br/> |n/a  <br/> |Supported  <br/> |Supported  <br/> |
-
-
-
+|Internet Explorer 9|Unsupported|n/a|n/a|n/a|
+|Internet Explorer 10|Unsupported|Supported|n/a|n/a|
+|Internet Explorer 11|Supported|n/a|Supported|Supported|

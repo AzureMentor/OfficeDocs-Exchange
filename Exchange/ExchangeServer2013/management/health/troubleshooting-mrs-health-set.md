@@ -1,43 +1,26 @@
-﻿---
+---
 title: Troubleshooting MRS Health Set
 TOCTitle: Troubleshooting MRS Health Set
 ms:assetid: 21947ed6-1584-4db9-9cd6-f6c1de22e352
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/ms.exch.scom.mrs(v=EXCHG.150)
 ms:contentKeyID: 49720741
-ms.date: 10/08/2015
+ms.date: 
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-<div data-xmlns="http://www.w3.org/1999/xhtml">
-
-<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="http://msdn.microsoft.com/en-us/">
-
-<div data-asp="http://msdn2.microsoft.com/asp">
-
 # Troubleshooting MRS Health Set
-
-</div>
-
-<div id="mainSection">
-
-<div id="mainBody">
-
-<span> </span>
 
 _**Applies to:** Exchange Server 2013_
 
-_**Topic Last Modified:** 2015-03-09_
-
 The Mailbox Replication Service (MRS) health set monitors the overall health of the MRS service.
-
-<span id="EXP"></span>
-
-<div>
 
 ## Explanation
 
 The MRS service is monitored by using the following probes and monitors.
-
 
 <table>
 <colgroup>
@@ -64,80 +47,75 @@ The MRS service is monitored by using the following probes and monitors.
 </tbody>
 </table>
 
-
 For more information about probes and monitors, see [Server health and performance](https://technet.microsoft.com/en-us/library/jj150551\(v=exchg.150\)).
-
-</div>
-
-<div>
 
 ## User Action
 
 It's possible that the service recovered after it issued the alert. Therefore, when you receive an alert that specifies that the health set is unhealthy, first verify that the issue still exists. If the issue does exist, perform the appropriate recovery actions outlined in the following sections.
 
-<span id="verify"></span>
-
-<div>
-
 ## Verifying the issue still exists
 
-1.  Identify the health set name and the server name in the alert.
+1. Identify the health set name and the server name in the alert.
 
-2.  The message details provide information about the exact cause of the alert. In most cases, the message details provide sufficient troubleshooting information to identify the root cause. If the message details are not clear, do the following:
-    
-    1.  Open the Exchange Management Shell, and then run the following command to retrieve the details of the health set that issued the alert:
-        
-            Get-ServerHealth <server name> | ?{$_.HealthSetName -eq "<health set name>"}
-        
-        For example, to retrieve the MRS health set details about server1.contoso.com, run the following command:
-        
-            Get-ServerHealth server1.contoso.com | ?{$_.HealthSetName -eq "MRS"}
-    
-    2.  Review the command output to determine which monitor reported the error. The **AlertValue** value for the monitor that issued the alert will be `Unhealthy`.
-    
-    3.  Rerun the associated probe for the monitor that is in an unhealthy state. Refer to the table in the Explanation section to find the associated probe. To do this, run the following command:
-        
-            Invoke-MonitoringProbe <health set name>\<probe name> -Server <server name> | Format-List
-        
-        For example, assume that the failing monitor is **MRSServiceCrashingMonitor**. The probe associated with that monitor is **MRSServiceCrashingProbe**. To run that probe on server1.contoso.com, run the following command:
-        
-            Invoke-MonitoringProbe MRS\MRSServiceCrashingProbe -Server server1.contoso.com | Format-List
-    
-    4.  In the command output, review the **Result** value of the probe. If the value is **Succeeded**, the issue was a transient error, and it no longer exists. Otherwise, refer to the recovery steps outlined in the following sections.
+2. The message details provide information about the exact cause of the alert. In most cases, the message details provide sufficient troubleshooting information to identify the root cause. If the message details are not clear, do the following:
 
-</div>
+   1. Open the Exchange Management Shell, and then run the following command to retrieve the details of the health set that issued the alert:
 
-<span id="TestMonitors"></span>
+      ```powershell
+      Get-ServerHealth <server name> | ?{$_.HealthSetName -eq "<health set name>"}
+      ```
 
-<div>
+      For example, to retrieve the MRS health set details about server1.contoso.com, run the following command:
+
+      ```powershell
+      Get-ServerHealth server1.contoso.com | ?{$_.HealthSetName -eq "MRS"}
+      ```
+
+   2. Review the command output to determine which monitor reported the error. The **AlertValue** value for the monitor that issued the alert will be `Unhealthy`.
+
+   3. Rerun the associated probe for the monitor that is in an unhealthy state. Refer to the table in the Explanation section to find the associated probe. To do this, run the following command:
+
+      ```powershell
+      Invoke-MonitoringProbe <health set name>\<probe name> -Server <server name> | Format-List
+      ```
+
+      For example, assume that the failing monitor is **MRSServiceCrashingMonitor**. The probe associated with that monitor is **MRSServiceCrashingProbe**. To run that probe on server1.contoso.com, run the following command:
+
+      ```powershell
+      Invoke-MonitoringProbe MRS\MRSServiceCrashingProbe -Server server1.contoso.com | Format-List
+      ```
+
+   4. In the command output, review the **Result** value of the probe. If the value is **Succeeded**, the issue was a transient error, and it no longer exists. Otherwise, refer to the recovery steps outlined in the following sections.
 
 ## Common Issues
 
 When you receive an alert from a health set, the email message contains the following information:
 
-  - Name of the server that sent the alert
+- Name of the server that sent the alert
 
-  - Time and date when the alert occurred
+- Time and date when the alert occurred
 
-  - Authentication mechanism used, and credential information
+- Authentication mechanism used, and credential information
 
-  - Full exception trace of the last error, including diagnostic data and specific HTTP header information
-    
-    You can use the information in the full exception trace to help troubleshoot the issue. The exception generated by the probe contains a Failure Reason that describes why the probe failed.
+- Full exception trace of the last error, including diagnostic data and specific HTTP header information
 
-**Mailbox Locked**
+  You can use the information in the full exception trace to help troubleshoot the issue. The exception generated by the probe contains a Failure Reason that describes why the probe failed.
+
+### Mailbox Locked
 
 When a Mailbox is locked, you may receive an alert that resembles the following:
 
-*MailboxIdentity: namprd03.prod.outlook.com/Microsoft Exchange Hosted Organizations/example.com/User6 MailboxGuid: Primary (00000000-abcd-01234-5678-1234567890ab) RequestFlags: IntraOrg, Pull, Protected Database: exampledb-db089 Exception: MapiExceptionADUnavailable: Unable to prepopulate the cache for user …*
+*MailboxIdentity: namprd03.prod.outlook.com/Microsoft Exchange Hosted Organizations/example.com/User6 MailboxGuid: Primary (00000000-abcd-01234-5678-1234567890ab) RequestFlags: IntraOrg, Pull, Protected Database: exampledb-db089 Exception: MapiExceptionADUnavailable: Unable to prepopulate the cache for user ...*
 
 This indicates that a mailbox is locked. To unlock the mailbox, run the following command:
 
-    New-MailboxRepairRequest -CorruptionType LockedMoveTarget -Identity <mailboxIdentity> [-Archive]
+```powershell
+New-MailboxRepairRequest -CorruptionType LockedMoveTarget -Identity <mailboxIdentity> [-Archive]
+```
 
-**Note**   In this command, replace \<*mailboxIdentity*\> with the name of the mailbox that’s provided in the email message as **MailboxIdentity**. If the mailbox is an archive mailbox, you must include the **–Archive** flag. You can determine whether a mailbox is a primary or archive mailbox by viewing the **MailboxGuid** field in the alert.
+**Note**: In this command, replace \<*mailboxIdentity*\> with the name of the mailbox that's provided in the email message as **MailboxIdentity**. If the mailbox is an archive mailbox, you must include the **-Archive** flag. You can determine whether a mailbox is a primary or archive mailbox by viewing the **MailboxGuid** field in the alert.
 
-**Corrupt Migration Job**
+### Corrupt Migration Job
 
 When a corrupted migration job occurs, you may receive an alert that resembles the following:
 
@@ -145,39 +123,49 @@ When a corrupted migration job occurs, you may receive an alert that resembles t
 
 Corruption occurs when the migration meta-data has encountered issues. Upon corruption, Microsoft will receive a Watson report that will be investigated.To recover from this issue, you must remove the migration batch, and then re-create the batch. To do this, follow these steps:
 
-1.  To remove the corrupted batch, run the following command:
-    
-        Remove-MigrationBatch -Identity
+1. To remove the corrupted batch, run the following command:
 
-2.  To re-create the batch job, run the following command:
-    
-        New-MigrationBatch -Local -Name
+   ```powershell
+   Remove-MigrationBatch -Identity
+   ```
+
+2. To re-create the batch job, run the following command:
+
+   ```powershell
+   New-MigrationBatch -Local -Name
+   ```
 
 For more information, see [Exchange 2013 cmdlets](https://technet.microsoft.com/en-us/library/bb124413\(v=exchg.150\))
 
-**MailboxMigration alert: CriticalError**
+### MailboxMigration alert: CriticalError
 
 When a critical error occurs during mail migration, you may receive an alert that resembles the following:
 
-*Notification thrown by MailboxMigration at 9/7/2012 9:08:32 PM. Details: Diagnostic Information: ProcessCacheEntry: First Organization :: /o=ExchangeLabs/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=e80fc128879e452ebc882f6bca7007fa-Migration.8*
+> Notification thrown by MailboxMigration at 9/7/2012 9:08:32 PM. Details: Diagnostic Information: ProcessCacheEntry: First Organization :: /o=ExchangeLabs/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=e80fc128879e452ebc882f6bca7007fa-Migration.8
 
-To resolve this issue, you must retry the migration. To do this, run the following command, or press the **Start** button on the Exchange Administration Center (EAC).
+To resolve this issue, you must retry the migration. To do this, run the following command, or press the **Start** button on the Exchange admin center (EAC).
 
-    Call start-migrationbatch -Identity batchName
+```powershell
+Start-MigrationBatch -Identity <BatchName>
+```
 
 When this issue occurs, a Dr. Watson message is sent to Microsoft for investigation.
 
-**The Migration Exchange Replication Service is not running**
+### The Migration Exchange Replication Service is not running
 
 When you see this error reason, you can verify the health of the service by running the following command:
 
-    Test-MRSHealth <servername> -MonitoringContext:$true
+```powershell
+Test-MRSHealth <servername> -MonitoringContext:$true
+```
 
 You can also try to start the service by running the following command:
 
-    Start-Service msexchangemailboxreplication
+```powershell
+Start-Service msexchangemailboxreplication
+```
 
-**MSExchangeMailboxReplication RCP Ping Failed**
+### MSExchangeMailboxReplication RCP Ping Failed
 
 When you see this error reason, you may receive an alert that resembles the following:
 
@@ -185,13 +173,17 @@ When you see this error reason, you may receive an alert that resembles the foll
 
 When this issue occurs, you can verify the health of the service by running the following command:
 
-    Test-MRSHealth <servername> -MonitoringContext:$true
+```powershell
+Test-MRSHealth <servername> -MonitoringContext:$true
+```
 
 You can also try to restart the service by running the following command:
 
-    Restart-Service msexchangemailboxreplication
+```powershell
+Restart-Service msexchangemailboxreplication
+```
 
-**MSExchangeMailboxReplication Service is repeatedly crashing**
+### MSExchangeMailboxReplication Service is repeatedly crashing
 
 When the MSExchangeMailboxReplication service crashes or stops responding, you may receive an alert that resembles the following:
 
@@ -199,13 +191,17 @@ When the MSExchangeMailboxReplication service crashes or stops responding, you m
 
 When this issue occurs, you can verify the health of the service by running the following command:
 
-    Test-MRSHealth <servername> -MonitoringContext:$true
+```powershell
+Test-MRSHealth <servername> -MonitoringContext:$true
+```
 
 You can also try to restart the service by running the following command:
 
-    Restart-Service msexchangemailboxreplication
+```powershell
+Restart-Service msexchangemailboxreplication
+```
 
-**MSExchangeMailboxReplication is not scanning MDB queues**
+### MSExchangeMailboxReplication is not scanning MDB queues
 
 When the MSExchangeMailboxReplication service fails to scan queues, you may receive an alert that resembles the following:
 
@@ -213,55 +209,44 @@ When the MSExchangeMailboxReplication service fails to scan queues, you may rece
 
 When this issue occurs, you can verify the health of the service by running the following command:
 
-    Test-MRSHealth <servername> -MonitoringContext:$true
+```powershell
+Test-MRSHealth <servername> -MonitoringContext:$true
+```
 
 You can also try to restart the service by running the following command:
 
-    Restart-Service msexchangemailboxreplication
+```powershell
+Restart-Service msexchangemailboxreplication
+```
 
-**Additional troubleshooting steps**
+### Additional troubleshooting steps
 
-1.  Start IIS Manager, and then connect to the server that is reporting the issue to verify that the **MSExchangeServicesAppPool** application pool is running.
+1. Start IIS Manager, and then connect to the server that is reporting the issue to verify that the **MSExchangeServicesAppPool** application pool is running.
 
-2.  In IIS Manager, click **Application Pools**, and then recycle the **MSExchangeServicesAppPool** application pool by running the following command from the Shell:
-    
-        %SystemRoot%\System32\inetsrv\Appcmd recycle MSExchangeServicesAppPool
+2. In IIS Manager, click **Application Pools**, and then recycle the **MSExchangeServicesAppPool** application pool by running the following command from the Shell:
 
-3.  Rerun the associated probe as shown in step 2c in the Verifying the issue still exists section.
+   ```powershell
+   %SystemRoot%\System32\inetsrv\Appcmd recycle MSExchangeServicesAppPool
+   ```
 
-4.  If the issue still exists, recycle the IIS service by using the IISReset utility, or by running the following command:
-    
-        Iisreset /noforce
+3. Rerun the associated probe as shown in step 2c in the Verifying the issue still exists section.
 
-5.  Rerun the associated probe as shown in step 2c in the Verifying the issue still exists section.
+4. If the issue still exists, recycle the IIS service by using the IISReset utility, or by running the following command:
 
-6.  If the issue still exists, restart the server.
+   ```powershell
+   Iisreset /noforce
+   ```
 
-7.  After the server restarts, rerun the associated probe as shown in step 2c in the Verifying the issue still exists section.
+5. Rerun the associated probe as shown in step 2c in the Verifying the issue still exists section.
 
-8.  If the probe continues to fail, you may need assistance to resolve this issue. Contact a Microsoft Support professional to resolve this issue. To contact a Microsoft Support professional, visit the [Exchange Server Solutions Center](http://go.microsoft.com/fwlink/p/?linkid=180809). In the navigation pane, click **Support options and resources** and use one of the options listed under **Get technical support** to contact a Microsoft Support professional. Because your organization may have a specific procedure for directly contacting Microsoft Product Support Services, be sure to review your organization's guidelines first.
+6. If the issue still exists, restart the server.
 
-</div>
+7. After the server restarts, rerun the associated probe as shown in step 2c in the Verifying the issue still exists section.
 
-</div>
-
-<div>
+8. If the probe continues to fail, you may need assistance to resolve this issue. Contact a Microsoft Support professional to resolve this issue. To contact a Microsoft Support professional, visit the [Exchange Server Solutions Center](http://go.microsoft.com/fwlink/p/?linkid=180809). In the navigation pane, click **Support options and resources** and use one of the options listed under **Get technical support** to contact a Microsoft Support professional. Because your organization may have a specific procedure for directly contacting Microsoft Product Support Services, be sure to review your organization's guidelines first.
 
 ## For More Information
 
 [What's new in Exchange 2013](https://technet.microsoft.com/en-us/library/jj150540\(v=exchg.150\))
 
 [Exchange 2013 cmdlets](https://technet.microsoft.com/en-us/library/bb124413\(v=exchg.150\))
-
-</div>
-
-</div>
-
-<span> </span>
-
-</div>
-
-</div>
-
-</div>
-

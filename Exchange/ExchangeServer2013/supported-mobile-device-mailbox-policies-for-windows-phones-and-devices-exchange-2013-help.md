@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Supported mobile device mailbox policies for Windows Phones and devices'
 TOCTitle: Supported mobile device mailbox policies for Windows Phones and devices
 ms:assetid: d76b1d4c-d1f6-4501-a7c9-854327aceda5
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ983805(v=EXCHG.150)
 ms:contentKeyID: 51407272
 ms.date: 07/14/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Supported mobile device mailbox policies for Windows Phones and devices
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 With the release of Windows Phone 8, Windows 8, and Windows RT, there are a number of devices that support Exchange ActiveSync and mobile device mailbox policies. Each device operating system supports a specific set of mobile device mailbox policy settings.
 
@@ -24,7 +25,6 @@ The following tables list the compatible mobile device mailbox policy parameters
 ## Windows Phone 7 supported policy parameters
 
 The following table lists the mobile device mailbox policy settings for Windows Phone 7.
-
 
 <table>
 <colgroup>
@@ -103,11 +103,9 @@ The following table lists the mobile device mailbox policy settings for Windows 
 </tbody>
 </table>
 
-
 ## Windows Phone 8 supported policy parameters
 
 The following table lists the mobile device mailbox policy settings for Windows Phone 8.
-
 
 <table>
 <colgroup>
@@ -186,11 +184,9 @@ The following table lists the mobile device mailbox policy settings for Windows 
 </tbody>
 </table>
 
-
 ## Windows 8 and Windows RT supported policy parameters
 
 The following table lists the mobile device mailbox policy settings for Windows 8 and Windows RT.
-
 
 <table>
 <colgroup>
@@ -258,4 +254,3 @@ The following table lists the mobile device mailbox policy settings for Windows 
 </tr>
 </tbody>
 </table>
-

@@ -3,15 +3,16 @@ localization_priority: Normal
 monikerRange: exchserver-2016
 description: Exchange Server 2016 Setup can't continue because the Active Directory forest functional level isn't Windows Server 2003 native or later.
 ms.topic: reference
-author: dstrome
+author: msdmaguire
 f1_keywords:
 - ms.exch.setupreadiness.ForestLevelNotWin2003Native
-ms.author: dstrome
+ms.author: dmaguire
 ms.assetid: 45f45976-62ac-4b6c-889a-ebd449402009
 ms.date: 12/20/2016
+ms.reviewer: 
 title: Active Directory functional level isn't Windows Server 2003 or later [ForestLevelNotWin2003Native]
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -30,4 +31,3 @@ For more information about Active Directory functional levels, see the following
 - [How Active Directory Functional Levels Work](https://go.microsoft.com/fwlink/p/?LinkId=294833)
 
 Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612).
-

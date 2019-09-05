@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 071296e9-31b0-40f4-9a02-177d97486ebd
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Remove a database availability group
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -18,7 +19,7 @@ manager: serdars
 
 Removing a DAG is a quick and easy task. You can use the EAC or the Exchange Management Shell to remove a DAG.
 
-Looking for other management tasks related to DAGs? Check out [Managing database availability groups](http://technet.microsoft.com/library/4abde67b-4995-4a57-894f-ba76aa72341c.aspx).
+Looking for other management tasks related to DAGs? Check out [Manage database availability groups](manage-dags.md).
 
 ## What do you need to know before you begin?
 
@@ -31,7 +32,7 @@ Looking for other management tasks related to DAGs? Check out [Managing database
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to remove a database availability group
 
@@ -62,6 +63,3 @@ To verify that you've successfully removed the DAG, do one of the following:
   ```
 
     If the DAG was successfully deleted, the preceding command will produce an error message indicating the object could not be found.
-
-
-

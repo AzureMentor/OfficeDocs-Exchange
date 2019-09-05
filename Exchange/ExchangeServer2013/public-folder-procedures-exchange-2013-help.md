@@ -1,19 +1,19 @@
-﻿---
+---
 title: 'Public folder procedures: Exchange 2013 Help'
 TOCTitle: Public folder procedures
 ms:assetid: afa54c8e-f3ab-4f5f-85ad-fb2a905ecfa9
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ657481(v=EXCHG.150)
 ms:contentKeyID: 49289372
-ms.date: 08/02/2017
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Public folder procedures
 
- 
-
-_**Applies to:** Exchange Online, Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013_
 
 **Summary:** Create and manage public folders with one or more of these articles.
 
@@ -31,9 +31,9 @@ Use one or more of the procedures listed below to get your public folder infrast
 
 [Use batch migration to migrate public folders to Exchange 2013 from previous versions](use-batch-migration-to-migrate-public-folders-to-exchange-2013-from-previous-versions-exchange-2013-help.md)
 
-[Use batch migration to migrate legacy public folders to Office 365 and Exchange Online](https://docs.microsoft.com/en-us/exchange/collaboration-exo/public-folders/batch-migration-of-legacy-public-folders)
+[Use batch migration to migrate legacy public folders to Office 365 and Exchange Online](https://docs.microsoft.com/exchange/collaboration-exo/public-folders/batch-migration-of-legacy-public-folders)
 
-[Use batch migration to migrate Exchange 2013 public folders to Exchange Online](https://docs.microsoft.com/en-us/exchange/collaboration-exo/public-folders/batch-migration-of-exchange-2013-public-folders)
+[Use batch migration to migrate Exchange 2013 public folders to Exchange Online](https://docs.microsoft.com/exchange/collaboration/public-folders/migrate-to-exchange-online)
 
 [Create a public folder mailbox](https://docs.microsoft.com/en-us/exchange/collaboration-exo/public-folders/create-public-folder-mailbox)
 
@@ -54,4 +54,3 @@ Use one or more of the procedures listed below to get your public folder infrast
 [Restore public folders and public folder mailboxes from failed moves](restore-public-folders-and-public-folder-mailboxes-from-failed-moves-exchange-2013-help.md)
 
 [View statistics for public folders and public folder items](https://docs.microsoft.com/en-us/exchange/collaboration-exo/public-folders/view-public-folder-statistics)
-

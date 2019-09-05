@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to run a script to create an In-Place eDiscovery search that uses the list of source mailboxes and search query from a Compliance Search.'
 ms.topic: article
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 9f0f4a3d-de9a-4d8a-9172-2edf4288d766
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Use Compliance Search to search all mailboxes in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -21,7 +22,6 @@ The Compliance Search feature in Exchange Server allows you to search all mailbo
 This topic includes a script that you can run to create an In-Place eDiscovery search by using the list of source mailboxes and search query from a compliance search that is created by running the **New-ComplianceSearch** cmdlet.
 
 ## Step 1: Run the New-ComplianceSearch cmdlet to search all mailboxes
-<a name="step1"> </a>
 
 The first step is to use the Exchange Management Shell to create a compliance search that searches all mailboxes in your organization. There's no limit for the number of mailboxes for a single compliance search. Specify an appropriate keyword query (or a query for sensitive information types) so that the search returns only those source mailboxes that are relevant to your investigation. If necessary, refine the search query to narrow the scope of search results and source mailboxes that are returned.
 
@@ -52,50 +52,49 @@ To help you create a compliance search with no more than 500 source mailboxes, f
 
 1. Save the following text to a Windows PowerShell script file by using a filename suffix of .ps1. For example, you could save it to a file named SourceMailboxes.ps1.
 
-  ```
-  [CmdletBinding()]
-  Param(
-      [Parameter(Mandatory=$True,Position=1)]
-      [string]$SearchName
-  )
-  $search = Get-ComplianceSearch $SearchName
-  if ($search.Status -ne "Completed")
+   ```
+   [CmdletBinding()]
+   Param(
+        [Parameter(Mandatory=$True,Position=1)]
+        [string]$SearchName
+   )
+   $search = Get-ComplianceSearch $SearchName
+   if ($search.Status -ne "Completed")
   {
-                  "Please wait until the search finishes.";
-                  break;
-  }
-  $results = $search.SuccessResults;
-  if (($search.Items -le 0) -or ([string]::IsNullOrWhiteSpace($results)))
-  {
-                  "The compliance search " + $SearchName + " didn't return any useful results.";
-                  break;
-  }
-  $mailboxes = @();
-  $lines = $results -split '[\r\n]+';
-  foreach ($line in $lines)
-  {
-      if ($line -match 'Location: (\S+),.+Item count: (\d+)' -and $matches[2] -gt 0)
-      {
-          $mailboxes += $matches[1];
-      }
-  }
-  "Number of mailboxes that have search hits: " + $mailboxes.Count
-  ```
+                   "Please wait until the search finishes.";
+                   break;
+   }
+   $results = $search.SuccessResults;
+   if (($search.Items -le 0) -or ([string]::IsNullOrWhiteSpace($results)))
+   {
+                   "The compliance search " + $SearchName + " didn't return any useful results.";
+                   break;
+   }
+   $mailboxes = @();
+   $lines = $results -split '[\r\n]+';
+   foreach ($line in $lines)
+   {
+       if ($line -match 'Location: (\S+),.+Item count: (\d+)' -and $matches[2] -gt 0)
+       {
+           $mailboxes += $matches[1];
+       }
+   }
+   "Number of mailboxes that have search hits: " + $mailboxes.Count
+   ```
 
 2. In the Exchange Management Shell, go to the folder where the script you created in the previous step is located, and then run the script; for example:
 
-  ```
-  .\SourceMailboxes.ps1
-  ```
+   ```
+   .\SourceMailboxes.ps1
+   ```
 
 3. When prompted by the script, type the name of the compliance search that you created in Step 1.
 
-    The script displays the number of source mailboxes that contain search results.
+   The script displays the number of source mailboxes that contain search results.
 
 If there are more than 500 source mailboxes, try creating two (or more) compliance searches. For example, search half of your organization's mailboxes in one compliance search and the other half in another compliance search. You could also change the search criteria to reduce the number of mailboxes that contain search results. For example, you could specify a date range or refine the keyword query.
 
 ## Step 3: Run the script to create an In-Place eDiscovery search from the Compliance Search
-<a name="step3"> </a>
 
 The next step is to run a script that will convert an existing compliance search to an In-Place eDiscovery search. Here's what the script does:
 
@@ -117,84 +116,84 @@ The next step is to run a script that will convert an existing compliance search
 
 1. Save the following text to a Windows PowerShell script file by using a filename suffix of ps1. For example, you could save it to a file named MBSearchFromComplianceSearch.ps1.
 
-  ```
-  [CmdletBinding()]
-  Param(
-      [Parameter(Mandatory=$True,Position=1)]
-      [string]$SearchName,
-      [switch]$original,
-      [switch]$restoreOriginal
-  )
-  $search = Get-ComplianceSearch $SearchName
-  if ($search.Status -ne "Completed")
-  {
-  	"Please wait until the search finishes";
-  	break;
-  }
-  $results = $search.SuccessResults;
-  if (($search.Items -le 0) -or ([string]::IsNullOrWhiteSpace($results)))
-  {
-  	"The compliance search " + $SearchName + " didn't return any useful results";
-  	"A mailbox search object wasn't created";
-  	break;
-  }
-  $mailboxes = @();
-  $lines = $results -split '[\r\n]+';
-  foreach ($line in $lines)
-  {
-      if ($line -match 'Location: (\S+),.+Item count: (\d+)' -and $matches[2] -gt 0)
-      {
-          $mailboxes += $matches[1];
-      }
-  }
-  $msPrefix = $SearchName + "_MBSearch";
-  $I = 1;
-  $mbSearches = Get-MailboxSearch;
-  while ($true)
-  {
-      $found = $false;
-      $mbsName = "$msPrefix$I";
-      foreach ($mbs in $mbSearches)
-      {
-          if ($mbs.Name -eq $mbsName)
-          {
-              $found = $true;
-              break;
-          }
-      }
-      if (!$found)
-      {
-          break;
-      }
-      $I++;
-  }
-  $query = $search.KeywordQuery;
-  if ([string]::IsNullOrWhiteSpace($query))
-  {
-      $query = $search.ContentMatchQuery;
-  }
-  if ([string]::IsNullOrWhiteSpace($query))
-  {
-  	New-MailboxSearch "$msPrefix$i" -SourceMailboxes $mailboxes -EstimateOnly;
-  }
-  else
-  {
-  	New-MailboxSearch "$msPrefix$i" -SourceMailboxes $mailboxes -SearchQuery $query -EstimateOnly;
-  }
-  ```
+   ```
+   [CmdletBinding()]
+   Param(
+       [Parameter(Mandatory=$True,Position=1)]
+       [string]$SearchName,
+       [switch]$original,
+       [switch]$restoreOriginal
+   )
+   $search = Get-ComplianceSearch $SearchName
+   if ($search.Status -ne "Completed")
+   {
+   	"Please wait until the search finishes";
+   	break;
+   }
+   $results = $search.SuccessResults;
+   if (($search.Items -le 0) -or ([string]::IsNullOrWhiteSpace($results)))
+   {
+   	"The compliance search " + $SearchName + " didn't return any useful results";
+   	"A mailbox search object wasn't created";
+   	break;
+   }
+   $mailboxes = @();
+   $lines = $results -split '[\r\n]+';
+   foreach ($line in $lines)
+   {
+       if ($line -match 'Location: (\S+),.+Item count: (\d+)' -and $matches[2] -gt 0)
+       {
+           $mailboxes += $matches[1];
+       }
+   }
+   $msPrefix = $SearchName + "_MBSearch";
+   $I = 1;
+   $mbSearches = Get-MailboxSearch;
+   while ($true)
+   {
+       $found = $false;
+       $mbsName = "$msPrefix$I";
+       foreach ($mbs in $mbSearches)
+       {
+           if ($mbs.Name -eq $mbsName)
+           {
+               $found = $true;
+               break;
+           }
+       }
+       if (!$found)
+       {
+           break;
+       }
+       $I++;
+   }
+   $query = $search.KeywordQuery;
+   if ([string]::IsNullOrWhiteSpace($query))
+   {
+       $query = $search.ContentMatchQuery;
+   }
+   if ([string]::IsNullOrWhiteSpace($query))
+   {
+   	New-MailboxSearch "$msPrefix$i" -SourceMailboxes $mailboxes -EstimateOnly;
+   }
+   else
+   {
+   	New-MailboxSearch "$msPrefix$i" -SourceMailboxes $mailboxes -SearchQuery $query -EstimateOnly;
+   }
+   ```
 
 2. In the Exchange Management Shell, go to the folder where the script that you created in the previous step is located, and then run the script; for example:
 
-  ```
-  .\MBSearchFromComplianceSearch.ps1
-  ```
+   ```
+   .\MBSearchFromComplianceSearch.ps1
+   ```
 
 3. When prompted by the script, type the name of the compliance search that you want to covert to an In-Place eDiscovery search (for example, the search that you created in Step 1) , and then press **Enter**.
 
-    If the script is successful, a new In-Place eDiscovery search is created with a status of **NotStarted**. Run the command `Get-MailboxSearch <Name of compliance search>_MBSearch1 | FL` to display the properties of the new search.
+   If the script is successful, a new In-Place eDiscovery search is created with a status of **NotStarted**. Run the command `Get-MailboxSearch <Name of compliance search>_MBSearch1 | FL` to display the properties of the new search.
 
 ## Step 4: Start the In-Place eDiscovery search
-<a name="step4"> </a>
+
 
 The script that you run in Step 3 creates a new In-Place eDiscovery search, but doesn't start it. The next step is to start the search so you can get an estimate of the search results.
 
@@ -204,7 +203,7 @@ The script that you run in Step 3 creates a new In-Place eDiscovery search, but 
 
 3. Click **Search** (![Search icon](../../media/ITPro_EAC_.png)) \> **Estimate search results** to start the search and return an estimate of the total size and number of items returned by the search.
 
-    The estimates are displayed in the details pane. Click **Refresh** (![Refresh icon](../../media/ITPro_EAC_RefreshIcon.png)) to update the information displayed in the details pane.
+   The estimates are displayed in the details pane. Click **Refresh** (![Refresh icon](../../media/ITPro_EAC_RefreshIcon.png)) to update the information displayed in the details pane.
 
 4. To preview the results after the search is completed, click **Preview search results** in the details pane.
 
@@ -212,7 +211,6 @@ The script that you run in Step 3 creates a new In-Place eDiscovery search, but 
 > Alternatively, you can use the Exchange Management Shell to start the In-Place eDiscovery search; for example `Start-MailboxSearch -Identity <Name of compliance search>_MBSearch1`.
 
 ## Next steps after creating and running the In-Place eDiscovery search
-<a name="nextsteps"> </a>
 
 After you create and start the In-Place eDiscovery search that was created by the script in Step 3, you can use the normal In-Place eDiscovery workflow to perform different eDiscovery actions on the search results.
 
@@ -224,9 +222,9 @@ After you create and start the In-Place eDiscovery search that was created by th
 
 3. On the **In-Place Hold** page, select the **Place content matching the search query in selected mailboxes on hold** check box and then select one of the following options:
 
-  - **Hold indefinitely**: Choose this option to place items returned by the search on an indefinite hold. Items on hold will be preserved until you remove the mailbox from the search or remove the search.
+   - **Hold indefinitely**: Choose this option to place items returned by the search on an indefinite hold. Items on hold will be preserved until you remove the mailbox from the search or remove the search.
 
-  - **Specify number of days to hold items relative to their received date**: Choose this option to hold items for a specific period. The duration is calculated from the date a mailbox item is received or created.
+   - **Specify number of days to hold items relative to their received date**: Choose this option to hold items for a specific period. The duration is calculated from the date a mailbox item is received or created.
 
 4. Click **Save** to create the In-Place Hold and restart the search.
 
@@ -240,15 +238,15 @@ After you create and start the In-Place eDiscovery search that was created by th
 
 4. In **Copy Search Results**, select from the following options:
 
-  - **Include unsearchable items**: Select this check box to include mailbox items that couldn't be searched (for example, messages with attachments of file types that couldn't be indexed by Exchange Search).
+   - **Include unsearchable items**: Select this check box to include mailbox items that couldn't be searched (for example, messages with attachments of file types that couldn't be indexed by Exchange Search).
 
-  - **Enable de-duplication**: Select this check box to exclude duplicate messages. Only a single instance of a message will be copied to the discovery mailbox.
+   - **Enable de-duplication**: Select this check box to exclude duplicate messages. Only a single instance of a message will be copied to the discovery mailbox.
 
-  - **Enable full logging**: Select this check box to include a full log in search results.
+   - **Enable full logging**: Select this check box to include a full log in search results.
 
-  - **Send me mail when the copy is completed**: Select this check box to get an email notification when the search is completed.
+   - **Send me mail when the copy is completed**: Select this check box to get an email notification when the search is completed.
 
-  - **Copy results to this discovery mailbox**: Click **Browse** to select the discovery mailbox where you want the search results copied to.
+   - **Copy results to this discovery mailbox**: Click **Browse** to select the discovery mailbox where you want the search results copied to.
 
 5. Click **Copy** to start the process to copy the search results to the specified discovery mailbox.
 
@@ -266,15 +264,12 @@ After you create and start the In-Place eDiscovery search that was created by th
 
 4. In the **eDiscovery PST Export Tool** window, do the following:
 
-  - Click **Browse** to specify the location where you want to download the PST file.
+   - Click **Browse** to specify the location where you want to download the PST file.
 
-  - Click the **Enable deduplication** checkbox to exclude duplicate messages. Only a single instance of a message will be included in the PST file.
+   - Click the **Enable deduplication** checkbox to exclude duplicate messages. Only a single instance of a message will be included in the PST file.
 
-  - Click the **Include unsearchable items** checkbox to include mailbox items that couldn't be searched (for example, messages with attachments of file types that couldn't be indexed by Exchange Search). Unsearchable items are exported to a separate PST file.
+   - Click the **Include unsearchable items** checkbox to include mailbox items that couldn't be searched (for example, messages with attachments of file types that couldn't be indexed by Exchange Search). Unsearchable items are exported to a separate PST file.
 
 5. Click **Start** to export the search results to a PST file.
 
-    A window is displayed that contains status information about the export process.
-
-
-
+   A window is displayed that contains status information about the export process.

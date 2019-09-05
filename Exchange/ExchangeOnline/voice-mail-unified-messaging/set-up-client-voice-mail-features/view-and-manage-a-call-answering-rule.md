@@ -2,26 +2,27 @@
 localization_priority: Normal
 description: Learn how to use Exchange Online PowerShell to view or configure one or more call answering rules for a user.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: de6d9fa1-7878-49a9-bddb-e3317d94f4d8
 ms.date: 4/8/2015
-title: View and manage a call answering rule
+ms.reviewer: 
+title: View and manage a call answering rule in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# View and manage a call answering rule
+# View and manage a call answering rule in Exchange Online
 
 You can use Exchange Online PowerShell to view or configure one or more call answering rules for a user. You can also use the **Get-UMCallAnsweringRule** or **Set-UMCallAnsweringRule** cmdlets in a PowerShell script to view or manage call answering rules for multiple users.
 
 Call answering rules are applied to incoming calls similar to the way Inbox rules are applied to incoming email messages. By default, when a user is enabled for Unified Messaging (UM), no call answering rules are configured. Even so, incoming calls are answered by the mail system and callers are prompted to leave a voice message.
 
 > [!IMPORTANT]
-> Users that are UM-enabled can sign in to Outlook Web App to create, manage, and remove call answering rules.
+> Users that are UM-enabled can sign in to Outlook on the web (formerly known as Outlook Web App) to create, manage, and remove call answering rules.
 
 For additional management tasks related to Call Answering Rules, see [Forwarding calls procedures](forwarding-calls-procedures.md).
 
@@ -42,7 +43,7 @@ For additional management tasks related to Call Answering Rules, see [Forwarding
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use Exchange Online PowerShell to view a call answering rule
 
@@ -103,6 +104,3 @@ This example changes the free/busy status to Away on the call answering rule `My
 ```
 Set-UMCallAnsweringRule -Name MyCallAnsweringRule -Priority 2 -Mailbox tonysmith@contoso.com -ScheduleStatus 0x8
 ```
-
-
-

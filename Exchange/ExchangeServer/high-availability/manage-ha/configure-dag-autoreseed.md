@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 4a8bd779-b52a-40ed-8040-4d76eabeb41e
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Configure AutoReseed for a database availability group
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -21,7 +22,7 @@ Use the steps in this topic to configure AutoReseed for a database availability 
 > [!CAUTION]
 > The AutoReseed feature doesn't perform any prerequisite configuration tasks for you. Installing disks correctly, adding spare disks to the system, replacing bad disks, and formatting new disks must be done manually by an administrator.
 
-For additional management tasks related to DAGs, see [Managing database availability groups](http://technet.microsoft.com/library/4abde67b-4995-4a57-894f-ba76aa72341c.aspx).
+For additional management tasks related to DAGs, see [Manage database availability groups](manage-dags.md).
 
 ## What do you need to know before you begin?
 
@@ -38,7 +39,7 @@ For additional management tasks related to DAGs, see [Managing database availabi
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Step 1: Configure the root paths for databases and volumes
 
@@ -253,19 +254,16 @@ To verify that you've configured AutoReseed for a DAG, do the following:
 
 1. Run the following command to verify the DAG is configured correctly.
 
-  ```
-  Get-DatabaseAvailabilityGroup DAG1 | Format-List *auto*
-  ```
+   ```
+   Get-DatabaseAvailabilityGroup DAG1 | Format-List *auto*
+   ```
 
 2. Run the following command to verify the directory structure is configured correctly (below are the default paths; if necessary, substitute the paths for the paths you're using).
 
-  ```
-  Dir c:\ExchangeDatabases /s
-  ```
+   ```
+   Dir c:\ExchangeDatabases /s
+   ```
 
-  ```
-  Dir c:\ExchangeVolumes /s
-  ```
-
-
-
+   ```
+   Dir c:\ExchangeVolumes /s
+   ```

@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn about SSL, TLS, encryption, and digital certificates in Exchange Server.'
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: a9e2e08c-d46a-4135-a387-eb653212b676
 title: Digital certificates and encryption in Exchange Server
 ms.collection: exchange-server
 ms.date:
-ms.audience: ITPro
+ms.reviewer: 
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -33,7 +34,7 @@ Digital certificates provide the following services:
 
 - **Encryption**: They help protect the data that's exchanged from theft or tampering.
 
-- **Authentication**: They verify that their holders—people, web sites, and even network devices such as routers—are truly who or what they claim to be. Typically, the authentication is one-way, where the source verifies the identity of the target, but mutual TLS authentication is also possible.
+- **Authentication**: They verify that their holders (people, web sites, and even network devices such as routers) are truly who or what they claim to be. Typically, the authentication is one-way, where the source verifies the identity of the target, but mutual TLS authentication is also possible.
 
 Certificates can be issued for several uses. For example: web user authentication, web server authentication, Secure/Multipurpose Internet Mail Extensions (S/MIME), Internet Protocol security (IPsec), and code signing.
 
@@ -63,7 +64,7 @@ When you install Exchange 2016 or Exchange 2019 on a server, two self-signed cer
 |:-----|:-----|
 |Microsoft Exchange|This Exchange self-signed certificate has the following capabilities: <br/>• The certificate is automatically trusted by all other Exchange servers in the organization. This includes any Edge Transport servers subscribed to the Exchange organization. <br/>• The certificate is automatically enabled for all Exchange services except Unified Messaging, and is used to encrypt internal communication between Exchange servers, Exchange services on the same computer, and client connections that are proxied from the Client Access services to the backend services on Mailbox servers. (**Note**: UM is not available on Exchange 2019.) <br/>• The certificate is automatically enabled for inbound connections from external SMTP messaging servers, and outbound connections to external SMTP messaging servers. This default configuration allows Exchange to provide *opportunistic TLS* on all inbound and outbound SMTP connections. Exchange attempts to encrypt the SMTP session with an external messaging server, but if the external server doesn't support TLS encryption, the session is unencrypted. <br/>• The certificate doesn't provide encrypted communication with internal or external clients. Clients and servers don't trust the Exchange self-signed certificate, because the certificate isn't defined in their trusted root certification stores.|
 |Microsoft Exchange Server Auth Certificate|This Exchange self-signed certificate is used for server-to-server authentication and integration by using OAuth. For more information, see [Plan Exchange Server integration with SharePoint and Skype for Business](../../plan-and-deploy/integration-with-sharepoint-and-skype/integration-with-sharepoint-and-skype.md).|
-|WMSVC|This Windows self-signed certificate is used by the Web Management service in IIS to enable remote management of the web server and its associated web sites and applications. <br/> If you remove this certificate, the Web Management service will fail to start if no valid certificate is selected. Having the service in this state can prevent you from installing Exchange updates, or uninstalling Exchange from the server. For instructions on how to correct this issue, see [Event ID 1007 — IIS Web Management Service Authentication](https://go.microsoft.com/fwlink/p/?LinkId=746383)|
+|WMSVC|This Windows self-signed certificate is used by the Web Management service in IIS to enable remote management of the web server and its associated web sites and applications. <br/> If you remove this certificate, the Web Management service will fail to start if no valid certificate is selected. Having the service in this state can prevent you from installing Exchange updates, or uninstalling Exchange from the server. For instructions on how to correct this issue, see [Event ID 1007 - IIS Web Management Service Authentication](https://go.microsoft.com/fwlink/p/?LinkId=746383)|
 
 The properties of these self-signed certificates are described in the [Properties of the default self-signed certificates](#properties-of-the-default-self-signed-certificates) section.
 

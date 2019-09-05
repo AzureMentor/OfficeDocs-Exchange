@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn about subscribing an Edge Transport server to your internal Exchange Server 2016 or Exchange Server 2019 organization, which provides end-to-end mail flow, recipient look-up, and safelist aggregation.'
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 3addd71a-4165-401f-a009-002bcd8baba6
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Edge Subscriptions
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -266,4 +267,3 @@ The following table lists the EdgeSync properties related to locking and leasing
 |_LockDuration_|`00:05:00` (5 minutes)|This setting determines how long a particular EdgeSync service will acquire a lock. If the EdgeSync service on the Mailbox server that's holding this lock doesn't respond, after five minutes the EdgeSync service on another Mailbox server will take over the lease. Forcing immediate EdgeSync synchronization doesn't override this setting.|
 |_OptionDuration_|`01:00:00` (1 hour)|This setting determines how long an EdgeSync service can declare a lease option on an Edge Transport server. If the EdgeSync service holding the lease is unavailable and doesn't restart during this option period, no other Exchange EdgeSync service will take over the lease option unless you force EdgeSync synchronization.|
 |_LockRenewalDuration_|`00:01:00` (1 minute)|This setting determines how frequently the lock field is updated when an EdgeSync service has acquired a lock to an Edge Transport server.|
-

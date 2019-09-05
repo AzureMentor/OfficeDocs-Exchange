@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Learn how to search the administrator audit logs to discover who made changes to your organization.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: c7188d53-e672-492b-b57d-cd711379ddb3
 ms.date: 
+ms.reviewer: 
 title: Search the role group changes or administrator audit logs in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -158,7 +159,7 @@ This procedure uses the following concepts:
 You can use Exchange Online PowerShell to search for audit log entries that meet the criteria you specify, and then send those results to a recipient you specify as an XML file attachment. The results are sent to the recipient within 15 minutes. For a list of search criteria, see [Administrator audit logging](https://technet.microsoft.com/library/22b17eb8-d8ee-4599-b202-d6a7928c20d9.aspx).
 
 > [!NOTE]
-> By default, Outlook on the web (formerly known as Outlook Web App) doesn't allow you to open XML attachments. You can either configure Outlook on the web to allow XML attachments to be viewed, or you can use another email client to view the attachment (for example, Microsoft Outlook). For information about how to configure Outlook on the web to allow you to view XML attachments, see [View or configure Outlook on the web mailbox policy properties in Exchange Online](../../clients-and-mobile-in-exchange-online/outlook-on-the-web/configure-outlook-web-app-mailbox-policy-properties.md).
+> By default, Outlook on the web doesn't allow you to open XML attachments. You can either configure Outlook on the web to allow XML attachments to be viewed, or you can use another email client to view the attachment (for example, Microsoft Outlook). For information about how to configure Outlook on the web to allow you to view XML attachments, see [View or configure Outlook on the web mailbox policy properties in Exchange Online](../../clients-and-mobile-in-exchange-online/outlook-on-the-web/configure-outlook-web-app-mailbox-policy-properties.md).
 
 To search the audit log for criteria you specify, use the following syntax.
 
@@ -190,4 +191,3 @@ New-AdminAuditLogSearch -Cmdlets Set-Mailbox -Parameters ProhibitSendQuota,Prohi
 For more information about the format of the XML file, see [Administrator Audit Log Structure](https://technet.microsoft.com/library/87e259c9-c884-4d53-bd78-d13f2300d73e.aspx).
 
 For detailed syntax and parameter information, see [New-AdminAuditLogSearch](https://technet.microsoft.com/library/52a221e0-ded1-44dc-a626-ca264eca4113.aspx).
-

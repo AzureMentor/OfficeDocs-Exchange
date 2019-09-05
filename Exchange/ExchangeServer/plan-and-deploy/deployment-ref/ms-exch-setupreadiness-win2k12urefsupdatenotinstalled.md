@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Microsoft Exchange Server 2016 Setup has detected that the computer you're attempting to install Exchange 2016 on doesn't have a recommended Windows update installed. We strongly recommend that you install this Windows update before installing Exchange 2016 to avoid any issues resolved by the update.
 ms.topic: reference
-author: dstrome
+author: msdmaguire
 f1_keywords:
 - ms.exch.setupreadiness.Win2k12UrefsUpdateNotInstalled
-ms.author: dstrome
+ms.author: dmaguire
 ms.assetid: 0a540b1a-c9e3-4c99-99d9-5e093ef1b2b4
 ms.date: 12/20/2016
+ms.reviewer: 
 title: Disks formatted as ReFS may not perform reliably [Win2k12UrefsUpdateNotInstalled]
 ms.collection: exchange-server
-ms.audience: Developer
+audience: Developer
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -27,7 +28,6 @@ Download and install the 64-bit update from the following URL, and then click **
 > [!NOTE]
 > If this update requires a reboot to complete installation, you'll need to exit Exchange 2016 Setup, reboot, and then start Setup again.
 
-Microsoft Knowledge Base article KB2884597, [ Virtual Disk Service or applications that use the Virtual Disk Service crash or freeze in Windows Server 2012 ](http://go.microsoft.com/fwlink/?linkid=3052&kbid=2884597)
+Microsoft Knowledge Base article KB2884597, [Virtual Disk Service or applications that use the Virtual Disk Service crash or freeze in Windows Server 2012](https://go.microsoft.com/fwlink/p/?linkid=3052&kbid=2884597).
 
 Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612).
-

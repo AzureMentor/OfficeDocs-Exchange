@@ -1,14 +1,16 @@
 ---
 description: 'Summary: Learn about administrative tasks for managing Outlook on the web (Outlook Web App) in Exchange Server 2016 or Exchange Server 2019.'
 localization_priority: Normal
-ms.author: chrisda
+ms.author: dmaguire
 ms.topic: article
-author: chrisda
+author: msdmaguire
 ms.prod: exchange-server-it-pro
 ms.assetid: 3814b665-01e8-4881-9a44-163f14789ee4
 ms.collection: exchange-server
 ms.date: 6/7/2018
-ms.audience: ITPro
+ms.reviewer: 
+manager: serdars
+audience: ITPro
 title: Outlook on the web in Exchange Server
 
 ---
@@ -34,11 +36,8 @@ The configuration and management tasks that are documented for Outlook on the we
 
 |**Topic**|**Description**|
 |:-----|:-----|
-|[View or configure Outlook on the web virtual directories in Exchange Server](virtual-directories.md) <br/> |View and configure the properties of Outlook on the web for all users that connect to the server.  <br/> |
-|[Configure http to https redirection for Outlook on the web in Exchange Server](http-to-https-redirection.md) <br/> |Redirect Outlook on the web unencrypted http requests to https.  <br/> |
-|[Create a theme for Outlook on the web in Exchange Server](themes.md) <br/> |Outlook on the web comes with built-in themes that define the colors and icons that are used in Outlook on the web, but you can also create your own themes.  <br/> |
-|[Customize the Outlook on the web sign-in, language selection, and error pages in Exchange Server](customize-outlook-on-the-web.md) <br/> |Customize key pages in Outlook on the web.  <br/> |
-|[Use AD FS claims-based authentication with Outlook on the web](ad-fs-claims-based-auth.md) <br/> |Centralize Outlook on the web authentication by using Active Directory Federation Services.  <br/> |
-
-
-
+|[View or configure Outlook on the web virtual directories in Exchange Server](virtual-directories.md)|View and configure the properties of Outlook on the web for all users that connect to the server.|
+|[Configure http to https redirection for Outlook on the web in Exchange Server](http-to-https-redirection.md)|Redirect Outlook on the web unencrypted http requests to https.|
+|[Create a theme for Outlook on the web in Exchange Server](themes.md)|Outlook on the web comes with built-in themes that define the colors and icons that are used in Outlook on the web, but you can also create your own themes.|
+|[Customize the Outlook on the web sign-in, language selection, and error pages in Exchange Server](customize-outlook-on-the-web.md)|Customize key pages in Outlook on the web.|
+|[Use AD FS claims-based authentication with Outlook on the web](ad-fs-claims-based-auth.md)|Centralize Outlook on the web authentication by using Active Directory Federation Services.|

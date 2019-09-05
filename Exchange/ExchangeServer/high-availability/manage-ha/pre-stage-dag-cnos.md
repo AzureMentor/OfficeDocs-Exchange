@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 51ebf2f6-8a02-44ef-a489-ca361cb0f63a
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Pre-stage the cluster name object for a database availability group
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -24,7 +25,7 @@ You create and disable a computer account for the CNO, and then either:
 
 - Assign full control of the computer account to the computer account of the first Mailbox server you're adding to the DAG.
 
-    **-Or-**
+  **-Or-**
 
 - Assign full control of the computer account to the Exchange Trusted Subsystem universal security group (USG).
 
@@ -37,7 +38,7 @@ You create and disable a computer account for the CNO, and then either:
 - After completing the following steps, allow time for Active Directory replication to occur. After the object is replicated, you can add the first member to the DAG.
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Pre-stage the CNO
 
@@ -61,9 +62,9 @@ You create and disable a computer account for the CNO, and then either:
 
 4. In **\<Computer Name\> Properties**, on the **Security** tab, click **Add** to add either the computer account for the first node to be added to the DAG or to add the Exchange Trusted Subsystem USG:
 
-  - To add the Exchange Trusted Subsystem, type Exchange Trusted Subsystem in the **Enter the object names to select** field. Click **OK** to add the USG. Select the Exchange Trusted Subsystem USG and in the **Permissions for Exchange Trusted Subsystem** field, select **Full Control** in the **Allow** column. Click **OK** to save the permission settings.
+   - To add the Exchange Trusted Subsystem, type Exchange Trusted Subsystem in the **Enter the object names to select** field. Click **OK** to add the USG. Select the Exchange Trusted Subsystem USG and in the **Permissions for Exchange Trusted Subsystem** field, select **Full Control** in the **Allow** column. Click **OK** to save the permission settings.
 
-  - To add the computer account for the first node to be added to the DAG, click **Object Types**. In the **Object Types** dialog box, clear the **Built-in security principals**, **Groups**, and **Users** check boxes. Select the **Computers** check box and click **OK**. In the **Enter the object names to select** field, type the name of the first Mailbox server to be added to the DAG, and then click **OK**. Select the first node's computer account, and in the **Permissions for \<NodeName\>** field, select **Full Control** in the **Allow** column. Click **OK** to save the permission settings.
+   - To add the computer account for the first node to be added to the DAG, click **Object Types**. In the **Object Types** dialog box, clear the **Built-in security principals**, **Groups**, and **Users** check boxes. Select the **Computers** check box and click **OK**. In the **Enter the object names to select** field, type the name of the first Mailbox server to be added to the DAG, and then click **OK**. Select the first node's computer account, and in the **Permissions for \<NodeName\>** field, select **Full Control** in the **Allow** column. Click **OK** to save the permission settings.
 
 ## How do you know this worked?
 
@@ -74,6 +75,3 @@ To verify that you've successfully created the CNO, do the following:
 2. Expand the forest node.
 
 3. Open the OU in which you created the account, and then verify that the account is listed.
-
-
-

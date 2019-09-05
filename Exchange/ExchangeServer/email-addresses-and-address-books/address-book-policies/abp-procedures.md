@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to manage address book policies, how to assign address book policies to users, and how to install and enable the Address Book Policy Routing Agent in Exchange Server.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 6359abaf-e6f6-4667-8c2b-3860728b39a9
 ms.date:
+ms.reviewer: 
 title: Procedures for address book policies in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -204,18 +205,19 @@ To verify that you've successfully removed an ABP, use either of these procedure
 
 2. In the list of mailboxes, find the mailbox that you want to modify. You can:
 
-  - Scroll through the list of mailboxes.
+   - Scroll through the list of mailboxes.
 
-  - Click **Search** ![Search icon](../../media/ITPro_EAC_.png) and enter part of the user's name, email address, or alias.
+   - Click **Search** ![Search icon](../../media/ITPro_EAC_.png) and enter part of the user's name, email address, or alias.
 
-  - Click **More options** ![More Options icon](../../media/ITPro_EAC_MoreOptionsIcon.png) \> **Advanced search** to find the mailbox.
+   - Click **More options** ![More Options icon](../../media/ITPro_EAC_MoreOptionsIcon.png) \> **Advanced search** to find the mailbox.
 
     Once you've found the mailbox that you want to modify, select it, and then click **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.png).
 
 3. On the mailbox properties page that opens, click **Mailbox features**.
 
 4. Click the drop-down arrow in **Address book policy**, and select the ADP that you want to apply.
-    ![Address book policy settings for a mailbox in the EAC at Recipients \> select mailbox \> Edit \> Mailbox features](../../media/2b219961-4664-40b3-873c-5892f1fcf2b6.png)
+
+   ![Address book policy settings for a mailbox in the EAC at Recipients \> select mailbox \> Edit \> Mailbox features](../../media/2b219961-4664-40b3-873c-5892f1fcf2b6.png)
 
     When you're finished, click **Save**.
 
@@ -245,28 +247,29 @@ For detailed syntax and parameter information, see [Set-Mailbox](http://technet.
 
 2. In the list of mailboxes, find the mailboxes that you want to modify. For example:
 
-  1. Click **More options** ![More Options icon](../../media/ITPro_EAC_MoreOptionsIcon.png) \> **Advanced search**.
+   1. Click **More options** ![More Options icon](../../media/ITPro_EAC_MoreOptionsIcon.png) \> **Advanced search**.
 
-  2. In the **Advanced search** window that opens, select **Recipient types** and verify the default value **User mailbox**.
+   2. In the **Advanced search** window that opens, select **Recipient types** and verify the default value **User mailbox**.
 
-  3. Click **More options**, and then click **Add a condition**.
+   3. Click **More options**, and then click **Add a condition**.
 
-  4. In the **Select one** drop-down box that appears, select the appropriate **Custom attribute 1** to **Custom attribute 15** values that defines your virtual organizations.
+   4. In the **Select one** drop-down box that appears, select the appropriate **Custom attribute 1** to **Custom attribute 15** values that defines your virtual organizations.
 
-  5. In the **Specify words or phrases** dialog that appears, enter the value that you want to search for, and then click **OK**.
+   5. In the **Specify words or phrases** dialog that appears, enter the value that you want to search for, and then click **OK**.
 
-  6. Back on the **Advanced search** window, click **OK**. In the EAC at **Recipients** \> **Mailboxes**, click **More options** ![More Options icon](../../media/ITPro_EAC_MoreOptionsIcon.png) \> **Advanced search** to find user mailboxes.
+   6. Back on the **Advanced search** window, click **OK**. In the EAC at **Recipients** \> **Mailboxes**, click **More options** ![More Options icon](../../media/ITPro_EAC_MoreOptionsIcon.png) \> **Advanced search** to find user mailboxes.
 
 3. In the list of mailboxes, select multiple mailboxes of the same type (for example, **User**) from the list. For example:
 
-  - Select a mailbox, hold down the Shift key, and select another mailbox that's farther down in the list.
+   - Select a mailbox, hold down the Shift key, and select another mailbox that's farther down in the list.
 
-  - Hold down the CTRL key as you select each mailbox.
+   - Hold down the CTRL key as you select each mailbox.
 
     After you select multiple mailboxes of the same type, the title of the details pane changes to **Bulk Edit**.
 
 4. In the details pane, scroll down and click **More options**, scroll down to **Address Book Policy**, and then click **Update**.
-    ![Bulk select mailboxes in the EAC to assign an address book policy](../../media/6319f0ec-686d-48e2-9061-2337e30116d5.png)
+
+   ![Bulk select mailboxes in the EAC to assign an address book policy](../../media/6319f0ec-686d-48e2-9061-2337e30116d5.png)
 
 5. In the **Bulk assign address book policy** window that opens, select the ABP by clicking the drop-down arrow in **Select Address Book Policy**, and then click **Save**.
 
@@ -278,12 +281,7 @@ You can use the **Get-Mailbox** or **Get-Content** cmdlets to identify the user 
 
 - Use a text file to specify the mailboxes. The text file contains one mailbox (email address, name, or other unique identifier) on each line like this:
 
-  ```
-  ebrunner@tailspintoys.com
-  fapodaca@tailspintoys.com
-  glaureano@tailspintoys.com
-  hrim@tailspintoys.com
-  ```
+  > ebrunner@tailspintoys.com <br/> fapodaca@tailspintoys.com <br/> glaureano@tailspintoys.com <br/> hrim@tailspintoys.com
 
 This example assigns the ABP named ABP_EngineeringDepartment to all user mailboxes where the `CustomAttribute11` attribute contains the value Engineering Department.
 
@@ -304,7 +302,8 @@ For detailed syntax and parameter information, see [Get-Mailbox](http://technet.
 To verify that you've successfully assigned an ABP to a mailbox, do any of these steps:
 
 - In the EAC, go to **Recipients** \> **Mailboxes** \> select the mailbox \> click **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.png) \> **Mailbox features** and verify the **Address Book Policy** value.
-    ![Address book policy settings for a mailbox in the EAC at Recipients \> select mailbox \> Edit \> Mailbox features](../../media/2b219961-4664-40b3-873c-5892f1fcf2b6.png)
+
+  ![Address book policy settings for a mailbox in the EAC at Recipients \> select mailbox \> Edit \> Mailbox features](../../media/2b219961-4664-40b3-873c-5892f1fcf2b6.png)
 
 - In the Exchange Management Shell, replace _\<MailboxIdentity\>_ with the identity of the mailbox (for example, name, alias, or email address), and run this command:
 
@@ -324,7 +323,7 @@ To verify that you've successfully assigned an ABP to a mailbox, do any of these
   Get-AddressBookPolicy -Identity <ABPIdentity> | Format-List DistinguishedName
   ```
 
-    Then, use the **DistinguishedName** value of the ABP in this command to show all mailboxes where the ABP is assigned:
+  Then, use the **DistinguishedName** value of the ABP in this command to show all mailboxes where the ABP is assigned:
 
   ```
   Get-Mailbox -ResultSize unlimited -Filter {AddressBookPolicy -eq '<DistinguishedName>'}
@@ -384,21 +383,21 @@ For detailed syntax and parameter information, see [Set-TransportConfig](http://
 
 1. Run this command once on any Mailbox server to globally disable ABP routing:
 
-  ```
-  Set-TransportConfig -AddressBookPolicyRoutingEnabled $false
-  ```
+   ```
+   Set-TransportConfig -AddressBookPolicyRoutingEnabled $false
+   ```
 
 2. Disable the ABP Routing Agent by running this command on every Mailbox server where the agent is installed:
 
-  ```
-  Disable-TransportAgent "ABP Routing Agent"
-  ```
+   ```
+   Disable-TransportAgent "ABP Routing Agent"
+   ```
 
 3. Run this command on every Mailbox server where the agent is installed:
 
-  ```
-  Restart-Service MSExchangeTransport
-  ```
+   ```
+   Restart-Service MSExchangeTransport
+   ```
 
 ### How do you know this worked?
 
@@ -417,4 +416,3 @@ To verify that you've successfully installed and configured the ABP Routing Agen
   ```
 
 - Have a user that's assigned an ABP send an email message to an user that's assigned a different ABP, and verify that the sender's email address doesn't resolve to their display name.
-

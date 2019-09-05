@@ -1,27 +1,28 @@
 ---
 localization_priority: Normal
-description: You can use the EAC or Exchange Online PowerShell to enable or disable Outlook Web App for a user mailbox. When Outlook Web App is enabled, a user can use Outlook Web App to send and receive email. When Outlook Web App is disabled, the mailbox will continue to receive email messages, and a user can access it to send and receive email by using a MAPI client, such as Microsoft Outlook, or with a POP or IMAP email client, assuming that the mailbox is enabled to support access by those clients.
+description: You can use the EAC or Exchange Online PowerShell to enable or disable Outlook on the web for a user mailbox. When Outlook on the web is enabled, a user can use Outlook on the web to send and receive email. When Outlook on the web is disabled, the mailbox will continue to receive email messages, and a user can access it to send and receive email by using a MAPI client, such as Microsoft Outlook, or with a POP or IMAP email client, assuming that the mailbox is enabled to support access by those clients.
 ms.topic: article
-author: kwekua
-ms.author: kwekua
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: abc19646-6211-4f18-a060-e347452dcc53
 ms.date: 11/17/2014
-title: Enable or disable Outlook Web App for a mailbox
+ms.reviewer: 
+title: Enable or disable Outlook on the web for a mailbox
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Enable or disable Outlook Web App for a mailbox
+# Enable or disable Outlook on the web for a mailbox
 
-You can use the EAC or Exchange Online PowerShell to enable or disable Outlook Web App for a user mailbox. When Outlook Web App is enabled, a user can use Outlook Web App to send and receive email. When Outlook Web App is disabled, the mailbox will continue to receive email messages, and a user can access it to send and receive email by using a MAPI client, such as Microsoft Outlook, or with a POP or IMAP email client, assuming that the mailbox is enabled to support access by those clients.
+You can use the EAC or Exchange Online PowerShell to enable or disable Outlook on the web (formerly known as Outlook Web App) for a user mailbox. When Outlook on the web is enabled, a user can use Outlook on the web to send and receive email. When Outlook on the web is disabled, the mailbox will continue to receive email messages, and a user can access it to send and receive email by using a MAPI client, such as Microsoft Outlook, or with a POP or IMAP email client, assuming that the mailbox is enabled to support access by those clients.
 
 > [!NOTE]
-> Support for Outlook Web App and MAPI, POP3, and IMAP4 email clients is enabled by default when a user mailbox is created.
+> Support for Outlook on the web and MAPI, POP3, and IMAP4 email clients is enabled by default when a user mailbox is created.
 
 For additional management tasks related to managing email client access to a mailbox, see the following topics:
 
@@ -40,38 +41,38 @@ For additional management tasks related to managing email client access to a mai
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
-## Use the EAC to enable or disable Outlook Web App
+## Use the EAC to enable or disable Outlook on the web
 
 1. In the EAC, navigate to **Recipients** \> **Mailboxes**.
 
-2. In the list of user mailboxes, click the mailbox that you want to enable or disable Outlook Web App for, and then click **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.gif).
+2. In the list of user mailboxes, click the mailbox that you want to enable or disable Outlook on the web for, and then click **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.gif).
 
 3. On the mailbox properties page, click **Mailbox Features**.
 
 4. Under **Email Connectivity**, do one of the following:
 
-  - To disable Outlook Web App, under **Outlook Web App: Enabled**, click **Disable**.
+   - To disable Outlook on the web, under **Outlook Web App: Enabled**, click **Disable**.
 
-    A warning appears asking if you're sure you want to disable Outlook Web App. Click **Yes**.
+    A warning appears asking if you're sure you want to disable Outlook on the web. Click **Yes**.
 
-  - To enable Outlook Web App, under **Outlook Web App: Disabled**, click **Enable**.
+   - To enable Outlook on the web, under **Outlook Web App: Disabled**, click **Enable**.
 
-5. Click **Save** to save your change.
+5. Click **Save** to save your changes.
 
 > [!NOTE]
-> You can enable and disable Outlook Web App for multiple user mailboxes by using the EAC bulk edit feature. For more information about how to do this, see the "Bulk edit user mailboxes" section in [Manage user mailboxes](manage-user-mailboxes.md).
+> You can enable and disable Outlook on the web for multiple user mailboxes by using the EAC bulk edit feature. For more information about how to do this, see the "Bulk edit user mailboxes" section in [Manage user mailboxes](manage-user-mailboxes.md).
 
-## Use Exchange Online PowerShell to enable or disable Outlook Web App
+## Use Exchange Online PowerShell to enable or disable Outlook on the web
 
-This example disables Outlook Web App for the mailbox of Yan Li.
+This example disables Outlook on the web for the mailbox of Yan Li.
 
 ```
 Set-CASMailbox -Identity "Yan Li" -OWAEnabled $false
 ```
 
-This example enables Outlook Web App for the mailbox of Elly Nkya.
+This example enables Outlook on the web for the mailbox of Elly Nkya.
 
 ```
 Set-CASMailbox -Identity Ellyn@contoso.com -OWAEnabled $true
@@ -81,13 +82,13 @@ For detailed syntax and parameter information, see [Set-CASMailbox](https://tech
 
 ## How do you know this worked?
 
-To verify that you've successfully enabled or disabled Outlook Web App for a user mailbox, do one of the following:
+To verify that you've successfully enabled or disabled Outlook on the web for a user mailbox, do one of the following:
 
 - In the EAC, navigate to **Recipients** \> **Mailboxes**, click the mailbox, and then click **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.gif).
 
 - On the mailbox properties page, click **Mailbox Features**.
 
-- Under **Email Connectivity**, verify whether Outlook Web App is enabled or disabled.
+- Under **Email Connectivity**, verify whether Outlook on the web is enabled or disabled.
 
 Or
 
@@ -97,7 +98,4 @@ Or
   Get-CASMailbox <identity>
   ```
 
-    If Outlook Web App is enabled, the value for the _OWAEnabled_ property is `True`. If Outlook Web App is disabled, the value is `False`.
-
-
-
+  If Outlook on the web is enabled, the value for the _OWAEnabled_ property is `True`. If Outlook on the web is disabled, the value is `False`.

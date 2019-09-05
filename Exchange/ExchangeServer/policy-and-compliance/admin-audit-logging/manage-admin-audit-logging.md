@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to configure, enable, and disable administrator audit logging in Exchange Server, and how to view the admit audit log settings.'
 ms.topic: article
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 15c284c0-b8e6-42ca-9913-7c59fdb6885d
 ms.date: 6/8/2018
+ms.reviewer: 
 title: Manage administrator audit logging
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -160,6 +161,3 @@ To view the admin audit logging settings that you've configured for your organiz
 ```
 Get-AdminAuditLogConfig
 ```
-
-
-

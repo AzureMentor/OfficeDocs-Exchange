@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to configure journaling in Exchange Server 2016 or Exchange Server 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: d517f27e-f80a-4a06-988c-cbbf981c701d
 ms.date:
+ms.reviewer: 
 title: Journaling procedures in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -35,7 +36,7 @@ This topic shows you how to configure standard journaling (journal messages for 
 
 ## Procedures for standard journaling
 
-Standard journaling records all messages that are sent to and received by all mailboxes on the specified mailbox database. You enable journaling by specifying the journaling mailbox for the database (the mailbox that stores the journaled messages). To disable journaling for the database, clear the value for the journaling mailbox on the mailbox database. For more information about the journaling mailbox, see [Journaling mailbox](journaling.md#mailbox).
+Standard journaling records all messages that are sent to and received by all mailboxes on the specified mailbox database. You enable journaling by specifying the journaling mailbox for the database (the mailbox that stores the journaled messages). To disable journaling for the database, clear the value for the journaling mailbox on the mailbox database. For more information about the journaling mailbox, see [Journaling mailbox](journaling.md#journaling-mailbox).
 
 > [!CAUTION]
 > Disabling journaling on a mailbox database may result in your organization being out of compliance with any applicable messaging retention policies.
@@ -48,12 +49,13 @@ Standard journaling records all messages that are sent to and received by all ma
 
 3. In the mailbox database properties window that opens, click the **Maintenance** tab, and then perform one of the following procedures:
 
-  - **Enable journaling**: Click **Browse** next to the **Journal recipient** field. In the resulting dialog box, select the mailbox where you want to store the journaled messages, and then click **OK**.
+   - **Enable journaling**: Click **Browse** next to the **Journal recipient** field. In the resulting dialog box, select the mailbox where you want to store the journaled messages, and then click **OK**.
 
-  - **Disable journaling**: Click **Remove X** next to the value in **Journal recipient** field.
-    ![remove journal rule](../../media/e0f3cce1-60c2-4dba-9911-b5c9c6aa2d9c.png)
+   - **Disable journaling**: Click **Remove X** next to the value in **Journal recipient** field.
 
-    When you're finished, click **Save**.
+     ![remove journal rule](../../media/e0f3cce1-60c2-4dba-9911-b5c9c6aa2d9c.png)
+
+   When you're finished, click **Save**.
 
 ### Use the Exchange Management Shell to enable or disable journaling on mailbox databases
 
@@ -106,7 +108,6 @@ To verify that you've successfully enabled or disabled journaling on a mailbox d
 Premium journaling uses *journal rules* to record messages based on recipients (all recipients or specified recipients) and scope (internal messages, external messages, or all messages). Premium journaling requires Exchange Enterprise client access licenses (CALs). For more information about CALs, see [Exchange Server Licensing](https://go.microsoft.com/fwlink/p/?linkid=237292).
 
 ### Create journal rules
-<a name="CreateJournalRule"> </a>
 
 The basic components of a journal rule are:
 
@@ -117,36 +118,34 @@ The basic components of a journal rule are:
 - **Journaling mailbox**: Where you want to store the journaled messages.
 
 #### Use the EAC to create journal rules
-<a name="CreateJournalRuleEAC"> </a>
 
 1. In the EAC, go to **Compliance management** \> **Journal rules**, and then click **Add** (![Add icon](../../media/ITPro_EAC_AddIcon.png)).
 
 2. In **New journal rule** window that opens, configure the following settings:
 
-  - **Send journal reports to**: Type the alias or email address of the journaling mailbox where the journaled messages (journal reports) will be delivered.
+   - **Send journal reports to**: Type the alias or email address of the journaling mailbox where the journaled messages (journal reports) will be delivered.
 
-  - **Name**: Type a unique, descriptive name for the journal rule.
+   - **Name**: Type a unique, descriptive name for the journal rule.
 
-  - **If the message is sent to or received from**: Specify the journal recipient (who you want to journal). Click the drop down arrow and select either of the following values:
+   - **If the message is sent to or received from**: Specify the journal recipient (who you want to journal). Click the drop down arrow and select either of the following values:
 
-  - **A specific user or group**: In the dialog box that opens, select one recipient, and then click **OK** when you're finished.
+   - **A specific user or group**: In the dialog box that opens, select one recipient, and then click **OK** when you're finished.
 
-  - **[Apply to all messages]**
+   - **[Apply to all messages]**
 
-  - **Journal the following messages**: Specify the scope of the journal rule. Click the drop down arrow and select one of the available values:
+   - **Journal the following messages**: Specify the scope of the journal rule. Click the drop down arrow and select one of the available values:
 
-  - **All messages**
+   - **All messages**
 
-  - **Internal messages only**
+   - **Internal messages only**
 
-  - **External messages only**
+   - **External messages only**
 
-    When you're finished, click **Save**.
+   When you're finished, click **Save**.
 
 ![new journal rule](../../media/fb96ba0e-473a-46d3-ab98-ffb4e34424ba.png)
 
 #### Use the Exchange Management Shell to create journal rules
-<a name="CreateJournalRuleEAC"> </a>
 
 To create journal rules in the Exchange Management Shell, use the following syntax:
 
@@ -173,7 +172,6 @@ New-JournalRule -Name "Regulation 123" -JournalEmailAddress "Journal Mailbox" -R
 For detailed syntax and parameter information, see [New-JournalRule](http://technet.microsoft.com/library/fcad9ef1-b3f2-442d-a1a7-cd1bbe442054.aspx).
 
 #### How do you know this worked?
-<a name="CreateJournalRuleEAC"> </a>
 
 To verify that you've successfully created a journal rule, use any of the following procedures:
 
@@ -188,7 +186,6 @@ To verify that you've successfully created a journal rule, use any of the follow
 - Send a message to a recipient that's in the scope of the journal rule, open the journaling mailbox in Outlook or Outlook Web App, and verify that the journaled message (journal report) is delivered to the journaling mailbox.
 
 ### Enable or disable journal rules
-<a name="EnableOrDisableJournalRule"> </a>
 
 By default, when you create a journal rule in the EAC or the Exchange Management Shell, the rule is enabled. You can only use the Exchange Management Shell to create a journal rule that's disabled (the _Enabled_ parameter value is `$false` in the **New-JournalRule** command).
 
@@ -238,11 +235,10 @@ To verify that you've successfully enabled or disabled a journal rule, use any o
 - Send a message to a recipient that's in the scope of the journal rule, open the journaling mailbox in Outlook or Outlook Web App, and verify that the journaled message (journal report) is or isn't delivered to the journaling mailbox.
 
 ### Modify journal rules
-<a name="EnableOrDisableJournalRule"> </a>
 
 No additional settings are available when you modify a journal rule. They're the same settings that were available when you created the rule:
 
-- **EAC**: Go to **Compliance management** \> **Journal rules**, and then click **Edit** (![Edit icon](../../media/ITPro_EAC_EditIcon.png)). The available settings are the same as when you created the rule. For more information, see the [Use the EAC to create journal rules](journaling-procedures.md#CreateJournalRuleEAC) section.
+- **EAC**: Go to **Compliance management** \> **Journal rules**, and then click **Edit** (![Edit icon](../../media/ITPro_EAC_EditIcon.png)). The available settings are the same as when you created the rule. For more information, see the [Use the EAC to create journal rules](#use-the-eac-to-create-journal-rules) section.
 
 - **Exchange Management Shell**: The syntax to modify a journal rule is:
 
@@ -250,12 +246,11 @@ No additional settings are available when you modify a journal rule. They're the
   Set-JournalRule -Identity <JournalRuleIdentity> [-Name <RuleName>] [-JournalEmailAddress <JournalMailboxIdentity>] [-Recipient <JournalRecipientEmailAddress | $null>] [-Scope <Global | Internal | External>]
   ```
 
-    You can't use the **Set-Journal** cmdlet to enable or disable the rule (there's no _Enabled_ parameter). To enable or disable the rule, you use the **Enable-JournalRule** and **Disable-JournalRule** cmdlets as described in the [Enable or disable journal rules](journaling-procedures.md#EnableOrDisableJournalRule) section.
+    You can't use the **Set-Journal** cmdlet to enable or disable the rule (there's no _Enabled_ parameter). To enable or disable the rule, you use the **Enable-JournalRule** and **Disable-JournalRule** cmdlets as described in the [Enable or disable journal rules](#enable-or-disable-journal-rules) section.
 
     For detailed syntax and parameter information, see [Set-JournalRule](http://technet.microsoft.com/library/e72562c6-64d2-43c3-81b0-062e7d7b28c9.aspx).
 
 ### Remove journal rules
-<a name="EnableOrDisableJournalRule"> </a>
 
 #### Use the EAC to remove journal rules
 
@@ -294,7 +289,6 @@ To verify that you've successfully removed a journal rule, use any of the follow
 - Send a message to a recipient that was in the scope of the deleted journal rule, open the journaling mailbox in Outlook or Outlook Web App, and verify that the journaled message (journal report) isn't delivered to the journaling mailbox.
 
 ### Enable or disable journaling for voice mail and missed call notifications
-<a name="DisableJournalingForUMNotifications"> </a>
 
 By default, premium journaling will journal voice mail notification and missed call notification messages that are generated by Unified Messaging (UM) in Exchange 2016. However, you can disable journaling for these types of messages. Note that even if you disable journaling for UM notification messages, messages containing faxes that were generated by the UM service are always journaled.
 
@@ -324,9 +318,8 @@ Get-TransportConfig | Format-List VoicemailJournalingEnabled
 ```
 
 ### Specify the alternate journaling mailbox
-<a name="DisableJournalingForUMNotifications"> </a>
 
-For premium journaling, you can specify an *alternate journaling mailbox* that accepts non-delivery reports (also known as NDRs or bounce messages) for *all* undeliverable journal reports when *any* journaling mailbox is unavailable (one alternate journaling mailbox for all journaling mailboxes in your organization). For more information, see [Alternate journaling mailbox](journaling.md#alternate).
+For premium journaling, you can specify an *alternate journaling mailbox* that accepts non-delivery reports (also known as NDRs or bounce messages) for *all* undeliverable journal reports when *any* journaling mailbox is unavailable (one alternate journaling mailbox for all journaling mailboxes in your organization). For more information, see [Alternate journaling mailbox](journaling.md#alternate-journaling-mailbox).
 
 > [!CAUTION]
 > If the alternate journaling mailbox also becomes unavailable and rejects the NDRs for undeliverable journal reports, the original journal reports are lost and can't be retrieved.
@@ -374,7 +367,6 @@ To verify that you've successfully specified an alternate journaling mailbox, us
   ```
 
 ### Enable journal report decryption
-<a name="IRMDecryption"> </a>
 
 Journal report decryption allows **premium journaling** to save a clear-text copy of IRM-protected messages in journal reports (along with the original IRM-protected message). If the message contains any attachments that were protected by the Active Directory Rights Management Services (AD RMS) cluster in your organization, the attachments are also decrypted.
 
@@ -384,11 +376,8 @@ To enable journal report decryption, perform the following steps:
 
 2. Run the following command in the Exchange Management Shell:
 
-  ```
-  Set-IRMConfiguration -JournalReportDecryptionEnabled $true
-  ```
+   ```
+   Set-IRMConfiguration -JournalReportDecryptionEnabled $true
+   ```
 
 For more information, see [Enable or Disable Journal Report Decryption](http://technet.microsoft.com/library/1dedbe73-2c1a-4b14-8799-5091aaec7965.aspx).
-
-
-

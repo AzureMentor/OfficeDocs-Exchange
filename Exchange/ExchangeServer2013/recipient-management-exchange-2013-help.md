@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Recipient Management: Exchange 2013 Help'
 TOCTitle: Recipient Management
 ms:assetid: 669d602e-68e3-41f9-a455-b942d212d130
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd298028(v=EXCHG.150)
 ms:contentKeyID: 49289275
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Recipient Management
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 The Recipient Management management role group is one of several built-in role groups that make up the Role Based Access Control (RBAC) permissions model in Microsoft Exchange Server 2013. Role groups are assigned one or more management roles that contain the permissions required to perform a given set of tasks. The members of a role group are granted access to the management roles assigned to the role group. For more information about role groups, see [Understanding management role groups](understanding-management-role-groups-exchange-2013-help.md).
 
@@ -51,7 +52,7 @@ For more information about how to customize this role group, see the following t
 
   - [Manage role group members](manage-role-group-members-exchange-2013-help.md)
 
-If you want to create a role group and assign some of the roles that are assigned to this role group to the new role group, see the “Create a role group” section in [Manage role groups](manage-role-groups-exchange-2013-help.md).
+If you want to create a role group and assign some of the roles that are assigned to this role group to the new role group, see the "Create a role group" section in [Manage role groups](manage-role-groups-exchange-2013-help.md).
 
 If the creation of security principals in your organization, such as user accounts, is controlled by a specific group other than the Exchange administrators, you can create a role group and move the Mail Recipient Creation role and the Security Group Creation and Membership role to the new role group. Doing so prevents members of the Recipient Management role group from creating Active Directory objects. They can, however, continue to mail-enable the new Active Directory objects. For more information about split permissions, see [Understanding split permissions](understanding-split-permissions-exchange-2013-help.md).
 
@@ -59,17 +60,17 @@ If the creation of security principals in your organization, such as user accoun
 
 The following table lists all the management roles that are assigned to this role group and the following attributes of each role assignment:
 
-  - **Regular assignment**   Enables members of the role group to access the management role entries made available by the associated management role.
+  - **Regular assignment**: Enables members of the role group to access the management role entries made available by the associated management role.
 
-  - **Delegating assignment**   Gives members of the role group the ability to assign the specified role to other role groups, role assignment policies, users, or USGs.
+  - **Delegating assignment**: Gives members of the role group the ability to assign the specified role to other role groups, role assignment policies, users, or USGs.
 
-  - **Recipient read scope**   Determines what recipient objects members of the role group are allowed to read from Active Directory.
+  - **Recipient read scope**: Determines what recipient objects members of the role group are allowed to read from Active Directory.
 
-  - **Recipient write scope**   Determines what recipient objects members of the role group are allowed to modify in Active Directory.
+  - **Recipient write scope**: Determines what recipient objects members of the role group are allowed to modify in Active Directory.
 
-  - **Configuration read scope**   Determines what configuration and server objects members of the role group are allowed to read from Active Directory.
+  - **Configuration read scope**: Determines what configuration and server objects members of the role group are allowed to read from Active Directory.
 
-  - **Configuration write scope**   Determines what organizational and server objects members of the role group are allowed to modify in Active Directory.
+  - **Configuration write scope**: Determines what organizational and server objects members of the role group are allowed to modify in Active Directory.
 
 For more information about role assignments and management scopes, see the following topics:
 
@@ -175,4 +176,3 @@ For more information about role assignments and management scopes, see the follo
 </tr>
 </tbody>
 </table>
-

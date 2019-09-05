@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: In-Place Hold and Litigation Hold allow you to preserve mailbox content to meet regulatory compliance and eDiscovery requirements. Information about recipients directly addressed in the To and Cc fields of a message is included in all messages by default, but your organization may require the ability to search for and reproduce details about all recipients of a message.
 ms.topic: article
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: eb8ddf15-0080-457e-9d83-e73e193da334
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Preserve Bcc and expanded distribution group recipients for eDiscovery
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -30,11 +31,11 @@ As stated earlier, information about Bcc'ed recipients is stored with the messag
 
 Information about expanded distribution group recipients is stored with the message after you place a mailbox on In-Place Hold or Litigation Hold. Distribution group membership is determined at the time the message is sent. The expanded recipients list stored with the message is not impacted by changes to membership of the group after the message is sent.
 
-|**Information about…**|**Is stored in…**|**Is stored by default?**|**Is accessible to…**|
+|**Information about...**|**Is stored in...**|**Is stored by default?**|**Is accessible to...**|
 |:-----|:-----|:-----|:-----|
-|To and Cc recipients  <br/> |Message properties in the sender and recipients' mailboxes.  <br/> |Yes  <br/> |Sender, recipients, and compliance officers  <br/> |
-|Bcc recipients  <br/> |Message property in the sender's mailbox.  <br/> |Yes  <br/> |Sender and compliance officers  <br/> |
-|Expanded distribution group recipients  <br/> |Message properties in the sender's mailbox.  <br/> |No. Expanded distribution group recipient information is stored after a mailbox is placed on In-Place Hold or Litigation Hold.  <br/> |Compliance officers  <br/> |
+|To and Cc recipients|Message properties in the sender and recipients' mailboxes.|Yes|Sender, recipients, and compliance officers|
+|Bcc recipients|Message property in the sender's mailbox.|Yes|Sender and compliance officers|
+|Expanded distribution group recipients|Message properties in the sender's mailbox.|No. Expanded distribution group recipient information is stored after a mailbox is placed on In-Place Hold or Litigation Hold.|Compliance officers|
 
 ## Searching for messages sent to Bcc and expanded distribution group recipients
 
@@ -42,26 +43,26 @@ When searching for messages sent to a recipient, eDiscovery search results now i
 
 Scenario 1: John is a member of the US-Sales distribution group. This table shows eDiscovery search results when Bob sends a message to John directly or indirectly via a distribution group.
 
-|**When you search Bob's mailbox for messages sent…**|**And the message is sent with…**|**Results include message?**|
+|**When you search Bob's mailbox for messages sent...**|**And the message is sent with...**|**Results include message?**|
 |:-----|:-----|:-----|
-|To:John  <br/> |John on TO  <br/> |Yes  <br/> |
-|To:John  <br/> |US-Sales on TO  <br/> |Yes  <br/> |
-|To:US-Sales  <br/> |US-Sales on TO  <br/> |Yes  <br/> |
-|Cc:John  <br/> |John on CC  <br/> |Yes  <br/> |
-|Cc:John  <br/> |US-Sales on CC  <br/> |Yes  <br/> |
-|Cc:US-Sales  <br/> |US-Sales on CC  <br/> |Yes  <br/> |
+|To:John|John on TO|Yes|
+|To:John|US-Sales on TO|Yes|
+|To:US-Sales|US-Sales on TO|Yes|
+|Cc:John|John on CC|Yes|
+|Cc:John|US-Sales on CC|Yes|
+|Cc:US-Sales|US-Sales on CC|Yes|
 
 Scenario 2: Bob sends an email to John (To/Cc) and Jack (Bcc directly, or indirectly via a distribution group). The table below shows eDiscovery search results.
 
-|**When you search…**|**For messages sent…**|**Results include message?**|**Notes**|
+|**When you search...**|**For messages sent...**|**Results include message?**|**Notes**|
 |:-----|:-----|:-----|:-----|
-|Bob's mailbox  <br/> |To/Cc:John  <br/> |Yes  <br/> |Presents an indication that Jack was Bcc'ed.  <br/> |
-|Bob's mailbox  <br/> |Bcc:Jack  <br/> |Yes  <br/> |Presents an indication that Jack was Bcc'ed.  <br/> |
-|Bob's mailbox  <br/> |Bcc:Jack (via distribution group)  <br/> |Yes  <br/> |List of members of the Bcc'ed distribution group, expanded when the message was sent, is visible in eDiscovery search preview, export and logs.  <br/> |
-|John's mailbox  <br/> |To/Cc:John  <br/> |Yes  <br/> |No indication of Bcc recipients.  <br/> |
-|John's mailbox  <br/> |Bcc:Jack (directly or via distribution group)  <br/> |No  <br/> |Bcc information is not stored in the message delivered to recipients. You must search the sender's mailbox.  <br/> |
-|Jack's mailbox  <br/> |To/Cc:John (directly or via distribution group)  <br/> |Yes  <br/> |To/Cc information is included in message delivered to all recipients.  <br/> |
-|Jack's mailbox  <br/> |Bcc:Jack (directly or via distribution group)  <br/> |No  <br/> |Bcc information is not stored in the message delivered to recipients. You must search the sender's mailbox.  <br/> |
+|Bob's mailbox|To/Cc:John|Yes|Presents an indication that Jack was Bcc'ed.|
+|Bob's mailbox|Bcc:Jack|Yes|Presents an indication that Jack was Bcc'ed.|
+|Bob's mailbox|Bcc:Jack (via distribution group)|Yes|List of members of the Bcc'ed distribution group, expanded when the message was sent, is visible in eDiscovery search preview, export and logs.|
+|John's mailbox|To/Cc:John|Yes|No indication of Bcc recipients.|
+|John's mailbox|Bcc:Jack (directly or via distribution group)|No|Bcc information is not stored in the message delivered to recipients. You must search the sender's mailbox.|
+|Jack's mailbox|To/Cc:John (directly or via distribution group)|Yes|To/Cc information is included in message delivered to all recipients.|
+|Jack's mailbox|Bcc:Jack (directly or via distribution group)|No|Bcc information is not stored in the message delivered to recipients. You must search the sender's mailbox.|
 
 ## Frequently asked questions
 
@@ -100,6 +101,3 @@ A. Bcc and expanded distribution group recipients information is visible to Comp
  **Q. What happens if a member of a distribution group is hidden from the organization's global address list (GAL)?**
 
 A. There's no impact. If recipients are hidden from the GAL, they're still included in the list of recipients for the expanded distribution group.
-
-
-

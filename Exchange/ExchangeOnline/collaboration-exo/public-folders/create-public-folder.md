@@ -8,13 +8,14 @@ f1_keywords:
 ms.author: dmaguire
 ms.assetid: 6d252e60-c8d0-4efd-b9d7-ba5284a6f8ab
 ms.date: 7/11/2018
+ms.reviewer: 
 title: Create a public folder
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 
@@ -25,9 +26,7 @@ Public folders are designed for shared access and provide an easy and effective 
 By default, a public folder inherits the settings of its parent folder, including the permissions settings.
 
 > [!NOTE]
->  For more information about the storage quotas and limits for public folders, see the following topics:
->  - For public folders in Office 365, see [Exchange Online Limits](https://go.microsoft.com/fwlink/p/?LinkID=391188).
->  - For public folders in on-premises Exchange Server, see [Limits for public folders](https://docs.microsoft.com/Exchange/collaboration/public-folders/limits).
+> For more information about the storage quotas and limits for public folders in Exchange Online, see [Exchange Online Limits](https://go.microsoft.com/fwlink/p/?LinkID=391188).
 
 ## What do you need to know before you begin?
 
@@ -36,6 +35,7 @@ By default, a public folder inherits the settings of its parent folder, includin
 - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Public folders" entry in the [Sharing and collaboration permissions](https://technet.microsoft.com/library/b7fa4b7c-1266-45bd-a14b-f66be0459cc5.aspx) topic.
 
 - You can't create a public folder unless you've first created a public folder mailbox. For more information about how to create a public folder mailbox, see [Create a public folder mailbox](create-public-folder-mailbox.md).
+
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 ## Use the EAC to create a public folder
@@ -94,6 +94,3 @@ To verify that you've successfully created a public folder, do the following:
 
 > [!TIP]
 > Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
-
-
-

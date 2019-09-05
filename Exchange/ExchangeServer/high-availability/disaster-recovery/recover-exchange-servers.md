@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: 'Summary: Learn how to recover a lost Exchange 2016 or Exchange 2019 server.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 46e9a1cf-b64c-43c3-a898-6171176da761
 ms.date:
+ms.reviewer: 
 title: Recover Exchange server, recover lost Exchange Server, Lost Exchange Server recovery
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -136,4 +137,3 @@ If the recovered Exchange server is the only Exchange server in your organizatio
     The default value of %ExchangeInstallationPath% is %ProgramFiles%\Microsoft\Exchange Server\V15\, but the actual value is wherever you installed Exchange on the server.
 
 2. Re-run Exchange Setup in recovery mode as described earlier in this topic.
-

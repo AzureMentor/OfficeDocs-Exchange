@@ -5,12 +5,14 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 76452210-0cee-409b-9bab-2d75e3cd572c
 ms.date: 
+ms.reviewer: 
+manager: serdars
 description: Learn about the keyboard shortcuts that are available in the Exchange admin center (EAC) in Exchange Online.
 title: Keyboard shortcuts for the Exchange admin center in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.custom: A11y_Reference
 ms.service: exchange-online
 
@@ -71,4 +73,3 @@ To cycle through EAC regions on the screen, press Ctrl+F6 (forward) or Ctrl+Shif
 |Move within lists from one item to another|The Up Arrow key, the Down Arrow key, Home, End, Page Up, or Page Down<br/> **Note**: You can also use the Up Arrow key, the Down Arrow key, the Left Arrow key, or the Right Arrow key to move between option buttons or within a group of check boxes.|
 |Select an item|Enter or the Spacebar|
 |Exit a menu or mode|Esc|
-

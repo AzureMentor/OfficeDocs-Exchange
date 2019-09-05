@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'MyPersonalInformation role: Exchange 2013 Help'
 TOCTitle: MyPersonalInformation role
 ms:assetid: 76848ea9-79db-4ac8-bdfa-eecc79394461
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Ff461932(v=EXCHG.150)
 ms:contentKeyID: 49289309
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # MyPersonalInformation role
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 The `MyPersonalInformation` management role enables individual users to view and modify their website, address, and home telephone number. This is a custom role created from the [MyContactInformation role](mycontactinformation-role-exchange-2013-help.md) parent role.
 
@@ -29,11 +30,8 @@ For more information about management roles, management role groups, and other R
 
 For this role to grant permissions, it must be assigned to a role assignee, such as a role assignment policy. This assignment is done using management role assignments. Role assignments link role assignees and roles together. If more than one role is assigned to a role assignee, the role assignee is granted the combination of all the permissions granted by all the assigned roles.
 
-
 > [!NOTE]
 > You can also assign this management role to a role group, USG, or directly to a user. However user-focused roles are most effective when used with role assignment policies.
-
-
 
 This user-focused role has implicit scopes that can't be modified. Therefore, you shouldn't add custom scopes to role assignments that assign this role to role assignment policies, role groups, USGs, or users.
 
@@ -65,7 +63,7 @@ You can also remove this role from the default role assignment policy, role assi
 
 For more information about how to add or remove assignments between this role and role groups, users, and USGs, see the following topics:
 
-  - “Add or remove a role to or from a role group” section in [Manage role groups](manage-role-groups-exchange-2013-help.md)
+  - "Add or remove a role to or from a role group" section in [Manage role groups](manage-role-groups-exchange-2013-help.md)
 
   - [Add a role to a user or USG](add-a-role-to-a-user-or-usg-exchange-2013-help.md)
 
@@ -85,36 +83,30 @@ This role has been configured to provide a role assignee with all necessary cmdl
 
 If you decide that you need to create a customized version of this role, you must create a role as a child of this role, and customize the new role.
 
-
 > [!WARNING]
 > The following information enables you to perform advanced management of permissions. Customizing management roles can significantly increase the complexity of your permissions model. You could cause certain features to stop functioning if you replace a built-in management role with an incorrectly configured custom role.
 
-
-
 The following are the most common steps to create a customized role and assign it to a role assignee:
 
-1.  Create a copy of this role. For more information, see [Create a role](create-a-role-exchange-2013-help.md).
+1. Create a copy of this role. For more information, see [Create a role](create-a-role-exchange-2013-help.md).
 
-2.  Change or remove the role entries on the new role using the **Set-ManagementRoleEntry** and **Remove-ManagementRoleEntry** cmdlets. You can't add additional role entries to the new role because it can only contain the role entries on the parent built-in role. For more information, see the following topics:
-    
+2. Change or remove the role entries on the new role using the **Set-ManagementRoleEntry** and **Remove-ManagementRoleEntry** cmdlets. You can't add additional role entries to the new role because it can only contain the role entries on the parent built-in role. For more information, see the following topics:
+
       - [Change a role entry](change-a-role-entry-exchange-2013-help.md)
-    
+
       - [Remove a role entry from a role](remove-a-role-entry-from-a-role-exchange-2013-help.md)
 
-3.  If you want to replace the built-in role with this new customized role, remove any role assignments associated with the built-in role. For more information, see the following topics:
-    
-      - “Add or remove a role to or from a role group” section in [Manage role groups](manage-role-groups-exchange-2013-help.md)
-    
+3. If you want to replace the built-in role with this new customized role, remove any role assignments associated with the built-in role. For more information, see the following topics:
+
+      - "Add or remove a role to or from a role group" section in [Manage role groups](manage-role-groups-exchange-2013-help.md)
+
       - [Remove a role from a user or USG](remove-a-role-from-a-user-or-usg-exchange-2013-help.md)
 
-4.  Add the new customized role to the required role assignees. For more information, see the following topics:
-    
-      - “Add or remove a role to or from a role group” section in [Manage role groups](manage-role-groups-exchange-2013-help.md)
-    
+4. Add the new customized role to the required role assignees. For more information, see the following topics:
+
+      - "Add or remove a role to or from a role group" section in [Manage role groups](manage-role-groups-exchange-2013-help.md)
+
       - [Add a role to a user or USG](add-a-role-to-a-user-or-usg-exchange-2013-help.md)
-        
 
         > [!IMPORTANT]
-        > If you want other users, in addition to the user that created the role, to be able to assign the new customized role, be sure to add a delegating role assignment to at least one role assignee. For more information, see <A href="delegate-role-assignments-exchange-2013-help.md">Delegate role assignments</A>.
-
-
+        > If you want other users, in addition to the user that created the role, to be able to assign the new customized role, be sure to add a delegating role assignment to at least one role assignee. For more information, see [Delegate role assignments](delegate-role-assignments-exchange-2013-help.md).

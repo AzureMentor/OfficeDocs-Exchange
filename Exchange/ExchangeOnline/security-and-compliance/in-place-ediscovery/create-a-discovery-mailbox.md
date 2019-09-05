@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: Microsoft Exchange Server Setup creates a discovery mailbox by default. In Exchange Online, a discovery mailbox is also created by default. Discovery mailboxes are used as target mailboxes for In-Place eDiscovery searches in the Exchange admin center (EAC). You can create additional discovery mailboxes as required. After you create a new discovery mailbox, you will have to assign Full Access permissions to the appropriate users so they can access eDiscovery search results that are copied to the discovery mailbox.
 ms.topic: article
-author: markjjo
-ms.author: markjjo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: bc20285d-35e2-4e49-9bd3-38abf96114ba
-ms.date: 7/11/2018
+ms.date: 
+ms.reviewer: 
 title: Create a discovery mailbox
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -33,44 +34,16 @@ For more information, see [Discovery mailboxes](in-place-ediscovery.md#discmbxs)
 
 - Discovery mailboxes have a mailbox storage quota of 50 gigabytes (GB). This storage quota can't be increased.
 
-- You can't use the EAC to create a discovery mailbox or assign permissions to access it. You have to use Exchange Online PowerShell. In Office 365, use Remote PowerShell connected to your Exchange Online organization.
+- You can't use the EAC to create a discovery mailbox or assign permissions to access it. You have to use Exchange Online PowerShell.
 
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
 > Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
-## (Optional) Step 1: Connect to Exchange Online using remote PowerShell
+## Step 1: Connect to Exchange Online PowerShell
 
-You only need to perform this step if you have an Exchange Online or Office 365 organization. If you have an Exchange Server organization, go to the next step and run the command in Exchange Online PowerShell.
-
-1. On your local computer, open Windows PowerShell and run the following command.
-
-  ```
-  $UserCredential = Get-Credential
-  ```
-
-    In the **Windows PowerShell Credential Request** dialog box, type username and password for an Office 365 global admin account, and then click **OK**.
-
-2. Run the following command.
-
-  ```
-  $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://outlook.office365.com/powershell-liveid/ -Credential $UserCredential -Authentication Basic -AllowRedirection
-  ```
-
-3. Run the following command.
-
-  ```
-  Import-PSSession $Session
-  ```
-
-4. To verify that you're connected to your Exchange Online organization, run the following command to get a list of all the mailboxes in your organization.
-
-  ```
-  Get-Mailbox
-  ```
-
-For more information or if you have problems connecting to your Exchange Online organization, see [Connect to Exchange Online using remote PowerShell](https://go.microsoft.com/fwlink/p/?LinkId=517283).
+For instructions, see [Connect to Exchange Online PowerShell](https://go.microsoft.com/fwlink/p/?LinkId=517283).
 
 ## Step 2: Create a discovery mailbox
 
@@ -79,6 +52,9 @@ This example creates a discovery mailbox named SearchResults.
 ```
 New-Mailbox -Name SearchResults -Discovery
 ```
+
+> [!IMPORTANT]
+> The 'Name' parameter must not contain any spaces.
 
 For detailed syntax and parameter information, see [new-Mailbox](https://technet.microsoft.com/library/42dbb25a-0b23-4775-ae15-7af62c089565.aspx).
 
@@ -115,6 +91,3 @@ For detailed syntax and parameter information, see [Add-MailboxPermission](https
 - A discovery mailbox can't be repurposed or converted to another type of mailbox.
 
 - You can remove a discovery mailbox as you would any other type of mailbox.
-
-
-

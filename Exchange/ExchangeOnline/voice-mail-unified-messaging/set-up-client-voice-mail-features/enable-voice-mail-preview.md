@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can enable the Voice Mail Preview feature for users associated with a Unified Messaging (UM) mailbox policy if it has been disabled. Enabling this setting allows users to receive the text of a voice mail message in the message body of an email or text message. The default setting is enabled.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 206a5d2b-27c9-4e9b-a29a-6ddffaa07109
 ms.date: 11/17/2014
-title: Enable Voice Mail Preview for users
+ms.reviewer: 
+title: Enable Voice Mail Preview for users in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Enable Voice Mail Preview for users
+# Enable Voice Mail Preview for users in Exchange Online
 
 You can enable the Voice Mail Preview feature for users associated with a Unified Messaging (UM) mailbox policy if it has been disabled. Enabling this setting allows users to receive the text of a voice mail message in the message body of an email or text message. The default setting is enabled.
 
@@ -33,7 +34,7 @@ For additional management tasks related to UM mailbox policies, see [UM mailbox 
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to enable Voice Mail Preview
 
@@ -52,6 +53,3 @@ This example allows users who are associated with the UM mailbox policy `MyUMMai
 ```
 Set-UMMailboxPolicy -identity MyUMMailboxPolicy - AllowVoiceMailPreview $true
 ```
-
-
-

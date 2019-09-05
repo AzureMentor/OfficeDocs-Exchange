@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can configure the number of times that users who call in to an Outlook Voice Access number can enter incorrect data before they're disconnected. This setting applies to both Outlook Voice Access users and unauthenticated callers who use directory search.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 64c13d17-a26a-4c9b-b495-bd69c716456a
 ms.date: 11/17/2014
-title: Configure the number of input failures before Outlook Voice Access users are disconnected
+ms.reviewer: 
+title: Configure the number of input failures before Outlook Voice Access users are disconnected in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Configure the number of input failures before Outlook Voice Access users are disconnected
+# Configure the number of input failures before Outlook Voice Access users are disconnected in Exchange Online
 
 You can configure the number of times that users who call in to an Outlook Voice Access number can enter incorrect data before they're disconnected. This setting applies to both Outlook Voice Access users and unauthenticated callers who use directory search.
 
@@ -41,7 +42,7 @@ For additional management tasks related to UM dial plans, see [UM Dial Plan Proc
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to configure the input failures before disconnect
 
@@ -62,6 +63,3 @@ This example sets the input failures before disconnect to 5 on a UM dial plan na
 ```
 Set-UMDialPlan -identity MyUMDialPlan -InputFailuresBeforeDisconnect 5
 ```
-
-
-

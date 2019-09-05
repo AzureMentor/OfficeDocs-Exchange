@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: You can add retention tags to a retention policy when the policy is created or any time thereafter. For details about how to create a retention policy, including how to simultaneously add retention tags, see Create a Retention Policy.
 ms.topic: article
-author: markjjo
-ms.author: markjjo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 3a5196ce-2764-453d-9bc1-5ec22d06b40d
 ms.date: 6/23/2018
+ms.reviewer: 
 title: Add retention tags to or remove retention tags from a retention policy
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -55,9 +56,9 @@ For more information about retention tags, see [Retention tags and retention pol
 
 3. In **Retention Policy**, use the following settings:
 
-  - **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif) Click this button to add a retention tag to the policy.
+   - **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif) Click this button to add a retention tag to the policy.
 
-  - **Remove** ![Remove icon](../../media/ITPro_EAC_RemoveIcon.gif) Select a tag from the list, and then click this button to remove the tag from the policy.
+   - **Remove** ![Remove icon](../../media/ITPro_EAC_RemoveIcon.gif) Select a tag from the list, and then click this button to remove the tag from the policy.
 
 ## Use Exchange Online PowerShell to add or remove retention tags
 
@@ -97,6 +98,3 @@ This example use the **Get-RetentionPolicy** cmdlet to retrieve retention tags a
 ```
 (Get-RetentionPolicy "Default MRM Policy").RetentionPolicyTagLinks | Format-Table name
 ```
-
-
-

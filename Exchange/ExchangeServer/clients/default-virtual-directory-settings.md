@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn about the default virtual directory settings on Mailbox servers in Exchange 2016 and Exchange 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: d2d89ce6-4721-4737-a325-fba5ad9422e0
 ms.date: 
+ms.reviewer: 
 title: Default settings for Exchange virtual directories
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 

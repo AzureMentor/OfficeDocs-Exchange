@@ -1,40 +1,27 @@
-﻿---
+---
 title: 'Appendix A: Exchange health sets'
 TOCTitle: 'Appendix A: Exchange health sets'
 ms:assetid: 29af464e-ae07-40f8-ac6e-28e876a91d90
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dn195906(v=EXCHG.150)
 ms:contentKeyID: 53181783
-ms.date: 05/14/2016
+ms.date: 
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-<div data-xmlns="http://www.w3.org/1999/xhtml">
-
-<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="http://msdn.microsoft.com/en-us/">
-
-<div data-asp="http://msdn2.microsoft.com/asp">
-
 # Appendix A: Exchange health sets
 
-</div>
-
-<div id="mainSection">
-
-<div id="mainBody">
-
-<span> </span>
-
-_**Topic Last Modified:** 2015-03-09_
+_**Applies to:** Exchange Server 2013_
 
 The Exchange Server 2013 Management Pack relies on the Managed Availability feature in Exchange 2013. In Managed Availability, each component in Exchange 2013 monitors itself using *probes*, *monitors* and *responders*. Each Exchange 2013 component that implements Managed Availability is referred to as a *health set*. The following tables list all the health sets available in Exchange 2013.
 
 > [!NOTE]
 > Only the health sets that apply to your Exchange deployment are seen in the SCOM console. Therefore, depending on your configuration, some of these health sets may not be present in your deployment.
 
-<div>
-
 ## Customer Touch Points Health Sets
-
 
 <table>
 <colgroup>
@@ -68,7 +55,7 @@ The Exchange Server 2013 Management Pack relies on the Managed Availability feat
 <tr class="even">
 <td><p>ECP</p></td>
 <td><p>CAS, Mailbox</p></td>
-<td><p>Monitors the overall health of the Exchange Administration Center (EAC), as well as the overall health of the Outlook Web App end user setting service.</p></td>
+<td><p>Monitors the overall health of the Exchange admin center (EAC), as well as the overall health of the Outlook Web App end user setting service.</p></td>
 </tr>
 <tr class="odd">
 <td><p>EWS</p></td>
@@ -118,13 +105,7 @@ The Exchange Server 2013 Management Pack relies on the Managed Availability feat
 </tbody>
 </table>
 
-
-</div>
-
-<div>
-
 ## Service Components Health Sets
-
 
 <table>
 <colgroup>
@@ -403,13 +384,7 @@ The Exchange Server 2013 Management Pack relies on the Managed Availability feat
 </tbody>
 </table>
 
-
-</div>
-
-<div>
-
 ## Server Resources Health Sets
-
 
 <table>
 <colgroup>
@@ -448,13 +423,7 @@ The Exchange Server 2013 Management Pack relies on the Managed Availability feat
 </tbody>
 </table>
 
-
-</div>
-
-<div>
-
 ## Key Dependencies Health Sets
-
 
 <table>
 <colgroup>
@@ -487,17 +456,3 @@ The Exchange Server 2013 Management Pack relies on the Managed Availability feat
 </tr>
 </tbody>
 </table>
-
-
-</div>
-
-</div>
-
-<span> </span>
-
-</div>
-
-</div>
-
-</div>
-

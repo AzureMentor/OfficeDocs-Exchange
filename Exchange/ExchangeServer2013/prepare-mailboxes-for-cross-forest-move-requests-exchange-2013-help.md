@@ -1,34 +1,35 @@
-﻿---
+---
 title: 'Prepare mailboxes for cross-forest move requests: Exchange 2013 Help'
 TOCTitle: Prepare mailboxes for cross-forest move requests
 ms:assetid: fdbed4fc-a77e-40d5-a211-863b05d74784
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Ee633491(v=EXCHG.150)
 ms:contentKeyID: 49360516
 ms.date: 11/22/2017
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Prepare mailboxes for cross-forest move requests
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 **Summary:** Learn about preparing mailboxes for cross-forest moves in Exchange 2013.
 
-Microsoft Exchange 2013 supports mailbox moves and migrations using the Exchange Management Shell, specifically the **New-MoveRequest** and **New-MigrationBatch** cmdlets. You can also move the mailbox via the Exchange Administration Center (EAC). Note that you can move Exchange 2010 and Exchange 2013 mailboxes to an Exchange 2013 forest.
+Microsoft Exchange 2013 supports mailbox moves and migrations using the Exchange Management Shell, specifically the **New-MoveRequest** and **New-MigrationBatch** cmdlets. You can also move the mailbox via the Exchange admin center (EAC). Note that you can move Exchange 2010 and Exchange 2013 mailboxes to an Exchange 2013 forest.
 
 To move a mailbox from an Exchange forest to an Exchange 2013 forest, the Exchange 2013 target forest must contain a valid mail-enabled user with a specified set of Active Directory attributes. If there is at least one Exchange 2013 Client Access server deployed in the forest, the forest is considered an Exchange 2013 forest.
 
 To prepare for the mailbox move, you must create mail-enabled users with the required attributes in the target forest. Here are two recommended approaches to creating mail-enable users with the necessary attributes:
 
   - If you deployed Microsoft Identity Lifecycle Manager (ILM) for cross-forest global address list (GAL) synchronization, the recommended approach to creating the mail-enabled user is to use Service Pack 1 (SP1) for ILM 2007 Feature Pack 1 (FP1). We've created sample code that you can use to learn how to customize ILM to synchronize the source mailbox user and target mail user.
-    
+
     For more information, including how to download the sample code, see [Prepare mailboxes for cross-forest moves using sample code](prepare-mailboxes-for-cross-forest-moves-using-sample-code-exchange-2013-help.md).
 
   - If you created the target mail user using an Active Directory tool other than ILM/MIIS, use the **Update-Recipient** cmdlet with the *Identity* parameter to run the Address List service to generate the **LegacyExchangeDN** for the target mail user. We have created a sample Windows PowerShell script that reads from and writes to Active Directory and calls the **Update-Recipient** cmdlet.
-    
+
     For more information about using the sample script, see [Prepare mailboxes for cross-forest moves using the Prepare-MoveRequest.ps1 script in the Shell](prepare-mailboxes-for-cross-forest-moves-using-the-prepare-moverequest-ps1-script-in-the-shell-exchange-2013-help.md).
 
 After creating the target mail user, you can then run the **New-MoveRequest** or the **New-MigrationBatch** cmdlets to move the mailbox to the target Exchange 2013 forest.
@@ -124,7 +125,6 @@ The following table lists the minimum set of attributes that need to be configur
 > [!NOTE]
 > The <STRONG>proxyAddresses</STRONG> of the source mailbox user must contain an SMTP address that matches the authoritative domain of the target forest. This allows the <STRONG>New-MoveRequest</STRONG> cmdlet to correctly select the <STRONG>targetAddress</STRONG> of the source mail-enabled user (converted from the source mailbox user after the mailbox move request is complete) to ensure that mail routing is still functional.
 
-
 </td>
 </tr>
 <tr class="even">
@@ -147,7 +147,6 @@ The following table lists the minimum set of attributes that need to be configur
 </tr>
 </tbody>
 </table>
-
 
 ## Optional attributes
 
@@ -270,7 +269,6 @@ It isn't mandatory that the following attributes are configured for the **New-Mo
 </tbody>
 </table>
 
-
 ## Linked attributes
 
 A linked attribute is an Active Directory attribute that references other Active Directory objects in the local forest. You can't directly copy the linked attribute values from a mailbox in the source forest to a mail user in the target forest. First, you must find the Active Directory objects in the source forest that the source mailbox attribute refers to. Then, you must find the corresponding Active Directory objects in the target forest for the above-mentioned Active Directory object in the source forest. And finally, set the target mail user's attribute to refer to the Active Directory objects in the target forest.
@@ -312,7 +310,6 @@ A linked attribute is an Active Directory attribute that references other Active
 </tbody>
 </table>
 
-
 ## Linked user attributes
 
 If you want to move a mailbox to an Exchange 2013 resource forest, the mailbox in the resource forest is considered a *linked mailbox*. In this scenario, you need to create a linked mail user in the (target) resource forest. To create a linked mail user, you need to set the attributes shown in the following table.
@@ -346,12 +343,8 @@ If you want to move a mailbox to an Exchange 2013 resource forest, the mailbox i
 </tbody>
 </table>
 
-
-
 > [!NOTE]
 > A linked mailbox can only be created if there's forest trust between the source forest and target forest.
-
-
 
 If the source object is disabled and the **msExchMasterAccountSid** attribute is set to self (resource mailbox, shared mailbox), don't stamp anything on the target user.
 
@@ -406,7 +399,6 @@ If you want to move a resource mailbox to an Exchange 2013 forest, you need to s
 </tr>
 </tbody>
 </table>
-
 
 ## Additional attributes
 
@@ -680,4 +672,3 @@ In Exchange 2007, the **Move-Mailbox** cmdlet also copied the attributes shown i
 </tr>
 </tbody>
 </table>
-

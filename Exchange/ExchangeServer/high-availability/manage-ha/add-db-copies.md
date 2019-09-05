@@ -6,11 +6,12 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 784bf48f-8af5-422c-a63f-2f01fc0cf151
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Add a mailbox database copy
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -20,7 +21,7 @@ manager: serdars
 
 When you add a copy of a mailbox database, continuous replication is automatically enabled between the existing database and the database copy. Database copies are automatically assigned an identity in the format of \< _DatabaseName_\>\\< _HostMailboxServerName_\>. For example, a copy of the database DB1 that's hosted on the server MBX3 would be DB1\MBX3.
 
-Looking for other management tasks related to mailbox database copies? Check out [Managing mailbox database copies](http://technet.microsoft.com/library/06df16b4-f209-4d3a-8c68-0805c745f9b2.aspx).
+Looking for other management tasks related to mailbox database copies? Check out [Manage mailbox database copies](manage-database-copies.md).
 
 ## What do you need to know before you begin?
 
@@ -41,7 +42,7 @@ Looking for other management tasks related to mailbox database copies? Check out
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to add a mailbox database copy
 <a name="UseEMC"> </a>
@@ -54,7 +55,7 @@ Looking for other management tasks related to mailbox database copies? Check out
 
 4. Optionally, configure the **Activation preference number** for the database copy.
 
-5. Click **More options…** to designate the database copy as a lagged database copy by configuring a replay lag time, or to postpone automatic seeding of the database copy.
+5. Click **More options...** to designate the database copy as a lagged database copy by configuring a replay lag time, or to postpone automatic seeding of the database copy.
 
 6. Click **Save** to save the configuration changes and add the mailbox database copy.
 
@@ -101,7 +102,4 @@ To verify that you have successfully created a mailbox database copy, do one of 
 
 [Mailbox database copies](../../high-availability/database-availability-groups/database-copies.md)
 
-[Managing mailbox database copies](http://technet.microsoft.com/library/06df16b4-f209-4d3a-8c68-0805c745f9b2.aspx)
-
-
-
+[Manage mailbox database copies](manage-database-copies.md)

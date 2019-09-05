@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn about In-Place eDiscovery in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: overview
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 6377cb7a-3416-4e15-8571-c45d2160fc6f
 ms.date: 7/6/2018
+ms.reviewer: 
 title: In-Place eDiscovery in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -264,12 +265,12 @@ The default throttling policy contains the following parameters. You can change 
 
 |**Parameter**|**Description**|**Default value**|
 |:-----|:-----|:-----|
-|DiscoveryMaxConcurrency  <br/> |The maximum number of In-Place eDiscovery searches a user can perform concurrently.  <br/> |2  <br/> |
-|DiscoveryMaxMailboxes  <br/> |The maximum number of mailboxes that can be searched in a single In-Place eDiscovery search. Public folder mailboxes are also counted against the source mailbox limit.  <br/> |10,000<sup>1</sup> <br/> |
-|DiscoveryMaxStatsSearchMailboxes  <br/> |The maximum number of mailboxes that can be searched in a single In-Place eDiscovery search that still allows you to view keyword statistics.  <br/> |100  <br/> **Note**: After you run an eDiscovery search estimate, you can view keyword statistics. These statistics show details about the number of items returned for each keyword used in the search query. If more than 100 source mailboxes are included in the search, an error will be returned if you try to view keyword statistics.  <br/> |
-|DiscoveryMaxKeywords  <br/> |The maximum number of keywords that can be specified in a single In-Place eDiscovery search.  <br/> |500  <br/> |
-|DiscoveryPreviewSearchResultsPageSize  <br/> |The maximum number of items displayed on a single page when previewing In-Place eDiscovery search results.  <br/> |200  <br/> |
-|DiscoverySearchTimeoutPeriod  <br/> |The number of minutes that an In-Place eDiscovery search will run before it times out.  <br/> |10 minutes  <br/> |
+|DiscoveryMaxConcurrency|The maximum number of In-Place eDiscovery searches a user can perform concurrently.|2|
+|DiscoveryMaxMailboxes|The maximum number of mailboxes that can be searched in a single In-Place eDiscovery search. Public folder mailboxes are also counted against the source mailbox limit.|10,000<sup>1</sup>|
+|DiscoveryMaxStatsSearchMailboxes|The maximum number of mailboxes that can be searched in a single In-Place eDiscovery search that still allows you to view keyword statistics.|100  <br/> **Note**: After you run an eDiscovery search estimate, you can view keyword statistics. These statistics show details about the number of items returned for each keyword used in the search query. If more than 100 source mailboxes are included in the search, an error will be returned if you try to view keyword statistics.|
+|DiscoveryMaxKeywords|The maximum number of keywords that can be specified in a single In-Place eDiscovery search.|500|
+|DiscoveryPreviewSearchResultsPageSize|The maximum number of items displayed on a single page when previewing In-Place eDiscovery search results.|200|
+|DiscoverySearchTimeoutPeriod|The number of minutes that an In-Place eDiscovery search will run before it times out.|10 minutes|
 
 <sup>1</sup> Archive mailboxes are counted against the source mailbox limit. That means you can search a maximum of 5,000 mailboxes if the corresponding archive mailbox is enabled for all 5,000 mailboxes.
 
@@ -279,10 +280,9 @@ The following table contains links to Exchange Server topics that will help you 
 
 |**Topic**|**Description**|
 |:-----|:-----|
-|[Assign eDiscovery permissions in Exchange Server](assign-permissions.md) <br/> |Learn how to give a user access to use In-Place eDiscovery in the EAC (and by using the corresponding cmdlets) to search Exchange mailboxes.  <br/> |
-|[Create an In-Place eDiscovery search in Exchange Server](create-searches.md) <br/> |Learn how to create an In-Place eDiscovery search, and how to estimate and preview eDiscovery search results.  <br/> |
-|[Copy eDiscovery search results to a discovery mailbox](copy-results-to-discovery-mailboxes.md) <br/> |Learn how to copy the results of an eDiscovery search to a discovery mailbox.  <br/> |
-|[Export eDiscovery search results to a PST file](export-results-to-pst.md) <br/> |Learn how to export the results of an eDiscovery search to a PST file.  <br/> |
-|[Message properties and search operators for In-Place eDiscovery in Exchange Server](message-properties-and-search-operators.md) <br/> |Learn which email message properties can be searched using In-Place eDiscovery. The topic provides syntax examples for each property, information about search operators such as **AND** and **OR**, and information about other search query techniques such as using double quotation marks (" ") and prefix wildcards.  <br/> |
-|[Search and place a hold on public folders using In-Place eDiscovery](search-public-folders.md) <br/> |Learn how to use In-Place eDiscovery to search and place a hold on all public folders in your organization.  <br/> |
-
+|[Assign eDiscovery permissions in Exchange Server](assign-permissions.md)|Learn how to give a user access to use In-Place eDiscovery in the EAC (and by using the corresponding cmdlets) to search Exchange mailboxes.|
+|[Create an In-Place eDiscovery search in Exchange Server](create-searches.md)|Learn how to create an In-Place eDiscovery search, and how to estimate and preview eDiscovery search results.|
+|[Copy eDiscovery search results to a discovery mailbox](copy-results-to-discovery-mailboxes.md)|Learn how to copy the results of an eDiscovery search to a discovery mailbox.|
+|[Export eDiscovery search results to a PST file](export-results-to-pst.md)|Learn how to export the results of an eDiscovery search to a PST file.|
+|[Message properties and search operators for In-Place eDiscovery in Exchange Server](message-properties-and-search-operators.md)|Learn which email message properties can be searched using In-Place eDiscovery. The topic provides syntax examples for each property, information about search operators such as **AND** and **OR**, and information about other search query techniques such as using double quotation marks (" ") and prefix wildcards.|
+|[Search and place a hold on public folders using In-Place eDiscovery](search-public-folders.md)|Learn how to use In-Place eDiscovery to search and place a hold on all public folders in your organization.|

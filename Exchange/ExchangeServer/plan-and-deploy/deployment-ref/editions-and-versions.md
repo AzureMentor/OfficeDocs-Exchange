@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn about the different versions of Exchange 2016 and Exchange 2019.'
 ms.topic: reference
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: b563b543-fb3f-4465-9a54-cbfd680aee1f
 ms.date: 7/30/2018
+ms.reviewer: 
 title: Exchange Server editions and versions
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -60,4 +61,3 @@ Exchange 2013 and all later versions use a licensing model that's similar to how
 - **Client Access licenses (CALs)**: Exchange also comes in two CAL editions, which are referred to as a Standard CAL and an Enterprise CAL. You can mix and match the Exchange server editions with the CAL types. For example, you can use Enterprise CALs with Standard Edition or Standard CALs with Enterprise Edition.
 
 For more information about Exchange license types, see [Licensing](https://go.microsoft.com/fwlink/p/?LinkId=392675).
-

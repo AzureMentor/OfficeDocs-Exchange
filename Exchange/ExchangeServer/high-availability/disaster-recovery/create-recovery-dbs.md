@@ -6,11 +6,12 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 34d87491-b7b7-44a9-8d69-e1a9c1fe5852
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Create a recovery database
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -31,7 +32,7 @@ Looking for other management tasks related to recovery databases? Check out [Rec
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the Exchange Management Shell to create a recovery database
 
@@ -62,6 +63,3 @@ To verify that you've successfully created a recovery database, do the following
 ## Other Tasks
 
 After you create a recovery database, you may also want to restore data using a recovery database. For detailed steps, see [Restore data using a recovery database](restore-data-using-recovery-dbs.md).
-
-
-

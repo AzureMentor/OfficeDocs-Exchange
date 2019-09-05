@@ -1,52 +1,53 @@
-﻿---
+---
 title: 'Deploy multiple forest topologies for Exchange 2013: Exchange 2013 Help'
 TOCTitle: Deploy multiple forest topologies for Exchange 2013
 ms:assetid: d51f2b7d-9045-40cf-8b9f-43787a6fff6d
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb124734(v=EXCHG.150)
 ms:contentKeyID: 50406267
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Deploy multiple forest topologies for Exchange 2013
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 This topic provides an overview of deploying Microsoft Exchange Server 2013 in multiple forest topologies. You'll find information about the following subjects:
 
-  - **Supported multiple forest topologies**   Exchange 2013 supports two types of multiple forest topologies: cross-forest and resource forest.
+  - **Supported multiple forest topologies**: Exchange 2013 supports two types of multiple forest topologies: cross-forest and resource forest.
 
-  - **GAL synchronization**   If you have a cross-forest environment, you need to ensure that the GAL in any given forest contains mail recipients from other forests.
+  - **GAL synchronization**: If you have a cross-forest environment, you need to ensure that the GAL in any given forest contains mail recipients from other forests.
 
-  - **Moving mailboxes across forests**    The **New-MoveRequest** and **New-MigrationBatch** cmdlets in the Exchange Management Shell can help move mailboxes from one forest to another.
+  - **Moving mailboxes across forests**:  The **New-MoveRequest** and **New-MigrationBatch** cmdlets in the Exchange Management Shell can help move mailboxes from one forest to another.
 
-  - **Understanding multiple forest administration**   Learn about the permissions model to configure and manage the permissions between your forests.
+  - **Understanding multiple forest administration**: Learn about the permissions model to configure and manage the permissions between your forests.
 
 ## Supported multiple forest topologies
 
 Exchange 2013 supports the following types of multiple forest topologies:
 
-  - **Cross-forest**   A cross-forest topology is one with multiple Exchange forests. Here is an overview of what you need to do to deploy Exchange 2013 in a topology with a multiple forest:
-    
-    1.  You must first install Exchange 2013 in each forest. For more information, see [Deploy a new installation of Exchange 2013](deploy-a-new-installation-of-exchange-2013-exchange-2013-help.md).
-    
-    2.  Next, you must synchronize the recipients in each of the forests, so that the Global Address List (GAL) in each forest contains users from all the synchronized forests. See the "GAL Synchronization" section below for more details.
-    
-    3.  Finally, you must configure the Availability service so that users in one forest can view availability data for users in another forest. For more information, see [Configure the Availability service for cross-forest topologies](configure-the-availability-service-for-cross-forest-topologies-exchange-2013-help.md).
-    
+  - **Cross-forest**: A cross-forest topology is one with multiple Exchange forests. Here is an overview of what you need to do to deploy Exchange 2013 in a topology with a multiple forest:
+
+    1. You must first install Exchange 2013 in each forest. For more information, see [Deploy a new installation of Exchange 2013](deploy-a-new-installation-of-exchange-2013-exchange-2013-help.md).
+
+    2. Next, you must synchronize the recipients in each of the forests, so that the Global Address List (GAL) in each forest contains users from all the synchronized forests. See the "GAL Synchronization" section below for more details.
+
+    3. Finally, you must configure the Availability service so that users in one forest can view availability data for users in another forest. For more information, see [Configure the Availability service for cross-forest topologies](configure-the-availability-service-for-cross-forest-topologies-exchange-2013-help.md).
+
     For details about deploying Exchange 2013 in a cross-forest topology, see [Deploy Exchange 2013 in a cross-forest topology](deploy-exchange-2013-in-a-cross-forest-topology-exchange-2013-help.md).
 
-  - **Resource forest**   A resource forest topology is one with an Exchange forest and one or more user accounts forests. Here is an overview of what you need to do to deploy Exchange 2013 in a topology with a resource forest:
-    
-    1.  You must have a forest with Exchange installed. In the Exchange forest, you must have disabled the user accounts that have Exchange mailboxes.
-    
-    2.  You must have at least one forest that contains user accounts. This forest should *not* have Exchange installed.
-    
-    3.  Then, you must associate the disabled user accounts in the Exchange forest with the user accounts in the accounts forest.
-    
+  - **Resource forest**: A resource forest topology is one with an Exchange forest and one or more user accounts forests. Here is an overview of what you need to do to deploy Exchange 2013 in a topology with a resource forest:
+
+    1. You must have a forest with Exchange installed. In the Exchange forest, you must have disabled the user accounts that have Exchange mailboxes.
+
+    2. You must have at least one forest that contains user accounts. This forest should *not* have Exchange installed.
+
+    3. Then, you must associate the disabled user accounts in the Exchange forest with the user accounts in the accounts forest.
+
     For details about deploying Exchange 2013 in a resource forest topology, see [Deploy Exchange 2013 in an Exchange resource forest topology](deploy-exchange-2013-in-an-exchange-resource-forest-topology-exchange-2013-help.md).
 
 ## GAL synchronization
@@ -80,4 +81,3 @@ You can use the RBAC permissions model to configure and manage the permissions b
   - [Manage linked role groups](manage-linked-role-groups-exchange-2013-help.md)
 
   - [Create linked role groups that mirror built-in role groups](create-linked-role-groups-that-mirror-built-in-role-groups-exchange-2013-help.md)
-

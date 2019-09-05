@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: You can use a custom management scope to let specific people or groups use In-Place eDiscovery to search a subset of mailboxes in your Exchange Online organization. For example, you might want to let a discovery manager search only the mailboxes of users in a specific location or department. You can do this by creating a custom management scope. This custom management scope uses a recipient filter to control which mailboxes can be searched. Recipient filter scopes use filters to target specific recipients based on recipient type or other recipient properties.
 ms.topic: article
-author: markjjo
-ms.author: markjjo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 1543aefe-3709-402c-b9cd-c11fe898aad1
 ms.date: 7/11/2018
+ms.reviewer: 
 title: Create a custom management scope for In-Place eDiscovery searches
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -54,17 +55,17 @@ This procedure uses Exchange Online PowerShell commands to create a custom scope
 
 1. Run this command to get and save the properties of the Ottawa Users group to a variable, which is used in the next command.
 
-  ```
-  $DG = Get-DistributionGroup -Identity "Ottawa Users"
-  ```
+   ```
+   $DG = Get-DistributionGroup -Identity "Ottawa Users"
+   ```
 
 2. Run this command to create a custom management scope based on the membership of the Ottawa Users distribution group.
 
-  ```
-  New-ManagementScope "Ottawa Users eDiscovery Scope" -RecipientRestrictionFilter "MemberOfGroup -eq '$($DG.DistinguishedName)'"
-  ```
+   ```
+   New-ManagementScope "Ottawa Users eDiscovery Scope" -RecipientRestrictionFilter "MemberOfGroup -eq '$($DG.DistinguishedName)'"
+   ```
 
-    The distinguished name of the distribution group, which is contained in the variable **$DG**, is used to create the recipient filter for the new management scope.
+  The distinguished name of the distribution group, which is contained in the variable **$DG**, is used to create the recipient filter for the new management scope.
 
 ## Step 3: Create a management role group
 
@@ -86,22 +87,21 @@ New-RoleGroup "Ottawa Discovery Management" -Roles "Mailbox Search","Legal Hold"
 
 2. In **New role group**, provide the following information:
 
-  - **Name**: Provide a descriptive name for the new role group. For this example, you'd use Ottawa Discovery Management.
+   - **Name**: Provide a descriptive name for the new role group. For this example, you'd use Ottawa Discovery Management.
 
-  - **Write scope**: Select the custom management scope that you created in step 2. This scope will be applied to the new role group.
+   - **Write scope**: Select the custom management scope that you created in step 2. This scope will be applied to the new role group.
 
-  - **Roles**: Click **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif), and add the **Legal Hold** and **Mailbox Search** roles to the new role group.
+   - **Roles**: Click **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif), and add the **Legal Hold** and **Mailbox Search** roles to the new role group.
 
-  - **Members**: Click **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif), and select the users, security group, or role groups that you want add as members of the new role group. For this example, the members of the **Ottawa Users eDiscovery Managers** security group will be able to search only the mailboxes of users who are members of the **Ottawa Users** distribution group.
+   - **Members**: Click **Add** ![Add Icon](../../media/ITPro_EAC_AddIcon.gif), and select the users, security group, or role groups that you want add as members of the new role group. For this example, the members of the **Ottawa Users eDiscovery Managers** security group will be able to search only the mailboxes of users who are members of the **Ottawa Users** distribution group.
 
 3. Click **Save** to create the role group.
 
-    Here's an example of what the **New role group** window will look like when you're done.
+     Here's an example of what the **New role group** window will look like when you're done.
 
-    ![Create a new role group for a custom scope](../../media/TA_MRM_eDiscoveryCustomRoleGroup.gif)
+     ![Create a new role group for a custom scope](../../media/TA_MRM_eDiscoveryCustomRoleGroup.gif)
 
 ## (Optional) Step 4: Add discovery managers as members of the distribution group used to create the custom management scope
-<a name="step4"> </a>
 
 You only need to perform this step if you want to let a discovery manager preview eDiscovery search results.
 
@@ -114,7 +114,6 @@ Add-DistributionGroupMember -Identity "Ottawa Users" -Member "Ottawa Users eDisc
 You can also use the EAC to add members to a distribution group. For more information, see [Create and manage distribution groups](../../recipients-in-exchange-online/manage-distribution-groups/manage-distribution-groups.md).
 
 ## (Optional) Step 5: Add a discovery mailbox as a member of the distribution group used to create the custom management scope
-<a name="step5"> </a>
 
 You only need to perform this step if you want to let a discovery manager copy eDiscovery search results.
 
@@ -128,7 +127,6 @@ Add-DistributionGroupMember -Identity "Ottawa Users" -Member "Ottawa Discovery M
 > To open a discovery mailbox and view the search results, discovery managers must be assigned Full Access permissions for the discovery mailbox. For more information, see [Create a discovery mailbox](create-a-discovery-mailbox.md).
 
 ## How do you know this worked?
-<a name="step5"> </a>
 
 Here are some ways to verify if you've successfully implemented custom management scopes for eDiscovery. When you verify, be sure that the user running the eDiscovery searches is a member of the role group that uses the custom management scope.
 
@@ -139,7 +137,6 @@ Here are some ways to verify if you've successfully implemented custom managemen
 - Create an eDiscovery search, and search the mailboxes of users who are members of the distribution group that was used to create the custom management scope. In the same search, include the mailboxes of users who aren't members. The search should partially succeed. The mailboxes of members of the distribution group used to create the custom management scope should be successfully searched. The search of mailboxes for users who aren't members of the group should fail.
 
 ## More information
-<a name="moreinfo"> </a>
 
 - Because distribution groups are used in this scenario to scope eDiscovery searches and not for message delivery, consider the following when you create and configure distribution groups for eDiscovery:
 
@@ -151,14 +148,13 @@ Here are some ways to verify if you've successfully implemented custom managemen
 
     In the following example, the first command creates a distribution group with closed membership and moderation enabled. The second command hides the group from the shared address book.
 
-  ```
-  New-DistributionGroup -Name "Vancouver Users eDiscovery Scope" -Alias VancouverUserseDiscovery -MemberJoinRestriction closed -MemberDepartRestriction closed -ModerationEnabled $true
+    ```
+    New-DistributionGroup -Name "Vancouver Users eDiscovery Scope" -Alias VancouverUserseDiscovery -MemberJoinRestriction closed -MemberDepartRestriction closed -ModerationEnabled $true
+    ```
 
-  ```
-
-  ```
-  Set-DistributionGroup "Vancouver Users eDiscovery Scope" -HiddenFromAddressListsEnabled $true
-  ```
+    ```
+    Set-DistributionGroup "Vancouver Users eDiscovery Scope" -HiddenFromAddressListsEnabled $true
+    ```
 
     For more information about creating and managing distribution groups, see [Create and manage distribution groups](../../recipients-in-exchange-online/manage-distribution-groups/manage-distribution-groups.md).
 
@@ -200,11 +196,8 @@ Here are some ways to verify if you've successfully implemented custom managemen
   Add-RoleGroupMember "Vancouver Discovery Management" -Member paralegal@vancouver.contoso.com
   ```
 
-    You can also use the EAC to add members to a role group. For more information, see the "Add members to a role group" section in [Manage Role Group Members](https://technet.microsoft.com/library/c064729d-7cda-47fc-b105-acf4b300d430.aspx).
+  You can also use the EAC to add members to a role group. For more information, see the "Add members to a role group" section in [Manage Role Group Members](https://technet.microsoft.com/library/c064729d-7cda-47fc-b105-acf4b300d430.aspx).
 
 - In Exchange Online, a custom management scope used for eDiscovery can't be used to search inactive mailboxes. This is because an inactive mailbox can't be a member of a distribution group. For example, let's say that a user is a member of a distribution group that was used to create a custom management scope for eDiscovery. Then that user leaves the organization and their mailbox is made inactive (by placing a Litigation Hold or In-Place hold on the mailbox and then deleting the corresponding Office 365 user account). The result is that the user is removed as a member from any distribution group, including the group that was used to create the custom management scope used for eDiscovery. If a discovery manager (who is a member of the role group that's assigned the custom management scope) tries to search the inactive mailbox, the search will fail. To search inactive mailboxes, a discover manager must be a member of the Discovery Management role group or any role group that has permissions to search the entire organization.
 
-    For more information about inactive mailboxes, see [Inactive mailboxes in Exchange Online](https://technet.microsoft.com/library/2f2948c5-1c5a-4643-865c-b36e4ac1414b.aspx).
-
-
-
+  For more information about inactive mailboxes, see [Inactive mailboxes in Exchange Online](https://technet.microsoft.com/library/2f2948c5-1c5a-4643-865c-b36e4ac1414b.aspx).

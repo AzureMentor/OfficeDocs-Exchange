@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn about using mail flow rules (transport rules) to add disclaimers to email messages in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: e45e33c9-e53b-427c-ada5-70901bc399b8
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Organization-wide disclaimers, signatures, footers, or headers in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -29,11 +30,11 @@ Looking for procedures? See [Configure a Disclaimer or Other Email Header or Foo
 
 |**Type**|**Sample text added**|
 |:-----|:-----|
-|Legal - outgoing messages  <br/> |This email and any files transmitted with it are confidential and intended solely for the use of the individual or entity to whom they are addressed. If you have received this email in error, please notify the system manager.  <br/> |
-|Legal - incoming messages  <br/> |Employees are expressly required not to make defamatory statements and not to infringe or authorize any infringement of copyright or any other legal right by email communications. Employees who receive such an email must notify their supervisor immediately.  <br/> |
-|Notice that message was sent to an alias  <br/> |This message was sent to the Sales discussion group.  <br/> |
-|Signature - uses unique data for each employee  <br/> |Kathleen Mayer  <br/> Sales Department  <br/> Contoso  <br/> www.contoso.com  <br/> kathleen@contoso.com  <br/> cell: 111-222-1234  <br/> |
-|Advertisement  <br/> |Click here for March specials  <br/> |
+|Legal - outgoing messages|This email and any files transmitted with it are confidential and intended solely for the use of the individual or entity to whom they are addressed. If you have received this email in error, please notify the system manager.|
+|Legal - incoming messages|Employees are expressly required not to make defamatory statements and not to infringe or authorize any infringement of copyright or any other legal right by email communications. Employees who receive such an email must notify their supervisor immediately.|
+|Notice that message was sent to an alias|This message was sent to the Sales discussion group.|
+|Signature - uses unique data for each employee|Kathleen Mayer  <br/> Sales Department  <br/> Contoso  <br/> www.contoso.com  <br/> kathleen@contoso.com  <br/> cell: 111-222-1234|
+|Advertisement|Click here for March specials|
 
 ## Location for your disclaimer
 <a name="Examples"> </a>
@@ -51,10 +52,10 @@ Here's the formatting that you can use in your disclaimer text.
 
 |**Type of information**|**Description**|
 |:-----|:-----|
-|Plain text  <br/> |The maximum length is 5,000 characters, including any HTML tags and inline Cascading Style Sheets (CSS).  <br/> |
-|HTML and inline CSS  <br/> |You can use HTML and inline CSS styles to format the text. For example, use the `<HR>` tag to add a line before the disclaimer.  <br/> HTML is ignored if the disclaimer is added to a plain text message.  <br/> |
-|Images  <br/> |Use the `<IMG>` tag to point to an image available on the Internet. For example, `<IMG src="http://contoso.com/images/companylogo.gif" alt="Contoso logo">`.  <br/> By default, Outlook and Outlook on the web (formerly known as Outlook Web App) block external web content, including images. Users need to acknowledge and download the blocked external content. We recommend that you test disclaimers that have `IMG` tags to verify they display the way you want.  <br/> |
-|User information for personalized signatures  <br/> |You can use tokens to add unique attributes from each user's Active Directory account, such as `DisplayName`, `FirstName`, `LastName`, `PhoneNumber`, `Email`, `FaxNumber`, and `Department`. The syntax is to enclose the attribute name in two percent signs (for example, `%%DisplayName%%`).  <br/> For a complete list of attributes that can be used in disclaimers and personalized signatures, see the description for the `ADAttribute` property in [Mail flow rule conditions and exceptions (predicates) in Exchange Server](conditions-and-exceptions.md).  <br/> |
+|Plain text|The maximum length is 5,000 characters, including any HTML tags and inline Cascading Style Sheets (CSS).|
+|HTML and inline CSS|You can use HTML and inline CSS styles to format the text. For example, use the `<HR>` tag to add a line before the disclaimer.  <br/> HTML is ignored if the disclaimer is added to a plain text message.|
+|Images|Use the `<IMG>` tag to point to an image available on the Internet. For example, `<IMG src="http://contoso.com/images/companylogo.gif" alt="Contoso logo">`.  <br/> By default, Outlook and Outlook on the web (formerly known as Outlook Web App) block external web content, including images. Users need to acknowledge and download the blocked external content. We recommend that you test disclaimers that have `IMG` tags to verify they display the way you want.|
+|User information for personalized signatures|You can use tokens to add unique attributes from each user's Active Directory account, such as `DisplayName`, `FirstName`, `LastName`, `PhoneNumber`, `Email`, `FaxNumber`, and `Department`. The syntax is to enclose the attribute name in two percent signs (for example, `%%DisplayName%%`).  <br/> For a complete list of attributes that can be used in disclaimers and personalized signatures, see the description for the `ADAttribute` property in [Mail flow rule conditions and exceptions (predicates) in Exchange Server](conditions-and-exceptions.md).|
 
 Here's an example of an HTML disclaimer that includes a signature, an `IMG` tag, and embedded CSS.
 
@@ -100,11 +101,11 @@ Here are some examples of the conditions and exceptions you can use.
 
 |**Description**|**Conditions and exceptions in EAC**|**Conditions and exceptions in the Exchange Management Shell for the New-TransportRule or Set-TransportRule cmdlets**|
 |:-----|:-----|:-----|
-|The recipient is located outside your Exchange organization. An exception is configured so messages that already contain the disclaimer text "CONTOSO LEGAL NOTICE" don't have the disclaimer applied again.  <br/> |Condition: **The recipient is located** \> **Outside the organization** <br/> Exception: **The subject or body** \> **Subject or body matches these text patterns** \> CONTOSO LEGAL NOTICE <br/> | `-FromScope NotInOrganization -ExceptIf -SubjectOrBodyMatches "CONTOSO LEGAL NOTICE"` <br/> |
-|Incoming messages with executable attachments  <br/> |Condition 1: **The sender is located** \> **Outside the organization** <br/> Condition 2: **Any attachment** \> **has executable content** <br/> | `-FromScope NotInOrganization -AttachmentHasExecutableContent` <br/> |
-|Sender is in the marketing department  <br/> |Condition: **The sender** \> **is a member of this group** \> _group name_ <br/> | `-FromMemberOf "Marketing Team"` <br/> |
-|Every message that comes from an external sender to the sales discussion group  <br/> |Condition 1: **The sender is located** \> **Outside the organization** <br/> Condition 2: **The message** \> **To or Cc box contains this person** \> _group name_ <br/> | `-FromScope NotInOrganization -SentTo "Sales Discussion Group"` <br/> |
-|Prepend an advertisement to outgoing messages for one month  <br/> |Condition 1: **The recipient is located** \> **Outside the organization** <br/> Enter the dates in the **Activate this rule on the following date** and **Deactivate this rule on the following date** fields.  <br/> | `-ApplyHtmlDisclaimerLocation Prepend -SentToScope NotInOrganization -ActivationDate '03/1/2016' -ExpiryDate '03/31/2016'` <br/> |
+|The recipient is located outside your Exchange organization. An exception is configured so messages that already contain the disclaimer text "CONTOSO LEGAL NOTICE" don't have the disclaimer applied again.|Condition: **The recipient is located** \> **Outside the organization** <br/> Exception: **The subject or body** \> **Subject or body matches these text patterns** \> CONTOSO LEGAL NOTICE| `-FromScope NotInOrganization -ExceptIf -SubjectOrBodyMatches "CONTOSO LEGAL NOTICE"`|
+|Incoming messages with executable attachments|Condition 1: **The sender is located** \> **Outside the organization** <br/> Condition 2: **Any attachment** \> **has executable content**| `-FromScope NotInOrganization -AttachmentHasExecutableContent`|
+|Sender is in the marketing department|Condition: **The sender** \> **is a member of this group** \> _group name_| `-FromMemberOf "Marketing Team"`|
+|Every message that comes from an external sender to the sales discussion group|Condition 1: **The sender is located** \> **Outside the organization** <br/> Condition 2: **The message** \> **To or Cc box contains this person** \> _group name_| `-FromScope NotInOrganization -SentTo "Sales Discussion Group"`|
+|Prepend an advertisement to outgoing messages for one month|Condition 1: **The recipient is located** \> **Outside the organization** <br/> Enter the dates in the **Activate this rule on the following date** and **Deactivate this rule on the following date** fields.| `-ApplyHtmlDisclaimerLocation Prepend -SentToScope NotInOrganization -ActivationDate '03/1/2016' -ExpiryDate '03/31/2016'`|
 
 For a complete list of conditions and exceptions that you can use to target the disclaimer, see [Mail flow rule conditions and exceptions (predicates) in Exchange Server](conditions-and-exceptions.md).
 

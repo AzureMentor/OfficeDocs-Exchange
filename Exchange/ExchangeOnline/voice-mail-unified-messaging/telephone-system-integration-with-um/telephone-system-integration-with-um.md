@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: 'To successfully deploy Unified Messaging (UM), you must have a good understanding of basic telephony concepts and telephony components. After you understand telephony basics, you can integrate UM into an Exchange organization. Basic concepts and components include the following:'
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: b8790117-b040-4c84-9d34-005c75088e76
 ms.date: 3/5/2018
-title: Telephone system integration with UM
+ms.reviewer: 
+title: Telephone system integration with UM in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Telephone system integration with UM
+# Telephone system integration with UM in Exchange Online
 
 To successfully deploy Unified Messaging (UM), you must have a good understanding of basic telephony concepts and telephony components. After you understand telephony basics, you can integrate UM into an Exchange organization. Basic concepts and components include the following:
 
@@ -81,6 +82,3 @@ For more information about Microsoft Lync Server, see [Microsoft Lync Server](ht
 
 > [!CAUTION]
 > When you're integrating Unified Messaging and Lync Server in an on-premises or hybrid deployment, missed call notifications aren't available to users who have a mailbox located on Exchange 2007 or Exchange 2010 Mailbox servers. A missed call notification is generated when a user disconnects before the call is sent to a Mailbox server.
-
-
-

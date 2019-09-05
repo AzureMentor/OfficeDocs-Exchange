@@ -1,16 +1,18 @@
 ---
 localization_priority: Normal
 ms.topic: article
-author: maggsl
-ms.author: v-maleo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: adad2c0d-7452-4392-a95e-058c4678c05e
 ms.date: 
+ms.reviewer: 
+manager: serdars
 description: Admins can learn how to use a screen reader to manage anti-spam settings in the Exchange admin center (EAC) in Exchange Online
 title: Use a screen reader to manage anti-spam protection in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.custom: A11y_UseSR
 ms.service: exchange-online
 
@@ -18,7 +20,7 @@ ms.service: exchange-online
 
 # Use a screen reader to manage anti-spam protection in Exchange Online
 
-Exchange Online includes spam filtering capabilities that help protect your network from spam transferred through email. Administrators do not need to set up or maintain these filtering technologies, which are enabled by default. However, administrators can make company-specific filtering customizations in the Exchange admin center (EAC)—all using a screen reader and keyboard shortcuts.
+Exchange Online includes spam filtering capabilities that help protect your network from spam transferred through email. Administrators do not need to set up or maintain these filtering technologies, which are enabled by default. However, administrators can make company-specific filtering customizations in the Exchange admin center (EAC), all using a screen reader and keyboard shortcuts.
 
 > [!NOTE]
 > To learn more about protecting your organization from spam in Exchange Online, go to [Anti-Spam and Anti-Malware Protection](https://technet.microsoft.com/library/07d0f42d-2adc-48bf-b07f-189a560d365b.aspx).
@@ -53,7 +55,7 @@ Exchange Online uses proprietary anti-spam technology to help achieve high accur
 
 To complete the steps for spam filter customizations covered in this topic, move the focus to your spam filter settings in the EAC:
 
-1. In the EAC, to move the focus to the first link in the navigation pane— **Dashboard** —press Ctrl+F6 *twice*. You hear "Dashboard, Primary navigation link..
+1. In the EAC, to move the focus to the first link in the navigation pane (**Dashboard**) press Ctrl+F6 *twice*. You hear "Dashboard, Primary navigation link..
 
 2. In the navigation pane, to move the focus to **protection**, press the Tab key until you hear "Protection, Primary navigation link." Press Enter.
 
@@ -162,7 +164,7 @@ You can also use the proprietary anti-spam technology in Exchange Online to filt
 
 To complete the steps for outbound spam customizations covered in this topic, move the focus to your outbound spam settings in the EAC:
 
-- In the EAC, to move the focus to the first link in the navigation pane— **Dashboard** —press Ctrl+F6 *twice*. You hear "Dashboard, Primary navigation link..
+- In the EAC, to move the focus to the first link in the navigation pane (**Dashboard**) press Ctrl+F6 *twice*. You hear "Dashboard, Primary navigation link..
 
 - In the navigation pane, to move the focus to the **protection** link, press the Tab key until you hear "Protection, Primary navigation link." Press Enter.
 
@@ -210,4 +212,3 @@ To complete the steps for outbound spam customizations covered in this topic, mo
 3. To move the focus to one of your outbound spam filters, press the Up Arrow or Down arrow key until you hear the name of the filter whose details you want to hear.
 
 4. To move the focus to the details pane for the outbound spam filter, press the Tab key. You hear the details for the filter.
-

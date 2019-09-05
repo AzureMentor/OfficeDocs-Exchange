@@ -1,45 +1,28 @@
-﻿---
+---
 title: Troubleshooting Autodiscover Health Set
 TOCTitle: Troubleshooting Autodiscover Health Set
 ms:assetid: bc933621-df73-4d1d-bdef-825b98be8e09
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/ms.exch.scom.autodiscover(v=EXCHG.150)
 ms:contentKeyID: 49720860
-ms.date: 10/08/2015
+ms.date: 
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-<div data-xmlns="http://www.w3.org/1999/xhtml">
-
-<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="http://msdn.microsoft.com/en-us/">
-
-<div data-asp="http://msdn2.microsoft.com/asp">
-
 # Troubleshooting Autodiscover Health Set
 
-</div>
-
-<div id="mainSection">
-
-<div id="mainBody">
-
-<span> </span>
-
 _**Applies to:** Exchange Server 2013_
-
-_**Topic Last Modified:** 2015-03-09_
 
 The Autodiscover health set monitors the overall health of the Autodiscover service for clients.
 
 If you receive an alert that specifies that Autodiscover is unhealthy, this indicates an issue that may prevent users from accessing their mailbox by using the Autodiscover process.
 
-<span id="EXP"></span>
-
-<div>
-
 ## Explanation
 
 The Autodiscover service is monitored by using the following probes and monitors.
-
 
 <table>
 <colgroup>
@@ -66,118 +49,111 @@ The Autodiscover service is monitored by using the following probes and monitors
 </tbody>
 </table>
 
-
 For more information about probes and monitors, see [Server health and performance](https://technet.microsoft.com/en-us/library/jj150551\(v=exchg.150\)).
-
-</div>
-
-<div>
 
 ## Common issues
 
 This probe can fail for any of the following common reasons:
 
-  - The Autodiscover application pool (MSExchangeAutodiscoverAppPool) that is hosted on the monitored Client Access server (CAS) is not responding. Or, the Autodiscover application pool that is hosted on one or more mailbox servers is not responding.
+- The Autodiscover application pool (MSExchangeAutodiscoverAppPool) that is hosted on the monitored Client Access server (CAS) is not responding. Or, the Autodiscover application pool that is hosted on one or more mailbox servers is not responding.
 
-  - The CAS is experiencing networking issues and cannot connect to the Mailbox server or Domain Controller.
+- The CAS is experiencing networking issues and cannot connect to the Mailbox server or Domain Controller.
 
-  - The monitoring account credentials are incorrect.
+- The monitoring account credentials are incorrect.
 
-  - The Domain Controllers are not responding.
-
-</div>
-
-<div>
+- The Domain Controllers are not responding.
 
 ## User Action
 
-It’s possible that the service recovered after it issued the alert. Therefore, when you receive an alert that specifies that the health set is unhealthy, first verify that the issue still exists. If the issue does exist, perform the appropriate recovery actions outlined in the following sections.
-
-<span id="verify"></span>
-
-<div>
+It's possible that the service recovered after it issued the alert. Therefore, when you receive an alert that specifies that the health set is unhealthy, first verify that the issue still exists. If the issue does exist, perform the appropriate recovery actions outlined in the following sections.
 
 ## Verifying the issue still exists
 
-1.  Identify the health set name and the server name in the alert.
+1. Identify the health set name and the server name in the alert.
 
-2.  The message details provide information about the exact cause of the alert. In most cases, the message details provide sufficient troubleshooting information to identify the root cause. If the message details are not clear, do the following:
-    
-    1.  Open the Exchange Management Shell, and run the following command to retrieve the details of the health set that issued the alert:
-        
-            Get-ServerHealth <server name> | ?{$_.HealthSetName -eq "<health set name>"}
-        
-        For example, to retrieve the Autodiscover health set details about server1.contoso.com, run the following command:
-        
-            Get-ServerHealth server1.contoso.com | ?{$_.HealthSetName -eq "Autodiscover"}
-    
-    2.  Review the command output to determine which monitor reported the error. The **AlertValue** value for the monitor that issued the alert is `Unhealthy`.
-    
-    3.  Rerun the associated probe for the monitor that’s in an unhealthy state. Refer to the table in the Explanation section to find the associated probe. To do this, run the following command:
-        
-            Invoke-MonitoringProbe <health set name>\<probe name> -Server <server name> | Format-List
-        
-        For example, assume that the failing monitor is **AutodiscoverCtpMonitor**. The probe associated with that monitor is **AutodiscoverCtpProbe**. To run that probe on server1.contoso.com, run the following command:
-        
-            Invoke-MonitoringProbe Autodiscover\AutodiscoverCtpProbe -Server server1.contoso.com | Format-List
-    
-    4.  In the command output, review the **Result** value of the probe. If the value is **Succeeded**, the issue was a transient error, and it no longer exists. Otherwise, refer to the recovery steps outlined in the following sections.
+2. The message details provide information about the exact cause of the alert. In most cases, the message details provide sufficient troubleshooting information to identify the root cause. If the message details are not clear, do the following:
 
-</div>
+   1. Open the Exchange Management Shell, and run the following command to retrieve the details of the health set that issued the alert:
 
-<span id="TestMonitors"></span>
+      ```powershell
+      Get-ServerHealth <server name> | ?{$_.HealthSetName -eq "<health set name>"}
+      ```
 
-<div>
+      For example, to retrieve the Autodiscover health set details about server1.contoso.com, run the following command:
+
+      ```powershell
+      Get-ServerHealth server1.contoso.com | ?{$_.HealthSetName -eq "Autodiscover"}
+      ```
+
+   2. Review the command output to determine which monitor reported the error. The **AlertValue** value for the monitor that issued the alert is `Unhealthy`.
+
+   3. Rerun the associated probe for the monitor that's in an unhealthy state. Refer to the table in the Explanation section to find the associated probe. To do this, run the following command:
+
+      ```powershell
+      Invoke-MonitoringProbe <health set name>\<probe name> -Server <server name> | Format-List
+      ```
+
+     For example, assume that the failing monitor is **AutodiscoverCtpMonitor**. The probe associated with that monitor is **AutodiscoverCtpProbe**. To run that probe on server1.contoso.com, run the following command:
+
+     ```powershell
+     Invoke-MonitoringProbe Autodiscover\AutodiscoverCtpProbe -Server server1.contoso.com | Format-List
+     ```
+
+   4. In the command output, review the **Result** value of the probe. If the value is **Succeeded**, the issue was a transient error, and it no longer exists. Otherwise, refer to the recovery steps outlined in the following sections.
 
 ## AutodiscoverCtpMonitor Recovery Actions
 
 When you receive an alert from a health set, the email message contains the following information:
 
-  - Name of the server that sent the alert
+- Name of the server that sent the alert
 
-  - Name of the Mailbox server that the probe was monitoring
+- Name of the Mailbox server that the probe was monitoring
 
-  - Time and date when the alert occurred
+- Time and date when the alert occurred
 
-  - Authentication mechanism used, and credential information
+- Authentication mechanism used, and credential information
 
-  - Full exception trace of the last error, including diagnostic data and specific HTTP header information
+- Full exception trace of the last error, including diagnostic data and specific HTTP header information
 
 You can use the information in the full exception trace to help troubleshoot the issue. The exception generated by the probe contains a Failure Reason that describes why the probe failed. For example, the Failure Reason might be one of the following:
 
-  - **X-FEServer**   Indicates on which CAS the probe was run
+- **X-FEServer**: Indicates on which CAS the probe was run
 
-  - **X-CalculatedBETarget**   Indicates the Mailbox server to which the request is routed
+- **X-CalculatedBETarget**: Indicates the Mailbox server to which the request is routed
 
-  - **X-DiagInfo**   Indicates the Mailbox server that received the request
+- **X-DiagInfo**: Indicates the Mailbox server that received the request
 
 To troubleshoot this issue, follow these steps:
 
-1.  Review the protocol logs on the CA and Mailbox servers. By default, Protocol logs on the CAS are located in the ***\<exchange server installation directory\>*\\Logging\\HttpProxy\\Autodiscover** folder. By default, Protocol log files on the Mailbox server are located in the ***\<exchange server installation directory\>*\\Logging\\Autodiscover** folder.
+1. Review the protocol logs on the CA and Mailbox servers. By default, Protocol logs on the CAS are located in the ***\<exchange server installation directory\>*\\Logging\\HttpProxy\\Autodiscover** folder. By default, Protocol log files on the Mailbox server are located in the ***\<exchange server installation directory\>*\\Logging\\Autodiscover** folder.
 
-2.  Create a test user account, and then log on to the CAS by using the test user account. For example, log on by using: https://*\<servername\>*/autodiscover/autodiscover.xml.
-    
-    If test user account name passes, an issue may affect the mailbox server that’s hosting the monitored mailbox.
-    
-    Try to repeat the previous steps by using a test account on the Mailbox server. If this attempt fails, try to perform the test against a different CAS to verify that the problem is occurring on a specific CAS and not on the Mailbox server.
+2. Create a test user account, and then log on to the CAS by using the test user account. For example, log on by using: https://*\<servername\>*/autodiscover/autodiscover.xml.
 
-3.  Verify the network connectivity between the CA and Mailbox servers. Use ping.exe to verify that each server is responding.
+   If test user account name passes, an issue may affect the mailbox server that's hosting the monitored mailbox.
 
-4.  Check for alerts on the Autodiscover.Proxy Health Set that may indicate an issue that affects a specific Mailbox server. For more information, see [Troubleshooting Autodiscover.Proxy Health Set](troubleshooting-autodiscover-proxy-health-set.md).
+   Try to repeat the previous steps by using a test account on the Mailbox server. If this attempt fails, try to perform the test against a different CAS to verify that the problem is occurring on a specific CAS and not on the Mailbox server.
 
-5.  Check for alerts on the Autodiscover.Protocol Health Set that may indicate a problem that affects specific Mailbox servers. For more information, see [Troubleshooting Autodiscover.Protocol Health Set](troubleshooting-autodiscover-protocol-health-set.md).
+3. Verify the network connectivity between the CA and Mailbox servers. Use ping.exe to verify that each server is responding.
 
-6.  Start IIS Manager, and then connect to the server that is reporting the issue. Verify that the **MSExchangeAutodiscoverAppPool** application pool is running on the CA and Mailbox servers.
+4. Check for alerts on the Autodiscover.Proxy Health Set that may indicate an issue that affects a specific Mailbox server. For more information, see [Troubleshooting Autodiscover.Proxy Health Set](troubleshooting-autodiscover-proxy-health-set.md).
 
-7.  In IIS Manager, click **Application Pools**, and then recycle the **MSExchangeAutodiscoverAppPool** application pool by running the following command from the Shell:
-    
-        %SystemRoot%\System32\inetsrv\Appcmd recycle MSExchangeAutodiscoverAppPool
+5. Check for alerts on the Autodiscover.Protocol Health Set that may indicate a problem that affects specific Mailbox servers. For more information, see [Troubleshooting Autodiscover.Protocol Health Set](troubleshooting-autodiscover-protocol-health-set.md).
 
-8.  Rerun the associated probe as shown in step 2c in the Verifying the issue still exists section.
+6. Start IIS Manager, and then connect to the server that is reporting the issue. Verify that the **MSExchangeAutodiscoverAppPool** application pool is running on the CA and Mailbox servers.
 
-9.  If the issue still exists, recycle the IIS service by using the IISReset utility or by running the following command:
-    
-        Iisreset /noforce
+7. In IIS Manager, click **Application Pools**, and then recycle the **MSExchangeAutodiscoverAppPool** application pool by running the following command from the Shell:
+
+   ```powershell
+   %SystemRoot%\System32\inetsrv\Appcmd recycle MSExchangeAutodiscoverAppPool
+   ```
+
+8. Rerun the associated probe as shown in step 2c in the Verifying the issue still exists section.
+
+9. If the issue still exists, recycle the IIS service by using the IISReset utility or by running the following command:
+
+   ```powershell
+   Iisreset /noforce
+   ```
 
 10. Rerun the associated probe as shown in step 2c in the Verifying the issue still exists section.
 
@@ -187,27 +163,8 @@ To troubleshoot this issue, follow these steps:
 
 13. If the probe continues to fail, you may need assistance to resolve this issue. Contact a Microsoft Support professional to resolve this issue. To contact a Microsoft Support professional, visit the [Exchange Server Solutions Center](http://go.microsoft.com/fwlink/p/?linkid=180809). In the navigation pane, click **Support options and resources** and use one of the options listed under **Get technical support** to contact a Microsoft Support professional. Because your organization may have a specific procedure for directly contacting Microsoft Product Support Services, be sure to review your organization's guidelines first.
 
-</div>
-
-</div>
-
-<div>
-
 ## For More Information
 
 [What's new in Exchange 2013](https://technet.microsoft.com/en-us/library/jj150540\(v=exchg.150\))
 
 [Exchange 2013 cmdlets](https://technet.microsoft.com/en-us/library/bb124413\(v=exchg.150\))
-
-</div>
-
-</div>
-
-<span> </span>
-
-</div>
-
-</div>
-
-</div>
-

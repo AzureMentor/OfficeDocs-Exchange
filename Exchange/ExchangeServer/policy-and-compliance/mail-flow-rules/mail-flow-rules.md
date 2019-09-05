@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: Learn about mail flow rules (transport rules) and their components in Exchange 2016 and Exchange 2019.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: c3d2031c-fb7b-4866-8ae1-32928d0138ef
 ms.date: 7/13/2018
+ms.reviewer: 
 title: Mail flow rules in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -33,7 +34,6 @@ For steps to implement specific messaging policies, see the following topics:
 - [Using mail flow rules to inspect message attachments](http://technet.microsoft.com/library/c0de687e-e33c-4e8a-b253-771494678795.aspx)
 
 ## Mail flow rule components
-<a name="Components"> </a>
 
 A rule is made of conditions, exceptions, actions, and properties:
 
@@ -47,10 +47,9 @@ A rule is made of conditions, exceptions, actions, and properties:
 
     For a complete list of mail flow rule actions available, see [Mail flow rule actions in Exchange Server](actions.md).
 
-- **Properties**: Specify other rules settings that aren't conditions, exceptions or actions. For example, when the rule should be applied, whether to enforce or test the rule, and the time period when the rule is active. For more information, see the [Mail flow rule properties](mail-flow-rules.md#Properties) section in this topic.
+- **Properties**: Specify other rules settings that aren't conditions, exceptions or actions. For example, when the rule should be applied, whether to enforce or test the rule, and the time period when the rule is active. For more information, see the [Mail flow rule properties](#mail-flow-rule-properties) section in this topic.
 
 ### Multiple conditions, exceptions, and actions
-<a name="Multiple"> </a>
 
 The following table shows how multiple conditions, condition values, exceptions, and actions are handled in a rule.
 
@@ -62,23 +61,21 @@ The following table shows how multiple conditions, condition values, exceptions,
 |Multiple actions|AND|Messages that match a rule's conditions get all the actions that are specified in the rule. For example, if the actions **Prepend the subject of the message with** and **Add recipients to the Bcc box** are selected, both actions are applied to the message. <br/> Keep in mind that some actions, such as the **Delete the message without notifying anyone** action, prevent subsequent rules from being applied to a message. Other actions such as **Forward the message** do not allow additional actions. <br/> You can also set an action on a rule so that when that rule is applied, subsequent rules are not applied to the message.|
 
 ### Mail flow rule properties
-<a name="Properties"> </a>
 
 The following table describes the rule properties that are available in mail flow rules.
 
 |**Property name in the EAC**|**Parameter name in the Exchange Management Shell**|**Description**|
 |:-----|:-----|:-----|
-|**Priority**|_Priority_|Indicates the order that the rules are applied to messages. The default priority is based on when the rule is created (older rules have a higher priority than newer rules), and higher priority rules are processed before lower priority rules. <br/> You change the rule priority in the EAC by moving the rule up or down in the list of rules. In the Exchange Management Shell, you set the priority number (0 is the highest priority). <br/> For example, if you have one rule to reject messages that include a credit card number, and another one requiring approval, you'll want the reject rule to happen first, and stop applying other rules. <br/> For more information, see [Set the priority of mail flow rules](mail-flow-rule-procedures.md#priority).|
+|**Priority**|_Priority_|Indicates the order that the rules are applied to messages. The default priority is based on when the rule is created (older rules have a higher priority than newer rules), and higher priority rules are processed before lower priority rules. <br/> You change the rule priority in the EAC by moving the rule up or down in the list of rules. In the Exchange Management Shell, you set the priority number (0 is the highest priority). <br/> For example, if you have one rule to reject messages that include a credit card number, and another one requiring approval, you'll want the reject rule to happen first, and stop applying other rules. <br/> For more information, see [Set the priority of mail flow rules](mail-flow-rule-procedures.md#set-the-priority-of-mail-flow-rules).|
 |**Mode**| _Mode_|You can specify whether you want the rule to start processing messages immediately, or whether you want to test rules without affecting the delivery of the message (with or without Data Loss Prevention or DLP Policy Tips). <br/> Policy Tips are similar to MailTips, and can be configured to present a brief note in Outlook or Outlook on the web that provides information about possible policy violations to the person that's creating the message. For more information, see [Policy Tips](http://technet.microsoft.com/library/4266b83c-dd8a-4b3d-99ff-402e68fc810c.aspx).For more information about the modes, see [Test a mail flow rule](http://technet.microsoft.com/library/3d949e2a-8ba4-4261-8cfb-736fd2446ea1.aspx).|
 |**Activate this rule on the following date** <br/> **Deactivate this rule on the following date**| _ActivationDate_ <br/> _ExpiryDate_|Specifies the date range when the rule is active.|
-|**On** check box selected or not selected|New rules: _Enabled_ parameter on the **New-TransportRule** cmdlet. <br/> Existing rules: Use the **Enable-TransportRule** or **Disable-TransportRule** cmdlets. <br/> The value is displayed in the **State** property of the rule.|You can create a disabled rule, and enable it when you're ready to test it. Or, you can disable a rule without deleting it to preserve the settings. For instructions, see [Enable or disable mail flow rules](mail-flow-rule-procedures.md#enable).|
+|**On** check box selected or not selected|New rules: _Enabled_ parameter on the **New-TransportRule** cmdlet. <br/> Existing rules: Use the **Enable-TransportRule** or **Disable-TransportRule** cmdlets. <br/> The value is displayed in the **State** property of the rule.|You can create a disabled rule, and enable it when you're ready to test it. Or, you can disable a rule without deleting it to preserve the settings. For instructions, see [Enable or disable mail flow rules](mail-flow-rule-procedures.md#enable-or-disable-mail-flow-rules).|
 |**Defer the message if rule processing doesn't complete**| _RuleErrorAction_|You can specify how the message should be handled if the rule processing can't be completed. By default, the rule will be ignored, but you can choose to resubmit the message for processing.|
 |**Match sender address in message**| _SenderAddressLocation_|If the rule uses conditions or exceptions that examine the sender's email address, you can look for the value in the message header, the message envelope, or both. For more information, see [Senders](conditions-and-exceptions.md#senders).|
 |**Stop processing more rules**| _SenderAddressLocation_|This is an action for the rule, but it looks like a property in the EAC. You can choose to stop applying additional rules to a message after a rule processes a message.|
 |**Comments**| _Comments_|**Comments** You can enter descriptive comments about the rule.|
 
 ## How mail flow rules are applied
-<a name="HowApplied"> </a>
 
 Mail flow rules are applied by a transport agent on Mailbox servers and Edge Transport servers. On Mailbox servers, rules are applied by the Transport Rule agent. On Edge Transport servers, rules are applied by Edge Rule agent. Although similar in functionality, the agents have some differences. The important differences are summarized in the following table:
 
@@ -90,7 +87,6 @@ Mail flow rules are applied by a transport agent on Mailbox servers and Edge Tra
 For more information about transport agents, see [Transport Agents](http://technet.microsoft.com/library/e7389d63-3172-40d5-bf53-0d7cd7e78340.aspx).
 
 ### Differences in processing based on message type
-<a name="MessageType"> </a>
 
 There are several types of messages that flow through an organization. The following table shows which messages types can be processed by mail flow rules.
 
@@ -107,7 +103,6 @@ There are several types of messages that flow through an organization. The follo
 |**Read reports**: Reports that are generated in response to read receipt requests by senders. Read reports have a message class of `IPM.Note*.MdnRead` or `IPM.Note*.MdnNotRead`.|Yes|
 
 ### Rule storage and replication
-<a name="Replication"> </a>
 
 Mail flow rules that you create and configure on Mailbox servers are stored in Active Directory, and they're read and applied by the Transport service on all Mailbox servers in the organization. When you create, modify, or remove a mail flow rule, the change is replicated between the domain controllers in your organization. This allows Exchange to provide a consistent set of mail flow rules across the organization.
 
@@ -117,7 +112,7 @@ Mail flow rules that you create and configure on Mailbox servers are stored in A
 
 - Each Mailbox server caches expanded distribution groups to avoid repeated Active Directory queries to determine a group's membership. By default, entries in the expanded groups cache expire every four hours. Therefore, changes to the group's membership aren't detected by mail flow rules until the expanded groups cache is updated. To force an immediate update of the cache on a Mailbox server, restart the Microsoft Exchange Transport service. You need to restart the service on each Mailbox server where you want to forcibly update the cache.
 
-Mail flow rules that you create and configure on Edge Transport servers are stored in the local instance of AD LDS on the server. No automated replication of mail flow rules occurs on Edge Transport servers. Rules on the Edge Transport server apply only to messages that flow through the local server. If you need to apply the same set of mail flow rules on multiple Edge Transport servers, you can clone the Edge Transport server configuration, or export and import the mail flow rules. For more information, see [Edge Transport Server Cloned Configuration](http://technet.microsoft.com/library/683a6b8a-59bf-43ed-96c8-504945c2f665.aspx) and [Import or export mail flow rule collections](mail-flow-rule-procedures.md#import).
+Mail flow rules that you create and configure on Edge Transport servers are stored in the local instance of AD LDS on the server. No automated replication of mail flow rules occurs on Edge Transport servers. Rules on the Edge Transport server apply only to messages that flow through the local server. If you need to apply the same set of mail flow rules on multiple Edge Transport servers, you can clone the Edge Transport server configuration, or export and import the mail flow rules. For more information, see [Edge Transport Server Cloned Configuration](http://technet.microsoft.com/library/683a6b8a-59bf-43ed-96c8-504945c2f665.aspx) and [Import or export mail flow rule collections](mail-flow-rule-procedures.md#import-or-export-mail-flow-rule-collections).
 
 Whenever the Transport service on a Mailbox server or Edge Transport server detects a modified mail flow rule, an event is logged in the Application log in the Event Viewer (Event ID 4002 on Mailbox servers, and Event ID 16028 on Edge Transport servers).
 
@@ -127,22 +122,19 @@ There are two mixed environment scenarios that are common:
 
 - **Hybrid deployments where part of your organization resides in Office 365**
 
-    In a hybrid environment, there's no replication of rules between your on-premises Exchange organization and Office 365. Therefore, when you create a rule in Exchange, you need to create a matching rule in Office 365. Rules you create in Office 365 are stored in the cloud, whereas the rules you create in your on-premises organization are stored locally in Active Directory. When you manage rules in a hybrid environment, you need to keep the two sets of rules synchronized by making the change in both places, or making the change in one environment and then exporting the rules and importing them in the other environment.
+  In a hybrid environment, there's no replication of rules between your on-premises Exchange organization and Office 365. Therefore, when you create a rule in Exchange, you need to create a matching rule in Office 365. Rules you create in Office 365 are stored in the cloud, whereas the rules you create in your on-premises organization are stored locally in Active Directory. When you manage rules in a hybrid environment, you need to keep the two sets of rules synchronized by making the change in both places, or making the change in one environment and then exporting the rules and importing them in the other environment.
 
-    **Important**: Even though there is a substantial overlap between the conditions and actions that are available in Office 365 and Exchange Server, there are differences. If you plan on creating the same rule in both locations, make sure that all conditions and actions you plan to use are available. To see the list of available conditions and actions that are available in Office 365, see the following topics:
+  **Important**: Even though there is a substantial overlap between the conditions and actions that are available in Office 365 and Exchange Server, there are differences. If you plan on creating the same rule in both locations, make sure that all conditions and actions you plan to use are available. To see the list of available conditions and actions that are available in Office 365, see the following topics:
 
-    [Mail flow rule conditions and exceptions (predicates) in Exchange Online](http://technet.microsoft.com/library/7235e5ed-f7f4-41b1-b1a0-47bb96223a2f.aspx)
+  [Mail flow rule conditions and exceptions (predicates) in Exchange Online](http://technet.microsoft.com/library/7235e5ed-f7f4-41b1-b1a0-47bb96223a2f.aspx)
 
-    [Mail flow rule actions in Exchange Online](http://technet.microsoft.com/library/a5dfe768-fe26-4290-a801-84b3499f1bc4.aspx)
+  [Mail flow rule actions in Exchange Online](http://technet.microsoft.com/library/a5dfe768-fe26-4290-a801-84b3499f1bc4.aspx)
 
 - **Coexistence with Exchange 2010**
 
-    > [!NOTE]
-    > This section applies to Exchange 2016 only.
+  > [!NOTE]
+  > This section applies to Exchange 2016 only.
 
-    When you coexist with Exchange 2010, all mail flow rules are stored in Active Directory and replicated across your organization regardless of the Exchange Server version you used to create the rules. However, all mail flow rules are associated with the Exchange server version that was used to create them and are stored in a version-specific container in Active Directory. When you first deploy Exchange 2016 in your organization, any existing rules are imported to Exchange 2016 as part of the setup process. However, any changes afterwards would need to be made with both versions. For example, if you change an existing rule in Exchange 2016 (Exchange Management Shell or the EAC), you need to make the same change in Exchange 2010 (Exchange Management Shell or the Exchange Management Console).
+  When you coexist with Exchange 2010, all mail flow rules are stored in Active Directory and replicated across your organization regardless of the Exchange Server version you used to create the rules. However, all mail flow rules are associated with the Exchange server version that was used to create them and are stored in a version-specific container in Active Directory. When you first deploy Exchange 2016 in your organization, any existing rules are imported to Exchange 2016 as part of the setup process. However, any changes afterwards would need to be made with both versions. For example, if you change an existing rule in Exchange 2016 (Exchange Management Shell or the EAC), you need to make the same change in Exchange 2010 (Exchange Management Shell or the Exchange Management Console).
 
-    Exchange 2010 can't process rules that have the **Version** or **RuleVersion** value 15. _n_. _n_. _n_. To be sure all your rules can be processed, only use rules that have the value 14. _n_. _n_. _n_.
-
-
-
+  Exchange 2010 can't process rules that have the **Version** or **RuleVersion** value 15._n_._n_._n_. To be sure all your rules can be processed, only use rules that have the value 14._n_._n_._n_.

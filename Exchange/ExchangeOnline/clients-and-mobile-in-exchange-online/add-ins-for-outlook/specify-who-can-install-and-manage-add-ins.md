@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 7ee4302d-b8bb-40a0-9810-10d3a0271bcb
 ms.date: 
+ms.reviewer: 
 title: Specify the administrators and users who can install and manage add-ins for Outlook
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -51,7 +52,7 @@ For information about add-ins, see [Add-ins for Outlook](add-ins-for-outlook.md)
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Assign administrators the permissions required to install and manage add-ins for your organization
 
@@ -82,4 +83,3 @@ Get-ManagementRoleAssignment -Role "Org Marketplace Apps" -GetEffectiveUsers
 In the results, review the entries in the **Effective Users** column.
 
 For detailed syntax and parameter information, see [Get-ManagementRoleAssignment](https://technet.microsoft.com/library/a3a6ee46-061b-444a-8639-43a416309445.aspx).
-

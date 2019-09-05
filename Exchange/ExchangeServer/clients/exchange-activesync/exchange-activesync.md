@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 5fafaff3-eb37-4fdb-95f0-e56c45ea5884
 ms.date: 7/5/2018
+ms.reviewer: 
 title: Exchange ActiveSync
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -115,6 +116,3 @@ In addition to the ability to configure security options for communications betw
   - **Require encryption on device**: Select this check box to require encryption on the mobile device. This increases security by encrypting all information on the mobile device.
 
   - **Require encryption on storage cards**: Select this check box to require encryption on the mobile device's removable storage card. This increases security by encrypting all information on the storage cards for the mobile device.
-
-
-

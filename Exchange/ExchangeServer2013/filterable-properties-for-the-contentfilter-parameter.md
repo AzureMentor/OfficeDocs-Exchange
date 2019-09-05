@@ -1,16 +1,18 @@
-﻿---
+---
 title: Filterable properties for the -ContentFilter parameter
 TOCTitle: Filterable properties for the -ContentFilter parameter
 ms:assetid: cf504a59-1938-489c-bb48-b27b2ac3234e
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Ff601762(v=EXCHG.150)
 ms:contentKeyID: 49895015
 ms.date: 02/22/2018
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Filterable properties for the -ContentFilter parameter
-
- 
 
 _**Applies to:** Exchange Server 2013_
 
@@ -21,7 +23,6 @@ This topic lists the filterable properties for the *ContentFilter* parameter. Th
 Many of the properties for the *ContentFilter* parameter accept wildcard characters. If you use a wildcard character, use the **-like** operator instead of the **-eq** operator. The **-like** operator is used to find pattern matches in rich types, such as strings, whereas the **-eq** operator is used to find an exact match.
 
 The following table contains a list of the filterable properties for the *ContentFilter* parameter. This table lists the name of the property, a description, the acceptable values, and a syntax example. For more information about OPATH filters, see [Filters in recipient Shell commands](https://technet.microsoft.com/en-us/library/bb124268\(v=exchg.150\)).
-
 
 <table>
 <colgroup>
@@ -160,8 +161,6 @@ The following table contains a list of the filterable properties for the *Conten
 -ContentFilter {Importance -eq 'high'}
 ```
 
-
-
 ```powershell
 -ContentFilter {Importance -eq 2}
 ```
@@ -215,8 +214,6 @@ The following table contains a list of the filterable properties for the *Conten
 -ContentFilter {MessageKind -eq 'Calendar'}
 ```
 
-
-
 ```powershell
 -ContentFilter {MessageKind -ne 'Email'}
 ```
@@ -232,8 +229,6 @@ The following table contains a list of the filterable properties for the *Conten
 ```powershell
 -ContentFilter {MessageLocale -ne 'en-US'}
 ```
-
-
 
 ```powershell
 -ContentFilter {MessageLocale -eq 'tr-TR'}
@@ -281,8 +276,6 @@ The following table contains a list of the filterable properties for the *Conten
 -ContentFilter {Received -lt '01/01/2013 9:00'}
 ```
 
-
-
 ```powershell
 -ContentFilter {(Received -lt '01/01/2013') -and (Received -gt '01/01/2012')}
 ```
@@ -314,8 +307,6 @@ ContentFilter {Sender -eq 'tony'}
 ```powershell
 -ContentFilter {Sent -lt '01/01/2013 9:00'}
 ```
-
-
 
 ```powershell
 -ContentFilter {(Sent -lt '01/01/2013') -and (Sent -gt '01/01/2012')}
@@ -368,4 +359,3 @@ ContentFilter {Sender -eq 'tony'}
 </tr>
 </tbody>
 </table>
-

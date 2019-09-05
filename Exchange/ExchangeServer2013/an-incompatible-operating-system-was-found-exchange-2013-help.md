@@ -1,30 +1,27 @@
-﻿---
+---
 title: 'An incompatible operating system was found: Exchange 2013 Help'
 TOCTitle: An incompatible operating system was found
 ms:assetid: a3a948d9-4991-4088-9013-0a4c944295e4
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/ms.exch.setupreadiness.validosversion(v=EXCHG.150)
 ms:contentKeyID: 49090988
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # An incompatible operating system was found
 
- 
+_**Applies to:** Exchange Server 2013_
 
-_**Applies to:** Exchange Server_
-
-
-Microsoft Exchange Server 2013 Setup can’t continue because it detected an incompatible operating system. You must install a compatible operating system on this computer before you install Exchange 2013. The following table shows the operating systems that are compatible with Exchange 2013.
-
+Microsoft Exchange Server 2013 Setup can't continue because it detected an incompatible operating system. You must install a compatible operating system on this computer before you install Exchange 2013. The following table shows the operating systems that are compatible with Exchange 2013.
 
 > [!IMPORTANT]
-> Exchange 2013 doesn’t support the Server Core installation option of Windows Server 2008 R2, Windows Server 2012, or Windows Server 2012 R2.
-
-
+> Exchange 2013 doesn't support the Server Core installation option of Windows Server 2008 R2, Windows Server 2012, or Windows Server 2012 R2.
 
 **Supported operating systems for Exchange 2013**
-
 
 <table>
 <colgroup>
@@ -66,14 +63,12 @@ Microsoft Exchange Server 2013 Setup can’t continue because it detected an inc
 </tbody>
 </table>
 
-
 1   Windows Server 2012 R2 is supported only with Exchange 2013 SP1 or later.
 
 2   Windows 8.1 is supported only with Exchange 2013 SP1 or later.
 
 For more information, see [Exchange 2013 system requirements](exchange-2013-system-requirements-exchange-2013-help.md).
 
-Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkid=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkid=285351).
+Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612).
 
-Did you find what you’re looking for? Please take a minute to [send us feedback](mailto:exsetuphelpfeedback@microsoft.com?subject=exchange%202013%20setup%20help%20feedback) about the information you were hoping to find.
-
+Did you find what you're looking for? Please take a minute to [send us feedback](mailto:exsetuphelpfeedback@microsoft.com?subject=exchange%202013%20setup%20help%20feedback) about the information you were hoping to find.

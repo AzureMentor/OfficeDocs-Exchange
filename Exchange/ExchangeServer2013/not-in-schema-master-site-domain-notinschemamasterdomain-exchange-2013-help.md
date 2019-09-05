@@ -1,23 +1,24 @@
-﻿---
+---
 title: 'Not in schema master site/domain_NotInSchemaMasterDomain: Exchange 2013 Help'
 TOCTitle: Not in schema master site/domain_NotInSchemaMasterDomain
 ms:assetid: 5e44eb33-4c30-4c3d-ba68-5c30bef1731f
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/ms.exch.setupreadiness.notinschemamasterdomain(v=EXCHG.150)
 ms:contentKeyID: 46628957
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Not in schema master site/domain\_NotInSchemaMasterDomain
 
- 
-
-_**Applies to:** Exchange Server_
-
+_**Applies to:** Exchange Server 2013_
 
 The content in this topic hasn't been updated for Microsoft Exchange Server 2013. While it hasn't been updated yet, it may still be applicable to Exchange 2013. If you still need help, check out the community resources below.
 
-Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkid=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkid=285351).
+Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612).
 
 Microsoft® Exchange Server 2007 setup cannot continue because the computer that is running setup is not in the same Active Directory® directory service site or domain as the server that is assigned the domain schema master role, also known as flexible single master operations or FSMO.
 
@@ -33,29 +34,26 @@ You can use the Schema Master tool to identify the role. However, the Schmmgmt.d
 
 **To view the current schema master**
 
-1.  At a command prompt, type **regsvr32 schmmgmt.dll**
-    
+1. At a command prompt, type **regsvr32 schmmgmt.dll**
 
     > [!NOTE]
     > <STRONG>RegSvr32</STRONG> has been successfully registered when the following dialog box is displayed:<BR>DllRegisterServer in schmmgmt.dll succeeded.
 
+2. To open a new management console, click **Start**, click **Run**, and then type **mmc**.
 
+3. On the Console menu, click **Add/Remove Snap-in**.
 
-2.  To open a new management console, click **Start**, click **Run**, and then type **mmc**.
+4. Click **Add** to open the **Add Standalone Snap-in** dialog box.
 
-3.  On the Console menu, click **Add/Remove Snap-in**.
+5. Select **Active Directory Schema**, and then click **Add**.
 
-4.  Click **Add** to open the **Add Standalone Snap-in** dialog box.
+6. "Active Directory Schema" is displayed in the Add/Remove snap-in. Click **Close**, and then click **OK** to return to the console.
 
-5.  Select **Active Directory Schema**, and then click **Add**.
+7. Select **Active Directory Schema** so that the **Classes** and **Attributes** sections are displayed on the right side.
 
-6.  "Active Directory Schema" is displayed in the Add/Remove snap-in. Click **Close**, and then click **OK** to return to the console.
+8. Right-click **Active Directory Schema** and then click **Operations Master**.
 
-7.  Select **Active Directory Schema** so that the **Classes** and **Attributes** sections are displayed on the right side.
-
-8.  Right-click **Active Directory Schema** and then click **Operations Master**.
-
-9.  The current schema master is displayed
+9. The current schema master is displayed
 
 After you identify the current schema master, determine which subnet the schema master is located in. Then, use one of the following methods to install Exchange:
 
@@ -65,25 +63,24 @@ After you identify the current schema master, determine which subnet the schema 
 
 **To force site membership**
 
-1.  On the server on which you want to install Exchange, start Registry Editor. To do this, click **Start**, click **Run**, type **regedit**, and then click **OK**.
+1. On the server on which you want to install Exchange, start Registry Editor. To do this, click **Start**, click **Run**, type **regedit**, and then click **OK**.
 
-2.  Locate the following registry subkey:
-    
+2. Locate the following registry subkey:
+
     **HKEY\_LOCAL\_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters**
 
-3.  Create the following new **String** value:
-    
+3. Create the following new **String** value:
+
     Value name: **SiteName**
-    
+
     Value type: **REG\_SZ**
-    
+
     Value data: **\<site\_that\_contains\_the\_schema\_master\>**
 
-4.  Exit Registry Editor, and then restart the Netlogon service. This action forces the Exchange server to participate in the site that you specified.
+4. Exit Registry Editor, and then restart the Netlogon service. This action forces the Exchange server to participate in the site that you specified.
 
-5.  Install Exchange.
+5. Install Exchange.
 
-6.  Remove the registry entry that you added in step 3.
+6. Remove the registry entry that you added in step 3.
 
-7.  Restart the Netlogon service. This action returns Exchange to the original site.
-
+7. Restart the Netlogon service. This action returns Exchange to the original site.

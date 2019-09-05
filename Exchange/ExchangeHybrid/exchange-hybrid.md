@@ -1,9 +1,9 @@
 ---
 title: "Exchange Server Hybrid Deployments"
-ms.author: dstrome
-author: dstrome
+ms.author: dmaguire
+author: msdmaguire
 manager: serdars
-ms.audience: ITPro
+audience: ITPro
 ms.topic: article
 ms.prod: exchange-server-it-pro
 localization_priority: Normal
@@ -13,6 +13,7 @@ ms.collection:
 - Hybrid
 - M365-email-calendar
 ms.assetid: 59e32000-4fcf-417f-a491-f1d8f9aeef9b
+ms.reviewer: 
 description: "Summary: What you need to know to plan an Exchange hybrid deployment."
 ---
 
@@ -20,7 +21,7 @@ description: "Summary: What you need to know to plan an Exchange hybrid deployme
 
  **Summary**: What you need to know to plan an Exchange hybrid deployment.
 
-A hybrid deployment offers organizations the ability to extend the feature-rich experience and administrative control they have with their existing on-premises Microsoft Exchange organization to the cloud. A hybrid deployment provides the seamless look and feel of a single Exchange organization between an on-premises Exchange organization and Exchange Online in Microsoft Office 365. In addition, a hybrid deployment can serve as an intermediate step to moving completely to an Exchange Online organization. 
+A hybrid deployment offers organizations the ability to extend the feature-rich experience and administrative control they have with their existing on-premises Microsoft Exchange organization to the cloud. A hybrid deployment provides the seamless look and feel of a single Exchange organization between an on-premises Exchange organization and Exchange Online in Microsoft Office 365. In addition, a hybrid deployment can serve as an intermediate step to moving completely to an Exchange Online organization.
 
 ## Exchange hybrid deployment features
 
@@ -50,44 +51,44 @@ A hybrid deployment enables the following features:
 
 Consider the following before you implement an Exchange hybrid deployment:
 
-- **Hybrid deployment requirements** Before you configure a hybrid deployment, you need to make sure your on-premises organization meets all of the prerequisites required for a successful deployment. For more information, see [Hybrid deployment prerequisites](hybrid-deployment-prerequisites.md).
+- **Hybrid deployment requirements**: Before you configure a hybrid deployment, you need to make sure your on-premises organization meets all of the prerequisites required for a successful deployment. For more information, see [Hybrid deployment prerequisites](hybrid-deployment-prerequisites.md).
 
-- **Exchange ActiveSync clients** When you move a mailbox from your on-premises Exchange organization to Exchange Online, all of the clients that access the mailbox need to be updated to use Exchange Online; this includes Exchange ActiveSync devices. Most Exchange ActiveSync clients will now be automatically reconfigured when the mailbox is moved to Exchange Online, however some older devices might not update correctly. For more information, see [Exchange ActiveSync device settings with Exchange hybrid deployments](activesync-settings.md).
+- **Exchange ActiveSync clients**: When you move a mailbox from your on-premises Exchange organization to Exchange Online, all of the clients that access the mailbox need to be updated to use Exchange Online; this includes Exchange ActiveSync devices. Most Exchange ActiveSync clients will now be automatically reconfigured when the mailbox is moved to Exchange Online, however some older devices might not update correctly. For more information, see [Exchange ActiveSync device settings with Exchange hybrid deployments](activesync-settings.md).
 
-- **Mailbox permissions migration** On-premises mailbox permissions such as Send As, Full Access, Send on Behalf of, and folder permissions, that are explicitly applied on the mailbox are migrated to Exchange Online. Inherited (non-explicit) mailbox permissions and permissions granted to objects that aren't mail enabled in Exchange Online are not migrated. You should ensure all permissions are explicitly granted and all objects are mail enabled prior to migration. Therefore, you have to plan for configuring these permissions in Office 365 if applicable for your organization. In the case of Send As permissions, if the user and the resource attempting to be sent as aren't moved at the same time, you'll need to explicitly add the Send As permission in Exchange Online using the **Add-RecipientPermission** cmdlet. 
+- **Mailbox permissions migration**: On-premises mailbox permissions such as Send As, Full Access, Send on Behalf, and folder permissions, that are explicitly applied on the mailbox are migrated to Exchange Online. Inherited (non-explicit) mailbox permissions and permissions granted to objects that aren't mail enabled in Exchange Online are not migrated. You should ensure all permissions are explicitly granted and all objects are mail enabled prior to migration. Therefore, you have to plan for configuring these permissions in Office 365 if applicable for your organization. In the case of Send As permissions, if the user and the resource attempting to be sent as aren't moved at the same time, you'll need to explicitly add the Send As permission in Exchange Online using the **Add-RecipientPermission** cmdlet.
 
-- **Support for cross-premises mailbox permissions** Exchange hybrid deployments support the use of the Full Access and Send on Behalf Of permissions between mailboxes located in an on-premises Exchange organization and mailboxes located in Office 365. Additional steps are required for Send As permissions. Also, some additional configuration may be required to support cross-premises mailbox permissions depending on the version of Exchange installed in your on-premises organization. For more information, see [Delegate mailbox permissions](permissions.md#delegate-mailbox-permissions) in [Permissions in Exchange hybrid deployments](permissions.md) and [Configure Exchange to support delegated mailbox permissions in a hybrid deployment](hybrid-deployment/set-up-delegated-mailbox-permissions.md).
+- **Support for cross-premises mailbox permissions**: Exchange hybrid deployments support the use of the Full Access and Send on Behalf Of permissions between mailboxes located in an on-premises Exchange organization and mailboxes located in Office 365. Additional steps are required for Send As permissions. Also, some additional configuration may be required to support cross-premises mailbox permissions depending on the version of Exchange installed in your on-premises organization. For more information, see [Delegate mailbox permissions](permissions.md#delegate-mailbox-permissions) in [Permissions in Exchange hybrid deployments](permissions.md) and [Configure Exchange to support delegated mailbox permissions in a hybrid deployment](hybrid-deployment/set-up-delegated-mailbox-permissions.md).
 
-- **Offboarding** As part of ongoing recipient management, you might have to move Exchange Online mailboxes back to your on-premises environment. 
+- **Offboarding**: As part of ongoing recipient management, you might have to move Exchange Online mailboxes back to your on-premises environment.
 
  For more information about how to move mailboxes in an Exchange 2010-based hybrid deployment, see [Move an Exchange Online mailbox to the on-premises organization](http://technet.microsoft.com/library/5ef062b5-92fe-40c2-a020-e956e1d14645.aspx).
 
    For more information about how to move mailboxes in hybrid deployments based on Exchange 2013 or newer, see [Move mailboxes between on-premises and Exchange Online organizations in hybrid deployments](hybrid-deployment/move-mailboxes.md).
 
-- **Mailbox forwarding settings** Mailboxes can be set up to automatically forward mail sent to them to another mailbox. While mailbox forwarding is supported in Exchange Online, the forwarding configuration isn't copied to Exchange Online when the mailbox is migrated there. Before you migrate a mailbox to Exchange Online, make sure you export the forwarding configuration for each mailbox. The forwarding configuration is stored in the `DeliverToMailboxAndForward`, `ForwardingAddress`, and `ForwardingSmtpAddress` properties on each mailbox. 
+- **Mailbox forwarding settings**: Mailboxes can be set up to automatically forward mail sent to them to another mailbox. While mailbox forwarding is supported in Exchange Online, the forwarding configuration isn't copied to Exchange Online when the mailbox is migrated there. Before you migrate a mailbox to Exchange Online, make sure you export the forwarding configuration for each mailbox. The forwarding configuration is stored in the `DeliverToMailboxAndForward`, `ForwardingAddress`, and `ForwardingSmtpAddress` properties on each mailbox.
 
 ## Exchange hybrid deployment components
 
 A hybrid deployment involves several different services and components:
 
-- **Exchange servers** At least one Exchange server needs to be configured in your on-premises organization if you want to configure a hybrid deployment. If you're running Exchange 2013 or older, you need to install at least one server running the Mailbox and Client Access roles. If you're running Exchange 2016 or newer, at least one server running the Mailbox role needs to be installed. If needed, Exchange Edge Transport servers can also be installed in a perimeter network and support secure mail flow with Office 365. 
+- **Exchange servers**: At least one Exchange server needs to be configured in your on-premises organization if you want to configure a hybrid deployment. If you're running Exchange 2013 or older, you need to install at least one server running the Mailbox and Client Access roles. If you're running Exchange 2016 or newer, at least one server running the Mailbox role needs to be installed. If needed, Exchange Edge Transport servers can also be installed in a perimeter network and support secure mail flow with Office 365.
 
    > [!NOTE]
-   > We don't support the installation of Exchange servers running the Mailbox or Client Access server roles in a perimeter network. 
+   > We don't support the installation of Exchange servers running the Mailbox or Client Access server roles in a perimeter network.
 
-- **Microsoft Office 365** The Office 365 service includes an Exchange Online organization as a part of its subscription service. Organizations configuring a hybrid deployment need to purchase a license for each mailbox that's migrated to or created in the Exchange Online organization. 
+- **Microsoft Office 365**: The Office 365 service includes an Exchange Online organization as a part of its subscription service. Organizations configuring a hybrid deployment need to purchase a license for each mailbox that's migrated to or created in the Exchange Online organization.
 
-- **Hybrid Configuration wizard** Exchange includes the Hybrid Configuration wizard which provides you with a streamlined process to configure a hybrid deployment between on-premises Exchange and Exchange Online organizations. 
+- **Hybrid Configuration wizard**: Exchange includes the Hybrid Configuration wizard which provides you with a streamlined process to configure a hybrid deployment between on-premises Exchange and Exchange Online organizations.
 
    Learn more at [Hybrid Configuration wizard](hybrid-configuration-wizard.md).
 
-- **Azure AD authentication system** The Azure Active Directory (AD) authentication system is a free cloud-based service that acts as the trust broker between your on-premises Exchange 2016 organization and the Exchange Online organization. On-premises organizations configuring a hybrid deployment must have a federation trust with the Azure AD authentication system. The federation trust can either be created manually as part of configuring federated sharing features between an on-premises Exchange organization and other federated Exchange organizations or as part of configuring a hybrid deployment with the Hybrid Configuration wizard. A federation trust with the Azure AD authentication system for your Office 365 tenant is automatically configured when you activate your Office 365 service account. 
+- **Azure AD authentication system**: The Azure Active Directory (AD) authentication system is a free cloud-based service that acts as the trust broker between your on-premises Exchange 2016 organization and the Exchange Online organization. On-premises organizations configuring a hybrid deployment must have a federation trust with the Azure AD authentication system. The federation trust can either be created manually as part of configuring federated sharing features between an on-premises Exchange organization and other federated Exchange organizations or as part of configuring a hybrid deployment with the Hybrid Configuration wizard. A federation trust with the Azure AD authentication system for your Office 365 tenant is automatically configured when you activate your Office 365 service account.
 
-   Learn more at: [Azure AD authentication system](https://go.microsoft.com/fwlink/p/?linkId=135986)
+   Learn more at: [What is Azure AD Connect?](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect).
 
-- **Azure Active Directory synchronization** Azure AD synchronization uses Azure AD Connect to replicate on-premises Active Directory information for mail-enabled objects to the Office 365 organization to support the unified global address list (GAL) and user authentication. Organizations configuring a hybrid deployment need to deploy Azure AD Connect on a separate, on-premises server to synchronize your on-premises Active Directory with Office 365. 
+- **Azure Active Directory synchronization**: Azure AD synchronization uses Azure AD Connect to replicate on-premises Active Directory information for mail-enabled objects to the Office 365 organization to support the unified global address list (GAL) and user authentication. Organizations configuring a hybrid deployment need to deploy Azure AD Connect on a separate, on-premises server to synchronize your on-premises Active Directory with Office 365.
 
-   Learn more at: [Azure AD Connect - Overview](https://go.microsoft.com/fwlink/p/?linkID=203007)
+   Learn more at: [Prerequisites for Azure AD Connect](https://go.microsoft.com/fwlink/p/?linkID=203007).
 
 ## Hybrid deployment example
 
@@ -120,31 +121,29 @@ If you compare Contoso's existing organization configuration and the hybrid depl
 |Single-sign on used for both organizations|Not applicable; single organization only.|On-premises Active Directory and Office 365 use the same username and password for mailboxes located either on-premises or in Office 365.|
 |Organization relationship established and a federation trust with Azure AD authentication system|Trust relationship with th Azure AD authentication system and organization relationships with other federated Exchange organizations may be configured.|Trust relationship with the Azure AD authentication system is required. Organization relationships are established between the on-premises and Office 365.|
 |Free/busy sharing|Free/busy sharing between on-premises users only.|Free/busy sharing between both on-premises and Office 365 users.|
- 
+
 ## Things to consider before configuring a hybrid deployment
 
 Now that you're a little more familiar with what a hybrid deployment is, you need to carefully consider some important issues. Configuring a hybrid deployment could affect multiple areas in your current network and Exchange organization.
 
 ### Directory synchronization and single sign-on
 
-Active Directory synchronization between the on-premises and Office 365 organizations, which is performed every three hours by a server running Azure Active Directory Connect, is a requirement for configuring a hybrid deployment. Directory synchronization enables recipients in either organization to see each other in the global address list. It also synchronizes usernames and passwords which enables users to log in with the same credentials in both your on-premises organization and in Office 365. 
+Active Directory synchronization between the on-premises and Office 365 organizations, which is performed every three hours by a server running Azure Active Directory Connect, is a requirement for configuring a hybrid deployment. Directory synchronization enables recipients in either organization to see each other in the global address list. It also synchronizes usernames and passwords which enables users to log in with the same credentials in both your on-premises organization and in Office 365.
 
 > [!NOTE]
-> If you choose to configure Azure AD Connect with AD FS, usernames and passwords of on-premises users will still be synchronized to Office 365 by default. However, users will authenticate with your on-premises Active Directory via AD FS as their primary method of authentication. In the event AD FS can't connect to your on-premises Active Directory for any reason, clients will attempt to fall back and authenticate against usernames and passwords synchronized to Office 365. 
-
-
+> If you choose to configure Azure AD Connect with AD FS, usernames and passwords of on-premises users will still be synchronized to Office 365 by default. However, users will authenticate with your on-premises Active Directory via AD FS as their primary method of authentication. In the event AD FS can't connect to your on-premises Active Directory for any reason, clients will attempt to fall back and authenticate against usernames and passwords synchronized to Office 365.
 
 All customers of Azure Active Directory and Office 365 have a default limit of 50,000 objects (users, mail-enabled contacts, and groups) that determines how many objects you can create in your Office 365 organization. After you verify your first domain, this limit is automatically increased to 500,000 objects for Azure Active Directory Free, or an unlimited number of objects for Azure Active Directory Basic or Premium. For more information, see [Azure Active Directory pricing](https://azure.microsoft.com/pricing/details/active-directory/).
 
- In addition to a server running Azure AD Connect, you'll also need to deploy a web application proxy server if you choose to configure AD FS. This server should be placed in your perimeter network and will act as an intermediary between your internal Azure AD Connect server and the Internet. The web application proxy server needs to accept connections from clients and servers on the Internet using TCP port 443. 
+In addition to a server running Azure AD Connect, you'll also need to deploy a web application proxy server if you choose to configure AD FS. This server should be placed in your perimeter network and will act as an intermediary between your internal Azure AD Connect server and the Internet. The web application proxy server needs to accept connections from clients and servers on the Internet using TCP port 443.
 
 ### Hybrid deployment management
 
-You manage a hybrid deployment in Exchange 2016 via a single unified management console that allows for managing both your on-premises and Exchange Online organizations. The Exchange admin center (EAC), which replaces the Exchange Management Console and the Exchange Control Panel, allows you to connect and configure features for both organizations. When you run the Hybrid Configuration wizard for the first time, you will be prompted to connect to your Exchange Online organization. You need to use an Office 365 account that is a member of the Organization Management role group to connect the EAC to your Exchange Online organization. 
+You manage a hybrid deployment in Exchange 2016 via a single unified management console that allows for managing both your on-premises and Exchange Online organizations. The Exchange admin center (EAC), which replaces the Exchange Management Console and the Exchange Control Panel, allows you to connect and configure features for both organizations. When you run the Hybrid Configuration wizard for the first time, you will be prompted to connect to your Exchange Online organization. You need to use an Office 365 account that is a member of the Organization Management role group to connect the EAC to your Exchange Online organization.
 
 ### Certificates
 
-Secure Sockets Layer (SSL) digital certificates play a significant role in configuring a hybrid deployment. They help to secure communications between the on-premises hybrid server and the Exchange Online organization. Certificates are a requirement to configure several types of services. If you're already using digital certificates in your Exchange organization, you may have to modify the certificates to include additional domains or purchase additional certificates from a trusted certificate authority (CA). If you aren't already using certificates, you will need to purchase one or more certificates from a trusted CA. 
+Secure Sockets Layer (SSL) digital certificates play a significant role in configuring a hybrid deployment. They help to secure communications between the on-premises hybrid server and the Exchange Online organization. Certificates are a requirement to configure several types of services. If you're already using digital certificates in your Exchange organization, you may have to modify the certificates to include additional domains or purchase additional certificates from a trusted certificate authority (CA). If you aren't already using certificates, you will need to purchase one or more certificates from a trusted CA.
 
 Learn more at: [Certificate requirements for hybrid deployments](certificate-requirements.md)
 
@@ -156,7 +155,7 @@ Before moving mailboxes to Office 365, you should:
 
 - Determine the average mailbox size for mailboxes that will be moved to Office 365.
 
-- Determine the average connection and throughput speed for your connection to the Internet from your on-premises organization. 
+- Determine the average connection and throughput speed for your connection to the Internet from your on-premises organization.
 
 - Calculate the average expected transfer speed, and plan your mailbox moves accordingly.
 
@@ -167,7 +166,7 @@ Learn more at: [Networking](https://go.microsoft.com/fwlink/p/?LinkId=280178)
 > [!NOTE]
 > Unified Messaging is not available in Exchange 2019.
 
-Unified Messaging (UM) is supported in a hybrid deployment between your on-premises and Office 365 organizations. Your on-premises telephony solution must be able to communicate with Office 365. This may require that you purchase additional hardware and software. 
+Unified Messaging (UM) is supported in a hybrid deployment between your on-premises and Office 365 organizations. Your on-premises telephony solution must be able to communicate with Office 365. This may require that you purchase additional hardware and software.
 
 If you want to move mailboxes from your on-premises organization to Office 365, and those mailboxes are configured for UM, you should configure UM in your hybrid deployment prior to moving those mailboxes. If you move mailboxes before you configure UM in your hybrid deployment, those mailboxes will no longer have access to UM functionality.
 
@@ -221,15 +220,15 @@ The following list provides you with definitions of the core components associat
 
  **coexistence domain**
 
-> An accepted domain added to the on-premises organization for hybrid mail flow and Autodiscover requests for the Office 365 service. This domain is added as a secondary proxy domain to any email address policies which have _PrimarySmtpAddress_ templates for domains selected in the Hybrid Configuration wizard. By default, this domain is \<domain\>.mail.onmicrosoft.com. 
+> An accepted domain added to the on-premises organization for hybrid mail flow and Autodiscover requests for the Office 365 service. This domain is added as a secondary proxy domain to any email address policies which have _PrimarySmtpAddress_ templates for domains selected in the Hybrid Configuration wizard. By default, this domain is \<domain\>.mail.onmicrosoft.com.
 
  **_HybridConfiguration_ Active Directory object**
 
-> The Active Directory object in the on-premises organization that contains the desired hybrid deployment configuration parameters defined by the selections chosen in the Hybrid Configuration wizard. The Hybrid Configuration Engine uses these parameters when configuring on-premises and Exchange Online settings to enable hybrid features. The contents of the _HybridConfiguration_ object are reset each time the Hybrid Configuration wizard is run. 
+> The Active Directory object in the on-premises organization that contains the desired hybrid deployment configuration parameters defined by the selections chosen in the Hybrid Configuration wizard. The Hybrid Configuration Engine uses these parameters when configuring on-premises and Exchange Online settings to enable hybrid features. The contents of the _HybridConfiguration_ object are reset each time the Hybrid Configuration wizard is run.
 
  **hybrid configuration engine**
 
-> The Hybrid Configuration Engine (HCE) runs the core actions necessary for configuring and updating a hybrid deployment. The HCE compares the state of the _HybridConfiguration_ Active Directory object with current on-premises Exchange and Exchange Online configuration settings and then executes tasks to match the deployment configuration settings to the parameters defined in the _HybridConfiguration_ Active Directory object. For more information, see [Hybrid Configuration Engine](hybrid-configuration-wizard.md#BKMK_RecommendedToolsAndServices).
+> The Hybrid Configuration Engine (HCE) runs the core actions necessary for configuring and updating a hybrid deployment. The HCE compares the state of the _HybridConfiguration_ Active Directory object with current on-premises Exchange and Exchange Online configuration settings and then executes tasks to match the deployment configuration settings to the parameters defined in the _HybridConfiguration_ Active Directory object. For more information, see [Hybrid Configuration Engine](hybrid-configuration-wizard.md#hybrid-configuration-engine).
 
  **hybrid configuration wizard (HCW)**
 

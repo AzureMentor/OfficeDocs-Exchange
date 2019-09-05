@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can prevent UM-enabled users who are linked with a Unified Messaging (UM) dial plan from receiving fax messages. By default, users who are enabled for Unified Messaging and are linked with a UM dial plan can receive fax messages. However, there may be times when you want to prevent users who are associated with a specific UM dial plan from receiving faxes.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 4fc66414-c950-4bca-ac20-4e489f288d06
 ms.date: 12/9/2016
-title: Prevent users in the same dial plan from receiving faxes
+ms.reviewer: 
+title: Prevent users in the same dial plan from receiving faxes in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Prevent users in the same dial plan from receiving faxes
+# Prevent users in the same dial plan from receiving faxes in Exchange Online
 
 You can prevent UM-enabled users who are linked with a Unified Messaging (UM) dial plan from receiving fax messages. By default, users who are enabled for Unified Messaging and are linked with a UM dial plan can receive fax messages. However, there may be times when you want to prevent users who are associated with a specific UM dial plan from receiving faxes.
 
@@ -38,7 +39,7 @@ For additional management tasks related to faxing, see [Faxing procedures](faxin
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use Exchange Online PowerShell to prevent users who are linked to a dial plan from receiving faxes
 
@@ -47,6 +48,3 @@ This example prevents UM-enabled users associated with the UM dial plan named `M
 ```
 Set-UMDialPlan -Identity MyUMDialPlan -FaxEnabled $false
 ```
-
-
-

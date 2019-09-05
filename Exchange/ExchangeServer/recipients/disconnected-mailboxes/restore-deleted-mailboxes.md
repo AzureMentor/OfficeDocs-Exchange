@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to use the Exchange admin center (EAC) or the Exchange Management Shell to connect a deleted mailbox to an Active Directory user account in Exchange Server 2016 or Exchange Server 2019.'
 ms.topic: article
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: a5e6ac44-5901-4eab-9017-c6fae80a0f83
 ms.date:
+ms.reviewer: 
 title: Connect or restore a deleted mailbox
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -46,7 +47,7 @@ To learn more about disconnected mailboxes and perform other related management 
 - To verify that the deleted mailbox that you want to connect a user account to exists in the mailbox database and isn't a soft-deleted mailbox, run the following command:
 
    ```
-   Get-MailboxDatabase | foreach {Get-MailboxStatistics -Database $_.name} | where { $_.DisplayName -eq "<display name>" } | Format-List DisplayName,Database,DisconnectReason
+   Get-MailboxDatabase | foreach {Get-MailboxStatistics -Database $_.name} | where {$_.DisplayName -eq "<display name>"} | Format-List DisplayName,Database,DisconnectReason
    ```
 
    The deleted mailbox has to exist in the mailbox database and the value for the _DisconnectReason_ property has to be `Disabled`. If the mailbox has been purged from the database, the command won't return any results.
@@ -55,7 +56,7 @@ To learn more about disconnected mailboxes and perform other related management 
 
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
-- Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+- Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Connect a deleted mailbox
 
@@ -89,7 +90,7 @@ The following procedure shows how to connect a deleted user mailbox to a user ac
 Use the **Connect-Mailbox** cmdlet in the Exchange Management Shell to connect a deleted mailbox to a user account that isn't mail enabled. You have to specify the type of mailbox that you're connecting. The following examples show the syntax for reconnecting user, linked, room, equipment, and shared mailboxes. In all examples, the optional _Alias_ parameter is used to specify the email alias, which is the portion of the email address on the left side of the at (@) symbol. If you don't include the _Alias_ parameter, the value specified in the _User_ or _LinkedMasterAccount_ parameter is used to create the alias for the email address for the reconnected mailbox.
 
 > [!NOTE]
->  As previously stated, when you connect linked, resource, or shared mailboxes, the Active Directory user account that you're linking the mailbox to must be disabled.
+> As previously stated, when you connect linked, resource, or shared mailboxes, the Active Directory user account that you're linking the mailbox to must be disabled.
 
 This example connects a deleted user mailbox to a user account that isn't mail enabled. The _Identity_ parameter specifies the display name of the deleted mailbox retained in the mailbox database named MBXDB01. The _User_ parameter specifies the Active Directory user account to connect the mailbox to.
 
@@ -157,10 +158,11 @@ After a mailbox restore request is successfully completed, it's retained for 30 
 
 ### Use the Exchange Management Shell to restore a deleted mailbox
 
-To create a mailbox restore request, you have to use the display name, legacy distinguished name (DN), or mailbox GUID of the deleted mailbox. Use the **Get-MailboxStatistics** cmdlet to display the values of the `DisplayName`, `MailboxGuid`, and `LegacyDN` properties for the deleted mailbox that you want to restore. For example, run the following command to return this information for all disabled and deleted mailboxes in your organization.
+To create a mailbox restore request, you have to use the display name, legacy distinguished name (DN), or mailbox GUID of the deleted mailbox. Use the **Get-MailboxStatistics** cmdlet to display the values of the `DisplayName`, `MailboxGuid`, and `LegacyDN` properties for the deleted mailbox that you want to restore. For example, run the following commands to return this information for all disabled and deleted mailboxes in your organization.
 
 ```
-Get-MailboxDatabase | Get-MailboxStatistics | Where {$_.DisconnectReason -eq "Disabled"} | Format-List DisplayName,MailboxGuid,LegacyDN,Database
+$dbs = Get-MailboxDatabase
+$dbs | foreach {Get-MailboxStatistics -Database $_.DistinguishedName} | where {$_.DisconnectReason -eq "Disabled"} | Format-Table DisplayName,MailboxGuid,Database,DisconnectDate
 ```
 
 This example restores the deleted mailbox, which is identified by the _SourceStoreMailbox_ parameter and is located on the MBXDB01 mailbox database, to the target mailbox Debra Garcia. The _AllowLegacyDNMismatch_ parameter is used so the source mailbox can be restored to a different mailbox, one that doesn't have the same legacy DN value.
@@ -188,4 +190,3 @@ For more information, see:
 - [Get-MailboxRestoreRequest](http://technet.microsoft.com/library/6e2a5296-7820-4266-a96f-609588390a18.aspx)
 
 - [Get-MailboxRestoreRequestStatistics](http://technet.microsoft.com/library/b28d5835-1f8f-4cd9-8f72-9d592adef3d9.aspx)
-

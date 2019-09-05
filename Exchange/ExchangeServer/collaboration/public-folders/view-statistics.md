@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 4e412710-9a74-4649-ab01-502e969a7eda
 ms.date: 4/19/2018
+ms.reviewer: 
 title: View statistics for public folders and public folder items
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -102,6 +103,3 @@ Get-PublicFolderItemStatistics -Identity "\Marketing\Reports" | Select Subject,L
 ```
 
 For detailed syntax and parameter information, see [Get-PublicFolderItemStatistics](http://technet.microsoft.com/library/b978c72d-6c0d-428f-a4ea-b17e39aef408.aspx).
-
-
-

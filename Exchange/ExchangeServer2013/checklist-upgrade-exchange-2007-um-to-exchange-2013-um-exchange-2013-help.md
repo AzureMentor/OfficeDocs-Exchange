@@ -1,21 +1,22 @@
-﻿---
+---
 title: 'Checklist: Upgrade Exchange 2007 UM to Exchange 2013 UM: Exchange 2013 Help'
 TOCTitle: 'Checklist: Upgrade Exchange 2007 UM to Exchange 2013 UM'
 ms:assetid: 99b1a081-4052-4516-b63c-77622cbdf962
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dn169229(v=EXCHG.150)
 ms:contentKeyID: 53382780
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Checklist: Upgrade Exchange 2007 UM to Exchange 2013 UM
 
- 
-
 _**Applies to:** Exchange Server 2013_
 
-
-Use this checklist to help you upgrade Exchange 2007 Unified Messaging (UM) to Exchange 2013 UM. Be sure to refer to this information when you’re upgrading your Exchange 2007 organization and your UM deployment to Exchange 2013. For step-by-step instructions for upgrading to Exchange 2013 UM, see [Upgrade Exchange 2007 UM to Exchange 2013 UM](upgrade-exchange-2007-um-to-exchange-2013-um-exchange-2013-help.md).
+Use this checklist to help you upgrade Exchange 2007 Unified Messaging (UM) to Exchange 2013 UM. Be sure to refer to this information when you're upgrading your Exchange 2007 organization and your UM deployment to Exchange 2013. For step-by-step instructions for upgrading to Exchange 2013 UM, see [Upgrade Exchange 2007 UM to Exchange 2013 UM](upgrade-exchange-2007-um-to-exchange-2013-um-exchange-2013-help.md).
 
 Before you start working with this checklist, make sure you're familiar with the concepts in:
 
@@ -28,7 +29,6 @@ Before you start working with this checklist, make sure you're familiar with the
 For step-by-step guidance about how to upgrade from Exchange 2010 UM to Exchange 2013 UM, see [Checklist: Upgrade Exchange 2010 UM to Exchange 2013 UM](checklist-upgrade-exchange-2010-um-to-exchange-2013-um-exchange-2013-help.md).
 
 ## Checklist for upgrading Exchange 2007 UM to Exchange 2013 UM
-
 
 <table>
 <colgroup>
@@ -152,4 +152,3 @@ For step-by-step guidance about how to upgrade from Exchange 2010 UM to Exchange
 </tr>
 </tbody>
 </table>
-

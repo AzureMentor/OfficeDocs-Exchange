@@ -1,23 +1,24 @@
-﻿---
+---
 title: 'Cannot find a recipient update service_RUSMissing: Exchange 2013 Help'
 TOCTitle: Cannot find a recipient update service_RUSMissing
 ms:assetid: 920fbf51-d5e4-4ac6-869f-7f1c5d9a3024
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/ms.exch.setupreadiness.rusmissing(v=EXCHG.150)
 ms:contentKeyID: 46629034
 ms.date: 12/15/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Cannot find a recipient update service\_RUSMissing
 
- 
-
-_**Applies to:** Exchange Server_
-
+_**Applies to:** Exchange Server 2013_
 
 The content in this topic hasn't been updated for Microsoft Exchange Server 2013. While it hasn't been updated yet, it may still be applicable to Exchange 2013. If you still need help, check out the community resources below.
 
-Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkid=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkid=285351).
+Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612).
 
 Microsoft® Exchange Server 2007 or Exchange Server 2010 setup cannot continue because the Recipient Update Service (RUS) responsible for a domain in the existing Exchange organization cannot be found.
 
@@ -26,7 +27,6 @@ Microsoft Exchange setup requires that each domain in the existing Exchange orga
 If an instance of the Recipient Update Service is missing for a domain, new user objects created in the domain will not receive e-mail addresses issued to them.
 
 To resolve this issue, verify that an instance of the Recipient Update Service exists for each domain and create an instance of the Recipient Update Service for the domains that do not have one and then rerun Microsoft Exchange setup.
-
 
 <table>
 <colgroup>
@@ -49,7 +49,6 @@ To resolve this issue, verify that an instance of the Recipient Update Service e
 </tbody>
 </table>
 
-
 For more information about the Recipient Update Service, see the following Microsoft Knowledge Base articles:
 
   - "How the Recipient Update Service applies recipient policies" ([https://go.microsoft.com/fwlink/?linkid=3052\&kbid=328738](https://go.microsoft.com/fwlink/?linkid=3052&kbid=328738)).
@@ -59,4 +58,3 @@ For more information about the Recipient Update Service, see the following Micro
   - "How to check the progress of the Exchange Recipient Update Service" ([https://go.microsoft.com/fwlink/?linkid=3052\&kbid=246127](https://go.microsoft.com/fwlink/?linkid=3052&kbid=246127)).
 
   - "Tasks performed by the Exchange Recipient Update Service" ([https://go.microsoft.com/fwlink/?linkid=3052\&kbid=253770](https://go.microsoft.com/fwlink/?linkid=3052&kbid=253770)).
-

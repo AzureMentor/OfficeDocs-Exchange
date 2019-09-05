@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 4c4e00a4-1f57-4fdb-b9b2-2779abf381a9
 ms.date:
+ms.reviewer: 
 title: Exchange high availability, Exchange high availability step by step, Exchange site resilience, Site resilience Exchange, High availability for Exchange, High availability Exchange Server, Exchange DAG high availability, High availability DAG
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -64,14 +65,14 @@ The settings for each network adapter in each node are detailed in the following
 
 |**Name**|**IPv4 address**|**Subnet mask**|**Default gateway**|
 |:-----|:-----|:-----|:-----|
-|MBX1 (MAPI)  <br/> |192.168.1.4  <br/> |255.255.255.0  <br/> |192.168.1.1  <br/> |
-|MBX2 (MAPI)  <br/> |192.168.1.5  <br/> |255.255.255.0  <br/> |192.168.1.1  <br/> |
-|MBX3 (MAPI)  <br/> |192.168.2.4  <br/> |255.255.255.0  <br/> |192.168.2.1  <br/> |
-|MBX4 (MAPI)  <br/> |192.168.2.5  <br/> |255.255.255.0  <br/> |192.168.2.1  <br/> |
-|MBX1 (Replication)  <br/> |10.0.1.4  <br/> |255.255.0.0  <br/> |None  <br/> |
-|MBX2 (Replication)  <br/> |10.0.1.5  <br/> |255.255.0.0  <br/> |None  <br/> |
-|MBX3 (Replication)  <br/> |10.0.2.4  <br/> |255.255.0.0  <br/> |None  <br/> |
-|MBX4 (Replication)  <br/> |10.0.2.5  <br/> |255.255.0.0  <br/> |None  <br/> |
+|MBX1 (MAPI)|192.168.1.4|255.255.255.0|192.168.1.1|
+|MBX2 (MAPI)|192.168.1.5|255.255.255.0|192.168.1.1|
+|MBX3 (MAPI)|192.168.2.4|255.255.255.0|192.168.2.1|
+|MBX4 (MAPI)|192.168.2.5|255.255.255.0|192.168.2.1|
+|MBX1 (Replication)|10.0.1.4|255.255.0.0|None|
+|MBX2 (Replication)|10.0.1.5|255.255.0.0|None|
+|MBX3 (Replication)|10.0.2.4|255.255.0.0|None|
+|MBX4 (Replication)|10.0.2.5|255.255.0.0|None|
 
 As shown in the preceding table, adapters used for Replication networks don't use default gateways. To provide network connectivity between each of the Replication network adapters, Contoso uses persistent static routes, which they configure by using the Netsh.exe tool.
 
@@ -241,6 +242,3 @@ After the solution has been deployed, it can be extended further using increment
 - Perform database switchovers as needed. For detailed steps about how to perform a database switchover, see [Activate a mailbox database copy](manage-ha/activate-db-copies.md).
 
 For more information about managing the solution, see [Managing high availability and site resilience](manage-ha/manage-ha.md).
-
-
-

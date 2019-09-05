@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to view default and custom NDRs, and how to create, modify, and delete custom NDRs in Exchange Server 2016 or Exchange Server 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 23c9d844-6fc7-44c9-a308-587338281611
-ms.date: 6/8/2018
+ms.date: 
+ms.reviewer: 
 title: Procedures for DSNs and NDRs in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -38,12 +39,11 @@ You can use the default NDRs that are included in Exchange, or you can use the E
 > Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the Exchange Management Shell to view all default NDRs
-<a name="ViewDefaultNDRs"> </a>
 
 To output the list of all default NDRs in all languages to an HTML file named C:\My Documents\Default NDRs.html, run this command:
 
 ```
-Get-SystemMessage -Original | Select-Object -Property Identity,DsnCode,Language,Text | ConvertTo-Html > "C:\My Documents\Default NDRs.html"
+Get-SystemMessage -Original | Select-Object -Property Identity,DsnCode,Language,Text | ConvertTo-Html | Set-Content -Path "C:\My Documents\Default NDRs.html"
 ```
 
  **Note**: You should output the list to a file, because the list is very long, and you'll receive errors if you don't have the required language packs installed.
@@ -51,7 +51,6 @@ Get-SystemMessage -Original | Select-Object -Property Identity,DsnCode,Language,
 For detailed syntax and parameter information, see [Get-SystemMessage](http://technet.microsoft.com/library/54d3650c-fd80-43c0-a64f-41d57673ff8b.aspx).
 
 ## Use the Exchange Management Shell to view custom NDRs
-<a name="ViewDefaultNDRs"> </a>
 
 To view a summary list of all custom NDRs in your organization, run this command:
 
@@ -67,7 +66,7 @@ To view detailed information for a custom NDR, use this syntax:
 Get-SystemMessage -Identity <NDRIdentity>
 ```
 
-For an explanation of the available _\<NDRIdentity\>_ values, see the [Identity values for NDRs](ndr-procedures.md#NDRIdentity) section in this topic.
+For an explanation of the available _\<NDRIdentity\>_ values, see the [Identity values for NDRs](#identity-values-for-ndrs) section in this topic.
 
 This example returns detailed information for the custom NDR for the enhanced status code 5.1.2 that's sent to internal senders in English. If there's no custom NDR for this combination of language, audience, and enhanced status code, you'll receive an error.
 
@@ -84,7 +83,6 @@ Get-SystemMessage En\ProhibitSendReceiveMailBox | Format-List
 For detailed syntax and parameter information, see [Get-SystemMessage](http://technet.microsoft.com/library/54d3650c-fd80-43c0-a64f-41d57673ff8b.aspx).
 
 ## Create custom NDRs
-<a name="ViewDefaultNDRs"> </a>
 
 ### Use the Exchange Management Shell to create custom NDRs for enhanced status codes
 
@@ -98,7 +96,7 @@ The values are:
 
 - **Internal**: Controls whether the NDR is sent to internal or external senders. For internal senders, use the value `$true`. For external senders, use the value `$false`. For example, in the custom text for internal senders, you can include help desk contact information that you wouldn't want to include in NDRs for external senders.
 
-- **Language**: For the list of available languages, see the [Supported languages for NDRs](ndr-procedures.md#NDRLanguages) section in this topic.
+- **Language**: For the list of available languages, see the [Supported languages for NDRs](#supported-languages-for-ndrs) section in this topic.
 
 - **DSNCode**: The enhanced status code. Valid values are 4. _x_. _y_ or 5. _x_. _y_ where _x_ and _y_ are one to three digit numbers.
 
@@ -128,9 +126,9 @@ New-SystemMessage -Language <Locale> -QuotaMessageType <Quota> -Text "<NDR text>
 
 The values are:
 
-- **Language**: For the list of available languages, see [Supported languages for NDRs](ndr-procedures.md#NDRLanguages).
+- **Language**: For the list of available languages, see [Supported languages for NDRs](#supported-languages-for-ndrs).
 
-- **QuotaMessageType**: For a list of the available quotas, see [Identity values for NDRs](ndr-procedures.md#NDRIdentity).
+- **QuotaMessageType**: For a list of the available quotas, see [Identity values for NDRs](#identity-values-for-ndrs).
 
 - **Text**: You can use plain text or HTML formatting. For more information, see [HTML tags and special characters in NDRs](ndr-procedures.md#NDRTags).
 
@@ -149,13 +147,12 @@ To verify that you have successfully created a custom NDR, do these steps:
 - Run the following command and verify the property values:
 
   ```
-  Get-SystemMessge | Format-List Identity,DsnCode,Language,Text
+  Get-SystemMessage | Format-List Identity,DsnCode,Language,Text
   ```
 
 - Send a test message that will generate the custom NDR that you configured.
 
 ## Use the Exchange Management Shell to modify custom NDRs
-<a name="ViewDefaultNDRs"> </a>
 
 To modify custom NDRs, use this syntax:
 
@@ -163,7 +160,7 @@ To modify custom NDRs, use this syntax:
 Set-SystemMessage -Identity <NDRIdentity> [-Text "<NDR text>"] [-Original]
 ```
 
-For an explanation of the available _\<NDRIdentity\>_ values, see the [Identity values for NDRs](ndr-procedures.md#NDRIdentity) section in this topic. For an explanation of the _\<NDR text\>_ values, see the [HTML tags and special characters in NDRs](ndr-procedures.md#NDRTags) section in this topic.
+For an explanation of the available _\<NDRIdentity\>_ values, see the [Identity values for NDRs](#identity-values-for-ndrs) section in this topic. For an explanation of the _\<NDR text\>_ values, see the [HTML tags and special characters in NDRs](ndr-procedures.md#NDRTags) section in this topic.
 
 This example changes the text in the custom NDR for the enhanced status code 5.1.2 that's sent to internal senders in English.
 
@@ -196,7 +193,6 @@ Get-SystemMessage -Identity <NDRIdentity> | Format-List
 ```
 
 ## Use the Exchange Management Shell to remove custom NDRs
-<a name="ViewDefaultNDRs"> </a>
 
 To remove a custom NDR, use this syntax:
 
@@ -204,7 +200,7 @@ To remove a custom NDR, use this syntax:
 Remove-SystemMessage -Identity <NDRIdentity>
 ```
 
-For an explanation of the available _\<NDRIdentity\>_ values, see the [Identity values for NDRs](ndr-procedures.md#NDRIdentity) section in this topic.
+For an explanation of the available _\<NDRIdentity\>_ values, see the [Identity values for NDRs](#identity-values-for-ndrs) section in this topic.
 
 This example removes the custom NDR for the enhanced status code 5.1.2 that's sent to internal senders in English.
 
@@ -229,7 +225,6 @@ Get-SystemMessage
 ```
 
 ## Forward copies of NDRs to the Exchange recipient mailbox
-<a name="ForwardNDRs"> </a>
 
 You can configure your Exchange organization to send copies of NDRs to the Exchange recipient. However, by default, no mailbox is assigned to the Exchange recipient, so any messages that are sent to the Exchange recipient are discarded. To send copies of NDRs to the Exchange recipient mailbox, you need to:
 
@@ -253,7 +248,7 @@ This example assigns the existing mailbox named "Contoso System Mailbox" to the 
 Set-OrganizationConfig -MicrosoftExchangeRecipientReplyRecipient "Contoso System Mailbox"
 ```
 
-### Step 2: Specify the ehnanced status codes that you want to monitor
+### Step 2: Specify the enhanced status codes that you want to monitor
 
 - You can use the EAC or the Exchange Management Shell.
 
@@ -283,13 +278,13 @@ For more information about the EAC, see [Exchange admin center in Exchange Serve
 
 3. In the **Organization transport settings** window that opens, click the **Delivery** tab. In the **DSN codes** section, do one or more of these steps:
 
-  - To add entries, type the enhanced status code that you want to monitor (4. _\<y.z\>_ or 5. _\<y.z\>_), and then click **Add** (![Add icon](../../media/ITPro_EAC_AddIcon.png)). Repeat this step as many times as you need to.
+   - To add entries, type the enhanced status code that you want to monitor (4. _\<y.z\>_ or 5. _\<y.z\>_), and then click **Add** (![Add icon](../../media/ITPro_EAC_AddIcon.png)). Repeat this step as many times as you need to.
 
-  - To modify an existing entry, select it click **Edit** (![Edit icon](../../media/ITPro_EAC_EditIcon.png)), and then modify it inline.
+   - To modify an existing entry, select it click **Edit** (![Edit icon](../../media/ITPro_EAC_EditIcon.png)), and then modify it inline.
 
-  - To remove an existing entry, select it and then click **Remove** (![Remove icon](../../media/ITPro_EAC_RemoveIcon.png)).
+   - To remove an existing entry, select it and then click **Remove** (![Remove icon](../../media/ITPro_EAC_RemoveIcon.png)).
 
-    When you're finished, click **Save**.
+   When you're finished, click **Save**.
 
 #### Use the Exchange Management Shell to specify the enhanced status codes to monitor
 
@@ -330,176 +325,174 @@ To verify that you've successfully configured copies of NDRs to be sent to the E
 - Monitor the Exchange recipient mailbox to see if NDRs that contain the specified enhanced status codes are delivered there.
 
 ## Identity values for NDRs
-<a name="NDRIdentity"> </a>
 
 The identity of an NDR uses one of these formats:
 
 - **NDRs for enhanced status codes**: _\<Language\>_\\<Internal | External\>\ _\<DSNcode\>_. For example, `En\Internal\5.1.2` or `Ja\External\5.1.2`.
 
-  - **\<DSNcode\>**: Valid values are 4. _x_. _y_ or 5. _x_. _y_ where _x_ and _y_ are one to three digit numbers. To generate a list of the enhanced status codes that are used by Exchange, see the [Use the Exchange Management Shell to view all default NDRs](ndr-procedures.md#ViewDefaultNDRs) section earlier in this topic.
+  - **\<DSNcode\>**: Valid values are 4. _x_. _y_ or 5. _x_. _y_ where _x_ and _y_ are one to three digit numbers. To generate a list of the enhanced status codes that are used by Exchange, see the [Use the Exchange Management Shell to view all default NDRs](#use-the-exchange-management-shell-to-view-all-default-ndrs) section earlier in this topic.
 
   - **Internal or External**: You can use different text in NDRs for internal or external senders.
 
-  - **\<Language\>**: For the list of supported languages, see the [Supported languages for NDRs](ndr-procedures.md#NDRLanguages) section in this topic.
+  - **\<Language\>**: For the list of supported languages, see the [Supported languages for NDRs](#supported-languages-for-ndrs) section in this topic.
 
 - **NDRs for quotas**: _\<Language\>_\ _\<QuotaMessageType\>_. For example, `En\ProhibitSendReceiveMailBox`.
 
-  - **\<Language\>**: For the list of supported languages, see the [Supported languages for NDRs](ndr-procedures.md#NDRLanguages) section in this topic.
+  - **\<Language\>**: For the list of supported languages, see the [Supported languages for NDRs](#supported-languages-for-ndrs) section in this topic.
 
   - **\<QuotaMessageType\>**: Valid values are:
 
     Mailbox size quotas:
 
-    **ProhibitSendReceiveMailBox**: A mailbox exceeds its `ProhibitSendReceiveQuota` limit.
+    - **ProhibitSendReceiveMailBox**: A mailbox exceeds its `ProhibitSendReceiveQuota` limit.
 
-    **ProhibitSendMailbox**: A mailbox exceeds its `ProhibitSendQuota` limit.
+    - **ProhibitSendMailbox**: A mailbox exceeds its `ProhibitSendQuota` limit.
 
-    **WarningMailbox**: A mailbox exceeds its `IssueWarningQuota` limit when it has a `ProhibitSendQuota` or `ProhibitSendReceiveQuota` limit configured.
+    - **WarningMailbox**: A mailbox exceeds its `IssueWarningQuota` limit when it has a `ProhibitSendQuota` or `ProhibitSendReceiveQuota` limit configured.
 
-    **WarningMailboxUnlimitedSize**: A mailbox exceeds its `IssueWarningQuota` limit when it doesn't have a `ProhibitSendQuota` or `ProhibitSendReceiveQuota` limit configured.
+    - **WarningMailboxUnlimitedSize**: A mailbox exceeds its `IssueWarningQuota` limit when it doesn't have a `ProhibitSendQuota` or `ProhibitSendReceiveQuota` limit configured.
 
     Public folder size quotas:
 
-    **ProhibitPostPublicFolder**: A public folder exceeds its `ProhibitPostQuota` limit.
+    - **ProhibitPostPublicFolder**: A public folder exceeds its `ProhibitPostQuota` limit.
 
-    **WarningPublicFolder**: A public folder exceeds its `IssueWarningQuota` limit when it has a `ProhibitPostQuota` limit configured.
+    - **WarningPublicFolder**: A public folder exceeds its `IssueWarningQuota` limit when it has a `ProhibitPostQuota` limit configured.
 
-    **WarningPublicFolderUnlimitedSize**: A public folder exceeds its `IssueWarningQuota` limit when it doesn't have a `ProhibitPostQuota` limit configured.
+    - **WarningPublicFolderUnlimitedSize**: A public folder exceeds its `IssueWarningQuota` limit when it doesn't have a `ProhibitPostQuota` limit configured.
 
     Maximum number of messages in a mailbox folder:
 
-    **ProhibitReceiveMailboxMessagesPerFolderCount**: A mailbox exceeds its `MailboxMessagesPerFolderCountReceiveQuota` limit.
+    - **ProhibitReceiveMailboxMessagesPerFolderCount**: A mailbox exceeds its `MailboxMessagesPerFolderCountReceiveQuota` limit.
 
-    **WarningMailboxMessagesPerFolderCount**: A mailbox exceeds its `MailboxMessagesPerFolderCountWarningQuota` limit when it has a `ailboxMessagesPerFolderCountReceiveQuota` limit configured.
+    - **WarningMailboxMessagesPerFolderCount**: A mailbox exceeds its `MailboxMessagesPerFolderCountWarningQuota` limit when it has a `ailboxMessagesPerFolderCountReceiveQuota` limit configured.
 
-    **WarningMailboxMessagesPerFolderUnlimitedCount**: A mailbox exceeds its `MailboxMessagesPerFolderCountWarningQuota` limit when it doesn't have a `MailboxMessagesPerFolderCountReceiveQuota` limit configured.
+    - **WarningMailboxMessagesPerFolderUnlimitedCount**: A mailbox exceeds its `MailboxMessagesPerFolderCountWarningQuota` limit when it doesn't have a `MailboxMessagesPerFolderCountReceiveQuota` limit configured.
 
     Maximum number of subfolders in a mailbox folder:
 
-    **ProhibitReceiveFolderHierarchyChildrenCountCount**: A mailbox exceeds its `FolderHierarchyChildrenCountReceiveQuota` limit.
+    - **ProhibitReceiveFolderHierarchyChildrenCountCount**: A mailbox exceeds its `FolderHierarchyChildrenCountReceiveQuota` limit.
 
-    **WarningFolderHierarchyChildrenCount**: A mailbox exceeds its `FolderHierarchyChildrenCountWarningQuota` limit when it has a `FolderHierarchyChildrenCountReceiveQuota` limit configured.
+    - **WarningFolderHierarchyChildrenCount**: A mailbox exceeds its `FolderHierarchyChildrenCountWarningQuota` limit when it has a `FolderHierarchyChildrenCountReceiveQuota` limit configured.
 
-    **WarningFolderHierarchyChildrenUnlimitedCount**: A mailbox exceeds its `FolderHierarchyChildrenCountWarningQuota` limit when it doesn't have a `FolderHierarchyChildrenCountReceiveQuota` limit configured.
+    - **WarningFolderHierarchyChildrenUnlimitedCount**: A mailbox exceeds its `FolderHierarchyChildrenCountWarningQuota` limit when it doesn't have a `FolderHierarchyChildrenCountReceiveQuota` limit configured.
 
-    **ProhibitReceiveFoldersCount**: A mailbox exceeds its `FoldersCountReceiveQuota` limit.
+    - **ProhibitReceiveFoldersCount**: A mailbox exceeds its `FoldersCountReceiveQuota` limit.
 
-    **WarningFoldersCount**: A mailbox exceeds its `FoldersCountWarningQuota` limit when it has a `FoldersCountReceiveQuota` limit configured.
+    - **WarningFoldersCount**: A mailbox exceeds its `FoldersCountWarningQuota` limit when it has a `FoldersCountReceiveQuota` limit configured.
 
-    **WarningFoldersCountUnlimited** A mailbox exceeds its `FoldersCountWarningQuota` limit when it doesn't have a `FoldersCountReceiveQuota` limit configured.
+    - **WarningFoldersCountUnlimited** A mailbox exceeds its `FoldersCountWarningQuota` limit when it doesn't have a `FoldersCountReceiveQuota` limit configured.
 
     Maximum number of levels (depth) in a mailbox folder:
 
-    **ProhibitReceiveFolderHierarchyDepth**: A mailbox exceeds its `FolderHierarchyDepthWarningQuota` limit.
+    - **ProhibitReceiveFolderHierarchyDepth**: A mailbox exceeds its `FolderHierarchyDepthWarningQuota` limit.
 
-    **WarningFolderHierarchyDepth**: A mailbox exceeds its `FolderHierarchyDepthWarningQuota` limit when it has a `FolderHierarchyDepthReceiveQuota` limit configured.
+    - **WarningFolderHierarchyDepth**: A mailbox exceeds its `FolderHierarchyDepthWarningQuota` limit when it has a `FolderHierarchyDepthReceiveQuota` limit configured.
 
-    **WarningFolderHierarchyDepthUnlimited:**: A mailbox exceeds its `FolderHierarchyDepthWarningQuota` limit when it doesn't have a `FolderHierarchyDepthReceiveQuota` limit configured.
+    - **WarningFolderHierarchyDepthUnlimited:**: A mailbox exceeds its `FolderHierarchyDepthWarningQuota` limit when it doesn't have a `FolderHierarchyDepthReceiveQuota` limit configured.
 
 ## Supported languages for NDRs
-<a name="NDRLanguages"> </a>
 
 This table lists the supported language that codes you can use in custom NDRs.
 
 |**Language code**|**Language**|
 |:-----|:-----|
-|af  <br/> |Afrikaans  <br/> |
-|am-ET  <br/> |Amharic (Ethiopia)  <br/> |
-|ar  <br/> |Arabic  <br/> |
-|as-IN  <br/> |Assamese (India)  <br/> |
-|bg  <br/> |Bulgarian  <br/> |
-|bn-BD  <br/> |Bengali (Bangladesh)  <br/> |
-|bn-IN  <br/> |Bengali (India)  <br/> |
-|bs-Cyrl-BA  <br/> |Bosnian (Cyrillic, Bosnia and Herzegovina)  <br/> |
-|bs-Latn-BA  <br/> |Bosnian (Latin, Bosnia and Herzegovina)  <br/> |
-|ca  <br/> |Catalan  <br/> |
-|cs  <br/> |Czech  <br/> |
-|cy-GB  <br/> |Welsh (Great Britain)  <br/> |
-|da  <br/> |Danish  <br/> |
-|de  <br/> |German  <br/> |
-|el  <br/> |Greek  <br/> |
-|en  <br/> |English  <br/> |
-|es  <br/> |Spanish  <br/> |
-|et  <br/> |Estonian  <br/> |
-|eu  <br/> |Basque  <br/> |
-|fa  <br/> |Persian  <br/> |
-|fi  <br/> |Finnish  <br/> |
-|fil-PH  <br/> |Filipino (Philippines)  <br/> |
-|fr  <br/> |French  <br/> |
-|ga-IE  <br/> |Irish (Ireland)  <br/> |
-|gl  <br/> |Galician  <br/> |
-|gu  <br/> |Gujarati  <br/> |
-|ha-Latn-NG  <br/> |Hausa (Latin, Nigeria)  <br/> |
-|he  <br/> |Hebrew  <br/> |
-|hi  <br/> |Hindi  <br/> |
-|hr  <br/> |Croatian  <br/> |
-|hu  <br/> |Hungarian  <br/> |
-|hy  <br/> |Armenian  <br/> |
-|id  <br/> |Indonesian  <br/> |
-|ig-NG  <br/> |Igbo (Nigeria)  <br/> |
-|is  <br/> |Icelandic  <br/> |
-|it  <br/> |Italian  <br/> |
-|iu-Latn-CA  <br/> |Inuktitut (Latin, Canada)  <br/> |
-|ja  <br/> |Japanese  <br/> |
-|ka  <br/> |Georgian  <br/> |
-|kk  <br/> |Kazakh  <br/> |
-|km-KH  <br/> |Khmer (Cambodia)  <br/> |
-|kn  <br/> |Kannada  <br/> |
-|ko  <br/> |Korean  <br/> |
-|kok  <br/> |Konkani  <br/> |
-|ky  <br/> |Kyrgyz  <br/> |
-|lb-LU  <br/> |Luxembourgish (Luxembourg)  <br/> |
-|lo-LA  <br/> |Lao (Lao People's Democratic Republic)  <br/> |
-|lt  <br/> |Lithuanian  <br/> |
-|lv  <br/> |Latvian  <br/> |
-|mi-NZ  <br/> |Maori (New Zealand)  <br/> |
-|mk  <br/> |Macedonian  <br/> |
-|ml-IN  <br/> |Malayalam (India)  <br/> |
-|mr  <br/> |Marathi  <br/> |
-|ms  <br/> |Malay  <br/> |
-|ms-BN  <br/> |Malay (Brunei Darussalam)  <br/> |
-|mt-MT  <br/> |Maltese (Malta)  <br/> |
-|ne-NP  <br/> |Nepali (Nepal)  <br/> |
-|nl  <br/> |Dutch  <br/> |
-|nn-NO  <br/> |Norwegian (Nynorsk)  <br/> |
-|no  <br/> |Norwegian  <br/> |
-|nso-ZA  <br/> |Sesotho sa Leboa (South Africa)  <br/> |
-|or-IN  <br/> |Oriya (India)  <br/> |
-|pa  <br/> |Punjabi  <br/> |
-|pl  <br/> |Polish  <br/> |
-|ps-AF  <br/> |Pashto (Afghanistan)  <br/> |
-|pt  <br/> |Portuguese  <br/> |
-|pt-PT  <br/> |Portuguese (Portugal)  <br/> |
-|qut-GT  <br/> |K'iche (Guatemala)  <br/> |
-|quz-PE  <br/> |Quechua (Peru)  <br/> |
-|ro  <br/> |Romanian  <br/> |
-|ru  <br/> |Russian  <br/> |
-|rw-RW  <br/> |Kinyarwanda (Rwanda)  <br/> |
-|si-LK  <br/> |Sinhala (Sri Lanka)  <br/> |
-|sk  <br/> |Slovak  <br/> |
-|sl  <br/> |Slovenian  <br/> |
-|sq  <br/> |Albanian  <br/> |
-|sr  <br/> |Serbian  <br/> |
-|sr-Cyrl-CS  <br/> |Serbian (Cyrillic, Serbia)  <br/> |
-|sv  <br/> |Swedish  <br/> |
-|sw  <br/> |Kiswahili  <br/> |
-|ta  <br/> |Tamil  <br/> |
-|te  <br/> |Telugu  <br/> |
-|th  <br/> |Thai  <br/> |
-|tn-ZA  <br/> |Setswana (South Africa)  <br/> |
-|tr  <br/> |Turkish  <br/> |
-|tt  <br/> |Tatar  <br/> |
-|uk  <br/> |Ukrainian  <br/> |
-|ur  <br/> |Urdu  <br/> |
-|uz  <br/> |Uzbek  <br/> |
-|vi  <br/> |Vietnamese  <br/> |
-|wo-SN  <br/> |Wolof (Senegal)  <br/> |
-|xh-ZA  <br/> |isiXhosa (South Africa)  <br/> |
-|yo-NG  <br/> |Yoruba (Nigeria)  <br/> |
-|zh-Hans  <br/> |Chinese (Simplified)  <br/> |
-|zh-Hant  <br/> |Chinese (Traditional)  <br/> |
-|zh-HK  <br/> |Chinese (Hong Kong)  <br/> |
-|zu-ZA  <br/> |isiZulu (South Africa)  <br/> |
+|af|Afrikaans|
+|am-ET|Amharic (Ethiopia)|
+|ar|Arabic|
+|as-IN|Assamese (India)|
+|bg|Bulgarian|
+|bn-BD|Bengali (Bangladesh)|
+|bn-IN|Bengali (India)|
+|bs-Cyrl-BA|Bosnian (Cyrillic, Bosnia and Herzegovina)|
+|bs-Latn-BA|Bosnian (Latin, Bosnia and Herzegovina)|
+|ca|Catalan|
+|cs|Czech|
+|cy-GB|Welsh (Great Britain)|
+|da|Danish|
+|de|German|
+|el|Greek|
+|en|English|
+|es|Spanish|
+|et|Estonian|
+|eu|Basque|
+|fa|Persian|
+|fi|Finnish|
+|fil-PH|Filipino (Philippines)|
+|fr|French|
+|ga-IE|Irish (Ireland)|
+|gl|Galician|
+|gu|Gujarati|
+|ha-Latn-NG|Hausa (Latin, Nigeria)|
+|he|Hebrew|
+|hi|Hindi|
+|hr|Croatian|
+|hu|Hungarian|
+|hy|Armenian|
+|id|Indonesian|
+|ig-NG|Igbo (Nigeria)|
+|is|Icelandic|
+|it|Italian|
+|iu-Latn-CA|Inuktitut (Latin, Canada)|
+|ja|Japanese|
+|ka|Georgian|
+|kk|Kazakh|
+|km-KH|Khmer (Cambodia)|
+|kn|Kannada|
+|ko|Korean|
+|kok|Konkani|
+|ky|Kyrgyz|
+|lb-LU|Luxembourgish (Luxembourg)|
+|lo-LA|Lao (Lao People's Democratic Republic)|
+|lt|Lithuanian|
+|lv|Latvian|
+|mi-NZ|Maori (New Zealand)|
+|mk|Macedonian|
+|ml-IN|Malayalam (India)|
+|mr|Marathi|
+|ms|Malay|
+|ms-BN|Malay (Brunei Darussalam)|
+|mt-MT|Maltese (Malta)|
+|ne-NP|Nepali (Nepal)|
+|nl|Dutch|
+|nn-NO|Norwegian (Nynorsk)|
+|no|Norwegian|
+|nso-ZA|Sesotho sa Leboa (South Africa)|
+|or-IN|Oriya (India)|
+|pa|Punjabi|
+|pl|Polish|
+|ps-AF|Pashto (Afghanistan)|
+|pt|Portuguese|
+|pt-PT|Portuguese (Portugal)|
+|qut-GT|K'iche (Guatemala)|
+|quz-PE|Quechua (Peru)|
+|ro|Romanian|
+|ru|Russian|
+|rw-RW|Kinyarwanda (Rwanda)|
+|si-LK|Sinhala (Sri Lanka)|
+|sk|Slovak|
+|sl|Slovenian|
+|sq|Albanian|
+|sr|Serbian|
+|sr-Cyrl-CS|Serbian (Cyrillic, Serbia)|
+|sv|Swedish|
+|sw|Kiswahili|
+|ta|Tamil|
+|te|Telugu|
+|th|Thai|
+|tn-ZA|Setswana (South Africa)|
+|tr|Turkish|
+|tt|Tatar|
+|uk|Ukrainian|
+|ur|Urdu|
+|uz|Uzbek|
+|vi|Vietnamese|
+|wo-SN|Wolof (Senegal)|
+|xh-ZA|isiXhosa (South Africa)|
+|yo-NG|Yoruba (Nigeria)|
+|zh-Hans|Chinese (Simplified)|
+|zh-Hant|Chinese (Traditional)|
+|zh-HK|Chinese (Hong Kong)|
+|zu-ZA|isiZulu (South Africa)|
 
 To control the languages that are used in NDRs, you use these parameters on the **Set-TransportConfig** cmdlet:
 
@@ -540,26 +533,22 @@ To control whether Exchange uses HTML or plain text in NDRs, you use these param
 
 This table describes the HTML tags that you can use in the NDR text.
 
-****
-
 |**Description**|**HTML tags**|
 |:-----|:-----|
-|Bold  <br/> | `<B>` and `</B>` <br/> |
-|Italic  <br/> | `<EM>` and `</EM>` <br/> |
-|Line break  <br/> | `<BR>` <br/> |
-|Paragraph  <br/> | `<P>` and `</P>` <br/> |
-|Hyperlink  <br/> | `<A HREF="url">` and `</A>` <br/> **Note**: Because this tag contains double quotation marks, you need to use single quotation marks (not double quotation marks) around the complete text string if you use this tag in your custom text. Otherwise, you'll receive an error.  <br/> |
+|Bold|`<B>` and `</B>`|
+|Italic|`<EM>` and `</EM>`|
+|Line break|`<BR>`|
+|Paragraph|`<P>` and `</P>`|
+|Hyperlink|`<A HREF="url">` and `</A>` <br/><br/> **Note**: Because this tag contains double quotation marks, you need to use single quotation marks (not double quotation marks) around the complete text string if you use this tag in your custom text. Otherwise, you'll receive an error.|
 
 Certain characters in an NDR require escape codes to identify them literally, and not by their function in the NDR. These characters are described in the following table:
 
-****
-
 |**Character**|**Escape code**|
 |:-----|:-----|
-|\<  <br/> | `&lt;` <br/> |
-|\>  <br/> | `&gt;` <br/> |
-|"  <br/> | `&quot;` <br/> |
-|&  <br/> | `&amp;` <br/> |
+|\<|`&lt;`|
+|\>|`&gt;`|
+|"|`&quot;`|
+|&|`&amp;`|
 
 For example, if you want the NDR to display the text `Please contact the Help Desk at <1234>.`, you need to the value `"Please contact the Help Desk at &lt;1234&gt;."`
 
@@ -568,6 +557,3 @@ This is an example of a custom NDR text value that uses HTML tags and escape cod
 ```
 'You tried to send a message to a <B>disabled</B> mailbox. Please visit <A HREF="https://it.contoso.com">Internal Support</A> or contact &quot;InfoSec&quot; for more information.'
 ```
-
-
-

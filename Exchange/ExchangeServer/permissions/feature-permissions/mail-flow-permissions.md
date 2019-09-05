@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: The permissions required to perform tasks related to mail flow vary depending on the procedure being performed or the cmdlet you want to run.
 ms.topic: reference
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: f49f4fb5-af75-43cb-900f-c5f7b8cfa143
 ms.date: 7/5/2018
+ms.reviewer: 
 title: Mail flow permissions
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -96,6 +97,3 @@ Users who are assigned the View Only Management role group can view the configur
 |Transport configuration - Edge Transport|Edge Transport server local administrator|
 |Transport logs - Edge Transport|Edge Transport server local administrator|
 |Mail flow rules (also known as transport rules) - Edge Transport|Edge Transport server local administrator|
-
-
-

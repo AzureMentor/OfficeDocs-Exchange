@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn about preparing mailboxes for cross-forest moves in Exchange 2016 and Exchange 2019.'
 ms.topic: article
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: fdbed4fc-a77e-40d5-a211-863b05d74784
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Prepare mailboxes for cross-forest move requests
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -70,21 +71,21 @@ The following table lists the minimum set of attributes that need to be configur
 
 |**Active Directory attribute**|**Action**|
 |:-----|:-----|
-|**displayName** <br/> |Copy the corresponding attribute of the source mailbox or generate a new value.  <br/> |
-|**Mail** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**mailNickname** <br/> |Copy the corresponding attribute of the source mailbox or generate a new value.  <br/> |
-|**msExchArchiveGUID and msExchArchiveName** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchMailboxGUID** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchRecipientDisplayType** <br/> |-2147483642 decimal (equivalent to 0x80000006 hex).  <br/> |
-|**msExchRecipientTypeDetails** <br/> |128 decimal (0x80 hex).  <br/> |
-|**msExchUserCulture** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchVersion** <br/> |44220983382016 (decimal).  <br/> |
-|**cn** <br/> |Copy the corresponding attribute of the source mailbox or generate a new value.  <br/> |
-|**proxyAddresses** <br/> |Copy source mailbox's **proxyAddresses** attribute. Additionally, copy source mailbox's **LegacyExchangeDN** as an X500 address in the **proxyAddresses** attribute of the target mail user.  <br/> **Note**: The **proxyAddresses** of the source mailbox user must contain an SMTP address that matches the authoritative domain of the target forest. This allows the **New-MoveRequest** cmdlet to correctly select the **targetAddress** of the source mail-enabled user (converted from the source mailbox user after the mailbox move request is complete) to ensure that mail routing is still functional.  <br/> |
-|**sAMAccountName** <br/> |Copy the corresponding attribute of the source mailbox or generate a new value.  <br/> Ensure that the value is unique within the target forest domain that the target mail user belongs to.  <br/> |
-|**targetAddress** <br/> |Set to an SMTP address in the **proxyAddresses** attribute of the source mailbox.  <br/> This SMTP address must belong to the authoritative domain of the source forest.  <br/> |
-|**userAccountControl** <br/> |Constant: 514 (equivalent to 0x202, ACCOUNTDISABLE \| NORMAL_ACCOUNT).  <br/> |
-|**userPrincipalName** <br/> |Copy the corresponding attribute of the source mailbox or generate a new value. Because the mail user is logon disabled, this **userPrincipalName** isn't used.  <br/> |
+|**displayName**|Copy the corresponding attribute of the source mailbox or generate a new value.|
+|**Mail**|Directly copy the corresponding attribute of the source mailbox.|
+|**mailNickname**|Copy the corresponding attribute of the source mailbox or generate a new value.|
+|**msExchArchiveGUID and msExchArchiveName**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchMailboxGUID**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchRecipientDisplayType**|-2147483642 decimal (equivalent to 0x80000006 hex).|
+|**msExchRecipientTypeDetails**|128 decimal (0x80 hex).|
+|**msExchUserCulture**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchVersion**|44220983382016 (decimal).|
+|**cn**|Copy the corresponding attribute of the source mailbox or generate a new value.|
+|**proxyAddresses**|Copy source mailbox's **proxyAddresses** attribute. Additionally, copy source mailbox's **LegacyExchangeDN** as an X500 address in the **proxyAddresses** attribute of the target mail user.  <br/> **Note**: The **proxyAddresses** of the source mailbox user must contain an SMTP address that matches the authoritative domain of the target forest. This allows the **New-MoveRequest** cmdlet to correctly select the **targetAddress** of the source mail-enabled user (converted from the source mailbox user after the mailbox move request is complete) to ensure that mail routing is still functional.|
+|**sAMAccountName**|Copy the corresponding attribute of the source mailbox or generate a new value.  <br/> Ensure that the value is unique within the target forest domain that the target mail user belongs to.|
+|**targetAddress**|Set to an SMTP address in the **proxyAddresses** attribute of the source mailbox.  <br/> This SMTP address must belong to the authoritative domain of the source forest.|
+|**userAccountControl**|Constant: 514 (equivalent to 0x202, ACCOUNTDISABLE \| NORMAL_ACCOUNT).|
+|**userPrincipalName**|Copy the corresponding attribute of the source mailbox or generate a new value. Because the mail user is logon disabled, this **userPrincipalName** isn't used.|
 
 ### Optional attributes
 
@@ -94,31 +95,31 @@ The following attributes aren't required for the **New-MoveRequest** cmdlet to f
 
 |**Mail user's Active Directory attribute**|**Action**|
 |:-----|:-----|
-|**c** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**co** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**countryCode** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**company** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**department** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**facsimileTelephoneNumber** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**givenName** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**homePhone** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**info** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**initials** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**l** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**mobile** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchAssistantName** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchHideFromAddressLists** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**otherHomePhone** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**otherTelephone** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**pager** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**physicalDeliveryOfficeName** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**postalCode** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**sn** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**st** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**streetAddress** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**telephoneAssistant** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**telephoneNumber** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**title** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
+|**c**|Directly copy the corresponding attribute of the source mailbox.|
+|**co**|Directly copy the corresponding attribute of the source mailbox.|
+|**countryCode**|Directly copy the corresponding attribute of the source mailbox.|
+|**company**|Directly copy the corresponding attribute of the source mailbox.|
+|**department**|Directly copy the corresponding attribute of the source mailbox.|
+|**facsimileTelephoneNumber**|Directly copy the corresponding attribute of the source mailbox.|
+|**givenName**|Directly copy the corresponding attribute of the source mailbox.|
+|**homePhone**|Directly copy the corresponding attribute of the source mailbox.|
+|**info**|Directly copy the corresponding attribute of the source mailbox.|
+|**initials**|Directly copy the corresponding attribute of the source mailbox.|
+|**l**|Directly copy the corresponding attribute of the source mailbox.|
+|**mobile**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchAssistantName**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchHideFromAddressLists**|Directly copy the corresponding attribute of the source mailbox.|
+|**otherHomePhone**|Directly copy the corresponding attribute of the source mailbox.|
+|**otherTelephone**|Directly copy the corresponding attribute of the source mailbox.|
+|**pager**|Directly copy the corresponding attribute of the source mailbox.|
+|**physicalDeliveryOfficeName**|Directly copy the corresponding attribute of the source mailbox.|
+|**postalCode**|Directly copy the corresponding attribute of the source mailbox.|
+|**sn**|Directly copy the corresponding attribute of the source mailbox.|
+|**st**|Directly copy the corresponding attribute of the source mailbox.|
+|**streetAddress**|Directly copy the corresponding attribute of the source mailbox.|
+|**telephoneAssistant**|Directly copy the corresponding attribute of the source mailbox.|
+|**telephoneNumber**|Directly copy the corresponding attribute of the source mailbox.|
+|**title**|Directly copy the corresponding attribute of the source mailbox.|
 
 ### Linked attributes
 
@@ -134,11 +135,11 @@ A _linked attribute_ is an Active Directory attribute that references other Acti
 
 |**Mail user's Active Directory attribute**|**Action**|
 |:-----|:-----|
-|**altRecipient** <br/> |Correspond to the source mailbox's **altRecipient** attribute.  <br/> |
-|**deliverAndRedirect** <br/> |Directly copy the corresponding attribute of the source mailbox. This attribute is a Boolean value that should be set along with **altRecipient**.  <br/> |
-|**Manager** (and its backlinks)  <br/> |Correspond to the source mailbox's manager attribute.  <br/> |
-|**MemberOf** (backlinks)  <br/> |This is the backlink of group member attribute.  <br/> |
-|**publicDelegates** (and its backlinks)  <br/> |Correspond to the source mailbox's **publicDelegates** attribute.  <br/> |
+|**altRecipient**|Correspond to the source mailbox's **altRecipient** attribute.|
+|**deliverAndRedirect**|Directly copy the corresponding attribute of the source mailbox. This attribute is a Boolean value that should be set along with **altRecipient**.|
+|**Manager** (and its backlinks)|Correspond to the source mailbox's manager attribute.|
+|**MemberOf** (backlinks)|This is the backlink of group member attribute.|
+|**publicDelegates** (and its backlinks)|Correspond to the source mailbox's **publicDelegates** attribute.|
 
 ### Linked user attributes
 
@@ -148,9 +149,9 @@ If you want to move a mailbox to an Exchange resource forest, the mailbox in the
 
 |**Active Directory attribute**|**Action**|
 |:-----|:-----|
-|**msExchMasterAccountHistory** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchMasterAccountSid** <br/> |If the source mailbox has **msExchMasterAccountSid**, copy it. Otherwise, copy the source mailbox's **objectSid**.  <br/> |
-|**msExchRecipientDisplayType** <br/> |Constant:-1073741818 decimal (equivalent to `*unsigned* 0xC0000006`).  <br/> |
+|**msExchMasterAccountHistory**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchMasterAccountSid**|If the source mailbox has **msExchMasterAccountSid**, copy it. Otherwise, copy the source mailbox's **objectSid**.|
+|**msExchRecipientDisplayType**|Constant:-1073741818 decimal (equivalent to `*unsigned* 0xC0000006`).|
 
 > [!NOTE]
 > A linked mailbox can only be created if there's a forest trust between the source forest and target forest.
@@ -169,11 +170,11 @@ If you want to move a resource mailbox to an Exchange forest, you need to set th
 
 |**Mail user's Active Directory attribute**|**Action**|
 |:-----|:-----|
-|**msExchRecipientDisplayType** <br/> |If the source mailbox is a conference room: Constant: -2147481850 decimal (equivalent to `*unsigned* 0x80000706`).  <br/> If the source mailbox is an equipment mailbox: Constant: -2147481594 decimal (equivalent to `*unsigned* 0x80000806`).  <br/> |
-|**msExchResourceCapacity** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchResourceDisplay** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchResourceMetaData** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchResourceSearchProperties** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
+|**msExchRecipientDisplayType**|If the source mailbox is a conference room: Constant: -2147481850 decimal (equivalent to `*unsigned* 0x80000706`).  <br/> If the source mailbox is an equipment mailbox: Constant: -2147481594 decimal (equivalent to `*unsigned* 0x80000806`).|
+|**msExchResourceCapacity**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchResourceDisplay**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchResourceMetaData**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchResourceSearchProperties**|Directly copy the corresponding attribute of the source mailbox.|
 
 ### Additional attributes
 
@@ -181,69 +182,66 @@ If you want to move a resource mailbox to an Exchange forest, you need to set th
 
 |**Mail User's Active Directory attributes**|**Description**|
 |:-----|:-----|
-|**comment** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**deletedItemFlags** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**delivContLength** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**departmentNumber** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**description** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**division** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**employeeID** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**employeeNumber** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**employeeType** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**extensionAttribute1-15** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**homePostalAddress** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**internationalISDNNumber** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**ipPhone** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**language** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**lmPwdHistory** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**localeID** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**mAPIRecipient** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**middleName** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msDS-PhoneticCompanyName** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msDS-PhoneticDepartment** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msDS-PhoneticDisplayName** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msDS-PhoneticFirstName** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msDS-PhoneticLastName** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchBlockedSendersHash** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchELCExpirySuspensionEnd** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchELCExpirySuspensionStart** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchELCMailboxFlags** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchExternalOOFOptions** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchMessageHygieneFlags** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchMessageHygieneSCLDeleteThreshold** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchMessageHygieneSCLJunkThreshold** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchMessageHygieneSCLQuarantineThreshold** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchMessageHygieneSCLRejectThreshold** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchMDBRulesQuota** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchPoliciesExcluded** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchSafeRecipientsHash** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchSafeSendersHash** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**msExchUMSpokenName** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**otherFacsimileTelephoneNumber** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**otherIpPhone** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**otherMobile** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**otherPager** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**preferredDeliveryMethod** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**personalPager** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**personalTitle** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**photo** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**pOPCharacterSet** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**pOPContentFormat** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**postalAddress** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**postOfficeBox** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**primaryInternationalISDNNumber** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**primaryTelexNumber** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**showInAdvancedViewOnly** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**street** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**terminalServer** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**textEncodedORAddress** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**thumbnailLogo** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**thumbnailPhoto** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**url** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**userCert** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**userCertificate** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**userSMIMECertificate** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-|**wWWHomePage** <br/> |Directly copy the corresponding attribute of the source mailbox.  <br/> |
-
-
-
+|**comment**|Directly copy the corresponding attribute of the source mailbox.|
+|**deletedItemFlags**|Directly copy the corresponding attribute of the source mailbox.|
+|**delivContLength**|Directly copy the corresponding attribute of the source mailbox.|
+|**departmentNumber**|Directly copy the corresponding attribute of the source mailbox.|
+|**description**|Directly copy the corresponding attribute of the source mailbox.|
+|**division**|Directly copy the corresponding attribute of the source mailbox.|
+|**employeeID**|Directly copy the corresponding attribute of the source mailbox.|
+|**employeeNumber**|Directly copy the corresponding attribute of the source mailbox.|
+|**employeeType**|Directly copy the corresponding attribute of the source mailbox.|
+|**extensionAttribute1-15**|Directly copy the corresponding attribute of the source mailbox.|
+|**homePostalAddress**|Directly copy the corresponding attribute of the source mailbox.|
+|**internationalISDNNumber**|Directly copy the corresponding attribute of the source mailbox.|
+|**ipPhone**|Directly copy the corresponding attribute of the source mailbox.|
+|**language**|Directly copy the corresponding attribute of the source mailbox.|
+|**lmPwdHistory**|Directly copy the corresponding attribute of the source mailbox.|
+|**localeID**|Directly copy the corresponding attribute of the source mailbox.|
+|**mAPIRecipient**|Directly copy the corresponding attribute of the source mailbox.|
+|**middleName**|Directly copy the corresponding attribute of the source mailbox.|
+|**msDS-PhoneticCompanyName**|Directly copy the corresponding attribute of the source mailbox.|
+|**msDS-PhoneticDepartment**|Directly copy the corresponding attribute of the source mailbox.|
+|**msDS-PhoneticDisplayName**|Directly copy the corresponding attribute of the source mailbox.|
+|**msDS-PhoneticFirstName**|Directly copy the corresponding attribute of the source mailbox.|
+|**msDS-PhoneticLastName**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchBlockedSendersHash**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchELCExpirySuspensionEnd**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchELCExpirySuspensionStart**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchELCMailboxFlags**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchExternalOOFOptions**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchMessageHygieneFlags**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchMessageHygieneSCLDeleteThreshold**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchMessageHygieneSCLJunkThreshold**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchMessageHygieneSCLQuarantineThreshold**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchMessageHygieneSCLRejectThreshold**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchMDBRulesQuota**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchPoliciesExcluded**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchSafeRecipientsHash**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchSafeSendersHash**|Directly copy the corresponding attribute of the source mailbox.|
+|**msExchUMSpokenName**|Directly copy the corresponding attribute of the source mailbox.|
+|**otherFacsimileTelephoneNumber**|Directly copy the corresponding attribute of the source mailbox.|
+|**otherIpPhone**|Directly copy the corresponding attribute of the source mailbox.|
+|**otherMobile**|Directly copy the corresponding attribute of the source mailbox.|
+|**otherPager**|Directly copy the corresponding attribute of the source mailbox.|
+|**preferredDeliveryMethod**|Directly copy the corresponding attribute of the source mailbox.|
+|**personalPager**|Directly copy the corresponding attribute of the source mailbox.|
+|**personalTitle**|Directly copy the corresponding attribute of the source mailbox.|
+|**photo**|Directly copy the corresponding attribute of the source mailbox.|
+|**pOPCharacterSet**|Directly copy the corresponding attribute of the source mailbox.|
+|**pOPContentFormat**|Directly copy the corresponding attribute of the source mailbox.|
+|**postalAddress**|Directly copy the corresponding attribute of the source mailbox.|
+|**postOfficeBox**|Directly copy the corresponding attribute of the source mailbox.|
+|**primaryInternationalISDNNumber**|Directly copy the corresponding attribute of the source mailbox.|
+|**primaryTelexNumber**|Directly copy the corresponding attribute of the source mailbox.|
+|**showInAdvancedViewOnly**|Directly copy the corresponding attribute of the source mailbox.|
+|**street**|Directly copy the corresponding attribute of the source mailbox.|
+|**terminalServer**|Directly copy the corresponding attribute of the source mailbox.|
+|**textEncodedORAddress**|Directly copy the corresponding attribute of the source mailbox.|
+|**thumbnailLogo**|Directly copy the corresponding attribute of the source mailbox.|
+|**thumbnailPhoto**|Directly copy the corresponding attribute of the source mailbox.|
+|**url**|Directly copy the corresponding attribute of the source mailbox.|
+|**userCert**|Directly copy the corresponding attribute of the source mailbox.|
+|**userCertificate**|Directly copy the corresponding attribute of the source mailbox.|
+|**userSMIMECertificate**|Directly copy the corresponding attribute of the source mailbox.|
+|**wWWHomePage**|Directly copy the corresponding attribute of the source mailbox.|

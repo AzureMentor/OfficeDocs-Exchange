@@ -7,6 +7,7 @@ f1_keywords:
 ms.author: dmaguire
 ms.assetid: 16380df7-3911-4bc8-943b-cae9ace27827
 ms.date: 8/15/2018
+ms.reviewer: 
 description: Enable yor Gmail account for IMAP so you can view and edit your mail in Microsoft Outlook app.
 title: Enable your Gmail account for IMAP
 ms.collection: 
@@ -20,7 +21,7 @@ search.appverid:
 - MED150
 - MBS150
 - BCS160
-ms.audience: Admin
+audience: Admin
 ms.custom: Adm_O365
 ms.service: exchange-online
 manager: serdars
@@ -42,6 +43,3 @@ To make your Gmail messages accessible by Microsoft Outlook, you need to enable 
 3. Choose **Settings** \> **Forwarding and POP/IMAP**.
 
 4. Select **Enable IMAP**, and then choose **Save Changes**.
-
-
-

@@ -6,11 +6,12 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 2f9fc960-6d0b-472a-a81a-6d8b629b4d5d
 ms.date: 
+ms.reviewer: 
 title: Outlook on the web mailbox policy procedures in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -25,4 +26,3 @@ manager: serdars
 [Remove an Outlook on the web mailbox policy from Exchange Online](remove-outlook-web-app-mailbox-policy.md)
 
 [View or configure Outlook on the web mailbox policy properties](configure-outlook-web-app-mailbox-policy-properties.md)
-

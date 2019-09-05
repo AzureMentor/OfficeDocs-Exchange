@@ -1,21 +1,22 @@
-﻿---
+---
 title: 'ExecutionPolicy GPO is defined: Exchange 2013 Help'
 TOCTitle: ExecutionPolicy GPO is defined
 ms:assetid: 63de83e2-9a6b-4f57-85b9-df445bea18dd
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/ms.exch.setupreadiness.powershellexecutionpolicycheckset(v=EXCHG.150)
 ms:contentKeyID: 61200286
 ms.date: 12/15/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # ExecutionPolicy GPO is defined
 
- 
+_**Applies to:** Exchange Server 2013_
 
-_**Applies to:** Exchange Server_
-
-
-Microsoft Exchange Server 2013 Setup can’t continue because it detected that the **ExecutionPolicy** Group Policy Object (GPO) defines one or both of the following policies:
+Microsoft Exchange Server 2013 Setup can't continue because it detected that the **ExecutionPolicy** Group Policy Object (GPO) defines one or both of the following policies:
 
   - **MachinePolicy**
 
@@ -29,13 +30,9 @@ To allow Setup to continue, you need to temporarily remove any definition of **M
 
 For information on how to remove any definitions of **MachinePolicy** or **UserPolicy** in the **ExecutionPolicy** GPO, see [Knowledge Base article KB981474](https://go.microsoft.com/fwlink/?linkid=3052&kbid=981474).
 
-
 > [!NOTE]
 > Even though this Knowledge Base article was written for Exchange 2010, it also applies to Exchange 2013 cumulative updates and service packs.
 
+Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612).
 
-
-Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkid=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkid=285351).
-
-Did you find what you’re looking for? Please take a minute to [send us feedback](mailto:exsetuphelpfeedback@microsoft.com?subject=exchange%202013%20setup%20help%20feedback) about the information you were hoping to find.
-
+Did you find what you're looking for? Please take a minute to [send us feedback](mailto:exsetuphelpfeedback@microsoft.com?subject=exchange%202013%20setup%20help%20feedback) about the information you were hoping to find.

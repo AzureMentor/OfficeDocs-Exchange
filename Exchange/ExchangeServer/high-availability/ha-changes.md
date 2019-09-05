@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: de53c00b-091c-4a31-aacc-1bd40c756ce2
 ms.date: 7/13/2018
+ms.reviewer: 
 title: Changes to high availability and site resilience over previous versions of Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -172,19 +173,19 @@ Even in JBOD environments, storage array controllers can have issues, such as cr
 
 |**Name**|**Check**|**Action**|**Threshold**|
 |:-----|:-----|:-----|:-----|
-|ESE Database Hung IO Detection  <br/> |ESE checks for outstanding I/Os  <br/> |Generates a failure item in the crimson channel to restart the server  <br/> |240 seconds  <br/> |
-|Failure Item Channel Heartbeat  <br/> |Ensures failure items can be written to and read from crimson channel  <br/> |Replication service heartbeats crimson channel and restart server on failures  <br/> |30 seconds  <br/> |
-|System Disk Heartbeat  <br/> |Verifies server's system disk state  <br/> |Periodically sends unbuffered I/O to system disk; restarts server on heartbeat time out  <br/> |120 seconds  <br/> |
+|ESE Database Hung IO Detection|ESE checks for outstanding I/Os|Generates a failure item in the crimson channel to restart the server|240 seconds|
+|Failure Item Channel Heartbeat|Ensures failure items can be written to and read from crimson channel|Replication service heartbeats crimson channel and restart server on failures|30 seconds|
+|System Disk Heartbeat|Verifies server's system disk state|Periodically sends unbuffered I/O to system disk; restarts server on heartbeat time out|120 seconds|
 
 Exchange 2013 and later enhances server and storage resilience by including behaviors for other serious conditions. These conditions and behaviors are described in the following table.
 
 |**Name**|**Check**|**Action**|**Threshold**|
 |:-----|:-----|:-----|:-----|
-|System bad state  <br/> |No threads, including non-managed threads, can be scheduled  <br/> |Restart the server  <br/> |302 seconds  <br/> |
-|Long I/O times  <br/> |I/O operation latency measurements  <br/> |Restart the server  <br/> |41 seconds  <br/> |
-|Replication service memory use  <br/> |Measure the working set of MSExchangeRepl.exe  <br/> |1: Log event 4395 in the crimson channel with a service termination request  <br/> 2: Initiate termination of MSExchangeRepl.exe  <br/> 3: If service termination fails, restart the server  <br/> |4 gigabyte (GB)  <br/> |
-|System Event 129 (Bus reset)  <br/> |Check for Event 129 in System event log  <br/> |Restart the server  <br/> |When event occurs  <br/> |
-|Cluster database hang  <br/> |Global Update Manager updates are blocked  <br/> |Restart the server  <br/> |When event occurs  <br/> |
+|System bad state|No threads, including non-managed threads, can be scheduled|Restart the server|302 seconds|
+|Long I/O times|I/O operation latency measurements|Restart the server|41 seconds|
+|Replication service memory use|Measure the working set of MSExchangeRepl.exe|1: Log event 4395 in the crimson channel with a service termination request  <br/> 2: Initiate termination of MSExchangeRepl.exe  <br/> 3: If service termination fails, restart the server|4 gigabyte (GB)|
+|System Event 129 (Bus reset)|Check for Event 129 in System event log|Restart the server|When event occurs|
+|Cluster database hang|Global Update Manager updates are blocked|Restart the server|When event occurs|
 
 ## Lagged copy enhancements
 
@@ -317,6 +318,3 @@ Windows Server 2012 R2 or later enables you to create a failover cluster without
 - You can't manage the Windows failover cluster using the Failover Cluster Management tool. Instead, you need to use Windows PowerShell and you need to run the PowerShell cmdlets against the individual cluster members.
 
 Exchange 2013 SP1 or later running on Exchange on Windows Server 2012 R2 or later enables you to create a DAG without a cluster administrative access point. For more information, see [Creating DAGs](manage-ha/manage-dags.md#creating-dags) and [Create a database availability group](manage-ha/create-dags.md).
-
-
-

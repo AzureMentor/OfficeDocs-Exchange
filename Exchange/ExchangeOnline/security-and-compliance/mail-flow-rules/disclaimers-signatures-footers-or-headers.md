@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: 'Summary: Admins can learn how to apply text to the top or bottom of outbound messages in Exchange Online'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 29ac61c2-77f1-4071-b14e-8cc64e3e76ba
 ms.date: 
+ms.reviewer: 
 title: Organization-wide message disclaimers, signatures, footers, or headers in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -22,7 +23,7 @@ You can add an HTML or plain text legal disclaimer, disclosure statement, signat
 
 **Notes**:
 
-- Users can apply signatures to their own outgoing messages in Outlook or Outlook on the web (formerly known as Outlook Web App). For more information, see [Create and add an email signature in Outlook Web App](https://support.office.com/article/0F230564-11B9-4239-83DE-F10CBE4DFDFC).
+- Users can apply signatures to their own outgoing messages in Outlook or Outlook on the web (formerly known as Outlook Web App). For more information, see [Create and add an email signature in Outlook on the web](https://support.office.com/article/0F230564-11B9-4239-83DE-F10CBE4DFDFC).
 
 - If you want the information to be added only to outgoing messages, you need to add a corresponding condition (for example, recipients located outside the organization). By default, mail flow rules are applied to incoming and outgoing messages.
 
@@ -102,4 +103,3 @@ To verify that you've successfully created a disclaimer, and that the disclaimer
 ## For more information
 
 After you configure a disclaimer or email header or footer, see [Manage mail flow rules](manage-mail-flow-rules.md) for information about how to view, modify, enable, disable, or remove a rule.
-

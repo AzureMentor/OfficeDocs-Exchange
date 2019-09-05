@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Admins can learn about the different methods that Exchange Online uses to organize and configure email addresses.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 7c90d413-f978-4af5-8bc5-6b86d897edc3
 ms.date: 
+ms.reviewer: 
 title: Address books in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -38,4 +39,3 @@ For help with everyday email tasks, such as organizing your contacts in Outlook,
 - [Create a contact group](https://go.microsoft.com/fwlink/p/?LinkId=615370)
 
 - [Send an email message to a contact group](https://go.microsoft.com/fwlink/p/?LinkId=615391)
-

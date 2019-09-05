@@ -6,13 +6,14 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: f6f1db72-4465-4eb8-b525-ac2c1fa10a69
 ms.date: 6/24/2018
+ms.reviewer: 
 title: Use favorite public folders in Outlook on the web
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 
@@ -68,5 +69,3 @@ Your users can now use Outlook on the web to perform the following tasks in thei
 ## See also
 
 [Create a public folder in Outlook](https://support.office.com/article/d5981360-28d3-4c8f-a373-c98ae570420a)
-
-

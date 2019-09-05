@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can allow UM-enabled users to receive voice mail messages from anonymous callers or prevent them from doing so. By default, when users are enabled for Unified Messaging (UM) and voice mail, they can receive calls that are anonymous and don't contain caller ID information.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 51367d98-e17c-4bcf-8b14-208bd1ac3af0
 ms.date: 11/17/2014
-title: Allow callers without a caller ID to leave a voice message
+ms.reviewer: 
+title: Allow callers without a caller ID to leave a voice message in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Allow callers without a caller ID to leave a voice message
+# Allow callers without a caller ID to leave a voice message in Exchange Online
 
 You can allow UM-enabled users to receive voice mail messages from anonymous callers or prevent them from doing so. By default, when users are enabled for Unified Messaging (UM) and voice mail, they can receive calls that are anonymous and don't contain caller ID information.
 
@@ -45,7 +46,7 @@ For additional management tasks related to users who are enabled for voice mail,
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use Exchange Online PowerShell to allow voice messages from anonymous callers to be received
 
@@ -54,6 +55,3 @@ This example allows UM-enabled user tonysmith@contoso.com to receive voice messa
 ```
 Set-UMMailbox -Identity tonysmith@contoso.com -AnonymousCallersCanLeaveMessages $true
 ```
-
-
-

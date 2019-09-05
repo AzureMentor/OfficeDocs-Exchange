@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: Configure Voice Mail Preview partner services for users
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 3154be11-1a9d-4e51-a2d0-592ddbcca7b1
 ms.date: 11/17/2014
-title: Voice Mail Preview procedures
+ms.reviewer: 
+title: Voice Mail Preview procedures in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Voice Mail Preview procedures
+# Voice Mail Preview procedures in Exchange Online
 
 [Configure Voice Mail Preview partner services for users](configure-voice-mail-preview-partner-services.md)
 
@@ -29,6 +30,3 @@ manager: scotv
 [Enable Voice Mail Preview for users](enable-voice-mail-preview.md)
 
 [Disable Voice Mail Preview for users](disable-voice-mail-preview.md)
-
-
-

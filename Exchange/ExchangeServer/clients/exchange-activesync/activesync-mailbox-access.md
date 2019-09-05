@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: Learn how administrators can enable or disable Exchange ActiveSync access to specific mailboxes in Exchange Server 2016 or Exchange Server 2019.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: dcf7c05b-b1b9-4b0f-800d-fec9f2ddc9e4
 ms.date: 7/5/2018
+ms.reviewer: 
 title: Enable or disable Exchange ActiveSync access to mailboxes in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -51,7 +52,7 @@ For additional management tasks related to user access to mailboxes, see these t
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Enable or disable Exchange ActiveSync access to a single mailbox
 
@@ -61,25 +62,25 @@ For additional management tasks related to user access to mailboxes, see these t
 
 2. In the list of mailboxes, find the mailbox that you want to modify. You can:
 
-  - Scroll through the list of mailboxes.
+   - Scroll through the list of mailboxes.
 
-  - Click **Search** ![Search icon](../../media/ITPro_EAC_.png) and enter part of the user's name, email address, or alias.
+   - Click **Search** ![Search icon](../../media/ITPro_EAC_.png) and enter part of the user's name, email address, or alias.
 
-  - Click **More options** ![More Options icon](../../media/ITPro_EAC_MoreOptionsIcon.png) \> **Advanced search** to find the mailbox.
+   - Click **More options** ![More Options icon](../../media/ITPro_EAC_MoreOptionsIcon.png) \> **Advanced search** to find the mailbox.
 
-    Once you've found the mailbox that you want to modify, select it, and then click **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.png).
+     Once you've found the mailbox that you want to modify, select it, and then click **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.png).
 
 3. On the mailbox properties page that opens, click **Mailbox features**.
 
 4. In the **Mobile Devices** section, configure one of these settings:
 
-  - If ActiveSync is enabled on the mailbox, you'll see a **Disable Exchange ActiveSync** link. Click the link to disable ActiveSync, and then click **Yes** in the warning message that appears.
+   - If ActiveSync is enabled on the mailbox, you'll see a **Disable Exchange ActiveSync** link. Click the link to disable ActiveSync, and then click **Yes** in the warning message that appears.
 
-  - If ActiveSync is disabled on the mailbox, you'll see a **Enable Exchange ActiveSync** link. Click the link to enable ActiveSync.
+   - If ActiveSync is disabled on the mailbox, you'll see a **Enable Exchange ActiveSync** link. Click the link to enable ActiveSync.
 
-    ![Mobile device settings for a mailbox in the EAC at Recipients \> select mailbox \> Edit \> Mailbox features \> Mobile Devices](../../media/52364427-9557-443e-8366-35a1339a0f15.png)
+     ![Mobile device settings for a mailbox in the EAC at Recipients \> select mailbox \> Edit \> Mailbox features \> Mobile Devices](../../media/52364427-9557-443e-8366-35a1339a0f15.png)
 
-    When you're finished, click **Save**.
+     When you're finished, click **Save**.
 
 ### Use the Exchange Management Shell to enable or disable Exchange ActiveSync access to a mailbox
 
@@ -111,23 +112,23 @@ For detailed syntax and parameter information, see [Set-CASMailbox](http://techn
 
 2. In the list of mailboxes, find the mailboxes that you want to modify. You can:
 
-  - Scroll through the list of mailboxes.
+   - Scroll through the list of mailboxes.
 
-  - Click **Search** ![Search icon](../../media/ITPro_EAC_.png) and enter part of the user's name, email address, or alias.
+   - Click **Search** ![Search icon](../../media/ITPro_EAC_.png) and enter part of the user's name, email address, or alias.
 
-  - Click **More options** ![More Options icon](../../media/ITPro_EAC_MoreOptionsIcon.png) \> **Advanced search** to find the mailbox.
+   - Click **More options** ![More Options icon](../../media/ITPro_EAC_MoreOptionsIcon.png) \> **Advanced search** to find the mailbox.
 
 3. In the list of mailboxes, select multiple mailboxes of the same type (for example, **User**) from the list. For example:
 
-  - Select a mailbox, hold down the Shift key, and select another mailbox that's farther down in the list.
+   - Select a mailbox, hold down the Shift key, and select another mailbox that's farther down in the list.
 
-  - Hold down the CTRL key as you select each mailbox.
+   - Hold down the CTRL key as you select each mailbox.
 
-    After you select multiple mailboxes of the same type, the title of the details pane changes to **Bulk Edit**.
+   After you select multiple mailboxes of the same type, the title of the details pane changes to **Bulk Edit**.
 
 4. In the details pane, scroll down to **Exchange ActiveSync**, click **Enable** or **Disable**, and then click **OK** in the warning message that appears.
 
-    ![Bulk select mailboxes in the EAC to enable or disable Exchange ActiveSync](../../media/b28f6467-f702-424b-b9ca-8f6edac109f2.png)
+   [Bulk select mailboxes in the EAC to enable or disable Exchange ActiveSync](../../media/b28f6467-f702-424b-b9ca-8f6edac109f2.png)
 
 ### Use the Exchange Management Shell to enable or disable Exchange ActiveSync access to multiple mailboxes
 
@@ -139,17 +140,12 @@ You can use the **Get-Mailbox**, **Get-User** or **Get-Content** cmdlets to iden
 
 - Use a text file to specify the mailboxes. The text file contains one mailbox (email address, name, or other unique identifier) on each line like this:
 
-  ```
-  ebrunner@tailspintoys.com
-  fapodaca@tailspintoys.com
-  glaureano@tailspintoys.com
-  hrim@tailspintoys.com
-  ```
+> ebrunner@tailspintoys.com <br/> fapodaca@tailspintoys.com <br/> glaureano@tailspintoys.com <br/> hrim@tailspintoys.com
 
 This example disables ActiveSync access to all user mailboxes in the North America\Finance OU.
 
 ```
-$NAFinance = Get-Mailbox -OrganizationalUnit "OU=Marketing,OU=North America,DC=contoso,DC=com" -Filter {RecipientTypeDetails -eq 'UserMailbox'} -ResultSize Unlimited; $NAFinance | foreach  {Set-CasMailbox  $_.Identity -ActiveSyncEnabled $false}
+$NAFinance = Get-Mailbox -OrganizationalUnit "OU=Marketing,OU=North America,DC=contoso,DC=com" -Filter {RecipientTypeDetails -eq 'UserMailbox'} -ResultSize Unlimited; $NAFinance | foreach {Set-CasMailbox $_.Identity -ActiveSyncEnabled $false}
 ```
 
 This example disables ActiveSync access to all user mailboxes in the Engineering department in Washington state.
@@ -195,6 +191,3 @@ To verify that you've successfully enabled or disabled Exchange ActiveSync acces
   ```
   Get-CasMailbox -ResultSize unlimited -Filter {ActiveSyncEnabled -eq $false}
   ```
-
-
-

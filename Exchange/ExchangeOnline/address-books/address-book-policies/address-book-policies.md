@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Learn how to use address book policies (ABPs) to create separate virtual organizations with a segmented global address list in Exchange Online.
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: d0a916a1-e3ed-49ae-b116-a559be0dcce6
 ms.date: 
+ms.reviewer: 
 title: Address book policies in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -81,4 +82,3 @@ Entourage and Outlook for Mac clients that connect to their Exchange Online mail
 In hybrid environments where the user account is in your on-premises organization and the mailbox is in Exchange Online, ABPs won't function for Entourage and Outlook for Mac users who connect to their mailboxes from inside the corporate network, because Entourage and Outlook for Mac connect directly to global a catalog server to query Active Directory (which bypasses the ABPs). Outside the corporate network, they can use an OAB or Exchange Web Services (EWS), which allows them to search the GAL based on the assigned ABP.
 
 To learn more about administering Outlook for Mac 2011, see [Planning for Outlook for Mac 2011](https://go.microsoft.com/fwlink/p/?LinkId=231878).
-

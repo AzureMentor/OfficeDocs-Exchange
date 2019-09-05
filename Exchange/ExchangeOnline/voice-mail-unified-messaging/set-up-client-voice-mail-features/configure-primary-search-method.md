@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: When you create a Unified Messaging (UM) dial plan, you can configure the primary and secondary ways that callers can search for names to locate a user when they call an Outlook Voice Access number or a UM auto attendant that's associated with the dial plan. Callers can use touchtone inputs to locate a UM-enabled user.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 3d93a037-5820-41d3-9206-69f534414daf
 ms.date: 11/17/2014
-title: Configure the primary way for Outlook Voice Access users to search
+ms.reviewer: 
+title: Configure the primary way for Outlook Voice Access users to search in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Configure the primary way for Outlook Voice Access users to search
+# Configure the primary way for Outlook Voice Access users to search in Exchange Online
 
 When you create a Unified Messaging (UM) dial plan, you can configure the primary and secondary ways that callers can search for names to locate a user when they call an Outlook Voice Access number or a UM auto attendant that's associated with the dial plan. Callers can use touchtone inputs to locate a UM-enabled user.
 
@@ -34,7 +35,7 @@ For additional management tasks related to UM dial plans, see [UM Dial Plan Proc
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to change the primary dial by name method
 
@@ -46,11 +47,11 @@ For additional management tasks related to UM dial plans, see [UM Dial Plan Proc
 
 4. In **Settings**, under **Primary way to search for names**, use the drop-down list to select the option you want:
 
-  - **Last first** (default)
+   - **Last first** (default)
 
-  - **First last**
+   - **First last**
 
-  - **SMTP address**
+   - **SMTP address**
 
 5. Click **Save**.
 
@@ -73,6 +74,3 @@ This example sets the primary dial by name method to `SMTP address`. This enable
 ```
 Set-UMDialPlan -Identity MyUMDialPlan -DialByNamePrimary SMTPAddress
 ```
-
-
-

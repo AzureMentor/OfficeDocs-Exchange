@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'UM services procedures: Exchange 2013 Help'
 TOCTitle: UM services procedures
 ms:assetid: 3efa389a-9130-4c02-ab9e-fd4ad5933412
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ851062(v=EXCHG.150)
 ms:contentKeyID: 50067621
 ms.date: 07/14/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-# UM services procedures
+# UM services procedures in Exchange Server
 
- 
-
-_**Applies to:** Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013, Exchange Server 2016_
 
 [Manage UM settings on a Mailbox server](manage-um-settings-on-a-mailbox-server-exchange-2013-help.md)
 
@@ -40,4 +41,3 @@ _**Applies to:** Exchange Server 2013_
 [Set the TCP listening port on a Client Access server](set-the-tcp-listening-port-on-a-client-access-server-exchange-2013-help.md)
 
 [Set the TLS listening port on a Client Access server](set-the-tls-listening-port-on-a-client-access-server-exchange-2013-help.md)
-

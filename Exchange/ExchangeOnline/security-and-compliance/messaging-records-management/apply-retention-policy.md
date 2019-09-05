@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: You can use retention policies to group one or more retention tags and apply them to mailboxes to enforce message retention settings. A mailbox can't have more than one retention policy.
 ms.topic: article
-author: markjjo
-ms.author: markjjo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 6ccc80db-d201-44f7-8d4b-473a89c14b2f
 ms.date: 11/17/2014
+ms.reviewer: 
 title: Apply a retention policy to mailboxes
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -106,6 +107,3 @@ This command retrieves all mailboxes that have the retention policy RP-Finance a
 ```
 Get-Mailbox -ResultSize unlimited | Where-Object {$_.RetentionPolicy -eq "RP-Finance"} | Format-Table Name,RetentionPolicy -Auto
 ```
-
-
-

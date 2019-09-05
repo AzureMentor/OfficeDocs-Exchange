@@ -1,35 +1,35 @@
 ---
 localization_priority: Normal
-description: Use audit logging to troubleshoot configuration issues by tracking specific changes made by administrators and to help you meet regulatory, compliance, and litigation requirements.
+description: Learn about the auditing reports that are available in the Exchange admin center (EAC) in Exchange Online.
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 2b3e1529-1677-4564-be0b-ce22757ddc0d
 ms.date: 7/11/2018
-title: Exchange auditing reports
+ms.reviewer: 
+title: Exchange Online auditing reports
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
 ---
 
-# Exchange auditing reports
+# Auditing reports in the Exchange admin center in Exchange Online
 
-Use audit logging to troubleshoot configuration issues by tracking specific changes made by administrators and to help you meet regulatory, compliance, and litigation requirements. Exchange Online provides two types of audit logging:
+Use audit logging to troubleshoot configuration issues by tracking specific changes made by admins and to help you meet regulatory, compliance, and litigation requirements. Exchange Online provides two types of audit logging:
 
-- Administrator audit logging records any action, based on an Exchange Online PowerShell cmdlet, performed by an administrator. This can help you troubleshoot configuration issues or identify the cause of security-related or compliance-related problems. In Exchange Online, actions performed by Microsoft administrators and delegated administrators, are also recorded.
+- Administrator audit logging records any action, based on an Exchange Online PowerShell cmdlet, performed by an admin. This can help you troubleshoot configuration issues or identify the cause of security-related or compliance-related problems. Actions performed by Microsoft datacenter administrators and delegated admins, are also recorded.
 
-- Mailbox audit logging records when a mailbox is accessed by an administrator, a delegated user, or the person who owns the mailbox. This can help you determine who has accessed a mailbox and what they've done.
+- Mailbox audit logging records when a mailbox is accessed by an admin, a delegated user, or the person who owns the mailbox. This can help you determine who has accessed a mailbox and what they've done.
 
 ## Export audit logs
-<a name="exportlogs"> </a>
 
 On the **Compliance Management** \> **Auditing** page in the Exchange admin center (EAC), you can search for and export entries from the administrator audit log and the mailbox audit log.
 
-- **Export the administrator audit log**: Any action performed by an administrator that's based on an Exchange Online PowerShell cmdlet that doesn't begin with the verbs **Get**, **Search**, or **Test** is logged in the administrator audit log. Audit log entries include the cmdlet that was run, the parameter and values used with the cmdlet, and when the operation was successful. You can search for and export entries from the administrator audit log. When you export your search results, Microsoft Exchange saves them in an XML file and attaches it to an email message. For more information, see:
+- **Export the administrator audit log**: Any action performed by an admin that's based on an Exchange Online PowerShell cmdlet that doesn't begin with the verbs **Get**, **Search**, or **Test** is logged in the administrator audit log. Audit log entries include the cmdlet that was run, the parameter and values used with the cmdlet, and when the operation was successful. You can search for and export entries from the administrator audit log. When you export your search results, Exchange Online saves them in an XML file and attaches it to an email message. For more information, see:
 
   - [Search the role group changes or administrator audit logs](search-role-group-changes.md)
 
@@ -38,10 +38,9 @@ On the **Compliance Management** \> **Auditing** page in the Exchange admin cent
     > [!NOTE]
     > By default, admin audit log entries are kept for 90 days. When an entry is older than 90 days, it's deleted. This setting can't be changed in a cloud-based organization. However, it can be changed in an on-premises Exchange organization by using the **Set-AdminAuditLog** cmdlet.
 
-- **Export mailbox audit logs**: When mailbox audit logging is enabled for a mailbox, Microsoft Exchange stores a record of actions performed on mailbox data by non-owners in the mailbox audit log, which is stored in a hidden folder in the mailbox being audited. Mailbox audit logging can also be configure to log owner actions. Entries in this log indicate who accessed the mailbox and when, the actions performed, and whether the action was successful. When you search for entries in the mailbox audit log and export them, Microsoft Exchange saves the search results in an XML file and attaches it to an email message. For more information, see [Export mailbox audit logs](export-mailbox-audit-logs.md).
+- **Export mailbox audit logs**: When mailbox audit logging is enabled for a mailbox, Exchange Online stores a record of actions performed on mailbox data by non-owners in the mailbox audit log, which is stored in a hidden folder in the mailbox being audited. Mailbox audit logging can also be configure to log owner actions. Entries in this log indicate who accessed the mailbox and when, the actions performed, and whether the action was successful. When you search for entries in the mailbox audit log and export them, Exchange Online saves the search results in an XML file and attaches it to an email message. For more information, see [Export mailbox audit logs](export-mailbox-audit-logs.md).
 
 ## Run auditing reports
-<a name="runreports"> </a>
 
 When you run any of the following reports on the **Auditing** page in the EAC, the results are displayed in the details pane of the report.
 
@@ -61,47 +60,21 @@ When you run any of the following reports on the **Auditing** page in the EAC, t
 
   - [Place a mailbox on Litigation Hold](https://technet.microsoft.com/library/adee4621-3626-4aec-aa53-00b35ff0d0b0.aspx)
 
-- **Run the admin audit log report**: Use this report to view entries from the administrator audit log. Instead of exporting the administrator audit log, which can take up to 24 hours to receive in an email message, you can run this report in the EAC. This report records configuration changes made by administrators in your organization. Up to 5000 entries will be displayed on multiple pages. To narrow the search, you can specify a date range. For more information, see:
+- **Run the admin audit log report**: Use this report to view entries from the administrator audit log. Instead of exporting the administrator audit log, which can take up to 24 hours to receive in an email message, you can run this report in the EAC. This report records configuration changes made by admins in your organization. Up to 5000 entries will be displayed on multiple pages. To narrow the search, you can specify a date range. For more information, see:
 
   - [View the administrator audit log](view-administrator-audit-log.md)
 
   - [Administrator audit logging](https://technet.microsoft.com/library/22b17eb8-d8ee-4599-b202-d6a7928c20d9.aspx)
 
-- **Run the external admin audit log report**: This report is only available in Exchange Online and Exchange Online Protection. Actions performed by Microsoft administrators or delegated administrators are logged in the administrator audit log. Use the external admin audit log report to search for and view the actions that administrators outside your organization performed on the configuration of your Exchange Online organization. For more information, see [View and export the external admin audit log](view-external-admin-audit-log.md).
+- **Run the external admin audit log report**: Actions performed by Microsoft datacenter administrators or delegated admins are logged in the administrator audit log. Use the external admin audit log report to search for and view the actions that administrators outside your organization performed on the configuration of your Exchange Online organization. For more information, see [View and export the external admin audit log](view-external-admin-audit-log.md).
 
 ## Configure audit logging
-<a name="setupauditing"> </a>
 
-Before you can run auditing reports and export audit logs, you have to configure audit logging for your organization.
-
-### Enable mailbox audit logging
-<a name="enablemailboxauditing"> </a>
-
-You have to enable mailbox audit logging for each mailbox that you want to run a non-owner mailbox access report for. If mailbox audit logging isn't enabled for a mailbox, you won't get any results when you run a report for it or export the mailbox audit log.
-
-To enable mailbox audit logging for a single mailbox, run the following command in Exchange Online PowerShell.
-
-```
-Set-Mailbox <Identity> -AuditEnabled $true
-```
-
-To enable mailbox auditing for all user mailboxes in your organization, run the following commands.
-
-```
-$UserMailboxes = Get-mailbox -Filter {(RecipientTypeDetails -eq 'UserMailbox')}
-$UserMailboxes | ForEach {Set-Mailbox $_.Identity -AuditEnabled $true}
-```
-
-For more information about configuring which actions are logged, see:
-
-- **Exchange Server**: [Enable or disable mailbox audit logging for a mailbox](https://technet.microsoft.com/library/c4bbfd52-6196-49c7-8c31-777fbbee11f2.aspx)
-
-- **Exchange Online**: [Enable mailbox auditing in Office 365](https://go.microsoft.com/fwlink/p/?LinkId=626109)
+As of January 2019, mailbox audit logging on by default is enabled for all Exchange Online organizations. For more information, see [Manage mailbox auditing](https://docs.microsoft.com/office365/securitycompliance/enable-mailbox-auditing).
 
 ### Give users access to Auditing reports
-<a name="auditinginecp"> </a>
 
-By default, administrators can access and run any of the reports on the Auditing page in the EAC. However, other users, such as a records manager or legal staff, have to be assigned the necessary permissions.
+By default, admins can access and run any of the reports on the Auditing page in the EAC. However, other users, such as a records manager or legal staff, have to be assigned the necessary permissions.
 
 The easiest way to give users access is to add them to the Records Management role group. You can also use Exchange Online PowerShell to give a user access to the **Auditing** page in the EAC by assigning the Audit Logs role to the user.
 
@@ -134,16 +107,12 @@ This enables the user to select **Compliance Management** \> **Auditing** in the
 > [!NOTE]
 > To allow a user to run auditing reports but not to export audit logs, use the preceding command to assign the View-Only Audit Logs role.
 
-### Configure Outlook Web App to allow XML attachments
-<a name="configureowa"> </a>
+### Configure Outlook on the web to allow XML attachments
 
-When you export the mailbox audit log or administrator audit log, Microsoft Exchange attaches the audit log, which is an XML file, to an email message. However, Outlook Web App blocks XML attachments by default. If you want to use Outlook Web App to access these audit logs, you have to configure Outlook Web App to allow XML attachments.
+When you export the mailbox audit log or administrator audit log, Exchange Online attaches the audit log, which is an XML file, to an email message. However, Outlook on the web (formerly known as Outlook Web App) blocks XML attachments by default. If you want to use Outlook on the web to access these audit logs, you have to configure Outlook on the web to allow XML attachments.
 
-Run the following command to allow XML attachments in Outlook Web App.
+Run the following command to allow XML attachments in Outlook on the web:
 
 ```
-Set-OwaMailboxPolicy -Identity Default -AllowedFileTypes '.rpmsg','.xlsx','.xlsm','.xlsb','.tiff','.pptx','.pptm','.ppsx','.ppsm','.docx','.docm','.zip','.xls','.wmv','.wma','.wav','.vsd','.txt','.tif','.rtf','.pub','.ppt','.png','.pdf','.one','.mp3','.jpg','.gif','.doc','.bmp','.avi','.xml'
+Set-OwaMailboxPolicy -Identity Default -AllowedFileTypes @{Add=".xml"}
 ```
-
-
-

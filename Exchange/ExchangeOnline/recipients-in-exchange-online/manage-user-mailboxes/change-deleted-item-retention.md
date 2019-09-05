@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Learn how to use Exchange Online PowerShell to change the deleted item retention period for Exchange Online mailboxes.
 ms.topic: article
-author: serdars
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: ce17f1ec-b96c-4c9e-b20a-507fe0afc684
 ms.date: 
+ms.reviewer: 
 title: Change how long permanently deleted items are kept for an Exchange Online mailbox
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -75,7 +76,7 @@ Get-Mailbox -ResultSize unlimited -Filter {(RecipientTypeDetails -eq 'UserMailbo
 
 ## More about deleted items and retention time
 
-When a user permanently deletes a mailbox item (such as an email message, a contact, a calendar appointment, or a task) in Microsoft Outlook and Outlook Web App, the item is moved to the **Recoverable Items** folder, and into a subfolder named **Deletions**.
+When a user permanently deletes a mailbox item (such as an email message, a contact, a calendar appointment, or a task) in Microsoft Outlook and Outlook on the web, the item is moved to the **Recoverable Items** folder, and into a subfolder named **Deletions**.
 
 A mailbox item is deleted and moved to the **Recoverable Items** folder when a user does one of the following:
 
@@ -87,13 +88,10 @@ A mailbox item is deleted and moved to the **Recoverable Items** folder when a u
 
  How long deleted items are kept in the **Deletions** folder depends on the deleted item retention period that is set for the mailbox. An Exchange Online mailbox keeps deleted items for 14 days, by default. Use Exchange Online PowerShell, as shown above, to change this setting, to increase the period up to a maximum of 30 days.
 
-Users can recover, or purge, deleted items before the retention time for a deleted item expires. To do so, they use the **Recover Deleted Items** feature in Outlook or Outlook on the web. See the following topics for [Outlook](https://go.microsoft.com/fwlink/p/?linkId=198206) or for [Outlook Web App](https://go.microsoft.com/fwlink/p/?LinkId=524924).
+Users can recover, or purge, deleted items before the retention time for a deleted item expires. To do so, they use the **Recover Deleted Items** feature in Outlook or Outlook on the web. See the following topics for [Outlook](https://go.microsoft.com/fwlink/p/?linkId=198206) or for [Outlook on the web](https://go.microsoft.com/fwlink/p/?LinkId=524924).
 
 Additional help:
 
 - If a user purges a deleted item, you can recover it before the deleted item retention period expires. For details, see [Recover deleted messages in a user's mailbox](recover-deleted-messages.md).
 
 - To learn more about deleted item retention, the Recoverable Items folder, In-Place Hold, and Litigation Hold, see [Understanding Recoverable Items](https://technet.microsoft.com/library/efc48fb4-2ed8-4d05-93af-f3505fbc389d.aspx).
-
-
-

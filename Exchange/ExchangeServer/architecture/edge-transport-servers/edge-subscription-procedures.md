@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: After you've subscribed an Edge Transport server to an Active Directory site in your Exchange organization as described in Edge Subscriptions, you might need to perform maintenance tasks on the Edge Subscription. These tasks are described in this topic.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 27de4104-fb8e-4eab-9ad2-a64f81a4fb69
 ms.date: 7/3/2018
+ms.reviewer: 
 title: Procedures for Edge Subscriptions
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -161,6 +162,3 @@ This example verifies EdgeSync results for the user kate@contoso.com.
 ```
 Test-EdgeSynchronization -VerifyRecipient kate@contoso.com
 ```
-
-
-

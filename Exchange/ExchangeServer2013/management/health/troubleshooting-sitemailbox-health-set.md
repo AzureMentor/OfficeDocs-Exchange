@@ -1,138 +1,102 @@
-﻿---
+---
 title: Troubleshooting SiteMailbox Health Set
 TOCTitle: Troubleshooting SiteMailbox Health Set
 ms:assetid: ac00985c-c9a5-44bf-b152-4b99d8ae24ed
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/ms.exch.scom.sitemailbox(v=EXCHG.150)
 ms:contentKeyID: 49720849
-ms.date: 10/08/2015
+ms.date: 
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-<div data-xmlns="http://www.w3.org/1999/xhtml">
-
-<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="http://msdn.microsoft.com/en-us/">
-
-<div data-asp="http://msdn2.microsoft.com/asp">
-
 # Troubleshooting SiteMailbox Health Set
 
-</div>
-
-<div id="mainSection">
-
-<div id="mainBody">
-
-<span> </span>
-
-_**Applies to:** Exchange Server 2013, Project Server 2013_
-
-_**Topic Last Modified:** 2013-02-11_
+_**Applies to:** Exchange Server 2013_
 
 The SiteMailbox Health set monitors the overall health and accessibility of the site mailboxes in your organization.
 
-If you receive an alert that specifies that SiteMailbox is unhealthy, this indicates that the contents of a user’s mailbox are not in a synchronized state.
-
-<span id="EXP"></span>
-
-<div>
+If you receive an alert that specifies that SiteMailbox is unhealthy, this indicates that the contents of a user's mailbox are not in a synchronized state.
 
 ## Explanation
 
 The SiteMailbox monitoring system receives passive sync results from the background synchronization service. This system does not use any probes. The passive synchronization results are written to the SiteMailbox monitoring system after every synchronization attempt. Synchronizations are also triggered when the following events occur:
 
-  - Users access their site mailboxes by using Outlook or Outlook Web App
+- Users access their site mailboxes by using Outlook or Outlook Web App
 
-  - You run the **Update-SiteMailbox** command
+- You run the **Update-SiteMailbox** command
 
-  - You open the Outlook Web App Options window, and then you click the **Start Sync** button on the **Sync Status** page for the selected site mailbox
+- You open the Outlook Web App Options window, and then you click the **Start Sync** button on the **Sync Status** page for the selected site mailbox
 
 For more information about the Update-SiteMailbox cmdlet, see: [Update-SiteMailbox](https://technet.microsoft.com/en-us/library/jj218690\(v=exchg.150\))
 
 For more information about probes and monitors, see [Server health and performance](https://technet.microsoft.com/en-us/library/jj150551\(v=exchg.150\)).
 
-</div>
-
-<div>
-
 ## Common issues
 
 The synchronization monitoring service typically triggers an alert when site-wide spread synchronization issues occur. An alert is not sent when a single site mailbox fails to synchronize. To determine the cause of an above-threshold alert for a single site mailbox, we recommend that you review the site mailbox synchronization log files.
-
-</div>
-
-<div>
 
 ## User Action
 
 It's possible that the service recovered after it issued the alert. Therefore, when you receive an alert that specifies that the health set is unhealthy, first verify that the issue still exists. If the issue does exist, perform the appropriate recovery actions outlined in the following sections.
 
-<span id="verify"></span>
-
-<div>
-
 ## Verifying the issue still exists
 
-1.  Identify the health set name and the server name in the alert.
+1. Identify the health set name and the server name in the alert.
 
-2.  The message details provide information about the exact cause of the alert. In most cases, the message details provide sufficient troubleshooting information to identify the root cause. If the message details are not clear, do the following:
-    
-    1.  Open the Exchange Management Shell, and then run the following command to retrieve the details of the health set that issued the alert:
-        
+2. The message details provide information about the exact cause of the alert. In most cases, the message details provide sufficient troubleshooting information to identify the root cause. If the message details are not clear, do the following:
+
+    1. Open the Exchange Management Shell, and then run the following command to retrieve the details of the health set that issued the alert:
+
             Get-ServerHealth <server name> | ?{$_.HealthSetName -eq "<health set name>"}
-        
+
         For example, to retrieve the SiteMailbox health set details about server1.contoso.com, run the following command:
-        
+
             Get-ServerHealth server1.contoso.com | ?{$_.HealthSetName -eq "SiteMailbox"}
-    
-    2.  Review the command output to determine which monitor reported the error. The **AlertValue** value for the monitor that issued the alert will be `Unhealthy`.
 
-</div>
-
-<span id="TestMonitors"></span>
-
-<div>
+    2. Review the command output to determine which monitor reported the error. The **AlertValue** value for the monitor that issued the alert will be `Unhealthy`.
 
 ## Troubleshooting steps
 
 When you receive an alert from a health set, the email message contains the following information:
 
-  - Name of the server that sent the alert
+- Name of the server that sent the alert
 
-  - Time and date when the alert occurred
+- Time and date when the alert occurred
 
-  - Authentication mechanism used, and credential information
+- Authentication mechanism used, and credential information
 
-  - Full exception trace of the last error, including diagnostic data and specific HTTP header information  
-    
-    **Note**   You can use the information in the full exception trace to help troubleshoot the issue. The exception generated by the probe contains a Failure Reason that describes why the probe failed.
+- Full exception trace of the last error, including diagnostic data and specific HTTP header information
 
-**Background synchronization errors**
+  **Note**: You can use the information in the full exception trace to help troubleshoot the issue. The exception generated by the probe contains a Failure Reason that describes why the probe failed.
+
+### Background synchronization errors
 
 When the background synchronization process fails, you may receive an alert that resembles the following:
 
-The Site Mailbox background sync is failing at least 25%: 41 failures out of 87 attempts.Sample sync result:
-
-\[Message:The remote server returned an error: (401) Unauthorized.\]\[Type:System.Net.WebException\]
+> The Site Mailbox background sync is failing at least 25%: 41 failures out of 87 attempts.Sample sync result: <br/><br/> \[Message:The remote server returned an error: (401) Unauthorized.\]\[Type:System.Net.WebException\]
 
 This alert is triggered when a consistently high percentage of synchronization failures have occurred during the previous four hours. To avoid false negatives, an alert is sent only when the following conditions are met within a 15-minute window during the previous four hours:
 
-  - At least 20 failures occur within a 15-minute window.
+- At least 20 failures occur within a 15-minute window.
 
-  - The percentage of failures compared to total attempts exceed 25 percent within a 15-minute window.
+- The percentage of failures compared to total attempts exceed 25 percent within a 15-minute window.
 
 Every site mailbox in Exchange is linked to an SharePoint site. For each of the site mailboxes on a given Exchange server that is hosting the Mailbox role, the server synchronizes site mailbox-related information from SharePoint.
 
 Two types of syncs take place during this process: membership sync and document sync. The metadata for these sync processes originates from different web services. Additionally, a given Exchange server may contain site mailboxes that are linked to several SharePoint servers or farms. Therefore, the alert may originate from multiple Mailbox servers, depending on the following conditions:
 
-1.  How actively-used site mailboxes in the organization are distributed
+1. How actively-used site mailboxes in the organization are distributed
 
-2.  The SharePoint servers to which the actively-used site mailboxes are linked
+2. The SharePoint servers to which the actively-used site mailboxes are linked
 
-3.  Whether the Mailbox server has sufficient sync volume to meet alert thresholds
+3. Whether the Mailbox server has sufficient sync volume to meet alert thresholds
 
 To help resolve this issue, the sample synchronization result in the alert may help determine the cause of the failure. Details about the success or failure of each sync attempt is recorded in the *\<exExchangeSvrNoVersion installation directory\>*Logging\\TeamMailbox folder. Review the most recent Microsoft.Exchange.ServiceHost\_TeamMailboxSyncLog\* files for failures by searching on the term **failed**. You can also use the **Test-OAuthConnectivity**, **Test-SiteMailbox**, and **Get-SiteMailboxDiagnostics** cmdlets to troubleshoot further.
 
-**The MSExchangeServiceHost service is not running**
+### The MSExchangeServiceHost service is not running
 
 If the MSExchangeServiceHost service is not running, you receive an alert that resembles the following:
 
@@ -140,38 +104,17 @@ The 'MSExchangeServiceHost' service is not running after the recovery attempts. 
 
 To resolve this issue, verify that the MSExchangeServiceHost service is running on the server that sent the alert. If the service is running, review the Windows event logs for indications of why the service may not have been running earlier, such as manual service control or repeated crashes of the service.
 
-**The MSExchangeServiceHost service has crashed**
+### The MSExchangeServiceHost service has crashed
 
 If the MSExchangeServiceHost service crashes, you receive an alert that resembles the following:
 
-The MSExchangeServiceHost process has crashed at least 3 times in last 60 minutes.  
-Watson Message:
-
-\<*Message*\>
+> The MSExchangeServiceHost process has crashed at least 3 times in last 60 minutes.
+Watson Message: <br/><br/> \<*Message*\>
 
 To resolve this issue, review the Windows Application event log on the server that sent the alert for **4999** events regarding the MSExchangeServiceHost service. The detail text can provide information about the cause of the issue.
-
-</div>
-
-</div>
-
-<div>
 
 ## For More Information
 
 [What's new in Exchange 2013](https://technet.microsoft.com/en-us/library/jj150540\(v=exchg.150\))
 
 [Exchange 2013 cmdlets](https://technet.microsoft.com/en-us/library/bb124413\(v=exchg.150\))
-
-</div>
-
-</div>
-
-<span> </span>
-
-</div>
-
-</div>
-
-</div>
-

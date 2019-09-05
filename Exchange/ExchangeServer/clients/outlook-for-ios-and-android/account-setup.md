@@ -9,7 +9,7 @@ ms.date: 7/5/2018
 title: Account setup in Outlook for iOS and Android using Basic authentication
 ms.collection: exchange-server
 ms.reviewer: smithre4
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -17,7 +17,7 @@ manager: serdars
 
 # Account setup in Outlook for iOS and Android using Basic authentication
 
-Outlook for iOS and Android offers Exchange administrators the ability to "push" account configurations to their on-premises users who use Basic authentication with the ActiveSync protocol. This capability works with any Mobile Device Management (MDM) provider who uses the [Managed App Configuration](https://developer.apple.com/library/content/samplecode/sc2279/Introduction/Intro.mdl) channel for iOS or the [Android in the Enterprise](https://developer.android.com/work/managed-configurations) channel for Android.
+Outlook for iOS and Android offers Exchange administrators the ability to "push" account configurations to their on-premises users who use Basic authentication with the ActiveSync protocol. This capability works with any Mobile Device Management (MDM) provider who uses the [Managed App Configuration](https://www.apple.com/business/resources/docs/Managing_Devices_and_Corporate_Data_on_iOS.pdf) channel for iOS or the [Android in the Enterprise](https://developer.android.com/work/managed-configurations) channel for Android.
 
 For on-premises users enrolled in Microsoft Intune, you can deploy the account configuration settings using Intune in the Azure Portal.
 
@@ -86,15 +86,12 @@ When you create an app configuration policy in the Azure Portal or through your 
 
 |**Key**|**Values**|
 |:-----|:-----|
-|com.microsoft.outlook.EmailProfile.EmailAccountName  <br/> |This value specifies the display name email account as it will appear to users on their devices.  <br/> **Value type**: String  <br/> **Accepted values**: Display Name  <br/> **Default if not specified**: \<blank\>  <br/> **Required**: Yes  <br/> **Example**: user  <br/> **Intune Token**<sup>*</sup>: {{username}}  <br/> |
-|com.microsoft.outlook.EmailProfile.EmailAddress  <br/> |This value specifies the email address to be used for sending and receiving mail.  <br/> **Value type**: String  <br/> **Accepted values**: Email address  <br/> **Default if not specified**: \<blank\>  <br/> **Required**: Yes  <br/> **Example**: user@companyname.com  <br/> **Intune Token**<sup>*</sup>: {{mail}}  <br/> |
-|com.microsoft.outlook.EmailProfile.EmailUPN  <br/> |This value specifies the User Principal Name or username for the email profile that will be used to authenticate the account.  <br/> **Value type**: String  <br/> **Accepted values**: UPN Address or username  <br/> **Default if not specified**: \<blank\>  <br/>**Required**: Yes  <br/> **Example**: userupn@companyname.com  <br/> **Intune Token**<sup>*</sup>: {{userprincipalname}}  <br/> |
-|com.microsoft.outlook.EmailProfile.ServerAuthentication  <br/> |This value specifies the authentication method for the user.  <br/> **Value type**: String  <br/> **Accepted values**: 'Username and Password'  <br/> **Default if not specified**: 'Username and Password'  <br/> **Required**: No  <br/> **Example**: 'Username and Password'  <br/> |
-|com.microsoft.outlook.EmailProfile.ServerHostName  <br/> |This value specifies the host name of your Exchange server.  <br/> **Value type**: String  <br/> **Accepted values**: ActiveSync FQDN  <br/> **Default if not specified**: \<blank\>  <br/> **Required**: Yes  <br/> **Example**: mail.companyname.com  <br/> |
-|com.microsoft.outlook.EmailProfile.AccountDomain  <br/> |This value specifies the user's account domain.  <br/> **Value type**: String  <br/> **Accepted values**: Domain  <br/> **Default if not specified**: \<blank\>  <br/> **Required**: No  <br/>**Example**: companyname  <br/> |
-|com.microsoft.outlook.EmailProfile.AccountType  <br/> |This value specifies the account type being configured based on the authentication model.  <br/> **Value type**: String  <br/> **Accepted values**: BasicAuth  <br/> **Default if not specified**: BasicAuth  <br/> **Required**: No  <br/> **Example**: BasicAuth  <br/> |
+|com.microsoft.outlook.EmailProfile.EmailAccountName|This value specifies the display name email account as it will appear to users on their devices.  <br/> **Value type**: String  <br/> **Accepted values**: Display Name  <br/> **Default if not specified**: \<blank\>  <br/> **Required**: Yes  <br/> **Example**: user  <br/> **Intune Token**<sup>*</sup>: {{username}}|
+|com.microsoft.outlook.EmailProfile.EmailAddress|This value specifies the email address to be used for sending and receiving mail.  <br/> **Value type**: String  <br/> **Accepted values**: Email address  <br/> **Default if not specified**: \<blank\>  <br/> **Required**: Yes  <br/> **Example**: user@companyname.com  <br/> **Intune Token**<sup>*</sup>: {{mail}}|
+|com.microsoft.outlook.EmailProfile.EmailUPN|This value specifies the User Principal Name or username for the email profile that will be used to authenticate the account.  <br/> **Value type**: String  <br/> **Accepted values**: UPN Address or username  <br/> **Default if not specified**: \<blank\>  <br/>**Required**: Yes  <br/> **Example**: userupn@companyname.com  <br/> **Intune Token**<sup>*</sup>: {{userprincipalname}}|
+|com.microsoft.outlook.EmailProfile.ServerAuthentication|This value specifies the authentication method for the user.  <br/> **Value type**: String  <br/> **Accepted values**: 'Username and Password'  <br/> **Default if not specified**: 'Username and Password'  <br/> **Required**: No  <br/> **Example**: 'Username and Password'|
+|com.microsoft.outlook.EmailProfile.ServerHostName|This value specifies the host name of your Exchange server.  <br/> **Value type**: String  <br/> **Accepted values**: ActiveSync FQDN  <br/> **Default if not specified**: \<blank\>  <br/> **Required**: Yes  <br/> **Example**: mail.companyname.com|
+|com.microsoft.outlook.EmailProfile.AccountDomain|This value specifies the user's account domain.  <br/> **Value type**: String  <br/> **Accepted values**: Domain  <br/> **Default if not specified**: \<blank\>  <br/> **Required**: No  <br/>**Example**: companyname|
+|com.microsoft.outlook.EmailProfile.AccountType|This value specifies the account type being configured based on the authentication model.  <br/> **Value type**: String  <br/> **Accepted values**: BasicAuth  <br/> **Default if not specified**: BasicAuth  <br/> **Required**: No  <br/> **Example**: BasicAuth|
 
  <sup>*</sup> Microsoft Intune users can use tokens that will expand to the correct value according to the MDM enrolled user. See [Add app configuration policies for managed iOS devices](https://docs.microsoft.com/intune/app-configuration-policies-use-ios) for more information.
-
-
-

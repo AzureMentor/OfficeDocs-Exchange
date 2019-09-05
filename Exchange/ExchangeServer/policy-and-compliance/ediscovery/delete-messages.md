@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to search for and purge messages from Exchange Server 2016 and Exchange Server 2019 mailboxes.'
 ms.topic: article
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 8c36bb03-e716-4fdd-9958-4aa7a2a1db42
 ms.date: 6/12/2018
+ms.reviewer: 
 title: Search for and delete messages in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -28,11 +29,11 @@ manager: serdars
 
 Here's the workflow for the search and delete process:
 
-[Step 1: Create and run a Compliance Search to find the message to delete](delete-messages.md#step1)
+[Step 1: Create and run a Compliance Search to find the message to delete](#step-1-create-and-run-a-compliance-search-to-find-the-message-to-delete)
 
-[Step 2: Delete the message](delete-messages.md#step2)
+[Step 2: Delete the message](#step-2-delete-the-message)
 
-See the [More information](delete-messages.md#moreinfo) section for description of what happens to deleted messages and how to get the status of a search and delete operation.
+See the [More information](#more-information) section for description of what happens to deleted messages and how to get the status of a search and delete operation.
 
 > [!CAUTION]
 > Search and delete is a powerful feature that allows anyone that is assigned the necessary permissions to delete email messages from mailboxes in your organization.
@@ -44,7 +45,6 @@ See the [More information](delete-messages.md#moreinfo) section for description 
 - A maximum of 10 items per mailbox can be removed at once. Because the capability to search for and remove messages is intended to be an incident-response tool, this limit helps ensure that messages are quickly removed from mailboxes. This feature isn't intended to clean up user mailboxes.
 
 ## Step 1: Create and run a Compliance Search to find the message to delete
-<a name="step1"> </a>
 
 The first step is to create and run a Compliance Search to find the message that you want to remove from mailboxes in your organization. You can create the search by running the **New-ComplianceSearch** and **Start-ComplianceSearch** cmdlets. The messages that match the query for this search will be deleted by running the **New-ComplianceSearchAction** cmdlet in Step 2.
 
@@ -54,14 +54,13 @@ In this example, the commands will create and start a search of all mailboxes in
 
 2. Run the following commands.
 
-  ```
-  New-ComplianceSearch -Name "Remove Phishing Message" -ExchangeLocation all -ContentMatchQuery 'subject:"Update your account information"'
+   ```
+   New-ComplianceSearch -Name "Remove Phishing Message" -ExchangeLocation all -ContentMatchQuery 'subject:"Update your account information"'
+   ```
 
-  ```
-
-  ```
-  Start-ComplianceSearch -Identity "Remove Phishing Message"
-  ```
+   ```
+   Start-ComplianceSearch -Identity "Remove Phishing Message"
+   ```
 
 For information about creating a Compliance Search and configuring search queries, see the following topics:
 
@@ -100,7 +99,7 @@ Here are two examples of queries to find suspicious email messages.
   ```
 
 ## Step 2: Delete the message
-<a name="step2"> </a>
+
 
 After you've created and refined a Compliance Search to return the message that you want to remove, the final step is to run the **New-ComplianceSearchAction** cmdlet to delete the message. Deleted messages are moved to a user's Recoverable Items folder.
 
@@ -110,20 +109,16 @@ In this example, the command will delete the search results returned by a Compli
 
 2. Run the following command.
 
-```
-New-ComplianceSearchAction -SearchName "Remove Phishing Message" -Purge -PurgeType SoftDelete
-```
+   ```
+   New-ComplianceSearchAction -SearchName "Remove Phishing Message" -Purge -PurgeType SoftDelete
+   ```
 
 ## More information
-<a name="moreinfo"> </a>
 
-- **What happens after you delete a message?** A message that is deleted by using the `New-ComplianceSearchAction -Purge -PurgeType SoftDelete` command is moved to the Deletions folder in the user's Recoverable Items folder. It isn't immediately purged from the Exchange database. The user can recover messages in the Deleted Items folder for the duration based on the deleted item retention period configured for the mailbox. After this retention period expires (or if user purges the message before it expires), the message is moved to the Purges folder and can no longer be accessed by the user. Once in the Purges folder, the message is again retained for the duration based on the deleted item retention period configured for the mailbox if single items recovery is enabled for the mailbox. (In Exchange, single item recovery is enabled by default when a new mailbox is created. ) After the deleted item retention period expires, the message is marked from permanent deletion and will be purged from the Exchange database the next time that the mailbox is processed by the Managed Folder assistant.
+- **What happens after you delete a message?**: A message that is deleted by using the `New-ComplianceSearchAction -Purge -PurgeType SoftDelete` command is moved to the Deletions folder in the user's Recoverable Items folder. It isn't immediately purged from the Exchange database. The user can recover messages in the Deleted Items folder for the duration based on the deleted item retention period configured for the mailbox. After this retention period expires (or if user purges the message before it expires), the message is moved to the Purges folder and can no longer be accessed by the user. Once in the Purges folder, the message is again retained for the duration based on the deleted item retention period configured for the mailbox if single items recovery is enabled for the mailbox. (In Exchange, single item recovery is enabled by default when a new mailbox is created. ) After the deleted item retention period expires, the message is marked from permanent deletion and will be purged from the Exchange database the next time that the mailbox is processed by the Managed Folder assistant.
 
-- **How do you know that messages are deleted and moved to the users' Recoverable Items folder?** If you run the same Compliance Search after you delete a message, you will still see the same number of search results (and might assume that the message wasn't deleted from user mailboxes). This is because a Compliance Search searches the Recoverable Items folder, which is where the deleted message is moved to after you run the `New-ComplianceSearchAction -Purge -PurgeType SoftDelete` command. To verify that messages where moved to the Recoverable Items folder, you can run an In-Place eDiscovery search (using the same source mailboxes and search criteria as the Compliance Search created in Step 1) and the copy the search results to discovery mailbox. Then you can view the search results in the discovery mailbox and verify that the messages was moved to the Recoverable Items folder. See [Use Compliance Search to search all mailboxes in Exchange Server](compliance-search.md) for details about creating an In-Place eDiscovery search that uses the list of source mailboxes and search query from a Compliance Search.
+- **How do you know that messages are deleted and moved to the users' Recoverable Items folder?**: If you run the same Compliance Search after you delete a message, you will still see the same number of search results (and might assume that the message wasn't deleted from user mailboxes). This is because a Compliance Search searches the Recoverable Items folder, which is where the deleted message is moved to after you run the `New-ComplianceSearchAction -Purge -PurgeType SoftDelete` command. To verify that messages where moved to the Recoverable Items folder, you can run an In-Place eDiscovery search (using the same source mailboxes and search criteria as the Compliance Search created in Step 1) and the copy the search results to discovery mailbox. Then you can view the search results in the discovery mailbox and verify that the messages was moved to the Recoverable Items folder. See [Use Compliance Search to search all mailboxes in Exchange Server](compliance-search.md) for details about creating an In-Place eDiscovery search that uses the list of source mailboxes and search query from a Compliance Search.
 
-- **What happens if a message is deleted from a mailbox that has been placed on In-Place Hold or Litigation Hold?** After the message is purged (either by the user or after the deleted item retention period expires), the message is retained until the hold duration expires. If the hold duration is unlimited, then items are retained until the hold is removed or the hold duration is changed.
+- **What happens if a message is deleted from a mailbox that has been placed on In-Place Hold or Litigation Hold?**: After the message is purged (either by the user or after the deleted item retention period expires), the message is retained until the hold duration expires. If the hold duration is unlimited, then items are retained until the hold is removed or the hold duration is changed.
 
-- **How to get status on the search and delete operation?** Run the **Get-ComplianceSearchAction** to get the status on the delete operation. Note that the object that is created when you run the **New-ComplianceSearchAction** cmdlet is named by using this format: `<name of Compliance Search>_Purge`.
-
-
-
+- **How to get status on the search and delete operation?** Run the **Get-ComplianceSearchAction**: to get the status on the delete operation. Note that the object that is created when you run the **New-ComplianceSearchAction** cmdlet is named by using this format: `<name of Compliance Search>_Purge`.

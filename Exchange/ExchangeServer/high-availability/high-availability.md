@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: b1704c87-5f5c-464e-9dc5-1bb1bdf9ac2a
 ms.date: 7/9/2018
+ms.reviewer: 
 title: High availability and site resilience
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -171,12 +172,9 @@ The following table contains links to topics that will help you learn about and 
 
 |**Topic**|**Description**|
 |:-----|:-----|
-|[Database availability groups](database-availability-groups/database-availability-groups.md) <br/> |Learn about DAGs, Active Manager, Datacenter Activation Coordination (DAC) mode, and mailbox database copies.  <br/> |
-|[Plan for high availability and site resilience](plan-ha.md) <br/> |Learn about the general, hardware, network, software, witness server, and other requirements and best practices for DAGs.  <br/> |
-|[Deploying high availability and site resilience](deploy-ha.md) <br/> |Explore an example deployment scenario for deploying and configuring DAGs.  <br/> |
-|[Managing high availability and site resilience](manage-ha/manage-ha.md) <br/> |Learn about DAG management tasks, switchovers and failovers, and maintenance mode.  <br/> |
-|[Monitor database availability groups](manage-ha/monitor-dags.md) <br/> |Learn about the built-in cmdlets and scripts for monitoring DAGs and database copies.  <br/> |
-|[Backup, restore, and disaster recovery](disaster-recovery/disaster-recovery.md) <br/> |Learn about backing up and restoring Exchange databases, recovery databases, and server recovery.  <br/> |
-
-
-
+|[Database availability groups](database-availability-groups/database-availability-groups.md)|Learn about DAGs, Active Manager, Datacenter Activation Coordination (DAC) mode, and mailbox database copies.|
+|[Plan for high availability and site resilience](plan-ha.md)|Learn about the general, hardware, network, software, witness server, and other requirements and best practices for DAGs.|
+|[Deploying high availability and site resilience](deploy-ha.md)|Explore an example deployment scenario for deploying and configuring DAGs.|
+|[Managing high availability and site resilience](manage-ha/manage-ha.md)|Learn about DAG management tasks, switchovers and failovers, and maintenance mode.|
+|[Monitor database availability groups](manage-ha/monitor-dags.md)|Learn about the built-in cmdlets and scripts for monitoring DAGs and database copies.|
+|[Backup, restore, and disaster recovery](disaster-recovery/disaster-recovery.md)|Learn about backing up and restoring Exchange databases, recovery databases, and server recovery.|

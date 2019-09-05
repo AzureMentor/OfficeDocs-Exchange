@@ -6,13 +6,14 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 64437ffd-231b-4c10-84df-232ccbe9538f
 ms.date: 7/11/2018
+ms.reviewer: 
 title: Create a public folder mailbox
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 
@@ -21,11 +22,7 @@ manager: laurawi
 Before you can create a public folder, you must first create a public folder mailbox. Public folder mailboxes contain the hierarchy information plus the content for public folders. The first public folder mailbox you create will be the primary hierarchy mailbox, which contains the only writable copy of the hierarchy. Any additional public folder mailboxes you create will be secondary mailboxes, which contain a read-only copy of the hierarchy.
 
 > [!NOTE]
->  For more information about the storage quotas and limits for public folders, see the following topics:
->  - For public folders in Office 365, see [Exchange Online Limits](https://go.microsoft.com/fwlink/p/?LinkID=391188).
->  - For public folders in on-premises Exchange Server, see [Limits for public folders](https://docs.microsoft.com/Exchange/collaboration/public-folders/limits).
-
-For additional management tasks related to public folders in Exchange Server, see [Public Folder Procedures](https://technet.microsoft.com/library/afa54c8e-f3ab-4f5f-85ad-fb2a905ecfa9.aspx).
+> For more information about the storage quotas and limits for public folders, see [Exchange Online Limits](https://go.microsoft.com/fwlink/p/?LinkID=391188).
 
 For additional management tasks related to public folders in Exchange Online, see [Public folder procedures in Office 365 and Exchange Online](public-folder-procedures.md).
 
@@ -76,6 +73,3 @@ Get-OrganizationConfig | Format-List RootPublicFolderMailbox
 For detailed syntax and parameter information, see [get-OrganizationConfig](https://technet.microsoft.com/library/3e07e5cc-5066-40e7-8642-845ad080f9a9.aspx).
 
 Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
-
-
-

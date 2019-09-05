@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'View role scopes: Exchange 2013 Help'
 TOCTitle: View role scopes
 ms:assetid: 0bb3a434-6651-473a-94eb-4eb9a34e6f70
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd335084(v=EXCHG.150)
 ms:contentKeyID: 49289158
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # View role scopes
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Management role scopes determine what objects are made available to a user so that the objects can be changed using the cmdlets and parameters assigned to them. You can view scopes to determine what scopes have been added to your organization, the configuration of a specific scope, or what scopes are orphans.
 
@@ -23,27 +24,22 @@ Looking for other management tasks related to role scopes? Check out [Advanced p
 
 ## What do you need to know before you begin?
 
-  - Estimated time to complete each procedure: 5 minutes
+- Estimated time to complete each procedure: 5 minutes
 
-  - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Management scopes" entry in the [Role management permissions](role-management-permissions-exchange-2013-help.md) topic.
+- You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Management scopes" entry in the [Role management permissions](role-management-permissions-exchange-2013-help.md) topic.
 
-  - You must use the Shell to perform these procedures.
+- You must use the Shell to perform these procedures.
 
-  - This topic makes use of pipelining and the **Format-List** cmdlet. For more information about these concepts, see the following topics:
-    
-      - [Pipelining](https://technet.microsoft.com/en-us/library/aa998260\(v=exchg.150\))
-    
-      - [Working with command output](working-with-command-output-exchange-2013-help.md)
+- This topic makes use of pipelining and the **Format-List** cmdlet. For more information about these concepts, see the following topics:
 
-  - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
+  - [Pipelining](https://technet.microsoft.com/en-us/library/aa998260\(v=exchg.150\))
 
+  - [Working with command output](working-with-command-output-exchange-2013-help.md)
+
+- For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at <A href="https://go.microsoft.com/fwlink/p/?linkid=60612">Exchange Server</A>, <A href="https://go.microsoft.com/fwlink/p/?linkid=267542">Exchange Online</A>, or <A href="https://go.microsoft.com/fwlink/p/?linkid=285351">Exchange Online Protection</A>.
-
-
-
-## What do you want to do?
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612).
 
 ## View a specific scope
 
@@ -108,4 +104,3 @@ Get-ManagementScope -Exclusive $false
 ```
 
 For detailed syntax and parameter information, see [Get-ManagementScope](https://technet.microsoft.com/en-us/library/dd298180\(v=exchg.150\)).
-

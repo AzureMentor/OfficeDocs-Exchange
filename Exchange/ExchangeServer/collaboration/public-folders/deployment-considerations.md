@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 2e416eed-b88f-45db-a482-1232fd2610fa
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Considerations when deploying public folders
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -51,6 +52,3 @@ This article contains factors to consider before you deploy public folders in yo
 - You must use Outlook 2010 or later to access public folders on Exchange servers.
 
 - Retention policies aren't supported for public folder mailboxes.
-
-
-

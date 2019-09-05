@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can enable Voice over IP (VoIP) security for a Unified Messaging (UM) dial plan. By default, when a UM dial plan is created, it will use Unsecured mode or no encryption. Exchange servers can answer calls for single or multiple UM dial plans and can answer calls for dial plans that have different VoIP security settings. In Office 365 and Exchange Online Secured mode is required and can't be disabled.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: b5335654-c766-4f3f-883c-f31263e1d9c1
 ms.date: 11/17/2014
-title: Configure the VoIP security setting
+ms.reviewer: 
+title: Configure the VoIP security setting in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Configure the VoIP security setting
+# Configure the VoIP security setting in Exchange Online
 
 You can enable Voice over IP (VoIP) security for a Unified Messaging (UM) dial plan. By default, when a UM dial plan is created, it will use Unsecured mode or no encryption. Exchange servers can answer calls for single or multiple UM dial plans and can answer calls for dial plans that have different VoIP security settings. In Office 365 and Exchange Online Secured mode is required and can't be disabled.
 
@@ -36,7 +37,7 @@ For additional management tasks related to UM dial plans, see [UM Dial Plan Proc
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to configure VoIP security on a UM dial plan
 
@@ -46,11 +47,11 @@ For additional management tasks related to UM dial plans, see [UM Dial Plan Proc
 
 3. In **General**, under **VoIP security mode**, select one of the following options:
 
-  - **SIP secured**
+   - **SIP secured**
 
-  - **Unsecured** (default)
+   - **Unsecured** (default)
 
-  - **Secured**
+   - **Secured**
 
 4. Click **Save**.
 
@@ -73,6 +74,3 @@ This example configures a UM dial plan named `MySecureDialPlan` to not encrypt S
 ```
 Set-UMDialPlan -identity MySecureDialPlan -VoIPSecurity Unsecured
 ```
-
-
-

@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Overview of Exchange 2013 services: Exchange 2013 Help'
 TOCTitle: Overview of Exchange 2013 services
 ms:assetid: 2ed45d18-2ff3-4099-b841-050eb16a416b
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Ee423542(v=EXCHG.150)
 ms:contentKeyID: 74479247
 ms.date: 10/20/2017
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Overview of Exchange 2013 services
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 During the installation of Exchange Server 2013, Setup runs a set of tasks that install new services in Microsoft Windows. A service is a background process that can be launched during the startup of the server by the Windows Service Control Manager. Services are executable files designed to operate independently and without administrative intervention. A service can run using either a graphical user interface (GUI) mode or a console mode.
 
@@ -24,7 +25,6 @@ The sections in this topic describe the various services that are installed by E
 ## Exchange services on Exchange 2013 Mailbox servers
 
 The following table describes the Exchange services that are installed on Mailbox servers.
-
 
 <table style="width:100%;">
 <colgroup>
@@ -64,7 +64,6 @@ The following table describes the Exchange services that are installed on Mailbo
 
 > [!NOTE]
 > On November 1, 2016, Microsoft stopped producing spam definition updates for the SmartScreen filters in Exchange and Outlook. The existing SmartScreen spam definitions will be left in place, but their effectiveness will likely degrade over time. For more information, see <A href="https://go.microsoft.com/fwlink/p/?linkid=835894">Deprecating support for SmartScreen in Outlook and Exchange</A>.
-
 
 </td>
 <td><p>Automatic</p></td>
@@ -276,11 +275,9 @@ The following table describes the Exchange services that are installed on Mailbo
 </tbody>
 </table>
 
-
 ## Exchange services on Exchange 2013 Client Access servers
 
 The following table describes the Exchange services that are installed on Client Access servers.
-
 
 <table style="width:100%;">
 <colgroup>
@@ -392,11 +389,9 @@ The following table describes the Exchange services that are installed on Client
 </tbody>
 </table>
 
-
 ## Exchange services on Exchange 2013 Edge Transport servers
 
 The following table describes the Exchange services that are installed on Edge Transport servers.
-
 
 <table style="width:100%;">
 <colgroup>
@@ -436,7 +431,6 @@ The following table describes the Exchange services that are installed on Edge T
 
 > [!NOTE]
 > On November 1, 2016, Microsoft stopped producing spam definition updates for the SmartScreen filters in Exchange and Outlook. The existing SmartScreen spam definitions will be left in place, but their effectiveness will likely degrade over time. For more information, see <A href="https://go.microsoft.com/fwlink/p/?linkid=835894">Deprecating support for SmartScreen in Outlook and Exchange</A>.
-
 
 </td>
 <td><p>Automatic</p></td>
@@ -501,4 +495,3 @@ The following table describes the Exchange services that are installed on Edge T
 </tr>
 </tbody>
 </table>
-

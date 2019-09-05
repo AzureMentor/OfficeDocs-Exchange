@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can customize the menu prompt to be used by a Unified Messaging (UM) auto attendant outside business hours. After you create a UM auto attendant, a default system prompt (Welcome to Unified Messaging) is used as the menu prompt that callers hear after the non-business hours welcome greeting is played. Although the system prompt mustn't be replaced or changed, you can customize the greetings and menu prompts that are used with UM auto attendants. After you create a customized non-business hours menu prompt audio file, you must enable menu navigation entries on the UM auto attendant for non-business hours.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 094c50b2-072b-4929-aaf8-f7db5b19e9b6
 ms.date: 11/17/2014
-title: Enable a customized non-business hours menu prompt
+ms.reviewer: 
+title: Enable a customized non-business hours menu prompt in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Enable a customized non-business hours menu prompt
+# Enable a customized non-business hours menu prompt in Exchange Online
 
 You can customize the menu prompt to be used by a Unified Messaging (UM) auto attendant outside business hours. After you create a UM auto attendant, a default system prompt ("Welcome to Unified Messaging") is used as the menu prompt that callers hear after the non-business hours welcome greeting is played. Although the system prompt mustn't be replaced or changed, you can customize the greetings and menu prompts that are used with UM auto attendants. After you create a customized non-business hours menu prompt audio file, you must enable menu navigation entries on the UM auto attendant for non-business hours.
 
@@ -40,7 +41,7 @@ For additional management tasks related to UM auto attendants, see [UM auto atte
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to enable a customized non-business hours menu prompt
 
@@ -70,6 +71,3 @@ Set-UMAutoAttendant -Identity MyAutoAttendant -
 AfterHoursKeyMappingEnabled $true -
 AfterHoursKeyMapping "1,Sales,,SalesAutoAttendant","2,Support,12345","3,Directions,,,directions.wav"
 ```
-
-
-

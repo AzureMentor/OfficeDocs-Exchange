@@ -2,13 +2,15 @@
 localization_priority: Normal
 description: 'Summary: Learn how administrators can use Information Rights Management (IRM) in Exchange Server 2016 and Exchange Server 2019 to help prevent the disclosure of sensitive information.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 6ea3a695-3ddd-4d53-b3c6-90041f44ef64
-ms.date: 7/8/2018
+monikerRange: exchserver-2016 || exchserver-2019
+ms.date: 
+ms.reviewer: 
 title: Information Rights Management in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -31,19 +33,17 @@ These are some consequences that can result from information leakage:
 - **Loss of competitive advantage**: This is one of the most serious consequences. The disclosure of strategic business or merger and acquisition plans can lead to losses in revenue or market capitalization for the organization. Other threats to competitive advantage include the loss of research information, analytical data, and other intellectual property.
 
 ## Traditional solutions to information leakage
-<a name="traditional"> </a>
 
 Although traditional solutions to information leakage may protect the initial access to data, they often don't provide constant protection. This table describes some traditional solutions to information leakage.
 
 |**Solution**|**Description**|**Limitations**|
 |:-----|:-----|:-----|
-|Transport Layer Security (TLS)|TLS is an Internet standard protocol that's used to encrypt network communications. In a messaging environment, TLS is used to encrypt server/server and client/server communications.  <br/> By default, Exchange uses TLS for all internal message transfers. Opportunistic TLS is also enabled by default for SMTP sessions with external hosts (TLS encryption is tried first, but if it isn't available, unencrypted communication is allowed). You can also configure domain security to enforce mutual TLS with external organizations.|TLS only protects the SMTP session between two SMTP hosts. In other words, TLS protects information in motion, and it doesn't provide protection at the message-level or for information at rest. Unless the messages are encrypted using another method, messages in sender and recipient mailboxes remain unprotected.  <br/> For email sent outside the organization, you can require TLS only for the first hop. After a remote SMTP host receives the message, it can relay it to another SMTP host over an unencrypted session.  <br/>  Because TLS is a transport layer technology that's used in mail flow, it can't provide control over what the recipient does with the message.|
-|Message encryption|Users can use technologies such as S/MIME to encrypt messages.|Users decide whether a message gets encrypted.  <br/> There are additional costs of a public key infrastructure (PKI) deployment, with the accompanying overhead of certificate management for users and protection of private keys.  <br/>  After a message is decrypted, there's no control over what the recipient can do with the information. Decrypted information can be copied, printed, or forwarded. By default, saved attachments aren't protected.  <br/> Messaging servers can't open and inspect messages that are encrypted by S/MIME. Therefore, the messaging servers can't enforce messaging policies, scan messages for viruses, or take other actions that require access to the content in messages.|
+|Transport Layer Security (TLS)|TLS is an Internet standard protocol that's used to encrypt network communications. In a messaging environment, TLS is used to encrypt server/server and client/server communications. <br/> By default, Exchange uses TLS for all internal message transfers. Opportunistic TLS is also enabled by default for SMTP sessions with external hosts (TLS encryption is tried first, but if it isn't available, unencrypted communication is allowed). You can also configure domain security to enforce mutual TLS with external organizations.|TLS only protects the SMTP session between two SMTP hosts. In other words, TLS protects information in motion, and it doesn't provide protection at the message-level or for information at rest. Unless the messages are encrypted using another method, messages in sender and recipient mailboxes remain unprotected. <br/> For email sent outside the organization, you can require TLS only for the first hop. After a remote SMTP host receives the message, it can relay it to another SMTP host over an unencrypted session. <br/> Because TLS is a transport layer technology that's used in mail flow, it can't provide control over what the recipient does with the message.|
+|Message encryption|Users can use technologies such as S/MIME to encrypt messages.|Users decide whether a message gets encrypted. <br/> There are additional costs of a public key infrastructure (PKI) deployment, with the accompanying overhead of certificate management for users and protection of private keys. <br/> After a message is decrypted, there's no control over what the recipient can do with the information. Decrypted information can be copied, printed, or forwarded. By default, saved attachments aren't protected. <br/> Messaging servers can't open and inspect messages that are encrypted by S/MIME. Therefore, the messaging servers can't enforce messaging policies, scan messages for viruses, or take other actions that require access to the content in messages.|
 
 Finally, traditional solutions often lack enforcement tools that apply uniform messaging policies to prevent information leakage. For example, a user marks a message with **Company Confidential** and **Do Not Forward**. After the message is delivered to the recipient, the sender or the organization no longer has control over the message. The recipient can willfully or accidentally forward the message (using features such as automatic forwarding rules) to external email accounts, which subjects your organization to substantial information leakage risks.
 
 ## IRM in Exchange
-<a name="irm"> </a>
 
 IRM in Exchange helps prevent information leakage by offering these features:
 
@@ -147,9 +147,9 @@ By default, an Exchange organization is enabled for IRM. To actually implement I
 
 |**Server**|**Requirements**|
 |:-----|:-----|
-|AD RMS cluster|*AD RMS cluster* is the term that's used for any AD RMS deployment, including a single AD RMS server. AD RMS is a Web service, so you don't need to set up a Windows Server failover cluster. For high availability and load-balancing, you can deploy multiple AD RMS servers in the cluster and use network load balancing (NLB).  <br/> **Service connection point**: AD RMS-aware applications like Exchange use the service connection point that's registered in Active Directory to discover an AD RMS cluster and URLs. There's only one service connection point for AD RMS in an Active Directory forest. You can register the service connection point during AD RMS Setup, or after setup is complete.  <br/> **Permissions**: Read and Execute permissions to the AD RMS server certification pipeline (the `ServerCertification.asmx` file at `\inetpub\wwwroot\_wmcs\certification\`) must be assigned to these security principals:  <br/> • The Exchange Servers group or individual Exchange servers.  <br/> • The AD RMS Service group on AD RMS servers.  <br/> For details, see [Set Permissions on the AD RMS Server Certification Pipeline](https://go.microsoft.com/fwlink/p/?linkId=186951).  <br/> **AD RMS super users**: To enable transport decryption, journal report decryption, IRM in Outlook on the web, and IRM decryption for Exchange Search, you need to add the Federation mailbox to the Super Users group on the AD RMS server. For details, see [Add Federated Delivery Mailbox to AD RMS Super Users](http://technet.microsoft.com/library/44618df9-54f0-4474-a450-dcba48a02901.aspx).|
-|Exchange|Exchange 2010 or later is required.  <br/> In a production environment, installing AD RMS and Exchange on the same server isn't supported.|
-|Outlook|AD RMS templates for protecting messages are available in Outlook 2007 or later.  <br/> Outlook protection rules in Exchange require Outlook 2010 or later.|
+|AD RMS cluster|*AD RMS cluster* is the term that's used for any AD RMS deployment, including a single AD RMS server. AD RMS is a Web service, so you don't need to set up a Windows Server failover cluster. For high availability and load-balancing, you can deploy multiple AD RMS servers in the cluster and use network load balancing (NLB). <br/> **Service connection point**: AD RMS-aware applications like Exchange use the service connection point that's registered in Active Directory to discover an AD RMS cluster and URLs. There's only one service connection point for AD RMS in an Active Directory forest. You can register the service connection point during AD RMS Setup, or after setup is complete. <br/> **Permissions**: Read and Execute permissions to the AD RMS server certification pipeline (the `ServerCertification.asmx` file at `\inetpub\wwwroot\_wmcs\certification\`) must be assigned to these security principals: <br/> • The Exchange Servers group or individual Exchange servers. <br/> • The AD RMS Service group on AD RMS servers. <br/> For details, see [Set Permissions on the AD RMS Server Certification Pipeline](https://go.microsoft.com/fwlink/p/?linkId=186951). <br/> **AD RMS super users**: To enable transport decryption, journal report decryption, IRM in Outlook on the web, and IRM decryption for Exchange Search, you need to add the Federation mailbox to the Super Users group on the AD RMS server. For details, see [Add Federated Delivery Mailbox to AD RMS Super Users](http://technet.microsoft.com/library/44618df9-54f0-4474-a450-dcba48a02901.aspx).|
+|Exchange|Exchange 2010 or later is required. <br/> In a production environment, installing AD RMS and Exchange on the same server isn't supported.|
+|Outlook|AD RMS templates for protecting messages are available in Outlook 2007 or later. <br/> Outlook protection rules in Exchange require Outlook 2010 or later.|
 |Exchange ActiveSync|IRM is available on mobile applications and devices that support Exchange ActiveSync protocol version 14.1 or later, and the included **RightsManagementInformation** tag (both introduced in Exchange 2010 Service Pack 1). Users with supported devices can use ActiveSync to view, reply to, forward, and create IRM-protected messages without connecting to a computer to activate the device for IRM. For more information, see [Understanding Information Rights Management in Exchange ActiveSync](http://technet.microsoft.com/library/ebf04460-4d61-4b00-86b9-85ec1dbbd6a1.aspx).|
 
 Exchange IRM features support Office file formats. You can extend IRM protection to other file formats by deploying custom protectors. For more information about custom protectors, see Information Protection and Control Partners in [Microsoft partners](https://go.microsoft.com/fwlink/p/?linkId=210336).
@@ -176,8 +176,11 @@ After you install and configure a Mailbox server, you can use the **Test-IRMConf
 
 For more information, see [Test-IRMConfiguration](http://technet.microsoft.com/library/a730e7ff-a67f-4360-b5ff-70d171bb5e1d.aspx).
 
+::: moniker range="exchserver-2016"
+
 ## Extend Rights Management with the Rights Management connector
 
 The Azure Rights Management connector (RMS connector) is an optional application that enhances data protection for your Exchange server by employing the cloud-based Azure Rights Management (Azure RMS) service. Once you install the RMS connector, it provides continuous data protection during the lifetime of the information. And, because these services are customizable, you can define the level of protection that you need. For example, you can limit email message access to specific users, or set view-only rights for certain messages.
 
 To learn more about the RMS connector and how to install it, see [Deploying the Azure Rights Management connector](https://go.microsoft.com/fwlink/p/?linkid=330432).
+::: moniker-end

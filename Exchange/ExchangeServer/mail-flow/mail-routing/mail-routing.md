@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: Learn how mail is routed between Exchange servers in an Exchange 2016 or Exchange 2019 organization.
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 6fd39079-9655-4fd9-9269-c7462c76e0a7
 ms.date: 7/10/2018
+ms.reviewer: 
 title: Mail routing in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -55,7 +56,7 @@ A collection of one or more transport servers is responsible for delivering mail
 |Exchange 2013 or later mailbox databases|Exchange 2013 or later Mailbox servers.|
 |Exchange 2010 mailbox databases in Exchange 2016 organizations |Only Exchange 2010 Hub Transport servers.|
 |Connectors|Exchange 2013 or later Mailbox servers or Exchange 2010 Hub Transport servers.|
-|Distribution group expansion servers  <br/> |Exchange 2013 or later Mailbox servers or Exchange 2010 Hub Transport servers.|
+|Distribution group expansion servers|Exchange 2013 or later Mailbox servers or Exchange 2010 Hub Transport servers.|
 
  How the message is routed depends on the relationship between the source delivery group and the destination delivery group:
 
@@ -68,7 +69,7 @@ The different types of delivery groups that exist in Exchange 2016 are summarize
 |**Delivery group type**|**Delivery group**|**Routing destination**|**Comments**|
 |:-----|:-----|:-----|:-----|
 |Routable DAG|• Exchange 2019 Mailbox servers that belong to the Exchange 2019 DAG. <br/> • Exchange 2016 Mailbox servers that belong to the Exchange 2016 DAG. <br/> • Exchange 2013 Mailbox servers that belong to the Exchange 2013 DAG.|Mailbox databases in the DAG|After the message arrives at a Mailbox server in the DAG, the Transport service routes the message to the Mailbox Transport Delivery service on the DAG member that holds the active copy of the destination mailbox database. The Mailbox Transport Delivery service then delivers the message to the local mailbox database. Although a DAG might contain Mailbox servers located in different Active Directory sites, the DAG defines the delivery group, not the Active Directory site.|
-|Mailbox delivery group (Exchange 2013 or later)|Exchange 2013 or later Mailbox servers in the Active Directory site.|Mailbox databases on Exchange 2013 or later servers in the Active Directory site that don't belong to a DAG.  <br/> |Mailbox databases located on servers that don't belong to a DAG are serviced by the Transport service on Mailbox servers in the same Active Directory site. <br/> After the message arrives on an Mailbox server in the Active Directory site, the Transport service uses SMTP to transfer the message to the Mailbox Transport Delivery service on the Mailbox server that holds the mailbox database. The Mailbox Transport Delivery service then delivers the message to the local mailbox database using RPC. <br/> In other words, the following mail delivery paths are supported between the different versions of Exchange: <br/> • Exchange 2019 Transport service to Exchange 2016 Mailbox Transport Delivery service to Exchange 2016 mailbox database. <br/> • Exchange 2019 Transport service to Exchange 2013 Mailbox Transport Delivery service to Exchange 2013 mailbox database.    <br/> • Exchange 2016 Transport service to Exchange 2019 Mailbox Transport Delivery service to Exchange 2019 mailbox database. <br/> • Exchange 2016 Transport service to Exchange 2013 Mailbox Transport Delivery service to Exchange 2013 mailbox database.  <br/> • Exchange 2013 Transport service to Exchange 2019 Mailbox Transport Delivery service to Exchange 2019 mailbox database. <br/> • Exchange 2013 Transport service to Exchange 2016 Mailbox Transport Delivery service to Exchange 2016 mailbox database.|
+|Mailbox delivery group (Exchange 2013 or later)|Exchange 2013 or later Mailbox servers in the Active Directory site.|Mailbox databases on Exchange 2013 or later servers in the Active Directory site that don't belong to a DAG.|Mailbox databases located on servers that don't belong to a DAG are serviced by the Transport service on Mailbox servers in the same Active Directory site. <br/> After the message arrives on an Mailbox server in the Active Directory site, the Transport service uses SMTP to transfer the message to the Mailbox Transport Delivery service on the Mailbox server that holds the mailbox database. The Mailbox Transport Delivery service then delivers the message to the local mailbox database using RPC. <br/> In other words, the following mail delivery paths are supported between the different versions of Exchange: <br/> • Exchange 2019 Transport service to Exchange 2016 Mailbox Transport Delivery service to Exchange 2016 mailbox database. <br/> • Exchange 2019 Transport service to Exchange 2013 Mailbox Transport Delivery service to Exchange 2013 mailbox database.    <br/> • Exchange 2016 Transport service to Exchange 2019 Mailbox Transport Delivery service to Exchange 2019 mailbox database. <br/> • Exchange 2016 Transport service to Exchange 2013 Mailbox Transport Delivery service to Exchange 2013 mailbox database.  <br/> • Exchange 2013 Transport service to Exchange 2019 Mailbox Transport Delivery service to Exchange 2019 mailbox database. <br/> • Exchange 2013 Transport service to Exchange 2016 Mailbox Transport Delivery service to Exchange 2016 mailbox database.|
 |Mailbox delivery group (Exchange 2010)|Exchange 2010 Hub Transport servers in the Active Directory site.|Mailbox databases on Exchange 2010 Mailbox servers in the Active Directory site.|Mailbox databases located on Exchange 2010 Mailbox servers are serviced by the Exchange 2010 Hub Transport servers in the same Active Directory site. <br/> After the message arrives at a random Exchange 2010 Hub Transport server in the Active Directory site, the store driver on the Hub Transport server uses RPC to write the message to the mailbox database.|
 |Connector source server|A mixture of any Exchange 2013 or later Mailbox servers or Exchange 2010 Hub Transport servers that are defined as source transport servers for the connector.|A Send connector, Delivery Agent connector, or Foreign connector.|If the connector is scoped (that is, restricted to transport servers in the same Active Directory site), then only other transport servers in that site are aware of the connector, and can use the connector to route mail. <br/> If the connector isn't scoped, then all transport servers in the entire Active Directory forest are aware of the connector, and can use the connector to route mail.|
 |Server list|The Exchange 2013 or later Mailbox server or Exchange 2010 Hub Transport server that's defined as the expansion server for the distribution group.|The distribution group expansion server.|none|
@@ -188,6 +189,3 @@ Typically, when you install an Edge Transport server in your perimeter network, 
 In organizations that have Exchange servers in multiple Active Directory sites, outbound mail from internal recipients to external recipients is first routed to the subscribed Active Directory site. Transport servers in the target Active Directory site are the delivery group. The routing destination is the intra-organization Send connector in the Transport service on any of the Mailbox servers in the subscribed Active Directory site. The *intra-organization Send connector* is special Send connector that exists in the Transport service on every Mailbox server. This Send connector is implicitly created, invisible, requires no management, and is used to relay messages between Exchange servers.
 
 For more information about how mail is routed to and from Edge Transport servers, see [Mail flow and the transport pipeline](../../mail-flow/mail-flow.md).
-
-
-

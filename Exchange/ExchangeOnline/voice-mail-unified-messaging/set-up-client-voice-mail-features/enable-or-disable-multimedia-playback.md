@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can force users who receive protected voice mail messages to use the Play on Phone feature to listen to their messages. Or, if the client software doesn't support rights management, users must use Outlook Voice Access to listen to messages.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 3c33370c-4262-42b1-8d83-d61fc7c426cd
 ms.date: 11/17/2014
-title: Enable or disable multimedia playback of protected voice messages
+ms.reviewer: 
+title: Enable or disable multimedia playback of protected voice messages in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Enable or disable multimedia playback of protected voice messages
+# Enable or disable multimedia playback of protected voice messages in Exchange Online
 
 You can force users who receive protected voice mail messages to use the Play on Phone feature to listen to their messages. Or, if the client software doesn't support rights management, users must use Outlook Voice Access to listen to messages.
 
@@ -29,7 +30,7 @@ By default, the value of the **RequireProtectedPlayOnPhone** property on a UM ma
 
 - Using the built-in media player or the Play on Phone button in Outlook 2010 or a later version.
 
-- Using the built-in media player or the Play on Phone button in Outlook Web App.
+- Using the built-in media player or the Play on Phone button in Outlook on the web (formerly known as Outlook Web App).
 
 If this value is set to true, multimedia playback of protected voice mail isn't allowed. UM-enabled users associated with a UM mailbox policy on which this value is set to true can listen to protected voice messages only by:
 
@@ -37,7 +38,7 @@ If this value is set to true, multimedia playback of protected voice mail isn't 
 
 - Using the Play on Phone button in Outlook 2010 or a later version.
 
-- Using the Play on Phone button in Outlook Web App.
+- Using the Play on Phone button in Outlook on the web.
 
 This setting is especially useful when UM-enabled users use public computers, laptops in public places, or their mobile device's media player to listen to protected voice mail that can contain private information.
 
@@ -56,7 +57,7 @@ For additional management tasks related to Protected Voice Mail procedures, see 
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to enable or disable multimedia playback of protected voice messages
 
@@ -81,6 +82,3 @@ This example prevents users who are associated with the UM mailbox policy named 
 ```
 Set-UMMailboxPolicy -identity MyUMMailboxPolicy -RequireProtectedPlayOnPhone $true
 ```
-
-
-

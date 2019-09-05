@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Enable IMAP4 in Exchange 2013: Exchange 2013 Help'
 TOCTitle: Enable IMAP4
 ms:assetid: c1ae10dd-14da-4400-b38d-2aeafde8abe6
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb124489(v=EXCHG.150)
 ms:contentKeyID: 49315255
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Enable IMAP4 in Exchange 2013
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Learn how to enable IMAP4 client connectivity in Exchange 2016 using the Microsoft Management Console (MMC) or the Exchange Management Shell (EMS).
 
@@ -25,63 +26,57 @@ For more information about how to set up POP3 and IMAP4, see [POP3 and IMAP4 in 
 
 ## What do you need to know before you begin?
 
-  - Estimated time to complete: 2 minutes.
+- Estimated time to complete: 2 minutes.
 
-  - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "POP3 and IMAP4 permissions" section in the [Clients and mobile devices permissions](clients-and-mobile-devices-permissions-exchange-2013-help.md) topic.
+- You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "POP3 and IMAP4 permissions" section in the [Clients and mobile devices permissions](clients-and-mobile-devices-permissions-exchange-2013-help.md) topic.
 
-  - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
-
+- For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at <A href="https://go.microsoft.com/fwlink/p/?linkid=60612">Exchange Server</A>, <A href="https://go.microsoft.com/fwlink/p/?linkid=267542">Exchange Online</A>, or <A href="https://go.microsoft.com/fwlink/p/?linkid=285351">Exchange Online Protection</A>.
-
-
-
-## What do you want to do?
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612).
 
 ## Use the Microsoft Management Console (MMC) to enable IMAP4
 
 On the computer running the Mailbox server role:
 
-1.  In the **Services** snap-in, in the console tree, click **Services (Local)**.
+1. In the **Services** snap-in, in the console tree, click **Services (Local)**.
 
-2.  In the result pane, right-click **Microsoft Exchange IMAP4**, and then click **Properties**.
+2. In the result pane, right-click **Microsoft Exchange IMAP4**, and then click **Properties**.
 
-3.  In the result pane, right-click **Microsoft Exchange IMAP4 Backend**, and then click **Properties**.
+3. In the result pane, right-click **Microsoft Exchange IMAP4 Backend**, and then click **Properties**.
 
-4.  On the **General** tab, under **Startup type**, select **Automatic**, and then click **Apply**.
+4. On the **General** tab, under **Startup type**, select **Automatic**, and then click **Apply**.
 
-5.  Under **Service status**, click **Start**, and then click **OK**.
+5. Under **Service status**, click **Start**, and then click **OK**.
 
 ## Use the Exchange Management Shell to enable IMAP4
 
 On the computer running the Mailbox server role:
 
-1.  Set the Microsoft Exchange IMAP4 service to start automatically.
-    
-    ```powershell
-    Set-service msExchangeIMAP4 -startuptype automatic
-    ```
+1. Set the Microsoft Exchange IMAP4 service to start automatically.
 
-2.  Start the Microsoft Exchange IMAP4 service.
-    
-    ```powershell
-    Start-service msExchangeIMAP4
-    ```
+   ```powershell
+   Set-service msExchangeIMAP4 -startuptype automatic
+   ```
 
-3.  Set the Microsoft Exchange IMAP4 Backend service to start automatically.
-    
-    ```powershell
-    Set-service msExchangeIMAP4BE -startuptype automatic
-    ```
+2. Start the Microsoft Exchange IMAP4 service.
 
-4.  Start the Microsoft Exchange IMAP4 Backend service.
-    
-    ```powershell
-    Start-service msExchangeIMAP4BE
-    ```
+   ```powershell
+   Start-service msExchangeIMAP4
+   ```
+
+3. Set the Microsoft Exchange IMAP4 Backend service to start automatically.
+
+   ```powershell
+   Set-service msExchangeIMAP4BE -startuptype automatic
+   ```
+
+4. Start the Microsoft Exchange IMAP4 Backend service.
+
+   ```powershell
+   Start-service msExchangeIMAP4BE
+   ```
 
 ## How do you know this worked?
 
 On the Exchange 2016 Mailbox server, open Windows Task Manager. On the **Services** tab, the status for **MSExchangeIMAP4** and for **MSExchangeIMAP4BE** will show as **Running** if IMAP4 is enabled.
-

@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Place a mailbox on Litigation Hold to preserve all mailbox content, including deleted items and original versions of modified items.
 ms.topic: article
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: adee4621-3626-4aec-aa53-00b35ff0d0b0
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Place a mailbox on Litigation Hold
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
-manager: scotv
+manager: serdars
 
 ---
 
@@ -19,7 +20,6 @@ manager: scotv
 Place a mailbox on Litigation Hold to preserve all mailbox content, including deleted items and original versions of modified items. When you place a mailbox on Litigation Hold, the user's archive mailbox (if it's enabled) is also placed on hold. Deleted and modified items are preserved for a specified period or until you remove the mailbox from Litigation Hold. All such mailbox items are returned in an [In-Place eDiscovery in Exchange Server](../../policy-and-compliance/ediscovery/ediscovery.md) search.
 
 ## Before you begin
-<a name="introduction"> </a>
 
 - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "In-Place Hold" entry in the [Messaging policy and compliance permissions in Exchange Server](../../permissions/feature-permissions/policy-and-compliance-permissions.md) topic.
 
@@ -45,13 +45,13 @@ Place a mailbox on Litigation Hold to preserve all mailbox content, including de
 
 5. On the **Litigation Hold** page, enter the following optional information:
 
-  - **Litigation hold duration (days)**: Use this box to specify how long mailbox items are held when the mailbox is placed on Litigation Hold. The duration is calculated from the date a mailbox item is received or created. If you leave this box blank, items are held indefinitely or until the hold is removed. Use days to specify the duration.
+   - **Litigation hold duration (days)**: Use this box to specify how long mailbox items are held when the mailbox is placed on Litigation Hold. The duration is calculated from the date a mailbox item is received or created. If you leave this box blank, items are held indefinitely or until the hold is removed. Use days to specify the duration.
 
-  - **Note**<sup>*</sup>: Use this box to inform the user their mailbox is on Litigation Hold. The note will appear on the **File** tab in Outlook 2010 or later.
+   - **Note**<sup>*</sup>: Use this box to inform the user their mailbox is on Litigation Hold. The note will appear on the **File** tab in Outlook 2010 or later.
 
-  - **URL**<sup>*</sup>: Use this box to direct the user to a website for more information about Litigation Hold. This URL appears on the **File** tab Outlook 2010 or later.
+   - **URL**<sup>*</sup>: Use this box to direct the user to a website for more information about Litigation Hold. This URL appears on the **File** tab Outlook 2010 or later.
 
-  <sup>*</sup>If you leave the **Note** and **URL** values blank, the user isn't notified that you placed a litigation hold on their mailbox.
+   <sup>*</sup>If you leave the **Note** and **URL** values blank, the user isn't notified that you placed a litigation hold on their mailbox.
 
 6. Click **Save** on the **Litigation Hold** page, and then click **Save** on the mailbox properties page.
 
@@ -104,15 +104,15 @@ To verify that you have successfully placed a mailbox on Litigation Hold, do the
 
 - In the EAC:
 
-1. Go to **Recipients** \> **Mailboxes**.
+  1. Go to **Recipients** \> **Mailboxes**.
 
-2. In the list of user mailboxes, click the mailbox that you want to verify Litigation Hold settings for, and then click **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.png).
+  2. In the list of user mailboxes, click the mailbox that you want to verify Litigation Hold settings for, and then click **Edit** ![Edit icon](../../media/ITPro_EAC_EditIcon.png).
 
-3. On the mailbox properties page, click **Mailbox features**.
+  3. On the mailbox properties page, click **Mailbox features**.
 
-4. Under **Litigation hold**, verify that hold is enabled.
+  4. Under **Litigation hold**, verify that hold is enabled.
 
-5. Click **View details** to verify when the mailbox was placed on Litigation Hold and by whom. You can also verify or change the values in the optional **Litigation hold duration (days)**, **Note**, and **URL** boxes.
+  5. Click **View details** to verify when the mailbox was placed on Litigation Hold and by whom. You can also verify or change the values in the optional **Litigation hold duration (days)**, **Note**, and **URL** boxes.
 
 - In the Exchange Management Shell, run one of the following commands:
 
@@ -132,13 +132,14 @@ To verify that you have successfully placed a mailbox on Litigation Hold, do the
 
 - **How does Litigation Hold work?** In the normal deleted item workflow, a mailbox item is moved to the Deletions subfolder in the Recoverable Items folder when a user permanently deletes it (Shift + Delete) or deletes it from the Deleted Items folder. A deletion policy (which is a retention tag configured with a Delete retention action) also moves items to the Deletions subfolder when the retention period expires. When a user purges an item in the Recoverable Items folder or when the deleted item retention period expires for an item, it's moved to the Purges subfolder in the Recoverable Items folder and marked for permanent deletion. It will be purged from Exchange the next time the mailbox is processed by the Managed Folder Assistant (MFA).
 
-    When a mailbox is placed on Litigation Hold, items in the Purges subfolder are preserved for the hold duration specified by the Litigation Hold. The hold duration is calculated from the original date an item was received or created, and defines how long items in the Purges subfolder are held. When the hold duration expires for an item in the Purges subfolder, the item is marked for permanent deletion and will be purged from Exchange the next time the mailbox is processed by the MFA. If an indefinite hold is placed on a mailbox, items will never be purged from the Purges subfolder.
+  When a mailbox is placed on Litigation Hold, items in the Purges subfolder are preserved for the hold duration specified by the Litigation Hold. The hold duration is calculated from the original date an item was received or created, and defines how long items in the Purges subfolder are held. When the hold duration expires for an item in the Purges subfolder, the item is marked for permanent deletion and will be purged from Exchange the next time the mailbox is processed by the MFA. If an indefinite hold is placed on a mailbox, items will never be purged from the Purges subfolder.
 
-    The following illustration shows the subfolders in the Recoverable Items folders and the hold workflow process.
-    ![Recoverable Items folder](../../media/ITPro_RecoverableItems.gif)
+  The following illustration shows the subfolders in the Recoverable Items folders and the hold workflow process.
 
-    > [!NOTE]
-    > If an In-Place Hold is placed on a mailbox, purged items are moved from the Deletions subfolder to the DiscoveryHolds subfolder and are preserved for the hold duration for the In-Place Hold.
+  ![Recoverable Items folder](../../media/ITPro_RecoverableItems.gif)
+
+  > [!NOTE]
+  > If an In-Place Hold is placed on a mailbox, purged items are moved from the Deletions subfolder to the DiscoveryHolds subfolder and are preserved for the hold duration for the In-Place Hold.
 
 - If your organization requires that all mailbox data has to preserved for a specific period of time, consider the following before you place all mailboxes in an organization on Litigation Hold.
 
@@ -154,7 +155,7 @@ To verify that you have successfully placed a mailbox on Litigation Hold, do the
 
 - The previous command to place a hold on all mailboxes uses a recipient filter that returns all user mailboxes. You can use other recipient properties to return a list of specific mailboxes that you can then pipe to the **Set-Mailbox** cmdlet to place a Litigation Hold on those mailboxes.
 
-    Here are some examples of using the **Get-Mailbox** and **Get-Recipient** cmdlets to return a subset of mailboxes based on common user or mailbox properties. These examples assume that relevant mailbox properties (such as _CustomAttributeN_ or _Department_) have been populated.
+  Here are some examples of using the **Get-Mailbox** and **Get-Recipient** cmdlets to return a subset of mailboxes based on common user or mailbox properties. These examples assume that relevant mailbox properties (such as _CustomAttributeN_ or _Department_) have been populated.
 
   ```
   Get-Mailbox -RecipientTypeDetails UserMailbox -ResultSize unlimited -Filter 'CustomAttribute15 -eq "OneYearLitigationHold"'
@@ -176,4 +177,4 @@ To verify that you have successfully placed a mailbox on Litigation Hold, do the
   Get-Mailbox -ResultSize Unlimited -Filter {RecipientTypeDetails -ne "DiscoveryMailbox"}
   ```
 
-    You can use other user mailbox properties in a filter to include or exclude mailboxes. For details, see [Filterable Properties for the -Filter Parameter](http://technet.microsoft.com/library/b02b0005-2fb6-4bc2-8815-305259fa5432.aspx).
+  You can use other user mailbox properties in a filter to include or exclude mailboxes. For details, see [Filterable Properties for the -Filter Parameter](http://technet.microsoft.com/library/b02b0005-2fb6-4bc2-8815-305259fa5432.aspx).

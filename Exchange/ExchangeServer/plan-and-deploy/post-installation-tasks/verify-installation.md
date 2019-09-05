@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: 'Summary: Learn how to verify ord troubleshoot your Exchange 2016 or Exchange 2019 installation.'
 ms.topic: get-started-article
-author: dstrome
-ms.author: dstrome
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: fdd20a2a-c8c1-4d17-b813-3c05d88a4411
 ms.date: 6/8/2018
+ms.reviewer: 
 title: Verify Exchange Server installations
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -47,4 +48,3 @@ For detailed syntax and parameter information, see [Get-ExchangeServer](http://t
 - The Exchange Setup log is available at _\<system drive\>_:\ExchangeSetupLogs\ExchangeSetup.log (_\<system drive\>_ is the drive where Windows is installed). The Setup log tracks the progress of every task during the Exchange installation and configuration. The file contains information about the status of the prerequisite and system readiness checks before installation starts, the application installation progress, and the configuration changes that are made to the system. Check this log file to verify that Exchange was installed as expected.
 
 We recommend that you start your review of the Windows Application log and/or the Exchange Setup log by searching for errors. If you find an error entry, read the associated text to determine the cause of the error.
-

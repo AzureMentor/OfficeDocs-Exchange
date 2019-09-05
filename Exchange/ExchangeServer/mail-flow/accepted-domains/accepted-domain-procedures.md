@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to create, modify, and remove accepted domains in Exchange Server 2016 or Exchange Server 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 11801f73-4934-4025-a1c1-3935dada7e9b
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Procedures for accepted domains in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -58,7 +59,6 @@ For more information about accepted domains, see [Accepted domains in Exchange S
 > Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Create accepted domains
-<a name="CreateAcceptedDomain"> </a>
 
 After you create an accepted domain, you can't change the domain value (for example, from contoso.com to \*.contoso.com, or vice-versa).
 
@@ -68,11 +68,11 @@ After you create an accepted domain, you can't change the domain value (for exam
 
 2. In the **New accepted domain** window that opens, configure the following settings:
 
-  - **Name**: Enter a unique, descriptive name.
+   - **Name**: Enter a unique, descriptive name.
 
-  - **Accepted domain**: Enter a single domain (for example, contoso.com) or a domain with subdomains (for example, \*.contoso.com).
+   - **Accepted domain**: Enter a single domain (for example, contoso.com) or a domain with subdomains (for example, \*.contoso.com).
 
-  - **This domain is**: Select **Authoritative**, **Internal Relay**, or **External Relay**.
+   - **This domain is**: Select **Authoritative**, **Internal Relay**, or **External Relay**.
 
     When you're finished, click **Save**.
 
@@ -90,7 +90,7 @@ This example creates a new authoritative domain named Contoso Corp for contoso.c
 New-AcceptedDomain -Name "Contoso Corp" -DomainName contoso.com
 ```
 
- **Note**: We didn't need to use the _DomainType_ parameter, because the default value is `Authoritative`.
+**Note**: We didn't need to use the _DomainType_ parameter, because the default value is `Authoritative`.
 
 For detailed syntax and parameter information, see [New-AcceptedDomain](http://technet.microsoft.com/library/08bcaaec-51e3-447d-b3bf-406a705c64b4.aspx).
 
@@ -107,11 +107,10 @@ To verify that you've successfully created an accepted domain, use either of the
   ```
 
 ## Modify accepted domains
-<a name="ModifyAcceptedDomain"> </a>
 
-- You can only *replace* the default domain with a new default domain (one accepted domain is always configured as the default domain). For more information about the default domain, see [Default domain](accepted-domains.md#DefaultDomain).
+- You can only *replace* the default domain with a new default domain (one accepted domain is always configured as the default domain). For more information about the default domain, see [Default domain](accepted-domains.md#default-domain).
 
-- You can enable and disable Recipient Lookup for an accepted domain only in the Exchange Management Shell. For more information, see [Recipient Lookup in accepted domains](accepted-domains.md#RecipientLookup).
+- You can enable and disable Recipient Lookup for an accepted domain only in the Exchange Management Shell. For more information, see [Recipient Lookup in accepted domains](accepted-domains.md#recipient-lookup-in-accepted-domains).
 
 ### Use the EAC to modify accepted domains
 
@@ -119,11 +118,11 @@ To verify that you've successfully created an accepted domain, use either of the
 
 2. In the properties window that opens, you can configure the following settings:
 
-  - **Name**
+   - **Name**
 
-  - **This domain is**: Authoritative, Internal Relay, or External Relay.
+   - **This domain is**: Authoritative, Internal Relay, or External Relay.
 
-  - **Make this the default domain**: If the check box is cleared, select it to configure the accepted domain as the default domain.
+   - **Make this the default domain**: If the check box is cleared, select it to configure the accepted domain as the default domain.
 
     When you're finished, click **Save**.
 
@@ -155,7 +154,7 @@ To verify that you've successfully modified an accepted domain, use either of th
 
 - In the EAC, go to **Mail flow** \> **Accepted domains**, and verify the property values.
 
-    **Notes**:
+  **Notes**:
 
   - To verify that the accepted domain is the default domain, you need to select the accepted domain from the list, and then click **Edit** (![Edit icon](../../media/ITPro_EAC_EditIcon.png)). If **Make this the default domain** is selected, it's the default domain.
 
@@ -168,7 +167,6 @@ To verify that you've successfully modified an accepted domain, use either of th
   ```
 
 ## Remove accepted domains
-<a name="RemoveAcceptedDomain"> </a>
 
 - You can't remove the default domain. First, you need to configure another accepted domain as the default domain.
 
@@ -178,7 +176,7 @@ To verify that you've successfully modified an accepted domain, use either of th
   Get-EmailAddressPolicy | Format-List Name,*EmailAddressTemplate*
   ```
 
-    For more information about modifying email address policies, see [Modify email address policies](../../email-addresses-and-address-books/email-address-policies/eap-procedures.md#ModifyEAP).
+  For more information about modifying email address policies, see [Modify email address policies](../../email-addresses-and-address-books/email-address-policies/eap-procedures.md#modify-email-address-policies)[Modify email address policies]).
 
 ### Use the EAC to remove accepted domains
 
@@ -215,7 +213,6 @@ To verify that you've successfully removed an accepted domain, use either of the
   ```
 
 ## Configure Exchange to accept mail for multiple authoritative domains
-<a name="ConfigureMultipleAuthoritativeDomains"> </a>
 
 These are some scenarios that require multiple authoritative domains:
 
@@ -235,39 +232,34 @@ After you configure one or more authoritative domains, you need to decide how to
 
 These are the steps that are required to configure Exchange to accept mail for multiple authoritative domains:
 
-1. Create one or more authoritative domains as described in the [Create accepted domains](accepted-domain-procedures.md#CreateAcceptedDomain) section.
+1. Create one or more authoritative domains as described in the [Create accepted domains](#create-accepted-domains) section.
 
     For example, if you already have contoso.com configured as an authoritative domain, add fourthcoffee.com as an authoritative domain.
 
 2. Create or modify an email address policy that uses the authoritative domains to meet your requirements. For example:
 
-  - Modify the default email address policy so all recipients get the required primary and proxy email addresses.
+   - Modify the default email address policy so all recipients get the required primary and proxy email addresses.
 
-    For example, modify the default policy so _\<alias\>_@fourthcoffee.com is the primary SMTP email address, and _\<alias\>_@contoso.com is kept as a proxy address. For instructions, see [Modify email address policies](../../email-addresses-and-address-books/email-address-policies/eap-procedures.md#ModifyEAP).
+    For example, modify the default policy so _\<alias\>_@fourthcoffee.com is the primary SMTP email address, and _\<alias\>_@contoso.com is kept as a proxy address. For instructions, see [Modify email address policies](../../email-addresses-and-address-books/email-address-policies/eap-procedures.md#modify-email-address-policies).
 
-  - Create a new email address policy that applies the required primary and proxy email addresses to a filtered set of recipients.
+   - Create a new email address policy that applies the required primary and proxy email addresses to a filtered set of recipients.
 
     For example, create a new policy named Fourth Coffee Recipients with the following settings:
 
-  - **Precanned recipient filter**: All users with mailboxes where the **Company** value is Fourth Coffee.
+   - **Precanned recipient filter**: All users with mailboxes where the **Company** value is Fourth Coffee.
 
-  - **Primary SMTP email address**: _\<alias\>_@fourthcoffee.com.
+   - **Primary SMTP email address**: _\<alias\>_@fourthcoffee.com.
 
-  - **Additional proxy email addresses**: None. The affected recipients can no longer receive messages sent to their old @contoso.com primary email address.
+   - **Additional proxy email addresses**: None. The affected recipients can no longer receive messages sent to their old @contoso.com primary email address.
 
-  - **Priority**: 1. The first email address policy that identifies a recipient configures the recipient's email addresses. All other policies are ignored, even if the first policy is unapplied and can't configure the recipient's email addresses.
+   - **Priority**: 1. The first email address policy that identifies a recipient configures the recipient's email addresses. All other policies are ignored, even if the first policy is unapplied and can't configure the recipient's email addresses.
 
-    For instructions, see [Create email address policies](../../email-addresses-and-address-books/email-address-policies/eap-procedures.md#CreateEAP).
+     For instructions, see [Create email address policies](../../email-addresses-and-address-books/email-address-policies/eap-procedures.md#create-email-address-policies).
 
-3. Apply the new or updated email address policy to the affected recipients. For instructions, see [Apply email address policies to recipients](../../email-addresses-and-address-books/email-address-policies/eap-procedures.md#ApplyEAP).
-
-### How do you know this worked?
+3. Apply the new or updated email address policy to the affected recipients. For instructions, see [Apply email address policies to recipients](../../email-addresses-and-address-books/email-address-policies/eap-procedures.md#apply-email-address-policies-to-recipients).
 
 To verify that you've configured Exchange to accept mail for multiple authoritative domains, perform the following procedures:
 
 1. Send test messages to an affected recipient from a mailbox that's outside of your Exchange organization, and verify the email addresses that accept or reject mail.
 
 2. Send test messages from an affected mailbox to an external recipient, and verify the From address of the message.
-
-
-

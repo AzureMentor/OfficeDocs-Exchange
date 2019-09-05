@@ -1,34 +1,34 @@
-﻿---
+---
 title: 'Checklist: Deploy Exchange 2013 UM: Exchange 2013 Help'
 TOCTitle: 'Checklist: Deploy Exchange 2013 UM'
 ms:assetid: 41b666a2-0d0d-471f-90a3-07c3c562af85
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ673520(v=EXCHG.150)
 ms:contentKeyID: 49315398
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Checklist: Deploy Exchange 2013 UM
 
- 
-
-_**Applies to:** Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013, Exchange Server 2016_
 
 Use this checklist to help you install and deploy Unified Messaging (UM) in your organization.
 
 Before you start working with this checklist, make sure you're familiar with the concepts in:
 
-  - [Unified Messaging](unified-messaging-exchange-2013-help.md)
+- [Unified Messaging](unified-messaging-exchange-2013-help.md)
 
-  - [New voice mail features](new-voice-mail-features-exchange-2013-help.md)
+- [New voice mail features](new-voice-mail-features-exchange-2013-help.md)
 
-  - [Planning for Unified Messaging](planning-for-unified-messaging-exchange-2013-help.md)
+- [Planning for Unified Messaging](planning-for-unified-messaging-exchange-2013-help.md)
 
 For step-by-step guidance about how to deploy UM and Microsoft Lync Server, see [Checklist: Integrate Exchange 2013 UM with Lync Server](checklist-integrate-exchange-2013-um-with-lync-server-exchange-2013-help.md).
 
 ## Checklist for deploying Unified Messaging
-
 
 <table>
 <colgroup>
@@ -65,7 +65,6 @@ For step-by-step guidance about how to deploy UM and Microsoft Lync Server, see 
 
 > [!WARNING]
 > You must deploy at least one Exchange 2013 Mailbox server in your organization before you configure the VoIP gateways or IP PBXs to send UM SIP and RTP traffic to the Exchange 2013 Client Access servers.
-
 
 </td>
 <td><p><a href="install-exchange-2013-using-the-setup-wizard-exchange-2013-help.md">Install Exchange 2013 using the Setup wizard</a></p></td>
@@ -159,7 +158,3 @@ For step-by-step guidance about how to deploy UM and Microsoft Lync Server, see 
 </tr>
 </tbody>
 </table>
-
-
-Return to top
-

@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 2c07b1e6-8d07-4e73-8800-b306e2266c7d
 ms.date: 7/10/2018
+ms.reviewer: 
 title: Configure MAPI over HTTP in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -148,6 +149,3 @@ You can manage the configuration of MAPI over HTTP by using the following cmdlet
 - [New-MapiVirtualDirectory](http://technet.microsoft.com/library/acb5be3d-f42b-4685-ba2a-680731281edf.aspx)
 
 - [Remove-MapiVirtualDirectory](http://technet.microsoft.com/library/eff7df8c-3c92-4004-89dd-0a06511e8668.aspx)
-
-
-

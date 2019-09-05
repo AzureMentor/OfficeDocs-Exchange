@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Create incident reports for DLP policy detections: Exchange 2013 Help'
 TOCTitle: Create incident reports for DLP policy detections
 ms:assetid: 8e807f94-384c-43f5-be6f-06c5587175a0
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ150534(v=EXCHG.150)
 ms:contentKeyID: 47560050
 ms.date: 06/13/2017
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Create incident reports for DLP policy detections
 
- 
-
-_**Applies to:** Exchange Online, Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013_
 
 In Exchange Server 2013, you can establish an action to create an incident report within a DLP policy rule set. Additionally, you can indicate to whom the report should be sent and what to do with the original message. The incident report can contain any of the following information.
 
@@ -22,7 +23,6 @@ In Exchange Server 2013, you can establish an action to create an incident repor
 The **Generate Incident Report** action enables users to send incident reports to an incident management mailbox. A single incident report will be generated for each message only if the **Generate Incident Report** action is applied within a policy.
 
 The following is a complete list of the line names in the incident report template. The format column describes how to recognize each field in the report. The optional field column specifies what fields might not be in the Report for each rule match. The DLP specific column shows what fields exist as a result of the DLP feature.
-
 
 <table>
 <colgroup>
@@ -132,10 +132,8 @@ The following is a complete list of the line names in the incident report templa
 </tbody>
 </table>
 
-
 ## For more information
 
 [View DLP policy detection reports](view-dlp-policy-detection-reports-exchange-2013-help.md)
 
 [Data loss prevention](https://docs.microsoft.com/en-us/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention)
-

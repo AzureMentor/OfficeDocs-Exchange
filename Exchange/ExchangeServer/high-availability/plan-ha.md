@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 29bb0358-fc8e-4437-8feb-d2959ed0f102
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Plan for high availability and site resilience
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -130,13 +131,13 @@ A network adapter intended for use by a MAPI network should be configured as des
 
 |**Networking features**|**Settings**|
 |:-----|:-----|
-|Client for Microsoft Networks  <br/> |Enabled  <br/> |
-|QoS Packet Scheduler  <br/> |Optionally enabled  <br/> |
-|File and Printer Sharing for Microsoft Networks  <br/> |Enabled  <br/> |
-|Internet Protocol version 6 (TCP/IP v6)  <br/> |Enabled  <br/> |
-|Internet Protocol version 4 (TCP/IP v4)  <br/> |Enabled  <br/> |
-|Link-Layer Topology Discovery Mapper I/O Driver  <br/> |Enabled  <br/> |
-|Link-Layer Topology Discovery Responder  <br/> |Enabled  <br/> |
+|Client for Microsoft Networks|Enabled|
+|QoS Packet Scheduler|Optionally enabled|
+|File and Printer Sharing for Microsoft Networks|Enabled|
+|Internet Protocol version 6 (TCP/IP v6)|Enabled|
+|Internet Protocol version 4 (TCP/IP v4)|Enabled|
+|Link-Layer Topology Discovery Mapper I/O Driver|Enabled|
+|Link-Layer Topology Discovery Responder|Enabled|
 
 The TCP/IP v4 properties for a MAPI network adapter are configured as follows:
 
@@ -154,13 +155,13 @@ A network adapter intended for use by a Replication network should be configured
 
 |**Networking features**|**Settings**|
 |:-----|:-----|
-|Client for Microsoft Networks  <br/> |Disabled  <br/> |
-|QoS Packet Scheduler  <br/> |Optionally enabled  <br/> |
-|File and Printer Sharing for Microsoft Networks  <br/> |Disabled  <br/> |
-|Internet Protocol version 6 (TCP/IP v6)  <br/> |Enabled  <br/> |
-|Internet Protocol version 4 (TCP/IP v4)  <br/> |Enabled  <br/> |
-|Link-Layer Topology Discovery Mapper I/O Driver  <br/> |Enabled  <br/> |
-|Link-Layer Topology Discovery Responder  <br/> |Enabled  <br/> |
+|Client for Microsoft Networks|Disabled|
+|QoS Packet Scheduler|Optionally enabled|
+|File and Printer Sharing for Microsoft Networks|Disabled|
+|Internet Protocol version 6 (TCP/IP v6)|Enabled|
+|Internet Protocol version 4 (TCP/IP v4)|Enabled|
+|Link-Layer Topology Discovery Mapper I/O Driver|Enabled|
+|Link-Layer Topology Discovery Responder|Enabled|
 
 The TCP/IP v4 properties for a Replication network adapter are configured as follows:
 
@@ -255,6 +256,3 @@ To minimize the time it takes to activate a second datacenter, and allow the sec
 - The strategy for enabling the DNS changes necessary for a datacenter switchover must be understood. The specific DNS changes, including their TTL settings, must be defined and documented to support the SLA in effect.
 
 - A strategy for testing the solution must also be established and factored into the SLA. Periodic validation of the deployment is the only way to guarantee that the quality and viability of the deployment doesn't degrade over time. After the deployment is validated, we recommend that the part of the configuration that directly affects the success of the solution be explicitly documented. In addition, we recommend that you enhance your change management processes around those segments of the deployment.
-
-
-

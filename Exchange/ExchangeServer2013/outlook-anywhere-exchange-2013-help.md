@@ -1,57 +1,44 @@
-﻿---
+---
 title: 'Outlook Anywhere: Exchange 2013 Help'
 TOCTitle: Outlook Anywhere
 ms:assetid: 9026d461-ec6a-4ef5-ba9d-de33030858f3
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb123741(v=EXCHG.150)
 ms:contentKeyID: 48385337
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Outlook Anywhere
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 In Microsoft Exchange Server 2013, the Outlook Anywhere feature, formerly known as RPC over HTTP, lets clients who use Microsoft Outlook 2013, Outlook 2010, or Outlook 2007 connect to their Exchange servers from outside the corporate network or over the Internet using the RPC over HTTP Windows networking component. This topic describes the Outlook Anywhere feature and lists the benefits of using Outlook Anywhere.
 
-**Contents**
-
-Outlook Anywhere and Exchange 2013
-
-Benefits of using Outlook Anywhere
-
-Deploying Outlook Anywhere
-
-Managing Outlook Anywhere
-
-Outlook Anywhere coexistence
-
-Testing Outlook Anywhere connectivity
-
 ## Outlook Anywhere and Exchange 2013
 
-The Windows RPC over HTTP Proxy component, which Outlook Anywhere clients use to connect, wraps remote procedure calls (RPCs) with an HTTP layer. This allows traffic to traverse network firewalls without requiring RPC ports to be opened. In Exchange 2013, this feature is enabled by default, because Exchange 2013 doesn’t allow direct RPC connectivity.
+The Windows RPC over HTTP Proxy component, which Outlook Anywhere clients use to connect, wraps remote procedure calls (RPCs) with an HTTP layer. This allows traffic to traverse network firewalls without requiring RPC ports to be opened. In Exchange 2013, this feature is enabled by default, because Exchange 2013 doesn't allow direct RPC connectivity.
 
 ## Benefits of using Outlook Anywhere
 
 Outlook Anywhere offers the following benefits to clients that use Outlook 2013, Outlook 2010, or Outlook 2007 to access your Exchange messaging infrastructure:
 
-  - Users have remote access to Exchange servers from the Internet.
+- Users have remote access to Exchange servers from the Internet.
 
-  - You can use the same URL and namespace that you use for Outlook Web App and Microsoft Exchange ActiveSync.
+- You can use the same URL and namespace that you use for Outlook Web App and Microsoft Exchange ActiveSync.
 
-  - You can use the same Secure Sockets Layer (SSL) server certificate that you use for both Outlook Web App and Exchange ActiveSync.
+- You can use the same Secure Sockets Layer (SSL) server certificate that you use for both Outlook Web App and Exchange ActiveSync.
 
-  - Unauthenticated requests from Outlook can't access Exchange servers.
+- Unauthenticated requests from Outlook can't access Exchange servers.
 
-  - You don't have to use a virtual private network (VPN) to access Exchange servers across the Internet.
+- You don't have to use a virtual private network (VPN) to access Exchange servers across the Internet.
 
-  - If you already use Outlook Web App with SSL or Exchange ActiveSync with SSL, you don't have to open any additional ports from the Internet.
+- If you already use Outlook Web App with SSL or Exchange ActiveSync with SSL, you don't have to open any additional ports from the Internet.
 
-  - You can test end-to-end client connectivity for Outlook Anywhere and TCP-based connections by using the **Test-OutlookConnectivity** cmdlet.
+- You can test end-to-end client connectivity for Outlook Anywhere and TCP-based connections by using the **Test-OutlookConnectivity** cmdlet.
 
 ## Deploying Outlook Anywhere
 
@@ -77,19 +64,18 @@ Finally, configure the Outlook Anywhere external host name to point to the Excha
 
 You can test for end-to-end client Outlook connectivity by doing either of the following:
 
-  - Running the **Test-OutlookConnectivity** cmdlet. The cmdlet tests for Outlook Anywhere (RPC over HTTP) connections. If the cmdlet test fails, the output notes the step that failed. For detailed syntax and parameters, see [Test-OutlookConnectivity](https://technet.microsoft.com/en-us/library/dd638082\(v=exchg.150\)).
+- Running the **Test-OutlookConnectivity** cmdlet. The cmdlet tests for Outlook Anywhere (RPC over HTTP) connections. If the cmdlet test fails, the output notes the step that failed. For detailed syntax and parameters, see [Test-OutlookConnectivity](https://technet.microsoft.com/en-us/library/dd638082\(v=exchg.150\)).
 
-  - Running the Outlook Anywhere connectivity test using the Exchange Remote Connectivity Analyzer (ExRCA). When you run this test, you get a detailed summary showing where the test failed and what steps you can take to fix issues. For more information, see [Exchange Remote Connectivity Analyzer](exchange-remote-connectivity-analyzer-exchange-2013-help.md).
+- Running the Outlook Anywhere connectivity test using the Exchange Remote Connectivity Analyzer (ExRCA). When you run this test, you get a detailed summary showing where the test failed and what steps you can take to fix issues. For more information, see [Exchange Remote Connectivity Analyzer](exchange-remote-connectivity-analyzer-exchange-2013-help.md).
 
 Both tests try to sign in through Outlook Anywhere after obtaining server settings from the Autodiscover service. End-to-end verification includes the following:
 
-  - Testing for Autodiscover connectivity
+- Testing for Autodiscover connectivity
 
-  - Validating DNS
+- Validating DNS
 
-  - Validating certificates (whether the certificate name matches the website, whether the certificate has expired, and whether it's trusted)
+- Validating certificates (whether the certificate name matches the website, whether the certificate has expired, and whether it's trusted)
 
-  - Checking that the firewall is set up correctly (ExRCA checks overall firewall setup. The cmdlet tests for Windows firewall configuration.)
+- Checking that the firewall is set up correctly (ExRCA checks overall firewall setup. The cmdlet tests for Windows firewall configuration.)
 
-  - Confirming client connectivity by signing in to the user's mailbox
-
+- Confirming client connectivity by signing in to the user's mailbox

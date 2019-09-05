@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Administrators can learn how to search the message tracking log in Exchange 2016 and Exchange 2019 by using the Get-MessageTrackingLog cmdlet in Exchange PowerShell.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: e1678327-bcd5-42d4-a363-67f33067fe9a
 ms.date: 7/10/2018
+ms.reviewer: 
 title: Search message tracking logs
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -62,7 +63,7 @@ Message tracking records the message activity as mail flows through the transpor
 To search the message tracking log entries for specific events, use the following syntax.
 
 ```
-Get-MessageTrackingLog [-Server <ServerIdentity> ] [-ResultSize <Integer> | Unlimited] [-Start <DateTime>] [-End <DateTime>] [-EventId <EventId>] [-InternalMessageId <InternalMessageId>] [-MessageId <MessageId>] [-MessageSubject <Subject>] [-Recipients <RecipientAddress1,RecipientAddress2...>] [-Reference <Reference>] [-Sender <SenderAddress>]
+Get-MessageTrackingLog [-Server <ServerIdentity>] [-ResultSize <Integer> | Unlimited] [-Start <DateTime>] [-End <DateTime>] [-EventId <EventId>] [-InternalMessageId <InternalMessageId>] [-MessageId <MessageId>] [-MessageSubject <Subject>] [-Recipients <RecipientAddress1,RecipientAddress2...>] [-Reference <Reference>] [-Sender <SenderAddress>]
 ```
 
 To view the 1000 most recent message tracking log entries on the server, run the following command:
@@ -96,7 +97,7 @@ This example searches the message tracking logs using the following search crite
 - Write the output to a new file named `D:\Send Search.txt`
 
 ```
-Get-MessageTrackingLog -EventId Send | Format-List Send*,Recipient* > "D:\Send Search.txt"
+Get-MessageTrackingLog -EventId Send | Format-List Send*,Recipient* | Set-Content -Path "D:\Send Search.txt"
 ```
 
 ## Use the Exchange Management Shell to search the message tracking logs for message entries on multiple servers
@@ -124,6 +125,3 @@ $Servers = Get-ExchangeServer; $Servers | where {$_.isHubTransportServer -eq $tr
 ## Use the EAC to search the message tracking logs
 
 You can use the Delivery Reports for administrators feature in the Exchange admin center (EAC) to search the message tracking logs for information about messages sent by or received by a specific mailbox in your organization. For more information, see [Track messages with delivery reports](track-messages-with-delivery-reports.md).
-
-
-

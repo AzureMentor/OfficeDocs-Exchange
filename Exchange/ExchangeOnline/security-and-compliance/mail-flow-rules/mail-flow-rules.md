@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Learn about mail flow rules in Exchange Online.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 743bd525-0ca2-426d-b76c-b4a052bc8886
 ms.date: 
+ms.reviewer: 
 title: Mail flow rules (transport rules) in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -40,7 +41,7 @@ To implement specific messaging policies by using mail flow rules, see these top
 
 - [Use mail flow rules to route email based on a list of words, phrases, or patterns](use-rules-to-route-email.md)
 
-- [Use mail flow rules to set the spam confidence level (SCL) in messages](hhttps://docs.microsoft.com/office365/SecurityCompliance/use-mail-flow-rules-to-set-the-spam-confidence-level-scl-in-messages)
+- [Use mail flow rules to set the spam confidence level (SCL) in messages](https://docs.microsoft.com/office365/SecurityCompliance/use-mail-flow-rules-to-set-the-spam-confidence-level-scl-in-messages)
 
 - [Create organization-wide safe sender or blocked sender lists in Office 365](https://docs.microsoft.com/office365/SecurityCompliance/create-organization-wide-safe-sender-or-blocked-sender-lists-in-office-365)
 
@@ -89,7 +90,7 @@ The following table describes the rule properties that are available in mail flo
 |**On** check box selected or not selected|New rules:_Enabled_ parameter on the **New-TransportRule** cmdlet. <br/> Existing rules: Use the **Enable-TransportRule** or **Disable-TransportRule** cmdlets. <br/><br/> The value is displayed in the **State** property of the rule.|You can create a disabled rule, and enable it when you're ready to test it. Or, you can disable a rule without deleting it to preserve the settings.|
 |**Defer the message if rule processing doesn't complete**|_RuleErrorAction_|You can specify how the message should be handled if the rule processing can't be completed. By default, the rule will be ignored, but you can choose to resubmit the message for processing.|
 |**Match sender address in message**|_SenderAddressLocation_|If the rule uses conditions or exceptions that examine the sender's email address, you can look for the value in the message header, the message envelope, or both.|
-|**Stop processing more rules**|_SenderAddressLocation_|This is an action for the rule, but it looks like a property in the EAC. You can choose to stop applying additional rules to a message after a rule processes a message.|
+|**Stop processing more rules**|_StopRuleProcessing_|This is an action for the rule, but it looks like a property in the EAC. You can choose to stop applying additional rules to a message after a rule processes a message.|
 |**Comments**|_Comments_|You can enter descriptive comments about the rule.|
 
 ## How mail flow rules are applied to messages
@@ -109,7 +110,6 @@ There are several types of messages that pass through an organization. The follo
 |**S/MIME encrypted messages**|Rules can only access envelope headers and process messages based on conditions that inspect those headers. <br/><br/> Rules with conditions that require inspection of the message's content, or actions that modify the message's content can't be processed.|
 |**RMS protected messages**: Messages that had an Active Directory Rights Management Services (AD RMS) or Azure Rights Management (RMS) policy applied.|Rules can always access envelope headers and process messages based on conditions that inspect those headers. <br/><br/> For a rule to inspect or modify the contents of an RMS protected message, you need to verify that transport decryption is enabled (Mandatory or Optional; the default is Optional). For more information, see [Enable or disable transport decryption](https://go.microsoft.com/fwlink/p/?linkid=848060).|
 |**Clear-signed messages**: Messages that have been signed but not encrypted.|Yes|
-|**UM messages**: Messages that are created or processed by the Unified Messaging service, such as voice mail, fax, missed call notifications, and messages created or forwarded by using Microsoft Outlook Voice Access.|Yes|
 |**Anonymous messages**: Messages sent by anonymous senders.|Yes|
 |**Read reports**: Reports that are generated in response to read receipt requests by senders. Read reports have a message class of `IPM.Note*.MdnRead` or `IPM.Note*.MdnNotRead`.|Yes|
 
@@ -132,4 +132,3 @@ There are several types of messages that pass through an organization. The follo
 [Mail flow rule procedures in Exchange Online](mail-flow-rule-procedures.md)
 
 [Transport and Inbox rule limits](https://go.microsoft.com/fwlink/p/?LinkId=324584)
-

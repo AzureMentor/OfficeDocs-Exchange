@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to create, view, modify, delete, import, and export mail flow rules (transport rules) in Exchange 2016 and Exchange 2019'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: e7a81372-b6d7-4d1f-bc9e-a845a7facac2
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Procedures for mail flow rules in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -37,7 +38,6 @@ On Mailbox servers, you can manage mail flow rules in the Exchange admin center 
 > Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Create mail flow rules
-<a name="Create"> </a>
 
 - Creating mail flow rules is mostly about the scenarios that you want to fulfill. For examples, see the following topics:
 
@@ -50,62 +50,60 @@ On Mailbox servers, you can manage mail flow rules in the Exchange admin center 
 - Data Loss Prevention (DLP) policies are collections of mail flow rules. To create DLP policies, see [Exchange Server DLP Procedures](http://technet.microsoft.com/library/e2f575aa-552e-4dcc-8d7b-1ffd697d67df%28Office.14%29.aspx).
 
 ### Use the EAC to create mail flow rules
-<a name="CreateEAC"> </a>
 
 The EAC allows you to create mail flow rules by using a template (a filtered list of conditions and actions), by copying an existing rule, or by creating a rule from scratch.
 
 1. In the EAC, go to **Mail flow** \> **Rules**, and then select one of the following options:
 
-  - To create a rule from a template, click **Add** (![Add icon](../../media/ITPro_EAC_AddIcon.png)) and select a template (a value other than **Create new rule**).
+   - To create a rule from a template, click **Add** (![Add icon](../../media/ITPro_EAC_AddIcon.png)) and select a template (a value other than **Create new rule**).
 
-  - To copy a rule, select the rule, and then select **Copy** (![Copy icon](../../media/ITPro_EAC_CopyIcon.png)). Note that the option to copy a rule is only available in the EAC.
+   - To copy a rule, select the rule, and then select **Copy** (![Copy icon](../../media/ITPro_EAC_CopyIcon.png)). Note that the option to copy a rule is only available in the EAC.
 
-  - To create a new rule from scratch, **Add** (![Add icon](../../media/ITPro_EAC_AddIcon.png)) and then select **Create a new rule**.
+   - To create a new rule from scratch, **Add** (![Add icon](../../media/ITPro_EAC_AddIcon.png)) and then select **Create a new rule**.
 
 2. In the **New rule** page that opens, configure the following settings:
 
-  - **Name**: Enter a unique, descriptive name for the rule.
+   - **Name**: Enter a unique, descriptive name for the rule.
 
-  - **Apply this rule if**: Select a condition for the rule. If you want the rule to apply to all messages, select **[Apply to all messages]**. For an explanation of the available conditions, see [Mail flow rule conditions and exceptions (predicates) in Exchange Server](conditions-and-exceptions.md).
+   - **Apply this rule if**: Select a condition for the rule. If you want the rule to apply to all messages, select **[Apply to all messages]**. For an explanation of the available conditions, see [Mail flow rule conditions and exceptions (predicates) in Exchange Server](conditions-and-exceptions.md).
 
-  - **Do the following**: Select an action for the rule. The action is applied to messages that match the conditions. For an explanation of the available conditions, see [Mail flow rule actions in Exchange Server](actions.md).
+   - **Do the following**: Select an action for the rule. The action is applied to messages that match the conditions. For an explanation of the available conditions, see [Mail flow rule actions in Exchange Server](actions.md).
 
-    Optional properties:
+   Optional properties:
 
-  - **Audit this rule with severity level**: For DLP policies, this setting specifies how rule match data is displayed in the DLP policy detection reports. For more information, [View DLP policy detection reports](http://technet.microsoft.com/library/84295dda-5bf7-4fa5-a1ee-3f761501cfe8.aspx). If you clear the check box, or select the value **Not specified**, rule matches won't appear in the rule reports.
+   - **Audit this rule with severity level**: For DLP policies, this setting specifies how rule match data is displayed in the DLP policy detection reports. For more information, [View DLP policy detection reports](http://technet.microsoft.com/library/84295dda-5bf7-4fa5-a1ee-3f761501cfe8.aspx). If you clear the check box, or select the value **Not specified**, rule matches won't appear in the rule reports.
 
-  - **Choose a mode for this rule**: You can use one of the two test modes to test the rule without impacting mail flow. In both test modes, when the conditions are met, an entry is added to the message tracking log. Select one of the following values:
+   - **Choose a mode for this rule**: You can use one of the two test modes to test the rule without impacting mail flow. In both test modes, when the conditions are met, an entry is added to the message tracking log. Select one of the following values:
 
-  - **Enforce**: This turns on the rule and it starts processing messages immediately. All actions on the rule will be performed. This is the default value.
+   - **Enforce**: This turns on the rule and it starts processing messages immediately. All actions on the rule will be performed. This is the default value.
 
-  - **Test with Policy Tips**: This turns on the rule, and any Policy Tip actions (**Notify the sender with a Policy Tip**) will be sent, but no actions related to message delivery will be performed. DLP is required to use this mode. To learn more, see [Policy Tips](http://technet.microsoft.com/library/4266b83c-dd8a-4b3d-99ff-402e68fc810c.aspx).
+   - **Test with Policy Tips**: This turns on the rule, and any Policy Tip actions (**Notify the sender with a Policy Tip**) will be sent, but no actions related to message delivery will be performed. DLP is required to use this mode. To learn more, see [Policy Tips](http://technet.microsoft.com/library/4266b83c-dd8a-4b3d-99ff-402e68fc810c.aspx).
 
-  - **Test without Policy Tips**: For DLP policies, only the **Generate incident report and send it to** action will be enforced. No actions related to message delivery are performed.
+   - **Test without Policy Tips**: For DLP policies, only the **Generate incident report and send it to** action will be enforced. No actions related to message delivery are performed.
 
 3. You can create the rule by clicking **Save**, or you can click **More options** to configure the following additional settings:
 
-  - To add more conditions, click **Add condition**. If you have more than one condition, you can remove a condition by clicking **Remove X**. Note that there are more conditions available after you click **More options**.
+   - To add more conditions, click **Add condition**. If you have more than one condition, you can remove a condition by clicking **Remove X**. Note that there are more conditions available after you click **More options**.
 
-  - To add more actions, click **Add action**. If you have more than one action, you can remove an action by clicking **Remove X**. Note that there are more actions available after you click **More options**.
+   - To add more actions, click **Add action**. If you have more than one action, you can remove an action by clicking **Remove X**. Note that there are more actions available after you click **More options**.
 
-  - To add exceptions for the rule, click **Add exception**, and then select an exception by using the **Except if** drop down. You can remove an exception by clicking **Remove X**.
+   - To add exceptions for the rule, click **Add exception**, and then select an exception by using the **Except if** drop down. You can remove an exception by clicking **Remove X**.
 
-  - **Activate this rule on the following date**: Specify the start date if you want the rule to take effect after a certain date. Note that the rule will still be enabled prior to that date, but it won't be processed.
+   - **Activate this rule on the following date**: Specify the start date if you want the rule to take effect after a certain date. Note that the rule will still be enabled prior to that date, but it won't be processed.
 
-  - **Deactivate this rule on the following date**: Specify the end date if you want the rule to stop processing messages on a certain date. Note that the rule will still be enabled after that date, but it won't be processed.
+   - **Deactivate this rule on the following date**: Specify the end date if you want the rule to stop processing messages on a certain date. Note that the rule will still be enabled after that date, but it won't be processed.
 
-  - **Stop processing more rules**: Select this check box to avoid applying additional rules after this rule processes a message.
+   - **Stop processing more rules**: Select this check box to avoid applying additional rules after this rule processes a message.
 
-  - **Defer the message if rule processing doesn't complete**: Select this check box to resubmit the message for processing. By default, the rule will be ignored, and delivery of the message will continue as normal.
+   - **Defer the message if rule processing doesn't complete**: Select this check box to resubmit the message for processing. By default, the rule will be ignored, and delivery of the message will continue as normal.
 
-  - **Match sender address in message**: For conditions and exceptions that examine the sender's address, you can specify where the rule looks for the sender's address: in the message header (default), the message envelope, or the header and envelope. For more information, see [Senders](conditions-and-exceptions.md#senders).
+   - **Match sender address in message**: For conditions and exceptions that examine the sender's address, you can specify where the rule looks for the sender's address: in the message header (default), the message envelope, or the header and envelope. For more information, see [Senders](conditions-and-exceptions.md#senders).
 
-  - **Comments**: Specify a descriptive comment for the rule.
+   - **Comments**: Specify a descriptive comment for the rule.
 
-    When you're finished, click **Save**.
+   When you're finished, click **Save**.
 
 ### Use the Exchange Management Shell to create mail flow rules
-<a name="CreateEAC"> </a>
 
 There are two settings that you can configure on new mail flow rules in the Exchange Management Shell that aren't available in the EAC (until after you create the rule):
 
@@ -142,7 +140,6 @@ For detailed syntax and parameter information, see [New-TransportRule](http://te
  **Note**: The conditions and actions in the example are for illustrative purposes only. Review the available mail flow rule conditions, exceptions, and actions to determine which ones meet your requirements.
 
 ### How do you know this worked?
-<a name="CreateEAC"> </a>
 
 To verify that you've successfully created a mail flow rule, use either of the following procedures:
 
@@ -163,7 +160,6 @@ To verify that you've successfully created a mail flow rule, use either of the f
   ```
 
 ## View mail flow rules
-<a name="Create"> </a>
 
 Mail flow rules that you create on a Mailbox server are stored in Active Directory, so when you view the rules on a Mailbox server, you see all rules in your organization. When you use the Exchange Management Shell to view mail flow rules on an Edge Transport server, you see the rules that are stored on the local server.
 
@@ -173,9 +169,9 @@ Mail flow rules that you create on a Mailbox server are stored in Active Directo
 
 2. When you select a rule, information about the rule is displayed in the details pane. To see more information about the rule, click **Edit** (![Edit icon](../../media/ITPro_EAC_EditIcon.png)).
 
-    ![In the EAC, go to Mail flow \> Rules and select a rule](../../media/37502067-8f3f-49d1-aaea-91c7f3eb8e8a.png)
+   ![In the EAC, go to Mail flow \> Rules and select a rule](../../media/37502067-8f3f-49d1-aaea-91c7f3eb8e8a.png)
 
-    In the EAC, the **Version** property is only visible in the details pane. This property indicates the compatibility of the rule with previous versions of Exchange (14.*n*.*n*.*n* is Exchange 2010, 15.0.*n*.*n* is Exchange 2013).
+   In the EAC, the **Version** property is only visible in the details pane. This property indicates the compatibility of the rule with previous versions of Exchange (14.*n*.*n*.*n* is Exchange 2010, 15.0.*n*.*n* is Exchange 2013).
 
 ### Use the Exchange Management Shell to view mail flow rules
 
@@ -227,7 +223,7 @@ For detailed syntax and parameter information, see [Get-TransportRulePredicate](
 
 ### Use the Exchange Management Shell to view the available actions for mail flow rules
 
- You can only view the list of actions in the Exchange Management Shell.
+You can only view the list of actions in the Exchange Management Shell.
 
 To view the actions that are available in mail flow rules, run the following command:
 
@@ -244,7 +240,6 @@ For detailed syntax and parameter information, see [Get-TransportRuleAction](htt
 - Some of the action names are different than the corresponding action parameter names on the **New-TransportRule** and **Set-TransportRule** cmdlets. And, some actions require multiple parameters.
 
 ## Modify mail flow rules
-<a name="ModifyRule"> </a>
 
 ### Use the EAC to modify mail flow rules
 
@@ -252,7 +247,7 @@ No additional settings are available when you modify a mail flow rule in the EAC
 
 1. In the EAC, go to **Mail flow** \> **Rules**.
 
-2. Select the rule, and then click **Edit** (![Edit icon](../../media/ITPro_EAC_EditIcon.png)). Note that the properties of the rule are fully expanded (there's no **More options** link available). For more information about the rule properties, see the [Use the EAC to create mail flow rules](mail-flow-rule-procedures.md#CreateEAC) section in this topic.
+2. Select the rule, and then click **Edit** (![Edit icon](../../media/ITPro_EAC_EditIcon.png)). Note that the properties of the rule are fully expanded (there's no **More options** link available). For more information about the rule properties, see the [Use the EAC to create mail flow rules](#use-the-eac-to-create-mail-flow-rules) section in this topic.
 
 ### Use the Exchange Management Shell to modify mail flow rules
 
@@ -285,13 +280,12 @@ To verify that you have successfully modified a mail flow rule, use either of th
   ```
 
 ## Set the priority of mail flow rules
-<a name="priority"> </a>
 
 By default, mail flow rules are given a priority that's based on the order they were created in (newer rules are lower priority than older rules). A lower priority number indicates a higher priority for the rule, and rules are processed in priority order (higher priority rules are processed before lower priority rules). No two rules can have the same priority.
 
  **Notes**:
 
--  You can prevent a message from being acted on by subsequent lower priority rules by including the **Stop processing more rules** (_StopRuleProcessing_ `$true`) action in the rule.
+- You can prevent a message from being acted on by subsequent lower priority rules by including the **Stop processing more rules** (_StopRuleProcessing_ `$true`) action in the rule.
 
 - In the EAC, you can only change the priority of the rule after you create it. In the Exchange Management Shell, you can override the default priority when you create the rule (which can affect the priority of existing rules).
 
@@ -342,7 +336,6 @@ To verify that you have successfully modified the priority of a mail flow rule, 
   ```
 
 ## Enable or disable mail flow rules
-<a name="enable"> </a>
 
 Disabling a rule prevents the rule from acting on messages, but allows you to preserve the settings of the rule.
 
@@ -354,9 +347,9 @@ By default, mail flow rules are enabled when you create them in the EAC or the E
 
 2. Select the rule from the list, and then configure one of the following settings:
 
-  - **Disable the rule**: Clear the check box in the **On** column.
+   - **Disable the rule**: Clear the check box in the **On** column.
 
-  - **Enable the rule**: Select the check box in the **On** column.
+   - **Enable the rule**: Select the check box in the **On** column.
 
 ### Use the Exchange Management Shell to enable or disable mail flow rules
 
@@ -401,7 +394,6 @@ To verify that you have successfully enabled or disabled a mail flow rule, use e
   ```
 
 ## Remove mail flow rules
-<a name="remove"> </a>
 
 ### Use the EAC to remove mail flow rules
 
@@ -438,7 +430,6 @@ To verify that you have successfully removed a mail flow rule, use either of the
   ```
 
 ## Import or export mail flow rule collections
-<a name="import"> </a>
 
 You can import a mail flow rule collection that you've previously exported as a backup, or import rules that you've exported from a previous version of Exchange.
 
@@ -452,21 +443,21 @@ You can import a mail flow rule collection that you've previously exported as a 
 
 1. Run the following command:
 
-  ```
-  $File = Export-TransportRuleCollection
-  ```
+   ```
+   $File = Export-TransportRuleCollection
+   ```
 
 2. Use the following syntax:
 
-  ```
-  Set-Content -Path "<OutputFile>" -Value $file.FileData -Encoding Byte
-  ```
+   ```
+   Set-Content -Path "<OutputFile>" -Value $file.FileData -Encoding Byte
+   ```
 
-    For example, to save the exported mail flow rule collection to the file C:\My Documents\Exported Rules.xml, run the following command:
+   For example, to save the exported mail flow rule collection to the file C:\My Documents\Exported Rules.xml, run the following command:
 
-  ```
-  Set-Content -Path "C:\My Documents\Exported Rules.xml" -Value $file.FileData -Encoding Byte
-  ```
+   ```
+   Set-Content -Path "C:\My Documents\Exported Rules.xml" -Value $file.FileData -Encoding Byte
+   ```
 
 For detailed syntax and parameter information, see [Export-TransportRuleCollection](http://technet.microsoft.com/library/bfdb6ced-cd81-49f1-a929-4d76dbaf5590.aspx).
 
@@ -474,26 +465,25 @@ For detailed syntax and parameter information, see [Export-TransportRuleCollecti
 
 1. Use the following syntax:
 
-  ```
-  [Byte[]]$Data = Get-Content -Path "<OutputFile>" -Encoding Byte -ReadCount 0
-  ```
+   ```
+   [Byte[]]$Data = Get-Content -Path "<OutputFile>" -Encoding Byte -ReadCount 0
+   ```
 
-    For example, to import the mail flow rule collection from C:\My Documents\Exported Rules.xml, run the following command:
+   For example, to import the mail flow rule collection from C:\My Documents\Exported Rules.xml, run the following command:
 
-  ```
-  Byte[]]$Data = Get-Content -Path "C:\My Documents\Exported Rules.xml" -Encoding Byte -ReadCount 0
-  ```
+   ```
+   Byte[]]$Data = Get-Content -Path "C:\My Documents\Exported Rules.xml" -Encoding Byte -ReadCount 0
+   ```
 
 2. Run the following command:
 
-  ```
-  Import-TransportRuleCollection -FileData $Data
-  ```
+   ```
+   Import-TransportRuleCollection -FileData $Data
+   ```
 
 For detailed syntax and parameter information, see [Import-TransportRuleCollection](http://technet.microsoft.com/library/880b3124-76c5-4212-a8b9-8f4523f8cbe6.aspx).
 
 ## Need more help?
-<a name="import"> </a>
 
 - Resources for Exchange Server:
 

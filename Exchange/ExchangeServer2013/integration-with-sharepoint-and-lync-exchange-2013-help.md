@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Integration with SharePoint and Lync: Exchange 2013 Help'
 TOCTitle: Integration with SharePoint and Lync
 ms:assetid: 056b29f6-e0e9-4974-b763-002518857a93
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ150480(v=EXCHG.150)
 ms:contentKeyID: 47559934
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Integration with SharePoint and Lync
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Microsoft Exchange Server 2013 includes many features that integrate with Microsoft SharePoint 2013 and Microsoft Lync 2013. Together, these products offer a suite of features that make scenarios such as enterprise eDiscovery and collaboration using site mailboxes possible.
 
@@ -23,7 +24,7 @@ Archiving of email and documents, preserving them for the duration required to m
 
 ## Archive Lync Server 2013 content in Exchange 2013
 
-With Lync Server 2013 deployed in an organization with Exchange 2013, you can configure Lync to archive instant messaging and on-line meeting content such as shared presentations or documents in the user’s Exchange 2013 mailbox. Archiving Lync data in Exchange 2013 allows you to apply retention policies to it. Archived Lync content also surfaces in any eDiscovery searches. For more details about Lync Archiving and how to deploy it, see the following topics:
+With Lync Server 2013 deployed in an organization with Exchange 2013, you can configure Lync to archive instant messaging and on-line meeting content such as shared presentations or documents in the user's Exchange 2013 mailbox. Archiving Lync data in Exchange 2013 allows you to apply retention policies to it. Archived Lync content also surfaces in any eDiscovery searches. For more details about Lync Archiving and how to deploy it, see the following topics:
 
   - [Planning for Archiving](https://go.microsoft.com/fwlink/p/?linkid=265005)
 
@@ -75,12 +76,11 @@ In Exchange 2013 environments with Lync Server 2013 installed, you can configure
 
 Exchange 2013, SharePoint 2013 and Lync Server 2013 provide the rich cross-product functionality described above using OAuth authorization protocol for server-to-server authentication. Using the same authentication protocol allows these applications to seamlessly and securely authenticate to each other. The authentication mechanism supports authentication as an application using the context of a linked account and user impersonation where the access request is made in the user context.
 
-OAuth is a standard authorization protocol used by many web sites and web services. It allows clients to access resources provided by a resource server without having to provide a username and password. Authentication is performed by an authorization server trusted by the resource owner, which provides the client with an access token. The token grants access to a specific set of resources for a specified period. For more details about Exchange 2013’s implementation of OAuth, see [\[MS-XOAUTH\]: OAuth 2.0 Authorization Protocol Extensions](https://go.microsoft.com/fwlink/p/?linkid=275093).
+OAuth is a standard authorization protocol used by many web sites and web services. It allows clients to access resources provided by a resource server without having to provide a username and password. Authentication is performed by an authorization server trusted by the resource owner, which provides the client with an access token. The token grants access to a specific set of resources for a specified period. For more details about Exchange 2013's implementation of OAuth, see [\[MS-XOAUTH\]: OAuth 2.0 Authorization Protocol Extensions](https://go.microsoft.com/fwlink/p/?linkid=275093).
 
 **OAuth in on-premises deployments**
 
-Within an on-premises deployment, Exchange 2013, SharePoint 2013 and Lync Server 2013 do not require an authorization server to issue tokens. Each of these applications issue self-signed tokens to access resources provided by other application. The application that provides access to resources, for example Exchange 2013, must trust the self-signed tokens presented by the calling application. Trust is established by creating a *partner application* configuration for the calling application, which includes the calling application’s ApplicationID, certificate, and AuthMetadataUrl. Exchange 2013, SharePoint 2013 and Lync Server 2013 publish their auth metadata document in a well-known URL.
-
+Within an on-premises deployment, Exchange 2013, SharePoint 2013 and Lync Server 2013 do not require an authorization server to issue tokens. Each of these applications issue self-signed tokens to access resources provided by other application. The application that provides access to resources, for example Exchange 2013, must trust the self-signed tokens presented by the calling application. Trust is established by creating a *partner application* configuration for the calling application, which includes the calling application's ApplicationID, certificate, and AuthMetadataUrl. Exchange 2013, SharePoint 2013 and Lync Server 2013 publish their auth metadata document in a well-known URL.
 
 <table>
 <colgroup>
@@ -107,16 +107,12 @@ Within an on-premises deployment, Exchange 2013, SharePoint 2013 and Lync Server
 </tbody>
 </table>
 
-
 **Exchange 2013 Server Auth Certificate**
 
-Exchange 2013 Setup creates a self-signed certificate with the friendly name Microsoft Exchange Server Auth Certificate. The certificate is replicated to all front-end servers in the Exchange 2013 organization. The certificate’s thumbprint is specified in Exchange 2013’s authorization configuration, along with its service name, a well-known GUID that represents on-premises Exchange 2013. Exchange uses the authorization configuration to publish its auth metadata document.
-
+Exchange 2013 Setup creates a self-signed certificate with the friendly name Microsoft Exchange Server Auth Certificate. The certificate is replicated to all front-end servers in the Exchange 2013 organization. The certificate's thumbprint is specified in Exchange 2013's authorization configuration, along with its service name, a well-known GUID that represents on-premises Exchange 2013. Exchange uses the authorization configuration to publish its auth metadata document.
 
 > [!IMPORTANT]
 > The default Server Auth Certificate created by Exchange 2013 is valid for five years. You must ensure the authorization configuration includes a current certificate.
-
-
 
 When Exchange 2013 receives an access request from a partner application via Exchange Web Services (EWS), it parses the `www-authenticate` header of the https request, which contains the access token signed by the calling server using its private key. The auth module validates the access token using the partner application configuration. It then grants access to resources based on the RBAC permissions granted to the application. If the access token is on behalf of a user, the RBAC permissions granted to the user are checked. For example, if a user performs an eDiscovery search using the eDiscovery Center in SharePoint 2013, Exchange checks whether the user is a member of the Discovery Management role group or has the Mailbox Search role assigned and the mailboxes being searched are within the scope of the RBAC role assignment. For more details, see [Permissions](permissions-exchange-2013-help.md).
 
@@ -124,7 +120,6 @@ When Exchange 2013 receives an access request from a partner application via Exc
 
 In Exchange 2013, there are two configuration objects you must manage for OAuth authentication with partner applications:
 
-  - **AuthConfig**   The AuthConfig is created by Exchange 2013 Setup and is used to publish the auth metadata. You don’t need to manage the auth config except to provision a new certificate when the existing certificate is close to expiration. When this happens, you can renew the existing certificate and configure the new certificate as the next certificate in the AuthConfig along with its effective date. The new certificate is automatically replicated to other Exchange 2013 in the organization, the auth metadata document is refreshed with details of the new certificate, and the AuthConfig rolls over to the new certificate on the effective date.
+  - **AuthConfig**: The AuthConfig is created by Exchange 2013 Setup and is used to publish the auth metadata. You don't need to manage the auth config except to provision a new certificate when the existing certificate is close to expiration. When this happens, you can renew the existing certificate and configure the new certificate as the next certificate in the AuthConfig along with its effective date. The new certificate is automatically replicated to other Exchange 2013 in the organization, the auth metadata document is refreshed with details of the new certificate, and the AuthConfig rolls over to the new certificate on the effective date.
 
-  - **Partner applications**   To enable partner applications to request access tokens from Exchange 2013, you must create a partner application configuration. Exchange 2013 provides the `Configure-EnterprisePartnerApplication.ps1` script, which allows you to quickly and easily create partner application configurations and minimize configuration errors. For details, see [Configure OAuth authentication with SharePoint 2013 and Lync 2013](configure-oauth-authentication-with-sharepoint-2013-and-lync-2013-exchange-2013-help.md).
-
+  - **Partner applications**: To enable partner applications to request access tokens from Exchange 2013, you must create a partner application configuration. Exchange 2013 provides the `Configure-EnterprisePartnerApplication.ps1` script, which allows you to quickly and easily create partner application configurations and minimize configuration errors. For details, see [Configure OAuth authentication with SharePoint 2013 and Lync 2013](configure-oauth-authentication-with-sharepoint-2013-and-lync-2013-exchange-2013-help.md).

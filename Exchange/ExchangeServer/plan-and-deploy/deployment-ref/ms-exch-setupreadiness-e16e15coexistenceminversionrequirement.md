@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Setup can't continue because the organization contains one or more Exchange 2013 servers that aren't running the minimum required version of Exchange.
 ms.topic: reference
-author: dstrome
+author: msdmaguire
 f1_keywords:
 - ms.exch.setupreadiness.E16E15CoexistenceMinVersionRequirement
-ms.author: dstrome
+ms.author: dmaguire
 ms.assetid: 81658d0d-f132-4dbf-9cb6-467e3e3536df
 ms.date: 12/20/2016
+ms.reviewer: 
 title: Exchange 2013 CU10 or later is required for coexistence with Exchange 2016 or later [E16E15CoexistenceMinVersionRequirement]
 ms.collection: exchange-server
-ms.audience: Developer
+audience: Developer
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -22,4 +23,3 @@ The installation of Exchange Server 2016 or later can't continue because Setup f
 
 > [!IMPORTANT]
 > After you upgrade your Exchange 2013 Edge Transport servers to Exchange 2013 CU10 or later, you need to **re-create** the Edge subscription between your Exchange organization and each Edge Transport server (to update the Edge Transport server's Exchange version in Active Directory). For more information about re-creating Edge subscriptions in Exchange 2013, see [Managing Edge Subscriptions](https://go.microsoft.com/fwlink/p/?LinkId=624335).
-

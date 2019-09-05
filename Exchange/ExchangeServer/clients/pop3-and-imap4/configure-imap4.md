@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to enable and configure IMAP4 on an Exchange server 2016 or 2019 for access by IMAP4 clients.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: c1ae10dd-14da-4400-b38d-2aeafde8abe6
 ms.date: 7/5/2018
+ms.reviewer: 
 title: Enable and configure IMAP4 on an Exchange server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -20,21 +21,21 @@ By default, IMAP4 client connectivity isn't enabled in Exchange. To enable IMAP4
 
 1. Start the IMAP4 services, and configure the services to start automatically:
 
-  - **Microsoft Exchange IMAP4**: This is the Client Access (frontend) service that IMAP4 clients connect to.
+   - **Microsoft Exchange IMAP4**: This is the Client Access (frontend) service that IMAP4 clients connect to.
 
-  - **Microsoft Exchange IMAP4 Backend**: IMAP4 client connections from the Client Access service are proxied to the backend service on the server that hold the active copy of the user's mailbox. For more information, see [Exchange architecture](../../architecture/architecture.md).
+   - **Microsoft Exchange IMAP4 Backend**: IMAP4 client connections from the Client Access service are proxied to the backend service on the server that hold the active copy of the user's mailbox. For more information, see [Exchange architecture](../../architecture/architecture.md).
 
 2. Configure the IMAP4 settings for external clients.
 
-    By default, Exchange uses the following settings for **internal** IMAP4 connections:
+   By default, Exchange uses the following settings for **internal** IMAP4 connections:
 
-  - **IMAP4 server FQDN**: `<ServerFQDN>`. For example, `mailbox01.contoso.com`.
+   - **IMAP4 server FQDN**: `<ServerFQDN>`. For example, `mailbox01.contoso.com`.
 
-  - **TCP port and encryption method**: 993 for always TLS encrypted connections, and 143 for unencrypted connections, or for opportunistic TLS (**STARTTLS**) that results in an encrypted connection after the initial plain text protocol handshake.
+   - **TCP port and encryption method**: 993 for always TLS encrypted connections, and 143 for unencrypted connections, or for opportunistic TLS (**STARTTLS**) that results in an encrypted connection after the initial plain text protocol handshake.
 
-    To allow **external** IMAP4 clients to connect to mailboxes, you need to configure the IMAP4 server FQDN, TCP port, and encryption method for external connections. This step causes the external IMAP4 settings to be displayed in Outlook on the web (formerly known as Outlook Web App) at **Settings** \> **Options** \> **Mail** \> **Accounts** \> **POP and IMAP**.
+   To allow **external** IMAP4 clients to connect to mailboxes, you need to configure the IMAP4 server FQDN, TCP port, and encryption method for external connections. This step causes the external IMAP4 settings to be displayed in Outlook on the web (formerly known as Outlook Web App) at **Settings** \> **Options** \> **Mail** \> **Accounts** \> **POP and IMAP**.
 
-    ![IMAP settings in Outlook on the web](../../media/2fc6813d-0b2e-4813-8bbc-bc3dfaf4c261.png)
+   ![IMAP settings in Outlook on the web](../../media/2fc6813d-0b2e-4813-8bbc-bc3dfaf4c261.png)
 
 3. Restart the IMAP4 services to save the changes.
 
@@ -55,7 +56,7 @@ For more information about IMAP4, see [POP3 and IMAP4 in Exchange Server](pop3-a
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Step 1: Start the IMAP4 services, and configure the services to start automatically
 
@@ -65,43 +66,43 @@ You can perform this step by using the Windows Services console, or the Exchange
 
 1. On the Exchange server, open the Windows Services console. For example:
 
-  - Run the command `services.msc` from the **Run** dialog, a Command Prompt window, or the Exchange Management Shell.
+   - Run the command `services.msc` from the **Run** dialog, a Command Prompt window, or the Exchange Management Shell.
 
-  - Open Server Manager, and then click **Tools** \> **Services**.
+   - Open Server Manager, and then click **Tools** \> **Services**.
 
 2. In the list of services, select **Microsoft Exchange IMAP4**, and then click **Action** \> **Properties**.
 
 3. The **Microsoft Exchange IMAP4 Properties** window opens. On the **General** tab, configure the following settings:
 
-  - **Startup type**: Select **Automatic**.
+   - **Startup type**: Select **Automatic**.
 
-  - **Service status**: Click **Start**.
+   - **Service status**: Click **Start**.
 
-    When you're finished, click **OK**.
+   When you're finished, click **OK**.
 
 4. In the list of services, select **Microsoft Exchange IMAP4 Backend**, and then click **Action** \> **Properties**.
 
 5. The **Microsoft Exchange IMAP4 Backend Properties** window opens. On the **General** tab, configure the following settings:
 
-  - **Startup type**: Select **Automatic**.
+   - **Startup type**: Select **Automatic**.
 
-  - **Service status**: Click **Start**.
+   - **Service status**: Click **Start**.
 
-    When you're finished, click **OK**.
+   When you're finished, click **OK**.
 
 ### Use the Exchange Management Shell to start the IMAP4 services, and configure the services to start automatically
 
 1. Run the following command to start the IMAP4 services:
 
-  ```
-  Start-Service MSExchangeIMAP4; Start-Service MSExchangeIMAP4BE
-  ```
+   ```
+   Start-Service MSExchangeIMAP4; Start-Service MSExchangeIMAP4BE
+   ```
 
 2. Run the following command to configure the IMAP4 services to start automatically:
 
-  ```
-  Set-Service MSExchangeIMAP4 -StartupType Automatic; Set-Service MSExchangeIMAP4BE -StartupType Automatic
-  ```
+   ```
+   Set-Service MSExchangeIMAP4 -StartupType Automatic; Set-Service MSExchangeIMAP4BE -StartupType Automatic
+   ```
 
 For more information about these cmdlets, see [Start-Service](https://go.microsoft.com/fwlink/p/?LinkID=113406) and [Set-Service](https://go.microsoft.com/fwlink/p/?LinkID=113399).
 
@@ -201,27 +202,24 @@ To verify that you have enabled and configured IMAP4 on the Exchange server, per
 
 1. Open a mailbox in Outlook on the web, and then click **Settings** \> **Options**.
 
-    ![Options menu location in Outlook on the web](../../media/f1227a01-7f83-4af9-abf5-2c3dec6cf3d0.png)
+   ![Options menu location in Outlook on the web](../../media/f1227a01-7f83-4af9-abf5-2c3dec6cf3d0.png)
 
 2. Click **Mail** \> **Accounts** \> **POP and IMAP** and verify the correct IMAP4 settings are displayed.
 
-    ![IMAP settings in Outlook on the web](../../media/2fc6813d-0b2e-4813-8bbc-bc3dfaf4c261.png)
+   ![IMAP settings in Outlook on the web](../../media/2fc6813d-0b2e-4813-8bbc-bc3dfaf4c261.png)
 
-    **Note**: If you configured 993/SSL **and** 143/TLS values for the _ExternalConnectionSettings_ parameter on the **Set-ImapSettings** cmdlet, only the 993/SSL value is displayed in Outlook on the web. Also, if the external IMAP4 settings that you configured don't appear as expected in Outlook on the web after you restart the IMAP4 services, run the commands `net stop was /y` and `net start w3svc` to restart Internet Information Services (IIS).
+   **Note**: If you configured 993/SSL **and** 143/TLS values for the _ExternalConnectionSettings_ parameter on the **Set-ImapSettings** cmdlet, only the 993/SSL value is displayed in Outlook on the web. Also, if the external IMAP4 settings that you configured don't appear as expected in Outlook on the web after you restart the IMAP4 services, run the commands `net stop was /y` and `net start w3svc` to restart Internet Information Services (IIS).
 
 3. You can test IMAP4 client connectivity to the Exchange server by using the following methods:
 
-  - **Internal clients**: Use the **Test-ImapConnectivity** cmdlet. For example, `Test-ImapConnectivity -ClientAccessServer <ServerName> -Lightmode -MailboxCredential (Get-Credential)`. For more information, see [Test-ImapConnectivity](http://technet.microsoft.com/library/273690c8-4e0d-4f05-8786-11d71868dae0.aspx).
+   - **Internal clients**: Use the **Test-ImapConnectivity** cmdlet. For example, `Test-ImapConnectivity -ClientAccessServer <ServerName> -Lightmode -MailboxCredential (Get-Credential)`. For more information, see [Test-ImapConnectivity](http://technet.microsoft.com/library/273690c8-4e0d-4f05-8786-11d71868dae0.aspx).
 
-    **Note**: The _Lightmode_ switch tells the command test IMAP4 logons to the server. To test sending (SMTP) and receiving (IMAP4) a message, you need to configure the authenticated SMTP settings as described in [Configure authenticated SMTP settings for POP3 and IMAP4 clients in Exchange Server](configure-authenticated-smtp.md).
+   **Note**: The _Lightmode_ switch tells the command test IMAP4 logons to the server. To test sending (SMTP) and receiving (IMAP4) a message, you need to configure the authenticated SMTP settings as described in [Configure authenticated SMTP settings for POP3 and IMAP4 clients in Exchange Server](configure-authenticated-smtp.md).
 
-  - **External clients**: Use the **Exchange Server** \> **Imap Email** test in the Microsoft Remote Connectivity Analyzer at [https://go.microsoft.com/fwlink/p/?LinkID=313840](https://go.microsoft.com/fwlink/p/?LinkID=313840).
+   - **External clients**: Use the **Exchange Server** \> **Imap Email** test in the Microsoft Remote Connectivity Analyzer at [https://go.microsoft.com/fwlink/p/?LinkID=313840](https://go.microsoft.com/fwlink/p/?LinkID=313840).
 
-    **Note**: You can't use IMAP4 to connect to the Administrator mailbox. This limitation was intentionally included in Exchange 2016 and Exchange 2019 to enhance the security of the Administrator mailbox.
+   **Note**: You can't use IMAP4 to connect to the Administrator mailbox. This limitation was intentionally included in Exchange 2016 and Exchange 2019 to enhance the security of the Administrator mailbox.
 
 ## Next steps
 
 To enabled or disable IMAP4 access to individual mailboxes, see [Enable or disable POP3 or IMAP4 access to mailboxes in Exchange Server](configure-mailbox-access.md).
-
-
-

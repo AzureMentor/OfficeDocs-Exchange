@@ -1,41 +1,31 @@
-﻿---
+---
 title: 'Remote domains: Exchange 2013 Help'
 TOCTitle: Remote domains
 ms:assetid: 10fb7d62-4d78-40a3-82db-d62bcd27ba42
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Aa996309(v=EXCHG.150)
 ms:contentKeyID: 49289173
 ms.date: 06/02/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Remote domains
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 You can create remote domain entries to define the settings for message transfer between the Microsoft Exchange Server 2013 organization and domains outside your Exchange organization. When you create a remote domain entry, you control the types of messages that are sent to that domain. You can also apply message format policies and acceptable character sets for messages that are sent from users in your organization to the remote domain. The settings for remote domains are global configuration settings for the Exchange organization.
 
 The remote domain settings are applied to messages during categorization in the Transport service on Mailbox servers. When recipient resolution occurs, the recipient domain is matched against the configured remote domains. If a remote domain configuration blocks a specific message type from being sent to recipients in that domain, the message is deleted. If you specify a particular message format for the remote domain, the message headers and content are modified. The settings apply to all messages that are processed by the Exchange organization.
 
-
 > [!NOTE]
 > If you configure message settings per user, the per-user settings override the organizational configuration.
-
-
 
 By default, there's a single remote domain entry. The domain address space is configured as an asterisk (\*). This represents all remote domains. If you don't create additional remote domain entries, all messages that are sent to all recipients in all remote domains have the same settings applied to them.
 
 When you configure remote domains, you can prevent certain types of messages from being sent to that domain. These message types include out-of-office messages, auto-reply messages, non-delivery reports (NDRs), and meeting forward notifications. If you have a multiple forest environment, you may want to allow the sending of those types of messages to those domains. However, if you have identified a domain from which spam originates, you may want to block sending of those types of messages to those remote domains.
-
-**Contents**
-
-Message format
-
-Automatic replies settings
-
-Controlling NDR information
 
 ## Message format
 
@@ -47,14 +37,13 @@ In Exchange 2013, users can specify different automatic replies for internal and
 
 In Exchange 2013, there are two types of automatic replies:
 
-  - **External**   Supported by Exchange 2013 and Exchange 2010. Can only be set by Outlook 2010 or Office Outlook 2007, or using Microsoft Office Outlook Web App.
+- **External**: Supported by Exchange 2013 and Exchange 2010. Can only be set by Outlook 2010 or Office Outlook 2007, or using Outlook Web App.
 
-  - **Internal**   Supported by Exchange 2013 and Exchange 2010. Can only be set by Outlook 2010 or Outlook 2007, or using Outlook Web App.
+- **Internal**: Supported by Exchange 2013 and Exchange 2010. Can only be set by Outlook 2010 or Outlook 2007, or using Outlook Web App.
 
 The following table describes various client and server combinations and the types of automatic replies that can be used in each scenario.
 
 **Client and server support for automatic replies**
-
 
 <table>
 <colgroup>
@@ -83,7 +72,6 @@ The following table describes various client and server combinations and the typ
 </tbody>
 </table>
 
-
 ## Controlling NDR information
 
 As mentioned at the beginning of this topic, you can prevent NDRs from being sent to a remote domain. By blocking NDRs from being sent to a remote domain, you can prevent the information contained within the NDR message from leaving your organization, thereby limiting the knowledge that a malicious user can obtain about your organization. However, this also prevents legitimate senders from receiving NDRs, resulting in confusion and lost productivity.
@@ -93,4 +81,3 @@ Exchange 2013 provides you with granular control over the contents of an NDR des
 This feature is controlled with the *NDRDiagnosticInfoEnabled* parameter on the **Set-RemoteDomain** cmdlet. Because this setting is configurable for each remote domain, you can have different settings based on your needs. For example, you can choose to remove the NDR diagnostic information for the default remote domain, but allow full NDR diagnostic information for the remote domains that represent your partners.
 
 For more information about this new setting, see [Set-RemoteDomain](https://technet.microsoft.com/en-us/library/aa997857\(v=exchg.150\)).
-

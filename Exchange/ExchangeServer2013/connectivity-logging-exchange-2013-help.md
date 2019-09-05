@@ -1,83 +1,76 @@
-﻿---
+---
 title: 'Connectivity logging: Exchange 2013 Help'
 TOCTitle: Connectivity logging
 ms:assetid: c31fd710-4ae4-4d9a-8936-d056e7ca2748
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb124500(v=EXCHG.150)
 ms:contentKeyID: 49287004
 ms.date: 06/02/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Connectivity logging
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Connectivity logging records the outbound connection activity that's used to transmit messages from a transport service on the Exchange server. The purpose of the connectivity log isn't to track the transmission of individual email messages. Rather, the connectivity log tracks the connection activity from source to the destination, regardless of how many messages are transmitted. Connectivity logging is available in the Front End Transport service on Client Access servers, the Transport service on Mailbox servers, and the Mailbox Transport service on Mailbox servers. The following list describes the type of information recorded in the connectivity log:
 
-  - Source
+- Source
 
-  - Destination
+- Destination
 
-  - DNS resolution information
+- DNS resolution information
 
-  - Detailed information about connection failures
+- Detailed information about connection failures
 
-  - Number of messages and bytes transmitted
+- Number of messages and bytes transmitted
 
 You use the **Set-TransportService**, **Set-FrontEndTransportService** and **Set-MailboxTransportService** cmdlets in the Exchange Management Shell to perform all connectivity log configuration tasks. The following options are available for the connectivity logs:
 
-  - Enable or disable connectivity logging. The default is enabled.
+- Enable or disable connectivity logging. The default is enabled.
 
-  - Specify the location of the connectivity log files.
+- Specify the location of the connectivity log files.
 
-  - Specify a maximum size for the individual connectivity log files. The default size is 10 megabytes (MB).
+- Specify a maximum size for the individual connectivity log files. The default size is 10 megabytes (MB).
 
-  - Specify a maximum size for the directory that contains connectivity log files. The default size is 1000 MB.
+- Specify a maximum size for the directory that contains connectivity log files. The default size is 1000 MB.
 
-  - Specify a maximum age for the connectivity log files. The default age is 30 days.
+- Specify a maximum age for the connectivity log files. The default age is 30 days.
 
 By default, Exchange uses circular logging to limit the connectivity logs based on file size and file age to help control the hard disk space used by the connectivity log files.
-
-**Contents**
-
-Structure of the connectivity log files
-
-Information written to the connectivity log
 
 ## Structure of the connectivity log files
 
 By default, the connectivity log files exist in the following locations:
 
-  - **Transport service**   %ExchangeInstallPath%TransportRoles\\Logs\\Hub\\Connectivity
+- **Transport service**: %ExchangeInstallPath%TransportRoles\\Logs\\Hub\\Connectivity
 
-  - **Front End Transport service**   %ExchangeInstallPath%TransportRoles\\Logs\\FrontEnd\\Connectivity
+- **Front End Transport service**: %ExchangeInstallPath%TransportRoles\\Logs\\FrontEnd\\Connectivity
 
-  - **Mailbox Transport service**   %ExchangeInstallPath%TransportRoles\\Logs\\Mailbox\\Connectivity
+- **Mailbox Transport service**: %ExchangeInstallPath%TransportRoles\\Logs\\Mailbox\\Connectivity
 
 The naming convention for the connectivity log files is CONNECTLOG*yyymmdd-nnnn*.log. The placeholders represent the following information:
 
-  - The placeholder *yyyymmdd* is the Coordinated Universal Time (UTC) date that the log file was created. The placeholder *yyyy* = year, *mm* = month, and *dd* = day.
+- The placeholder *yyyymmdd* is the Coordinated Universal Time (UTC) date that the log file was created. The placeholder *yyyy* = year, *mm* = month, and *dd* = day.
 
-  - The placeholder *nnnn* is an instance number that starts at the value of 1 for each day.
+- The placeholder *nnnn* is an instance number that starts at the value of 1 for each day.
 
 Information is written to the log file until the file size reaches its maximum specified value, and a new log file that has an incremented instance number is opened. This process is repeated throughout the day. Circular logging deletes the oldest log files when the connectivity log directory reaches its maximum specified size, or when a log file reaches its maximum specified age.
 
 The connectivity log files are text files that contain data in the comma-separated value file (CSV) format. Each connectivity log file has a header that contains the following information:
 
-  - **\#Software**   Name of the software that created the connectivity log file. Typically, the value is Microsoft Exchange Server.
+- **\#Software**: Name of the software that created the connectivity log file. Typically, the value is Microsoft Exchange Server.
 
-  - **\#Version**   Version number of the software that created the connectivity log file. Currently, the value is 15.0.0.0.
+- **\#Version**: Version number of the software that created the connectivity log file. Currently, the value is 15.0.0.0.
 
-  - **\#Log-Type**   Log type value, which is Transport Connectivity Log.
+- **\#Log-Type**: Log type value, which is Transport Connectivity Log.
 
-  - **\#Date**   UTC date-time when the log file was created. The UTC date-time is represented in the ISO 8601 date-time format: *yyyy-mm-dd*T*hh:mm:ss.fff*Z, where *yyyy* = year, *mm* = month, *dd* = day, T indicates the beginning of the time component, *hh* = hour, *mm* = minute, *ss* = second, *fff* = fractions of a second, and Z signifies Zulu, which is another way to denote UTC.
+- **\#Date**: UTC date-time when the log file was created. The UTC date-time is represented in the ISO 8601 date-time format: *yyyy-mm-dd*T*hh:mm:ss.fff*Z, where *yyyy* = year, *mm* = month, *dd* = day, T indicates the beginning of the time component, *hh* = hour, *mm* = minute, *ss* = second, *fff* = fractions of a second, and Z signifies Zulu, which is another way to denote UTC.
 
-  - **\#Fields**   Comma delimited field names used in the connectivity log files.
-
-Return to top
+- **\#Fields**: Comma delimited field names used in the connectivity log files.
 
 ## Information written to the connectivity log
 
@@ -136,8 +129,4 @@ The connectivity log stores each outbound transport service connection event on 
 </tbody>
 </table>
 
-
 When transport service establishes a connection to a destination, the transport service may be prepared to send one message or several messages. The connection and message transmission processes generate multiple events written on multiple lines in the connectivity log. Simultaneous connections to different destinations create connectivity log entries related to different destinations that are interlaced. However, you can use the date-time, session, source, and direction fields to arrange the connectivity log entries for each separate connection from start to finish.
-
-Return to top
-

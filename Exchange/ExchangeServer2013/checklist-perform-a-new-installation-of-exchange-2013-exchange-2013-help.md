@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Checklist: Perform a new installation of Exchange 2013: Exchange 2013 Help'
 TOCTitle: 'Checklist: Perform a new installation of Exchange 2013'
 ms:assetid: f70d9dd3-7370-472e-b05e-1ea1671272b2
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Ff805042(v=EXCHG.150)
 ms:contentKeyID: 49289467
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Checklist: Perform a new installation of Exchange 2013
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Use this checklist to deploy Microsoft Exchange Server 2013. Before you start working with this checklist, make sure you're familiar with the concepts discussed in:
 
@@ -23,14 +24,10 @@ Use this checklist to deploy Microsoft Exchange Server 2013. Before you start wo
 
 This checklist is generic in that it provides guidance for a typical scenario.
 
-
 > [!NOTE]
 > The Exchange Server Deployment Assistant provides you with customized step-by-step guidance about how to deploy Exchange Server. The Deployment Assistant can help you deploy a new installation of Exchange Server 2013, upgrade a previous version to Exchange 2013, or configure a hybrid deployment of Exchange 2013 and Exchange Online. To learn more, see <A href="exchange-server-deployment-assistant-exchange-2013-help.md">Exchange Server Deployment Assistant</A>.
 
-
-
 ## Checklist for a new installation of Exchange 2013
-
 
 <table>
 <colgroup>
@@ -66,7 +63,6 @@ This checklist is generic in that it provides guidance for a typical scenario.
 > [!NOTE]
 > This step is optional. It's only necessary if your organization is running a disjoint namespace.
 
-
 </td>
 <td><p><a href="disjoint-namespace-scenarios-exchange-2013-help.md">Disjoint namespace scenarios</a></p></td>
 </tr>
@@ -86,7 +82,6 @@ This checklist is generic in that it provides guidance for a typical scenario.
 
 > [!NOTE]
 > This step is optional. It's only necessary if you want to install an Edge Transport server. For more information, see <A href="edge-transport-servers-exchange-2013-help.md">Edge Transport servers</A>.
-
 
 </td>
 <td><p><a href="install-the-exchange-2013-edge-transport-role-using-the-setup-wizard-exchange-2013-help.md">Install the Exchange 2013 Edge Transport role using the Setup wizard</a></p></td>
@@ -114,11 +109,10 @@ This checklist is generic in that it provides guidance for a typical scenario.
 </tr>
 <tr class="odd">
 <td> </td>
-<td><p>12. Configure settings on virtual directories, including the offline address book, Exchange Web Services, Exchange Administration Center (EAC), Outlook Web App, and Exchange ActiveSync virtual directories.</p>
+<td><p>12. Configure settings on virtual directories, including the offline address book, Exchange Web Services, Exchange admin center (EAC), Outlook Web App, and Exchange ActiveSync virtual directories.</p>
 
 > [!NOTE]
 > This step is necessary if you want to use Exchange Web Services, Outlook Anywhere, or the offline address book. It also may be required if you need to change any of the default settings for EAC, Outlook Web App, or Exchange ActiveSync.
-
 
 </td>
 <td><p><a href="configure-mail-flow-and-client-access-exchange-2013-help.md">Configure external URLs</a></p>
@@ -136,7 +130,6 @@ This checklist is generic in that it provides guidance for a typical scenario.
 > [!NOTE]
 > This step is optional. It's only necessary if you want to use Unified Messaging in your organization.
 
-
 </td>
 <td><p><a href="deploying-voice-mail-and-um-exchange-2013-help.md">Deploying voice mail and UM</a></p></td>
 </tr>
@@ -145,8 +138,7 @@ This checklist is generic in that it provides guidance for a typical scenario.
 <td><p>15. Configure additional Unified Messaging and Lync Server settings.</p>
 
 > [!NOTE]
-> This step is optional. It's only necessary if you’ve configured Unified Messaging in your organization and want to integrate it with Lync Server.
-
+> This step is optional. It's only necessary if you've configured Unified Messaging in your organization and want to integrate it with Lync Server.
 
 </td>
 <td><p><a href="deploying-exchange-2013-um-and-lync-server-overview-exchange-2013-help.md">Deploying Exchange 2013 UM and Lync Server overview</a></p></td>
@@ -158,4 +150,3 @@ This checklist is generic in that it provides guidance for a typical scenario.
 </tr>
 </tbody>
 </table>
-

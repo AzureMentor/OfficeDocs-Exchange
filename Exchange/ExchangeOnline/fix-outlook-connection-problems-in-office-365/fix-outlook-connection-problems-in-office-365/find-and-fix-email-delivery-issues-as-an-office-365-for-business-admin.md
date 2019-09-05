@@ -1,11 +1,12 @@
 ---
 localization_priority: Normal
 ms.topic: troubleshooting
-author: chrisda
+author: msdmaguire
 f1_keywords:
 - O365P_MessageTrace
-ms.author: chrisda
+ms.author: dmaguire
 ms.assetid: e7758b99-1896-41db-bf39-51e2dba21de6
+ms.reviewer: 
 description: Admins can learn how to fix email delivery issues in Exchange Online.
 title: Find and fix email delivery issues as an Office 365 for business admin
 ms.collection: 
@@ -17,10 +18,10 @@ search.appverid:
 - MED150
 - MBS150
 - MET150
-ms.audience: Admin
+audience: Admin
 ms.custom: MiniMaven
 ms.service: exchange-online
-manager: serdars`
+manager: serdars
 
 ---
 
@@ -73,7 +74,7 @@ The service health page lists the status of Office 365 services and indicates if
 
 3. Under **Service health**, go to **View the service health**.
 
-    ![Screenshot showing the View the service health option selected in the Office 365 admin center](../../media/9a865800-f56a-4c1d-a5cb-adfcb3b4902e.png)
+    ![Screenshot showing the View the service health option selected in the admin center](../../media/9a865800-f56a-4c1d-a5cb-adfcb3b4902e.png)
 
 If there is an indication that ExchangeOnline service is degraded, email delivery might be delayed for your organization, and CompanyName service engineers are already working to restore service. Check the service health page for progress updates. In this case, you don't need to open a service request because CompanyName is already working to resolve the issue.
 
@@ -96,7 +97,7 @@ If you're an Office 365 Midsize Business, Office 365 Business, or Office 365 Ent
 
 3. Go to **Exchange**.
 
-    ![Sceenshot of the Office 365 admin center with Exchange selected.](../../media/239c294e-4f04-4c52-bd87-bbf343cb66b9.png)
+    ![Sceenshot of the admin center with Exchange selected.](../../media/239c294e-4f04-4c52-bd87-bbf343cb66b9.png)
 
 4. Under **mail flow**, go to **message trace**.
 
@@ -145,7 +146,7 @@ Message traces for items more than 7 days old are only available as a downloadab
     When you select a specific message trace, additional information appears in the right pane. Depending on what search criteria you specified, this may include details such as the date range for which the trace was run, and the sender and intended recipients of the message.
 
 > [!NOTE]
->  Message traces containing data that is greater than 7 days old are automatically deleted. They cannot be manually deleted.
+> Message traces containing data that is greater than 7 days old are automatically deleted. They cannot be manually deleted.
 
 #### Common questions about message trace
 
@@ -168,4 +169,3 @@ Possible causes include the following:
 - Latency in the service is causing delays.
 
 - The message was blocked by the filtering service.
-

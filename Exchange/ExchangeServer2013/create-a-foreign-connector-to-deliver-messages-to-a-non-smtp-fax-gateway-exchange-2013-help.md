@@ -1,61 +1,52 @@
-﻿---
+---
 title: 'Create a Foreign connector to deliver messages to a non-SMTP fax gateway'
 TOCTitle: Create a Foreign connector to deliver messages to a non-SMTP fax gateway
 ms:assetid: 589db487-3c4c-409a-92e3-c78dd8f639b6
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ710163(v=EXCHG.150)
 ms:contentKeyID: 49369578
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Create a Foreign connector to deliver messages to a non-SMTP fax gateway
 
- 
-
 _**Applies to:** Exchange Server 2013_
 
-
-You may have a scenario where you want to send messages to and receive messages from a fax-gateway server that doesn’t use SMTP as its primary transport mechanism. Follow the steps outlined in this procedure to create a Foreign connector that delivers messages to and receives messages from the foreign system.
-
+You may have a scenario where you want to send messages to and receive messages from a fax-gateway server that doesn't use SMTP as its primary transport mechanism. Follow the steps outlined in this procedure to create a Foreign connector that delivers messages to and receives messages from the foreign system.
 
 > [!TIP]
 > In most cases where you must deliver outbound messages to a non-SMTP system, we recommend Delivery Agent connectors, because they allow for queue management of messages, messages do not have to be written to the file system, and other benefits. The <A href="delivery-agents-and-delivery-agent-connectors-exchange-2013-help.md">Delivery agents and Delivery Agent connectors</A> topic provides more details.
 
-
-
-Interested in scenarios where this procedure is used? See the following topics:
-
-  - [Planning and deployment](planning-and-deployment-for-exchange-2013-installation-instructions.md)
+Interested in scenarios where this procedure is used? See [Planning and deployment](planning-and-deployment-for-exchange-2013-installation-instructions.md).
 
 ## What do you need to know before you begin?
 
-  - Estimated time to complete this task: 30 minutes
+- Estimated time to complete this task: 30 minutes
 
-  - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the “Foreign connectors” entry in the [Mail flow permissions](mail-flow-permissions-exchange-2013-help.md) topic.
+- You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Foreign connectors" entry in the [Mail flow permissions](mail-flow-permissions-exchange-2013-help.md) topic.
 
-  - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
-
+- For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](keyboard-shortcuts-in-the-exchange-admin-center-2013-help.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at <A href="https://go.microsoft.com/fwlink/p/?linkid=60612">Exchange Server</A>, <A href="https://go.microsoft.com/fwlink/p/?linkid=267542">Exchange Online</A>, or <A href="https://go.microsoft.com/fwlink/p/?linkid=285351">Exchange Online Protection</A>.
-
-
-
-## How do you do this?
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612).
 
 ## Step 1: Use the Shell to create a Foreign connector that sends messages to a non-SMTP gateway server
 
-1.  Run the following command to create the Foreign connector:
-    
-    ```powershell
-        New-ForeignConnector -Name "Contoso Foreign Connector" -AddressSpaces "X400:c=US;a=Fabrikam;P=Contoso;5" -SourceTransportServers Hub01,Hub02
-    ```
-    
+1. Run the following command to create the Foreign connector:
+
+   ```powershell
+   New-ForeignConnector -Name "Contoso Foreign Connector" -AddressSpaces "X400:c=US;a=Fabrikam;P=Contoso;5" -SourceTransportServers Hub01,Hub02
+   ```
+
     In this example, Hub01 and Hub02 are source servers in your organization that you designate to deliver messages to the foreign system. Using more than one source server provides fault tolerance.
 
 Once you have created the Foreign Connector, you can configure the Drop Pickup, and Replay directories, depending on the requirements for your organization.
 
-## How do you know this step worked?
+### How do you know this step worked?
 
 To verify that the Foreign connector was created successfully, run the following command:
 
@@ -71,13 +62,13 @@ The Drop directory for a Mailbox server running the Transport service is used to
 
 You create a directory to use as the Drop directory on your local file system. You can also use a directory on a network file share.
 
-1.  Run the following script to specify the Drop directory for your Foreign connector (change the value for the *DropDirectory* parameter to a path appropriate for your environment):
-    
-    ```powershell
-    Set-ForeignConnector "Contoso Foreign Connector" -DropDirectory "C:\Drop Directory"
-    ```
+1. Run the following script to specify the Drop directory for your Foreign connector (change the value for the *DropDirectory* parameter to a path appropriate for your environment):
 
-## How do you know this step worked?
+   ```powershell
+   Set-ForeignConnector "Contoso Foreign Connector" -DropDirectory "C:\Drop Directory"
+   ```
+
+### How do you know this step worked?
 
 To verify that you have set the Drop Directory correctly, you can run the following cmdlet script and verify the value for the *DropDirectory* parameter:
 
@@ -93,7 +84,7 @@ The Pickup directory for the Transport service on a Mailbox server is used to co
 
 For detailed instructions for configuring your Pickup directory, see [Configure the Pickup directory and the Replay directory](configure-the-pickup-directory-and-the-replay-directory-exchange-2013-help.md).
 
-## How do you know this step worked?
+### How do you know this step worked?
 
 To verify that you have set the Pickup directory correctly, you can run the following command and verify the value for the *PickupDirectoryPath* parameter:
 
@@ -107,7 +98,7 @@ The Replay directory for the Transport service on a Mailbox server is used to co
 
 For detailed instructions for configuring your Pickup directory, see [Configure the Pickup directory and the Replay directory](configure-the-pickup-directory-and-the-replay-directory-exchange-2013-help.md).
 
-## How do you know this step worked?
+### How do you know this step worked?
 
 To verify that you have set the Replay directory correctly, you can run the following command and verify the value for the *ReplayDirectoryPath* parameter:
 
@@ -120,4 +111,3 @@ Get-TransportService | Format-List ReplayDirectoryPath
 [Foreign connectors](foreign-connectors-exchange-2013-help.md)
 
 [Delivery agents and Delivery Agent connectors](delivery-agents-and-delivery-agent-connectors-exchange-2013-help.md)
-

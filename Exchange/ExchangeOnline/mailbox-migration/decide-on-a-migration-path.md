@@ -5,6 +5,7 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 0d4f2396-9cef-43b8-9bd6-306d01df1e27
 ms.date: 8/15/2018
+ms.reviewer: 
 description: Deciding on the best migration path of your users' email to Office 365 can be difficult. This article gives guidance based on your current email system and other factors, such as how quickly you want to migrate to Office 365. Your migration performance will vary based on your network, mailbox size, migration speed, and so on.
 title: Decide on a migration path
 ms.collection: 
@@ -15,7 +16,7 @@ search.appverid:
 - MOE150
 - MBS150
 - BCS160
-ms.audience: Admin
+audience: Admin
 ms.custom: Adm_O365
 ms.service: exchange-online
 manager: serdars
@@ -105,7 +106,7 @@ Depending on your source system, see one of the following:
 
     This topic includes the instructions for the migration CSV files for Exchange, Mirapoint, Dovecoat, and Courier IMAP.
 
-- [IMAP migration in the Office 365 admin center](migrating-imap-mailboxes/imap-migration-in-the-admin-center.md)
+- [IMAP migration in the Microsoft 365 admin center](migrating-imap-mailboxes/imap-migration-in-the-admin-center.md)
 
 If the mailboxes you're migrating contain a large amount of data, you can also use [Office 365 Import Service](https://go.microsoft.com/fwlink/p/?LinkId=624136) to import PST files to Office 365. You can use the Office 365 Import Service to either ship the files or to import them across the network.
 
@@ -115,6 +116,3 @@ You can also hire a partner to help you migrate your email data. You'll find a l
 <a name="BKMK_Comment"> </a>
 
 Were these instructions helpful? If so, please let us know at the bottom of this topic. If they weren't, and you're still having trouble deciding on a migration strategy, tell us what source email system you want to migrate from and we'll use your feedback to improve our content.
-
-
-

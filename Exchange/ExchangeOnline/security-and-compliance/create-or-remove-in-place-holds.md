@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: An In-Place Hold preserves all mailbox content, including deleted items and original versions of modified items. All such mailbox items are returned in an In-Place eDiscovery search. When you place an In-Place Hold on a user's mailbox on, the contents in the corresponding archive mailbox (if it's enabled) are also placed on hold, and returned in a eDiscovery search.
 ms.topic: article
-author: markjjo
-ms.author: markjjo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 9d5d8d37-a053-4830-9cb1-6e1ede25e963
 ms.date: 7/11/2018
+ms.reviewer: 
 title: Create or remove an In-Place Hold
 ms.collection:
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -43,7 +44,7 @@ An In-Place Hold preserves all mailbox content, including deleted items and orig
 
 ## Create an In-Place Hold
 
- **Use the EAC to create an In-Place Hold**
+### Use the EAC to create an In-Place Hold
 
 1. Navigate to **Compliance management** \> **In-place eDiscovery & hold**.
 
@@ -53,32 +54,32 @@ An In-Place Hold preserves all mailbox content, including deleted items and orig
 
 4. On the **Mailboxes and Public folders** page, choose the content locations that you want to place on hold and then click **Next**.
 
-    ![Choose the content locations to place on hold](../media/bbe76c50-a93b-4e5e-acd2-78e0d747ea19.png)
+   ![Choose the content locations to place on hold](../media/bbe76c50-a93b-4e5e-acd2-78e0d747ea19.png)
 
-1. **Search all mailboxes**: You can't select this option to create an In-Place Hold. You can select this option for In-Place eDiscovery searches, but to create an In-Place Hold, you must select the specific mailboxes that you want to place on hold.
+   1. **Search all mailboxes**: You can't select this option to create an In-Place Hold. You can select this option for In-Place eDiscovery searches, but to create an In-Place Hold, you must select the specific mailboxes that you want to place on hold.
 
-2. **Don't search any mailboxes**: Select this option when you're creating an In-Place Hold exclusively for public folders.
+   2. **Don't search any mailboxes**: Select this option when you're creating an In-Place Hold exclusively for public folders.
 
-3. **Specify mailboxes to search**: Select this option and then click **Add** ![Add Icon](../media/ITPro_EAC_AddIcon.gif) to select the mailboxes or distribution groups that you want to place on hold. In Exchange Online, you can also select Office 365 groups to place on hold.
+   3. **Specify mailboxes to search**: Select this option and then click **Add** ![Add Icon](../media/ITPro_EAC_AddIcon.gif) to select the mailboxes or distribution groups that you want to place on hold. In Exchange Online, you can also select Office 365 groups to place on hold.
 
-4. **Search all public folders**: In Exchange Online, you can select this checkbox to place all public folders in your organization on hold. As previously explained, to create an In-Place Hold only for public folders, be sure to select the **Don't search any mailboxes** option.
+   4. **Search all public folders**: In Exchange Online, you can select this checkbox to place all public folders in your organization on hold. As previously explained, to create an In-Place Hold only for public folders, be sure to select the **Don't search any mailboxes** option.
 
 5. On the **Search query** page, complete the following fields, and then click **Next**:
 
-  - **Include all user mailbox content**: Click this button to place all content in selected mailboxes on hold.
+   - **Include all user mailbox content**: Click this button to place all content in selected mailboxes on hold.
 
-  - **Filter based on criteria**: Click this button to specify search criteria, including keywords, start and end dates, sender and recipient addresses, and message types. When you create a query-based hold, only items that match the search criteria are preserved.
+   - **Filter based on criteria**: Click this button to specify search criteria, including keywords, start and end dates, sender and recipient addresses, and message types. When you create a query-based hold, only items that match the search criteria are preserved.
 
-    > [!TIP]
+     > [!TIP]
     > When you place public folders on In-Place Hold, email messages related to the public folder hierarchy synchronization process are also preserved. This might result in thousands of hierarchy synchronization related email items being preserved. These messages can fill up the storage quota for the Recoverable Items folder on public folder mailboxes. To prevent this, you can create a query-based In-Place Hold and add the following `property:value` pair to the search query: > `NOT(subject:HierarchySync*)`> The result is that any message (related to the synchronization of the public folder hierarchy) that contains the phrase "HierarchySync" in the subject line is not placed on hold.
 
 6. On the **In-Place Hold settings** page, select the **Place content matching the search query in selected mailboxes on hold** check box and then select one of the following options:
 
-  - **Hold indefinitely**: Click this button to place items returned by the search on an indefinite hold. Items on hold will be preserved until you remove the mailbox from the search or remove the search.
+   - **Hold indefinitely**: Click this button to place items returned by the search on an indefinite hold. Items on hold will be preserved until you remove the mailbox from the search or remove the search.
 
-  - **Specify number of days to hold items relative to their received date**: Click this button to hold items for a specific period. For example, you can use this option if your organization requires that all messages be retained for at least seven years. You can use a time-based In-Place Hold along with a retention policy to make sure items are deleted in seven years. To learn more about retention polices, see [Retention tags and retention policies](messaging-records-management/retention-tags-and-policies.md).
+   - **Specify number of days to hold items relative to their received date**: Click this button to hold items for a specific period. For example, you can use this option if your organization requires that all messages be retained for at least seven years. You can use a time-based In-Place Hold along with a retention policy to make sure items are deleted in seven years. To learn more about retention polices, see [Retention tags and retention policies](messaging-records-management/retention-tags-and-policies.md).
 
- **Use Exchange Online PowerShell to create an In-Place Hold**
+### Use Exchange Online PowerShell to create an In-Place Hold
 
 This example creates an In-Place Hold named Hold-CaseId012 and adds the mailbox joe@contoso.com to the hold.
 
@@ -91,7 +92,7 @@ New-MailboxSearch "Hold-CaseId012"-SourceMailboxes "joe@contoso.com" -InPlaceHol
 
 For detailed syntax and parameter information, see [New-MailboxSearch](https://technet.microsoft.com/library/74303b47-bb49-407c-a43b-590356eae35c.aspx).
 
- **How do you know this worked?**
+### How do you know this worked?
 
 To verify that you have successfully created the In-Place Hold, do one of the following:
 
@@ -99,13 +100,12 @@ To verify that you have successfully created the In-Place Hold, do one of the fo
 
 - Use the **Get-MailboxSearch** cmdlet to retrieve the mailbox search and check the search parameters. For an example of how to retrieve a mailbox search, see the examples in [Get-MailboxSearch](https://technet.microsoft.com/library/a2f3ab70-6ec6-4c06-b862-f32d498c3ef8.aspx).
 
-
 ## Remove an In-Place Hold
 
 > [!IMPORTANT]
 > In Exchange Server, mailbox searches can be used for an In-Place Hold and In-Place eDiscovery. You can't remove a mailbox search that's used for In-Place Hold. You must first disable the In-Place Hold by clearing the **Place content matching the search query in selected mailboxes on hold** check box on the **In-Place Hold settings** page or by setting the _InPlaceHoldEnabled_ parameter to `$false` in Exchange Online PowerShell. You can also remove a mailbox by using the _SourceMailboxes_ parameter specified in the search.
 
- **Use the EAC to remove an In-Place Hold**
+### Use the EAC to remove an In-Place Hold
 
 1. Navigate to **Compliance management** \> **In-Place eDiscovery & hold**.
 
@@ -117,18 +117,18 @@ To verify that you have successfully created the In-Place Hold, do one of the fo
 
 5. In warning, click **Yes** to remove the search.
 
- **Use Exchange Online PowerShell to remove an In-Place Hold**
+### Use Exchange Online PowerShell to remove an In-Place Hold
 
 This example first disables In-Place Hold named Hold-CaseId012 and then removes the mailbox search.
 
 ```
-Set-MailboxSearch "Hold-CaseId012"  -InPlaceHoldEnabled $false
+Set-MailboxSearch "Hold-CaseId012" -InPlaceHoldEnabled $false
 Remove-MailboxSearch "Hold-CaseId012"
 ```
 
-For detailed syntax and parameter information, see [Set-Mailboxsearch](https://technet.microsoft.com/library/23201ff0-e30a-4efd-9384-ab0af5815701.aspx).
+For detailed syntax and parameter information, see [Set-MailboxSearch](https://technet.microsoft.com/library/23201ff0-e30a-4efd-9384-ab0af5815701.aspx).
 
- **How do you know this worked?**
+### How do you know this worked?
 
 To verify that you have successfully removed an In-Place Hold, do one of the following:
 

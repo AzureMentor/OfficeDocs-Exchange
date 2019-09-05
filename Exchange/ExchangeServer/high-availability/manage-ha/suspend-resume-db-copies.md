@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 96aa1b82-3e15-4215-843e-3d583af9504b
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Suspend or resume a mailbox database copy
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -18,7 +19,7 @@ manager: serdars
 
 You may need to suspend or resume a database copy for a variety of reasons, such as maintenance on the disk that contains the database copy. Or you may need to suspend an individual database copy from activation for disaster recovery purposes.
 
-Looking for other management tasks related to mailbox database copies? Check out [Managing mailbox database copies](http://technet.microsoft.com/library/06df16b4-f209-4d3a-8c68-0805c745f9b2.aspx).
+Looking for other management tasks related to mailbox database copies? Check out [Manage mailbox database copies](manage-database-copies.md).
 
 ## What do you need to know before you begin?
 
@@ -105,6 +106,3 @@ To verify that you have successfully suspended or resumed a mailbox database cop
   ```
   Get-MailboxDatabaseCopyStatus <DatabaseCopyName> | Format-List
   ```
-
-
-

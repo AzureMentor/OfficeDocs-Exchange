@@ -1,10 +1,10 @@
 ---
 title: "Policy tip config attributes"
-ms.author: kchandra
-author: ChandraKavya
+ms.author: dmaguire
+author: msdmaguire
 manager: serdars
 ms.reviewer: dstrome
-ms.audience: ITPro
+audience: ITPro
 ms.topic: article
 ms.prod: exchange-server-it-pro
 localization_priority: Normal
@@ -19,8 +19,8 @@ description: "Policy tip config attributes can be copied by the Hybrid Configura
 
 The following attributes of Policy tip configurations are copied from an on-premises Exchange organization to Exchange Online when the **Organization Configuration Transfer** option is selected in the Hybrid Configuration Wizard.
 
-| **PolicyTipConfig** | **Available In**    |
-|---------------------|---------------------|
-| Identity            | Exchange 2013, 2016 |
-| Name                | Exchange 2013, 2016 |
-| Value               | Exchange 2013, 2016 |
+|**PolicyTipConfig**|**Available In**|
+|:-----|:-----|
+|Identity|Exchange 2013, 2016, 2019|
+|Name|Exchange 2013, 2016, 2019|
+|Value|Exchange 2013, 2016, 2019|

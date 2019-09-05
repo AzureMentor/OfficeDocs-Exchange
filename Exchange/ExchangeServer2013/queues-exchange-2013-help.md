@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Queues: Exchange 2013 Help'
 TOCTitle: Queues
 ms:assetid: e7ad0ba5-3789-4a2b-9825-6bb1b321609c
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Bb125022(v=EXCHG.150)
 ms:contentKeyID: 50646240
 ms.date: 07/14/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Queues
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 A *queue* is a temporary holding location for messages that are waiting to enter the next stage of processing or delivery to a destination. Each queue represents a logical set of messages that the Exchange server processes in a specific order. In Microsoft Exchange Server 2013, queues hold messages before, during and after delivery. Queues exist on Mailbox servers and Edge Transport servers. Mailbox servers and Edge Transport servers are called *transport servers* throughout this topic.
 
@@ -21,57 +22,31 @@ Like the previous versions of Exchange, Exchange 2013 uses a single Extensible S
 
 You can manage queues and the messages in queues using the Exchange Management Shell and Queue Viewer in the Exchange Toolbox. You can use these interfaces to view the status and contents of queues and detailed message properties. You can also use these interfaces to perform actions that modify queues or the messages in the queues.
 
-**Contents**
-
-  - Types of queues
-
-  - Queue database files
-
-  - Queue properties
-    
-      - NextHopSolutionKey
-    
-      - IncomingRate, OutgoingRate, and Velocity
-    
-      - Queue status
-    
-      - Other queue properties
-
-  - Message properties
-    
-      - Message status
-    
-      - Other message properties
-
-  - Manage queues and messages in queues
-
 ## Types of queues
 
 The following types of queues are used in Exchange 2013:
 
-  - **Persistent queues**   *Perisistent queues* are queues that exist on every transport server in every Exchange organization. Like previous versions of Exchange, there are three persistent queues in Exchange 2013:
-    
-      - **Submission queue**   The Submission queue is used by the categorizer to gather all messages that have to be resolved, routed, and processed by transport agents on the transport server. All messages that are received by a transport server enter processing in the Submission queue. On Mailbox servers, messages are submitted through a Receive connector, the Pickup or Replay directories, or the Mailbox Transport Submission service. On Edge Transport servers, messages are typically submitted through a Receive connector, but the Pickup and Replay directories are also available.
-        
-        The categorizer retrieves messages from this queue and, among other things, determines the location of the recipient and the route to that location. After categorization, the message is moved to a delivery queue or to the Unreachable queue. Each transport server has only one Submission queue. Messages that are in the Submission queue can't be in other queues at the same time. For more information about the categorizer and the transport pipeline, see [Mail flow](mail-flow-exchange-2013-help.md).
-    
-      - **Unreachable queue**   The Unreachable queue contains messages that can't be routed to their destinations. Typically, an unreachable destination is caused by configuration changes that have modified the routing path for delivery. Regardless of destination, all messages that have unreachable recipients reside in this queue. Each transport server has only one Unreachable queue.
-        
-        Messages in the Unreachable queue are automatically resubmitted when a routing change is detected. So, after the condition or configuration error caused the messages to enter the Unreachable queue is repaired, you don't need to take additional action to move the messages out of the Unreachable queue for delivery.
-        
+- **Persistent queues**: *Perisistent queues* are queues that exist on every transport server in every Exchange organization. Like previous versions of Exchange, there are three persistent queues in Exchange 2013:
+
+  - **Submission queue**: The Submission queue is used by the categorizer to gather all messages that have to be resolved, routed, and processed by transport agents on the transport server. All messages that are received by a transport server enter processing in the Submission queue. On Mailbox servers, messages are submitted through a Receive connector, the Pickup or Replay directories, or the Mailbox Transport Submission service. On Edge Transport servers, messages are typically submitted through a Receive connector, but the Pickup and Replay directories are also available.
+
+    The categorizer retrieves messages from this queue and, among other things, determines the location of the recipient and the route to that location. After categorization, the message is moved to a delivery queue or to the Unreachable queue. Each transport server has only one Submission queue. Messages that are in the Submission queue can't be in other queues at the same time. For more information about the categorizer and the transport pipeline, see [Mail flow](mail-flow-exchange-2013-help.md).
+
+  - **Unreachable queue**: The Unreachable queue contains messages that can't be routed to their destinations. Typically, an unreachable destination is caused by configuration changes that have modified the routing path for delivery. Regardless of destination, all messages that have unreachable recipients reside in this queue. Each transport server has only one Unreachable queue.
+
+    Messages in the Unreachable queue are automatically resubmitted when a routing change is detected. So, after the condition or configuration error caused the messages to enter the Unreachable queue is repaired, you don't need to take additional action to move the messages out of the Unreachable queue for delivery.
+
         The Unreachable queue is typically empty. If the Unreachable queue contains no messages it doesn't appear in Queue Viewer or **Get-Queue** results.
-    
-      - **Poison message queue**   The poison message queue is a special queue that's used to isolate messages that are determined to be harmful to the Exchange 2013 system after a transport server or service failure. The messages may be genuinely harmful in their content and format. Alternatively, they may be the results of a poorly written agent that has caused the Exchange server to fail when it processed the supposedly bad messages.
-        
-        The poison message queue is typically empty. If the poison message queue contains no messages it doesn't appear in Queue Viewer or **Get-Queue** results. The messages in the poison message queue are never automatically resumed or expired. Messages remain in the poison message queue until they're manually resumed or removed by an administrator.
 
-  - **Delivery queues**   Delivery queues hold messages that are being delivered to any local or remote destinations by using SMTP. All messages are transmitted between Exchange servers by using SMTP. Non-SMTP destinations also use delivery queues if the destination is serviced by a Delivery Agent connector. . Each delivery queue contains messages that are being routed to the same destination. It's practically inevitable that multiple delivery queues will exist on a transport server. Delivery queues are dynamically created when they're required and are automatically deleted when the queue is empty and the expiration time has passed. The queue expiration time is controlled by the *QueueMaxIdleTime* parameter on the **Set-TransportService** cmdlet. The default value is three minutes.
+  - **Poison message queue**: The poison message queue is a special queue that's used to isolate messages that are determined to be harmful to the Exchange 2013 system after a transport server or service failure. The messages may be genuinely harmful in their content and format. Alternatively, they may be the results of a poorly written agent that has caused the Exchange server to fail when it processed the supposedly bad messages.
 
-  - **Shadow queues**   Shadow queues hold redundant copies of a message while the message is in transit. For more information, see [Shadow redundancy](shadow-redundancy-exchange-2013-help.md).
+    The poison message queue is typically empty. If the poison message queue contains no messages it doesn't appear in Queue Viewer or **Get-Queue** results. The messages in the poison message queue are never automatically resumed or expired. Messages remain in the poison message queue until they're manually resumed or removed by an administrator.
 
-  - **Safety Net**   Safety Net retains copies of messages that were successfully delivered by the transport server. Although it's not accessible by queue management tools, Safety Net is just another queue in the queue database. For more information, see [Safety Net](safety-net-exchange-2013-help.md).
+- **Delivery queues**: Delivery queues hold messages that are being delivered to any local or remote destinations by using SMTP. All messages are transmitted between Exchange servers by using SMTP. Non-SMTP destinations also use delivery queues if the destination is serviced by a Delivery Agent connector. . Each delivery queue contains messages that are being routed to the same destination. It's practically inevitable that multiple delivery queues will exist on a transport server. Delivery queues are dynamically created when they're required and are automatically deleted when the queue is empty and the expiration time has passed. The queue expiration time is controlled by the *QueueMaxIdleTime* parameter on the **Set-TransportService** cmdlet. The default value is three minutes.
 
-Return to top
+- **Shadow queues**: Shadow queues hold redundant copies of a message while the message is in transit. For more information, see [Shadow redundancy](shadow-redundancy-exchange-2013-help.md).
+
+- **Safety Net**: Safety Net retains copies of messages that were successfully delivered by the transport server. Although it's not accessible by queue management tools, Safety Net is just another queue in the queue database. For more information, see [Safety Net](safety-net-exchange-2013-help.md).
 
 ## Queue database files
 
@@ -122,9 +97,6 @@ The following table lists the files that constitute the queue database.
 </tr>
 </tbody>
 </table>
-
-
-Return to top
 
 ## Options for configuring the queue database
 
@@ -213,20 +185,12 @@ The keys for the queue database that are available in the EdgeTransport.exe.conf
 </tbody>
 </table>
 
-
-
 > [!NOTE]
 > Any customized per-server settings you make in Exchange XML application configuration files, for example, web.config files on Client Access servers or the EdgeTransport.exe.config file on Mailbox servers, will be overwritten when you install an Exchange Cumulative Update (CU). Make sure that you save this information so you can easily re-configure your server after the install. You must re-configure these settings after you install an Exchange CU.
-
-
-
-Return to top
 
 ## Queue properties
 
 A queue has many properties that describe the purpose and status of the queue. Some queue properties are applied to the queue when the queue is created, and don't change. Other properties contain status size, time, or other indicators that are updated frequently.
-
-Return to top
 
 ## NextHopSolutionKey
 
@@ -234,16 +198,15 @@ The routing component of the categorizer in the Microsoft Exchange Transport ser
 
 The **NextHopSolutionKey** attribute contains the following fields:
 
-  - **DeliveryType**   The value of this field represents the results of the categorization of the message, and how the Transport service intends to transmit the message to the next hop, which could be the ultimate destination of the message, or an intermediate hop along the way. The Transport service uses a predefined list of values for **DeliveryType** based on the target routing destination or delivery group.
+- **DeliveryType**: The value of this field represents the results of the categorization of the message, and how the Transport service intends to transmit the message to the next hop, which could be the ultimate destination of the message, or an intermediate hop along the way. The Transport service uses a predefined list of values for **DeliveryType** based on the target routing destination or delivery group.
 
-  - **NextHopDomain**   This field uses specific values based on the value of the **DeliveryType** field. For delivery queues, the value of this field is effectively the name of the queue. The value of **NextHopDomain** isn't always a domain name. For example, the value could be the name of the target Active Directory site or database availability group (DAG). Think of this field as the next hop name, where the value is the name of the routing destination or the target delivery group.
+- **NextHopDomain**: This field uses specific values based on the value of the **DeliveryType** field. For delivery queues, the value of this field is effectively the name of the queue. The value of **NextHopDomain** isn't always a domain name. For example, the value could be the name of the target Active Directory site or database availability group (DAG). Think of this field as the next hop name, where the value is the name of the routing destination or the target delivery group.
 
-  - **NextHopConnector**   This field uses specific values based on the value of the **DeliveryType** field. The value is always expressed as a GUID. If this field isn't used, the value is a GUID with all zeroes. The value of **NextHopConnector** isn't always the GUID of a connector. For example, the value could be the GUID of the target Active Directory site or DAG. Think of this field as the next hop GUID, where the value is the GUID of the routing destination or the target delivery group.
+- **NextHopConnector**: This field uses specific values based on the value of the **DeliveryType** field. The value is always expressed as a GUID. If this field isn't used, the value is a GUID with all zeroes. The value of **NextHopConnector** isn't always the GUID of a connector. For example, the value could be the GUID of the target Active Directory site or DAG. Think of this field as the next hop GUID, where the value is the GUID of the routing destination or the target delivery group.
 
 Exchange 2013 also adds the **NextHopCategory** property to the queue based on the value of **DeliveryType**. The value of **NextHopCategory** is `External` or `Internal`. The value `External` indicates the next hop of the queue is outside the Exchange organization. The value `Internal` indicates the next hop of the queue is inside the Exchange organization. Note that a message for an external recipient may require one or more internal hops before the message is delivered externally.
 
 The values of **DeliveryType**, **NextHopCategory**, **NextHopDomain** and **NextHopConnector** are described in the following table.
-
 
 <table style="width:100%;">
 <colgroup>
@@ -402,60 +365,53 @@ The values of **DeliveryType**, **NextHopCategory**, **NextHopDomain** and **Nex
 </tbody>
 </table>
 
-
 Note that Exchange 2013 supports legacy values of **DeliveryType** for backwards compatibility with previous versions of Exchange. These values are available in Queue Viewer and the Shell, but they aren't used by Exchange 2013. These legacy **DeliveryType** values are:
 
-  - **MapiDelivery**   The queue holds messages for delivery by an Exchange 2007 or Exchange 2010 Hub Transport server to a mailbox on an Exchange 2007 or Exchange 2010 Mailbox server in the local Active Directory site.
+- **MapiDelivery**: The queue holds messages for delivery by an Exchange 2007 or Exchange 2010 Hub Transport server to a mailbox on an Exchange 2007 or Exchange 2010 Mailbox server in the local Active Directory site.
 
-  - **SmtpRelayWithinAdSite**   The queue holds messages for delivery by an Exchange 2007 or Exchange 2010 Hub Transport server to another Hub Transport server in the same Active Directory site. The destination Hub Transport server can be the source server for a connector, or a distribution group expansion server.
+- **SmtpRelayWithinAdSite**: The queue holds messages for delivery by an Exchange 2007 or Exchange 2010 Hub Transport server to another Hub Transport server in the same Active Directory site. The destination Hub Transport server can be the source server for a connector, or a distribution group expansion server.
 
-  - **SmtpRelaytoTiRg**   The queue holds messages for delivery by an Exchange 2007 or Exchange 2010 Hub Transport server to an Exchange Server 2003 routing group. The destination server can be the source server for a connector, a distribution group expansion server, or an Exchange 2003 bridgehead server.
-
-Return to top
+- **SmtpRelaytoTiRg**: The queue holds messages for delivery by an Exchange 2007 or Exchange 2010 Hub Transport server to an Exchange Server 2003 routing group. The destination server can be the source server for a connector, a distribution group expansion server, or an Exchange 2003 bridgehead server.
 
 ## IncomingRate, OutgoingRate, and Velocity
 
 Exchange 2013 measures the rate of messages entering and leaving a queue and stores these values in queue properties. You can use these rates as an indicator of queue and transport server health. The properties are:
 
-  - **IncomingRate**   This property is the rate that messages are entering the queue.
-    
-    This value is calculated from the number of messages entering the queue every 5 seconds averaged over the last 60 seconds. The formula can be expressed as `(i1+i2+i3+i4+i5+i6)/6`, where i*n* = the number of incoming messages in 5 seconds.
+- **IncomingRate**: This property is the rate that messages are entering the queue.
 
-  - **OutgoingRate**   This property is the rate that messages are leaving the queue.
-    
-    This value is calculated from the number of messages leaving the queue every 5 seconds averaged over the last 60 seconds. The formula can be expressed as `(o1+o2+o3+o4+o5+o6)/6`, where o*n* = the number of outgoing messages in 5 seconds.
+  This value is calculated from the number of messages entering the queue every 5 seconds averaged over the last 60 seconds. The formula can be expressed as `(i1+i2+i3+i4+i5+i6)/6`, where i*n* = the number of incoming messages in 5 seconds.
 
-  - **Velocity**   This property is the drain rate of the queue, and is calculated by subtracting the value of **IncomingRate** from the value of **OutgoingRate**.
-    
-    If the value of **Velocity** is greater than 0, messages are leaving the queue faster than they are entering the queue.
-    
-    If the value of **Velocity** is equals 0, messages are leaving the queue as fast as they are entering the queue. This is also the value you'll see when the queue is inactive.
-    
-    If the value of **Velocity** is less than 0, messages are entering the queue faster than they are leaving the queue.
+- **OutgoingRate**: This property is the rate that messages are leaving the queue.
+
+  This value is calculated from the number of messages leaving the queue every 5 seconds averaged over the last 60 seconds. The formula can be expressed as `(o1+o2+o3+o4+o5+o6)/6`, where o*n* = the number of outgoing messages in 5 seconds.
+
+- **Velocity**: This property is the drain rate of the queue, and is calculated by subtracting the value of **IncomingRate** from the value of **OutgoingRate**.
+
+  If the value of **Velocity** is greater than 0, messages are leaving the queue faster than they are entering the queue.
+
+  If the value of **Velocity** is equals 0, messages are leaving the queue as fast as they are entering the queue. This is also the value you'll see when the queue is inactive.
+
+  If the value of **Velocity** is less than 0, messages are entering the queue faster than they are leaving the queue.
 
 At a basic level, a positive value of **Velocity** indicates a healthy queue that's efficiently draining, and a negative value of **Velocity** indicates a queue that isn't efficiently draining. However, you also need to consider the values of the **IncomingRate**, **OutgoingRate**, and **MessageCount** properties, as well as the magnitude of the **Velocity** value for the queue. For example, a queue that has a large negative value of **Velocity**, a large **MessageCount** value, a small **OutgoingRate** value, and a large **IncominRate** value are accurate indicators that the queue isn't draining properly. However, a queue with a negative **Velocity** value that's very close to zero that also has very small values for **IncomingRate**, **OutgoingRate**, and **MessageCount** doesn't indicate a problem with the queue.
-
-Return to top
 
 ## Queue status
 
 The current status of a queue is stored in the **Status** property of the queue. A queue can have one of the following status values:
 
-  - **Active**   The queue is actively transmitting messages.
+- **Active**: The queue is actively transmitting messages.
 
-  - **Connecting**   The queue is in the process of connecting to the next hop.
+- **Connecting**: The queue is in the process of connecting to the next hop.
 
-  - **Ready**   The queue recently transmitted messages, but the queue is now empty.
+- **Ready**: The queue recently transmitted messages, but the queue is now empty.
 
-  - **Retry**   The last automatic or manual connection attempt failed, and the queue is waiting to retry the connection.
+- **Retry**: The last automatic or manual connection attempt failed, and the queue is waiting to retry the connection.
 
-  - **Suspended**   The queue has been manually suspended by an administrator to prevent message delivery. New messages can enter the queue, and messages that are in the act of being transmitted to the next hop will finish delivery and leave the queue. Otherwise, messages won't leave the queue until the queue is manually resumed by an administrator. Note that suspending a queue doesn’t change the status of the individual messages in the queue.
-    
-    You can suspend a queue that has a status of Active or Retry. You can also suspend the Unreachable queue and the Submission queue.
-    
-    If you suspend the Unreachable queue, messages won't be automatically resubmitted to the categorizer when configuration updates are detected. To automatically resubmit these messages, you need to manually resume the Unreachable queue. If you suspend the Submission queue, messages won't be picked up by the categorizer until the queue is resumed.
+- **Suspended**: The queue has been manually suspended by an administrator to prevent message delivery. New messages can enter the queue, and messages that are in the act of being transmitted to the next hop will finish delivery and leave the queue. Otherwise, messages won't leave the queue until the queue is manually resumed by an administrator. Note that suspending a queue doesn't change the status of the individual messages in the queue.
 
-Return to top
+  You can suspend a queue that has a status of Active or Retry. You can also suspend the Unreachable queue and the Submission queue.
+
+  If you suspend the Unreachable queue, messages won't be automatically resubmitted to the categorizer when configuration updates are detected. To automatically resubmit these messages, you need to manually resume the Unreachable queue. If you suspend the Submission queue, messages won't be picked up by the categorizer until the queue is resumed.
 
 ## Other queue properties
 
@@ -463,39 +419,31 @@ There are other queue properties that are self-explanatory. You use most of the 
 
 An important queue property that's also worth mentioning here is the **MessageCount** property that shows how many messages are in a queue. This property is an important indicator of queue health. For example, a delivery queue that contains a large number of messages that continues to grow and never decreases could indicate a routing or transport pipeline issue that requires your attention.
 
-Return to top
-
 ## Message properties
 
 A message in a queue has many properties. Many of the properties reflect the information that was used to create the message. Some of the messages status and information properties are heavily influenced by corresponding properties on the queue. However, an individual message may have a different value than the corresponding property of the queue. Other properties contains status, time, or other indicators that are updated frequently.
-
-Return to top
 
 ## Message status
 
 The current status of a message is stored in the **Status** property of the message. A message can have one of the following status values:
 
-  - **Active**   If the message is in a delivery queue, the message is being delivered to its destination. If the message is in the Submission queue, the message is being processed by the categorizer.
+- **Active**: If the message is in a delivery queue, the message is being delivered to its destination. If the message is in the Submission queue, the message is being processed by the categorizer.
 
-  - **Locked**   This value is reserved for internal Microsoft use, and isn't used in on-premises Exchange organizations.
+- **Locked**: This value is reserved for internal Microsoft use, and isn't used in on-premises Exchange organizations.
 
-  - **PendingRemove**   The message was deleted by the administrator, but the message was already in the act of being transmitted to the next hop. The message will be deleted if the delivery ends in an error that causes the message to reenter the queue. Otherwise, delivery will continue.
+- **PendingRemove**: The message was deleted by the administrator, but the message was already in the act of being transmitted to the next hop. The message will be deleted if the delivery ends in an error that causes the message to reenter the queue. Otherwise, delivery will continue.
 
-  - **PendingSuspend**   The message was suspended by the administrator, but the message was already in the act of being transmitted to the next hop.. The message will be suspended if the delivery ends in an error that causes the message to reenter the queue. Otherwise, delivery will continue.
+- **PendingSuspend**: The message was suspended by the administrator, but the message was already in the act of being transmitted to the next hop.. The message will be suspended if the delivery ends in an error that causes the message to reenter the queue. Otherwise, delivery will continue.
 
-  - **Ready**   The message is waiting in the queue and is ready to be processed.
+- **Ready**: The message is waiting in the queue and is ready to be processed.
 
-  - **Retry**   The last automatic or manual connection attempt for the queue in which this message is located failed. The message is waiting for the next automatic queue connection retry.
+- **Retry**: The last automatic or manual connection attempt for the queue in which this message is located failed. The message is waiting for the next automatic queue connection retry.
 
-  - **Suspended**   The message was manually suspended by the administrator. All messages in the poison message queue are in a permanently suspended state.
-
-Return to top
+- **Suspended**: The message was manually suspended by the administrator. All messages in the poison message queue are in a permanently suspended state.
 
 ## Other message properties
 
 There are other message properties that are self-explanatory. You can use most of the message properties as filter options. By specifying filter criteria, you can quickly locate messages and take action on them. For a complete description of the filterable message properties, see [Message filters](message-filters-exchange-2013-help.md).
-
-Return to top
 
 ## Manage queues and messages in queues
 
@@ -503,14 +451,10 @@ Queue Viewer and virtually all of the queue and message management cmdlets are r
 
 Exchange 2013 introduces the **Get-QueueDigest** cmdlet that provides a high-level, aggregate view of the state of queues on all servers within a specific scope, for example, a DAG, an Active Directory site, a list of servers, or the entire Active Directory forest. Note that queues on a subscribed Edge Transport server in the perimeter network aren't included in the results. Also, **Get-QueueDigest** is available on an Edge Transport server, but the results are restricted to queues on the Edge Transport server.
 
-
 > [!NOTE]
 > By default, the <STRONG>Get-QueueDigest</STRONG> cmdlet displays delivery queues that contain ten or more messages, and the results are between one and two minutes old. For instructions on how to change these default values, see <A href="configure-get-queuedigest-exchange-2013-help.md">Configure Get-QueueDigest</A>.
 
-
-
 The following table describes the management tasks you can perform on queues or messages in queues.
-
 
 <table>
 <colgroup>
@@ -592,7 +536,3 @@ The following table describes the management tasks you can perform on queues or 
 </tr>
 </tbody>
 </table>
-
-
-Return to top
-

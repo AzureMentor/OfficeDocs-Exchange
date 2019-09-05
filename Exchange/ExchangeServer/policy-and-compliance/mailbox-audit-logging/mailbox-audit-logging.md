@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn about the specific logon types and user actions that can be audited when you enable mailbox audit logging for user mailboxes in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: overview
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 29b67d58-eef9-4ad4-863f-562405ea8794
 ms.date: 7/8/2018
+ms.reviewer: 
 title: Mailbox audit logging in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -49,18 +50,18 @@ If you no longer require certain types of mailbox actions to be audited, you sho
 
 |**Action**|**Description**|**Admin**|**Delegate**|**Owner**|
 |:-----|:-----|:-----|:-----|:-----|
-|Copy  <br/> |An item is copied to another folder.  <br/> |Yes  <br/> |No  <br/> |No  <br/> |
-|Create  <br/> |An item is created in the Calendar, Contacts, Notes, or Tasks folder in the mailbox; for example, a new meeting request is created. Note that message or folder creation isn't audited.  <br/> |Yes<sup>1</sup> <br/> |Yes<sup>1</sup> <br/> |Yes  <br/> |
-|FolderBind  <br/> |A mailbox folder is accessed.  <br/> |Yes<sup>1</sup> <br/> |Yes<sup>2</sup> <br/> |No  <br/> |
-|HardDelete  <br/> |An item is deleted permanently from the Recoverable Items folder.  <br/> |Yes<sup>1</sup> <br/> |Yes<sup>1</sup> <br/> |Yes  <br/> |
-|MailboxLogin  <br/> |The user signed in to their mailbox.  <br/> |No  <br/> |No  <br/> |Yes<sup>3</sup> <br/> |
-|MessageBind  <br/> |An item is accessed in the reading pane or opened.  <br/> |Yes  <br/> |No  <br/> |No  <br/> |
-|Move  <br/> |An item is moved to another folder.  <br/> |Yes<sup>1</sup> <br/> |Yes  <br/> |Yes  <br/> |
-|MoveToDeletedItems  <br/> |An item is moved to the Deleted Items folder.  <br/> |Yes<sup>1</sup> <br/> |Yes  <br/> |Yes  <br/> |
-|SendAs  <br/> |A message is sent using Send As permissions.  <br/> |Yes<sup>1</sup> <br/> |Yes<sup>1</sup> <br/> |No  <br/> |
-|SendOnBehalf  <br/> |A message is sent using Send on Behalf permissions.  <br/> |Yes<sup>1</sup> <br/> |Yes  <br/> |No  <br/> |
-|SoftDelete  <br/> |An item is deleted from the Deleted Items folder.  <br/> |Yes<sup>1</sup> <br/> |Yes<sup>1</sup> <br/> |Yes  <br/> |
-|Update  <br/> |An item's properties are updated.  <br/> |Yes<sup>1</sup> <br/> |Yes<sup>1</sup> <br/> |Yes  <br/> |
+|Copy|An item is copied to another folder.|Yes|No|No|
+|Create|An item is created in the Calendar, Contacts, Notes, or Tasks folder in the mailbox; for example, a new meeting request is created. Note that message or folder creation isn't audited.|Yes<sup>1</sup>|Yes<sup>1</sup>|Yes|
+|FolderBind|A mailbox folder is accessed.|Yes<sup>1</sup>|Yes<sup>2</sup>|No|
+|HardDelete|An item is deleted permanently from the Recoverable Items folder.|Yes<sup>1</sup>|Yes<sup>1</sup>|Yes|
+|MailboxLogin|The user signed in to their mailbox.|No|No|Yes<sup>3</sup>|
+|MessageBind|An item is accessed in the reading pane or opened.|Yes|No|No|
+|Move|An item is moved to another folder.|Yes<sup>1</sup>|Yes|Yes|
+|MoveToDeletedItems|An item is moved to the Deleted Items folder.|Yes<sup>1</sup>|Yes|Yes|
+|SendAs|A message is sent using Send As permissions.|Yes<sup>1</sup>|Yes<sup>1</sup>|No|
+|SendOnBehalf|A message is sent using Send on Behalf permissions.|Yes<sup>1</sup>|Yes|No|
+|SoftDelete|An item is deleted from the Deleted Items folder.|Yes<sup>1</sup>|Yes<sup>1</sup>|Yes|
+|Update|An item's properties are updated.|Yes<sup>1</sup>|Yes<sup>1</sup>|Yes|
 
 <sup>1</sup> Audited by default if auditing is enabled for a mailbox.
 
@@ -90,36 +91,36 @@ The following table describes the fields logged in a mailbox audit log entry.
 
 |**Field**|**Populated with**|
 |:-----|:-----|
-|**Operation** <br/> |One of the following actions:  <br/> Copy  <br/> Create  <br/> FolderBind  <br/> HardDelete  <br/> MailboxLogin  <br/> MessageBind  <br/> Move  <br/> MoveToDeletedItems  <br/> SendAs  <br/> SendOnBehalf  <br/> SoftDelete  <br/> Update  <br/> |
-|**OperationResult** <br/> |One of the following results:  <br/> Failed  <br/> PartiallySucceeded  <br/> Succeeded  <br/> |
-|**LogonType** <br/> |Logon type of the user who performed the operation. Logon types include:  <br/> Owner  <br/> Delegate  <br/> Admin  <br/> |
-|**DestFolderId** <br/> |Destination folder GUID for move operations.  <br/> |
-|**DestFolderPathName** <br/> |Destination folder path for move operations.  <br/> |
-|**FolderId** <br/> |Folder GUID.  <br/> |
-|**FolderPathName** <br/> |Folder path.  <br/> |
-|**ClientInfoString** <br/> |Details that identify which client or Exchange component performed the operation.  <br/> |
-|**ClientIPAddress** <br/> |Client computer IP address.  <br/> |
-|**ClientMachineName** <br/> |Client computer name.  <br/> |
-|**ClientProcessName** <br/> |Name of the client application process.  <br/> |
-|**ClientVersion** <br/> |Client application version.  <br/> |
-|**InternalLogonType** <br/> |The type of internal user (a person in your organization) who performed the operation. The possible values for this field are the same ones as the **LogonType** field.  <br/> |
-|**MailboxOwnerUPN** <br/> |Mailbox owner user principal name (UPN).  <br/> |
-|**MailboxOwnerSid** <br/> |Mailbox owner security identifier (SID).  <br/> |
-|**DestMailboxOwnerUPN** <br/> |Destination mailbox owner UPN, logged for cross-mailbox operations.  <br/> |
-|**DestMailboxOwnerSid** <br/> |Destination mailbox owner SID, logged for cross-mailbox operations.  <br/> |
-|**DestMailboxOwnerGuid** <br/> |Destination mailbox owner GUID.  <br/> |
-|**CrossMailboxOperation** <br/> |Information about whether the operation logged is a cross-mailbox operation (for example, copying or moving messages between mailboxes).  <br/> |
-|**LogonUserDisplayName** <br/> |Display name of user who is logged on.  <br/> |
-|**DelegateUserDisplayName** <br/> |Delegate user display name.  <br/> |
-|**LogonUserSid** <br/> |SID of user who is logged on.  <br/> |
-|**SourceItems** <br/> |ItemID of mailbox items on which the logged action is performed (for example, move or delete). For operations performed on a number of items, this field is returned as a collection of items.  <br/> |
-|**SourceFolders** <br/> |Source folder GUID.  <br/> |
-|**ItemId** <br/> |Item ID.  <br/> |
-|**ItemSubject** <br/> |Item subject.  <br/> |
-|**MailboxGuid** <br/> |Mailbox GUID.  <br/> |
-|**MailboxResolvedOwnerName** <br/> |Mailbox user resolved name in the format _DOMAIN_\ _SamAccountName_.  <br/> |
-|**LastAccessed** <br/> |Time when the operation was performed.  <br/> |
-|**Identity** <br/> |Audit log entry ID.  <br/> |
+|**Operation**|One of the following actions:  <br/> Copy  <br/> Create  <br/> FolderBind  <br/> HardDelete  <br/> MailboxLogin  <br/> MessageBind  <br/> Move  <br/> MoveToDeletedItems  <br/> SendAs  <br/> SendOnBehalf  <br/> SoftDelete  <br/> Update|
+|**OperationResult**|One of the following results:  <br/> Failed  <br/> PartiallySucceeded  <br/> Succeeded|
+|**LogonType**|Logon type of the user who performed the operation. Logon types include:  <br/> Owner  <br/> Delegate  <br/> Admin|
+|**DestFolderId**|Destination folder GUID for move operations.|
+|**DestFolderPathName**|Destination folder path for move operations.|
+|**FolderId**|Folder GUID.|
+|**FolderPathName**|Folder path.|
+|**ClientInfoString**|Details that identify which client or Exchange component performed the operation.|
+|**ClientIPAddress**|Client computer IP address.|
+|**ClientMachineName**|Client computer name.|
+|**ClientProcessName**|Name of the client application process.|
+|**ClientVersion**|Client application version.|
+|**InternalLogonType**|The type of internal user (a person in your organization) who performed the operation. The possible values for this field are the same ones as the **LogonType** field.|
+|**MailboxOwnerUPN**|Mailbox owner user principal name (UPN).|
+|**MailboxOwnerSid**|Mailbox owner security identifier (SID).|
+|**DestMailboxOwnerUPN**|Destination mailbox owner UPN, logged for cross-mailbox operations.|
+|**DestMailboxOwnerSid**|Destination mailbox owner SID, logged for cross-mailbox operations.|
+|**DestMailboxOwnerGuid**|Destination mailbox owner GUID.|
+|**CrossMailboxOperation**|Information about whether the operation logged is a cross-mailbox operation (for example, copying or moving messages between mailboxes).|
+|**LogonUserDisplayName**|Display name of user who is logged on.|
+|**DelegateUserDisplayName**|Delegate user display name.|
+|**LogonUserSid**|SID of user who is logged on.|
+|**SourceItems**|ItemID of mailbox items on which the logged action is performed (for example, move or delete). For operations performed on a number of items, this field is returned as a collection of items.|
+|**SourceFolders**|Source folder GUID.|
+|**ItemId**|Item ID.|
+|**ItemSubject**|Item subject.|
+|**MailboxGuid**|Mailbox GUID.|
+|**MailboxResolvedOwnerName**|Mailbox user resolved name in the format _DOMAIN_\ _SamAccountName_.|
+|**LastAccessed**|Time when the operation was performed.|
+|**Identity**|Audit log entry ID.|
 
 ## More information
 <a name="moreinfo"> </a>
@@ -135,6 +136,3 @@ The following table describes the fields logged in a mailbox audit log entry.
 - **Bypassing mailbox auditing logging**: Mailbox access by authorized automated processes such as accounts used by third-party tools or accounts used for lawful monitoring can create a large number of mailbox audit log entries and may not be of interest to your organization. You can configure such accounts to bypass mailbox audit logging. For details, see [Bypass a User Account From Mailbox Audit Logging](http://technet.microsoft.com/library/98a87071-fe31-4b67-beb8-a73799e54df2.aspx).
 
 - **Logging mailbox owner actions**: For mailboxes such as the Discovery Search Mailbox, which may contain more sensitive information, consider enabling mailbox audit logging for mailbox owner actions such as message deletion.
-
-
-

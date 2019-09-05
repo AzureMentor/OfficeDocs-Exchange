@@ -1,10 +1,11 @@
 ---
 localization_priority: Priority
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 69f58e99-c550-4274-ad18-c805d654b4c4
 ms.date: 
+ms.reviewer: 
 description: 'Learn how to set up printers, scanners, LOB applications to send email using Office 365. '
 title: How to set up a multifunction device or application to send email using Office 365
 ms.collection: 
@@ -14,10 +15,11 @@ search.appverid:
 - BCS160
 - MOE150
 - MET150
-ms.audience: Admin
+audience: Admin
 ms.custom: MiniMaven
 ms.service: exchange-online
 manager: serdars
+localization_priority: Priority
 
 ---
 
@@ -54,7 +56,7 @@ Enter the following settings directly on your device or in the application **as 
 |:-----|:-----|
 |Server/smart host|smtp.office365.com|
 |Port|Port 587 (recommended) or port 25|
-|TLS/ StartTLS|Enabled|
+|TLS/StartTLS|Enabled|
 |Username/email address and password|Enter the sign in credentials of the hosted mailbox being used|
 
 For more information, expand the following sections.
@@ -92,7 +94,9 @@ The following diagram gives you a conceptual overview of what you're environment
 
 - **Transport Layer Security (TLS)**: Your device must be able to use TLS version 1.2 and above.
 
-- **Port**: Port 587 (recommended) or port 25 is required and must be unblocked on your network. Some network firewalls or ISPs block ports—especially port 25.
+- **Port**: Port 587 (recommended) or port 25 is required and must be unblocked on your network. Some network firewalls or ISPs block ports, especially port 25.
+
+- **DNS**: You must use the DNS name smtp.office365.com. Do not use an IP address for the Office 365 server, as IP Addresses are not supported.
 
 > [!NOTE]
 > For information about TLS, see [How Exchange Online uses TLS to secure email connections in Office 365](https://go.microsoft.com/fwlink/p/?LinkId=620842) and for detailed technical information about how Exchange Online uses TLS with cipher suite ordering, see [Enhancing mail flow security for Exchange Online](https://go.microsoft.com/fwlink/p/?LinkId=620841).
@@ -105,7 +109,7 @@ You can only send from one email address unless your device can store login cred
 
 Choose this option when:
 
-- SMTP client submission (Option 1) is not compatible with your business needs or with your device. For example, your device or application does not meet the requirements of SMTP client submission, such as TLS support.
+- SMTP client submission (Option 1) is not compatible with your business needs or with your device.
 
 - You only need to send messages to recipients in your own organization who have mailboxes in Office 365; you don't need to send email to people outside of your organization.
 
@@ -113,11 +117,11 @@ Other scenarios when direct send may be your best choice:
 
 - You want your device or application to send from each user's email address and do not want each user's mailbox credentials configured to use SMTP client submission. Direct send allows each user in your organization to send email using their own address.
 
-    Avoid using a single mailbox with Send As permissions for all your users. This method is not supported because of complexity and potential issues.
+  Avoid using a single mailbox with Send As permissions for all your users. This method is not supported because of complexity and potential issues.
 
 - You want to send bulk email or newsletters. Office 365 does not allow you to do this via SMTP client submission. Direct send allows you to send a high volume of messages.
 
-    Note that there is a risk of your email being marked as spam by Office 365. You might want to enlist the help of a bulk email provider to assist you. For example, they'll help you adhere to best practices, and can help ensure that your domains and IP addresses are not blocked by others on the internet.
+  Note that there is a risk of your email being marked as spam by Office 365. You might want to enlist the help of a bulk email provider to assist you. For example, they'll help you adhere to best practices, and can help ensure that your domains and IP addresses are not blocked by others on the internet.
 
 ### Settings for direct send
 
@@ -142,20 +146,22 @@ We recommend adding an SPF record to avoid having messages flagged as spam. If y
 
 2. [Sign in to Office 365](https://go.microsoft.com/fwlink/p/?LinkID=402333).
 
-3. Make sure your domain, such as contoso.com, is selected. Click **Manage DNS**, and find the MX record. The MX record will have a **POINTS TO ADDRESS** value that looks similar to cohowineinc-com.mail.protection.outlook.com, as depicted in the following screenshot. Make a note of the MX record **POINTS TO ADDRESS** value, which we refer to as your MX endpoint.
+3. Make sure your domain (for example, contoso.com) is selected. Click **Manage DNS**, and find the MX record. The MX record will have a **POINTS TO ADDRESS** value that looks similar to contoso-com.mail.protection.outlook.com, as depicted in the following screenshot. Make a note of the MX record **POINTS TO ADDRESS** value, which we refer to as your MX endpoint.
 
-    ![Make a note of the MX record Points to address value.](../media/76d8ba1c-2d13-4081-9687-12b206b0ce2d.png)
+   ![Make a note of the MX record Points to address value.](../media/76d8ba1c-2d13-4081-9687-12b206b0ce2d.png)
 
 4. Go back to the device, and in the settings, under what would normally be called **Server** or **Smart Host**, enter the MX record **POINTS TO ADDRESS** value you recorded in step 3.
 
+   **Note**: Do NOT use an IP address for the Office 365 server connection, as IP addresses are not supported.
+
 5. Now that you are done configuring your device settings, go to your domain registrar's website to update your DNS records. Edit your sender policy framework (SPF) record. In the entry, include the IP address that you noted in step 1. The finished string looks similar to this:
 
-     `v=spf1 ip4:10.5.3.2 include:spf.protection.outlook.com ~all`
+   `v=spf1 ip4:10.5.3.2 include:spf.protection.outlook.com ~all`
 
-    where 10.5.3.2 is your public IP address.
+   where 10.5.3.2 is your public IP address.
 
-    > [!NOTE]
-    > Skipping this step might cause email to be sent to recipients' junk mail folders.
+   > [!NOTE]
+   > Skipping this step might cause email to be sent to recipients' junk mail folders.
 
 6. To test the configuration, send a test email from your device or application, and confirm that the recipient received it.
 
@@ -249,17 +255,17 @@ We recommend adding an SPF record to avoid having messages flagged as spam. If y
 
 6. In the Exchange admin center, go to **Mail flow** \> **Connectors**.
 
-7. Check the list of connectors set up for your organization. If there is no connector listed from your organization's email server to Office 365, create one.
+7. Check the list of connectors set up for your organization. If there is no connector listed from your organization's email server to Office 365, create one:
 
-1. To start the wizard, click the plus symbol **+**. On the first screen, choose the options that are depicted in the following screenshot:
+   1. To start the wizard, click the plus symbol **+**. On the first screen, choose the options that are depicted in the following screenshot:
 
-   ![Choose from your organization's email server to Office 365](../media/fb664a76-c823-4926-bb6a-46e13bf79952.png)
+      ![Choose from your organization's email server to Office 365](../media/fb664a76-c823-4926-bb6a-46e13bf79952.png)
 
-    Click **Next**, and give the connector a name.
+      Click **Next**, and give the connector a name.
 
-2. On the next screen, choose the option **By verifying that the IP address of the sending server matches one of these IP addresses that belong to your organization**, and add the IP address from step 1.
+   2. On the next screen, choose the option **By verifying that the IP address of the sending server matches one of these IP addresses that belong to your organization**, and add the IP address from step 1.
 
-3. Leave all the other fields with their default values, and select **Save**.
+   3. Leave all the other fields with their default values, and select **Save**.
 
 8. Now that you are done with configuring your Office 365 settings, go to your domain registrar's website to update your DNS records. Edit your SPF record. Include the IP address that you noted in step 1. The finished string should look similar to this `v=spf1 ip4:10.5.3.2 include:spf.protection.outlook.com ~all`, where 10.5.3.2 is your public IP address. Skipping this step can cause email to be sent to recipients' junk mail folders.
 
@@ -316,7 +322,7 @@ Here's a comparison of each configuration option and the features they support.
 |Supports mail sent from applications hosted by a third party|Yes|Yes. We recommend updating your SPF record to allow the third party to send as your domain. |No|
 |**Requirements**|
 |Open network port|Port 587 or port 25|Port 25|Port 25|
-|Device or application server must support TLS|Required|Optional|Optional|
+|Device or application server must support TLS|Required|Required|Required|
 |Requires authentication|Office 365 user name and password required|None|One or more static IP addresses. Your printer or the server running your LOB app must have a static IP address to use for authentication with Office 365.|
 |**Limitations**|
 |Throttling limits|10,000 recipients per day. 30 messages per minute.|Standard throttling is in place to protect Office 365.|Reasonable limits are imposed. The service can't be used to send spam or bulk mail. For more information about reasonable limits, see [Higher Risk Delivery Pool for Outbound Messages](https://go.microsoft.com/fwlink/p/?linkid=830829).|
@@ -334,4 +340,3 @@ If you happen to have an on-premises email server, you should seriously consider
 [Fix issues with printers, scanners, and LOB applications that send email using Office 365](fix-issues-with-printers-scanners-and-lob-applications-that-send-email-using-off.md)
 
 [How to configure IIS for relay with Office 365](how-to-configure-iis-for-relay-with-office-365.md)
-

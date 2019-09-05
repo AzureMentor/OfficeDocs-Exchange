@@ -1,10 +1,11 @@
 ---
 title: "Fix email delivery issues for error code 5.7.133 in Exchange Online"
-ms.author: chrisda
-author: chrisda
+ms.author: dmaguire
+author: msdmaguire
 manager: serdars
 ms.date:
-ms.audience: Admin
+ms.reviewer: 
+audience: Admin
 ms.topic: troubleshooting
 ms.service: o365-administration
 localization_priority: Normal
@@ -42,7 +43,7 @@ To open the Exchange admin center (EAC), see [Exchange admin center in Exchange 
 
 2. In the group properties dialog box that opens, go to **Delivery management** \> select **Senders inside and outside of my organization**.
 
-   ![Use the Exchange Admin Center to solve DSN 5.7.133 and allow senders](../../media/7223438f-9f43-4601-a457-2fa7dfc977cd.png)
+   ![Use the Exchange admin center to solve DSN 5.7.133 and allow senders](../../media/7223438f-9f43-4601-a457-2fa7dfc977cd.png)
 
 3. Click **Save**.
 

@@ -11,7 +11,7 @@ ms.collection:
 - exchange-online
 - M365-email-calendar
 ms.reviewer: smithre4
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -21,7 +21,7 @@ manager: serdars
 
  **Summary**: How organizations in the Office 365 U.S. Government Community Cloud (GCC) can enable Outlook for iOS and Android for their Exchange Online users.
 
-Outlook for iOS and Android is fully architected in the Microsoft Cloud and meets the security and compliance requirements needs of all United States Government customers when the mailboxes reside in Exchange Online. 
+Outlook for iOS and Android is fully architected in the Microsoft Cloud and meets the security and compliance requirements needs of all United States Government customers when the mailboxes reside in Exchange Online.
 
 For customers with Exchange Online mailboxes operating in the Government Community Cloud (GCC Moderate, GCC High or Department of Defense), Outlook for iOS and Android leverages the [native Microsoft sync technology](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-for-ios-and-android/outlook-for-ios-and-android). This architecture is FedRAMP-compliant (defined by NIST Special Publication 800-145) and approved, and meets GCC High and DoD requirements DISA SRG Level 4 (GCC-High) and Level 5 (DoD), Defense Federal Acquisition Regulations Supplement (DFARS), and International Traffic in Arms Regulations (ITAR), which have been approved by a third-party assessment organization and are FISMA compliant based on the NIST 800-53 rev 4.
 
@@ -67,7 +67,7 @@ By default, certain services and features of Outlook for iOS and Android are dis
 
 - **Add-Ins**: Add-ins are not available with GCC accounts.
 
-- **Storage Providers**: Only the GCC user's OneDrive for Business storage account can be added within Outlook for iOS and Android. Third-party storage accounts (e.g., Dropbox, Box) cannot be added.
+- **Storage Providers**: Only the GCC account's OneDrive for Business storage account can be added within Outlook for iOS and Android. Third-party storage accounts (e.g., Dropbox, Box) cannot be added.
 
 - **Location services**: Bing location services are not available with GCC accounts. Features that rely on location services, like Cortana Time To Leave, are also unavailable.
 
@@ -77,18 +77,22 @@ By default, certain services and features of Outlook for iOS and Android are dis
 
 - **Office Lens**: Office Lens technology (e.g., scanning business cards, taking pictures) included in Outlook for iOS and Android is not available with GCC accounts.
 
-Executing the below Exchange Online cmdlet will enable GCC Moderate customers using Outlook for iOS and Android access to features and services that are not FedRAMP compliant:
+- **File picker**: The file picker used for adding attachments during email composition is limited to email attachments, iCloud & Device, OneDrive for Business files, and SharePoint sites. The Recent Files list is limited to email attachments.
 
- ```
-  Set-OrganizationConfig -OutlookMobileGCCRestrictionsEnabled $false
- ```
+- **TestFlight**: GCC accounts will not have access to pre-release features when using the TestFlight version of Outlook for iOS.
 
-At any time, access can be revoked by resetting the parameter back to the default value:
+Executing the below Exchange Online cmdlet will enable GCC users using Outlook for iOS and Android access to features and services that are not FedRAMP compliant:
 
- ```
-  Set-OrganizationConfig -OutlookMobileGCCRestrictionsEnabled $true
- ```
+```
+Set-OrganizationConfig -OutlookMobileGCCRestrictionsEnabled $false
+```
 
-Changing this setting typically takes affect within an hour. As this is an tenant-based change, all Outlook for iOS and Android users in the GCC organization will be affected. 
+At any time, access to these features can be revoked by resetting the parameter back to the default value:
 
-For more information on the cmdlet, please see [Set-OrganizationConfig](https://docs.microsoft.com/powershell/module/exchange/organization/set-organizationconfig?view=exchange-ps). 
+```
+Set-OrganizationConfig -OutlookMobileGCCRestrictionsEnabled $true
+```
+
+Changing this setting typically takes affect within 48 hours. As this is an tenant-based change, all Outlook for iOS and Android users in the GCC organization will be affected.
+
+For more information on the cmdlet, please see [Set-OrganizationConfig](https://docs.microsoft.com/powershell/module/exchange/organization/set-organizationconfig?view=exchange-ps).

@@ -6,11 +6,12 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: d89e727b-675a-4623-b572-260f8b44b966
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Migrate your public folders to Office 365 Groups
 ms.collection:
 - Strat_EX_EXOBlocker
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -103,15 +104,15 @@ The following prerequisites are required in your Exchange environment before you
 
 1. If your public folders are on-premises, your servers need to be running one of the following versions:
 
-  - Exchange 2010 SP3 RU8 or later
+   - Exchange 2010 SP3 RU8 or later
 
-  - Exchange 2013 CU15 or later
+   - Exchange 2013 CU15 or later
 
-  - Exchange 2016 CU4 or later
+   - Exchange 2016 CU4 or later
 
 2. If your public folders are on-premises, you must have an Exchange Hybrid environment set up. See [Exchange Server Hybrid Deployments](https://technet.microsoft.com/library/jj200581%28v=exchg.150%29.aspx) for more information.
 
- **Migration instructions**
+### Migration instructions
 
 Click one of the links below for step-by-step instructions on running a batch migration.
 
@@ -119,9 +120,6 @@ Click one of the links below for step-by-step instructions on running a batch mi
 
 - [Use batch migration to migrate your Exchange Online public folders to Office 365 Groups](https://go.microsoft.com/fwlink/p/?linkid=859168)
 
-- [Use batch migration to migrate your Exchange 2013 public folders to Exchange Online](https://go.microsoft.com/fwlink/p/?linkid=859170)
+- [Use batch migration to migrate your Exchange 2013 public folders to Office 365 Groups](https://go.microsoft.com/fwlink/p/?linkid=859170)
 
 - [Use batch migration to migrate your Exchange 2010 public folders to Office 365 Groups](https://go.microsoft.com/fwlink/p/?linkid=859169)
-
-
-

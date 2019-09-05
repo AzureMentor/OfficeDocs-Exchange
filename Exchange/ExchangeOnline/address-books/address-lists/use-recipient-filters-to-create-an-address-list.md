@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: This topic describes the recipient filter options that admins can use in custom address lists and global address lists (GALs) in Exchange Online.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 8eabea64-97c6-40af-b61c-9b6a125cbdf1
 ms.date: 
+ms.reviewer: 
 title: Recipient filters for address lists in Exchange Online PowerShell
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -49,4 +50,3 @@ Recipient filters identify the recipients that are included in address lists and
 For more information about address lists, see [Address lists in Exchange Online](address-lists.md).
 
 For address list procedures that use recipient filters, see [Address list procedures in Exchange Online](address-list-procedures.md).
-

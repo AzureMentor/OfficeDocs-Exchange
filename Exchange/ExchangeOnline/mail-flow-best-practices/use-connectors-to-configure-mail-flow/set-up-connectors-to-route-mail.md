@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: Admins can learn how to use connectors to route mail between Exchange Online and on-premises email servers.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 2e93fd60-a5ef-4e64-8e62-2b862b2d1033
 ms.date: 
+ms.reviewer: 
 title: Set up connectors to route mail between Office 365 and your own email servers
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -251,4 +252,3 @@ For each email sent from Office 365 to mailboxes on your email server, Office 36
 [Validate connectors in Office 365](validate-connectors.md)
 
 [Set up connectors for secure mail flow with a partner organization](set-up-connectors-for-secure-mail-flow-with-a-partner.md)
-

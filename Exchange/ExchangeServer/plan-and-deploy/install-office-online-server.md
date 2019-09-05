@@ -2,15 +2,16 @@
 localization_priority: Critical
 description: 'Summary: Improve the attachment experience for Outlook on the web (formerly known as Outlook Web App) users by installing Office Online Server.'
 ms.topic: get-started-article
-author: dstrome
-ms.author: dstrome
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 9c2b4186-be7d-4c57-b119-17a1c36fd6a0
 ms.date:
+ms.reviewer: 
 title: Install Office Online Server in an Exchange organization
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -18,7 +19,7 @@ manager: serdars
 
 # Install Office Online Server in an Exchange organization
 
-An optional prerequisite for Exchange 2016 Cumulative Update 1 (CU1) or later is the installation of Office Online Server on one or more servers in your organization. Office Online Server enables users to view supported file attachments within Outlook on the web (Outlook) without downloading them first and without having a local installation of the program. Without Office Online Server installed, Outlook users need to download attachments to their local computer and then open them in a local application.
+An optional prerequisite for Exchange 2016 Cumulative Update 1 (CU1) or later, as well as for Exchange 2019, is the installation of Office Online Server on one or more servers in your organization. Office Online Server enables users to view supported file attachments within Outlook on the web (formerly known as Outlook Web App) without downloading them first and without having a local installation of the program. Without Office Online Server installed, Outlook users need to download attachments to their local computer and then open them in a local application.
 
 > [!NOTE]
 > Office Online Server is available for download as part of a volume licensing agreement. If you don't have a volume license agreement, you can skip the instructions in this step. However, without Office Online Server installed, Outlook users will need to download attachments to their local computer to view them; they won't be able to view them in Outlook.
@@ -27,15 +28,15 @@ You can configure an Office Online Server endpoint in two places in Exchange 201
 
 - **Organization**: There are a couple of reasons why you might configure the Office Online Server endpoint at the organization level:
 
-   - **Single-server or single-location deployment**: You can configure the endpoint at the organization level if all of your Exchange 2016 Mailbox servers are in the same location and you don't plan on having geographically distributed Office Online Server servers.
+  - **Single-server or single-location deployment**: You can configure the endpoint at the organization level if all of your Exchange 2016 Mailbox servers are in the same location and you don't plan on having geographically distributed Office Online Server servers.
 
-   - **Fallback for large deployments**: You can configure endpoint at the organization level as a fallback if the endpoint configured on a Mailbox server isn't available. If an Office Web Apps server isn't available, the client will try to connect to the endpoint configured at the organization level.
+  - **Fallback for large deployments**: You can configure endpoint at the organization level as a fallback if the endpoint configured on a Mailbox server isn't available. If an Office Web Apps server isn't available, the client will try to connect to the endpoint configured at the organization level.
 
-   **Notes**:
+    **Notes**:
 
-     - If you have Exchange 2013 servers in your organization, don't configure an endpoint at the organization level. Doing so will direct Exchange 2013 servers to use the Office Online Server server. This isn't supported.
+    - If you have Exchange 2013 servers in your organization, don't configure an endpoint at the organization level. Doing so will direct Exchange 2013 servers to use the Office Online Server server. This isn't supported.
 
-     - Previewing attachments on S/MIME messages in Outlook on the web isn't supported by Office Online Server.
+    - Previewing attachments in S/MIME messages in Outlook on the web isn't supported by Office Online Server.
 
 - **Mailbox server**: If you want to distribute client requests between two or more Office Online Server servers, if you want to geographically distribute Office Online Server servers, or if you have Exchange 2013 in your organization, configure the endpoints at the Exchange Mailbox server level. When you configure an endpoint at the server level, mailboxes located on that server will send requests to the configured Office Online Server server.
 
@@ -47,7 +48,7 @@ Office Online Server requires the following to install:
 
 - Windows Server 2012 R2
 
-- Exchange 2016 Cumulative Update 1 (CU1) or later
+- Exchange 2016 Cumulative Update 1 (CU1) or later, or Exchange 2019
 
    > [!NOTE]
    > If you're running Windows Server 2016, you will need Exchange 2016 CU3 or later, as detailed in [Exchange Server prerequisites](prerequisites.md).
@@ -84,7 +85,7 @@ To install Office Online Server, do the following on the computer where you want
 
    - Volume License or Open customers can contact their [Support Center](https://www.microsoft.com/Licensing/servicecenter/Help/Contact.aspx).
 
-   - Direct customers can submit a request from their Office 365 admin center or [contact support](https://support.office.com/article/32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b).
+   - Direct customers can submit a request from their Microsoft 365 admin center or [contact support](https://support.office.com/article/32a17ca7-6fa0-4870-8a8d-e25ba4ccfd4b).
 
 2. Navigate to the location where you downloaded Office Online Server and run setup.exe.
 
@@ -139,5 +140,3 @@ After you've configured the Office Online Server server, do the following on you
    ```
    Restart-WebAppPool MsExchangeOwaAppPool
    ```
-
-

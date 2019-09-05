@@ -5,6 +5,7 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 3fe19996-29bc-4879-aab9-5a622b2f1481
 ms.date: 6/29/2018
+ms.reviewer: 
 description: 'You can migrate the contents of user mailboxes from your source email system to Office 365. Use the Internet Message Access Protocol (IMAP) to migrate email when:'
 title: What you need to know about migrating your IMAP mailboxes to Office 365
 ms.collection: 
@@ -16,7 +17,7 @@ search.appverid:
 - MED150
 - MBS150
 - BCS160
-ms.audience: Admin
+audience: Admin
 ms.custom: Adm_O365
 ms.service: exchange-online
 manager: serdars
@@ -130,5 +131,3 @@ If you're comfortable with what's involved in migrating mailboxes to Office 365,
 [Tips for optimizing IMAP migrations](optimizing-imap-migrations.md)
 
 [Learn more about setting up your IMAP server connection](setting-up-your-imap-server-connection.md)
-
-

@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to configure message expiration intervals, message retries, and message resubmissions in the Transport service on a Mailbox server or on an Edge Transport server in Exchange 2016 and 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 5420124f-aa4c-4702-b493-40a9a7edb786
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Configure message retry, resubmit, and expiration intervals
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -48,35 +49,35 @@ To configure these intervals, you modify keys in the %ExchangeInstallPath%Bin\Ed
 
 1. In a Command prompt window on the Mailbox server or Edge Transport server, open the EdgeTransport.exe.config file in Notepad by running this command:
 
-  ```
-  Notepad %ExchangeInstallPath%Bin\EdgeTransport.exe.config
-  ```
+   ```
+   Notepad %ExchangeInstallPath%Bin\EdgeTransport.exe.config
+   ```
 
 2. Locate the following keys in the `<appSettings>` section.
 
-  ```
-  <add key="QueueGlitchRetryCount" value="<Integer>" />
-  <add key="QueueGlitchRetryInterval" value="<hh:mm:ss>" />
-  <add key="MailboxDeliveryQueueRetryInterval" value="<hh:mm:ss>" />
-  <add key="MaxIdleTimeBeforeResubmit" value="<hh:mm:ss>" />
-  ```
+   ```
+   <add key="QueueGlitchRetryCount" value="<Integer>" />
+   <add key="QueueGlitchRetryInterval" value="<hh:mm:ss>" />
+   <add key="MailboxDeliveryQueueRetryInterval" value="<hh:mm:ss>" />
+   <add key="MaxIdleTimeBeforeResubmit" value="<hh:mm:ss>" />
+   ```
 
-    This example changes the queue glitch retry count to 6, the queue glitch retry interval to 30 seconds, the mailbox delivery queue retry interval to 3 minutes, and the maximum idle time before resubmit interval to 6 hours.
+   This example changes the queue glitch retry count to 6, the queue glitch retry interval to 30 seconds, the mailbox delivery queue retry interval to 3 minutes, and the maximum idle time before resubmit interval to 6 hours.
 
-  ```
-  <add key="QueueGlitchRetryCount" value="6" />
-  <add key="QueueGlitchRetryInterval" value="00:00:30" />
-  <add key="MailboxDeliveryQueueRetryInterval" value="00:03:00" />
-  <add key="MaxIdleTimeBeforeResubmit" value="6:00:00" />
-  ```
+   ```
+   <add key="QueueGlitchRetryCount" value="6" />
+   <add key="QueueGlitchRetryInterval" value="00:00:30" />
+   <add key="MailboxDeliveryQueueRetryInterval" value="00:03:00" />
+   <add key="MaxIdleTimeBeforeResubmit" value="6:00:00" />
+   ```
 
 3. When you're finished, save and close the EdgeTransport.exe.config file.
 
 4. Restart the Exchange Transport service by running this command:
 
-  ```
-  net stop MSExchangeTransport && net start MSExchangeTransport
-  ```
+   ```
+   net stop MSExchangeTransport && net start MSExchangeTransport
+   ```
 
 ### How do you know this worked?
 
@@ -84,18 +85,18 @@ To verify that you've configured these intervals, do these steps:
 
 1. Open the EdgeTransport.exe.config file in Notepad by running this command:
 
-  ```
-  Notepad %ExchangeInstallPath%Bin\EdgeTransport.exe.config
-  ```
+   ```
+   Notepad %ExchangeInstallPath%Bin\EdgeTransport.exe.config
+   ```
 
 2. Verify the values of the following keys in the `<appSettings>` section.
 
-  ```
-  <add key="QueueGlitchRetryCount" value="<Integer>" />
-  <add key="QueueGlitchRetryInterval" value="<hh:mm:ss>" />
-  <add key="MailboxDeliveryQueueRetryInterval" value="<hh:mm:ss>" />
-  <add key="MaxIdleTimeBeforeResubmit" value="<hh:mm:ss>" />
-  ```
+   ```
+   <add key="QueueGlitchRetryCount" value="<Integer>" />
+   <add key="QueueGlitchRetryInterval" value="<hh:mm:ss>" />
+   <add key="MailboxDeliveryQueueRetryInterval" value="<hh:mm:ss>" />
+   <add key="MaxIdleTimeBeforeResubmit" value="<hh:mm:ss>" />
+   ```
 
 ## Configure the transient failure retry attempts, the transient failure retry interval, and the outbound connection failure retry interval
 
@@ -113,13 +114,13 @@ To verify that you've configured these intervals, do these steps:
 
 3. In the **Retries** section, enter a value for any of these settings:
 
-  - **Outbound connection failure retry interval (seconds)**
+   - **Outbound connection failure retry interval (seconds)**
 
-  - **Transient failure retry interval (minutes)**
+   - **Transient failure retry interval (minutes)**
 
-  - **Transient failure retry attempts**
+   - **Transient failure retry attempts**
 
-    When you're finished, click **Save**.
+   When you're finished, click **Save**.
 
 ### Use the Exchange Management Shell to configure the transient failure retry attempts, the transient failure retry interval, and the outbound connection failure retry interval on Mailbox severs or Edge Transport servers
 
@@ -292,6 +293,3 @@ To verify that you've configured the message expiration timeout interval, do any
   ```
   Get-TransportService | Format-List Name,MessageExpirationTimeout
   ```
-
-
-

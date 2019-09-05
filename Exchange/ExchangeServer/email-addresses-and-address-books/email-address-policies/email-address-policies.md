@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn about email address policies in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: b63b63bb-6faf-4337-8441-50bc64b49bb8
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Email address policies in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -35,7 +36,6 @@ To configure email address policies, see [Procedures for email address policies 
 An email address template contains the **address type** and the **address format**. An email address policy can contain multiple email address templates. One template must define the primary (reply) SMTP email address, and there can be only one primary SMTP email address defined in the policy (it's the **Reply-To:** email address for recipients). Other email address templates in the policy define the additional or *proxy* addresses for recipients.
 
 ### Address types
-<a name="AddressType"> </a>
 
 Although you'll primarily use SMTP email addresses in email address policies, other email address types are available. The valid address type values are:
 
@@ -45,20 +45,19 @@ Although you'll primarily use SMTP email addresses in email address policies, ot
 
 - **NOTES**: Lotus Notes. By default, uses the included `%ExchangeInstallPath%Mailbox\address\notes\amd64\ntspxgen.dll` file to validate the email address format.
 
-- **X400**: Lotus Notes. By default, uses the included `%ExchangeInstallPath%Mailbox\address\notes\amd64\x400prox.dll` file to validate the email address format.
+- **X400**: By default, uses the included `%ExchangeInstallPath%Mailbox\address\notes\amd64\x400prox.dll` file to validate the email address format.
 
  **Notes**:
 
-- In the Exchange Management Shell, the value `SMTP` specifies the primary email address, and the value `smtp` specifies proxy addresses.
+- In the Exchange Management Shell, the value `SMTP` specifies the primary email address, and the value `smtp` specifies additional (proxy) addresses.
 
-    In the EAC, only the **Make this format the reply email address** check box controls whether the email address is the primary address or a proxy address. It doesn't matter whether you type SMTP or smtp in the **Enter a custom address type** field. However, in the list of email address templates in the policy, the EAC shows the value **SMTP** (bold and uppercase) for the primary address, and smtp (not bold and lowercase) for proxy addresses.
+  In the EAC, only the **Make this format the reply email address** check box controls whether the email address is the primary address or a proxy address. It doesn't matter whether you type SMTP or smtp in the **Enter a custom address type** field. However, in the list of email address templates in the policy, the EAC shows the value **SMTP** (bold and uppercase) for the primary address, and smtp (not bold and lowercase) for proxy addresses.
 
 - The types of email addresses that you can configure in a email address policy are limited compared to those you can configure on individual recipients.
 
 - All non-SMTP email addresses are considered custom address types. Exchange doesn't provide unique dialog boxes or property pages for X.400, Novell GroupWise, or Lotus Notes email address types. Non-SMTP email addresses require the appropriate .dll files.
 
 ### Address formats
-<a name="AddressFormat"> </a>
 
 An SMTP email address uses the syntax `chris@contoso.com`, where the value `chris` is the *local part* of the email address, and the value `contoso.com` is the SMTP domain (also known as the *address space* or *name space*). The available SMTP domain values are determined by the accepted domains that are configured for your organization.
 
@@ -68,27 +67,29 @@ All SMTP email address formats in the Exchange Management Shell, or custom SMTP 
 
 |**Variable**|**Value**|
 |:-----|:-----|
-|%d  <br/> |Display name  <br/> |
-|%g  <br/> |Given name (first name)  <br/> |
-|%i  <br/> |Middle initial  <br/> |
-|%m  <br/> |Exchange alias  <br/> |
-|%s  <br/> |Surname (last name)  <br/> |
-|% _x_g  <br/> |The first _x_ letters of the first name. For example, `%2g` uses the first two letters of the first name.  <br/> |
-|% _x_s  <br/> |The first _x_ letters of the last name. For example, `%2s` uses the first two letters of the last name.  <br/> |
+|%d|Display name|
+|%g|Given name (first name)|
+|%i|Middle initial|
+|%m|Exchange alias|
+|%r*xy*|Replace all occurrences of *x* with *y*|
+|%r*xx*|Remove all occurrences of *x*|
+|%s|Surname (last name)|
+|%*n*g|The first *n* letters of the first name. For example, `%2g` uses the first two letters of the first name.|
+|%*n*s|The first *n* letters of the last name. For example, `%2s` uses the first two letters of the last name.|
 
 In addition to variables, you can also use US ASCII text characters that are allowed in Exchange email addresses (for example, periods (`.`) or underscores (`_`). Note that each period needs to be surrounded by other valid characters (for example `%g.%s`).
 
-In the EAC, you can selected from a short list of precanned SMTP email address formats. These address formats are described in the following table, where the example user is named John Smith, and the domain is contoso.com:
+In the EAC, you can selected from a short list of precanned SMTP email address formats. These address formats are described in the following table, where the example user is named Elizabeth Brunner, and the domain is contoso.com:
 
 |**Example**|**Exchange Management Shell equivalent**|
 |:-----|:-----|
-| `<alias>@contoso.com` <br/> | `%m@contoso.com` <br/> |
-| `john.smith@contoso.com` <br/> | `%g.%s@contoso.com` <br/> |
-| `jsmith@contoso.com` <br/> | `%1g%s@contoso.com` <br/> |
-| `johns@contoso.com` <br/> | `%g%1s@contoso.com` <br/> |
-| `smith.john@contoso.com` <br/> | `%s.%g@contoso.com` <br/> |
-| `sjohn@contoso.com` <br/> | `%1s%g@contoso.com` <br/> |
-| `smithj@contoso.com` <br/> | `%s%1g@contoso.com` <br/> |
+|`<alias>@contoso.com`|`%m@contoso.com`|
+|`elizabeth.brunner@contoso.com`|`%g.%s@contoso.com`|
+|`ebrunner@contoso.com`|`%1g%s@contoso.com`|
+|`elizabethb@contoso.com`|`%g%1s@contoso.com`|
+|`brunner.elizabeth@contoso.com`|`%s.%g@contoso.com`|
+|`belizabeth@contoso.com`|`%1s%g@contoso.com`|
+|`brunnere@contoso.com`|`%s%1g@contoso.com`|
 
 ## Recipient filters for email address policies
 
@@ -98,8 +99,8 @@ Recipient filters identify the recipients that the email address policy applies 
 
 |**Recipient filtering method**|**User interface**|**Filterable recipient properties**|**Filter operators**|
 |:-----|:-----|:-----|:-----|
-|Precanned recipient filters  <br/> |Exchange admin center (EAC) and the Exchange Management Shell  <br/> |Limited to:  <br/> • Recipient type (All recipient types or any combination of user mailboxes, resource mailboxes, mail contacts, mail users, and groups)  <br/> • Company  <br/> • Custom Attribute 1 to 15  <br/> • State or Province  <br/> • Department  <br/> |Property values require an exact match. Wildcards and partial matches aren't supported. For example, "Sales" doesn't match the value "Sales and Marketing".  <br/> Multiple values of the same property always use the **or** operator. For example, "Department equals Sales or Department equals Marketing".  <br/> Multiple properties always use the **and** operator. For example, "Department equals Sales and Company equals Contoso".  <br/> |
-|Custom recipient filters  <br/> |Exchange Management Shell only  <br/> |You can use virtually any available recipient attributes.  <br/> |You use OPATH filter syntax to specify any available Windows PowerShell filter operators. Wildcards and partial matches are supported.  <br/> |
+|Precanned recipient filters|Exchange admin center (EAC) and the Exchange Management Shell|Limited to: <br/>• Recipient type (All recipient types or any combination of user mailboxes, resource mailboxes, mail contacts, mail users, and groups) <br/>• Company <br/> • Custom Attribute 1 to 15 <br/>• State or Province <br/>• Department|Property values require an exact match. Wildcards and partial matches aren't supported. For example, "Sales" doesn't match the value "Sales and Marketing". <br/> Multiple values of the same property always use the **or** operator. For example, "Department equals Sales or Department equals Marketing". <br/><br/> Multiple properties always use the **and** operator. For example, "Department equals Sales and Company equals Contoso".|
+|Custom recipient filters|Exchange Management Shell only|You can use virtually any available recipient attributes.|You use OPATH filter syntax to specify any available Windows PowerShell filter operators. Wildcards and partial matches are supported.|
 
  **Notes**:
 
@@ -108,7 +109,8 @@ Recipient filters identify the recipients that the email address policy applies 
 - The recipient's location in Active Directory (the organizational unit or container) is available in both precanned and custom recipient filters.
 
 - If you create an email address policy in the Exchange Management Shell that uses custom recipient filters, you can't edit the recipient filters in the EAC.
-    ![Appy to tab in email address policies in the EAC when custom recipient filters are used.](../../media/b6ddfddb-48f8-4599-9407-bc939fb78da5.png)
+
+  ![Appy to tab in email address policies in the EAC when custom recipient filters are used.](../../media/b6ddfddb-48f8-4599-9407-bc939fb78da5.png)
 
 - You can prevent individual recipients from being affected by email address policies. For example:
 
@@ -148,13 +150,10 @@ You can't delete the default email address policy, and you can't designate anoth
 
 - You can't change the name or priority of the policy.
 
-- You can fully customize the email address templates in the policy (modify, add, or remove templates). For more information, see [Modify email address policies](eap-procedures.md#ModifyEAP).
+- You can fully customize the email address templates in the policy (modify, add, or remove templates). For more information, see [Modify email address policies](eap-procedures.md#modify-email-address-policies).
 
 ## Apply email address policies
 
 After you create or modify an email address policy in the EAC or the Exchange Management Shell, the policy needs to be applied to the affected recipients.
 
-If the updates affect a large number of recipients (our recommendation is more than 3000), you should use the Exchange Management Shell to apply the updates to the affected recipients. For more information, see [Apply email address policies to recipients](eap-procedures.md#ApplyEAP).
-
-
-
+If the updates affect a large number of recipients (our recommendation is more than 3000), you should use the Exchange Management Shell to apply the updates to the affected recipients. For more information, see [Apply email address policies to recipients](eap-procedures.md#apply-email-address-policies-to-recipients).

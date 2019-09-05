@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can configure several dialing codes that Unified Messaging (UM) uses to dial internal and external calls for UM-enabled users. Frequently, you want to configure a dial plan together with the dialing or access codes, a national number prefix, or in-country/region or international number formats so that you can control outdialing for users in your organization. This topic discusses dial codes, number prefixes, and number formats and how you can use them to control outdialing for your organization.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 26d61e55-f8dd-4d25-81f1-78a87cf88bad
 ms.date: 6/24/2018
-title: Dial codes, number prefixes, and number formats
+ms.reviewer: 
+title: Dial codes, number prefixes, and number formats in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Dial codes, number prefixes, and number formats
+# Dial codes, number prefixes, and number formats in Exchange Online
 
 You can configure several dialing codes that Unified Messaging (UM) uses to dial internal and external calls for UM-enabled users. Frequently, you want to configure a dial plan together with the dialing or access codes, a national number prefix, or in-country/region or international number formats so that you can control outdialing for users in your organization. This topic discusses dial codes, number prefixes, and number formats and how you can use them to control outdialing for your organization.
 
@@ -81,6 +82,3 @@ An international access code can be configured on a UM dial plan. The internatio
 <a name="incountryregionandintlfmts"> </a>
 
 You can configure the incoming call configuration for country/region and international number formats on a UM dial plan. After you configure these settings, Unified Messaging will be able to recognize incoming calls from inside a country/region and internationally between UM dial plans within the same organization. You can also add number formats for incoming calls that are placed within a single dial plan. Configuring these options enables your organization to save money by preventing outgoing calls that shouldn't be made by users from inside your organization, and helps to prevent toll fraud. UM will use the information that you configure to examine the number format of the incoming call and verify that the number pattern matches before it accepts the call. For example, you may have multiple dial plans inside an organization. If you have one dial plan for the United States and another for the United Kingdom, you may want to let users in the United States dial plan have UM place calls to users who are located in the United Kingdom dial plan, but not let the users in the United States dial plan place calls directly to other countries/regions or internationally.
-
-
-

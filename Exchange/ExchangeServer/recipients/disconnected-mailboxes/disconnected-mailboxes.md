@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 85ff95d4-0aa4-4964-ac4b-5b07a5a1039f
 ms.date: 7/5/2018
+ms.reviewer: 
 title: Disconnected mailboxes
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -18,7 +19,7 @@ manager: serdars
 
 Each Microsoft Exchange mailbox consists of an Active Directory user account and the mailbox data stored in the Exchange mailbox database. All configuration data for a mailbox is stored in the Exchange attributes of the Active Directory user object. The mailbox database contains the mail data that's in the mailbox associated with the user account. The following figure shows the components of a mailbox.
 
- **Mailbox components**
+**Mailbox components**
 
 ![Parts that make up a mailbox](../../media/RecipientsConceptual_MailboxParts.gif)
 
@@ -26,23 +27,25 @@ A *disconnected mailbox* is a mailbox object in the mailbox database that isn't 
 
 - **Disabled mailboxes**: When a mailbox is disabled or deleted in the Exchange admin center (EAC) or using the **Disable-Mailbox** or **Remove-Mailbox** cmdlet in the Exchange Management Shell, Exchange retains the deleted mailbox in the mailbox database, and switches the mailbox to a disabled state. This is why mailboxes that are either disabled or deleted are referred to as *disabled mailboxes*. The difference is that when you disable a mailbox, the Exchange attributes are removed from the corresponding Active Directory user account, but the user account is retained. When you delete a mailbox, both the Exchange attributes and the Active Directory user account are deleted.
 
-    Disabled and deleted mailboxes are retained in the mailbox database until the deleted mailbox retention period expires, which is 30 days by default. After the retention period expires, the mailbox is permanently deleted (also called *purged*). If a mailbox is deleted using the **Remove-Mailbox** cmdlet, it's also retained for the duration of the retention period.
+  Disabled and deleted mailboxes are retained in the mailbox database until the deleted mailbox retention period expires, which is 30 days by default. After the retention period expires, the mailbox is permanently deleted (also called *purged*). If a mailbox is deleted using the **Remove-Mailbox** cmdlet, it's also retained for the duration of the retention period.
 
-    > [!IMPORTANT]
-    > If a mailbox is deleted using the **Remove-Mailbox** cmdlet and either the _Permanent_ or _StoreMailboxIdentity_ parameter, it will be immediately deleted from the mailbox database.
+  > [!IMPORTANT]
+  > If a mailbox is deleted using the **Remove-Mailbox** cmdlet and either the _Permanent_ or _StoreMailboxIdentity_ parameter, it will be immediately deleted from the mailbox database.
 
-    To identify the disabled mailboxes in your organization, run the following command in the Exchange Management Shell.
+  To identify the disabled mailboxes in your organization, run the following commands in the Exchange Management Shell:
 
   ```
-  Get-MailboxDatabase | Get-MailboxStatistics | Where { $_.DisconnectReason -eq "Disabled" } | Format-Table DisplayName,Database,DisconnectDate
+  $dbs = Get-MailboxDatabase
+  $dbs | foreach {Get-MailboxStatistics -Database $_.DistinguishedName} | where {$_.DisconnectReason -eq "Disabled"} | Format-Table DisplayName,Database,DisconnectDate
   ```
 
 - **Soft-deleted mailboxes**: When a mailbox is moved to a different mailbox database, Exchange doesn't fully delete the mailbox from the source mailbox database when the move is complete. Instead, the mailbox in the source mailbox database is switched to a *soft-deleted* state. Like disabled mailboxes, soft-deleted mailboxes are retained in the source database either until the deleted mailbox retention period expires or until the **Remove-StoreMailbox** cmdlet is used to purge the mailbox.
 
-    Run the following command to identify soft-deleted mailboxes in your organization.
+  Run the following commands to identify soft-deleted mailboxes in your organization.
 
   ```
-  Get-MailboxDatabase | Get-MailboxStatistics | Where { $_.DisconnectReason -eq "SoftDeleted" } | Format-Table DisplayName,Database,DisconnectDate
+  $dbs = Get-MailboxDatabase
+  $dbs | foreach {Get-MailboxStatistics -Database $_.DistinguishedName} | where {$_.DisconnectReason -eq "SoftDeleted"} | Format-Table DisplayName,Database,DisconnectDate
   ```
 
 ## Working with disabled mailboxes
@@ -123,9 +126,9 @@ The following table summarizes the information about disconnected mailboxes, inc
 
 |**How mailbox was disabled**|**Value of _DisconnectReason_ property**|**Is Active Directory user account retained?**|**Connect or restore options**|**Tools**|
 |:-----|:-----|:-----|:-----|:-----|
-|The EAC: **Recipients** \> **Mailboxes** \> **Disable** <br/> The Exchange Management Shell: **Disable-Mailbox** cmdlet  <br/> |Disabled  <br/> |Yes  <br/> |Connect to same user account  <br/> |The EAC: **Recipients** \> **Mailboxes** \> **Connect a Mailbox** <br/> The Exchange Management Shell: **Connect-Mailbox** cmdlet  <br/> |
-|The EAC: **Recipients** \> **Mailboxes** \> **Delete** <br/> The Exchange Management Shell: **Remove-Mailbox** cmdlet  <br/> |Disabled  <br/> |No  <br/> |Connect to a different user account  <br/> Restore to a different mailbox  <br/> |The EAC: **Recipients** \> **Mailboxes** \> **Connect a Mailbox** <br/> The Exchange Management Shell: **Connect-Mailbox** cmdlet  <br/> **Enable-Mailbox** <br/> The Exchange Management Shell: **New-MailboxRestore** cmdlet  <br/> |
-|Moved to a different mailbox database  <br/> |SoftDeleted  <br/> |Yes  <br/> |Connect to a different user account  <br/> Restore to a different mailbox  <br/> |The EAC: **Recipients** \> **Mailboxes** \> **Connect a Mailbox** <br/> The Exchange Management Shell: **Connect-Mailbox** cmdlet  <br/> **Enable-Mailbox** <br/> The Exchange Management Shell: **New-MailboxRestore** cmdlet  <br/> |
+|The EAC: **Recipients** \> **Mailboxes** \> **Disable** <br/><br/> The Exchange Management Shell: **Disable-Mailbox** cmdlet|Disabled|Yes|Connect to same user account|The EAC: **Recipients** \> **Mailboxes** \> **Connect a Mailbox** <br/><br/> The Exchange Management Shell: **Connect-Mailbox** cmdlet|
+|The EAC: **Recipients** \> **Mailboxes** \> **Delete** <br/><br/> The Exchange Management Shell: **Remove-Mailbox** cmdlet|Disabled|No|Connect to a different user account <br/><br/> Restore to a different mailbox|The EAC: **Recipients** \> **Mailboxes** \> **Connect a Mailbox** <br/><br/> The Exchange Management Shell: <br/>• **Connect-Mailbox** cmdlet <br/>• **Enable-Mailbox** cmdlet <br/>• **New-MailboxRestore** cmdlet|
+|Moved to a different mailbox database|SoftDeleted|Yes|Connect to a different user account <br/><br/> Restore to a different mailbox|The EAC: **Recipients** \> **Mailboxes** \> **Connect a Mailbox** <br/><br/> The Exchange Management Shell: <br/>• **Connect-Mailbox** cmdlet  <br/>• **Enable-Mailbox** cmdlet <br/>• **New-MailboxRestore** cmdlet|
 
 ## Disconnected mailbox documentation
 <a name="Documentation"> </a>
@@ -134,12 +137,9 @@ The following table contains links to topics that will help you manage disconnec
 
 |**Topic**|**Description**|
 |:-----|:-----|
-|[Disable or delete a mailbox in Exchange Server](disable-or-delete-mailboxes.md) <br/> |Learn how to disable or delete mailboxes.  <br/> |
-|[Connect a disabled mailbox](connect-disabled-mailboxes.md) <br/> |Learn how to connect a disabled mailbox to an existing user account.  <br/> |
-|[Connect or restore a deleted mailbox](restore-deleted-mailboxes.md) <br/> |Learn how to connect a deleted mailbox to a user account or restore the contents of a deleted mailbox to an existing mailbox.  <br/> |
-|[Connect or Restore a Soft-Deleted Mailbox](http://technet.microsoft.com/library/4f3f5ce4-9d12-4ed8-9f70-d8a6aa8a1b2e.aspx) <br/> |Learn how to connect a soft-deleted mailbox to a user account or restore a soft-deleted mailbox to an existing mailbox.  <br/> |
-|[Manage Mailbox Restore Requests](http://technet.microsoft.com/library/8e668a52-c601-4d96-a51c-ab60267e1321.aspx) <br/> |Learn how to manage mailbox restore requests using the Exchange Management Shell.  <br/> |
-|[Permanently delete a mailbox](permanently-delete-mailboxes.md) <br/> |Learn how to permanently delete a mailbox.  <br/> |
-
-
-
+|[Disable or delete a mailbox in Exchange Server](disable-or-delete-mailboxes.md)|Learn how to disable or delete mailboxes.|
+|[Connect a disabled mailbox](connect-disabled-mailboxes.md)|Learn how to connect a disabled mailbox to an existing user account.|
+|[Connect or restore a deleted mailbox](restore-deleted-mailboxes.md)|Learn how to connect a deleted mailbox to a user account or restore the contents of a deleted mailbox to an existing mailbox.|
+|[Connect or Restore a Soft-Deleted Mailbox](http://technet.microsoft.com/library/4f3f5ce4-9d12-4ed8-9f70-d8a6aa8a1b2e.aspx)|Learn how to connect a soft-deleted mailbox to a user account or restore a soft-deleted mailbox to an existing mailbox.|
+|[Manage Mailbox Restore Requests](http://technet.microsoft.com/library/8e668a52-c601-4d96-a51c-ab60267e1321.aspx)|Learn how to manage mailbox restore requests using the Exchange Management Shell.|
+|[Permanently delete a mailbox](permanently-delete-mailboxes.md)|Learn how to permanently delete a mailbox.|

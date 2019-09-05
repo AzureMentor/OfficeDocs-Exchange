@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Learn how to use message trace in the Exchange admin center to find out what happened to email messages.
 ms.topic: troubleshooting
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 74a9fc59-7e0e-4832-baf9-2a86418b0079
 ms.date: 
+ms.reviewer: 
 title: Run a message trace and view the results in the Exchange admin center
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -168,7 +169,7 @@ In the EAC, you can click **View pending or completed traces** in order to view 
 
 - **In progress**: The trace is running and you can't cancel the trace or download the results.
 
-- **Completed**: The trace has completed and you can click **Download this report** to retrieve the results in a .CSV file. Note that if your message trace results exceed 5000 messages for a summary report, it will be truncated to the first 5000 messages. If your message trace results exceed 3000 messages for a detailed report, it will be truncated to the first 3000 messages. If you do not see all the results that you need, we recommend that break your search out into multiple queries.
+- **Completed**: The trace has completed and you can click **Download this report** to retrieve the results in a .CSV file. Note that if your message trace results exceed 50000 messages for a summary report, it will be truncated to the first 50000 messages. If your message trace results exceed 1000 messages for a detailed report, it will be truncated to the first 1000 messages. If you do not see all the results that you need, we recommend that break your search out into multiple queries.
 
 When you select a specific message trace, additional information appears in the right pane. Depending on what search criteria you specified, this may include details such as the date range for which the trace was run, and the sender and intended recipients of the message.
 
@@ -214,7 +215,7 @@ If you didn't include routing details when running the message trace, the follow
 
 - **directionality**: This field denotes whether the message was sent inbound (1) to your organization, or whether it was sent outbound (2) from your organization.
 
-- **connector_id**: The name of the source or destination Send connector or Receive connector. For example, *ServerName*  \ *ConnectorName*  or *ConnectorName*.
+- **connector_id**: The name of the source or destination Send connector or Receive connector. For example, *ServerName*\\*ConnectorName* or *ConnectorName*.
 
 - **delivery_priority**: Denotes whether the message was sent with **High**, **Low**, or **Normal** priority.
 
@@ -296,4 +297,3 @@ When a message matches a mail flow rule, a sample custom_data entry would look s
 [Message Trace FAQ](message-trace-faq.md) presents messaging questions that a user may have, along with possible answers. It also describes how to use the message trace tool in order to get those answers and troubleshoot specific mail delivery issues.
 
 [Can I run a message trace via Exchange Online PowerShell or Exchange Online Protection PowerShell? What are the cmdlets to use?](message-trace-faq.md#can-i-run-a-message-trace-via-exchange-online-powershell-or-exchange-online-protection-powershell-what-are-the-cmdlets-to-use) gives information about the PowerShell cmdlets that you can use to run a message trace.
-

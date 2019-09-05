@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can configure a Unified Messaging (UM) dial plan to specify the information that is provided for callers when users have the same or similar names. UM uses this setting to differentiate between users who have the same or similar names and provide this information to callers. When a caller or an Outlook Voice Access user is prompted to enter letters to find a particular user, sometimes more than one name matches the caller's input. You can use one of the available options for providing the caller with more information to help them locate the user they're trying to reach.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 14783f45-95f5-49de-8215-0a3aef7dc034
 ms.date: 11/17/2014
-title: Configure a dial plan for users who have similar names
+ms.reviewer: 
+title: Configure a dial plan for users who have similar names in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Configure a dial plan for users who have similar names
+# Configure a dial plan for users who have similar names in Exchange Online
 
 You can configure a Unified Messaging (UM) dial plan to specify the information that is provided for callers when users have the same or similar names. UM uses this setting to differentiate between users who have the same or similar names and provide this information to callers. When a caller or an Outlook Voice Access user is prompted to enter letters to find a particular user, sometimes more than one name matches the caller's input. You can use one of the available options for providing the caller with more information to help them locate the user they're trying to reach.
 
@@ -36,7 +37,7 @@ For additional management tasks related to UM dial plans, see [UM Dial Plan Proc
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to configure a UM dial plan for users with similar names
 
@@ -44,15 +45,15 @@ For additional management tasks related to UM dial plans, see [UM Dial Plan Proc
 
 2. On the **UM dial plan** page, click **Configure** \> **Transfer & search**, and under **Information to include for users with the same name**, select one of the following options:
 
-  - **Title**: The dial plan includes each user's title when it finds two or more users with similar names.
+   - **Title**: The dial plan includes each user's title when it finds two or more users with similar names.
 
-  - **Department**: The dial plan includes each user's department when it finds two or more users with similar names.
+   - **Department**: The dial plan includes each user's department when it finds two or more users with similar names.
 
-  - **Location**: The dial plan includes each user's location when it finds two or more users with similar names.
+   - **Location**: The dial plan includes each user's location when it finds two or more users with similar names.
 
-  - **None**: The dial plan won't include any additional information when users have similar names. Although this is the default setting, we recommend that you include one of the available options for callers. If you don't, callers won't be able to tell the difference between two or more users with similar names.
+   - **None**: The dial plan won't include any additional information when users have similar names. Although this is the default setting, we recommend that you include one of the available options for callers. If you don't, callers won't be able to tell the difference between two or more users with similar names.
 
-  - **Prompt For alias**: The dial plan prompts the caller for the user's alias. An alias is the part of the user's email or SMTP address that is before the at (@) symbol.
+   - **Prompt For alias**: The dial plan prompts the caller for the user's alias. An alias is the part of the user's email or SMTP address that is before the at (@) symbol.
 
 3. Click **Save**.
 
@@ -75,6 +76,3 @@ This example sets the information to include with users with similar names to lo
 ```
 Set-UMDialplan -Identity MyDialPlan -MatchedNameSelectionMethod Location
 ```
-
-
-

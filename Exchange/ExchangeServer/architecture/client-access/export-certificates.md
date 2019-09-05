@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: 'Summary: Learn how to export a certificate from an Exchange server 2016 or 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 7e4c4013-8a2b-4c25-a287-b367c65e48aa
 ms.date: 6/7/2018
+ms.reviewer: 
 title: Export a certificate from an Exchange server
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -33,7 +34,7 @@ You can export a certificate from an Exchange server as a backup or to import th
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to export a certificate
 
@@ -43,11 +44,11 @@ You can export a certificate from an Exchange server as a backup or to import th
 
 3. On the **Export Exchange certificate** page that opens, enter the following information:
 
-  - **File to export to**: Enter the UNC path and file name of the certificate file. For example, `\\FileServer01\Data\Fabrikam.pfx`
+   - **File to export to**: Enter the UNC path and file name of the certificate file. For example, `\\FileServer01\Data\Fabrikam.pfx`
 
-  - **Password**: When you export the certificate with its private key, you need to specify a password. Exporting the certificate with its private key allows you to import the certificate on other servers.
+   - **Password**: When you export the certificate with its private key, you need to specify a password. Exporting the certificate with its private key allows you to import the certificate on other servers.
 
-    When you're finished, click **OK**.
+   When you're finished, click **OK**.
 
 ## Use the Exchange Management Shell to export a certificate
 
@@ -80,6 +81,3 @@ Export-ExchangeCertificate -Thumbprint 5113ae0233a72fccb75b1d0198628675333d010e 
 ## How do you know this worked?
 
 To verify that you have successfully exported a certificate from an Exchange server, try importing the certificate file on another server. For more information, see [Import or install a certificate on an Exchange server](import-certificates.md).
-
-
-

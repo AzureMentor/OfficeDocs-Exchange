@@ -1,23 +1,24 @@
-﻿---
+---
 title: 'One or more Active Directory Connector servers were found'
 TOCTitle: One or more Active Directory Connector servers were found_ADCFound
 ms:assetid: a874f51f-09a2-4a76-9695-d61fb1ee6c1c
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/ms.exch.setupreadiness.adcfound(v=EXCHG.150)
 ms:contentKeyID: 46629070
 ms.date: 12/15/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # One or more Active Directory Connector servers were found\_ADCFound
 
- 
-
-_**Applies to:** Exchange Server_
-
+_**Applies to:** Exchange Server 2013_
 
 The content in this topic hasn't been updated for Microsoft Exchange Server 2013. While it hasn't been updated yet, it may still be applicable to Exchange 2013. If you still need help, check out the community resources below.
 
-Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkid=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkid=285351).
+Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Server](https://go.microsoft.com/fwlink/p/?linkid=60612).
 
 Microsoft Exchange Server 2007 and Exchange Server 2010 setup cannot continue because one or more Active Directory Connectors (ADC) have been found in the current Microsoft Exchange environment.
 
@@ -26,7 +27,6 @@ ADC replicates objects from Exchange Server version 5.5 to the Active Directory
 Exchange 2007 or Exchange 2010 setup requires that all ADC components be removed.
 
 To resolve this issue, remove all ADC components, and rerun Exchange 2007 or Exchange 2010 setup.
-
 
 <table>
 <colgroup>
@@ -48,13 +48,11 @@ To resolve this issue, remove all ADC components, and rerun Exchange 2007 or Ex
 > [!IMPORTANT]
 > You must complete step 6 and <STRONG>Remove All</STRONG> ADC components to resolve this issue. It is insufficient to disable the ADC service.
 
-
 </li>
 </ol></td>
 </tr>
 </tbody>
 </table>
-
 
 For more information about ADC, see the following Microsoft Knowledge Base articles:
 
@@ -63,4 +61,3 @@ For more information about ADC, see the following Microsoft Knowledge Base artic
   - 325221, "Support WebCast: Microsoft Advanced Active Directory Connector" ([https://go.microsoft.com/fwlink/?linkid=3052\&kbid=325221](https://go.microsoft.com/fwlink/?linkid=3052&kbid=325221)).
 
   - 312632, "How To Install and Configure the Active Directory Connector in Exchange 2000 Server" ([https://go.microsoft.com/fwlink/?linkid=3052\&kbid=312632](https://go.microsoft.com/fwlink/?linkid=3052&kbid=312632)).
-

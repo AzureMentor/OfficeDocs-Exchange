@@ -5,15 +5,16 @@ ms:assetid: 4c4ba2fc-014a-46fb-949a-2dabba92c4a5
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dn879075(v=EXCHG.150)
 ms:contentKeyID: 63917936
 ms.date: 03/27/2017
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Exchange 2013 Sizing and Configuration Recommendations
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 Exchange 2013 is more demanding of system resources than previous versions of Exchange. By correctly sizing your Exchange 2013 infrastructure, and then making some recommended configurations to Exchange-related components within that infrastructure, you can lay the groundwork for an optimally performing deployment.
 
@@ -23,7 +24,7 @@ Correctly sizing Exchange 2013 is one of the most effective ways of preventing p
 
 It's important to start with the calculator prior to purchasing and deploying your hardware; you should first determine your overall resource requirements based on the calculator results. You can use the calculator to input your organization's demands, and use the results for guidance on how to scale your hardware. The calculator doesn't tell you how many servers to use, but it will allow you to estimate the impact of an Exchange workload on a given set of servers. You should experiment with different configurations to see how it affects performance, in order to meet the hardware and business needs specific to your environment.
 
-To simplify deployments and get the best use of hardware, the Exchange product group recommends multi-role servers. Using multi-role severs gives you better availability at the Client Access server (CAS) layer, as there are more Client Access servers available to handle requests during a failure scenario. The key design consideration for Exchange 2013 is to utilize “smaller” commodity type servers (scaling out instead of scaling up). Design and testing was done with two socket computers containing up to twenty processor cores, with up to 96 gigabytes (GB) of RAM. If your hardware is larger than this, you should consider other options, such as using that hardware for other needs and buying smaller servers for your Exchange 2013 environment, or virtualizing.
+To simplify deployments and get the best use of hardware, the Exchange product group recommends multi-role servers. Using multi-role severs gives you better availability at the Client Access server (CAS) layer, as there are more Client Access servers available to handle requests during a failure scenario. The key design consideration for Exchange 2013 is to utilize "smaller" commodity type servers (scaling out instead of scaling up). Design and testing was done with two socket computers containing up to twenty processor cores, with up to 96 gigabytes (GB) of RAM. If your hardware is larger than this, you should consider other options, such as using that hardware for other needs and buying smaller servers for your Exchange 2013 environment, or virtualizing.
 
 It is preferable to build more servers (scaling out) than it is to add resources to existing, larger servers (scaling up). Scaling out allows your environment to take advantage of the built-in high availability features in Exchange 2013. To understand why this configuration is recommended, please review in detail the posts [The Preferred Architecture](https://go.microsoft.com/fwlink/p/?linkid=523782) and [Site Resilience Impact on Availability](https://go.microsoft.com/fwlink/p/?linkid=523845).
 
@@ -46,7 +47,6 @@ Turn off hyper-threading on physical Exchange servers. If virtualizing, hyper-th
 In Exchange Server 2013 Service Pack 1 or later, you can enable SSL offloading to help reduce CPU consumption by Client Access servers, but the complex configuration of SSL offloading may not be worth the benefit.
 
 ## .NET Framework
-
 
 <table>
 <colgroup>
@@ -84,7 +84,6 @@ In Exchange Server 2013 Service Pack 1 or later, you can enable SSL offloading t
 </tr>
 </tbody>
 </table>
-
 
 1 .NET Framework 4.6.1 requires post-release fixes if you want to install it on a server running Exchange 2013 CU13. For more information. see [Exchange 2013 prerequisites](exchange-2013-prerequisites-exchange-2013-help.md).
 
@@ -150,7 +149,7 @@ Monitor directory server performance, because Active Directory queries directly 
 
 LDAP search time is a critical counter to measure in regards to Active Directory health. Monitor CPU on your domain controllers. CPU issues on the domain controllers will render as a performance hit on the Exchange servers.
 
-Run the built in “Active Directory Diagnostics” on the Domain Controller in Performance Monitor located under “Data Collector Set” to help isolate the cause of domain controller performance issues.
+Run the built in "Active Directory Diagnostics" on the Domain Controller in Performance Monitor located under "Data Collector Set" to help isolate the cause of domain controller performance issues.
 
 Plan for enough RAM on Domain Controllers to be able cache the full AD database file.
 
@@ -162,11 +161,11 @@ All Client Access servers should receive approximately the same number of incomi
 
 For all protocols, Exchange 2013 does not require session affinity between a given Client Access server and the load balancer.
 
-A hardware or software load balancer should be used to manage all inbound traffic to Client Access servers. The selection of the target server can be determined with methods such as “round-robin,” in which each inbound connection goes to the next target server in a circular list, or with “least connections,” in which the load balancer sends each new connection to the server that has the fewest established connections at that time. These methods are detailed further in [Load balancing](load-balancing-exchange-2013-help.md). You should also consider the following:
+A hardware or software load balancer should be used to manage all inbound traffic to Client Access servers. The selection of the target server can be determined with methods such as "round-robin," in which each inbound connection goes to the next target server in a circular list, or with "least connections," in which the load balancer sends each new connection to the server that has the fewest established connections at that time. These methods are detailed further in [Load balancing](load-balancing-exchange-2013-help.md). You should also consider the following:
 
   - Round-robin has the problem of slow convergence with long-lived connections (like RPC/HTTP). As new computers are brought online, the balance of connections served across the target computers will take a very long time to converge.
 
-  - With the “least connections” method, be mindful it's possible for a Client Access server to become overloaded and unresponsive during a Client Access server outage or during patching maintenance. In the context of Exchange performance, authentication is an expensive operation.
+  - With the "least connections" method, be mindful it's possible for a Client Access server to become overloaded and unresponsive during a Client Access server outage or during patching maintenance. In the context of Exchange performance, authentication is an expensive operation.
 
 Due to a number of limitations with Windows Network Load Balancing (NLB) in an Exchange 2013 environment, detailed in [Load balancing](load-balancing-exchange-2013-help.md), we do not recommend using Windows NLB.
 
@@ -176,7 +175,7 @@ Maintain a well-balanced distribution of users per database and active databases
 
 You must profile your user base in order to understand how they interact with Exchange (Devices, Outlook, and OWA) and the impact that those interactions will cause from a performance standpoint. Refer to the calculator blogs from Section 2 for a better understanding of how to profile per user Exchange usage.
 
-Configure the DB copy activation preference and the “MaximumPreferredActiveDatabases” (per server) settings to maintain balance during a failover or switchover.
+Configure the DB copy activation preference and the "MaximumPreferredActiveDatabases" (per server) settings to maintain balance during a failover or switchover.
 
 The RedistributeActiveDatabases.ps1 script will rebalance active databases across the DAG nodes.
 
@@ -200,7 +199,7 @@ It is important to note that performance can be affected by both server add-ins 
 
 If the primary reason that an organization has Outlook configured in online mode is for security concerns, consider using BitLocker instead.
 
-Outlook 2013 offers a new “Sync Slider” feature to minimize the download time and the size of the OST file. Please refer to [Configure Cached Exchange Mode in Outlook 2013](https://go.microsoft.com/fwlink/p/?linkid=390456) for more information.
+Outlook 2013 offers a new "Sync Slider" feature to minimize the download time and the size of the OST file. Please refer to [Configure Cached Exchange Mode in Outlook 2013](https://go.microsoft.com/fwlink/p/?linkid=390456) for more information.
 
 Check monthly for Outlook clients updates that are supported in your environment.
 
@@ -217,4 +216,3 @@ As a best practice, uninstall or disable third party software while troubleshoot
   - Auditing software, for both files and users
 
   - Archiving solutions
-

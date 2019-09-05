@@ -2,17 +2,18 @@
 localization_priority: Normal
 description: In Microsoft Exchange Server and Exchange Online, Messaging records management (MRM) helps organizations to manage email lifecycle and reduce legal risks associated with e-mail and other communications. MRM makes it easier to keep messages needed to comply with company policy, government regulations, or legal needs, and to remove content that has no legal or business value.
 ms.topic: conceptual
-author: markjjo
-ms.author: markjjo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 48c13be5-3f01-4849-a089-766210e54f89
 ms.date: 7/11/2018
+ms.reviewer: 
 title: Retention tags and retention policies
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
@@ -54,22 +55,22 @@ Retention tags are classified into the following three types based on who can ap
 
 |**Type of retention tag**|**Applied...**|**Applied by...**|**Available actions...**|**Details**|
 |:-----|:-----|:-----|:-----|:-----|
-|Default policy tag (DPT)|Automatically to entire mailbox  <br/> A DPT applies to untagged items, which are mailbox items that don't have a retention tag applied directly or by inheritance from the folder.|Administrator| Move to archive  <br/>  Delete and allow recovery  <br/>  Permanently delete|Users can't change DPTs applied to a mailbox.|
-|Retention policy tag (RPT)|Automatically to a default folder  <br/> Default folders are folders created automatically in all mailboxes, for example: **Inbox**, **Deleted Items**, and **Sent Items**. See the list of supported default folders in [Default folders that support Retention Policy Tags](default-folders.md).|Administrator| Delete and allow recovery  <br/>  Permanently delete|Users can't change the RPT applied to a default folder.|
-|Personal tag|Manually to items and folders  <br/> Users can automate tagging by using Inbox rules to either move a message to a folder that has a particular tag or to apply a personal tag to the message.|Users| Move to archive  <br/>  Delete and allow recovery  <br/>  Permanently delete|Personal tags allow your users to determine how long an item should be retained. For example, the mailbox can have a DPT to delete items in seven years, but a user can create an exception for items such as newsletters and automated notifications by applying a personal tag to delete them in three days.|
+|Default policy tag (DPT)|Automatically to entire mailbox  <br/> A DPT applies to untagged items, which are mailbox items that don't have a retention tag applied directly or by inheritance from the folder.|Administrator|Move to archive  <br/>  Delete and allow recovery  <br/>  Permanently delete|Users can't change DPTs applied to a mailbox.|
+|Retention policy tag (RPT)|Automatically to a default folder  <br/> Default folders are folders created automatically in all mailboxes, for example: **Inbox**, **Deleted Items**, and **Sent Items**. See the list of supported default folders in [Default folders that support Retention Policy Tags](default-folders.md).|Administrator|Delete and allow recovery  <br/>  Permanently delete|Users can't change the RPT applied to a default folder.|
+|Personal tag|Manually to items and folders  <br/> Users can automate tagging by using Inbox rules to either move a message to a folder that has a particular tag or to apply a personal tag to the message.|Users|Move to archive  <br/>  Delete and allow recovery  <br/>  Permanently delete|Personal tags allow your users to determine how long an item should be retained. For example, the mailbox can have a DPT to delete items in seven years, but a user can create an exception for items such as newsletters and automated notifications by applying a personal tag to delete them in three days.|
 
 ### More about personal tags
 
-Personal tags are available to Outlook 2010 and Outlook Web App users as part of their retention policy. In Outlook 2010 and Outlook Web App, personal tags with the **Move to Archive** action appear as **Archive Policy**, and personal tags with the **Delete and Allow Recovery** or **Permanently Delete** actions appear as **Retention Policy**, as shown in the following figure.
+Personal tags are available to Outlook or later and Outlook on the web (formerly known as Outlook Web App) users as part of their retention policy. In Outlook and Outlook on the web, personal tags with the **Move to Archive** action appear as **Archive Policy**, and personal tags with the **Delete and Allow Recovery** or **Permanently Delete** actions appear as **Retention Policy**, as shown in the following figure.
 
-![Personal tags in Outlook 2010 and Outlook Web App](../../media/ITPro_MRM_ArchiveAndRetentionPolicy.gif)
+![Personal tags in Outlook 2010 and Outlook on the web](../../media/ITPro_MRM_ArchiveAndRetentionPolicy.gif)
 
 Users can apply personal tags to folders they create or to individual items. Messages that have a personal tag applied are always processed based on the personal tag's settings. Users can apply a personal tag to a message so that it's moved or deleted sooner or later than the settings specified in the DPT or RPTs applied to that user's mailbox. You can also create personal tags with retention disabled. This allows users to tag items so they're never moved to an archive or never expire.
 
 > [!NOTE]
 > Users can apply archive policies to default folders, user-created folders or subfolders, and individual items. Users can apply a retention policy to user-created folders or subfolders and individual items (including subfolders and items in a default folder), but not to default folders.
 
-Users can also use the Exchange admin center (EAC) to select additional personal tags that aren't linked to their retention policy. The selected tags then become available in Outlook 2010 and Outlook Web App. To enable users to select additional tags from the EAC, you must add the [MyRetentionPolicies Role](https://technet.microsoft.com/library/65f49d19-cfb5-4142-8359-8368d5c48085.aspx) to the user's role assignment policy. To learn more about role assignment policies for users, see [Understanding Management Role Assignment Policies](https://technet.microsoft.com/library/25913e43-326a-4371-90b5-021a35f100fe.aspx). If you allow users to select additional personal tags, all personal tags in your Exchange organization become available to them.
+Users can also use the Exchange admin center (EAC) to select additional personal tags that aren't linked to their retention policy. The selected tags then become available in Outlook 2010 and Outlook on the web. To enable users to select additional tags from the EAC, you must add the [MyRetentionPolicies Role](https://technet.microsoft.com/library/65f49d19-cfb5-4142-8359-8368d5c48085.aspx) to the user's role assignment policy. To learn more about role assignment policies for users, see [Understanding Management Role Assignment Policies](https://technet.microsoft.com/library/25913e43-326a-4371-90b5-021a35f100fe.aspx). If you allow users to select additional personal tags, all personal tags in your Exchange organization become available to them.
 
 > [!NOTE]
 > Personal tags are a premium feature. Mailboxes with policies that contain these tags (or as a result of users adding the tags to their mailbox) require an Exchange Enterprise client access license (CAL).
@@ -88,10 +89,10 @@ When creating or configuring a retention tag, you can select one of the followin
 
 |**Retention action**|**Action taken...**|**Except...**|
 |:-----|:-----|:-----|
-|**Move to Archive**<sup>1</sup>| Moves the message to the user's archive mailbox  <br/>  Only available for DPTs and personal tags  <br/>  For details about archiving, see:  <br/> [In-Place Archiving](https://technet.microsoft.com/library/b5e4c0e9-0558-4b90-bc12-f67adbfb59ac.aspx) <br/> [Archive Mailboxes in Exchange Online](https://technet.microsoft.com/library/ec4a9d78-f65e-4980-a16a-4c7328de7a71.aspx)| If the user doesn't have an archive mailbox, no action is taken.|
-|**Delete and Allow Recovery**| Emulates the behavior when the user empties the Deleted Items folder. <br/>  Items are moved to the [Recoverable Items Folder](https://technet.microsoft.com/library/efc48fb4-2ed8-4d05-93af-f3505fbc389d.aspx) in the mailbox and preserved until the deleted item retention period. <br/>  Provides the user a second chance to recover the item using the **Recover Deleted Items** dialog box in Outlook or Outlook Web App| If you've set the deleted item retention period to zero days, items are permanently deleted. For details, see [Change how long permanently deleted items are kept for an Exchange Online mailbox](../../recipients-in-exchange-online/manage-user-mailboxes/change-deleted-item-retention.md).|
-|**Permanently Delete**| Permanently deletes messages. <br/>  You can't recover messages after they're permanently deleted.| If mailbox is placed on [In-Place Hold and Litigation Hold](../../security-and-compliance/in-place-and-litigation-holds.md) or Litigation Hold, items are preserved in the Recoverable Items folder based on hold parameters. [In-Place eDiscovery](../../security-and-compliance/in-place-ediscovery/in-place-ediscovery.md) will still return these items in search results.|
-|**Mark as Past Retention Limit**| Marks a message as expired. In Outlook 2010 or later, and Outlook Web App, expired items are displayed with the notification stating 'This item has expired' and 'This item will expire in 0 days'. In Outlook 2007, items marked as expired are displayed by using strikethrough text.|N. A.|
+|**Move to Archive**<sup>1</sup>|Moves the message to the user's archive mailbox  <br/>  Only available for DPTs and personal tags  <br/>  For details about archiving, see:  <br/> [In-Place Archiving](https://technet.microsoft.com/library/b5e4c0e9-0558-4b90-bc12-f67adbfb59ac.aspx) <br/> [Archive Mailboxes in Exchange Online](https://go.microsoft.com/fwlink/p/?linkid=825607)|If the user doesn't have an archive mailbox, no action is taken.|
+|**Delete and Allow Recovery**|Emulates the behavior when the user empties the Deleted Items folder. <br/>  Items are moved to the [Recoverable Items Folder](https://technet.microsoft.com/library/efc48fb4-2ed8-4d05-93af-f3505fbc389d.aspx) in the mailbox and preserved until the deleted item retention period. <br/>  Provides the user a second chance to recover the item using the **Recover Deleted Items** dialog box in Outlook or Outlook on the web|If you've set the deleted item retention period to zero days, items are permanently deleted. For details, see [Change how long permanently deleted items are kept for an Exchange Online mailbox](../../recipients-in-exchange-online/manage-user-mailboxes/change-deleted-item-retention.md).|
+|**Permanently Delete**|Permanently deletes messages. <br/>  You can't recover messages after they're permanently deleted.|If mailbox is placed on [In-Place Hold and Litigation Hold](../../security-and-compliance/in-place-and-litigation-holds.md) or Litigation Hold, items are preserved in the Recoverable Items folder based on hold parameters. [In-Place eDiscovery](../../security-and-compliance/in-place-ediscovery/in-place-ediscovery.md) will still return these items in search results.|
+|**Mark as Past Retention Limit**|Marks a message as expired. In Outlook 2010 or later, and Outlook on the web, expired items are displayed with the notification stating 'This item has expired' and 'This item will expire in 0 days'. In Outlook 2007, items marked as expired are displayed by using strikethrough text.|N. A.|
 
 > [!NOTE]
 > <sup>1</sup> In an Exchange hybrid deployment, you can enable a cloud-based archive mailbox for an on-premises primary mailbox. If you assign an archive policy to an on-premises mailbox, items are moved to the cloud-based archive. If an item is moved to the archive mailbox, a copy of it isn't retained in the on-premises mailbox. If the on-premises mailbox is placed on hold, an archive policy will still move items to the cloud-based archive mailbox where they are preserved for the duration specified by the hold.
@@ -107,9 +108,9 @@ A retention policy can have the following retention tags:
 
 |**Retention tag type**|**Tags in a policy**|
 |:-----|:-----|
-|Default policy tag (DPT)| One DPT with the **Move to Archive** action  <br/>  One DPT with the **Delete and Allow Recovery** or **Permanently Delete** actions  <br/>  One DPT for voice mail messages with the **Delete and Allow Recovery** or **Permanently Delete** action|
-|Retention policy tags (RPTs)| One RPT for each supported default folder  <br/> > [!NOTE]>  You can't link more than one RPT for a particular default folder (such as **Deleted Items**) to the same retention policy.|
-|Personal tags| Any number of personal tags  <br/> > [!TIP]>  Many personal tags in a policy can confuse users. We recommend adding no more than 10 personal tags to a retention policy.|
+|Default policy tag (DPT)|One DPT with the **Move to Archive** action  <br/>  One DPT with the **Delete and Allow Recovery** or **Permanently Delete** actions  <br/>  One DPT for voice mail messages with the **Delete and Allow Recovery** or **Permanently Delete** action|
+|Retention policy tags (RPTs)|One RPT for each supported default folder  <br/> > **Note**: You can't link more than one RPT for a particular default folder (such as **Deleted Items**) to the same retention policy.|
+|Personal tags|Any number of personal tags  <br/> > **Tip**: **Many personal tags in a policy can confuse users. We recommend adding no more than 10 personal tags to a retention policy.|
 
 > [!NOTE]
 > Although a retention policy doesn't need to have any retention tags linked to it, we don't recommend using this scenario. If mailboxes with retention policies don't have retention tags linked to them, this may cause mailbox items to never expire.
@@ -181,6 +182,3 @@ During long absences from work, users may accrue a large amount of e-mail. Depen
 If your organization has never implemented MRM, and your users aren't familiar with its features, you can also use retention holds during the initial warm up and training phase of your MRM deployment. You can create and deploy retention policies and educate users about the policies without the risk of having items moved or deleted before users can tag them. A few days before the warm up and training period ends, you should remind users of the warm-up deadline. After the deadline, you can remove the retention hold from user mailboxes, allowing the Managed Folder Assistant to process mailbox items and take the specified retention action.
 
 For details about how to place a mailbox on retention hold, see [Place a mailbox on retention hold](mailbox-retention-hold.md).
-
-
-

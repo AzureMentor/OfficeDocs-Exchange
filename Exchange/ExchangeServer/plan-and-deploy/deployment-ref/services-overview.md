@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: Learn about the services that Exchange 2016 adds to a Windows server.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 2ed45d18-2ff3-4099-b841-050eb16a416b
 ms.date: 7/31/2018
+ms.reviewer: 
 title: Overview of Exchange services on Exchange servers
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -75,4 +76,3 @@ The following table describes the Exchange services that are installed on Edge T
 |Microsoft Exchange Service Host|MSExchangeServiceHost|Provides a service host for Exchange components that don't have their own services.|Automatic|Local System|Microsoft Exchange ADAM|Required|
 |Microsoft Exchange Transport|MSExchangeTransport|Provides SMTP server and transport stack.|Automatic|Network Service|Microsoft Exchange ADAM|Required|
 |Microsoft Exchange Transport Log Search|MSExchangeTransportLogSearch|Provides remote search capability for transport log files (for example, message tracking).|Automatic|Local System|Microsoft Exchange ADAM|Optional|
-

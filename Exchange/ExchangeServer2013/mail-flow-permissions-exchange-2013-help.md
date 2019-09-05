@@ -1,19 +1,20 @@
-﻿---
+---
 title: 'Mail flow permissions: Exchange 2013 Help'
 TOCTitle: Mail flow permissions
 ms:assetid: f49f4fb5-af75-43cb-900f-c5f7b8cfa143
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd638213(v=EXCHG.150)
 ms:contentKeyID: 48385715
 ms.date: 12/09/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Mail flow permissions
 
- 
-
 _**Applies to:** Exchange Server 2013_
-
 
 The permissions required to perform tasks related to mail flow vary depending on the procedure being performed or the cmdlet you want to run. For more information about transport features, see [Mail flow](mail-flow-exchange-2013-help.md).
 
@@ -21,31 +22,22 @@ This topic lists the permissions required to manage the mail flow features in Mi
 
 To find out what permissions you need to perform the procedure or run the cmdlet, do the following:
 
-1.  In the table below, find the feature that is most related to the procedure you want to perform or the cmdlet you want to run.
+1. In the table below, find the feature that is most related to the procedure you want to perform or the cmdlet you want to run.
 
-2.  Next, look at the permissions required for the feature. You must be assigned one of those role groups, an equivalent custom role group, or an equivalent management role. You can also click on a role group to see its management roles. If a feature lists more than one role group, you only need to be assigned one of the role groups to use the feature. For more information about role groups and management roles, see [Understanding Role Based Access Control](understanding-role-based-access-control-exchange-2013-help.md).
+2. Next, look at the permissions required for the feature. You must be assigned one of those role groups, an equivalent custom role group, or an equivalent management role. You can also click on a role group to see its management roles. If a feature lists more than one role group, you only need to be assigned one of the role groups to use the feature. For more information about role groups and management roles, see [Understanding Role Based Access Control](understanding-role-based-access-control-exchange-2013-help.md).
 
-3.  Now, run the **Get-ManagementRoleAssignment** cmdlet to look at the role groups or management roles assigned to you to see if you have the permissions that are necessary to manage the feature.
-    
+3. Now, run the **Get-ManagementRoleAssignment** cmdlet to look at the role groups or management roles assigned to you to see if you have the permissions that are necessary to manage the feature.
 
     > [!NOTE]
     > You must be assigned the Role Management management role to run the <STRONG>Get-ManagementRoleAssignment</STRONG> cmdlet. If you don't have permissions to run the <STRONG>Get-ManagementRoleAssignment</STRONG> cmdlet, ask your Exchange administrator to retrieve the role groups or management roles assigned to you.
 
-
-
 If you want to delegate the ability to manage a feature to another user, see [Delegate role assignments](delegate-role-assignments-exchange-2013-help.md).
-
 
 > [!NOTE]
 > Some features that you want to manage might exist on Edge Transport servers. To manage features on Edge Transport servers, you need to become a member of the Local Administrators group on the Edge Transport server you want to manage. Edge Transport servers don't use Role Based Access Control (RBAC). Features that can be managed on Edge Transport servers have Edge Transport Local Administrator in the "Permissions required" column in the table below.
 
-
-
-
 > [!NOTE]
 > Some features may require that you have local administrator permissions on the server you want to manage. To manage these features, you must be a member of the Local Administrators group on that server.
-
-
 
 ## Mail flow permissions
 
@@ -54,7 +46,6 @@ You can use the features in the following tables to configure mail flow settings
 Users who are assigned the View Only Management role group can view the configuration of the features shown in the following table. For more information, see [View-only Organization Management](view-only-organization-management-exchange-2013-help.md).
 
 **Mailbox servers and Client Access servers**
-
 
 <table>
 <colgroup>
@@ -224,9 +215,7 @@ Users who are assigned the View Only Management role group can view the configur
 </tbody>
 </table>
 
-
 **Edge Transport servers**
-
 
 <table>
 <colgroup>
@@ -282,4 +271,3 @@ Users who are assigned the View Only Management role group can view the configur
 </tr>
 </tbody>
 </table>
-

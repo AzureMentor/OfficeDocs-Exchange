@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: In Unified Messaging (UM), callers can use dual tone multi-frequency (DTMF), also referred to as touchtone, and voice inputs to interact with the system. The methods that callers can use depend on how the UM dial plans and auto attendants are configured.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 2c7c9d8a-ed12-4dcf-a5b7-3cea0e785e49
 ms.date: 6/24/2018
-title: DTMF interface
+ms.reviewer: 
+title: DTMF interface in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# DTMF interface
+# DTMF interface in Exchange Online
 
 In Unified Messaging (UM), callers can use dual tone multi-frequency (DTMF), also referred to as touchtone, and voice inputs to interact with the system. The methods that callers can use depend on how the UM dial plans and auto attendants are configured.
 
@@ -114,6 +115,3 @@ Sometimes a user's first name, last name, or email alias changes after the user 
 <a name="fmi"> </a>
 
 [Adsiedit Overview](https://go.microsoft.com/fwlink/p/?linkId=73175)
-
-
-

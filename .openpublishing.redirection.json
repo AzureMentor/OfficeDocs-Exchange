@@ -90,6 +90,16 @@
         "source_path": "Exchange/ExchangeServer2013/managing-devices-for-outlook-for-ios-and-android-for-exchange-server-exchange-2013-help.md",
         "redirect_url": "https://docs.microsoft.com/exchange/clients/outlook-for-ios-and-android/manage-devices?view=exchserver-2019",
         "redirect_document_id": false
+      },
+      {
+        "source_path": "exchange/outlook/common/office/enterprise-includes/o365endpoints/office-365-worldwide-endpoints.md",
+        "redirect_url": "https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "Exchange/ExchangeOnline/exchange-online-and-exchange-online-protection-service-upgrade.md",
+        "redirect_url": "https://docs.microsoft.com/office365/securitycompliance/eop/exchange-online-protection-overview",
+        "redirect_document_id": false
       }
     ]
 }

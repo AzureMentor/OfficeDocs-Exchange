@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: 'Summary: Learn how to customize the color and images of the sign-in, language selection, and error pages for Outlook on the web in Exchange Server 2016 or Exchange Server 2019.'
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: d8d9f735-7181-428f-9049-b9886dce5159
 ms.date: 7/6/2018
+ms.reviewer: 
 title: Customize the Outlook on the web sign-in, language selection, and error pages in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
-manager: scotv
+manager: serdars
 
 ---
 
@@ -45,13 +46,13 @@ For more information about Outlook on the web, see [Outlook on the web in Exchan
 
 1. Use Notepad to open the file `%ExchangeInstallPath%FrontEnd\HttpProxy\owa\auth\<ExchangeVersion>\themes\resources\logon.css`.
 
-    **Note**: The _\<ExchangeVersion\>_ subfolder uses the syntax 15.1. _nnn_. _nn_, and changes every time you install an Exchange Cumulative Update (CU).
+   **Note**: The _\<ExchangeVersion\>_ subfolder uses the syntax 15.1. _nnn_. _nn_, and changes every time you install an Exchange Cumulative Update (CU).
 
 2. In the `logon.css` file, replace the default blue color value #0072c6 with the HTML RGB value that you want to use.
 
 3. When you're finished, save and close the file.
 
-    ![Outlook on the Web sign-in page with element call-outs](../../media/04da354c-d1fd-43fb-9fd3-6114cdb64314.png)
+   ![Outlook on the Web sign-in page with element call-outs](../../media/04da354c-d1fd-43fb-9fd3-6114cdb64314.png)
 
 ## Customize the color of the Outlook on the web error page
 
@@ -61,21 +62,21 @@ For more information about Outlook on the web, see [Outlook on the web in Exchan
 
 3. When you're finished, save and close the file.
 
-    ![Outlook on the web error page with element call-outs](../../media/fcf95834-6c41-42f4-915d-a6593bccd9f6.png)
+   ![Outlook on the web error page with element call-outs](../../media/fcf95834-6c41-42f4-915d-a6593bccd9f6.png)
 
 ## Customize the color of the Outlook on the web language selection page
 
 1. Use Notepad to open the file `%ExchangeInstallPath%ClientAccess\Owa\Current2\version\resources\styles\languageselection.css`. An easy way to do this is to press the Windows key + R, and run the following command:
 
-  ```
-  Notepad.exe %ExchangeInstallPath%ClientAccess\Owa\Current2\version\resources\styles\languageselection.css
-  ```
+   ```
+   Notepad.exe %ExchangeInstallPath%ClientAccess\Owa\Current2\version\resources\styles\languageselection.css
+   ```
 
 2. In the `languageselection.css` file, replace the default blue color value #0072c6 with the HTML RGB value that you want to use.
 
 3. When you're finished, save and close the file.
 
-    ![Outlook on the web language selection page with element call-outs](../../media/6876eb09-a53b-441c-ad76-01bfb9676c53.png)
+   ![Outlook on the web language selection page with element call-outs](../../media/6876eb09-a53b-441c-ad76-01bfb9676c53.png)
 
 ## Customize the images on the Outlook on the web sign-in, language selection, and error pages
 
@@ -83,12 +84,12 @@ You can edit the existing image files, or replace the files with new files that 
 
 |**Image**|**File name**|**Location**|**Dimensions (width x height in pixels)**|**Bit depth**|
 |:-----|:-----|:-----|:-----|:-----|
-|1  <br/> |favicon.ico  <br/> | `%ExchangeInstallPath%FrontEnd\HttpProxy\owa\auth\<ExchangeVersion>\themes\resources` <br/> |16 x 16  <br/> |32  <br/> |
-|2  <br/> |olk_logo_white.png  <br/> | `%ExchangeInstallPath%FrontEnd\HttpProxy\owa\auth\<ExchangeVersion>\themes\resources` <br/> |128 x 108  <br/> |32  <br/> |
-|3  <br/> |owa_text_blue.png  <br/> | `%ExchangeInstallPath%FrontEnd\HttpProxy\owa\auth\<ExchangeVersion>\themes\resources` <br/> |300 x 76  <br/> |32  <br/> |
-|4  <br/> |Sign_in_arrow.png (for left-to-right languages)  <br/> Sign_in_arrow_rtl.png (for right-to-left languages)  <br/> | `%ExchangeInstallPath%FrontEnd\HttpProxy\owa\auth\<ExchangeVersion>\themes\resources` <br/> |22 x 22  <br/> |32  <br/> |
-|5  <br/> |olk_logo_white_cropped.png  <br/> | `%ExchangeInstallPath%FrontEnd\HttpProxy\owa\auth\<ExchangeVersion>\themes\resources` <br/> |265 x 310  <br/> |32  <br/> |
-|6  <br/> |office_logo_white_small.png  <br/> | `%ExchangeInstallPath%ClientAccess\Owa\prem\<ExchangeVersion>\resources\images\0` (for left-to-right languages)  <br/> `%ExchangeInstallPath%ClientAccess\Owa\prem\<ExchangeVersion>\resources\images\rtl` (for right-to-left languages)  <br/> |81 x 26  <br/> |8  <br/> |
+|1|favicon.ico|`%ExchangeInstallPath%FrontEnd\HttpProxy\owa\auth\<ExchangeVersion>\themes\resources`|16 x 16|32|
+|2|olk_logo_white.png|`%ExchangeInstallPath%FrontEnd\HttpProxy\owa\auth\<ExchangeVersion>\themes\resources`|128 x 108|32|
+|3|owa_text_blue.png|`%ExchangeInstallPath%FrontEnd\HttpProxy\owa\auth\<ExchangeVersion>\themes\resources`|300 x 76|32|
+|4|Sign_in_arrow.png (for left-to-right languages) <br/><br/> Sign_in_arrow_rtl.png (for right-to-left languages)|`%ExchangeInstallPath%FrontEnd\HttpProxy\owa\auth\<ExchangeVersion>\themes\resources`|22 x 22|32|
+|5|olk_logo_white_cropped.png|`%ExchangeInstallPath%FrontEnd\HttpProxy\owa\auth\<ExchangeVersion>\themes\resources`|265 x 310|32|
+|6|office_logo_white_small.png|`%ExchangeInstallPath%ClientAccess\Owa\prem\<ExchangeVersion>\resources\images\0` (for left-to-right languages) <br/><br/> `%ExchangeInstallPath%ClientAccess\Owa\prem\<ExchangeVersion>\resources\images\rtl`(for right-to-left languages)|81 x 26|8|
 
 ## How do you know this worked?
 
@@ -98,7 +99,4 @@ To verify that you've successfully customized the Outlook on the web sign-in, la
 
 2. If you don't see your changes, clear your browsing history (delete temporary Internet files), and refresh the browser window.
 
- **Note**: To see the effects of your changes, you can keep the .css file open and refresh the browser window after you save each change.
-
-
-
+   **Note**: To see the effects of your changes, you can keep the .css file open and refresh the browser window after you save each change.

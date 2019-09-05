@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: ceb99e6f-6dca-446d-abfb-3e6fc6a72704
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Managed availability
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -206,18 +207,15 @@ There are 12 cmdlets used for managed availability, which are described in the f
 
 |**Cmdlet**|**Description**|
 |:-----|:-----|
-|[Get-ServerHealth](http://technet.microsoft.com/library/ca9cff3a-ecda-422d-abd7-b7d8da71a6c7.aspx) <br/> |Used to get raw server health information, such as health sets and their current state (healthy or unhealthy), health set monitors, server components, target resources for probes, and timestamps related to probe or monitor start or stop times, and state transition times.  <br/> |
-|[Get-HealthReport](http://technet.microsoft.com/library/f33fbed5-0e01-4d7e-a252-121b2afb6864.aspx) <br/> |Used to get a summary health view that includes health sets and their current state.  <br/> |
-|[Get-MonitoringItemIdentity](http://technet.microsoft.com/library/7a4da080-0fe6-4dd7-85a2-cceeb68f95e0.aspx) <br/> |Used to view the probes, monitors, and responders associated with a specific health set.  <br/> |
-|[Get-MonitoringItemHelp](http://technet.microsoft.com/library/4e0bfa98-4c3d-46a5-bb18-8f64a2108c0a.aspx) <br/> |Used to view descriptions about some of the properties of probes, monitors, and responders.  <br/> |
-|[Add-ServerMonitoringOverride](http://technet.microsoft.com/library/350eb7e0-3181-4de9-9934-6c8467b920c3.aspx) <br/> |Used to create a local, server-specific override of a probe, monitor, or responder.  <br/> |
-|[Get-ServerMonitoringOverride](http://technet.microsoft.com/library/77f630fb-6711-459c-b073-843615863322.aspx) <br/> |Used to view a list of local overrides on the specified server.  <br/> |
-|[Remove-ServerMonitoringOverride](http://technet.microsoft.com/library/dff63523-52a1-43c9-8ae2-beb93411b7e5.aspx) <br/> |Used to remove a local override from a specific server.  <br/> |
-|[Add-GlobalMonitoringOverride](http://technet.microsoft.com/library/9d5ec0ec-a7bc-4bea-a62e-6252407ed7e8.aspx) <br/> |Used to create a global override for a group of servers.  <br/> |
-|[Get-GlobalMonitoringOverride](http://technet.microsoft.com/library/34e6e29d-e10b-4ed0-8393-d9f89c78fd9c.aspx) <br/> |Used to view a list of global overrides configured in the organization.  <br/> |
-|[Remove-GlobalMonitoringOverride](http://technet.microsoft.com/library/8f8f902a-a279-484f-a25a-1986706c9dc2.aspx) <br/> |Used to remove a global override.  <br/> |
-|[Set-ServerComponentState](http://technet.microsoft.com/library/bf0a92ce-9bcf-476e-b92b-8279c141f361.aspx) <br/> |Used to configure the state of one or more server components.  <br/> |
-|[Get-ServerComponentState](http://technet.microsoft.com/library/da7214fe-c641-4c6a-a479-df95a4136929.aspx) <br/> |Used to view the state of one or more server components.  <br/> |
-
-
-
+|[Get-ServerHealth](http://technet.microsoft.com/library/ca9cff3a-ecda-422d-abd7-b7d8da71a6c7.aspx)|Used to get raw server health information, such as health sets and their current state (healthy or unhealthy), health set monitors, server components, target resources for probes, and timestamps related to probe or monitor start or stop times, and state transition times.|
+|[Get-HealthReport](http://technet.microsoft.com/library/f33fbed5-0e01-4d7e-a252-121b2afb6864.aspx)|Used to get a summary health view that includes health sets and their current state.|
+|[Get-MonitoringItemIdentity](http://technet.microsoft.com/library/7a4da080-0fe6-4dd7-85a2-cceeb68f95e0.aspx)|Used to view the probes, monitors, and responders associated with a specific health set.|
+|[Get-MonitoringItemHelp](http://technet.microsoft.com/library/4e0bfa98-4c3d-46a5-bb18-8f64a2108c0a.aspx)|Used to view descriptions about some of the properties of probes, monitors, and responders.|
+|[Add-ServerMonitoringOverride](http://technet.microsoft.com/library/350eb7e0-3181-4de9-9934-6c8467b920c3.aspx)|Used to create a local, server-specific override of a probe, monitor, or responder.|
+|[Get-ServerMonitoringOverride](http://technet.microsoft.com/library/77f630fb-6711-459c-b073-843615863322.aspx)|Used to view a list of local overrides on the specified server.|
+|[Remove-ServerMonitoringOverride](http://technet.microsoft.com/library/dff63523-52a1-43c9-8ae2-beb93411b7e5.aspx)|Used to remove a local override from a specific server.|
+|[Add-GlobalMonitoringOverride](http://technet.microsoft.com/library/9d5ec0ec-a7bc-4bea-a62e-6252407ed7e8.aspx)|Used to create a global override for a group of servers.|
+|[Get-GlobalMonitoringOverride](http://technet.microsoft.com/library/34e6e29d-e10b-4ed0-8393-d9f89c78fd9c.aspx)|Used to view a list of global overrides configured in the organization.|
+|[Remove-GlobalMonitoringOverride](http://technet.microsoft.com/library/8f8f902a-a279-484f-a25a-1986706c9dc2.aspx)|Used to remove a global override.|
+|[Set-ServerComponentState](http://technet.microsoft.com/library/bf0a92ce-9bcf-476e-b92b-8279c141f361.aspx)|Used to configure the state of one or more server components.|
+|[Get-ServerComponentState](http://technet.microsoft.com/library/da7214fe-c641-4c6a-a479-df95a4136929.aspx)|Used to view the state of one or more server components.|

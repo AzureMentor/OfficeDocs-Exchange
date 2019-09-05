@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to create an In-Place eDiscovery search in Exchange Server 2016 and Exchange Server 2019.'
 ms.topic: article
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: feedc0c9-4a44-4bb2-8520-cc29d66d4fc3
 ms.date: 6/12/2018
+ms.reviewer: 
 title: Create an In-Place eDiscovery search in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -46,39 +47,39 @@ As previously explained, to create eDiscovery searches, you have to sign in to a
 
 3. On the **Mailboxes and Public folders** page, select the content sources to search:
 
-  - To include all mailboxes in the search, click **Search all mailboxes**. If you select this option, you won't be able to enable an In-Place Hold for the search.
+   - To include all mailboxes in the search, click **Search all mailboxes**. If you select this option, you won't be able to enable an In-Place Hold for the search.
 
-  - To exclude mailboxes from the search (and search only public folders), click **Don't search any mailboxes**.
+   - To exclude mailboxes from the search (and search only public folders), click **Don't search any mailboxes**.
 
-  - To include specific mailboxes in the search, click **Specify mailboxes to search**, and then add that mailboxes that you want to search.
+   - To include specific mailboxes in the search, click **Specify mailboxes to search**, and then add that mailboxes that you want to search.
 
-  - To include public folders in the search (or to place public folders on hold), click **Search all public folders**. For more information about searching public folders, see [Search and place a hold on public folders using In-Place eDiscovery](search-public-folders.md).
+   - To include public folders in the search (or to place public folders on hold), click **Search all public folders**. For more information about searching public folders, see [Search and place a hold on public folders using In-Place eDiscovery](search-public-folders.md).
 
-![Use In-Place eDiscovery to search and place a hold on public folders](../../media/TA_MRM_SearchPublicFolders.gif)
+   ![Use In-Place eDiscovery to search and place a hold on public folders](../../media/TA_MRM_SearchPublicFolders.gif)
 
 4. On the **Search query** page, complete the following fields:
 
-  - **Include all content**: Select this option to include all content in the search results. If you select this option, you can't specify additional search criteria.
+   - **Include all content**: Select this option to include all content in the search results. If you select this option, you can't specify additional search criteria.
 
-  - **Filter based on criteria**: Select this option to specify search criteria, including keywords, start and end dates, sender and recipient addresses, and message types. For more information about search queries, see [Message properties and search operators for In-Place eDiscovery in Exchange Server](message-properties-and-search-operators.md).
-    ![Configure an eDiscovery search query](../../media/TA_MRM_SearchQuery.png)
+   - **Filter based on criteria**: Select this option to specify search criteria, including keywords, start and end dates, sender and recipient addresses, and message types. For more information about search queries, see [Message properties and search operators for In-Place eDiscovery in Exchange Server](message-properties-and-search-operators.md).
 
-    > [!NOTE]
-    > The **From:** and **To/Cc/Bcc:** fields are connected by an **OR** operator in the search query that's created when you run the search. That means any message sent or received by any of the specified users (and matches the other search criteria) is included in the search results. The dates are connected by an **AND** operator.
+     ![Configure an eDiscovery search query](../../media/TA_MRM_SearchQuery.png)
+
+     > [!NOTE]
+     > The **From:** and **To/Cc/Bcc:** fields are connected by an **OR** operator in the search query that's created when you run the search. That means any message sent or received by any of the specified users (and matches the other search criteria) is included in the search results. The dates are connected by an **AND** operator.
 
 5. On the **In-Place Hold settings** page, you can select the **Place content matching the search query in selected sources on hold** check box, and then select one of the following options to place items on In-Place Hold:
 
-  - **Hold indefinitely**: Select this option to place the returned items on an indefinite hold. Items on hold will be preserved until you remove the content source from the search or if you delete the search.
+   - **Hold indefinitely**: Select this option to place the returned items on an indefinite hold. Items on hold will be preserved until you remove the content source from the search or if you delete the search.
 
-  - **Specify number of days to hold items relative to their received date** Use this option to hold items for a specific period. For example, you can use this option if your organization requires that all messages be retained for at least seven years. You can use a *time-based* In-Place Hold along with a retention policy to make sure items are deleted in seven years.
+   - **Specify number of days to hold items relative to their received date** Use this option to hold items for a specific period. For example, you can use this option if your organization requires that all messages be retained for at least seven years. You can use a *time-based* In-Place Hold along with a retention policy to make sure items are deleted in seven years.
 
-    > [!IMPORTANT]
-    > When placing content sources or specific items on In-Place Hold for legal purposes, it's generally recommended to hold items indefinitely and remove the hold when the case or investigation is completed.
+     > [!IMPORTANT]
+     > When placing content sources or specific items on In-Place Hold for legal purposes, it's generally recommended to hold items indefinitely and remove the hold when the case or investigation is completed.
 
 6. Click **Finish** to save the search and return an estimate of the total size and number of items that will be returned by the search based on the criteria you specified. Estimates are displayed in the details pane. Click **Refresh** ![Refresh icon](../../media/ITPro_EAC_RefreshIcon.png) to update the information displayed in the details pane.
 
 ## Use the Exchange Management Shell to create a search
-<a name="newmailboxsearch"> </a>
 
 Here are four examples of using the Exchange Management Shell to search and place a hold on content in mailboxes and public folders. For detailed syntax and parameter information about using the Exchange Management Shell to create eDiscovery searches, see [New-MailboxSearch](http://technet.microsoft.com/library/74303b47-bb49-407c-a43b-590356eae35c.aspx)
 
@@ -119,7 +120,7 @@ After using the Exchange Management Shell to create an In-Place eDiscovery searc
 This example creates an In-Place eDiscovery search named HRCase090116 that searches for email messages sent by Alex Darrow to Sara Davis in 2015.
 
 ```
-New-MailboxSearch "HRCase090116" -StartDate "01/01/2015" -EndDate "12/31/2015" -SourceMailboxes  alexd,sarad -SearchQuery 'From:alexd@contoso.com AND To:sarad@contoso.com' -MessageTypes Email -TargetMailbox "Discovery Search Mailbox" -IncludeUnsearchableItems -LogLevel Full
+New-MailboxSearch "HRCase090116" -StartDate "01/01/2015" -EndDate "12/31/2015" -SourceMailboxes alexd,sarad -SearchQuery 'From:alexd@contoso.com AND To:sarad@contoso.com' -MessageTypes Email -TargetMailbox "Discovery Search Mailbox" -IncludeUnsearchableItems -LogLevel Full
 ```
 
 ```
@@ -151,7 +152,6 @@ Start-MailboxSearch "Contoso Litigation"
 ```
 
 ## Use the EAC to estimate or preview search results
-<a name="estimate"> </a>
 
 After you create an eDiscovery search, you can use the EAC to get an estimate and preview of the search results. If you created a new search using the **New-MailboxSearch** cmdlet, you can use the Exchange Management Shell to start the search to get an estimate of the search results.
 
@@ -159,19 +159,18 @@ After you create an eDiscovery search, you can use the EAC to get an estimate an
 
 2. In the list view, select the search, and then do one of the following:
 
-  - Click **Search** ![Search icon](../../media/ITPro_EAC_.png) \> **Estimate search results** to return an estimate of the total size and number of items that will be returned by the search based on the criteria you specified. Selecting this option restarts the search and performs an estimate.
+   - Click **Search** ![Search icon](../../media/ITPro_EAC_.png) \> **Estimate search results** to return an estimate of the total size and number of items that will be returned by the search based on the criteria you specified. Selecting this option restarts the search and performs an estimate.
 
-    Search estimates are displayed in the details pane. Click **Refresh** ![Refresh icon](../../media/ITPro_EAC_RefreshIcon.png) to update the information displayed in the details pane.
+     Search estimates are displayed in the details pane. Click **Refresh** ![Refresh icon](../../media/ITPro_EAC_RefreshIcon.png) to update the information displayed in the details pane.
 
-  - Click **Preview search results** in the details pane to preview the results after the search estimate is completed. Selecting this option opens the **eDiscovery search preview** window. All messages returned from the mailboxes or public folders that were searched are displayed.
+   - Click **Preview search results** in the details pane to preview the results after the search estimate is completed. Selecting this option opens the **eDiscovery search preview** window. All messages returned from the mailboxes or public folders that were searched are displayed.
 
-    > [!NOTE]
-    > The mailboxes or public folders that were searched are listed in the right pane in the **eDiscovery search preview** window. For each source, the number of items returned and the total size of these items is also displayed. All items returned by the search are listed in the right pane, and can be sorted by newest or oldest date. Items from each mailbox or public folder can't be displayed in the right pane by clicking a source in the left pane. To view the items returned from a specific mailbox or public folder, you can copy the search results and view the items in the discovery mailbox.
+     > [!NOTE]
+     > The mailboxes or public folders that were searched are listed in the right pane in the **eDiscovery search preview** window. For each source, the number of items returned and the total size of these items is also displayed. All items returned by the search are listed in the right pane, and can be sorted by newest or oldest date. Items from each mailbox or public folder can't be displayed in the right pane by clicking a source in the left pane. To view the items returned from a specific mailbox or public folder, you can copy the search results and view the items in the discovery mailbox.
 
-![Estimate or Preview Search Results](../../media/TA_Discovery_EstimatePreviewUI.gif)
+   ![Estimate or Preview Search Results](../../media/TA_Discovery_EstimatePreviewUI.gif)
 
 ## Use the Exchange Management Shell to estimate search results
-<a name="estimate"> </a>
 
 You can use the _EstimateOnly_ switch to get an estimate of the search results and not copy the results to a discovery mailbox. You have to start an estimate-only search with the **Start-MailboxSearch** cmdlet. Then you can retrieve the estimated search results by using the **Get-MailboxSearch** cmdlet. You can't use the Exchange Management Shell to preview messages returned in search results.
 
@@ -197,7 +196,6 @@ Get-MailboxSearch "FY15 Q2 Financial Results" | Format-List Name,Status,LastRunB
 ```
 
 ## More information
-<a name="estimate"> </a>
 
 - After you create a new eDiscovery search, you can copy search results to the discovery mailbox and export those search results to a PST file. For more information, see:
 
@@ -224,6 +222,3 @@ Get-MailboxSearch "FY15 Q2 Financial Results" | Format-List Name,Status,LastRunB
   - `Errors`
 
     The reason is that it requires a lot of resources to return these properties for all eDiscovery searches in your organization.
-
-
-

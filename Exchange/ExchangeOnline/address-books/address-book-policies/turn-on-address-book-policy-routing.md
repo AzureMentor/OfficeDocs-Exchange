@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Admins can learn how to turn on address book policy routing in Exchange Online to enable virtual organizations within an organization.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 5627b8ac-0551-4558-b3b6-25c402698426
 ms.date: 
+ms.reviewer: 
 title: Turn on address book policy routing in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -55,4 +56,3 @@ To verify that you've successfully turned on ABP routing, use any of the followi
    ```
 
 - Have a user that's assigned an ABP send an email message to an user that's assigned a different ABP, and verify that the sender's email address doesn't resolve to their display name.
-

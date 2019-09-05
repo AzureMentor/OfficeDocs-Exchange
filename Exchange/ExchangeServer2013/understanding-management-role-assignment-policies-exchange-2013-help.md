@@ -1,53 +1,41 @@
-﻿---
+---
 title: 'Understanding management role assignment policies: Exchange 2013 Help'
 TOCTitle: Understanding management role assignment policies
 ms:assetid: 25913e43-326a-4371-90b5-021a35f100fe
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dd638100(v=EXCHG.150)
 ms:contentKeyID: 49289200
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Understanding management role assignment policies
 
- 
-
-_**Applies to:** Exchange Online, Exchange Server 2013_
-
+_**Applies to:** Exchange Server 2013_
 
 A *management role assignment policy* is a collection of one or more end-user management roles that enables end users to manage their own Microsoft Exchange Server 2013 mailbox and distribution group configuration. Role assignment policies, which are part of the Role Based Access Control (RBAC) permissions model in Exchange 2013, enable you to control what specific mailbox and distribution group configuration settings your end users can modify. Different groups of users can have role assignment policies specialized to them.
-
 
 > [!NOTE]
 > This topic focuses on advanced RBAC functionality. If you want to manage basic Exchange 2013 permissions, such as using the Exchange admin center (EAC) to add and remove members to and from role groups, create and modify role groups, or create and modify role assignment policies, see <A href="permissions-exchange-2013-help.md">Permissions</A>.
 
-
-
 For more information about RBAC, see [Understanding Role Based Access Control](understanding-role-based-access-control-exchange-2013-help.md).
-
-**Contents**
-
-Role assignment policy layers
-
-Default and explicit role assignment policies
-
-Using role assignment policies
-
-Role assignment policy management
 
 ## Role assignment policy layers
 
 The following list describes the layers that make up the role assignment policy model:
 
-  - **Mailbox**   Mailboxes are assigned a single role assignment policy. When a mailbox is assigned a role assignment policy, the assignments between management roles and a role assignment policy are applied to the mailbox. This grants the mailbox all of the permissions provided by the management roles.
+- **Mailbox**: Mailboxes are assigned a single role assignment policy. When a mailbox is assigned a role assignment policy, the assignments between management roles and a role assignment policy are applied to the mailbox. This grants the mailbox all of the permissions provided by the management roles.
 
-  - **Management role assignment policy**   The *management role assignment policy* is a special object in Exchange 2013. Users are associated with a role assignment policy when their mailboxes are created, or if you change the role assignment policy on a mailbox. This is also what you assign end-user management roles to. The combination of all the roles on a role assignment policy defines everything that the user can manage on his or her mailbox or distribution groups.
+- **Management role assignment policy**: The *management role assignment policy* is a special object in Exchange 2013. Users are associated with a role assignment policy when their mailboxes are created, or if you change the role assignment policy on a mailbox. This is also what you assign end-user management roles to. The combination of all the roles on a role assignment policy defines everything that the user can manage on his or her mailbox or distribution groups.
 
-  - **Management role assignment**   A *management role assignment* is the link between a management role and a role assignment policy. Assigning a management role to a role assignment policy grants the ability to use the cmdlets and parameters defined in the management role. When you create a role assignment between a role assignment policy and a management role, you can't specify any scope. The scope applied by the assignment is based on the management role and is either `Self` or `MyGAL`. For more information, see [Understanding management role assignments](understanding-management-role-assignments-exchange-2013-help.md).
+- **Management role assignment**: A *management role assignment* is the link between a management role and a role assignment policy. Assigning a management role to a role assignment policy grants the ability to use the cmdlets and parameters defined in the management role. When you create a role assignment between a role assignment policy and a management role, you can't specify any scope. The scope applied by the assignment is based on the management role and is either `Self` or `MyGAL`. For more information, see [Understanding management role assignments](understanding-management-role-assignments-exchange-2013-help.md).
 
-  - **Management role**   A *management role* is a container for a grouping of management role entries. Roles are used to define the specific tasks that a user can do with his or her mailbox or distribution groups. A *management role entry* is a cmdlet, script, or special permission that enables each specific task in a management role to be performed. You can only use end-user management roles with role assignment policies. For more information, see [Understanding management roles](understanding-management-roles-exchange-2013-help.md).
+- **Management role**: A *management role* is a container for a grouping of management role entries. Roles are used to define the specific tasks that a user can do with his or her mailbox or distribution groups. A *management role entry* is a cmdlet, script, or special permission that enables each specific task in a management role to be performed. You can only use end-user management roles with role assignment policies. For more information, see [Understanding management roles](understanding-management-roles-exchange-2013-help.md).
 
-  - **Management role entry**   Management role entries are the individual entries on a management role that determine what cmdlets and parameters are available to the management role and the role group. Each role entry consists of a single cmdlet and the parameters that can be accessed by the management role.
+- **Management role entry**: Management role entries are the individual entries on a management role that determine what cmdlets and parameters are available to the management role and the role group. Each role entry consists of a single cmdlet and the parameters that can be accessed by the management role.
 
 The following figure shows each of the role assignment policy layers in the preceding list and how each of the layers relates to the other.
 
@@ -127,9 +115,7 @@ The following table lists the role assignment policy layer and the procedural to
 > [!NOTE]
 > Changing the management role entries in management roles in a role assignment policy is an advanced task and is generally not required in most cases. You may, instead, be able to use a preexisting management role that suits your requirements. For more information, see <A href="built-in-role-groups-exchange-2013-help.md">Built-in role groups</A>.
 
-
 </td>
 </tr>
 </tbody>
 </table>
-

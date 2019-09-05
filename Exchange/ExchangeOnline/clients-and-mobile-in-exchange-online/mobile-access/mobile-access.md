@@ -6,13 +6,14 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: a7b29cdb-457f-4877-bad2-6343dd15413e
 ms.date: 11/17/2014
+ms.reviewer: 
 title: Mobile access in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 
@@ -63,6 +64,3 @@ POP3 was designed to support offline mail processing. With POP3, email messages 
 ## IMAP4
 
 IMAP4 offers offline and online access but, like POP3, IMAP4 doesn't offer advanced collaboration features such as calendaring, contacts, and tasks.
-
-
-

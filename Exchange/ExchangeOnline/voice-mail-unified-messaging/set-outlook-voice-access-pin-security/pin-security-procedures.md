@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: Set Outlook Voice Access PIN policies
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 58e4b02e-dc99-46b8-a65d-d441bbfee8a9
 ms.date: 6/24/2018
-title: PIN security procedures
+ms.reviewer: 
+title: PIN security procedures in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# PIN security procedures
+# PIN security procedures in Exchange Online
 
 [Set Outlook Voice Access PIN policies](set-pin-policies.md)
 
@@ -37,6 +38,3 @@ manager: scotv
 [Set the number of sign-in failures before a voice mail PIN is reset](set-number-of-sign-in-failures-before-pin-reset.md)
 
 [Set the number of sign-in failures before a voice mail user Is locked out](set-number-of-sign-in-failures-before-lock-out.md)
-
-
-

@@ -2,9 +2,13 @@
 title: 'Keyboard shortcuts in the Exchange admin center in Exchange 2013'
 TOCTitle: Keyboard shortcuts in the Exchange admin center
 ms:assetid: 146b2b52-1ef8-4606-991a-4cf4da694970
-ms:mtpsurl: 
-ms:contentKeyID: 
-ms.date: 
+ms:mtpsurl:
+ms:contentKeyID:
+ms.date:
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 

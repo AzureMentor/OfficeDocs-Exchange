@@ -1,14 +1,16 @@
 ---
 description: 'Summary: Learn the tasks that administrators need to know to manage offline address books in Exchange Server 2016 and Exchange Server 2019.'
 localization_priority: Normal
-ms.author: chrisda
+ms.author: dmaguire
 ms.topic: article
-author: chrisda
+author: msdmaguire
 ms.prod: exchange-server-it-pro
 ms.assetid: b7f26eca-b93b-4834-ba50-11febdefbb18
 ms.collection: exchange-server
 ms.date: 7/6/2018
-ms.audience: ITPro
+ms.reviewer: 
+manager: serdars
+audience: ITPro
 title: Procedures for offline address books in Exchange Server
 
 ---
@@ -19,33 +21,33 @@ An offline address book (OAB) in Exchange Server allows Outlook users in cached 
 
 Here's a list of OAB procedures that are covered in this topic:
 
-- [Use the Exchange Management Shell to view offline address books](oab-procedures.md#ViewOAB)
+- [Use the Exchange Management Shell to view offline address books](#use-the-exchange-management-shell-to-view-offline-address-books)
 
-- [Use the Exchange Management Shell to create offline address books](oab-procedures.md#CreateOAB)
+- [Use the Exchange Management Shell to create offline address books](#use-the-exchange-management-shell-to-create-offline-address-books)
 
 - Use the Exchange Management Shell to modify offline address books:
 
-  - [Use the Exchange Management Shell to configure the default offline address book](oab-procedures.md#OABConfigDefault)
+  - [Use the Exchange Management Shell to configure the default offline address book](#use-the-exchange-management-shell-to-configure-the-default-offline-address-book)
 
-  - [Use the Exchange Management Shell to add and remove address lists from offline address books](oab-procedures.md#OABAddRemoveAddressLists)
+  - [Use the Exchange Management Shell to add and remove address lists from offline address books](#use-the-exchange-management-shell-to-add-and-remove-address-lists-from-offline-address-books)
 
-  - [Use the Exchange Management Shell to change the organization mailbox that's responsible for generating an offline address book](oab-procedures.md#OABChangeOrgMailbox)
+  - [Use the Exchange Management Shell to change the organization mailbox that's responsible for generating an offline address book](#use-the-exchange-management-shell-to-change-the-organization-mailbox-thats-responsible-for-generating-an-offline-address-book)
 
-  - [Use the Exchange Management Shell to configure any virtual directory in the organization to accept download requests for the OAB](oab-procedures.md#OABAllVdirs)
+  - [Use the Exchange Management Shell to configure any virtual directory in the organization to accept download requests for the OAB](#use-the-exchange-management-shell-to-configure-any-virtual-directory-in-the-organization-to-accept-download-requests-for-the-oab)
 
-  - [Use the Exchange Management Shell to enable shadow distribution for offline address books](oab-procedures.md#OABEnableShadow)
+  - [Use the Exchange Management Shell to enable shadow distribution for offline address books](#use-the-exchange-management-shell-to-enable-shadow-distribution-for-offline-address-books)
 
-- [Use the Exchange Management Shell to update offline address books](oab-procedures.md#UpdateOAB)
+- [Use the Exchange Management Shell to update offline address books](#use-the-exchange-management-shell-to-update-offline-address-books)
 
-- [Use the Exchange Management Shell to remove offline address books](oab-procedures.md#RemoveOAB)
+- [Use the Exchange Management Shell to remove offline address books](#use-the-exchange-management-shell-to-remove-offline-address-books)
 
-- [Use the Exchange Management Shell to find organization mailboxes](oab-procedures.md#FindOrgMailboxes)
+- [Use the Exchange Management Shell to find organization mailboxes](#use-the-exchange-management-shell-to-find-organization-mailboxes)
 
-- [Use the Exchange Management Shell to create organization mailboxes](oab-procedures.md#CreateOrgMailboxes)
+- [Use the Exchange Management Shell to create organization mailboxes](#use-the-exchange-management-shell-to-create-organization-mailboxes)
 
-- [Assign offline address books to mailbox databases](oab-procedures.md#OABforDB)
+- [Assign offline address books to mailbox databases](#assign-offline-address-books-to-mailbox-databases)
 
-- [Use the Exchange Management Shell to assign offline address books to mailboxes](oab-procedures.md#OABforMailboxes)
+- [Use the Exchange Management Shell to assign offline address books to mailboxes](#use-the-exchange-management-shell-to-assign-offline-address-books-to-mailboxes)
 
 To change the OAB generation schedule, see [Change the offline address book generation schedule in Exchange Server](../../plan-and-deploy/post-installation-tasks/change-oab-generation-schedule.md).
 
@@ -63,7 +65,6 @@ To change the OAB generation schedule, see [Change the offline address book gene
 > Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the Exchange Management Shell to view offline address books
-<a name="ViewOAB"> </a>
 
 To view OABs, use the following syntax:
 
@@ -92,14 +93,13 @@ Get-OfflineAddressBook | Format-List Name,GUID,AddressLists,GeneratingMailbox,Is
 For detailed syntax and parameter information, see [Get-OfflineAddressBook](http://technet.microsoft.com/library/4f865c2b-21c6-46cc-9c77-a3fc98538a40.aspx).
 
 ## Use the Exchange Management Shell to create offline address books
-<a name="CreateOAB"> </a>
 
 If you've created multiple address lists, you can use OABs to make the address lists available to users when they're offline.
 
 To create new offline address books, use the following syntax:
 
 ```
-New-OfflineAddressBook -Name "<Name>" -AddressLists "<GlobalAddressListOrAddressList1>","<GlobalAddressListOrAddressList2>,..." [-GlobalWebDistributionEnabled $true] [-GeneratingMailbox <OrganizationMailboxIdentity> ] [-IsDefault $true] [-ShadowMailboxDistributionEnabled $true]
+New-OfflineAddressBook -Name "<Name>" -AddressLists "<GlobalAddressListOrAddressList1>","<GlobalAddressListOrAddressList2>,..." [-GlobalWebDistributionEnabled $true] [-GeneratingMailbox <OrganizationMailboxIdentity>] [-IsDefault $true] [-ShadowMailboxDistributionEnabled $true]
 ```
 
 This example creates a new OAB named Contoso Executives OAB with the following properties:
@@ -129,18 +129,16 @@ Get-OfflineAddressBook | Format-List Name,AddressLists,GeneratingMailbox,IsDefau
 ```
 
 ## Use the Exchange Management Shell to modify offline address books
-<a name="CreateOAB"> </a>
 
 To modify OABs, use the following syntax:
 
 ```
-Set-OfflineAddressBook -Identity "<OABIdentity>" [-Name <Name>] [-AddressLists "<GlobalAddressListOrAddressList1>","<GlobalAddressListOrAddressList2>,..."] [-VirtualDirectories $null] [-GlobalWebDistributionEnabled $true] [-GeneratingMailbox <OrganizationMailboxIdentity> ] [-IsDefault $true] [-ShadowMailboxDistributionEnabled <$true | $false>]
+Set-OfflineAddressBook -Identity "<OABIdentity>" [-Name <Name>] [-AddressLists "<GlobalAddressListOrAddressList1>","<GlobalAddressListOrAddressList2>,..."] [-VirtualDirectories $null] [-GlobalWebDistributionEnabled $true] [-GeneratingMailbox <OrganizationMailboxIdentity>] [-IsDefault $true] [-ShadowMailboxDistributionEnabled <$true | $false>]
 ```
 
 For detailed syntax and parameter information, see [Set-OfflineAddressBook](http://technet.microsoft.com/library/1221dda7-1923-4fec-a756-7540e18ae9f9.aspx).
 
 ### Use the Exchange Management Shell to configure the default offline address book
-<a name="OABConfigDefault"> </a>
 
 By default, the automatically-created OAB named Default Offline Address Book is the default OAB. The default OAB is used by:
 
@@ -157,7 +155,6 @@ Set-OfflineAddressBook -Identity "Contoso Executives OAB" -IsDefault $true
 ```
 
 ### Use the Exchange Management Shell to add and remove address lists from offline address books
-<a name="OABAddRemoveAddressLists"> </a>
 
 When you modify the address lists that are configured in an OAB, the values that you specify will *replace* any address lists in the OAB. To add address lists to the OAB, specify the current address lists plus the ones you want to add. To remove address lists from the OAB, specify the current address lists minus the ones you want to remove.
 
@@ -174,9 +171,8 @@ Set-OfflineAddressBook -Identity "Marketing OAB" -AddressLists "Address List 1",
 ```
 
 ### Use the Exchange Management Shell to change the organization mailbox that's responsible for generating an offline address book
-<a name="OABChangeOrgMailbox"> </a>
 
-Typically, you only need to configure multiple organization mailboxes if you have Exchange servers in different Active Directory sites. You can configure multiple OABs to use the same organization mailbox, but you can't configure an OAB to use more than one organization mailbox. If you need multiple copies of the OAB in different locations, enable shadow distribution for the OAB. For more information, see [Use the Exchange Management Shell to enable shadow distribution for offline address books](oab-procedures.md#OABEnableShadow).
+Typically, you only need to configure multiple organization mailboxes if you have Exchange servers in different Active Directory sites. You can configure multiple OABs to use the same organization mailbox, but you can't configure an OAB to use more than one organization mailbox. If you need multiple copies of the OAB in different locations, enable shadow distribution for the OAB. For more information, see the [Use the Exchange Management Shell to enable shadow distribution for offline address books](#use-the-exchange-management-shell-to-enable-shadow-distribution-for-offline-address-books) section in this topic.
 
 This example changes the organization mailbox that's responsible for generating the OAB named Default Offline Address Book.
 
@@ -184,10 +180,9 @@ This example changes the organization mailbox that's responsible for generating 
 Set-OfflineAddressBook -Identity "Default Offline Address Book" -GeneratingMailbox OABGen2
 ```
 
- **Note**: To configure an arbitration mailbox that you can use as an organization mailbox, see [Use the Exchange Management Shell to create organization mailboxes](oab-procedures.md#CreateOrgMailboxes).
+ **Note**: To configure an arbitration mailbox that you can use as an organization mailbox, see the [Use the Exchange Management Shell to create organization mailboxes](#use-the-exchange-management-shell-to-create-organization-mailboxes) section in this topic.
 
 ### Use the Exchange Management Shell to configure any virtual directory in the organization to accept download requests for the OAB
-<a name="OABAllVdirs"> </a>
 
 The Client Access (frontend) services on any Mailbox server can proxy the OAB download request to the correct location. The OAB files are downloaded from the backend location `%ExchangeInstallPath%ClientAccess\OAB\<OAB GUID>` on the Mailbox server that holds the active copy of the OAB's designated organization mailbox (or from the server that holds a shadow copy of the OAB).
 
@@ -195,20 +190,19 @@ This example modifies the OAB named Default Offline Address Book to allow any vi
 
 1. Run the following command:
 
-  ```
-  Set-OfflineAddressBook -Identity "Default Offline Address Book" -VirtualDirectories $null
-  ```
+   ```
+   Set-OfflineAddressBook -Identity "Default Offline Address Book" -VirtualDirectories $null
+   ```
 
 2. Run the following command:
 
-  ```
-  Set-OfflineAddressBook -Identity "Default Offline Address Book" -GlobalWebDistributionEnabled $true
-  ```
+   ```
+   Set-OfflineAddressBook -Identity "Default Offline Address Book" -GlobalWebDistributionEnabled $true
+   ```
 
 ### Use the Exchange Management Shell to enable shadow distribution for offline address books
-<a name="OABEnableShadow"> </a>
 
-Before you enable shadow distribution to distribute a read-only copy of the OAB to organization mailboxes in different Active Directory sites, verify that an organization mailbox exists in each site. To create organization mailboxes, see [Use the Exchange Management Shell to create organization mailboxes](oab-procedures.md#CreateOrgMailboxes).
+Before you enable shadow distribution to distribute a read-only copy of the OAB to organization mailboxes in different Active Directory sites, verify that an organization mailbox exists in each site. To create organization mailboxes, see the [Use the Exchange Management Shell to create organization mailboxes](#use-the-exchange-management-shell-to-create-organization-mailboxes) section in this topic.
 
 This example enables shadow distribution for the OAB named Contoso Executives OAB.
 
@@ -217,7 +211,6 @@ Set-OfflineAddressBook -Identity "Contoso Executives OAB" -ShadowMailboxDistribu
 ```
 
 ### How do you know this worked?
-<a name="OABEnableShadow"> </a>
 
 To verify that you've successfully modified the OAB, run the following command to verify the property values:
 
@@ -226,7 +219,6 @@ Get-OfflineAddressBook | Format-List Name,AddressLists,GeneratingMailbox,IsDefau
 ```
 
 ## Use the Exchange Management Shell to update offline address books
-<a name="UpdateOAB"> </a>
 
 Changes in an OAB aren't available to users until the scheduled OAB generation (by default, every 8 hours). If you don't want to wait, you can use the procedures in this topic to immediately update an OAB.
 
@@ -253,7 +245,6 @@ Get-OfflineAddressBook | Update-OfflineAddressBook
 For detailed syntax and parameter information, see [Update-OfflineAddressBook](http://technet.microsoft.com/library/08ee5bd7-1c23-492e-8952-d37b2a61c022.aspx).
 
 ## Use the Exchange Management Shell to remove offline address books
-<a name="RemoveOAB"> </a>
 
 To remove OABs, use the following syntax:
 
@@ -278,7 +269,6 @@ Get-OfflineAddressBook
 ```
 
 ## Use the Exchange Management Shell to find organization mailboxes
-<a name="FindOrgMailboxes"> </a>
 
 Only organization mailboxes can generate OABs. An organization mailbox is an arbitration mailbox that has the `OrganizationCapabilityOABGen` value in the **PersistedCapability** property. To find the organization mailboxes in your organization, run the following command:
 
@@ -293,41 +283,40 @@ Get-OfflineAddressBook | Format-List Name,AddressLists,GeneratingMailbox,IsDefau
 ```
 
 ## Use the Exchange Management Shell to create organization mailboxes
-<a name="CreateOrgMailboxes"> </a>
 
-Typically, you only need to create multiple arbitration mailbox mailboxes in multi-site Exchange organizations. You can have an organization mailbox in each site, and you can configure shadow distribution for an OAB (so a read only copy of the OAB is stored in all organization mailboxes). For more information, see [Use the Exchange Management Shell to enable shadow distribution for offline address books](oab-procedures.md#OABEnableShadow).
+Typically, you only need to create multiple arbitration mailbox mailboxes in multi-site Exchange organizations. You can have an organization mailbox in each site, and you can configure shadow distribution for an OAB (so a read only copy of the OAB is stored in all organization mailboxes). For more information, see [Use the Exchange Management Shell to enable shadow distribution for offline address books](#use-the-exchange-management-shell-to-enable-shadow-distribution-for-offline-address-books).
 
 You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Recipient Provisioning Permissions" section in the [Recipients Permissions](../../permissions/feature-permissions/recipient-permissions.md) topic.
 
 1. Create an arbitration mailbox by using the following syntax:
 
-  ```
-  New-Mailbox -Arbitration -Name <UniqueName> -UserPrincipalName <UPN> [-Database <DBIdentity>] [-Alias <Alias>] [-DisplayName "<DisplayName>"]
-  ```
+   ```
+   New-Mailbox -Arbitration -Name <UniqueName> -UserPrincipalName <UPN> [-Database <DBIdentity>] [-Alias <Alias>] [-DisplayName "<DisplayName>"]
+   ```
 
-    This example creates a new arbitration mailbox named OAB Gen 2, with the UPN (account name) oabgen2@contoso.com, in the default database.
+   This example creates a new arbitration mailbox named OAB Gen 2, with the UPN (account name) oabgen2@contoso.com, in the default database.
 
-  ```
-  New-Mailbox -Arbitration -Name "OAB Gen 2" -UserPrincipalName oabgen2@contoso.com
-  ```
+   ```
+   New-Mailbox -Arbitration -Name "OAB Gen 2" -UserPrincipalName oabgen2@contoso.com
+   ```
 
 2. Turn the arbitration mailbox into an organization mailbox by using the following syntax:
 
-  ```
-  Set-Mailbox -Identity <MailboxIdentity> -Arbitration -OABGen $true -MaxSendSize 1GB
-  ```
+   ```
+   Set-Mailbox -Identity <MailboxIdentity> -Arbitration -OABGen $true -MaxSendSize 1GB
+   ```
 
-    This example turns the OAB Gen 2 arbitration mailbox into an organization mailbox.
+   This example turns the OAB Gen 2 arbitration mailbox into an organization mailbox.
 
-  ```
-  Set-Mailbox -Identity "OAB Gen 2" -Arbitration -OABGen $true -MaxSendSize 1GB
-  ```
+   ```
+   Set-Mailbox -Identity "OAB Gen 2" -Arbitration -OABGen $true -MaxSendSize 1GB
+   ```
 
 3. To activate the OAB generation capabilities of the new organization mailbox, run **Update-OfflineAddressBook** for *any* OAB in the organization. For example:
 
-  ```
-  Update-OfflineAddressBook -Identity "Default Offline Address Book"
-  ```
+   ```
+   Update-OfflineAddressBook -Identity "Default Offline Address Book"
+   ```
 
 ### How do you know this worked?
 
@@ -338,7 +327,6 @@ Get-Mailbox -Arbitration | where {$_.PersistedCapabilities -like "*OAB*"} | Form
 ```
 
 ## Assign offline address books to mailbox databases
-<a name="OABforDB"> </a>
 
 When you assign an OAB to a mailbox database, all mailboxes in the databases will use that OAB instead of the default OAB, unless the mailbox has an OAB assigned. By default, no OAB is assigned to a mailbox database.
 
@@ -347,10 +335,12 @@ You need to be assigned permissions before you can perform this procedure or pro
 ### Use the EAC to assign an offline address book to a mailbox database
 
 1. Open the EAC, and go to **Servers** \> **Databases**. Select the database from the list, and then click **Edit** (![Edit icon](../../media/ITPro_EAC_EditIcon.png)).
-    ![In the EAC, go to Servers \> Databases, select the database, and click Edit](../../media/ddc3e195-76da-4474-b153-f5c7ef1f5fd4.png)
+
+   ![In the EAC, go to Servers \> Databases, select the database, and click Edit](../../media/ddc3e195-76da-4474-b153-f5c7ef1f5fd4.png)
 
 2. The **Mailbox Database** window opens. Click the **Client settings** tab, and then click **Browse** next to **Offline address book**.
-    ![In the properties of the database, select Client Settings, and then click Browse](../../media/f04b40db-44a4-4dd6-a411-583cda128fee.png)
+
+   ![In the properties of the database, select Client Settings, and then click Browse](../../media/f04b40db-44a4-4dd6-a411-583cda128fee.png)
 
 3. In the **Select Offline Address Book** window that opens, select the OAB from the list, and click **OK**.
 
@@ -383,7 +373,6 @@ To verify that you've successfully assigned an OAB to a mailbox database, use ei
   ```
 
 ## Use the Exchange Management Shell to assign offline address books to mailboxes
-<a name="OABforMailboxes"> </a>
 
 When you assign an OAB to a mailbox, the default OAB and the OAB that's assigned to the mailbox database (if any) aren't used by the mailbox. By default, no OAB is assigned to a mailbox.
 
@@ -416,6 +405,3 @@ To verify that you've successfully assigned an OAB to a mailbox, replace _\<Mail
 ```
 Get-Mailbox -Identity "<MailboxIdentity>" | Format-Table -Auto Name,OfflineAddressBook
 ```
-
-
-

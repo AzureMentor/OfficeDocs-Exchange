@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 67ba838e-031d-4a98-b277-170683b6f520
 ms.date: 7/5/2018
+ms.reviewer: 
 title: Perform a remote wipe on a mobile phone
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -30,6 +31,15 @@ Your users carry sensitive corporate information in their pockets every day. If 
 - This procedure will clear all data on the mobile phone, including installed applications, photos, and personal information.
 
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
+
+- There are two types of EAS wipes:
+
+1. Prior to EAS v16.1, remote wipe would perform a device level wipe, restoring the device to factory conditions.
+
+2. With EAS v16.1 and later, EAS also supports account only remote wipe. When triggered, this will wipe only the EAS profile data (mailbox, contacts, and calendar). In order for this to work, the client has to support EAS v16.1 protocol. If the client doesn’t support v16.1, the wipe will fail and an error will be given.
+
+> [!NOTE]
+> If you are using Intune, you should be using Intune to trigger data removal, not Exchange. Depending on the scenario, it could be accomplished via [App Protection Policy selective wipe](https://docs.microsoft.com/intune/apps-selective-wipe), or [Device enrollment retire/wipe commands](https://docs.microsoft.com/intune/devices-wipe).
 
 > [!TIP]
 > Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
@@ -70,6 +80,18 @@ Your users can use Outlook on the web to wipe their own phones.
 
 5. Click or tap the **Wipe Device** icon.
 
+## Use the New Outlook on the web to wipe a user's phone
+
+1. In Outlook on the web, select the **Settings** icon.
+
+2. Click on **View All Outlook settings**.
+
+3. Click **General**,  and then select **Mobile devices**.
+
+4. Select the mobile phone.
+
+5. Click or tap the **Wipe Device** icon.
+
 ## How do you know this worked?
 
 There are several ways to verify that the remote wipe completed.
@@ -79,6 +101,3 @@ There are several ways to verify that the remote wipe completed.
 - In the EAC, check the status of the mobile device. The status will change from **Wipe Pending** to **Wipe Successful**.
 
 - In Outlook on the web, check the status of the mobile device. The status will change from **Wipe Pending** to **Wipe Successful**.
-
-
-

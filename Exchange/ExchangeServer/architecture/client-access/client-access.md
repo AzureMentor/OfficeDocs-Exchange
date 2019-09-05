@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: 'Summary: Overview of the Client Access services on Mailbox servers in Exchange Server'
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 87e206ab-7a7b-4b4f-be1a-5035713c74d2
 ms.date: 7/3/2018
+ms.reviewer: 
 title: Client Access services
 ms.collection:
 - Strat_EX_Admin
 - exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -44,6 +45,3 @@ The Client Access services have the following features:
 - **Digital certificates**: Although Exchange Server uses self-signed certificates to encrypt and authenticate connections between Exchange servers, you need to install and configure certificates to encrypt client connections. For more information, see [Digital certificates and encryption in Exchange Server](certificates.md).
 
 - **Kerberos authentication for load-balanced Client Access services**: For more information, see [Configure Kerberos authentication for load-balanced Client Access services](kerberos-auth-for-load-balanced-client-access.md).
-
-
-

@@ -2,12 +2,15 @@
 title: 'Hierarchical address books in Exchange Server'
 TOCTitle: Hierarchical address books
 ms.assetid: a1d277a0-5437-40af-aade-e4730a0d1308
-ms:mtpsurl: 
-ms:contentKeyID: 
-ms.date: 
+ms:mtpsurl:
+ms:contentKeyID:
+ms.date:
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
-
 
 # Hierarchical address books in Exchange Server
 

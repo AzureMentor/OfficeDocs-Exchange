@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: Admins can learn about remote domains (message formatting settings for external domains) in Exchange Online.
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: f191e052-658d-4c74-bfe7-bcb1d525e4e3
 ms.date: 
+ms.reviewer: 
 title: Remote domains in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -38,7 +39,7 @@ For instructions on how to create and configure remote domains, see [Manage remo
 
 ## Reducing or increasing information flow to another company
 
-When a message comes from outside your organization, there are several types of replies that are automatically generated. Some types of replies are set up by users in Outlook or Outlook Web App, and others are set up by admins. Because the remote domain settings override settings configured by users, as well as mail user and mail contact settings configured by admins, you can choose which types of automatic replies are sent to everyone on a remote domain.
+When a message comes from outside your organization, there are several types of replies that are automatically generated. Some types of replies are set up by users in Outlook or Outlook on the web, and others are set up by admins. Because the remote domain settings override settings configured by users, as well as mail user and mail contact settings configured by admins, you can choose which types of automatic replies are sent to everyone on a remote domain.
 
 If a remote domain configuration blocks a specific type of reply, like a non-delivery report, from being sent to recipients in that domain, the reply is generated, but then it is deleted before it is sent. No error message is sent. For example, if you turn off automatic forwarding on the default remote domain, when users try to automatically forward email to another domain, they can change their settings or create the Inbox rule, but their messages won't be forwarded.
 

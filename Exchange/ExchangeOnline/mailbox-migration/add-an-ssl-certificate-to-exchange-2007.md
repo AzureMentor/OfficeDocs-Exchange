@@ -5,6 +5,7 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: d4524743-a63f-413f-b290-5f0d2f070392
 ms.date: 8/16/2018
+ms.reviewer: 
 description: Steps to add an SSL certificate to Exchange 2007,
 title: Add an SSL certificate to Exchange 2007
 ms.collection: 
@@ -16,7 +17,7 @@ search.appverid:
 - MED150
 - MBS150
 - BCS160
-ms.audience: Admin
+audience: Admin
 ms.custom: Adm_O365
 ms.service: exchange-online
 manager: serdars
@@ -54,7 +55,7 @@ To create a certificate request in Microsoft Exchange Server 2007, use the [New-
 
     In the command example above, _servername_ is the name of your server, _contoso.com_ is an example of a domain name, and _certlocation_ is a file path to the location where you want to store the request once it is generated. Replace all these placeholders with the information that appropriate for yourMicrosoft Exchange Server 2007.
 
-    In the _DomainName_ parameter, add the domain names for the certificate request. For example, if you configured your internal and external URLs to be the same, the domain name for Outlook Web App (when accessed from the internet) and Outlook Web App (when accessed from the intranet) should look like owa. _servername_.contoso.com.
+    In the _DomainName_ parameter, add the domain names for the certificate request. For example, if you configured your internal and external URLs to be the same, the domain name for Outlook Web Access when accessed from the internet or intranet should look like owa._servername_.contoso.com.
 
     Use the _SubjectName_ parameter to specify the Subject Name on the resulting certificate. This field is used by DNS-aware services and binds a certificate to a particular domain name.
 
@@ -106,5 +107,3 @@ After you receive the certificate from the CA, use the [Import-ExchangeCertifica
 <a name="BK_import"> </a>
 
 [Blog article on adding an SSL to Exchange Server 2007](https://go.microsoft.com/fwlink/p/?LinkId=615759)
-
-

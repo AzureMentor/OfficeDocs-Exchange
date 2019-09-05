@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: fb2ea15e-96d5-4045-b75b-b0aa5fc60479
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Manage database availability group membership
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -18,7 +19,7 @@ manager: serdars
 
 When you add a server to a DAG, the server works with the other DAG members to provide automatic database-level recovery from database, server, or network failures. When you remove a server from a DAG, the server is no longer automatically protected from failures.
 
-Looking for other management tasks related to DAGs? Check out [Managing database availability groups](http://technet.microsoft.com/library/4abde67b-4995-4a57-894f-ba76aa72341c.aspx).
+Looking for other management tasks related to DAGs? Check out [Manage database availability groups](manage-dags.md).
 
 ## What do you need to know before you begin?
 
@@ -39,25 +40,23 @@ Looking for other management tasks related to DAGs? Check out [Managing database
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to manage database availability group membership
-<a name="UseEMC"> </a>
 
 1. In the EAC, go to **Servers** \> **Database Availability Groups**.
 
 2. Select the DAG you want to configure, and then click ![Manage DAG members](../../media/ITPro_EAC_ManageDagMembersIcon.png).
 
-  - To add one or more Mailbox servers to the DAG, click ![Add icon](../../media/ITPro_EAC_AddIcon.png), select the servers from the list, click **Add**, and then click **OK**.
+   - To add one or more Mailbox servers to the DAG, click ![Add icon](../../media/ITPro_EAC_AddIcon.png), select the servers from the list, click **Add**, and then click **OK**.
 
-  - To remove one or more Mailbox servers from the DAG, select the servers, and then click the minus (-) icon.
+   - To remove one or more Mailbox servers from the DAG, select the servers, and then click the minus (-) icon.
 
 3. Click **Save** to save the changes.
 
 4. When the task has completed successfully, click **Close**.
 
 ## Use the Exchange Management Shell to manage database availability group membership
-<a name="UseShell"> </a>
 
 This example adds the Mailbox server MBX1 to the DAG DAG1.
 
@@ -78,7 +77,6 @@ Remove-DatabaseAvailabilityGroupServer -Identity DAG2 -MailboxServer MBX4 -Confi
 ```
 
 ## How do you know this worked?
-<a name="UseShell"> </a>
 
 To verify that you've successfully managed DAG membership, do one of the following:
 
@@ -91,11 +89,7 @@ To verify that you've successfully managed DAG membership, do one of the followi
   ```
 
 ## For more information
-<a name="UseShell"> </a>
 
 [Add-DatabaseAvailabilityGroupServer](http://technet.microsoft.com/library/6bd0a3fe-dec6-47c2-b9a3-8dffb60e4aad.aspx)
 
 [Remove-DatabaseAvailabilityGroupServer](http://technet.microsoft.com/library/49290be7-9d3d-4bc3-80ea-f1992fdd1d12.aspx)
-
-
-

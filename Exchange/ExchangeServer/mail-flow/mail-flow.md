@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn about mail flow and the transport pipeline in Exchange Server 2016 or Exchange Server 2019.'
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 14df5e1a-a5f7-4b0d-ba97-f53b76f0e7e0
 ms.date: 6/8/2018
+ms.reviewer: 
 title: Mail flow and the transport pipeline
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -21,7 +22,6 @@ In Exchange Server, mail flow occurs through the transport pipeline. The *transp
 For information about how to configure mail flow in a new Exchange 2016 or Exchange 2019 organization, see [Configure mail flow and client access](../plan-and-deploy/post-installation-tasks/configure-mail-flow-and-client-access.md).
 
 ## Understanding the transport pipeline
-<a name="TransportPipeline"> </a>
 
 The transport pipeline consists of the following services:
 
@@ -35,7 +35,7 @@ The transport pipeline consists of the following services:
 
   - **Mailbox Transport Delivery service**: This service receives SMTP messages from the Transport service on the local Mailbox server or on other Mailbox servers and connects to the local mailbox database using RPC to deliver the messages.
 
-    The Mailbox Transport service doesn't communicate with the Front End Transport service, the Mailbox Transport service, or mailbox databases on other Mailbox servers. It also doesn't queue any messages locally.
+  The Mailbox Transport service doesn't communicate with the Front End Transport service, the Mailbox Transport service, or mailbox databases on other Mailbox servers. It also doesn't queue any messages locally.
 
 - **Transport service on Edge Transport servers**: This service is very similar to the Transport service on Mailbox servers. If you have an Edge Transport server installed in the perimeter network, all mail coming from the Internet or going to the Internet flows through the Transport service Edge Transport server. This service is described in more detail later in this topic.
 
@@ -44,12 +44,9 @@ The following diagram shows the relationships among the components in the Exchan
 > [!NOTE]
 > Although the diagrams in this topic show the components on a single Exchange server, communication also occurs between those components on different Exchange servers. The only communication that always occurs on the local Exchange server is between the Mailbox Transport service and the local mailbox database.
 
-**Overview of the transport pipeline in Exchange Server**
-
 ![Transport pipeline overview diagram](../media/Transport_PipelineOverview.png)
 
 ### How messages from external senders enter the transport pipeline
-<a name="Inbound"> </a>
 
 The way messages from outside the Exchange organization enter the transport pipeline depends on whether you have a subscribed Edge Transport server deployed in your perimeter network.
 
@@ -86,7 +83,6 @@ The following diagram and list describe inbound mail flow with an Edge Transport
 6. The Mailbox Transport Delivery service uses RPC to deliver the message to the local mailbox database.
 
 ### How messages from internal senders enter the transport pipeline
-<a name="Outbound"> </a>
 
 SMTP messages from inside the organization enter the transport pipeline through the Transport service on a Mailbox server in one of the following ways:
 
@@ -114,9 +110,9 @@ By default, in a new Exchange Server organization, there's no Send connector tha
 
 4. What happens next depends on the configuration of the Send connector:
 
-  - **Default**: The Transport service uses the Send connector you created to send the message to the Internet.
+   - **Default**: The Transport service uses the Send connector you created to send the message to the Internet.
 
-  - **Outbound proxy**: The Transport service uses the Send connector you created to send the message to the Front End Transport service on the local Mailbox server or on a remote Mailbox server. In the Front End Transport service, the default Receive connector named "Outbound Proxy Frontend _\<Mailbox server name\>_" accepts the message. The Front End Transport services sends the message to the Internet.
+   - **Outbound proxy**: The Transport service uses the Send connector you created to send the message to the Front End Transport service on the local Mailbox server or on a remote Mailbox server. In the Front End Transport service, the default Receive connector named "Outbound Proxy Frontend _\<Mailbox server name\>_" accepts the message. The Front End Transport services sends the message to the Internet.
 
 #### Outbound mail flow with Edge Transport servers
 
@@ -137,7 +133,6 @@ If you have an Edge Transport server installed in the perimeter network, outboun
 6. In the Transport service on the Edge Transport server, the default Send connector named "EdgeSync - _\<Active Directory site name\>_ to Internet" sends the message to the Internet.
 
 ## Understanding the Transport service on Mailbox servers
-<a name="TransportService"> </a>
 
 Every message that's sent or received in an Exchange Server organization must be categorized in the Transport service on a Mailbox server before it can be routed and delivered. After a message has been categorized, it's put in a delivery queue for delivery to the destination mailbox database, the destination database availability group (DAG), Active Directory site or Active Directory forest, or to the destination domain outside the organization.
 
@@ -182,7 +177,6 @@ The Transport service on a Mailbox server consists of the following components a
   - The Transport service on an Edge Transport server in the perimeter network.
 
 ## Understanding the Transport service on Edge Transport servers
-<a name="EdgeTransportService"> </a>
 
 The components of the Transport service on Edge Transport servers are identical to the components of the Transport service on Mailbox servers. However, what actually happens during each stage of processing on Edge Transport servers is different. The differences are described in the following list.
 
@@ -193,6 +187,3 @@ The components of the Transport service on Edge Transport servers are identical 
 - **Categorizer**: On an Edge Transport server, categorization is a short process in which the message is put directly into a delivery queue for delivery to internal or external recipients.
 
 - **SMTP Send**: When an Edge Transport server is subscribed to an internal Active Directory site, two Send connectors are automatically created and configured. One named "EdgeSync - \<Active Directory site name\> to Internet" is responsible for sending outbound mail to Internet recipients; the other named "EdgeSync - Inbound to \<Active Directory site name\>" is responsible for sending inbound mail from the Internet to internal recipients. Inbound mail is sent to the Front End Transport service on an available Mailbox server in the subscribed Active Directory site.
-
-
-

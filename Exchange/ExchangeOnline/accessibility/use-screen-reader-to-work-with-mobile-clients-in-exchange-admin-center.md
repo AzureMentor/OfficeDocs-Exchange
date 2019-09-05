@@ -1,16 +1,18 @@
 ---
 localization_priority: Normal
 ms.topic: article
-author: maggsl
-ms.author: v-maleo
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 194c5bf8-845c-4804-82dd-e950ee74dfcf
 ms.date: 
+ms.reviewer: 
+manager: serdars
 description: Admins can learn how to use a screen reader to manage mobile devices in the Exchange admin center (EAC) in Exchange Online.
 title: Use a screen reader to work with mobile clients in the Exchange admin center in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.custom: A11y_UseSR
 ms.service: exchange-online
 
@@ -60,13 +62,13 @@ To view, edit, or create a mobile device mailbox policy, on the EAC primary navi
 
 You can also specify Exchange ActiveSync access settings, maintain a list of quarantined mobile devices, and set up device access rules. To do this, on the EAC primary navigation pane, select the **mobile** link and then, on the menu bar, select the **mobile device access** link.
 
-## Enable Exchange ActiveSync and Outlook Web App for users
+## Enable Exchange ActiveSync and Outlook on the web for users
 
 Exchange ActiveSync is an Exchange synchronization protocol which allows mobile phones to access your organization's Exchange server. With Exchange ActiveSync, recipients can use their mobile devices to access their email, calendar, contacts, and tasks. They can also continue to access this information while working offline. Learn more about [Exchange ActiveSync](https://go.microsoft.com/fwlink/p/?LinkId=799149).
 
-With Outlook Web App, users can access their Exchange mailbox from almost any web browser, including from a browser on their mobile devices. [Learn more about Outlook Web App](https://go.microsoft.com/fwlink/p/?LinkId=799150).
+With Outlook on the web (formerly known as Outlook Web App), users can access their Exchange mailbox from almost any web browser, including from a browser on their mobile devices. [Learn more about Outlook on the web](https://go.microsoft.com/fwlink/p/?LinkId=799150).
 
-### Enable Exchange ActiveSync and Outlook Web App for an individual user
+### Enable Exchange ActiveSync and Outlook on the web for an individual user
 
 1. In the EAC, press Ctrl+F6 until the primary navigation pane has the focus and you hear "Dashboard, Primary navigation link."
 
@@ -85,21 +87,21 @@ With Outlook Web App, users can access their Exchange mailbox from almost any we
 8. Press the Tab key. You hear "Mobile devices link, Enable Exchange ActiveSync..
 
    > [!TIP]
-   >If the user is already enabled for Exchange ActiveSync, you hear "Disable Exchange ActiveSync..
+   > If the user is already enabled for Exchange ActiveSync, you hear "Disable Exchange ActiveSync..
 
 9. Press Enter. You hear "Are you sure you want to enable Exchange ActiveSync?" With the focus on the **Yes** button, press Enter.
 
 10. Press the Tab key. You hear "Mobile devices link, Enable OWA for Devices."
 
-   > [!TIP]
-   > If the user is already enabled for Outlook Web App for Devices, you hear "Disable OWA for Devices..
+    > [!TIP]
+    > If the user is already enabled for OWA for Devices, you hear "Disable OWA for Devices..
 
 11. Press Enter. You hear "Are you sure you want to enable OWA for Devices?" With the focus on the **Yes** button, press Enter.
 
-   > [!TIP]
-   >If you want to enable Exchange ActiveSync and Outlook Web App for additional users, press Ctrl+Shift+F6 to move the focus back to the list of users. Press the Down Arrow key or the Up Arrow key until you hear the name you want, and repeat steps 7 through 11.
+    > [!TIP]
+    > If you want to enable Exchange ActiveSync and Outlook on the web for additional users, press Ctrl+Shift+F6 to move the focus back to the list of users. Press the Down Arrow key or the Up Arrow key until you hear the name you want, and repeat steps 7 through 11.
 
-### Enable Exchange ActiveSync and Outlook Web App for multiple users at once
+### Enable Exchange ActiveSync and Outlook on the web for multiple users at once
 
 1. In the EAC, press Ctrl+F6 until the primary navigation pane has the focus and you hear "Dashboard, Primary navigation link."
 
@@ -121,4 +123,3 @@ With Outlook Web App, users can access their Exchange mailbox from almost any we
 8. Press the Tab key about 10 times until you hear "Show link." Press the Tab key once more. You hear "Enable link." Press Enter.
 
 9. An alert asks "Are you sure you want to enable Exchange ActiveSync for all the selected recipients?" With the focus on the **OK** button, press Enter.
-

@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: a765ead1-43bc-4786-ae93-1835cacfc8fc
 ms.date: 7/9/2018
+ms.reviewer: 
 title: Move a mailbox database using database portability
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -36,49 +37,49 @@ Database portability can help reduce overall recovery times for some failure sce
 
 1. Verify that the database to be moved is in a clean shutdown state. If the database isn't in a clean shutdown state, perform a soft recovery.
 
-    > [!NOTE]
-    > When you perform a soft recovery, any uncommitted log files are committed to the database. If you don't have all of the required log files, you can't complete the soft recovery process. Proceed to step 2.
+   > [!NOTE]
+   > When you perform a soft recovery, any uncommitted log files are committed to the database. If you don't have all of the required log files, you can't complete the soft recovery process. Proceed to step 2.
 
-    To commit all uncommitted log files to the database, from a command prompt, run the following command.
+   To commit all uncommitted log files to the database, from a command prompt, run the following command.
 
-  ```
-  ESEUTIL /R <Enn>
-  ```
+   ```
+   ESEUTIL /R <Enn>
+   ```
 
    > [!NOTE]
    > \<E _nn_\> specifies the log file prefix for the database into which you intend to replay the log files. The log file prefix specified by \<E _nn_\> is a required parameter for Eseutil /r.
 
 2. Create a database on a server using the following syntax:
 
-  ```
-  New-MailboxDatabase -Name <DatabaseName> -Server <ServerName> -EdbFilePath <DatabaseFileNameandPath> -LogFolderPath <LogFilesPath>
-  ```
+   ```
+   New-MailboxDatabase -Name <DatabaseName> -Server <ServerName> -EdbFilePath <DatabaseFileNameandPath> -LogFolderPath <LogFilesPath>
+   ```
 
 3. Set the _This database can be over written by restore_ attribute using the following syntax:
 
-  ```
-  Set-MailboxDatabase <DatabaseName> -AllowFileRestore $true
-  ```
+   ```
+   Set-MailboxDatabase <DatabaseName> -AllowFileRestore $true
+   ```
 
 4. Move the original database files (.edb file, log files, and Exchange Search catalog) to the database folder you specified when you created the new database above.
 
 5. Mount the database using the following syntax:
 
-  ```
-  Mount-Database <DatabaseName>
-  ```
+   ```
+   Mount-Database <DatabaseName>
+   ```
 
 6. After the database is mounted, modify the user account settings with the [Set-Mailbox](http://technet.microsoft.com/library/a0d413b9-d949-4df6-ba96-ac0906dedae2.aspx) cmdlet so that the account points to the mailbox on the new mailbox server. To move all of the users from the old database to the new database, use the following syntax.
 
-  ```
-  Get-Mailbox -Database <SourceDatabase> |where {$_.ObjectClass -NotMatch '(SystemAttendantMailbox|ExOleDbSystemMailbox)'}| Set-Mailbox -Database <TargetDatabase>
-  ```
+   ```
+   Get-Mailbox -Database <SourceDatabase> |where {$_.ObjectClass -NotMatch '(SystemAttendantMailbox|ExOleDbSystemMailbox)'}| Set-Mailbox -Database <TargetDatabase>
+   ```
 
 7. Trigger delivery of any messages remaining in queues using the following syntax.
 
-  ```
-  Get-Queue <QueueName> | Retry-Queue -Resubmit $true
-  ```
+   ```
+   Get-Queue <QueueName> | Retry-Queue -Resubmit $true
+   ```
 
 After Active Directory replication is complete, all users can access their mailboxes on the new Exchange server. Most clients are redirected via Autodiscover. Outlook on the web users are also automatically redirected.
 
@@ -89,6 +90,3 @@ To verify that you've successfully moved a mailbox, do the following:
 - Open the mailbox using Outlook on the web.
 
 - Open the mailbox using Microsoft Outlook.
-
-
-

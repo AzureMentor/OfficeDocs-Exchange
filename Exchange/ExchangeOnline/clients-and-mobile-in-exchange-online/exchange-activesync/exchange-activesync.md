@@ -6,13 +6,14 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: ff7f0d3d-1b9d-4c49-b7fe-1ab5d2805b00
 ms.date: 6/24/2018
+ms.reviewer: 
 title: Exchange ActiveSync in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: laurawi
+manager: serdars
 
 ---
 
@@ -85,7 +86,7 @@ You can control which mobile devices can synchronize. You do this by monitoring 
 
 In addition to the ability to configure security options for communications between the Exchange server and your mobile devices, Exchange ActiveSync offers the following features to enhance the security of mobile devices:
 
-- **Remote wipe**: If a mobile device is lost, stolen, or otherwise compromised, you can issue a remote wipe command from the Exchange Server computer or from any Web browser by using Outlook Web App. This command erases all data from the mobile device.
+- **Remote wipe**: If a mobile device is lost, stolen, or otherwise compromised, you can issue a remote wipe command from the Exchange Server computer or from any web browser by using Outlook on the web (formerly known as Outlook Web App). This command erases all data from the mobile device.
 
 - **Device password policies**: Exchange ActiveSync lets you configure several options for device passwords. These options include the following:
 
@@ -99,7 +100,7 @@ In addition to the ability to configure security options for communications betw
 
   - **Enforce password history**: Select this check box to force the mobile phone to prevent the user from reusing their previous passwords. The number that you set determines the number of past passwords that the user won't be allowed to reuse.
 
-  - **Enable password recovery**: Select this check box to enable password recovery for the mobile device. Users can use Outlook Web App to look up their recovery password and unlock their mobile device. Administrators can use the Exchange admin center to look up a user's recovery password.
+  - **Enable password recovery**: Select this check box to enable password recovery for the mobile device. Users can use Outlook on the web to look up their recovery password and unlock their mobile device. Administrators can use the Exchange admin center to look up a user's recovery password.
 
   - **Wipe device after failed (attempts)**: This option lets you specify whether you want the phone's memory to be wiped after multiple failed password attempts.
 

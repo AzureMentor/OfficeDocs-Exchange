@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can enable or disable the Play on Phone feature for users associated with a Unified Messaging (UM) mailbox policy. This option is enabled by default and allows users to play their voice mail messages over any phone. This option isn't available to UM-enabled users who have a mailbox on a Microsoft Exchange Server 2007 server.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: d3281a97-6fc6-42a3-855f-1af1184a644a
 ms.date: 11/17/2014
-title: Enable or disable Play on Phone for Outlook Voice Access users
+ms.reviewer: 
+title: Enable or disable Play on Phone for Outlook Voice Access users in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Enable or disable Play on Phone for Outlook Voice Access users
+# Enable or disable Play on Phone for Outlook Voice Access users in Exchange Online
 
 You can enable or disable the Play on Phone feature for users associated with a Unified Messaging (UM) mailbox policy. This option is enabled by default and allows users to play their voice mail messages over any phone. This option isn't available to UM-enabled users who have a mailbox on a Microsoft Exchange Server 2007 server.
 
@@ -33,7 +34,7 @@ For additional management tasks related to UM mailbox policies, see [UM mailbox 
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use the EAC to enable or disable Play on Phone
 
@@ -58,6 +59,3 @@ This example disables the Play on Phone feature for users who are associated wit
 ```
 Set-UMMailboxPolicy -identity MyUMMailboxPolicy -AllowPlayOnPhone $false
 ```
-
-
-

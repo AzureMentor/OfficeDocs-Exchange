@@ -1,21 +1,22 @@
-﻿---
+---
 title: 'Exchange 2013 system requirements: Exchange 2013 Help'
 TOCTitle: Exchange 2013 system requirements
 ms:assetid: 1e80857c-b870-4a6d-a0f4-ff7b3a7be037
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Aa996719(v=EXCHG.150)
 ms:contentKeyID: 48384881
 ms.date: 12/18/2017
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Exchange 2013 system requirements
 
- 
-
 _**Applies to:** Exchange Server 2013_
 
-
-Learn about the Exchange 2013 requirements that you need to know before you install Exchange 2013. For example, you’ll learn about the hardware, network, and operating system requirements.
+Learn about the Exchange 2013 requirements that you need to know before you install Exchange 2013. For example, you'll learn about the hardware, network, and operating system requirements.
 
 Before you install Microsoft Exchange Server 2013, we recommend that you review this topic to ensure that your network, hardware, software, clients, and other elements meet the requirements for Exchange 2013. In addition, make sure you understand the coexistence scenarios that are supported for Exchange 2013 and earlier versions of Exchange.
 
@@ -69,7 +70,6 @@ The following table lists the scenarios in which coexistence between Exchange 20
 </tbody>
 </table>
 
-
 1   If you want to create an EdgeSync Subscription between an Exchange 2007 Hub Transport server and an Exchange 2013 SP1 Edge Transport server, you need to install Exchange 2007 SP3 Update Rollup 13 or later on the Exchange 2007 Hub Transport server.
 
 2   If you want to create an EdgeSync Subscription between an Exchange 2010 Hub Transport server and an Exchange 2013 SP1 Edge Transport server, you need to install Exchange 2010 SP3 Update Rollup 5 or later on the Exchange 2010 Hub Transport server.
@@ -83,7 +83,6 @@ Exchange 2013 supports hybrid deployments with Office 365 tenants that have been
 The following table lists the requirements for the network and the directory servers in your Exchange 2013 organization.
 
 **Network and directory server requirements for Exchange 2013**
-
 
 <table>
 <colgroup>
@@ -162,7 +161,6 @@ The following table lists the requirements for the network and the directory ser
 </tbody>
 </table>
 
-
 1   Windows Server 2012 R2 is supported only with Exchange 2013 SP1 or later.
 
 2   Windows Server 2012 R2 forest functionality mode is supported only with Exchange 2013 SP1 or later.
@@ -171,11 +169,8 @@ The following table lists the requirements for the network and the directory ser
 
 The use of 64-bit Active Directory domain controllers increases directory service performance for Exchange 2013.
 
-
 > [!NOTE]
 > In multi-domain environments, on Windows Server 2008 domain controllers that have the Active Directory language locale set to Japanese, your servers might not receive some attributes that are stored on an object during inbound replication. For more information, see Microsoft Knowledge Base article 949189, <A href="http://go.microsoft.com/fwlink/p/?linkid=3052&kbid=949189">A Windows Server 2008 domain controller that is configured with the Japanese language locale may not apply updates to attributes on an object during inbound replication</A>.
-
-
 
 ## Installing Exchange 2013 on directory servers
 
@@ -190,7 +185,6 @@ For detailed information on how to properly size and configure your deployment, 
 For information about deploying Exchange in a virtualized environment, see [Exchange 2013 virtualization](exchange-2013-virtualization-exchange-2013-help.md).
 
 **Hardware requirements for Exchange 2013**
-
 
 <table>
 <colgroup>
@@ -269,14 +263,12 @@ For information about deploying Exchange in a virtualized environment, see [Exch
 </tbody>
 </table>
 
-
 ## Operating system
 
 The following table lists the supported operating systems for Exchange 2013.
 
-
 > [!IMPORTANT]
-> We don’t support the installation of Exchange 2013 on a computer that’s running in Windows Server Core mode. The computer must be running the full installation of Windows Server. If you want to install Exchange 2013 on a computer that’s running in Windows Server Core mode, you must convert the server to a full installation of Windows Server by doing one of the following: 
+> We don't support the installation of Exchange 2013 on a computer that's running in Windows Server Core mode. The computer must be running the full installation of Windows Server. If you want to install Exchange 2013 on a computer that's running in Windows Server Core mode, you must convert the server to a full installation of Windows Server by doing one of the following:
 > <UL>
 > <LI>
 > <P><STRONG>Windows Server 2008 R2</STRONG>&nbsp;&nbsp;&nbsp;Reinstall Windows Server and select the <STRONG>Full Installation</STRONG> option.</P>
@@ -289,7 +281,6 @@ The following table lists the supported operating systems for Exchange 2013.
 > </LI></UL>
 
 **Supported operating systems for Exchange 2013**
-
 
 <table>
 <colgroup>
@@ -331,7 +322,6 @@ The following table lists the supported operating systems for Exchange 2013.
 </tbody>
 </table>
 
-
 1   Windows Server 2012 R2 is supported only with Exchange 2013 SP1 or later.
 
 2   Windows 8.1 is supported only with Exchange 2013 SP1 or later.
@@ -343,7 +333,6 @@ Exchange 2013 only supports the version of Windows Management Framework that's b
 ## .NET Framework
 
 We strongly recommend that you use the latest version of .NET Framework that's supported by the release of Exchange you're installing.
-
 
 <table>
 <colgroup>
@@ -380,7 +369,6 @@ We strongly recommend that you use the latest version of .NET Framework that's s
 </tbody>
 </table>
 
-
 ## Supported clients
 
 Exchange 2013 supports the following versions of Outlook and Entourage for Mac:
@@ -401,13 +389,9 @@ Exchange 2013 supports the following versions of Outlook and Entourage for Mac:
 
 For a list of Outlook releases that Exchange supports, see [Outlook Updates](https://go.microsoft.com/fwlink/p/?linkid=513459).
 
-
 > [!IMPORTANT]
 > We strongly recommend that you install the latest available service packs and updates available so that your users receive the best possible experience when connecting to Exchange.
-
-
 
 Outlook clients earlier than Outlook 2007 are not supported. Email clients on Mac operating systems that require DAV, such as Entourage 2008 for Mac RTM and Entourage 2004, are not supported.
 
 Outlook Web App supports several browsers on a variety of operating systems and devices. For detailed information, see [What's new for Outlook Web App in Exchange 2013](what-s-new-for-outlook-web-app-in-exchange-2013-exchange-2013-help.md).
-

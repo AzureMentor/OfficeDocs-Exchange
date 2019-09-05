@@ -2,19 +2,20 @@
 localization_priority: Normal
 description: You can set a Voice Mail Preview partner ID on a Unified Messaging (UM) mailbox policy. After you've set the Voice Mail Preview partner ID on a UM mailbox policy, the setting will apply to all UM-enabled users who are linked with that mailbox policy.
 ms.topic: article
-author: tonysmit
-ms.author: tonysmit
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: ab98c320-9952-47a7-b141-ddfc2c0ad419
 ms.date: 11/17/2014
-title: Set the Voice Mail Preview partner ID
+ms.reviewer: 
+title: Set the Voice Mail Preview partner ID in Exchange Online
 ms.collection: exchange-online
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
-manager: scotv
+manager: serdars
 
 ---
 
-# Set the Voice Mail Preview partner ID
+# Set the Voice Mail Preview partner ID in Exchange Online
 
 You can set a Voice Mail Preview partner ID on a Unified Messaging (UM) mailbox policy. After you've set the Voice Mail Preview partner ID on a UM mailbox policy, the setting will apply to all UM-enabled users who are linked with that mailbox policy.
 
@@ -38,7 +39,7 @@ For additional management tasks related to voice mail preview, see [Voice Mail P
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Use Exchange Online PowerShell to set the Voice Mail Preview partner ID on a UM mailbox policy
 
@@ -48,6 +49,3 @@ This example sets the Voice Mail Preview partner ID to CON123-2010 on a UM mailb
 Set-UMMailboxPolicy -identity MyUMMailboxPolicy
 -VoiceMailPreviewPartnerAssignedID CON123-2010
 ```
-
-
-

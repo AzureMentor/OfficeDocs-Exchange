@@ -1,10 +1,10 @@
 ---
 title: "Organization configuration transfer attributes"
-ms.author: kchandra
-author: ChandraKavya
+ms.author: dmaguire
+author: msdmaguire
 manager: serdars
 ms.reviewer: dstrome
-ms.audience: ITPro
+audience: ITPro
 ms.topic: article
 ms.prod: exchange-server-it-pro
 localization_priority: Normal
@@ -39,9 +39,16 @@ The attributes listed in the following topics can be copied from an on-premises 
 
 [Policy Tip Config](policy-tip-config.md)
 
+[Remote Domains](remote-domains.md)
+
 [Retention Policy](retention-policy.md)
 
 [Retention Policy Tags](retention-policy-tags.md)
 
+[Sharing Policy](sharing-policy.md)
+
+[Smime Config](smime-config.md)
+
+[Transport Config](transport-config.md)
 
 

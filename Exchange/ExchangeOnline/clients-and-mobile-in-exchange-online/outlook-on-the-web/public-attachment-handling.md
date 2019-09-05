@@ -5,11 +5,12 @@ ms.topic: article
 author: msdmaguire
 ms.author: dmaguire
 ms.assetid: 2b5b8f6a-1bce-4872-8989-bac53ffafaa4
+ms.reviewer: 
 title: Public attachment handling in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -56,7 +57,7 @@ The Outlook on the web mailbox policy parameters in the following table should b
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts for the Exchange admin center](../../accessibility/keyboard-shortcuts-in-admin-center.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542) or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Task 1 - Enable public attachment handling for your organization
 
@@ -193,4 +194,3 @@ Some attachments might be removed or blocked by antivirus software used by your 
 - .xlsm
 
 - .xlsx
-

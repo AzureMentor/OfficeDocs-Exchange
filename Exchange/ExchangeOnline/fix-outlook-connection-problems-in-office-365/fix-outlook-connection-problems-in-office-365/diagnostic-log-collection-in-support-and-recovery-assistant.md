@@ -2,9 +2,10 @@
 localization_priority: Normal
 description: 'Learn about diagnostic log collection in Support and Recovery Assistant for Office 365. '
 ms.topic: article
-author: dianef77
-ms.author: dianef
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 5f76de29-9ee3-47de-84ce-2d49fdc32174
+ms.reviewer: 
 title: Turn off diagnostic log collection in Support and Recovery Assistant for Office 365
 ms.collection: 
 - exchange-online
@@ -13,12 +14,12 @@ search.appverid:
 - BCS160
 - MET150
 - MOE150
-ms.audience: Admin
+audience: Admin
 ms.custom:
 - Core_O365Admin_Migration
 - MiniMaven
 ms.service: exchange-online
-manager: mnirkhe
+manager: serdars
 
 ---
 
@@ -93,4 +94,3 @@ Support and Recovery Assistant will collect log data if either of the following 
 - [Fix Outlook and Office 365 issues with Microsoft Support and Recovery Assistant for Office 365](fix-outlook-and-office-365-issues.md)
 
 - [Microsoft Support and Recovery Assistant](https://diagnostics.outlook.com/)
-

@@ -2,15 +2,16 @@
 localization_priority: Normal
 description: A list of links to the procedure topics for address book policies (ABPs) in Exchange Online
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 71e5dc2f-5de2-4089-8690-f2a0ed8ede0d
 ms.date: 
+ms.reviewer: 
 title: Address book policy procedures in Exchange Online
 ms.collection: 
 - exchange-online
 - M365-email-calendar
-ms.audience: ITPro
+audience: ITPro
 ms.service: exchange-online
 manager: serdars
 
@@ -27,4 +28,3 @@ manager: serdars
 [Change the settings of an address book policy in Exchange Online](change-the-settings-of-an-address-book-policy.md)
 
 [Remove an address book policy in Exchange Online](remove-an-address-book-policy.md)
-

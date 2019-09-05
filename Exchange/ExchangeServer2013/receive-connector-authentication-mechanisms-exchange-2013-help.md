@@ -1,23 +1,22 @@
-﻿---
+---
 title: 'Receive connector authentication mechanisms: Exchange 2013 Help'
 TOCTitle: Receive connector authentication mechanisms
 ms:assetid: 926424e1-83e3-4c4b-b2dd-bf814d81e877
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ657472(v=EXCHG.150)
 ms:contentKeyID: 49289352
 ms.date: 05/13/2016
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
 # Receive connector authentication mechanisms
 
- 
-
 _**Applies to:** Exchange Server 2013_
 
-
-
 The Receive connector authentication mechanisms are the following:
-
 
 <table>
 <colgroup>
@@ -62,6 +61,4 @@ The Receive connector authentication mechanisms are the following:
 </tbody>
 </table>
 
-
 For more information about Receive Connector authentication mechanisms, see [New-ReceiveConnector](https://technet.microsoft.com/en-us/library/bb125139\(v=exchg.150\)).
-

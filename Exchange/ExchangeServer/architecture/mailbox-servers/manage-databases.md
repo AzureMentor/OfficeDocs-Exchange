@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: 'Summary: Learn how to perform configuration tasks related to managing your mailbox databases in Exchange Server.'
 ms.topic: article
-author: SerdarSoysal
-ms.author: serdars
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: ead4a96b-1717-435b-bcfc-9901ac4e3b58
 ms.date: 7/3/2018
+ms.reviewer: 
 title: Manage mailbox databases in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -32,7 +33,6 @@ A mailbox database is a unit of granularity where mailboxes are created and stor
 > Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Create a mailbox database
-<a name="BKMK_Create"> </a>
 
 ### Use the EAC to create a mailbox database
 
@@ -59,7 +59,6 @@ To verify that you have successfully created a database, do the following:
   ```
 
 ## Get mailbox database properties
-<a name="BKMK_Get"> </a>
 
 For detailed syntax and parameter information, see [Get-MailboxDatabase](http://technet.microsoft.com/library/e12bd6d3-3793-49cb-9ab6-948d42dd409e.aspx).
 
@@ -74,7 +73,6 @@ To verify that you have successfully retrieved your mailbox database information
 - From the Exchange Management Shell, verify that all your mailbox database information is represented correctly.
 
 ## Set mailbox database properties
-<a name="BKMK_Set"> </a>
 
 ### Use the EAC to set mailbox database properties
 
@@ -86,55 +84,55 @@ To verify that you have successfully retrieved your mailbox database information
 
 4. Use the **General** tab to view status about the mailbox database, including the mailbox database path, last backup, and mailbox database status:
 
-  - **Database path**: This read-only field displays the full path to the Exchange database (.edb) file for the selected mailbox database. To view the entire path, you may have to click the path and use the Right Arrow key. You can't use this field to change the path. To change the location of the database files, use the [Move-DatabasePath](http://technet.microsoft.com/library/d6873ded-d521-428f-821f-d10ea2c44b7e.aspx) cmdlet.
+   - **Database path**: This read-only field displays the full path to the Exchange database (.edb) file for the selected mailbox database. To view the entire path, you may have to click the path and use the Right Arrow key. You can't use this field to change the path. To change the location of the database files, use the [Move-DatabasePath](http://technet.microsoft.com/library/d6873ded-d521-428f-821f-d10ea2c44b7e.aspx) cmdlet.
 
-  - **Last full backup**: This read-only field displays the date and time of the last complete backup of the mailbox database.
+   - **Last full backup**: This read-only field displays the date and time of the last complete backup of the mailbox database.
 
-  - **Last incremental backup**: This read-only field displays the date and time of the last incremental backup of the mailbox database.
+   - **Last incremental backup**: This read-only field displays the date and time of the last incremental backup of the mailbox database.
 
-  - **Status**: This read-only field displays whether the mailbox database is mounted or dismounted.
+   - **Status**: This read-only field displays whether the mailbox database is mounted or dismounted.
 
-  - **Mounted on server**: This read-only field displays which server the database is mounted on.
+   - **Mounted on server**: This read-only field displays which server the database is mounted on.
 
-  - **Master**: This read-only field displays the master server for the mailbox database. The Mailbox server that hosts the active copy of a database is referred to as the mailbox database master.
+   - **Master**: This read-only field displays the master server for the mailbox database. The Mailbox server that hosts the active copy of a database is referred to as the mailbox database master.
 
-  - **Master type**: This read-only field displays the type of mailbox database master.
+   - **Master type**: This read-only field displays the type of mailbox database master.
 
-  - **Modified**: This read-only field displays the date and time the database was last modified.
+   - **Modified**: This read-only field displays the date and time the database was last modified.
 
-  - **Servers hosting a copy of this database**: This read-only field displays the other servers that have a copy of this database.
+   - **Servers hosting a copy of this database**: This read-only field displays the other servers that have a copy of this database.
 
 5. Use the **Maintenance** tab to configure mailbox database settings, including specifying a journal recipient, setting a maintenance schedule, and mounting the database at startup:
 
-  - **Journal Recipient**: Click **Browse** to specify a recipient to enable journaling on this mailbox database. Remove the recipient listed to disable journaling.
+   - **Journal Recipient**: Click **Browse** to specify a recipient to enable journaling on this mailbox database. Remove the recipient listed to disable journaling.
 
-  - **Maintenance schedule**: Use this list to select one of the preset maintenance schedules. You can also configure a custom schedule. To configure a custom schedule, click **Customize**.
+   - **Maintenance schedule**: Use this list to select one of the preset maintenance schedules. You can also configure a custom schedule. To configure a custom schedule, click **Customize**.
 
-  - **Enable background database maintenance (24 x 7 ESE scanning)**: Select this check box to enable online database scanning, which runs continuously in the background. Online database scanning performs a checksum calculation of the database and performs operations that allow Exchange to scan for lost space on the database and recover it. If you select this check box, Exchange scans the database no more than one time per day and will issue a warning event if it can't finish scanning the database in a seven-day period.
+   - **Enable background database maintenance (24 x 7 ESE scanning)**: Select this check box to enable online database scanning, which runs continuously in the background. Online database scanning performs a checksum calculation of the database and performs operations that allow Exchange to scan for lost space on the database and recover it. If you select this check box, Exchange scans the database no more than one time per day and will issue a warning event if it can't finish scanning the database in a seven-day period.
 
-  - **Don't mount this database at startup**: Select this check box to prevent Exchange from mounting this mailbox database when it starts.
+   - **Don't mount this database at startup**: Select this check box to prevent Exchange from mounting this mailbox database when it starts.
 
-  - **This database can be overwritten by a restore**: Select this check box to allow the mailbox database to be overwritten during a restore process.
+   - **This database can be overwritten by a restore**: Select this check box to allow the mailbox database to be overwritten during a restore process.
 
-  - **Enable circular logging**: Select this check box to enable circular logging.
+   - **Enable circular logging**: Select this check box to enable circular logging.
 
 6. Use the **Limits** tab to specify the storage limits, the warning message interval, and the deletion settings for a mailbox database:
 
-  - **Issue warning at (GB)**: Select this check box to automatically warn mailbox users that their mailbox is approaching its storage limit. To specify the storage limit, select the check box, and then specify in gigabytes (GB) how much content can be stored in the mailbox before a warning email message is sent to the mailbox users. You can enter a value from 0 through 2,097,151 megabytes (MB) (2.0 terabytes).
+   - **Issue warning at (GB)**: Select this check box to automatically warn mailbox users that their mailbox is approaching its storage limit. To specify the storage limit, select the check box, and then specify in gigabytes (GB) how much content can be stored in the mailbox before a warning email message is sent to the mailbox users. You can enter a value from 0 through 2,097,151 megabytes (MB) (2.0 terabytes).
 
-  - **Prohibit send at (GB)**: Select this check box to prevent users from sending new email messages after the size of their mailbox reaches the specified limit. To specify this limit, select the check box, and then type the size of the mailbox in GB at which you want to prohibit the sending of new email messages and notify the user. You can enter a value from 0 through 2,097,151 MB (2.0 terabytes).
+   - **Prohibit send at (GB)**: Select this check box to prevent users from sending new email messages after the size of their mailbox reaches the specified limit. To specify this limit, select the check box, and then type the size of the mailbox in GB at which you want to prohibit the sending of new email messages and notify the user. You can enter a value from 0 through 2,097,151 MB (2.0 terabytes).
 
-  - **Prohibit send and receive at (GB)**: Select this check box to prevent users from sending and receiving email messages after their mailbox size reaches the specified limit. To specify this limit, select the check box, and then type the size of the mailbox in GB at which you want to prohibit the sending and receiving of email messages and notify the user. You can enter a value from 0 through 2,097,151 MB (2.0 terabytes).
+   - **Prohibit send and receive at (GB)**: Select this check box to prevent users from sending and receiving email messages after their mailbox size reaches the specified limit. To specify this limit, select the check box, and then type the size of the mailbox in GB at which you want to prohibit the sending and receiving of email messages and notify the user. You can enter a value from 0 through 2,097,151 MB (2.0 terabytes).
 
-  - **Keep deleted items for (days)**: Select this check box to set the number of days that deleted items are retained in a mailbox. You can enter a value from 0 through 24,855 days.
+   - **Keep deleted items for (days)**: Select this check box to set the number of days that deleted items are retained in a mailbox. You can enter a value from 0 through 24,855 days.
 
-  - **Keep deleted mailboxes for (days)**: Select this check box to set the number of days that deleted mailboxes are retained. You can enter a value from 0 through 24,855 days.
+   - **Keep deleted mailboxes for (days)**: Select this check box to set the number of days that deleted mailboxes are retained. You can enter a value from 0 through 24,855 days.
 
-  - **Don't permanently delete items until the database has been backed up**: Select this check box to prevent mailboxes and email messages from being deleted until after the mailbox database has been backed up.
+   - **Don't permanently delete items until the database has been backed up**: Select this check box to prevent mailboxes and email messages from being deleted until after the mailbox database has been backed up.
 
 7. Use the **Client Settings** tab to select the offline address book (OAB) for the mailbox:
 
-  - **Offline address book**: To select an offline address book, click **Browse**, and then select the offline address book.
+   - **Offline address book**: To select an offline address book, click **Browse**, and then select the offline address book.
 
 ### Use the Exchange Management Shell to set mailbox database properties
 
@@ -153,7 +151,6 @@ To verify that you have successfully set the attributes, do the following:
   ```
 
 ## Move a mailbox database path
-<a name="BKMK_Move"> </a>
 
 For detailed syntax and parameter information, see [Move-DatabasePath](http://technet.microsoft.com/library/d6873ded-d521-428f-821f-d10ea2c44b7e.aspx).
 
@@ -170,7 +167,6 @@ To verify that you have successfully moved the database path, do the following:
 2. Click the **pen** symbol and verify that the database path is correct.
 
 ## Mount a mailbox database
-<a name="BKMK_Mount"> </a>
 
 For detailed syntax and parameter information, see [Mount-Database](http://technet.microsoft.com/library/76a57f6a-a6c6-4c65-abf8-190522d47037.aspx).
 
@@ -189,7 +185,6 @@ To verify that you have successfully mounted the mailbox database, do the follow
   ```
 
 ## Dismount a mailbox database
-<a name="BKMK_Dismount"> </a>
 
 For detailed syntax and parameter information, see [Dismount-Database](http://technet.microsoft.com/library/e261955b-a9f0-4d87-bf56-f9e67ea5ba3f.aspx).
 
@@ -206,7 +201,6 @@ To verify that you have successfully dismounted the database, do the following:
 2. Click the **pen** symbol, and verify that the database status is **Dismounted**.
 
 ## Remove a mailbox database
-<a name="BKMK_Remove"> </a>
 
 ### Use the EAC to remove a mailbox database
 
@@ -220,9 +214,9 @@ For detailed syntax and parameter information, see [Remove-MailboxDatabase](http
 
 1. Run the following command to remove the mailbox database MyDatabase.
 
-  ```
-  Remove-MailboxDatabase -Identity "MyDatabase"
-  ```
+   ```
+   Remove-MailboxDatabase -Identity "MyDatabase"
+   ```
 
 2. When you're prompted about whether you're sure that you want to perform the action, type **Y**.
 
@@ -235,6 +229,3 @@ To verify that you have successfully removed the mailbox database, do the follow
 - From the EAC, select **Servers** \> **Databases**.
 
 - Verify that the mailbox database has been removed.
-
-
-

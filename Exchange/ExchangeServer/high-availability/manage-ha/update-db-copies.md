@@ -6,9 +6,10 @@ author: msdmaguire
 ms.author: dmaguire
 ms.assetid: bead3cc5-7d50-446f-95b7-e432bcb7968e
 ms.date: 6/8/2018
+ms.reviewer: 
 title: Update a mailbox database copy
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -51,7 +52,7 @@ Multiple database copies can be seeded simultaneously. However, when seeding mul
 > [!NOTE]
 > If you don't use the _DatabaseOnly_ parameter when seeding multiple targets from the same source, the task will fail with `SeedInProgressException` error `FE1C6491`.
 
-Looking for other management tasks related to mailbox database copies? Check out [Managing mailbox database copies](http://technet.microsoft.com/library/06df16b4-f209-4d3a-8c68-0805c745f9b2.aspx).
+Looking for other management tasks related to mailbox database copies? Check out [Manage mailbox database copies](manage-database-copies.md).
 
 ## What do you need to know before you begin?
 
@@ -68,12 +69,11 @@ Looking for other management tasks related to mailbox database copies? Check out
 - For information about keyboard shortcuts that may apply to the procedures in this topic, see [Keyboard shortcuts in the Exchange admin center](../../about-documentation/exchange-admin-center-keyboard-shortcuts.md).
 
 > [!TIP]
-> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351)..
+> Having problems? Ask for help in the Exchange forums. Visit the forums at: [Exchange Server](https://go.microsoft.com/fwlink/p/?linkId=60612), [Exchange Online](https://go.microsoft.com/fwlink/p/?linkId=267542), or [Exchange Online Protection](https://go.microsoft.com/fwlink/p/?linkId=285351).
 
 ## Update a mailbox database copy
 
 ### Use the EAC to update a mailbox database copy
-<a name="UseEMC"> </a>
 
 1. In the EAC, go to **Servers** \> **Databases**.
 
@@ -83,12 +83,11 @@ Looking for other management tasks related to mailbox database copies? Check out
 
 4. In the Details pane, under **Database Copies**, click **Update** under the passive database copy you want to seed.
 
-5. By default, the active copy of the database is used as the source database for seeding. If you prefer to use a passive copy of the database for seeding, click **browse…** to select the server containing the passive database copy you want to use for the source.
+5. By default, the active copy of the database is used as the source database for seeding. If you prefer to use a passive copy of the database for seeding, click **browse...** to select the server containing the passive database copy you want to use for the source.
 
 6. Click **save** to update the passive database copy.
 
 ### Use the Exchange Management Shell to update a mailbox database copy
-<a name="UseShell"> </a>
 
 This example shows how to seed a copy of the database DB1 on MBX1.
 
@@ -115,44 +114,42 @@ Update-MailboxDatabaseCopy -Identity DB1\MBX1 -CatalogOnly
 ```
 
 ## Manually copy an offline database
-<a name="Offline"> </a>
 
 1. If circular logging is enabled for the database, it must be disabled before proceeding. You can disable circular logging for a mailbox database by using the [Set-MailboxDatabase](http://technet.microsoft.com/library/a01edc66-bc10-4f65-9df4-432cb9e88f58.aspx) cmdlet, as shown in this example.
 
-  ```
-  Set-MailboxDatabase DB1 -CircularLoggingEnabled $false
-  ```
+   ```
+   Set-MailboxDatabase DB1 -CircularLoggingEnabled $false
+   ```
 
 2. Dismount the database. You can use the [Dismount-Database](http://technet.microsoft.com/library/e261955b-a9f0-4d87-bf56-f9e67ea5ba3f.aspx) cmdlet, as shown in this example.
 
-  ```
-  Dismount-Database DB1 -Confirm $false
-  ```
+   ```
+   Dismount-Database DB1 -Confirm $false
+   ```
 
 3. Manually copy the database files (the database file and all log files) to a second location, such as an external disk drive or a network share.
 
 4. Mount the database. You can use the [Mount-Database](http://technet.microsoft.com/library/76a57f6a-a6c6-4c65-abf8-190522d47037.aspx) cmdlet, as shown in this example.
 
-  ```
-  Mount-Database DB1
-  ```
+   ```
+   Mount-Database DB1
+   ```
 
 5. On the server that will host the copy, copy the database files from the external drive or network share to the same path as the active database copy. For example, if the active copy database path is D:\DB1\DB1.edb and log file path is D:\DB1, you would copy the database files to D:\DB1 on the server that will host the copy.
 
 6. Add the mailbox database copy by using the [Add-MailboxDatabaseCopy](http://technet.microsoft.com/library/84198fa9-ac8e-44ea-bd7b-64fe1e83e709.aspx) cmdlet with the _SeedingPostponed_ parameter, as shown in this example.
 
-  ```
-  Add-MailboxDatabaseCopy -Identity DB1 -MailboxServer MBX3 -SeedingPostponed
-  ```
+   ```
+   Add-MailboxDatabaseCopy -Identity DB1 -MailboxServer MBX3 -SeedingPostponed
+   ```
 
 7. If circular logging is enabled for the database, enable it again by using the [Set-MailboxDatabase](http://technet.microsoft.com/library/a01edc66-bc10-4f65-9df4-432cb9e88f58.aspx) cmdlet, as shown in this example.
 
-  ```
-  Set-MailboxDatabase DB1 -CircularLoggingEnabled $true
-  ```
+   ```
+   Set-MailboxDatabase DB1 -CircularLoggingEnabled $true
+   ```
 
 ## How do you know this worked?
-<a name="Offline"> </a>
 
 To verify that you've successfully seeded a mailbox database copy, do one of the following:
 
@@ -164,7 +161,4 @@ To verify that you've successfully seeded a mailbox database copy, do one of the
   Get-MailboxDatabaseCopyStatus <DatabaseCopyName>
   ```
 
-    The Status and Content Index State should both be Healthy.
-
-
-
+  The Status and Content Index State should both be Healthy.

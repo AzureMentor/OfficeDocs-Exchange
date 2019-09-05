@@ -2,13 +2,14 @@
 localization_priority: Normal
 description: Learn how to configure connectivity logging for the transport services in Exchange 2016 and Exchange 2019
 ms.topic: article
-author: chrisda
-ms.author: chrisda
+author: msdmaguire
+ms.author: dmaguire
 ms.assetid: 24e46a79-33ea-44e9-b03c-549db1c86a6f
 ms.date: 7/10/2018
+ms.reviewer: 
 title: Configure connectivity logging in Exchange Server
 ms.collection: exchange-server
-ms.audience: ITPro
+audience: ITPro
 ms.prod: exchange-server-it-pro
 manager: serdars
 
@@ -32,7 +33,7 @@ Connectivity logging records outbound connection activity (source, destination, 
 
   - Administrators: Full Control
 
-    If the folder doesn't exist, but the parent folder has these permissions, the new folder is created automatically.
+  If the folder doesn't exist, but the parent folder has these permissions, the new folder is created automatically.
 
 - You need to be assigned permissions before you can perform this procedure or procedures. To see what permissions you need, see the "Transport service", "Front End Transport service", and "Mailbox Transport service" entries in the [Mail flow permissions](../../permissions/feature-permissions/mail-flow-permissions.md) topic.
 
@@ -51,11 +52,11 @@ Connectivity logging records outbound connection activity (source, destination, 
 
 4. In the **Connectivity log** section, change any of these settings:
 
-  - **Enable connectivity log**: To disable connectivity logging for the Transport service on the server, clear the check box. To enable connectivity logging for the Transport service on the server, select the check box.
+   - **Enable connectivity log**: To disable connectivity logging for the Transport service on the server, clear the check box. To enable connectivity logging for the Transport service on the server, select the check box.
 
-  - **Connectivity log path**: The value you specify must be on the local Exchange server. If the folder doesn't exist, it will be created for if the parent folder has the required permissions.
+   - **Connectivity log path**: The value you specify must be on the local Exchange server. If the folder doesn't exist, it will be created for if the parent folder has the required permissions.
 
-    When you're finished, click **Save**.
+   When you're finished, click **Save**.
 
 ## Use the Exchange Management Shell to configure connectivity logging
 
@@ -109,11 +110,8 @@ To verify that you've successfully configured connectivity logging, use these st
 
 1. Run the following command in the Exchange Management Shell to verify the connectivity log settings on the Exchange servers:
 
-  ```
-  Write-Host "Front End Transport service:" -ForegroundColor yellow; Get-FrontEndTransportService | Format-List Name,ConnectivityLog*; Write-Host "Mailbox Transport Submission and Mailbox Transport Delivery services:" -ForegroundColor yellow; Get-MailboxTransportService | Format-List Name,ConnectivityLog*; Write-Host "Transport service:" -ForegroundColor yellow; Get-TransportService | Format-List Name,ConnectivityLog*
-  ```
+   ```
+   Write-Host "Front End Transport service:" -ForegroundColor yellow; Get-FrontEndTransportService | Format-List Name,ConnectivityLog*; Write-Host "Mailbox Transport Submission and Mailbox Transport Delivery services:" -ForegroundColor yellow; Get-MailboxTransportService | Format-List Name,ConnectivityLog*; Write-Host "Transport service:" -ForegroundColor yellow; Get-TransportService | Format-List Name,ConnectivityLog*
+   ```
 
 2. Open the location of the connectivity log in Windows Explorer or File Explorer to verify that the log files exist, that data is being written to the files, and that the files are being recycled based on the maximum file size and maximum directory size values that you configured. If you disabled connectivity logging, verify that the log files aren't being updated.
-
-
-

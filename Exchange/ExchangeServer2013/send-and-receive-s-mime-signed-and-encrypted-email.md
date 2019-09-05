@@ -2,9 +2,13 @@
 title: 'Send and receive S/MIME signed and encrypted email in Exchange Server'
 TOCTitle: Send and receive S/MIME signed and encrypted email
 ms.assetid: 1ce37ada-0a80-4b47-8611-d008979589ff
-ms:mtpsurl: 
-ms:contentKeyID: 
+ms:mtpsurl:
+ms:contentKeyID:
 ms.date: 2/26/2019
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 

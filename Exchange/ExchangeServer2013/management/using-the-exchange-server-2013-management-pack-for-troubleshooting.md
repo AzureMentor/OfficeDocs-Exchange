@@ -1,30 +1,20 @@
-﻿---
+---
 title: Using the Exchange Server 2013 Management Pack for troubleshooting
 TOCTitle: Using the Exchange Server 2013 Management Pack for troubleshooting
 ms:assetid: c9672dad-1e67-4f07-bad9-539a67f2ac70
 ms:mtpsurl: https://technet.microsoft.com/en-us/library/Dn195913(v=EXCHG.150)
 ms:contentKeyID: 53181780
-ms.date: 05/14/2016
+ms.date: 
+ms.reviewer: 
+manager: serdars
+ms.author: dmaguire
+author: msdmaguire
 mtps_version: v=EXCHG.150
 ---
 
-<div data-xmlns="http://www.w3.org/1999/xhtml">
-
-<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="http://msdn.microsoft.com/en-us/">
-
-<div data-asp="http://msdn2.microsoft.com/asp">
-
 # Using the Exchange Server 2013 Management Pack for troubleshooting
 
-</div>
-
-<div id="mainSection">
-
-<div id="mainBody">
-
-<span> </span>
-
-_**Topic Last Modified:** 2013-04-09_
+_**Applies to:** Exchange Server 2013_
 
 [Getting started with Exchange Server 2013 Management Pack](getting-started-with-exchange-server-2013-management-pack.md) provides an overview of the management pack dashboard. This topic walks you through how it can help you troubleshoot a problem. The process is best illustrated with an example. Consider the following scenario:
 
@@ -37,54 +27,57 @@ Rob double-clicks on the server which opens the **Health Explorer** window. In t
 ![Failed CAS server healthset details](images/Dn195913.8e4d05a6-9128-40d8-b262-e60e9affc973(EXCHG.150).png "Failed CAS server healthset details")
 
 The link provided under External Knowledge Resources takes Rob to the [Troubleshooting OWA.Proxy Health Set](https://technet.microsoft.com/en-us/library/jj737712\(v=exchg.150\)) topic. In this article, Rob sees that the first thing to do is to verify that the issue still exists. Following the instructions, he runs the following command to verify the current state of the OWA.Proxy health set in the Shell:
-```Powershell
-    Get-ServerHealth Server1.contoso.com | ?{$_.HealthSetName -eq "OWA.Proxy"}
+
+```powershell
+Get-ServerHealth Server1.contoso.com | ?{$_.HealthSetName -eq "OWA.Proxy"}
 ```
+
 Running this command gives him the following output:
-```Powershell
-    Server          State           Name                 TargetResource       HealthSetName   AlertValue ServerComp
-                                                                                                         onent
-    ------          -----           ----                 --------------       -------------   ---------- ----------
-    Server1         Online          OWAProxyTestMonitor  MSExchangeOWAAppPool OWA.Proxy       Unhealthy  OwaProxy
-    Server1         Online          OWAProxyTestMonitor  MSExchangeOWACale... OWA.Proxy       Healthy    OwaProxy
+
+```powershell
+Server          State           Name                 TargetResource       HealthSetName   AlertValue ServerComponent
+
+------          -----           ----                 --------------       -------------   ---------- ----------
+Server1         Online          OWAProxyTestMonitor  MSExchangeOWAAppPool OWA.Proxy       Unhealthy  OwaProxy
+Server1         Online          OWAProxyTestMonitor  MSExchangeOWACale... OWA.Proxy       Healthy    OwaProxy
 ```
-Rob sees that the problem lies within the OWA Application Pool. The next step is to rerun the associated probe for the monitor that is in unhealthy state. Using the table in the “Troubleshooting OWA.Proxy Health Set” topic, he determines that the probe that he needs to rerun is OWAProxyTestProbe. He runs the following command:
-```Powershell
-    Invoke-MonitoringProbe OWA.Proxy\OWAProxyTestProbe -Server Server1.contoso.com | Format-List
+
+Rob sees that the problem lies within the OWA Application Pool. The next step is to rerun the associated probe for the monitor that is in unhealthy state. Using the table in the "Troubleshooting OWA.Proxy Health Set" topic, he determines that the probe that he needs to rerun is OWAProxyTestProbe. He runs the following command:
+
+```powershell
+Invoke-MonitoringProbe OWA.Proxy\OWAProxyTestProbe -Server Server1.contoso.com | Format-List
 ```
+
 He scans the output for the ResultType value and sees that the probe failed:
-```Powershell
-    ResultType : Failed
+
+```powershell
+ResultType : Failed
 ```
-He proceeds to the “OWAProxyTestMonitor Recovery Actions” section of the article. He connects to Server1 using IIS Manager to see if the MSExchangeOWAAppPool is running on the IIS Server. Once he verifies that it is running, the next step instructs him to recycle the MSExchangeOWAAppPool:
-```Powershell
-    C:\Windows\System32\Inetsrv\Appcmd recycle APPPOOL MSExchangeOWAAppPool
+
+He proceeds to the "OWAProxyTestMonitor Recovery Actions" section of the article. He connects to Server1 using IIS Manager to see if the MSExchangeOWAAppPool is running on the IIS Server. Once he verifies that it is running, the next step instructs him to recycle the MSExchangeOWAAppPool:
+
+```powershell
+C:\Windows\System32\Inetsrv\Appcmd recycle APPPOOL MSExchangeOWAAppPool
 ```
+
 After seeing that the MSExchangeOWAAppPool is successfully recycled, he goes back to verifying if the issue still exists by rerunning the probe using the Invoke-MonitoringProbe cmdlet and this time sees that the result is successful. He then runs the following command to verify that the health set is reporting **Healthy** status again:
-```Powershell
-    Get-ServerHealth Server1.contoso.com | ?{$_.HealthSetName -eq "OWA.Proxy"}
+
+```powershell
+Get-ServerHealth Server1.contoso.com | ?{$_.HealthSetName -eq "OWA.Proxy"}
 ```
+
 This time he sees that the problem is resolved.
-```Powershell
-    Server          State           Name                 TargetResource       HealthSetName   AlertValue ServerComp
-                                                                                                         onent
-    ------          -----           ----                 --------------       -------------   ---------- ----------
-    Server1         Online          OWAProxyTestMonitor  MSExchangeOWAAppPool OWA.Proxy       Healthy    OwaProxy
-    Server1         Online          OWAProxyTestMonitor  MSExchangeOWACale... OWA.Proxy       Healthy    OwaProxy
+
+```powershell
+Server          State           Name                 TargetResource       HealthSetName   AlertValue ServerComponent
+
+------          -----           ----                 --------------       -------------   ---------- ----------
+Server1         Online          OWAProxyTestMonitor  MSExchangeOWAAppPool OWA.Proxy       Healthy    OwaProxy
+Server1         Online          OWAProxyTestMonitor  MSExchangeOWACale... OWA.Proxy       Healthy    OwaProxy
 ```
+
 He goes back to the SCOM console and verifies that the issue is resolved.
 
 ![Server Health](images/Dn195908.c863be83-fc4b-4daf-a18b-27b1aae15b1d(EXCHG.150).png "Server Health")
 
 The scenario covered above is a simple demonstration of the troubleshooting workflow when you see an alert in the SCOM console. Even though the details will vary, you will generally follow a similar troubleshooting workflow for each problem reported in the console.
-
-</div>
-
-<span> </span>
-
-</div>
-
-</div>
-
-</div>
-
